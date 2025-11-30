@@ -1,0 +1,99 @@
+<Window
+    x:Class="ITFCreator.Views.MainWindow"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="clr-namespace:FlyrUI.Controls;assembly=FlyrUI"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="using:ITFCreator.ViewModels"
+    Title="ITFCreator"
+    d:DesignHeight="450"
+    d:DesignWidth="800" Background="#f3f3f3"
+    x:DataType="vm:MainWindowViewModel"
+    Icon="/Assets/avalonia-logo.ico"
+    mc:Ignorable="d">
+
+    <Design.DataContext>
+        <vm:MainWindowViewModel />
+    </Design.DataContext>
+
+ <ScrollViewer HorizontalScrollBarVisibility="Disabled">
+        <Grid>
+        <controls:ToastHost Manager="{Binding ToastManager}" ZIndex="99" />
+        <StackPanel Margin="20" Spacing="20">
+            <controls:GroupBox Header="解析ITF">
+                <StackPanel Spacing="10">
+                    <DockPanel HorizontalSpacing="20">
+                        <Button
+                            VerticalAlignment="Center"
+                            Command="{Binding OpenITFFileCommand}"
+                            Content="载入ITF"
+                            DockPanel.Dock="Right" />
+                        <TextBox
+                            DragDrop.AllowDrop="True"
+                            DragDrop.Drop="ITFPathBox_DragHandler"
+                            Text="{Binding ITFPath}"
+                            UseFloatingWatermark="True"
+                            Watermark="ITF路径" />
+                    </DockPanel>
+                    <TextBlock Text="{Binding ITFInfo}" TextWrapping="Wrap"/>
+                    <DockPanel HorizontalSpacing="20" IsEnabled="{Binding ITFLoaded}">
+                        <Button
+                            Command="{Binding SearchCharCommand}"
+                            Content="搜索"
+                            DockPanel.Dock="Right" />
+                        <TextBox Text="{Binding SearchText}" Watermark="搜索字符" />
+                    </DockPanel>
+                    <SelectableTextBlock Text="{Binding CharSearchResult}" />
+                    <Canvas
+                        Width="{Binding BitmapSize}"
+                        Height="{Binding BitmapSize}"
+                        HorizontalAlignment="Center"
+                        Background="Black"
+                        ClipToBounds="True">
+                        <Rectangle
+                            Canvas.Left="{Binding BitmapX}"
+                            Canvas.Top="{Binding BitmapY}"
+                            Width="{Binding BitmapWidth}"
+                            Height="{Binding BitmapHeight}"
+                            Fill="AntiqueWhite" />
+                        <Image
+                            Canvas.Left="{Binding BitmapX}"
+                            Canvas.Top="{Binding BitmapY}"
+                            Source="{Binding Bitmap}" />
+                    </Canvas>
+                </StackPanel>
+            </controls:GroupBox>
+            <controls:GroupBox Header="创建ITF">
+                <StackPanel Spacing="10">
+                    <UniformGrid ColumnSpacing="10" RowSpacing="10" Rows="2">
+                        <TextBox Text="{Binding FontName}" VerticalAlignment="Center" UseFloatingWatermark="True" Watermark="字体名" />
+                        <DockPanel HorizontalSpacing="10" >
+                            <TextBlock VerticalAlignment="Center" Text="字体粗细: "></TextBlock>
+                            <ComboBox VerticalAlignment="Center" ItemsSource="{Binding FontWeights}" SelectedItem="{Binding FontWeight}">
+                                <ComboBox.Resources>
+                                    <x:Double x:Key="ComboBoxItemMaxWidth">Nan</x:Double>
+                                </ComboBox.Resources>
+                            </ComboBox>
+                        </DockPanel>
+                        <DockPanel HorizontalSpacing="10">
+                            <TextBlock VerticalAlignment="Center" Text="基准线偏移: "></TextBlock>
+                            <NumericUpDown Value="{Binding BaselineOffset}" VerticalAlignment="Center" Minimum="10" Maximum="120" FormatString="0" Classes="horizon"/>
+                        </DockPanel>
+                        <DockPanel HorizontalSpacing="10">
+                           <TextBlock VerticalAlignment="Center" Text="字体大小: "></TextBlock>
+                           <NumericUpDown Value="{Binding FontSize}" VerticalAlignment="Center" Minimum="10" Maximum="120" FormatString="0" Classes="horizon"/>
+                       </DockPanel>
+                    </UniformGrid>
+                    <TextBox VerticalAlignment="Center" UseFloatingWatermark="True" TextWrapping="NoWrap" Text="{Binding UnicodeRange}" Watermark="字符范围: 开始-结束, 十六进制, 逗号分隔" />
+                   <DockPanel HorizontalSpacing="10">
+                       <TextBlock Text="注：ITF文件会被创建至程序目录下" Foreground="{DynamicResource FlyrDisabledText}" TextTrimming="CharacterEllipsis"></TextBlock>
+                       <Button Classes="flat" Content="创建字体" HorizontalAlignment="Right" DockPanel.Dock="Right" Command="{Binding CreateITFFileCommand}"></Button>
+                       <Button Classes="basic" Content="打开输出目录"  HorizontalAlignment="Right" DockPanel.Dock="Right" Command="{Binding OpenOutputDirectoryCommand}"></Button>
+                   </DockPanel>
+                </StackPanel>
+            </controls:GroupBox>
+        </StackPanel>
+    </Grid>
+ </ScrollViewer>
+</Window>
