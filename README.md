@@ -7,4 +7,4 @@ ITFCreator：字体创建器
 Injector：dll注入器  
 ### 云豹 
 CloudDecrypt： 解密云豹文件，如bin和_dt文件  
-charTable：云豹双字节字符的自定义字库，解密后为3字节的utf8数据，前四个字节是字库大小，双字节ab, index = a<<8 - 0x8900 + b，步进为3，比如8A D1 = 1D1，pos=0x1D1*3，取3字节E7 BE 85羅。  
+charTable：云豹双字节字符的自定义字库，前四个字节是字库大小，解密后为3字节的utf8数据，双字节ab, index = a<<8 - 0x8900 + b，步进为3，比如8A D1 = 1D1，pos=0x1D1*3，取3字节E7 BE 85羅。  
