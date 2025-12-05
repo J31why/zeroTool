@@ -7,17 +7,19 @@ using namespace std;
 namespace hook {
     string sjis2uni_addr_pattern = "48 89 54 24 10 55 41 54 41 57 48";
     string check_encoding_addr_pattern = "5F 5B 5D C3 CC CC CC CC CC CC CC CC CC 48 89 5C 24 08"; // result+0xd
-    string load_mess_string_addr_pattern = "FF C3 CC CC CC CC CC 48 89 5C 24 18"; //result+0x7
-    string get_mess_string_key_addr_pattern = "40 53 48 83 EC 20 48 8B D9 81 FA 1B";
+    string load_mess_string_addr_pattern = "FF C3 CC CC CC CC CC 48 89 5C 24 18 48 89 4C 24 08"; //result+0x7
+    string get_mess_string_key_addr_pattern = "40 53 48 83 EC 20 48 8B D9 81 FA ?? ?? 00 00 0f";
     string sjis2utf8_addr_pattern = "40 56 48 83 EC 10";
     string utf82sjis_addr_pattern = "48 89 5C 24 10 56 49 8B D9";
 
     string memo_sjis_byte_valid_addr_pattern = "41 0f b6 0f 80 f9 7f 76 ?? 8d 41 60 3c 3f 76 ??"; //result+0x7
     string memo_2_sjis_byte_valid_addr_pattern = "41 0F B6 0F 80 F9 7F 0F"; //result+0x4
     string desc_sjis_byte_valid_addr_pattern = "00 0F B6 0F 80 F9 7F 76 ?? 8d";  //result+0x4
-    string unk_r10_sjis_byte_valid_addr_pattern = "49 FF C6 80 F9 7F 76"; //result+3
+    string item_dialog_sjis_byte_valid_addr_pattern = "49 FF C6 80 F9 7F 76"; //result+3
+    string text_length_sjis_byte_valid_addr_pattern = "80 f9 7f 76 ?? 8d 41 60 3c 3f 76 ?? 41 83";
     string add_al_60_r15_sjis_byte_valid_addr_pattern = "3C 7F 0F 86 ?? ?? 00 00 04 60";
     string menu_rsi_sjis_byte_valid_addr_pattern = "8D 41 60 3C 3F 76 ?? 44";
+    string number_sjis_byte_valid_addr_pattern = "0f b6 0b  80 f9 7f"; // result +0x3
     /* mess_string_jp_struct_addr_pattern
     140101A17 - 89 5D F7              - mov [rbp-09],ebx
     140101A1A - 48 8D 15 17AF3800     - lea rdx,[14048C938] { ("MESS_UNDEFINED") }
@@ -37,10 +39,13 @@ namespace hook {
     uintptr_t memo_sjis_byte_valid_addr =               0x140289c33;                   //手册Messstring
     uintptr_t memo_2_sjis_byte_valid_addr =             0x14028B905;                   //手册 2
     uintptr_t desc_sjis_byte_valid_addr =               0x1401CE400;                   //物品描述
-    uintptr_t unk_r10_sjis_byte_valid_addr =            0x140210677;                   //unknown
+    uintptr_t item_dialog_sjis_byte_valid_addr =            0x140210677;                   //unknown
+	uintptr_t text_length_sjis_byte_valid_addr =        0x140215C22;                   //textLength
     uintptr_t menu_rsi_sjis_byte_valid_addr =           0x140332CC7;                   //menu
+    uintptr_t number_sjis_byte_valid_addr =             0x14028ADF0;                   //number
     uintptr_t add_al_60_r15_sjis_byte_valid_addr[2] = { 0x140211D65 ,0x140214998 };    //0: 对话printText2; 1: unk
 
+    char* cloud_utf8_table = nullptr;
 
     sjis2uni_t ori_sjis2uni = nullptr;
     checkEncoding_t ori_check_encoding = nullptr;
@@ -111,10 +116,21 @@ namespace hook {
             cout << "desc_sjis_byte_valid_addr : 0x" << hex << desc_sjis_byte_valid_addr << endl;
         }
 
-        if (SearchModuleMemory(unk_r10_sjis_byte_valid_addr_pattern, matchResults) && matchResults.size() == 1) {
-            unk_r10_sjis_byte_valid_addr = matchResults[0] + 0x3;
-            cout << "unk_r10_sjis_byte_valid_addr : 0x" << hex << unk_r10_sjis_byte_valid_addr << endl;
+        if (SearchModuleMemory(text_length_sjis_byte_valid_addr_pattern , matchResults) && matchResults.size() == 1) {
+            text_length_sjis_byte_valid_addr = matchResults[0];
+            cout << "text_length_sjis_byte_valid_addr : 0x" << hex << text_length_sjis_byte_valid_addr << endl;
         }
+
+        if (SearchModuleMemory(number_sjis_byte_valid_addr_pattern, matchResults) && matchResults.size() == 1) {
+            number_sjis_byte_valid_addr = matchResults[0] + 0x3;
+            cout << "number_sjis_byte_valid_addr : 0x" << hex << number_sjis_byte_valid_addr << endl;
+        }
+
+        if (SearchModuleMemory(item_dialog_sjis_byte_valid_addr_pattern, matchResults) && matchResults.size() == 1) {
+            item_dialog_sjis_byte_valid_addr = matchResults[0] + 0x3;
+            cout << "item_dialog_sjis_byte_valid_addr : 0x" << hex << item_dialog_sjis_byte_valid_addr << endl;
+        }
+
         if (SearchModuleMemory(menu_rsi_sjis_byte_valid_addr_pattern, matchResults) && matchResults.size() == 1) {
             menu_rsi_sjis_byte_valid_addr = matchResults[0] ;
             cout << "menu_rsi_sjis_byte_valid_addr : 0x" << hex << menu_rsi_sjis_byte_valid_addr << endl;
@@ -191,8 +207,8 @@ namespace hook {
         */
     }
 
-    static void hook_unk_r10_sjis_byte_valid(uintptr_t ptr) {
-        hook_sjis* hook = new hook_sjis(ptr, 14, 14);
+    static void hook_item_dialog_sjis_byte_valid(uintptr_t ptr) {
+        hook_sjis* hook = new hook_sjis(ptr, 12, 14);
         hook->calcSingleByteAddr(4, 1);
         hook->start();
         hook->cmp_cl(0x7f);
@@ -304,10 +320,69 @@ namespace hook {
         */
     }
 
+    static void text_length_sjis_byte_valid(uintptr_t ptr) {
+        hook_sjis* hook = new hook_sjis(ptr, 12, 16);
+        hook->calcSingleByteAddr(4, 1);
+        hook->start();
+        hook->cmp_cl(0x7f);
+        hook->jna_singleByte();
+        hook->cmp_cl(0x81);
+        hook->jb_singleByte();
+        hook->cmp_cl(0xFE);
+        hook->ja_singleByte();
+        hook->cmp_byte_r14(1, 0x40);
+        hook->jb_singleByte();
+        hook->cmp_byte_r14(1, 0xFE);
+        hook->ja_singleByte();
+        hook->end();
+        delete hook;
+        hook = nullptr;
+        /* original code:
+            140215C1D - 80 F9 7F              - cmp cl,7F { 127 }   <--input ptr
+            140215C20 - 76 6A                 - jna 140215C8C
+			140215C22 - 8D 41 60              - lea eax,[rcx+60]    
+            140215C25 - 3C 3F                 - cmp al,3F { 63 }
+            140215C27 - 76 63                 - jna 140215C8C
+            140215C29 - 41 83 C2 02           - add r10d,02 { 2 }
+            140215C2D - 44 89 95 88060000     - mov [rbp+00000688],r10d
+            140215C34 - 49 8B 47 40           - mov rax,[r15+40]
+        */
+    }
+
+    static void number_sjis_byte_valid(uintptr_t ptr) {
+        hook_sjis* hook = new hook_sjis(ptr, 12, 16);
+        hook->calcSingleByteAddr(4, 1);
+        hook->start();
+        hook->cmp_cl(0x7f);
+        hook->jna_singleByte();
+        hook->cmp_cl(0x81);
+        hook->jb_singleByte();
+        hook->cmp_cl(0xFE);
+        hook->ja_singleByte();
+        hook->cmp_byte_rbx(1, 0x40);
+        hook->jb_singleByte();
+        hook->cmp_byte_rbx(1, 0xFE);
+        hook->ja_singleByte();
+        hook->end();
+        delete hook;
+        hook = nullptr;
+        /* original code:
+            14028ADED - 0FB6 0B               - movzx ecx,byte ptr [rbx]
+			14028ADF0 - 80 F9 7F              - cmp cl,7F { 127 }       <--input ptr
+            14028ADF3 - 76 2F                 - jna 14028AE24
+            14028ADF5 - 8D 41 60              - lea eax,[rcx+60]
+            14028ADF8 - 3C 3F                 - cmp al,3F { 63 }
+            14028ADFA - 76 28                 - jna 14028AE24
+            14028ADFC - 0FB6 43 01            - movzx eax,byte ptr [rbx+01]
+            14028AE00 - 41 83 C6 02           - add r14d,02 { 2 }
+        */
+    }
+
 	void hook_install() {
     
         try
         {
+
             cout << endl;
             search_all_addresses();
             cout << "==============================" << endl;
@@ -320,15 +395,17 @@ namespace hook {
             if (status != MH_OK) {
 				throw runtime_error("MinHook create sjis2uni hook failed!");
             }
+
+            cout << "[INFO]hooking load_mess_string" << endl;
+            status = MH_CreateHook((LPVOID)load_mess_string_addr, &hooked_load_mess_string, reinterpret_cast<LPVOID*>(&ori_load_mess_string));
+            if (status != MH_OK) {
+                throw runtime_error("MinHook create load_mess_string hook failed!");
+            }
+
             cout << "[INFO]hooking check_encoding" << endl;
             status = MH_CreateHook((LPVOID)check_encoding_addr, &hooked_check_encoding, reinterpret_cast<LPVOID*>(&ori_check_encoding));
             if (status != MH_OK) {
 				throw runtime_error("MinHook create check_encoding hook failed!");
-            }
-            cout << "[INFO]hooking load_mess_string" << endl;
-            status = MH_CreateHook((LPVOID)load_mess_string_addr, &hooked_load_mess_string, reinterpret_cast<LPVOID*>(&ori_load_mess_string));
-            if (status != MH_OK) {
-				throw runtime_error("MinHook create load_mess_string hook failed!");
             }
             cout << "[INFO]hooking sjis2utf8" << endl;
             status = MH_CreateHook((LPVOID)sjis2utf8_addr, &hooked_sjis2utf8, reinterpret_cast<LPVOID*>(&ori_sjis2utf8));
@@ -340,7 +417,6 @@ namespace hook {
             if (status != MH_OK) {
                 throw runtime_error("MinHook create utf82sjis hook failed!");
             }
-
             cout << "[INFO]hooking memo_sjis_byte_valid" << endl;
             hook_memo_sjis_byte_valid(memo_sjis_byte_valid_addr);
 
@@ -350,17 +426,23 @@ namespace hook {
             cout << "[INFO]hooking desc_sjis_byte_valid" << endl;
             hook_desc_sjis_byte_valid(desc_sjis_byte_valid_addr);
 
-            cout << "[INFO]hooking unk_r10_sjis_byte_valid" << endl;
-            hook_unk_r10_sjis_byte_valid(unk_r10_sjis_byte_valid_addr);
+            cout << "[INFO]hooking item_dialog_sjis_byte_valid" << endl;
+            hook_item_dialog_sjis_byte_valid(item_dialog_sjis_byte_valid_addr);
             
             cout << "[INFO]hooking menu_rsi_sjis_byte_valid" << endl;
             hook_menu_rsi_sjis_byte_valid(menu_rsi_sjis_byte_valid_addr);
 
+            cout << "[INFO]hooking text_length_sjis_byte_valid" << endl;
+            text_length_sjis_byte_valid(text_length_sjis_byte_valid_addr);
+
+            cout << "[INFO]hooking number_sjis_byte_valid" << endl;
+            number_sjis_byte_valid(number_sjis_byte_valid_addr);
 
             for (size_t i = 0; i < 2; i++){
                 cout << "[INFO]hooking add_al_60_r15_sjis_byte_valid " << dec << i << endl;
                 hook_add_al_60_r15_sjis_byte_valid(add_al_60_r15_sjis_byte_valid_addr[i]);
             }
+
 
             status = MH_EnableHook(MH_ALL_HOOKS);
             if (status != MH_OK) {
@@ -466,8 +548,31 @@ namespace hook {
         }
         return mess_map;
     }
+    void load_table() {
+        ///----------
+        char path[] = "data\\localization\\utf8.table";
+        FILE* file = nullptr;
 
+        if (fopen_s(&file, path, "rb") != 0) {
+            cout << "utf8.table载入失败" << endl;
+            return;
+        }
+        fseek(file, 0, SEEK_END);
+        long fileSize = ftell(file);
+        cloud_utf8_table = new char[fileSize];
+        fseek(file, 0, 0);
+        size_t readBytes = fread(cloud_utf8_table, 1, fileSize, file);
+        fclose(file);
+        file = nullptr;
+        if (fileSize != readBytes) {
+            cout << "utf8.table读取失败 : "<< fileSize <<","<<readBytes << endl;
+            return;
+        }
+        cout << "utf8.table已载入" <<endl;
+        ///--------
+    }
     bool load_mess_string_cn() {
+
         char path[] = "data\\localization\\mess_strings_cn.txt";
         FILE* file = nullptr;
 
@@ -567,15 +672,16 @@ namespace hook {
             throw;
         }
     }
-
-    int32_t __fastcall hooked_load_mess_string () {
-        int32_t result = ori_load_mess_string();
-        load_mess_string_cn();
-        return result;
-    }
   
     int64_t __fastcall hooked_check_encoding(char* input_str) {
         return encoding::check_encoding(input_str);
+    }
+
+    int32_t __fastcall hooked_load_mess_string() {
+        int32_t result = ori_load_mess_string();
+        //load_table();
+        load_mess_string_cn();
+        return result;
     }
 
     int64_t __fastcall hooked_sjis2uni(int64_t ctx, int32_t* output_addr, char* input_str, int64_t max_output)
@@ -595,14 +701,77 @@ namespace hook {
             *output_addr = -1;
             return 0;
         }
-
         int32_t totalCharCount = *(int32_t*)(*fontEntryAddr + 0x8);
+        int32_t unfound_symbol_index = -1;
+        
+        /*
+        size_t len = encoding::get_input_length(input_str);
+        uint8_t* pInput = reinterpret_cast<uint8_t*> (input_str);
+        int32_t* output = (int32_t*)(output_addr);
+        try
+        {
+            while (true)
+            {
+                
+                uint8_t b = *pInput;
+                if (b == 0) {
+                    *output = -1;
+                    break;
+                }
+                uint8_t b2 = *(pInput + 1);
+
+                if (b >= 0x81 && b <= 0xfc && b2 >= 0x40) {
+
+                    int32_t index = (b << 8) - 0x8900 + b2;
+                    int32_t cp = *(uint32_t*)(cloud_utf8_table + index * 4);
+                    index = FindUnicodeInTable(cp, fontIndexTable, totalCharCount);
+                    if (index == -1)// not found
+                    {
+                        if (unfound_symbol_index == -1) {
+                            return ori_sjis2uni(ctx, output_addr, input_str, max_output);
+                            unfound_symbol_index = FindUnicodeInTable(9632, fontIndexTable, totalCharCount);
+                        }
+                        *output = unfound_symbol_index;
+                    }
+                    else
+                        *output = index;
+                    pInput += 2;
+                    output++;
+                    continue;
+                }
+                int32_t index = FindUnicodeInTable(b, fontIndexTable, totalCharCount);
+                if (index == -1)// not found
+                {
+                    if (unfound_symbol_index == -1) {
+                        unfound_symbol_index = FindUnicodeInTable(9632, fontIndexTable, totalCharCount);
+                    }
+                    *output = unfound_symbol_index;
+                }
+                else
+                    *output = index;
+                pInput++;
+                output++;
+            }
+            return max_output - 1;
+        }
+        catch (const std::exception& e)
+        {
+            stringstream ss; // 已初始化
+            ss << e.what() << endl;
+            ss << "input_str_ptr: " << hex << (intptr_t)(input_str) << endl;
+            ss << "size: " << dec << encoding::get_input_length(input_str) << endl;
+            ss << "max_output: " << dec << max_output << endl;
+            cerr << ss.str() << endl;
+        }
+        */
+        
+        
         // search
         try
         {
             vector<int32_t> unicodes = encoding::chars_to_unicode(input_str, max_output);
             size_t uni_len = unicodes.size();
-            int32_t unfound_symbol_index = -1;
+            
 
             for (uint32_t i = 0; i < uni_len; i++)
             {
@@ -637,7 +806,7 @@ namespace hook {
             ss << "max_output: " << dec << max_output << endl;
             cerr << ss.str() << endl;
         }
-
+        
         int64_t original_count = ori_sjis2uni(ctx, output_addr, input_str, max_output);
         return original_count;
     }

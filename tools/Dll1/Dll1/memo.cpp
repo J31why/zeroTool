@@ -2,6 +2,8 @@
 #include "memo.h"
 
  hook_sjis::hook_sjis(uintptr_t ptr, int32_t bytes_len, int32_t return_offset) {
+    if(return_offset<14)
+		throw runtime_error("hook_sjis return_offset too small");
     hookptr = ptr;
     return_addr = hookptr + return_offset;
 
@@ -108,6 +110,14 @@ void hook_sjis::cmp_byte_r15(uint8_t offset, uint8_t num) {
     hookcode_bytes.push_back(num);
 }
 
+void hook_sjis::cmp_byte_r14(uint8_t offset, uint8_t num) {
+    hookcode_bytes.push_back(0x41);
+    hookcode_bytes.push_back(0x80);
+    hookcode_bytes.push_back(0x7E);
+    hookcode_bytes.push_back(offset);
+    hookcode_bytes.push_back(num);
+}
+
 void hook_sjis::cmp_byte_r10(uint8_t offset, uint8_t num) {
     hookcode_bytes.push_back(0x41);
     hookcode_bytes.push_back(0x80);
@@ -119,6 +129,13 @@ void hook_sjis::cmp_byte_r10(uint8_t offset, uint8_t num) {
 void hook_sjis::cmp_byte_rdi(uint8_t offset, uint8_t num) {
     hookcode_bytes.push_back(0x80);
     hookcode_bytes.push_back(0x7f);
+    hookcode_bytes.push_back(offset);
+    hookcode_bytes.push_back(num);
+}
+
+void hook_sjis::cmp_byte_rbx(uint8_t offset, uint8_t num) {
+    hookcode_bytes.push_back(0x80);
+    hookcode_bytes.push_back(0x7b);
     hookcode_bytes.push_back(offset);
     hookcode_bytes.push_back(num);
 }

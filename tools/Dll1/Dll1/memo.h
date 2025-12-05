@@ -22,9 +22,11 @@ public:
     void end();
     void cmp_cl(uint8_t num);
     void cmp_al(uint8_t num);
+    void cmp_byte_r10(uint8_t offset, uint8_t num);
+    void cmp_byte_r14(uint8_t offset, uint8_t num);
     void cmp_byte_r15(uint8_t offset, uint8_t num);
     void cmp_byte_rdi(uint8_t offset, uint8_t num);
-    void cmp_byte_r10(uint8_t offset, uint8_t num);
+    void cmp_byte_rbx(uint8_t offset, uint8_t num);
     void cmp_byte_rsi(uint8_t offset, uint8_t num);
     void jna_singleByte();
     void ja_singleByte();
