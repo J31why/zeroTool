@@ -11,6 +11,7 @@ namespace hook {
     string get_mess_string_key_addr_pattern = "40 53 48 83 EC 20 48 8B D9 81 FA ?? ?? 00 00 0f";
     string sjis2utf8_addr_pattern = "40 56 48 83 EC 10";
     string utf82sjis_addr_pattern = "48 89 5C 24 10 56 49 8B D9";
+	string check_text_end_pattern = "3C E0 41 8B CD"; //result+0x1
 
     string memo_sjis_byte_valid_addr_pattern = "41 0f b6 0f 80 f9 7f 76 ?? 8d 41 60 3c 3f 76 ??"; //result+0x7
     string memo_2_sjis_byte_valid_addr_pattern = "41 0F B6 0F 80 F9 7F 0F"; //result+0x4
@@ -35,11 +36,12 @@ namespace hook {
 	uintptr_t mess_string_jp_struct_addr =              0x14048C938;
     uintptr_t sjis2utf8_addr =                          0x140078B20;
     uintptr_t utf82sjis_addr =                          0x140078D00;
+	uintptr_t check_text_end_addr =                     0x14020EEF8;
 
     uintptr_t memo_sjis_byte_valid_addr =               0x140289c33;                   //手册Messstring
     uintptr_t memo_2_sjis_byte_valid_addr =             0x14028B905;                   //手册 2
     uintptr_t desc_sjis_byte_valid_addr =               0x1401CE400;                   //物品描述
-    uintptr_t item_dialog_sjis_byte_valid_addr =            0x140210677;                   //unknown
+    uintptr_t item_dialog_sjis_byte_valid_addr =        0x140210677;                   //unknown
 	uintptr_t text_length_sjis_byte_valid_addr =        0x140215C22;                   //textLength
     uintptr_t menu_rsi_sjis_byte_valid_addr =           0x140332CC7;                   //menu
     uintptr_t number_sjis_byte_valid_addr =             0x14028ADF0;                   //number
@@ -99,6 +101,11 @@ namespace hook {
             cout << "utf82sjis_addr : 0x" << hex << utf82sjis_addr << endl;
         }
 
+        if (SearchModuleMemory(check_text_end_pattern, matchResults) && matchResults.size() == 1) {
+            check_text_end_addr = matchResults[0] + 1;
+            cout << "check_text_end_addr : 0x" << hex << check_text_end_addr << endl;
+        }
+
         cout << "==============================" << endl;
 
         if (SearchModuleMemory(memo_sjis_byte_valid_addr_pattern, matchResults) && matchResults.size() == 1) {
@@ -135,6 +142,7 @@ namespace hook {
             menu_rsi_sjis_byte_valid_addr = matchResults[0] ;
             cout << "menu_rsi_sjis_byte_valid_addr : 0x" << hex << menu_rsi_sjis_byte_valid_addr << endl;
         }
+
         if (SearchModuleMemory(add_al_60_r15_sjis_byte_valid_addr_pattern, matchResults) && matchResults.size() == 2) {
             for (size_t i = 0; i < 2; i++)
             {
@@ -377,6 +385,17 @@ namespace hook {
             14028AE00 - 41 83 C6 02           - add r14d,02 { 2 }
         */
     }
+    static void check_text_end(uintptr_t ptr) {
+        DWORD old_protect = 0;
+        if (!VirtualProtect((LPVOID)ptr, 0x1, PAGE_EXECUTE_READWRITE, &old_protect)) {
+            throw runtime_error("无法更改内存保护");
+        }
+        *(uint8_t*)ptr = 0xfe;
+        if (!VirtualProtect((LPVOID)ptr, 0x1, old_protect, &old_protect)) {
+            throw runtime_error("无法更改内存保护");
+        }
+    }
+
 
 	void hook_install() {
     
@@ -442,7 +461,8 @@ namespace hook {
                 cout << "[INFO]hooking add_al_60_r15_sjis_byte_valid " << dec << i << endl;
                 hook_add_al_60_r15_sjis_byte_valid(add_al_60_r15_sjis_byte_valid_addr[i]);
             }
-
+            cout << "[INFO]hooking check_text_end" << endl;
+            check_text_end(check_text_end_addr);
 
             status = MH_EnableHook(MH_ALL_HOOKS);
             if (status != MH_OK) {
@@ -583,12 +603,13 @@ namespace hook {
         long fileSize = ftell(file);
         std::vector<char> buffer(fileSize);
         fseek(file, 0, 0);
-        size_t readBytes = fread(buffer.data(), 1, fileSize, file);
+		char* pbuffer = buffer.data();
+        size_t readBytes = fread(pbuffer, 1, fileSize, file);
         fclose(file);
         file = nullptr;
         if (fileSize != readBytes)
             return false;
-        unordered_map<string, string> mess_map = build_mess_string_map(buffer.data(), fileSize);
+        unordered_map<string, string> mess_map = build_mess_string_map(pbuffer, fileSize);
         string FileName[2];
         
         for (int32_t i = 1; i < 0xA1C; i++)
@@ -602,7 +623,7 @@ namespace hook {
                 cerr << "[INFO]未找到 mess string : " << FileName[0] << endl;
             }
         }
-        mess_map.clear();
+		memset(pbuffer, 0, buffer.size());
         return true;
     }
 
@@ -765,18 +786,17 @@ namespace hook {
         }
         */
         
-        
         // search
         try
         {
             vector<int32_t> unicodes = encoding::chars_to_unicode(input_str, max_output);
             size_t uni_len = unicodes.size();
-            
 
             for (uint32_t i = 0; i < uni_len; i++)
             {
                 int32_t* output = (int32_t*)(output_addr + i);
                 int32_t cp = unicodes[i];
+
                 if (cp == -1) {
                     *output = -1;
                     break;
