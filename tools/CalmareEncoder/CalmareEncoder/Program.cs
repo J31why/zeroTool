@@ -2,6 +2,7 @@
 using System.Text;
 using CalmareEncoder.Calmare;
 using Common;
+using OpenCCNET;
 
 namespace CalmareEncoder;
 
@@ -48,7 +49,7 @@ internal static class Program
 
         #endregion
 
-
+        
         try
         {
             if (isDecryptFile)
@@ -228,161 +229,3 @@ internal static class Program
     }
 }
 
-
-
-/*
- * Microsoft Windows [版本 10.0.19045.3930]
-(c) Microsoft Corporation。保留所有权利。
-
-C:\Users\Jelly\RiderProjects\CalmareEncoder\CalmareEncoder\bin\Debug\net9.0>calmareencoder "E:\Games\The.Legend.of.Heroes.Zero.no.Kiseki.KAI\The Legend of Heroes Zero no Kiseki KAI\data_tc\scena\decrypted\decrypted"
-编译文件失败：E:\Games\The.Legend.of.Heroes.Zero.no.Kiseki.KAI\The Legend of Heroes Zero no Kiseki KAI\data_tc\scena\decrypted\decrypted\c0010.clm
-未找到Fn文本：  TextMessage null {
-                {color 5}※※　安检官办公室　※※
-                {} 　　　非工作人员
-                　　 　 严禁入内。{wait}
-        }
-编译文件失败：E:\Games\The.Legend.of.Heroes.Zero.no.Kiseki.KAI\The Legend of Heroes Zero no Kiseki KAI\data_tc\scena\decrypted\decrypted\c0330.clm
-未找到Fn文本：                  TextTalk char[2] {
-                                #3800F『啊，这看起来很美味哦。
-                                {}  苏菲亚，我吃一个啊～』{wait}
-                        } {
-                                （偷偷拿一个，嚼嚼嚼）……{wait}
-                        }
-编译文件失败：E:\Games\The.Legend.of.Heroes.Zero.no.Kiseki.KAI\The Legend of Heroes Zero no Kiseki KAI\data_tc\scena\decrypted\decrypted\c1010.clm
-未找到Fn文本：          TextMessage null {
-                        {0x06}　　　　　　　　　　动向　　　
-                        ━━━━━━━━━━━━━━━━
-                        {} 　亚里欧斯　：　玛因兹区域
-                        {} 　 斯克特 　： 贝尔加德门区域
-                        {} 　 温蔡尔 　： 贝尔加德门区域
-                        {} 　　 林 　　： 唐古拉姆门区域
-                        {} 　艾欧莉雅　： 唐古拉姆门区域
-                        {} 　艾丝蒂尔　： 阿尔摩利卡区域
-                        {} 　 约书亚 　： 阿尔摩利卡区域{wait}
-                }
-编译文件失败：E:\Games\The.Legend.of.Heroes.Zero.no.Kiseki.KAI\The Legend of Heroes Zero no Kiseki KAI\data_tc\scena\decrypted\decrypted\c101c.clm
-未找到Fn文本：          TextMessage null {
-                        {0x06}　　　　　　　　　　动向　　　
-                        ━━━━━━━━━━━━━━━━
-                        {} 　亚里欧斯　：　 雷米菲利亚公国
-                        {} 　 斯克特 　： 　　『待命中』
-                        {} 　 温蔡尔 　： 　　『待命中』
-                        {} 　　 林 　　： ※休息（龙老饭店）
-                        {} 　艾欧莉雅　： ※休息（面包咖啡馆）
-                        {} 　艾丝蒂尔　： 　　　大教堂
-                        {} 　 约书亚 　： 　　　大教堂{wait}
-                }
-编译文件失败：E:\Games\The.Legend.of.Heroes.Zero.no.Kiseki.KAI\The Legend of Heroes Zero no Kiseki KAI\data_tc\scena\decrypted\decrypted\c1020.clm
-未找到Fn文本：                  TextTalk name[0] {
-                                {} #0005F这、这么大的鱼缸！
-                                （这里到底是
-                                　什么地方呢……）{wait}
-                        }
-编译文件失败：E:\Games\The.Legend.of.Heroes.Zero.no.Kiseki.KAI\The Legend of Heroes Zero no Kiseki KAI\data_tc\scena\decrypted\decrypted\c110c.clm
-未找到Fn文本：  TextMessage null {
-                {color 5}　场所　：克洛斯贝尔市政厅
-                　　　　　宴会大厅
-                召开时间：纪念庆典第三日
-                {} 主办者 ：亨利丄麦克道尔
-                ※如欲旁听，需提前申请。{wait}
-        }
-编译文件失败：E:\Games\The.Legend.of.Heroes.Zero.no.Kiseki.KAI\The Legend of Heroes Zero no Kiseki KAI\data_tc\scena\decrypted\decrypted\c1150.clm
-未找到Fn文本：                          TextTalk name[0] {
-                                        #0006F（明明把爱慕自己的男人甩了，
-                                        {} 却好像完全没有察觉啊……）{wait}
-                                }
-编译文件失败：E:\Games\The.Legend.of.Heroes.Zero.no.Kiseki.KAI\The Legend of Heroes Zero no Kiseki KAI\data_tc\scena\decrypted\decrypted\c1170.clm
-未找到Fn文本：          Menu menu[0] 10 10 0
-                        "★【 ３Ｆ 】" // 0
-                        "　【 １Ｆ 】" // 1
-                        "　【 离开 】" // 2
-                var[2] = 0
-        elif system[0] == 100:
-                Menu menu[0] 10 10 0
-                        "　【 ３Ｆ 】" // 0
-                        "★【 １Ｆ 】" // 1
-                        "　【 离开 】 " // 2
-                var[2] = 1
-        MenuWait
-编译文件失败：E:\Games\The.Legend.of.Heroes.Zero.no.Kiseki.KAI\The Legend of Heroes Zero no Kiseki KAI\data_tc\scena\decrypted\decrypted\c1200.clm
-未找到Fn文本：  TextMessage null {
-                {color 5}前往『米修拉姆』的水上巴士丄时刻表
-                ※米修拉姆引以为豪的主题乐园
-                {} 『奇幻乐园』开园中！
-                {} 请尽情享受欢乐时光！{wait}
-        }
-编译文件失败：E:\Games\The.Legend.of.Heroes.Zero.no.Kiseki.KAI\The Legend of Heroes Zero no Kiseki KAI\data_tc\scena\decrypted\decrypted\c1300.clm
-未找到Fn文本：  TextMessage null {
-                {color 5}Ｉ．Ｂ．Ｃ
-                International Bank of Crossbell
-                {} 需要与大楼内各公司联系的客人，
-                {} 请到一楼大厅的服务台，
-                {} 咨询接待人员。{wait}
-        }
-编译文件失败：E:\Games\The.Legend.of.Heroes.Zero.no.Kiseki.KAI\The Legend of Heroes Zero no Kiseki KAI\data_tc\scena\decrypted\decrypted\c1330.clm
-未找到Fn文本：                  Menu menu[0] 10 10 0
-                                "★【１６Ｆ】" // 0
-                                "　【 １Ｆ 】" // 1
-                                "　【 Ｂ５ 】" // 2
-                                "　【 离开 】" // 3
-                        var[2] = 0
-                elif system[0] == 100:
-                        Menu menu[0] 10 10 0
-                                "　【１６Ｆ】" // 0
-                                "★【 １Ｆ 】" // 1
-                                "　【 Ｂ５ 】" // 2
-                                "　【 离开 】" // 3
-                        var[2] = 1
-                elif system[0] == 102:
-                        Menu menu[0] 10 10 0
-                                "　【１６Ｆ】" // 0
-                                "　【 １Ｆ 】" // 1
-                                "★【 Ｂ５ 】" // 2
-                                "　【 离开 】" // 3
-                        var[2] = 2
-                MenuWait
-编译文件失败：E:\Games\The.Legend.of.Heroes.Zero.no.Kiseki.KAI\The Legend of Heroes Zero no Kiseki KAI\data_tc\scena\decrypted\decrypted\c133b.clm
-未找到Fn文本：          Menu menu[0] 10 10 0
-                        "★【１６Ｆ】" // 0
-                        "　【 １Ｆ 】" // 1
-                        "　【 Ｂ５ 】" // 2
-                        "　【 离开 】" // 3
-                var[2] = 0
-        elif system[0] == 100:
-                Menu menu[0] 10 10 0
-                        "　【１６Ｆ】" // 0
-                        "★【 １Ｆ 】" // 1
-                        "　【 Ｂ５ 】" // 2
-                        "　【 离开 】" // 3
-                var[2] = 1
-        elif system[0] == 102:
-                Menu menu[0] 10 10 0
-                        "　【１６Ｆ】" // 0
-                        "　【 １Ｆ 】" // 1
-                        "★【 Ｂ５ 】" // 2
-                        "　【 离开 】" // 3
-                var[2] = 2
-        MenuWait
-编译文件失败：E:\Games\The.Legend.of.Heroes.Zero.no.Kiseki.KAI\The Legend of Heroes Zero no Kiseki KAI\data_tc\scena\decrypted\decrypted\r0110.clm
-Name not found : field_party[0]
-编译文件失败：E:\Games\The.Legend.of.Heroes.Zero.no.Kiseki.KAI\The Legend of Heroes Zero no Kiseki KAI\data_tc\scena\decrypted\decrypted\r1500.clm
-Name not found : field_party[0]
-编译文件失败：E:\Games\The.Legend.of.Heroes.Zero.no.Kiseki.KAI\The Legend of Heroes Zero no Kiseki KAI\data_tc\scena\decrypted\decrypted\t0630.clm
-Name not found : field_party[0]
-编译文件失败：E:\Games\The.Legend.of.Heroes.Zero.no.Kiseki.KAI\The Legend of Heroes Zero no Kiseki KAI\data_tc\scena\decrypted\decrypted\t1650.clm
-未找到Fn文本：  TextMessage null {
-                {color 5}   药物学丄神经科研究室
-                {} 　约亚西姆丄琼塔副教授{color 0}{wait}
-        }
-编译文件失败：E:\Games\The.Legend.of.Heroes.Zero.no.Kiseki.KAI\The Legend of Heroes Zero no Kiseki KAI\data_tc\scena\decrypted\decrypted\t4100.clm
-未找到Fn文本：  TextMessage null {
-                {color 5}{0x06} 　………………　……　　　　　
-                {} 　……　……………………
-                　　　　　……眠…于…
-                ───────────────……
-                　Ｓ１………　～　Ｓ１…８…　{color 0}{wait}
-        }
-已编译GBK编码CLM文件：E:\Games\The.Legend.of.Heroes.Zero.no.Kiseki.KAI\The Legend of Heroes Zero no Kiseki KAI\data_tc\scena\decrypted\decrypted\compiled
-
-C:\Users\Jelly\RiderProjects\CalmareEncoder\CalmareEncoder\bin\Debug\net9.0>
- */
