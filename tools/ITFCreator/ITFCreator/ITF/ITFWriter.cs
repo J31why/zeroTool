@@ -74,8 +74,8 @@ public class ITFWriter(Stream stream) : BinaryWriter(stream)
         OutStream.Seek(headerSize, SeekOrigin.Begin);
         var avlPos = OutStream.Position;
         Write(new byte[nodes.Count * 8]);
-        var dataPos = OutStream.Position;
-        for (int i = 0; i < nodes.Count; i++)
+        var dataPos = (uint)OutStream.Position;
+        for (var i = 0; i < nodes.Count; i++)
         {
             var node = nodes[i];
             OutStream.Seek(avlPos + i * 8, SeekOrigin.Begin);
@@ -89,6 +89,7 @@ public class ITFWriter(Stream stream) : BinaryWriter(stream)
             //data
             OutStream.Seek(dataPos, SeekOrigin.Begin);
             GenerateITFChar((char)node.Code, _baselineOffset, out var ch);
+        
             Write(ch.PixelWidth);
             Write(ch.PixelHeight);
             Write(ch.Top);
@@ -96,13 +97,24 @@ public class ITFWriter(Stream stream) : BinaryWriter(stream)
             Write(ch.Width);
             Write((ushort)ch.Attr);
             Write(ch.Data ?? []);
-            dataPos = OutStream.Position;
+            dataPos = (uint)OutStream.Position;
         }
     }
 
   
     public void GenerateITFChar(char c, float baselineYOffset,out ITFChar ch)
     {
+        // var simp = OpenCCNET.ZhConverter.TWToHans(c.ToString()).First();
+        // if (_font!.ContainsGlyph(simp))
+        //     c = simp;
+        c = c switch
+        {
+            '㈱' => '♥',
+            '丄' => '・',
+            '丅' => '♪',
+            _ => c
+        };
+
         ch = new ITFChar
         {
             Attr = c switch
@@ -116,13 +128,13 @@ public class ITFWriter(Stream stream) : BinaryWriter(stream)
             }
         };
         var str = c.ToString();
-        var width =(ushort)_font!.MeasureText(str, out var charBounds, _paint);
+        var width =(ushort)Math.Ceiling(_font!.MeasureText(str, out var charBounds, _paint));
         ch.PixelWidth = (ushort)Math.Ceiling(charBounds.Width);
         ch.PixelHeight = (ushort)Math.Ceiling(charBounds.Height);
         ch.Left = (short)charBounds.Left;
         ch.Width = (ushort)(width - ch.Left);
         ch.Top= (short)(-_font.Metrics.Ascent+ charBounds.Top + baselineYOffset);
-        
+     
         using var bitmap = new SKBitmap(ch.PixelWidth, ch.PixelHeight, SKColorType.Alpha8, SKAlphaType.Premul);
         using var canvas = new SKCanvas(bitmap);
         canvas.Clear(SKColors.Transparent); 
