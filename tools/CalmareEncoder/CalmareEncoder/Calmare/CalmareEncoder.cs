@@ -1,29 +1,30 @@
 ﻿using System.Text.RegularExpressions;
-using CalmareEncoder.Calmare.Common;
-using Menu = CalmareEncoder.Calmare.Common.Menu;
+using CalmareEncoder.Calmare.Base;
+using CalmareFunc = CalmareEncoder.Calmare.Base.CalmareFunc;
+using Menu = CalmareEncoder.Calmare.Base.Menu;
 
 namespace CalmareEncoder.Calmare;
 
 public partial class CalmareEncoder
 {
-    public readonly List<string> NpcNames = new(20);
+    public readonly List<string> NameStrings = new(100);
     public readonly List<(int index, List<CalmareFunc> func)> FnTexts = [];
     private readonly List<string> _functions = new(100);
     private static readonly Regex FnReg = FnRegex();
     private static readonly Regex FnTextReg = FnTextRegex();
-    private static readonly Regex NpcNameReg = NpcNameRegex();
+    private static readonly Regex NameStringReg = NameStringRegex();
 
 
-    private const string FnPattern = @"fn\[\d+\]:$[\s\S]*?\n$";
+    private const string FnPattern = @"fn\[\d+\]:$[\s\S]*?(?=fn\[\d+\]:|\z)";
 
-    private const string NpcNamePattern =
+    private const string NameStringPattern =
         """
-        npc char[\s\S]+?name "(.*?)"
+        \[\d+\]:\n\t+name "(.*?)"$
         """;
 
     private const string FnTextPattern =
         """
-        \t+TextSetName ".{1,}"$|\t+(TextMessage|TextTalk |TextTalkNamed).*?{$[\s\S]*?\n\t+}$|\t+Menu .*?$[\s\S]*?\n[\s\S]*?(?=\n(?!\t+"))
+        \t+TextSetName ".{1,}"$|\t+(TextMessage|TextTalk |TextTalkNamed).*?{$[\s\S]*?\n\t+}$|\t+Menu .*?$[\s\S]*?\n[\s\S]*?(?=\n(?!\t+"))|\t+ED7MenuAdd.*?$
         """;
 
     public void Parse(string clmText)
@@ -31,8 +32,8 @@ public partial class CalmareEncoder
         var matches = FnReg.Matches(clmText);
         _functions.AddRange(matches.Select(x => x.Value));
         ParseText();
-        matches = NpcNameReg.Matches(clmText);
-        NpcNames.AddRange(matches.Select(x => x.Groups[1].Value));
+        matches = NameStringReg.Matches(clmText);
+        NameStrings.AddRange(matches.Select(x => x.Groups[1].Value));
     }
 
     private void ParseText()
@@ -49,6 +50,8 @@ public partial class CalmareEncoder
                     return textSetName;
                 if (TextMessage.TryParse(x.Value, out var textMessage))
                     return textMessage;
+                if (ED7MenuAdd.TryParse(x.Value, out var ed7MenuAdd))
+                    return ed7MenuAdd;
                 if (Menu.TryParse(x.Value, out var menu))
                     return menu;
                 if (TextTalk.TryParse(x.Value, out var textTalk))
@@ -66,6 +69,6 @@ public partial class CalmareEncoder
     [GeneratedRegex(FnTextPattern, RegexOptions.Multiline)]
     private static partial Regex FnTextRegex();
 
-    [GeneratedRegex(NpcNamePattern, RegexOptions.Multiline)]
-    private static partial Regex NpcNameRegex();
+    [GeneratedRegex(NameStringPattern, RegexOptions.Multiline)]
+    private static partial Regex NameStringRegex();
 }

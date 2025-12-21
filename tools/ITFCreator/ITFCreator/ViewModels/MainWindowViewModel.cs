@@ -34,11 +34,11 @@ public partial class MainWindowViewModel : ViewModelBase
     [ObservableProperty] private double _bitmapHeight;
 
     [ObservableProperty]private SKFontStyleWeight _fontWeight = SKFontStyleWeight.Normal;
-    [ObservableProperty]private double _fontSize = 72;
+    [ObservableProperty]private double _fontSize = 82;
     [ObservableProperty]private float _baselineOffset = 0;
     [ObservableProperty] private string? _fontName = "霞鹜臻楷 GB";
     
-    [ObservableProperty] private string? _unicodeRange ="0x20-0xFFFF";
+    [ObservableProperty] private string? _unicodeRange ="0x20-0xffff";
     public SKFontStyleWeight[] FontWeights =>
     [
         SKFontStyleWeight.Thin ,
@@ -53,6 +53,10 @@ public partial class MainWindowViewModel : ViewModelBase
         SKFontStyleWeight.ExtraBlack
     ];
 
+    public MainWindowViewModel()
+    {
+        OpenCCNET.ZhConverter.Initialize();
+    }
     [RelayCommand]
     private void OpenITFFile()
     {

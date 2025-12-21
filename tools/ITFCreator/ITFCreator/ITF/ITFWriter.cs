@@ -110,8 +110,6 @@ public class ITFWriter(Stream stream) : BinaryWriter(stream)
         c = c switch
         {
             '㈱' => '♥',
-            '丄' => '・',
-            '丅' => '♪',
             _ => c
         };
 

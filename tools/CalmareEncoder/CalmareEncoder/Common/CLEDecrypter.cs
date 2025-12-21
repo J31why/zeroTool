@@ -18,9 +18,17 @@ public static partial class CLEDecrypter
         var currentDir = Environment.ProcessPath ?? throw new DirectoryNotFoundException();
         currentDir = Path.GetDirectoryName(currentDir);
         Table = File.ReadAllBytes(Path.Combine(currentDir, "utf8.table"));
-        ZhConverter.Initialize(Path.Combine(currentDir, "Dictionary"), Path.Combine(currentDir, "JiebaResource"));
+        ZhConverter.Initialize(Path.Combine(currentDir, "Dictionary"),
+            Path.Combine(currentDir, "JiebaResource"),
+            true);
+        ZhConverter.ZhSegment.Jieba.AddWord("明瞭");
     }
 
+    public static void test()
+    {
+        var t= ZhConverter.TWToHans("執行任務|滑鼠",true);
+        Console.WriteLine(t);
+    }
     public static byte[] DecryptFile(string file)
     {
         if (!File.Exists(file))
@@ -66,15 +74,18 @@ public static partial class CLEDecrypter
         return result;
     }
 
-    public static string DecryptChar(string input)
+    public static string DecryptChar(string input, out List<string> warnList)
     {
+        var warn = new List<string>(200);
+        
         input = ExtraEncoding.DoubleByteCharReg.Replace(input, x =>
         {
             var sjisBytes = ExtraEncoding.SJIS.GetBytes(x.Value);
             var index = (sjisBytes[0] << 8) - 0x8900 + sjisBytes[1];
             if (index < 0)
             {
-                throw new Exception($"DecryptChar非法字符: {x.Value}");
+                warn.Add(x.Value);
+                return x.Value;
             }
             index *= 3;
             index += 4;
@@ -84,9 +95,11 @@ public static partial class CLEDecrypter
         });
         input = TextReg.Replace(input, x =>
         {
+            
             var text = x.Value;
             return !ExtraEncoding.DoubleByteCharReg.IsMatch(text) ? text : ZhConverter.TWToHans(text, true);
         });
+        warnList = warn;
         return input;
     }
 

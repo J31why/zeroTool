@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 
 #include "MinHook.h"
 #include "encoding.h"
@@ -15,6 +15,7 @@ namespace hook {
 	typedef int32_t(__fastcall* load_mess_string_t) ();
 	typedef int64_t(__fastcall* sjis2utf8_t)(char* output, uint8_t* input, int64_t max_output, int32_t* _pTable);
 	typedef int64_t(__fastcall* utf82sjis_t)(char* output, uint8_t* input, int64_t max_output);
+	typedef int32_t(__fastcall* loadNoteHelpKey_posMap_t)();
 
 	void hook_install();
 	void hook_uninstall();
@@ -23,6 +24,7 @@ namespace hook {
 	int32_t __fastcall hooked_load_mess_string();
 	int64_t __fastcall hooked_sjis2utf8(char* output, uint8_t* input, int64_t max_output, int32_t* _pTable);
 	int64_t __fastcall hooked_utf82sjis(char* output, uint8_t* input, int64_t max_output);
+	int32_t __fastcall hooked_loadNoteHelpKey_posMap();
 	bool load_mess_string_cn();
 	unordered_map<string, string> build_mess_string_map(const char* data, const size_t len);
 	void search_all_addresses();

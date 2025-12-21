@@ -1,15 +1,22 @@
-﻿using System.Diagnostics;
+﻿using System.Runtime.InteropServices;
 using System.Text;
 using CalmareEncoder.Calmare;
 using Common;
-using OpenCCNET;
+using MiniExcelLibs;
+using MiniExcelLibs.Attributes;
+using SkiaSharp;
+// ReSharper disable InconsistentNaming
 
 namespace CalmareEncoder;
 
 internal static class Program
 {
+
+  
+
     public static void Main(string[] args)
     {
+    
         string inputPath, calmare;
         bool isDecryptStr = false, isDecryptFile = false, isDecompress = false;
         Console.OutputEncoding = Encoding.UTF8;
@@ -43,59 +50,56 @@ internal static class Program
         catch (Exception)
         {
             OutHelp();
-            Console.ReadKey();
             return;
         }
 
         #endregion
 
-        
+
         try
         {
             if (isDecryptFile)
             {
                 var outPath = GetOutPath(inputPath, "decrypted");
-                DecryptFile(inputPath,outPath);
-                Console.WriteLine("已解密bin文件：{0}", outPath);
+                DecryptFile(inputPath, outPath);
+                Console.WriteLine("已解密文件：{0}", outPath);
             }
             else if (isDecryptStr)
             {
                 var outPath = GetOutPath(inputPath, "decrypted");
-                DecryptStr(inputPath,outPath);
+                DecryptStr(inputPath, outPath);
                 Console.WriteLine("已解密云豹字符串：{0}", outPath);
             }
             else if (isDecompress)
             {
-                if(!File.Exists(calmare))
+                if (!File.Exists(calmare))
                     throw new FileNotFoundException("未找到calmare.exe");
                 DecompressBin(inputPath, calmare);
                 Console.WriteLine("已反编译Bin文件");
             }
             else
             {
-                if(!File.Exists(calmare))
+                if (!File.Exists(calmare))
                     throw new FileNotFoundException("未找到calmare.exe");
                 var outPath = GetOutPath(inputPath, "compiled");
-                Compile(inputPath, outPath,calmare);
+                Compile(inputPath, outPath, calmare);
                 Console.WriteLine("已编译GBK编码CLM文件：{0}", outPath);
+                
             }
         }
         catch (Exception e)
         {
             Console.WriteLine(e);
-            Console.ReadKey();
         }
+        Console.ReadKey();
     }
 
     private static void DecompressBin(string path, string calmare)
     {
         if (Directory.Exists(path))
         {
-            var files = Directory.EnumerateFiles(path,"*.bin");
-            foreach (var file in files)
-            {
-                Utils.RunExe(calmare, $"\"{file}\"",1);
-            }
+            var files = Directory.EnumerateFiles(path, "*.bin");
+            foreach (var file in files) Utils.RunExe(calmare, $"\"{file}\"", 1);
         }
         else if (File.Exists(path))
         {
@@ -105,10 +109,9 @@ internal static class Program
 
     private static void Compile(string path, string outPath, string calmareFile)
     {
-      
         if (Directory.Exists(path))
         {
-            var files = Directory.EnumerateFiles(path,"*.clm");
+            var files = Directory.EnumerateFiles(path, "*.clm");
             foreach (var file in files)
             {
                 var outFile = Path.Combine(outPath, Path.GetFileName(file));
@@ -128,22 +131,23 @@ internal static class Program
             try
             {
                 var clmText = File.ReadAllText(file);
-                var isSuccess = CalmareConverter.ConvertGBK(clmText, outfile,calmareFile);
-                if(!isSuccess)
+                var isSuccess = CalmareConverter.ConvertGBK(clmText, outfile, calmareFile);
+                if (!isSuccess)
                     throw new InvalidDataException();
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 Console.WriteLine("编译文件失败：{0}", file);
                 Console.WriteLine(e.Message);
             }
         }
     }
-    private static void DecryptStr(string path,string outPath)
+
+    private static void DecryptStr(string path, string outPath)
     {
         if (Directory.Exists(path))
         {
-            var files = Directory.EnumerateFiles(path,"*.clm");
+            var files = Directory.EnumerateFiles(path, "*.clm");
             foreach (var file in files)
             {
                 var outFile = Path.Combine(outPath, Path.GetFileName(file));
@@ -155,12 +159,18 @@ internal static class Program
             var outFile = Path.Combine(outPath, Path.GetFileName(path));
             De(path, outFile);
         }
+
         void De(string file, string outfile)
         {
             try
             {
                 var clmText = File.ReadAllText(file);
-                clmText = CLEDecrypter.DecryptChar(clmText);
+                clmText = CLEDecrypter.DecryptChar(clmText,out var warnList);
+                if (warnList.Count > 0)
+                {
+                    Console.WriteLine("\n非法文字: {0}", string.Join(' ', warnList));
+                    Console.WriteLine("文件有非法文字: {0}\n", file);
+                }
                 File.WriteAllText(outfile, clmText);
             }
             catch (Exception e)
@@ -170,9 +180,9 @@ internal static class Program
             }
         }
     }
-    private static void DecryptFile(string path,string outPath)
+
+    private static void DecryptFile(string path, string outPath)
     {
-    
         if (Directory.Exists(path))
         {
             var files = Directory.EnumerateFiles(path);
@@ -197,9 +207,10 @@ internal static class Program
                 var bytes = CLEDecrypter.DecryptFile(file);
                 File.WriteAllBytes(outfile, bytes);
             }
-            catch
+            catch (Exception e)
             {
                 Console.WriteLine("解密文件失败：{0}", file);
+                Console.WriteLine(e.Message);
             }
         }
     }
@@ -228,4 +239,3 @@ internal static class Program
         Console.WriteLine("4.批量反编译bin文件: CalmareEncoder file/dir -decomp");
     }
 }
-

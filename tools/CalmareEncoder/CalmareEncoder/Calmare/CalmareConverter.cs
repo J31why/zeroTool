@@ -34,10 +34,10 @@ public static partial class CalmareConverter
         holderEncoder.Parse(holderText);
         if (holderEncoder.FnTexts.Count != gbkEncoder.FnTexts.Count)
             return false;
-        if (holderEncoder.NpcNames.Count != gbkEncoder.NpcNames.Count)
+        if (holderEncoder.NameStrings.Count != gbkEncoder.NameStrings.Count)
             return false;
         File.WriteAllText(outPath, holderText);
-        var success = Utils.RunExe(calmareFile, $"\"{outPath}\"",2);
+        var success = Utils.RunExe(calmareFile, $"\"{outPath}\"", 2);
         if (!success)
             return false;
         var binFile = Path.Combine(
@@ -74,18 +74,23 @@ public static partial class CalmareConverter
 
         strings.Dequeue();
 
-        for (var index = 0; index < holderEncoder.NpcNames.Count; index++)
+        for (var index = 0; index < holderEncoder.NameStrings.Count; index++)
         {
-            var holderStr = holderEncoder.NpcNames[index];
-            var gbkStr = gbkEncoder.NpcNames[index];
-            var binStr = strings.Dequeue();
+            var holderStr = holderEncoder.NameStrings[index];
+            var gbkStr = gbkEncoder.NameStrings[index];
+            var binStr = "";
+            if (string.IsNullOrEmpty(holderStr) )
+                continue;
+
+            while (holderStr != (binStr = strings.Dequeue())) {}
+ 
             if (holderStr != binStr)
-                throw new Exception("npc name cannot be found.");
+                throw new Exception($"未找到NameString[{index}]: {gbkStr}");
             byte[] sjisBytes = [..ExtraEncoding.SJIS.GetBytes(holderStr), 0];
             byte[] gbkBytes = [..ExtraEncoding.GBK.GetBytes(gbkStr), 0];
             var result = BitHelper.Replace(binBytes, sjisBytes, gbkBytes, pString, (int)br.BaseStream.Length, 1);
             if (!result.replaced)
-                throw new Exception($"未找到NpcNames: {gbkStr}");
+                throw new Exception($"未找到NameString[{index}]: {gbkStr}");
             binBytes = result.result;
         }
     }
@@ -121,6 +126,4 @@ public static partial class CalmareConverter
             }
         }
     }
-
-
 }
