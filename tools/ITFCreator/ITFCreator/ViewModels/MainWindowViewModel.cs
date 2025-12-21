@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
-using Avalonia.Controls;
 using Avalonia.Media.Imaging;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
@@ -20,7 +18,7 @@ public partial class MainWindowViewModel : ViewModelBase
     private MemoryStream? _stream;
     public ToastManager ToastManager { get; set; } = new();
     
-    [ObservableProperty] private string? _ITFPath = "E:\\Games\\The Legend of Heroes Trails from Zero\\data\\system\\fontdat\\font.itf";
+    [ObservableProperty] private string? _ITFPath = "";
     [ObservableProperty] private string? _ITFInfo;
     [ObservableProperty] private string? _charSearchResult;
     [ObservableProperty] private string? _searchText;
@@ -35,7 +33,7 @@ public partial class MainWindowViewModel : ViewModelBase
 
     [ObservableProperty]private SKFontStyleWeight _fontWeight = SKFontStyleWeight.Normal;
     [ObservableProperty]private double _fontSize = 82;
-    [ObservableProperty]private float _baselineOffset = 0;
+    [ObservableProperty]private float _baselineOffset = -8;
     [ObservableProperty] private string? _fontName = "霞鹜臻楷 GB";
     
     [ObservableProperty] private string? _unicodeRange ="0x20-0xffff";
@@ -55,8 +53,9 @@ public partial class MainWindowViewModel : ViewModelBase
 
     public MainWindowViewModel()
     {
-        OpenCCNET.ZhConverter.Initialize();
+        
     }
+    
     [RelayCommand]
     private void OpenITFFile()
     {

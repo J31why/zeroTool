@@ -1,10 +1,7 @@
-﻿using System.Runtime.InteropServices;
-using System.Text;
+﻿using System.Text;
 using CalmareEncoder.Calmare;
 using Common;
-using MiniExcelLibs;
-using MiniExcelLibs.Attributes;
-using SkiaSharp;
+
 // ReSharper disable InconsistentNaming
 
 namespace CalmareEncoder;
