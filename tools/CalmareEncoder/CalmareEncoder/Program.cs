@@ -13,9 +13,9 @@ internal static class Program
 
     public static void Main(string[] args)
     {
-    
+      
         string inputPath, calmare;
-        bool isDecryptStr = false, isDecryptFile = false, isDecompress = false;
+        bool isDecryptStr = false, isDecryptFile = false, isDecode = false;
         Console.OutputEncoding = Encoding.UTF8;
 
         #region args
@@ -34,8 +34,8 @@ internal static class Program
                     case "-ds":
                         isDecryptStr = true;
                         break;
-                    case "-decomp":
-                        isDecompress = true;
+                    case "-d":
+                        isDecode = true;
                         break;
                     case "-df":
                         isDecryptFile = true;
@@ -67,7 +67,7 @@ internal static class Program
                 DecryptStr(inputPath, outPath);
                 Console.WriteLine("已解密云豹字符串：{0}", outPath);
             }
-            else if (isDecompress)
+            else if (isDecode)
             {
                 if (!File.Exists(calmare))
                     throw new FileNotFoundException("未找到calmare.exe");
@@ -233,6 +233,6 @@ internal static class Program
         Console.WriteLine("1.编译GBK编码clm文件/目录: CalmareEncoder file/dir");
         Console.WriteLine("2.解密clm文件云豹加密字符串: CalmareEncoder file/dir -ds");
         Console.WriteLine("3.解密云豹加密文件: CalmareEncoder file/dir -df");
-        Console.WriteLine("4.批量反编译bin文件: CalmareEncoder file/dir -decomp");
+        Console.WriteLine("4.批量反编译bin文件: CalmareEncoder file/dir -d");
     }
 }

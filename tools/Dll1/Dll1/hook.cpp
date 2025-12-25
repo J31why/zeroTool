@@ -1,6 +1,7 @@
 ﻿#include "pch.h"
 #include "hook.h"
 
+
 using namespace std;
 
 
@@ -14,6 +15,7 @@ namespace hook {
 	string check_text_end_pattern = "3C E0 41 8B CD"; //result+0x1
 	string noteHelpKey_posMap_addr_pattern = "F3 0F 10 05 ?? ?? ?? 00 F3 0F 11 05 ?? ?? ?? 00 4c 8b c0 41";
     string loadNoteHelpKey_posMap_addr_pattern = "48 89 5C 24 18 48 89 4C 24 08 55 56 57 41 54 41 55 41 56 41 57 48 8D AC 24 ?? ?? ?? ?? 48 81 ?? ?? ?? 00 00 48 8d";
+    string WebMPlayerOpen_addr_pattern = "72 03 48 8B 16 48 8B CB FF 15";
 
     string memo_sjis_byte_valid_addr_pattern = "41 0f b6 0f 80 f9 7f 76 ?? 8d 41 60 3c 3f 76 ??"; //result+0x7
     string memo_2_sjis_byte_valid_addr_pattern = "41 0F B6 0F 80 F9 7F 0F"; //result+0x4
@@ -35,6 +37,7 @@ namespace hook {
 	uintptr_t check_text_end_addr =                     0x14020EEF8;
     uintptr_t noteHelpKey_posMap_addr =                 0x140421C20;
 	uintptr_t loadNoteHelpKey_posMap_addr =             0x1400BF990;
+	uintptr_t WebMPlayerOpen_addr =                     0x1403D2EB0;                   //[1403D2EB0]
 
     uintptr_t memo_sjis_byte_valid_addr =               0x140289c33;                   //手册Messstring
     uintptr_t memo_2_sjis_byte_valid_addr =             0x14028B905;                   //手册 2
@@ -45,16 +48,15 @@ namespace hook {
     uintptr_t number_sjis_byte_valid_addr =             0x14028ADF0;                   //number
     uintptr_t add_al_60_r15_sjis_byte_valid_addr[2] = { 0x140211D65 ,0x140214998 };    //0: 对话printText2; 1: unk
 
-    char* cloud_utf8_table = nullptr;
-
+    CreateFileA_t ori_CreateFileA = nullptr;
     sjis2uni_t ori_sjis2uni = nullptr;
     checkEncoding_t ori_check_encoding = nullptr;
     load_mess_string_t ori_load_mess_string = nullptr;
 	sjis2utf8_t ori_sjis2utf8 = nullptr;
 	utf82sjis_t ori_utf82sjis = nullptr;
+    WebMPlayerOpen_t ori_WebMPlayerOpen = nullptr;
 	loadNoteHelpKey_posMap_t ori_loadNoteHelpKey_posMap = nullptr;
     get_mess_string_key_t get_mess_string_key = reinterpret_cast<get_mess_string_key_t>(get_mess_string_key_addr);
-
 
     void search_all_addresses() {
         vector<uintptr_t> matchResults;
@@ -115,6 +117,14 @@ namespace hook {
         if (SearchModuleMemory(loadNoteHelpKey_posMap_addr_pattern, matchResults) && matchResults.size() == 1) {
             loadNoteHelpKey_posMap_addr = matchResults[0];
             cout << "loadNoteHelpKey_posMap_addr : 0x" << hex << loadNoteHelpKey_posMap_addr << endl;
+        }
+
+        if (SearchModuleMemory(WebMPlayerOpen_addr_pattern, matchResults) && matchResults.size() == 1) {
+            WebMPlayerOpen_addr = matchResults[0] + 0xa;
+            uint32_t* offset_ptr = reinterpret_cast<uint32_t*>(WebMPlayerOpen_addr);
+            WebMPlayerOpen_addr += (uint64_t)*offset_ptr + 0x4;
+            WebMPlayerOpen_addr = *(uint64_t*)WebMPlayerOpen_addr;
+            cout << "WebMPlayerOpen_addr : 0x" << hex << WebMPlayerOpen_addr << endl;
         }
 
         cout << "==============================" << endl;
@@ -458,6 +468,13 @@ namespace hook {
             if (status != MH_OK) {
 				throw runtime_error("MinHook initialize failed!");
             }
+            cout << "[INFO]hooking CreateFileA" << endl;
+
+            status = MH_CreateHook(&CreateFileA, &hooked_CreateFileA, reinterpret_cast<LPVOID*>(&ori_CreateFileA));
+            if (status != MH_OK) {
+                throw runtime_error("MinHook create CreateFileA hook failed!");
+            }
+
             cout << "[INFO]hooking sjis2uni" << endl;
             status = MH_CreateHook((LPVOID)sjis2uni_addr, &hooked_sjis2uni, reinterpret_cast<LPVOID*>(&ori_sjis2uni));
             if (status != MH_OK) {
@@ -492,6 +509,12 @@ namespace hook {
                 throw runtime_error("MinHook create loadNoteHelpKeyPos hook failed!");
             }
 
+            cout << "[INFO]hooking WebMPlayerOpen" << endl;
+            status = MH_CreateHook((LPVOID)WebMPlayerOpen_addr, &hooked_WebMPlayerOpen, reinterpret_cast<LPVOID*>(&ori_WebMPlayerOpen));
+            if (status != MH_OK) {
+                throw runtime_error("MinHook create WebMPlayerOpen hook failed!");
+            }
+
             cout << "[INFO]fix memo_sjis_byte_valid" << endl;
             hook_memo_sjis_byte_valid(memo_sjis_byte_valid_addr);
 
@@ -520,7 +543,6 @@ namespace hook {
 
             cout << "[INFO]fix check_text_end" << endl;
             fix_check_text_end(check_text_end_addr);
-
 
             status = MH_EnableHook(MH_ALL_HOOKS);
             if (status != MH_OK) {
@@ -626,32 +648,9 @@ namespace hook {
         }
         return mess_map;
     }
-    void load_table() {
-        ///----------
-        char path[] = "data\\localization\\utf8.table";
-        FILE* file = nullptr;
 
-        if (fopen_s(&file, path, "rb") != 0) {
-            cout << "utf8.table载入失败" << endl;
-            return;
-        }
-        fseek(file, 0, SEEK_END);
-        long fileSize = ftell(file);
-        cloud_utf8_table = new char[fileSize];
-        fseek(file, 0, 0);
-        size_t readBytes = fread(cloud_utf8_table, 1, fileSize, file);
-        fclose(file);
-        file = nullptr;
-        if (fileSize != readBytes) {
-            cout << "utf8.table读取失败 : "<< fileSize <<","<<readBytes << endl;
-            return;
-        }
-        cout << "utf8.table已载入" <<endl;
-        ///--------
-    }
     bool load_mess_string_cn() {
-
-        char path[] = "data\\localization\\mess_strings_cn.txt";
+        char path[] = "data_cn\\localization\\mess_strings_cn.txt";
         FILE* file = nullptr;
 
         if (fopen_s(&file, path, "rb") != 0) {
@@ -678,10 +677,11 @@ namespace hook {
                 write_mess_string((char*)(mess_string_jp_struct_addr + (int64_t)i * 0x20), mess_map[FileName[0]]);
             }
             else {
-                cerr << "[INFO]未找到 mess string : " << FileName[0] << endl;
+                //cerr << "[INFO]未找到 mess string : " << FileName[0] << endl;
             }
         }
 		memset(pbuffer, 0, buffer.size());
+        cout << "[INFO]已载入mess_strings_cn" << endl;
         return true;
     }
 
@@ -758,7 +758,6 @@ namespace hook {
 
     int32_t __fastcall hooked_load_mess_string() {
         int32_t result = ori_load_mess_string();
-        //load_table();
         load_mess_string_cn();
         return result;
     }
@@ -794,67 +793,6 @@ namespace hook {
         }
         int32_t totalCharCount = *(int32_t*)(*fontEntryAddr + 0x8);
         int32_t unfound_symbol_index = -1;
-        
-        /*
-        size_t len = encoding::get_input_length(input_str);
-        uint8_t* pInput = reinterpret_cast<uint8_t*> (input_str);
-        int32_t* output = (int32_t*)(output_addr);
-        try
-        {
-            while (true)
-            {
-                
-                uint8_t b = *pInput;
-                if (b == 0) {
-                    *output = -1;
-                    break;
-                }
-                uint8_t b2 = *(pInput + 1);
-
-                if (b >= 0x81 && b <= 0xfc && b2 >= 0x40) {
-
-                    int32_t index = (b << 8) - 0x8900 + b2;
-                    int32_t cp = *(uint32_t*)(cloud_utf8_table + index * 4);
-                    index = FindUnicodeInTable(cp, fontIndexTable, totalCharCount);
-                    if (index == -1)// not found
-                    {
-                        if (unfound_symbol_index == -1) {
-                            return ori_sjis2uni(ctx, output_addr, input_str, max_output);
-                            unfound_symbol_index = FindUnicodeInTable(9632, fontIndexTable, totalCharCount);
-                        }
-                        *output = unfound_symbol_index;
-                    }
-                    else
-                        *output = index;
-                    pInput += 2;
-                    output++;
-                    continue;
-                }
-                int32_t index = FindUnicodeInTable(b, fontIndexTable, totalCharCount);
-                if (index == -1)// not found
-                {
-                    if (unfound_symbol_index == -1) {
-                        unfound_symbol_index = FindUnicodeInTable(9632, fontIndexTable, totalCharCount);
-                    }
-                    *output = unfound_symbol_index;
-                }
-                else
-                    *output = index;
-                pInput++;
-                output++;
-            }
-            return max_output - 1;
-        }
-        catch (const std::exception& e)
-        {
-            stringstream ss; // 已初始化
-            ss << e.what() << endl;
-            ss << "input_str_ptr: " << hex << (intptr_t)(input_str) << endl;
-            ss << "size: " << dec << encoding::get_input_length(input_str) << endl;
-            ss << "max_output: " << dec << max_output << endl;
-            cerr << ss.str() << endl;
-        }
-        */
         
         // search
         try
@@ -902,4 +840,47 @@ namespace hook {
         int64_t original_count = ori_sjis2uni(ctx, output_addr, input_str, max_output);
         return original_count;
     }
+
+    string redirect_dir(string file) {
+        vector<pair<string, string>> patterns = {
+          {"data/", "data_cn/"},
+          {"./data/", "./data_cn/"},
+          {".//data/", ".//data_cn/"},
+          {"data_pc/", "data_cn/"},
+          {"./data_pc/", "./data_cn/"},
+          {".//data_pc/", ".//data_cn/"},
+        };
+        for (size_t i = 0; i < patterns.size(); i++)
+        {
+            if (file.compare(0, patterns[i].first.size(), patterns[i].first) == 0) {
+                string cnFile = patterns[i].second + file.substr(patterns[i].first.size());
+                if (std::filesystem::exists(cnFile))
+                {
+                    cout << "[INFO]redirect file:" << cnFile << endl;
+                    file = cnFile;
+                    break;
+                }
+            }
+        }
+        return file;
+    }
+
+
+    bool __fastcall hooked_WebMPlayerOpen(int64_t h, char* file) {
+        string fileName = redirect_dir(string(file));
+		char buf[256] = { 0 };
+		strncpy_s(buf, fileName.c_str(), sizeof(buf) - 1);
+        return ori_WebMPlayerOpen(h, buf);
+    }
+
+    HANDLE WINAPI hooked_CreateFileA(LPCSTR lpFileName, DWORD dwDesiredAccess, DWORD dwShareMode,
+        LPSECURITY_ATTRIBUTES lpSecurityAttributes, DWORD dwCreationDisposition,
+        DWORD dwFlagsAndAttributes, HANDLE hTemplateFile) {
+
+        string fileName = redirect_dir(string(lpFileName));
+
+        return ori_CreateFileA(fileName.c_str(), dwDesiredAccess, dwShareMode,
+            lpSecurityAttributes, dwCreationDisposition,
+			dwFlagsAndAttributes, hTemplateFile);
+    };
 }

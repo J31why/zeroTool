@@ -132,10 +132,10 @@ public abstract partial class CalmareFunc : ICloneable
         return bytes;
     }
 
-    internal static int GetIndentLevel(string line)
+    internal static int GetIndentLevel(string text)
     {
         var level = 0;
-        foreach (var t in line)
+        foreach (var t in text)
             if (t == '\t')
                 level++;
             else break;

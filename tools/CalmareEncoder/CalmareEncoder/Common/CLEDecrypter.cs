@@ -26,7 +26,7 @@ public static partial class CLEDecrypter
 
     public static void test()
     {
-        var t= ZhConverter.TWToHans("執行任務|滑鼠",true);
+        var t= ZhConverter.TWToHans("高級\t高階 進階 高級",false);
         Console.WriteLine(t);
     }
     public static byte[] DecryptFile(string file)
