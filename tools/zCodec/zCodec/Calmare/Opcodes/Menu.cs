@@ -4,7 +4,7 @@ using System.Text.RegularExpressions;
 
 namespace zCodec.Calmare.Opcodes;
 
-public partial class Menu : Opcode
+public class Menu(string text) : Opcode(0x5E,text)
 {
     public override byte[] Encode(Encoding encoding)
     {
@@ -31,33 +31,4 @@ public partial class Menu : Opcode
             throw;
         }
     }
-
-    public Menu(string text) : base(0x5E, text)
-    {
-        var matches = OpReg.Matches(text);
-        Param.Add(matches[0].Groups[1].Value);
-        Param.Add(matches[0].Groups[2].Value);
-        Param.Add(matches[0].Groups[3].Value);
-        Param.Add(matches[0].Groups[4].Value);
-        Param.AddRange(matches.Skip(1).Select(x => x.Value));
-    }
-
-    public static bool TryParse(string text, [MaybeNullWhen(false)] out Opcode result)
-    {
-        if (!OpReg.IsMatch(text) || !text.Contains($"\t{nameof(Menu)} "))
-        {
-            result = null;
-            return false;
-        }
-
-        var op = new Menu(text);
-        result = op;
-        return true;
-    }
-
-    private static Regex OpReg { get; } = OpRegex();
-
-    [GeneratedRegex("""\tMenu ([\w\[\]]+) ([\d-]+) ([\d-]+) ([\d-]+)|(?<=").*?(?=")""",
-        RegexOptions.Compiled | RegexOptions.Multiline)]
-    private static partial Regex OpRegex();
 }

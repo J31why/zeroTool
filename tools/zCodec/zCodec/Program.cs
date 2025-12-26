@@ -14,7 +14,6 @@ internal static class Program
     private static void Main(string[] args)
     {
         Console.OutputEncoding = Encoding.UTF8;
-        
         bool isCompile = false, isDecompile = false, isTw2s = false,
             isDecryptString = false, isDecryptFile = false;
         

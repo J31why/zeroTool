@@ -43,22 +43,12 @@ public partial class CalmareCoder
             var matches = FnTextReg.Matches(func);
             if (matches.Count == 0)
                 continue;
-            FnTexts.Add((index, matches.Select(x =>
-            {
-                if (TextMessage.TryParse(x.Value, out var textMessage))
-                    return textMessage;
-                if (TextTalk.TryParse(x.Value, out var textTalk))
-                    return textTalk;
-                if (TextTalkNamed.TryParse(x.Value, out var textTalkNamed))
-                    return textTalkNamed;
-                if (Menu.TryParse(x.Value, out var menu))
-                    return menu;
-                if (ED7MenuAdd.TryParse(x.Value, out var ed7MenuAdd))
-                    return ed7MenuAdd;
-                if (TextSetName.TryParse(x.Value, out var textSetName))
-                    return textSetName;
-                throw new Exception($"Unknown func: {x.Value}");
-            }).ToList()));
+            FnTexts.Add((index,
+                matches.Select(x =>
+                        Opcode.TryParse(x.Value, out var opcode)
+                            ? opcode
+                            : throw new Exception($"Unknown func: {x.Value}"))
+                    .ToList()));
         }
     }
 

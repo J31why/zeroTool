@@ -1,25 +1,92 @@
-﻿using System.Text;
+﻿using System.Diagnostics.CodeAnalysis;
+using System.Reflection.Emit;
+using System.Text;
 using System.Text.RegularExpressions;
 
 namespace zCodec.Calmare.Opcodes;
 
 public abstract partial class Opcode
 {
-    public byte Code { get; }
+    protected byte Code { get; }
     public List<string> Param { get; } = new(20);
     public string RawText { get; }
     public int IndentLevel { get; }
 
     public abstract byte[] Encode(Encoding encoding);
 
-    public Opcode(byte code, string text)
+    public Opcode(byte code,string text)
     {
         Code = code;
         RawText = text;
         IndentLevel = text.TakeWhile(x => x == '\t').Count();
+        var span = text.AsSpan();
+        var index = span.IndexOf('\n');
+        var firstLine = index == -1 ? text : span[..span.IndexOf('\n')].ToString();
+        var strs = firstLine.Split(' ');
+        var hasDialog = false;
+        foreach (var str in strs.Skip(1))
+        {
+            if (str == "{")
+            {
+                hasDialog = true;
+                break;
+            }
+            if (str.StartsWith('\"') && str.EndsWith('\"'))
+            {
+                Param.Add(str[1..^1]);
+                continue;
+            }
+            Param.Add(str);
+        }
+        if (index == -1)    //多行
+            return;
+        if (hasDialog && DialogReg.IsMatch(text))
+        {
+            var matches = DialogReg.Matches(text);
+            Param.AddRange(matches.Select(x=>TrimContent(x.Value)));
+        }
+        else if(MenuOptionReg.IsMatch(text))
+        {
+            var matches = MenuOptionReg.Matches(text);
+            Param.AddRange(matches.Select(x => x.Value));
+        }
     }
 
-    public static byte[] EncodeCid(string text)
+    public static bool TryParse(string text, [MaybeNullWhen(false)]out Opcode opcode)
+    {
+        if (!NameReg.IsMatch(text))
+        {
+            opcode = null;
+            return false;
+        }
+        var name = NameReg.Match(text).Value.TrimStart('\t');
+        switch (name)
+        {
+            case nameof(ED7MenuAdd):
+                opcode = new ED7MenuAdd(text);
+                return true;
+            case nameof(Menu):
+                opcode = new Menu(text);
+                return true;
+            case nameof(TextMessage):
+                opcode = new TextMessage(text);
+                return true;
+            case nameof(TextSetName):
+                opcode = new TextSetName(text);
+                return true;
+            case nameof(TextTalk):
+                opcode = new TextTalk(text);
+                return true;
+            case nameof(TextTalkNamed):
+                opcode = new TextTalkNamed(text);
+                return true;
+        }
+        opcode = null;
+        return false;
+    }
+    
+    
+    protected static byte[] EncodeCid(string text)
     {
         switch (text)
         {
@@ -50,39 +117,25 @@ public abstract partial class Opcode
         throw new ArgumentException($"error cid : {text}");
     }
 
-    public static byte[] EncodeString(string text, Encoding encoding)
+    protected static byte[] EncodeString(string text, Encoding encoding)
     {
         var texts = ContentSplitReg.Matches(text).Select(x => x.Value);
         var bytes = new List<byte>(0x200);
         foreach (var str in texts)
-            if (str == "\n")
+        {
+            bytes.AddRange(str switch
             {
-                bytes.Add(1);
-            }
-            else if (str == "{}")
-            {
-            }
-            else if (str == "{wait}")
-            {
-                bytes.Add(2);
-            }
-            else if (str.StartsWith("{color"))
-            {
-                bytes.AddRange([07, Convert.ToByte(NumReg.Match(str[6..]).Value)]);
-            }
-            else if (str.StartsWith("{item["))
-            {
-                bytes.AddRange([0x1F, ..BitConverter.GetBytes(Convert.ToUInt16(NumReg.Match(str[6..]).Value))]);
-            }
-            else if (str.StartsWith("{0x"))
-            {
-                bytes.Add(Convert.ToByte(NumReg.Match(str[3..]).Value, 16));
-            }
-            else
-            {
-                bytes.AddRange(encoding.GetBytes(str));
-            }
-
+                "\n" => [1],
+                "{}" => [],
+                "{wait}" => [2],
+                _ when str.StartsWith("{color") => [07, Convert.ToByte(NumReg.Match(str[6..]).Value)],
+                _ when str.StartsWith("{item[") => 
+                    [0x1F, ..BitConverter.GetBytes(Convert.ToUInt16(NumReg.Match(str[6..]).Value))],
+                _ when str.StartsWith("{0x") => 
+                    [Convert.ToByte(NumReg.Match(str[3..]).Value, 16)],
+                _ => encoding.GetBytes(str)
+            });
+        }
         return bytes.ToArray();
     }
 
@@ -109,10 +162,22 @@ public abstract partial class Opcode
 
     private static Regex ContentSplitReg { get; } = ContentSplitRegex();
     protected static Regex NumReg { get; } = NumRegex();
+    private static Regex DialogReg { get; } = DialogRegex();
+    private static Regex MenuOptionReg { get; } = MenuOptionRegex();
+    private static Regex NameReg { get; } = NameRegex();
+    [GeneratedRegex("""^\t+.*?(?= |$)""",RegexOptions.Compiled)]
+    private static partial Regex NameRegex();
+    
+    [GeneratedRegex("""(?<=").*?(?=")""",
+        RegexOptions.Compiled | RegexOptions.Multiline)]
+    private static partial Regex MenuOptionRegex();
+    [GeneratedRegex("""(?<={\n)[\s\S]+?(?=\n\t+})""",
+        RegexOptions.Compiled | RegexOptions.Multiline)]
+    private static partial Regex DialogRegex();
 
     [GeneratedRegex("""\n|\{[\s\S]*?\}|[\s\S]+?(?=$|\n|{)""", RegexOptions.Compiled | RegexOptions.Multiline)]
     private static partial Regex ContentSplitRegex();
 
-    [GeneratedRegex("""\d+""", RegexOptions.Compiled | RegexOptions.Multiline)]
+    [GeneratedRegex(@"\d+", RegexOptions.Compiled | RegexOptions.Multiline)]
     private static partial Regex NumRegex();
 }
