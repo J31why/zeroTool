@@ -1,14 +1,18 @@
-﻿using System.Text;
+﻿#region
+
+using System.Text;
 using System.Text.RegularExpressions;
 using Common;
 using Extensions;
 using zCodec.Calmare.Opcodes;
 
+#endregion
+
 namespace zCodec.Calmare;
 
 public partial class CalmareCoder
 {
-    private static readonly Dictionary<string, string> Remaps = new()
+    public static readonly Dictionary<string, string> Remaps = new()
     {
         ["・"] = "丄",
         ["♪"] = "丅"
@@ -184,7 +188,7 @@ public partial class CalmareCoder
 
     //menu: c133b
     [GeneratedRegex("""
-                    \t+TextSetName ".+?"$|\t+(?:TextMessage|TextTalk |TextTalkNamed).*?{$[\s\S]*?\n\t+}$|\t+Menu .*?$[\s\S]*?(?=\n(?!\t+"))|\t+ED7MenuAdd.*?$
-                    """, RegexOptions.Multiline)]
+                    \t+TextSetName ".+?"$|\t+(?:TextMessage|TextTalk |TextTalkNamed).*?{$[\s\S]*?\n\t+}$|\t+Menu .*?$[\s\S]*?(?=\n(?!\t+"))|\t+ED7MenuAdd.*?$|\t+ScMenuSetTitle.*?$
+                    """, RegexOptions.Compiled | RegexOptions.Multiline)]
     private static partial Regex FnTextRegex();
 }

@@ -1,10 +1,12 @@
-﻿using System.Diagnostics.CodeAnalysis;
+﻿#region
+
 using System.Text;
-using System.Text.RegularExpressions;
+
+#endregion
 
 namespace zCodec.Calmare.Opcodes;
 
-public class Menu(string text) : Opcode(0x5E,text)
+public class Menu(string text) : Opcode(0x5E, text)
 {
     public override byte[] Encode(Encoding encoding)
     {

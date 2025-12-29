@@ -1,10 +1,12 @@
-﻿using System.Diagnostics.CodeAnalysis;
+﻿#region
+
 using System.Text;
-using System.Text.RegularExpressions;
+
+#endregion
 
 namespace zCodec.Calmare.Opcodes;
 
-public class ED7MenuAdd(string text) : Opcode(0xCE,text)
+public class ED7MenuAdd(string text) : Opcode(0xCE, text)
 {
     public override byte[] Encode(Encoding encoding)
     {

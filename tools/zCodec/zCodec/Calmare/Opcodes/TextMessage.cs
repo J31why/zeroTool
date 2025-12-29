@@ -1,12 +1,12 @@
-﻿using System.Diagnostics.CodeAnalysis;
-using System.Reflection.Emit;
-using System.Reflection.Metadata;
+﻿#region
+
 using System.Text;
-using System.Text.RegularExpressions;
+
+#endregion
 
 namespace zCodec.Calmare.Opcodes;
 
-public partial class TextMessage(string text) : Opcode(0x55,text)
+public class TextMessage(string text) : Opcode(0x55, text)
 {
     public override byte[] Encode(Encoding encoding)
     {

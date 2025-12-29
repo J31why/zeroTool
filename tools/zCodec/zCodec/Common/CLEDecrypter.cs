@@ -1,8 +1,11 @@
-﻿using System.Data;
+﻿#region
+
 using System.Security.Cryptography;
 using System.Text;
 using System.Text.RegularExpressions;
 using OpenCCNET;
+
+#endregion
 
 // ReSharper disable MemberCanBePrivate.Global
 
@@ -79,10 +82,10 @@ public static partial class CLEDecrypter
         if (_table == null)
         {
             var currentDir = Environment.ProcessPath ?? throw new DirectoryNotFoundException();
-            currentDir = Path.GetDirectoryName(currentDir)?? throw new DirectoryNotFoundException();
+            currentDir = Path.GetDirectoryName(currentDir) ?? throw new DirectoryNotFoundException();
             _table = File.ReadAllBytes(Path.Combine(currentDir, "utf8.table"));
         }
-        
+
         var warn = new List<string>(200);
         input = ExtraEncoding.DoubleByteCharReg.Replace(input, x =>
         {
@@ -94,6 +97,7 @@ public static partial class CLEDecrypter
                     warn.Add(x.Value);
                 return x.Value;
             }
+
             index *= 3;
             index += 4;
             byte[] utf8Bytes = [_table[index], _table[index + 1], _table[index + 2]];
@@ -104,6 +108,7 @@ public static partial class CLEDecrypter
         return input;
     }
 
-    [GeneratedRegex("""(?<={\n)[\s\S]+?(?=\n\t+})|(?<=")(?=.*?[\u00FF-\uFFFF]).*?(?=")""", RegexOptions.Multiline)]
+    [GeneratedRegex("""[\u00FF-\uFFFF]+""",
+        RegexOptions.Compiled | RegexOptions.Multiline)]
     private static partial Regex TextRegex();
 }

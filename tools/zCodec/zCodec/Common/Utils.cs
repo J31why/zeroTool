@@ -1,5 +1,9 @@
-﻿using System.Diagnostics;
+﻿#region
+
+using System.Diagnostics;
 using System.Text;
+
+#endregion
 
 namespace Common;
 
@@ -41,7 +45,9 @@ public static class Utils
             process.BeginErrorReadLine();
 
             if (process.WaitForExit(timeoutSeconds * 1000))
+            {
                 isSuccess = true;
+            }
             else if (!process.HasExited)
             {
                 process.Kill();

@@ -28,7 +28,7 @@
           <Description>"enter debug map F1"</Description>
           <VariableType>Auto Assembler Script</VariableType>
           <AssemblerScript>[ENABLE]
-aobscanregion(INJECT,03000000,ffff0000000,0D 02 08 01 ?? ?? 00 00 19 01 5C 01 01 23 30 30 30 30 46)
+aobscanregion(INJECT,0000000,ffff0000000,0D 02 08 01 ?? ?? 00 00 19 01 5C 01 01 23 30 30 30 30 46)
 registersymbol(INJECT)
 
 INJECT+a:
@@ -127,6 +127,29 @@ dealloc(result)
             <Key>113</Key>
           </Keys>
           <Value>FF FF 00 00 FF FF 00 00 FF FF 00 00 FF FF 00 00 FF FF 00 00 FF FF 00 00 FF FF 00 00</Value>
+          <ID>0</ID>
+          <ActivateSound>Activate</ActivateSound>
+          <DeactivateSound>Deactivate</DeactivateSound>
+        </Hotkey>
+      </Hotkeys>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>49</ID>
+      <Description>"米拉 F2"</Description>
+      <Options moRecursiveSetValue="1"/>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>4 Bytes</VariableType>
+      <Address>zero.exe+4C3BC8</Address>
+      <Offsets>
+        <Offset>729bec</Offset>
+      </Offsets>
+      <Hotkeys>
+        <Hotkey>
+          <Action>Set Value</Action>
+          <Keys>
+            <Key>113</Key>
+          </Keys>
+          <Value>9999999</Value>
           <ID>0</ID>
           <ActivateSound>Activate</ActivateSound>
           <DeactivateSound>Deactivate</DeactivateSound>
@@ -236,7 +259,7 @@ dealloc(result)
       <GroupHeader>1</GroupHeader>
       <CheatEntries>
         <CheatEntry>
-          <ID>36</ID>
+          <ID>48</ID>
           <Description>""</Description>
           <ShowAsSigned>0</ShowAsSigned>
           <VariableType>Float</VariableType>
@@ -292,30 +315,6 @@ dealloc(result)
           </Offsets>
         </CheatEntry>
       </CheatEntries>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>44</ID>
-      <Description>"44ec"</Description>
-      <VariableType>2 Bytes</VariableType>
-      <Address>1DACFC44</Address>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>40</ID>
-      <Description>"无描述"</Description>
-      <VariableType>2 Bytes</VariableType>
-      <Address>1DACFC48</Address>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>42</ID>
-      <Description>"无描述"</Description>
-      <VariableType>2 Bytes</VariableType>
-      <Address>1DACFC4C</Address>
-    </CheatEntry>
-    <CheatEntry>
-      <ID>43</ID>
-      <Description>"无描述"</Description>
-      <VariableType>2 Bytes</VariableType>
-      <Address>1DACFC50</Address>
     </CheatEntry>
   </CheatEntries>
   <UserdefinedSymbols/>

@@ -1,10 +1,12 @@
-﻿using System.Diagnostics.CodeAnalysis;
+﻿#region
+
 using System.Text;
-using System.Text.RegularExpressions;
+
+#endregion
 
 namespace zCodec.Calmare.Opcodes;
 
-public class TextSetName(string text) : Opcode(0x61,text)
+public class TextSetName(string text) : Opcode(0x61, text)
 {
     public override byte[] Encode(Encoding encoding)
     {

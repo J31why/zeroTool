@@ -1,5 +1,9 @@
-﻿using System.Text;
+﻿#region
+
+using System.Text;
 using System.Text.RegularExpressions;
+
+#endregion
 
 namespace Common;
 
@@ -11,11 +15,11 @@ public static partial class ExtraEncoding
 
     static ExtraEncoding()
     {
-        Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
+        
         GBK = CodePagesEncodingProvider.Instance.GetEncoding("GBK") ?? throw new ArgumentException("error codepage");
         SJIS = CodePagesEncodingProvider.Instance.GetEncoding(932) ?? throw new ArgumentException("error codepage");
     }
 
-    [GeneratedRegex("[\u00FF-\uffff]", RegexOptions.Multiline)]
+    [GeneratedRegex("[\u00FF-\uffff]", RegexOptions.Compiled | RegexOptions.Multiline)]
     private static partial Regex DoubleByteCharRegex();
 }
