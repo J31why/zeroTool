@@ -6,6 +6,7 @@ using System.Text.RegularExpressions;
 using Common;
 using MiniExcelLibs;
 using Models;
+using OpenCCNET;
 using zCodec.Calmare;
 using zCodec.Dats.As;
 
@@ -39,6 +40,7 @@ internal static class Program
 
     private static void ParseArgs(string[] args)
     {
+
         _currentDir = Environment.ProcessPath ?? throw new DirectoryNotFoundException();
         _currentDir = Path.GetDirectoryName(_currentDir) ?? throw new DirectoryNotFoundException();
         _calmare = Path.Combine(_currentDir, "calmare.exe");
@@ -119,14 +121,14 @@ internal static class Program
                     throw new FileNotFoundException("未找到calmare.exe");
                 var outPath = string.IsNullOrEmpty(_outPath) ? GetOutPath(_inputPath, "compiled") : _outPath;
                 Console.WriteLine($"正在编译{_encoding.BodyName}编码clm文件");
-                CompileScena(_inputPath, outPath);
+                CompileScenaScript(_inputPath, outPath);
                 Console.WriteLine($"已编译{_encoding.BodyName}编码clm文件到目录：{outPath}");
             }
             else if (_command == zCodecCommands.Compile && _flag == zCodecFlag.AS)
             {
                 var outPath = string.IsNullOrEmpty(_outPath) ? GetOutPath(_inputPath, "compiled") : _outPath;
                 Console.WriteLine($"正在编译{_encoding.BodyName}编码as文件");
-                CompileAS(_inputPath, outPath);
+                CompileActionScript(_inputPath, outPath);
                 Console.WriteLine($"已编译{_encoding.BodyName}编码as文件到目录：{outPath}");
             }
             else if (_command == zCodecCommands.Decompile && _flag == zCodecFlag.Scena)
@@ -134,13 +136,13 @@ internal static class Program
                 if(!File.Exists(_calmare))
                     throw new FileNotFoundException("未找到calmare.exe");
                 Console.WriteLine("正在反编译Bin文件");
-                DecompileScena(_inputPath, _calmare);
+                DecompileScenaScript(_inputPath, _calmare);
                 Console.WriteLine("已反编译Bin文件");
             }
             else if (_command == zCodecCommands.Decompile && _flag == zCodecFlag.AS)
             {
                 Console.WriteLine("正在反编译as.dat文件");
-                DecompileAS(_inputPath);
+                DecompileActionScript(_inputPath);
                 Console.WriteLine("已反编译as.dat文件");
             }
             else if (_command == zCodecCommands.DecryptString)
@@ -180,12 +182,12 @@ internal static class Program
         }
     }
 
-    private static void DecompileAS(string path)
+    private static void DecompileActionScript(string path)
     {
-        var coder = new AsCoder(_encoding);
+        var codec = new AsCodec(_encoding);
         void decompile(string file, string outfile)
         {
-            var script = coder.Parse(file);
+            var script = codec.Decompile(file);
             File.WriteAllText(outfile, script);
         }
         if (Directory.Exists(path))
@@ -205,13 +207,13 @@ internal static class Program
         }
     }
 
-    private static void CompileAS(string path, string outPath)
+    private static void CompileActionScript(string path, string outPath)
     {
-        var coder = new AsCoder(_encoding);
+        var codec = new AsCodec(_encoding);
         void compile(string file, string outfile)
         {
             var text =  File.ReadAllText(file);
-            var data = coder.ToDat(text);
+            var data = codec.Compile(text);
             File.AppendAllBytes(outfile, data);
         }
 
@@ -246,15 +248,15 @@ internal static class Program
         File.WriteAllText(outFile, sb.ToString(), ExtraEncoding.GBK);
     }
 
-    private static void CompileScena(string path, string outPath)
+    private static void CompileScenaScript(string path, string outPath)
     {
         void compile(string file, string outfile)
         {
             try
             {
-                var coder = new CalmareCoder();
-                coder.ParseFile(file);
-                coder.Encode2File(outfile, _calmare, _encoding);
+                var codec = new CalmareCodec();
+                codec.ParseFromFile(file);
+                codec.CompileToFile(outfile, _calmare, _encoding);
             }
             catch (Exception e)
             {
@@ -285,8 +287,13 @@ internal static class Program
         {
             try
             {
-                var clm = CLEDecrypter.Tw2s(File.ReadAllText(file));
-                File.WriteAllText(outfile, clm);
+                var content = File.ReadAllText(file);
+                if (Path.GetFileNameWithoutExtension(file).Equals("e3500"))
+                {
+                    content=content.Replace("出發囉！", "我们出发了！");
+                }
+                content = CLEDecrypter.Tw2s(content);
+                File.WriteAllText(outfile, content, Path.GetExtension(file) == ".csv"?Encoding.UTF8:ExtraEncoding.UTF8NoBOM);
             }
             catch (Exception e)
             {
@@ -297,7 +304,7 @@ internal static class Program
         if (Directory.Exists(path))
         {
             var files = Directory.EnumerateFiles(path);
-            files = files.Where(x => x.EndsWith(".clm") || x.EndsWith(".txt")).ToArray();
+            files = files.Where(x => x.EndsWith(".clm") || x.EndsWith(".txt")|| x.EndsWith(".csv")).ToArray();
             foreach (var file in files)
             {
                 var outFile = Path.Combine(outPath, Path.GetFileName(file));
@@ -311,7 +318,7 @@ internal static class Program
         }
     }
 
-    private static void DecompileScena(string path, string calmare)
+    private static void DecompileScenaScript(string path, string calmare)
     {
         if (Directory.Exists(path))
         {
@@ -330,15 +337,16 @@ internal static class Program
         {
             try
             {
-                var clmText = File.ReadAllText(file);
-                clmText = CLEDecrypter.DecryptChar(clmText, out var warnList);
+                var content = File.ReadAllText(file);
+                content = CLEDecrypter.DecryptChar(content, out var warnList);
                 if (warnList.Count > 0)
                 {
                     Console.WriteLine("\n非法文字: {0}", string.Join(' ', warnList));
                     Console.WriteLine("文件有非法文字: {0}\n", file);
                 }
 
-                File.WriteAllText(outfile, clmText);
+                File.WriteAllText(outfile, content,
+                    Path.GetExtension(file) == ".csv" ? Encoding.UTF8 : ExtraEncoding.UTF8NoBOM);
             }
             catch (Exception e)
             {
@@ -350,7 +358,7 @@ internal static class Program
         if (Directory.Exists(path))
         {
             var files = Directory.EnumerateFiles(path);
-            files = files.Where(x => x.EndsWith(".clm") || x.EndsWith(".txt")).ToArray();
+            files = files.Where(x => x.EndsWith(".clm") || x.EndsWith(".txt")|| x.EndsWith(".csv")).ToArray();
             foreach (var file in files)
             {
                 var outFile = Path.Combine(outPath, Path.GetFileName(file));
@@ -416,9 +424,8 @@ internal static class Program
         Console.WriteLine(new string('-', 80));
         Console.WriteLine("zCodec 工具帮助");
         Console.WriteLine("========================");
-        Console.WriteLine("格式: zCodec [命令] <输入> -cp 936 -o [输出]\n");
-
-        Dictionary<string, string> _commands = new()
+        Console.WriteLine("格式: zCodec [命令] <输入> -o [输出]\n");
+        Dictionary<string, string> commands = new()
         {
             { "-c", "编译" },
             { "-de", "反编译" },
@@ -429,16 +436,16 @@ internal static class Program
             { "-o <dir>", "（可选）指定存在的输出目录，不支持反编译" },
             { "-cp <codepage>", "编译/反编译编码" }
         };
-        Dictionary<string, string> _flags = new()
+        Dictionary<string, string> flags = new()
         {
-            { "-scena", "（默认）脚本文件标志，用于编译/反编译，目录下必须有calmare.exe" },
-            { "-as", "as文件标志，用于编译/反编译" },
+            { "-scena", "（默认）编译/反编译scena脚本文件标志，目录下必须有calmare.exe" },
+            { "-as", "编译/反编译as脚本文件标志" },
         };
         Console.WriteLine("命令列表:");
-        foreach (var cmd in _commands)
+        foreach (var cmd in commands)
             Console.WriteLine($"  {cmd.Key,-15} {cmd.Value}");
         Console.WriteLine("标志列表:");
-        foreach (var cmd in _flags)
+        foreach (var cmd in flags)
             Console.WriteLine($"  {cmd.Key,-15} {cmd.Value}");
         Console.WriteLine();
         Console.WriteLine("示例:");

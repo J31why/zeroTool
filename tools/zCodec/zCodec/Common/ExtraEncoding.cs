@@ -11,6 +11,7 @@ public static partial class ExtraEncoding
 {
     public static Encoding GBK { get; }
     public static Encoding SJIS { get; }
+    public static Encoding UTF8NoBOM { get; } = new UTF8Encoding(false);
     public static Regex DoubleByteCharReg { get; } = DoubleByteCharRegex();
 
     static ExtraEncoding()

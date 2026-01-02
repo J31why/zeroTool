@@ -8,7 +8,7 @@ namespace zCodec.Calmare.Opcodes;
 
 public class Menu(string text) : Opcode(0x5E, text)
 {
-    public override byte[] Encode(Encoding encoding)
+    public override byte[] Compile(Encoding encoding)
     {
         try
         {
@@ -21,7 +21,7 @@ public class Menu(string text) : Opcode(0x5E, text)
             for (var i = 4; i < Param.Count; i++)
             {
                 var text = Param[i];
-                bytes.AddRange([..EncodeString(text, encoding), 1]);
+                bytes.AddRange([..CompileString(text, encoding), 1]);
             }
 
             bytes.Add(0);

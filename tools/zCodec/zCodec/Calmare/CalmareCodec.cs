@@ -10,7 +10,7 @@ using zCodec.Calmare.Opcodes;
 
 namespace zCodec.Calmare;
 
-public partial class CalmareCoder
+public partial class CalmareCodec
 {
     public static readonly Dictionary<string, string> Remaps = new()
     {
@@ -18,7 +18,7 @@ public partial class CalmareCoder
         ["♪"] = "丅"
     };
 
-    public void ParseFile(string file)
+    public void ParseFromFile(string file)
     {
         FileName = Path.GetFileName(file);
         var clmText = File.ReadAllText(file);
@@ -28,7 +28,7 @@ public partial class CalmareCoder
     private void Parse(string clmText)
     {
         clmText = Remaps.Aggregate(clmText, (current, ch) => current.Replace(ch.Key, ch.Value));
-        ParsingText = clmText;
+        UsingText = clmText;
         var matches = FnReg.Matches(clmText);
         Functions.AddRange(matches.Select(x => x.Value));
         matches = NpcNameStringReg.Matches(clmText);
@@ -56,9 +56,9 @@ public partial class CalmareCoder
         }
     }
 
-    public bool Encode2File(string outPath, string calmareFile, Encoding encoding)
+    public bool CompileToFile(string outPath, string calmareFile, Encoding encoding)
     {
-        var holderText = ExtraEncoding.DoubleByteCharReg.Replace(ParsingText, x =>
+        var holderText = ExtraEncoding.DoubleByteCharReg.Replace(UsingText ?? throw new InvalidOperationException(), x =>
         {
             var value = x.Value;
             if (Remaps.TryGetValue(value, out var c))
@@ -70,11 +70,11 @@ public partial class CalmareCoder
                 _ => throw new Exception($"{Path.GetFileName(outPath)}非法字节：{x.Value}({count})")
             };
         });
-        var holderEncoder = new CalmareCoder();
-        holderEncoder.Parse(holderText);
-        if (holderEncoder.FnTexts.Count != FnTexts.Count ||
-            holderEncoder.NpcNameStrings.Count != NpcNameStrings.Count ||
-            holderEncoder.BattleCount != BattleCount || holderEncoder.LabelNameStrings.Count != LabelNameStrings.Count)
+        var holderCodec = new CalmareCodec();
+        holderCodec.Parse(holderText);
+        if (holderCodec.FnTexts.Count != FnTexts.Count ||
+            holderCodec.NpcNameStrings.Count != NpcNameStrings.Count ||
+            holderCodec.BattleCount != BattleCount || holderCodec.LabelNameStrings.Count != LabelNameStrings.Count)
             return false;
         File.WriteAllText(outPath, holderText);
         var success = Utils.RunExe(calmareFile, $"\"{outPath}\"", 2);
@@ -87,14 +87,14 @@ public partial class CalmareCoder
             return false;
         var binData = File.ReadAllBytes(binFile);
         using var br = new BinaryReader(new MemoryStream(binData));
-        ReplaceFns(ref binData, br, holderEncoder, encoding);
-        ReplaceNames(ref binData, br, holderEncoder, encoding);
+        ReplaceFns(ref binData, br, holderCodec, encoding);
+        ReplaceNames(ref binData, br, holderCodec, encoding);
         File.WriteAllBytes(binFile, binData);
         File.Delete(outPath);
         return true;
     }
 
-    private void ReplaceNames(ref byte[] binData, BinaryReader br, CalmareCoder holderEncoder, Encoding encoding)
+    private void ReplaceNames(ref byte[] binData, BinaryReader br, CalmareCodec holderCodec, Encoding encoding)
     {
         br.BaseStream.Seek(0x34, SeekOrigin.Begin);
         var pString = br.ReadInt32();
@@ -107,31 +107,31 @@ public partial class CalmareCoder
         }
 
         strings.Dequeue();
-        replace(ref binData, NpcNameStrings, holderEncoder.NpcNameStrings);
+        replace(ref binData, NpcNameStrings, holderCodec.NpcNameStrings);
         for (var i = 0; i < BattleCount; i++)
             strings.Dequeue();
-        replace(ref binData, LabelNameStrings, holderEncoder.LabelNameStrings);
+        replace(ref binData, LabelNameStrings, holderCodec.LabelNameStrings);
 
         void replace(ref byte[] binData, List<string> list, List<string> holderList)
         {
             for (var index = 0; index < list.Count; index++)
             {
                 var holderStr = holderList[index];
-                var coderStr = list[index];
+                var replaceStr = list[index];
                 var binStr = strings.Dequeue();
                 if (holderStr != binStr)
-                    throw new Exception($"未找到NameString[{index}]: {coderStr}");
+                    throw new Exception($"未找到NameString[{index}]: {replaceStr}");
                 byte[] sjisBytes = [..ExtraEncoding.SJIS.GetBytes(holderStr), 0];
-                byte[] coderBytes = [..encoding.GetBytes(coderStr), 0];
-                var result = BitHelper.Replace(binData, sjisBytes, coderBytes, pString, (int)br.BaseStream.Length, 1);
+                byte[] replaceBytes = [..encoding.GetBytes(replaceStr), 0];
+                var result = BitHelper.Replace(binData, sjisBytes, replaceBytes, pString, (int)br.BaseStream.Length, 1);
                 if (!result.replaced)
-                    throw new Exception($"未找到NameString[{index}]: {coderStr}");
+                    throw new Exception($"未找到NameString[{index}]: {replaceStr}");
                 binData = result.result;
             }
         }
     }
 
-    private void ReplaceFns(ref byte[] binData, BinaryReader br, CalmareCoder holderEncoder, Encoding encoding)
+    private void ReplaceFns(ref byte[] binData, BinaryReader br, CalmareCodec holderCodec, Encoding encoding)
     {
         br.BaseStream.Seek(0x42, SeekOrigin.Begin);
         var pFunc = br.ReadUInt16();
@@ -140,20 +140,20 @@ public partial class CalmareCoder
         br.BaseStream.Seek(pFunc, SeekOrigin.Begin);
         for (var i = 0; i < nFunc; i++)
             pFunctions[i] = br.ReadUInt32();
-        for (var i = 0; i < holderEncoder.FnTexts.Count; i++)
+        for (var i = 0; i < holderCodec.FnTexts.Count; i++)
         {
-            var holderFnText = holderEncoder.FnTexts[i];
+            var holderFnText = holderCodec.FnTexts[i];
             var fnText = FnTexts[i];
             var start = (int)pFunctions[holderFnText.index];
             var end = holderFnText.index + 1 <= pFunctions.Length - 1 ? (int)pFunctions[holderFnText.index + 1] : -1;
 
             for (var j = 0; j < holderFnText.func.Count; j++)
             {
-                var sjisBytes = holderFnText.func[j].Encode(ExtraEncoding.SJIS);
-                var coderBytes = fnText.func[j].Encode(encoding);
-                if (sjisBytes.Length != coderBytes.Length)
+                var sjisBytes = holderFnText.func[j].Compile(ExtraEncoding.SJIS);
+                var replaceBytes = fnText.func[j].Compile(encoding);
+                if (sjisBytes.Length != replaceBytes.Length)
                     throw new Exception("字节长度不一致");
-                var result = BitHelper.Replace(binData, sjisBytes, coderBytes, start, end, 1);
+                var result = BitHelper.Replace(binData, sjisBytes, replaceBytes, start, end, 1);
                 if (!result.replaced)
                     throw new Exception($"{FileName}未找到Fn文本：{fnText.func[j].RawText}");
                 binData = result.result;
@@ -161,8 +161,8 @@ public partial class CalmareCoder
         }
     }
 
-    public string FileName;
-    public string ParsingText;
+    public string? FileName;
+    public string? UsingText;
     public readonly List<string> NpcNameStrings = new(100);
     public int BattleCount;
     public readonly List<string> LabelNameStrings = new(100);

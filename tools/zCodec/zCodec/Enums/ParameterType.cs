@@ -1,6 +1,6 @@
 ﻿namespace Enums;
 
-public enum ParamType
+public enum ParameterType
 {
     b,
     s,

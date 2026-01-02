@@ -6,7 +6,7 @@ using System.Text;
 
 namespace zCodec.Dats.As;
 
-public partial class AsCoder(Encoding encoding)
+public partial class AsCodec(Encoding encoding)
 {
     private string _fileName = "";
     private const string AddrFlag = "loc:";

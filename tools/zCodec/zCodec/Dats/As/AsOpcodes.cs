@@ -3,15 +3,15 @@
 using Enums;
 using Extensions;
 using static zCodec.Dats.As.AsOpcodes;
-using static Enums.ParamType;
+using static Enums.ParameterType;
 
 #endregion
 
 namespace zCodec.Dats.As;
 
-public partial class AsCoder
+public partial class AsCodec
 {
-    private readonly Dictionary<byte, (AsOpcodes code, Func<AsCoder, ParamType[]> Params)> _opFuncs = new()
+    private readonly Dictionary<byte, (AsOpcodes code, Func<AsCodec, ParameterType[]> Params)> _opFuncs = new()
     {
         { 0x00, Return.As() },
         { 0x01, Goto.As(sp) },
@@ -133,7 +133,7 @@ public partial class AsCoder
         //
         { 0x82, OP_82.As() },
         { 0x83, SortTarget.As(b) },
-        { 0x84, RotateChar.As(b, s, s, s, i, b) },
+        { 0x84, RotateChar.As(b,s, s, s,  i, b) },
         { 0x85, OP_85.As(b, b, i) },
         //
         { 0x89, SaveCurPos.As(b) },
@@ -142,17 +142,17 @@ public partial class AsCoder
         { 0x8C, UseItemEnd.As() },
         { 0x8D, OP_8D.As(b, i, i, i, i) },
         {
-            0x8E, LoadXFile.As(coder =>
+            0x8E, LoadXFile.As(codec =>
             {
                 byte x;
-                if (coder._isRead)
+                if (codec._isRead)
                 {
-                    x = coder._bReader!.ReadByte();
-                    coder._bReader.BaseStream.Position--;
+                    x = codec._bReader!.ReadByte();
+                    codec._bReader.BaseStream.Position--;
                 }
                 else
                 {
-                    x = Convert.ToByte(coder._currentIns.param[0], 16);
+                    x = Convert.ToByte(codec._currentIns.param[0], 16);
                 }
 
                 return x switch
@@ -170,17 +170,17 @@ public partial class AsCoder
         { 0x94, OP_94.As(b, str, i) },
         { 0x95, OP_95.As() },
         {
-            0x96, SetAngleTarget.As(coder =>
+            0x96, SetAngleTarget.As(codec =>
             {
                 byte x;
-                if (coder._isRead)
+                if (codec._isRead)
                 {
-                    x = coder._bReader!.ReadByte();
-                    coder._bReader.BaseStream.Position--;
+                    x = codec._bReader!.ReadByte();
+                    codec._bReader.BaseStream.Position--;
                 }
                 else
                 {
-                    x = Convert.ToByte(coder._currentIns.param[0], 16);
+                    x = Convert.ToByte(codec._currentIns.param[0], 16);
                 }
 
                 return x switch

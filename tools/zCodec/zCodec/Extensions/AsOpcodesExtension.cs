@@ -9,17 +9,17 @@ namespace Extensions;
 
 public static class AsOpcodesExtension
 {
-    public static (AsOpcodes, Func<AsCoder, ParamType[]>) As(this AsOpcodes opcodes)
+    public static (AsOpcodes, Func<AsCodec, ParameterType[]>) As(this AsOpcodes opcodes)
     {
         return (opcodes, _ => []);
     }
 
-    public static (AsOpcodes, Func<AsCoder, ParamType[]>) As(this AsOpcodes opcodes, params ParamType[] paramTypes)
+    public static (AsOpcodes, Func<AsCodec, ParameterType[]>) As(this AsOpcodes opcodes, params ParameterType[] paramTypes)
     {
         return (opcodes, _ => paramTypes);
     }
 
-    public static (AsOpcodes, Func<AsCoder, ParamType[]>) As(this AsOpcodes opcodes, Func<AsCoder, ParamType[]> func)
+    public static (AsOpcodes, Func<AsCodec, ParameterType[]>) As(this AsOpcodes opcodes, Func<AsCodec, ParameterType[]> func)
     {
         return (opcodes, func);
     }

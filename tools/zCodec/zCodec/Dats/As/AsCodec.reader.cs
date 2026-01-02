@@ -3,19 +3,19 @@
 using System.Text;
 using Enums;
 using Extensions;
-using static Enums.ParamType;
+using static Enums.ParameterType;
 
 #endregion
 
 namespace zCodec.Dats.As;
 
-public partial class AsCoder
+public partial class AsCodec
 {
     private readonly HashSet<ushort> _addrSet = [];
     private StringBuilder? _sBuilder;
     private BinaryReader? _bReader;
 
-    public string Parse(string file)
+    public string Decompile(string file)
     {
         if (!File.Exists(file))
             return string.Empty;
@@ -26,9 +26,9 @@ public partial class AsCoder
             _sBuilder = new StringBuilder();
             _bReader = new BinaryReader(new MemoryStream(File.ReadAllBytes(file)));
             _sBuilder.AppendLine($"//zero\n//{Path.GetFileNameWithoutExtension(file)}\n");
-            _sBuilder.AppendLine(ParseHeader());
+            _sBuilder.AppendLine(DecompileHeader());
             _sBuilder.AppendLine("Func:");
-            var set = ParseScript();
+            var set = DecompileFns();
             foreach ((ushort addr, string line) tuple in set)
             {
                 if (_addrSet.TryGetValue(tuple.addr, out var addr))
@@ -44,7 +44,7 @@ public partial class AsCoder
         }
     }
 
-    private string ParseHeader()
+    private string DecompileHeader()
     {
         var sb = new StringBuilder("Header:\n");
         switch (_fileName)
@@ -76,12 +76,12 @@ public partial class AsCoder
         return sb.ToString();
     }
 
-    private List<(ushort, string)> ParseScript()
+    private List<(ushort, string)> DecompileFns()
     {
         List<(ushort, string)> list = new(2000);
 
         if (_fileName == "as90001")
-            return ParseAs90001Script();
+            return DecompileAs90001Fns();
         while (_bReader!.BaseStream.Position < _bReader.BaseStream.Length)
         {
             var pos = (ushort)_bReader.BaseStream.Position;
@@ -93,7 +93,7 @@ public partial class AsCoder
         return list;
     }
 
-    private List<(ushort, string)> ParseAs90001Script()
+    private List<(ushort, string)> DecompileAs90001Fns()
     {
         List<(ushort, string)> list = new(2000);
         var fnList = _addrSet.Skip(1).ToList();
@@ -131,14 +131,14 @@ public partial class AsCoder
         return string.IsNullOrEmpty(param) ? $"\t{tuple.code}" : $"\t{tuple.code}({param})";
     }
 
-    private string Read(ParamType[] types)
+    private string Read(ParameterType[] types)
     {
         var param = new string[types.Length];
         for (var i = 0; i < types.Length; i++) param[i] = Read(types[i]);
         return string.Join(", ", param);
     }
 
-    private string Read(ParamType type)
+    private string Read(ParameterType type)
     {
         switch (type)
         {

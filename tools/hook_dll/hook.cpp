@@ -844,9 +844,9 @@ namespace hook {
           {"data/", "data_cn/"},
           {"./data/", "./data_cn/"},
           {".//data/", ".//data_cn/"},
-          {"data_pc/", "data_cn/"},
-          {"./data_pc/", "./data_cn/"},
-          {".//data_pc/", ".//data_cn/"},
+          {"data_pc/", "data_cn/pc/"},
+          {"./data_pc/", "./data_cn/pc/"},
+          {".//data_pc/", ".//data_cn/pc/"},
         };
         for (size_t i = 0; i < patterns.size(); i++)
         {
@@ -854,7 +854,7 @@ namespace hook {
                 string cnFile = patterns[i].second + file.substr(patterns[i].first.size());
                 if (std::filesystem::exists(cnFile))
                 {
-                    cout << "[INFO]redirect file:" << cnFile << endl;
+                    cout << "[INFO]重定向：" << cnFile << endl;
                     file = cnFile;
                     break;
                 }

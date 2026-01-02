@@ -15,7 +15,7 @@ public abstract partial class Opcode
     public string RawText { get; }
     public int IndentLevel { get; }
 
-    public abstract byte[] Encode(Encoding encoding);
+    public abstract byte[] Compile(Encoding encoding);
 
     public Opcode(byte code, string text)
     {
@@ -117,7 +117,7 @@ public abstract partial class Opcode
     }
 
 
-    protected static byte[] EncodeCid(string text)
+    protected static byte[] CompileCid(string text)
     {
         switch (text)
         {
@@ -148,7 +148,7 @@ public abstract partial class Opcode
         throw new ArgumentException($"error cid : {text}");
     }
 
-    protected static byte[] EncodeString(string text, Encoding encoding)
+    protected static byte[] CompileString(string text, Encoding encoding)
     {
         var texts = ContentSplitReg.Matches(text).Select(x => x.Value);
         var bytes = new List<byte>(0x200);

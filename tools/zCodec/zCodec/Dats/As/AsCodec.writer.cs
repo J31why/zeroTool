@@ -2,13 +2,13 @@
 
 using System.Text;
 using Enums;
-using static Enums.ParamType;
+using static Enums.ParameterType;
 
 #endregion
 
 namespace zCodec.Dats.As;
 
-public partial class AsCoder
+public partial class AsCodec
 {
     private (AsOpcodes code, string[] param) _currentIns;
     private BinaryWriter? _bWriter;
@@ -16,7 +16,7 @@ public partial class AsCoder
     private Dictionary<string, ushort>? _addrDic;
     private Dictionary<string, List<ushort>>? _holderAddrDic;
 
-    public byte[] ToDat(string script)
+    public byte[] Compile(string script)
     {
         try
         {
@@ -28,8 +28,8 @@ public partial class AsCoder
             _sReader = new StringReader(script);
             var ms = new MemoryStream();
             _bWriter = new BinaryWriter(ms);
-            EncodeHeader();
-            EncodeFns();
+            CompileHeader();
+            CompileFns();
             foreach (var holder in _holderAddrDic)
             {
                 if (!_addrDic.TryGetValue(holder.Key, out var addr))
@@ -50,7 +50,7 @@ public partial class AsCoder
         }
     }
 
-    private void EncodeHeader()
+    private void CompileHeader()
     {
         string? line;
         while ((line = _sReader!.ReadLine()) != "Header:")
@@ -60,9 +60,9 @@ public partial class AsCoder
             _bWriter!.Write(1);
        
         while (!string.IsNullOrEmpty(line = _sReader.ReadLine()))
-            EncodeHeaderLine(line.Trim());
+            CompileHeaderLine(line.Trim());
     }
-    private void EncodeFns()
+    private void CompileFns()
     {
         string? line;
         while (_sReader!.ReadLine() != "Func:")
@@ -70,10 +70,10 @@ public partial class AsCoder
         }
 
         while ((line = _sReader.ReadLine()) != null)
-            EncodeFnLine(line.Trim());
+            CompileFnLine(line.Trim());
     }
 
-    private void EncodeFnLine(string line)
+    private void CompileFnLine(string line)
     {
         var ms = _bWriter!.BaseStream;
         if (line.StartsWith(AddrFlag) && line.EndsWith(':'))
@@ -85,7 +85,7 @@ public partial class AsCoder
 
         if (line.StartsWith("id ="))
         {
-            EncodeProperty(line);
+            CompileProperty(line);
             return;
         }
         _currentIns = ParseInsLine(line);
@@ -100,7 +100,7 @@ public partial class AsCoder
         }
     }
 
-    private void EncodeHeaderLine(string line)
+    private void CompileHeaderLine(string line)
     {
         var ms = _bWriter!.BaseStream;
         if (line.StartsWith("fn[") || line.StartsWith("table ="))
@@ -124,7 +124,7 @@ public partial class AsCoder
         }
         else if (line.StartsWith("Unk1 ="))
         {
-            EncodeProperty(line);
+            CompileProperty(line);
             var pos = (ushort)ms.Position;
             ms.Position = 0;
             _bWriter.Write(pos);
@@ -136,11 +136,11 @@ public partial class AsCoder
             ms.Position = 2;
             _bWriter.Write((ushort)pos);
             ms.Position = pos;
-            EncodeProperty(line);
+            CompileProperty(line);
         }
     }
 
-    private void EncodeProperty(string line)
+    private void CompileProperty(string line)
     {
         var pos = line.IndexOf('"') + 1;
         var hex = line[pos..^1];
@@ -148,7 +148,7 @@ public partial class AsCoder
         _bWriter!.Write(bytes);
     }
 
-    private void Write(ParamType type, string p)
+    private void Write(ParameterType type, string p)
     {
         switch (type)
         {
@@ -191,7 +191,7 @@ public partial class AsCoder
         return (op, param);
     }
 
-    private string[] ParseInsParam(string str)
+    private static string[] ParseInsParam(string str)
     {
         var parameters = new List<string>(20);
         var inQuote = false;
