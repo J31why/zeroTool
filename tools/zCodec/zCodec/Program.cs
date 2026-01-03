@@ -8,6 +8,7 @@ using MiniExcelLibs;
 using Models;
 using OpenCCNET;
 using zCodec.Calmare;
+using zCodec.Dats;
 using zCodec.Dats.As;
 
 #endregion
@@ -30,7 +31,8 @@ internal static class Program
     private enum zCodecFlag
     {
         Scena,
-        AS
+        AS,
+        TextDt
     }
 
     private static string _inputPath = "", _outPath = "", _calmare = "", _currentDir = "";
@@ -57,7 +59,7 @@ internal static class Program
                 case "-c":
                     _command = zCodecCommands.Compile;
                     break;
-                case "-de":
+                case "-d":
                     _command = zCodecCommands.Decompile;
                     break;
                 case "-ds":
@@ -77,6 +79,9 @@ internal static class Program
                     break;
                 case "-scena":
                     _flag = zCodecFlag.Scena;
+                    break;
+                case "-dt":
+                    _flag = zCodecFlag.TextDt;
                     break;
                 case "-cp":
                     var cp = args[++i];
@@ -131,6 +136,13 @@ internal static class Program
                 CompileActionScript(_inputPath, outPath);
                 Console.WriteLine($"已编译{_encoding.BodyName}编码as文件到目录：{outPath}");
             }
+            else if (_command == zCodecCommands.Compile && _flag == zCodecFlag.TextDt)
+            {
+                var outPath = string.IsNullOrEmpty(_outPath) ? GetOutPath(_inputPath, "compiled") : _outPath;
+                Console.WriteLine($"正在编译{_encoding.BodyName}编码dt文件");
+                CompileTextDat(_inputPath, outPath);
+                Console.WriteLine($"已编译{_encoding.BodyName}编码dt文件到目录：{outPath}");
+            }
             else if (_command == zCodecCommands.Decompile && _flag == zCodecFlag.Scena)
             {
                 if(!File.Exists(_calmare))
@@ -141,9 +153,21 @@ internal static class Program
             }
             else if (_command == zCodecCommands.Decompile && _flag == zCodecFlag.AS)
             {
+                var outPath = string.IsNullOrEmpty(_outPath) ? 
+                    Directory.Exists(_inputPath)? _inputPath: Path.GetDirectoryName(_inputPath)
+                    : _outPath;
                 Console.WriteLine("正在反编译as.dat文件");
-                DecompileActionScript(_inputPath);
-                Console.WriteLine("已反编译as.dat文件");
+                DecompileActionScript(_inputPath, outPath ?? throw new DirectoryNotFoundException());
+                Console.WriteLine($"已反编译as.dat文件到目录：{outPath}");
+            }
+            else if (_command == zCodecCommands.Decompile && _flag == zCodecFlag.TextDt)
+            {
+                var outPath = string.IsNullOrEmpty(_outPath) ? 
+                    Directory.Exists(_inputPath)? _inputPath: Path.GetDirectoryName(_inputPath)
+                    : _outPath;
+                Console.WriteLine("正在反编译dt文件");
+                DecompileTextDat(_inputPath,outPath);
+                Console.WriteLine($"已反编译dt文件到目录：{outPath}");
             }
             else if (_command == zCodecCommands.DecryptString)
             {
@@ -182,7 +206,25 @@ internal static class Program
         }
     }
 
-    private static void DecompileActionScript(string path)
+    private static void DecompileTextDat(string inputPath, string outPath)
+    {
+        var files = GetFiles(inputPath,"*._dt");
+        foreach (var file in files)
+        {
+            DatHelper.ToCsv(file,outPath, _encoding);
+        }
+    }
+
+    private static void CompileTextDat(string inputPath, string outPath)
+    {
+        var files = GetFiles(inputPath,"*.csv");
+        foreach (var file in files)
+        {
+            DatHelper.ToDat(file,outPath, _encoding);
+        }
+    }
+
+    private static void DecompileActionScript(string path, string outPath)
     {
         var codec = new AsCodec(_encoding);
         void decompile(string file, string outfile)
@@ -190,20 +232,11 @@ internal static class Program
             var script = codec.Decompile(file);
             File.WriteAllText(outfile, script);
         }
-        if (Directory.Exists(path))
+        var files = GetFiles(path,"as*.dat");
+        foreach (var file in files.Where(x=>!x.EndsWith("as90000.dat")))
         {
-            var files = Directory.EnumerateFiles(path,"as*.dat");
-            foreach (var file in files)
-            {
-                var outFile = Path.Combine(path, Path.GetFileNameWithoutExtension(file)+".txt");
-                decompile(file, outFile);
-            }
-        }
-        else if (File.Exists(path))
-        {
-            var outPath = Path.GetDirectoryName(path)?? throw new DirectoryNotFoundException();
-            var outFile = Path.Combine(outPath, Path.GetFileNameWithoutExtension(path)+".txt");
-            decompile(path, outFile);
+            var outFile = Path.Combine(outPath, Path.GetFileNameWithoutExtension(file)+".txt");
+            decompile(file, outFile);
         }
     }
 
@@ -216,20 +249,11 @@ internal static class Program
             var data = codec.Compile(text);
             File.AppendAllBytes(outfile, data);
         }
-
-        if (Directory.Exists(path))
+        var files = GetFiles(path,"as*.txt");
+        foreach (var file in files)
         {
-            var files = Directory.EnumerateFiles(path, "as*.txt");
-            foreach (var file in files)
-            {
-                var outFile  = Path.Combine(outPath, Path.GetFileNameWithoutExtension(file)+".dat");
-                compile(file, outFile);
-            }
-        }
-        else if (File.Exists(path))
-        {
-            var outFile = Path.Combine(outPath, Path.GetFileNameWithoutExtension(path)+".dat");
-            compile(path, outFile);
+            var outFile  = Path.Combine(outPath, Path.GetFileNameWithoutExtension(file)+".dat");
+            compile(file, outFile);
         }
     }
 
@@ -242,9 +266,8 @@ internal static class Program
         var sb = new StringBuilder(
             "# This file contains the Chinese translation for display messages.\n" +
             "# Note that this file is GBK encoded.\n\n");
-        foreach (var row in rows)
-            if (!string.IsNullOrEmpty(row.Key) && !string.IsNullOrEmpty(row.CN))
-                sb.AppendLine(row.ToLine());
+        foreach (var row in rows.Where(row => !string.IsNullOrEmpty(row.Key) && !string.IsNullOrEmpty(row.CN)))
+            sb.AppendLine(row.ToLine());
         File.WriteAllText(outFile, sb.ToString(), ExtraEncoding.GBK);
     }
 
@@ -264,20 +287,11 @@ internal static class Program
                 Console.WriteLine(e.Message);
             }
         }
-
-        if (Directory.Exists(path))
+        var files = GetFiles(path,"*.clm");
+        foreach (var file in files)
         {
-            var files = Directory.EnumerateFiles(path, "*.clm");
-            foreach (var file in files)
-            {
-                var outFile = Path.Combine(outPath, Path.GetFileName(file));
-                compile(file, outFile);
-            }
-        }
-        else if (File.Exists(path))
-        {
-            var outFile = Path.Combine(outPath, Path.GetFileName(path));
-            compile(path, outFile);
+            var outFile = Path.Combine(outPath, Path.GetFileName(file));
+            compile(file, outFile);
         }
     }
 
@@ -300,35 +314,20 @@ internal static class Program
                 Console.WriteLine("转大陆简体失败: {0}", file);
             }
         }
-
-        if (Directory.Exists(path))
+        var files = GetFiles(path);
+        files = files.Where(x => x.EndsWith(".clm") || x.EndsWith(".txt")|| x.EndsWith(".csv")).ToArray();
+        foreach (var file in files)
         {
-            var files = Directory.EnumerateFiles(path);
-            files = files.Where(x => x.EndsWith(".clm") || x.EndsWith(".txt")|| x.EndsWith(".csv")).ToArray();
-            foreach (var file in files)
-            {
-                var outFile = Path.Combine(outPath, Path.GetFileName(file));
-                decrypt(file, outFile);
-            }
-        }
-        else if (File.Exists(path))
-        {
-            var outFile = Path.Combine(outPath, Path.GetFileName(path));
-            decrypt(path, outFile);
+            var outFile = Path.Combine(outPath, Path.GetFileName(file));
+            decrypt(file, outFile);
         }
     }
 
     private static void DecompileScenaScript(string path, string calmare)
     {
-        if (Directory.Exists(path))
-        {
-            var files = Directory.EnumerateFiles(path, "*.bin");
-            foreach (var file in files) Utils.RunExe(calmare, $"\"{file}\"", 1);
-        }
-        else if (File.Exists(path))
-        {
-            Utils.RunExe(calmare, path, 2);
-        }
+        var files = GetFiles(path,"*.bin");
+        foreach (var file in files) 
+            Utils.RunExe(calmare, $"\"{file}\"", 1);
     }
 
     private static void DecryptStr(string path, string outPath)
@@ -354,21 +353,12 @@ internal static class Program
                 Console.WriteLine(e.Message);
             }
         }
-
-        if (Directory.Exists(path))
+        var files = GetFiles(path);
+        files = files.Where(x => x.EndsWith(".clm") || x.EndsWith(".txt")|| x.EndsWith(".csv")).ToArray();
+        foreach (var file in files)
         {
-            var files = Directory.EnumerateFiles(path);
-            files = files.Where(x => x.EndsWith(".clm") || x.EndsWith(".txt")|| x.EndsWith(".csv")).ToArray();
-            foreach (var file in files)
-            {
-                var outFile = Path.Combine(outPath, Path.GetFileName(file));
-                decrypt(file, outFile);
-            }
-        }
-        else if (File.Exists(path))
-        {
-            var outFile = Path.Combine(outPath, Path.GetFileName(path));
-            decrypt(path, outFile);
+            var outFile = Path.Combine(outPath, Path.GetFileName(file));
+            decrypt(file, outFile);
         }
     }
 
@@ -387,24 +377,23 @@ internal static class Program
                 Console.WriteLine(e.Message);
             }
         }
-
-        if (Directory.Exists(path))
+        var files = GetFiles(path);
+        foreach (var file in files)
         {
-            var files = Directory.EnumerateFiles(path);
-            foreach (var file in files)
-            {
-                var outFile = Path.Combine(outPath, Path.GetFileName(file));
-                decrypt(file, outFile);
-            }
-        }
-        else if (File.Exists(path))
-        {
-            var outFile = Path.Combine(outPath, Path.GetFileName(path));
-            decrypt(path, outFile);
+            var outFile = Path.Combine(outPath, Path.GetFileName(file));
+            decrypt(file, outFile);
         }
     }
 
-
+    private static IEnumerable<string> GetFiles(string path, string pattern="*.*")
+    {
+        if (Directory.Exists(path))
+           return Directory.EnumerateFiles(path,pattern);
+        if (File.Exists(path))
+            return [path];
+        return [];
+    }
+    
     private static string GetOutPath(string path, string dir)
     {
         var outPath = "";
@@ -428,7 +417,7 @@ internal static class Program
         Dictionary<string, string> commands = new()
         {
             { "-c", "编译" },
-            { "-de", "反编译" },
+            { "-d", "反编译" },
             { "-ds", "解密云豹加密字符串" },
             { "-df", "解密云豹加密文件" },
             { "-tw2s", "台湾文本转大陆简体" },
@@ -440,6 +429,7 @@ internal static class Program
         {
             { "-scena", "（默认）编译/反编译scena脚本文件标志，目录下必须有calmare.exe" },
             { "-as", "编译/反编译as脚本文件标志" },
+            { "-dt", "编译/反编译text文件夹_dt文件" },
         };
         Console.WriteLine("命令列表:");
         foreach (var cmd in commands)
@@ -450,7 +440,7 @@ internal static class Program
         Console.WriteLine();
         Console.WriteLine("示例:");
         Console.WriteLine("  zCodec -c -cp 936 ./file.clm");
-        Console.WriteLine("  zCodec -de -cp 932 ./bin/ -o ./output/");
+        Console.WriteLine("  zCodec -d -cp 932 ./bin/ -o ./output/");
     }
 
     private static void SearchTWPhrases(string dir)

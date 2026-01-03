@@ -87,7 +87,7 @@ public partial class AsCodec
             var pos = (ushort)_bReader.BaseStream.Position;
             var line = ReadInstruction();
             list.Add((pos, line));
-            Console.WriteLine($"{AddrFlag}{pos:X}\t{line}");
+            //Console.WriteLine($"{AddrFlag}{pos:X}\t{line}");
         }
 
         return list;
@@ -110,13 +110,13 @@ public partial class AsCodec
                 {
                     line = $"\tid = \"{BitConverter.ToString(_bReader.ReadBytes(3))}\"";
                     list.Add((pos, line));
-                    Console.WriteLine($"{AddrFlag}{pos:X}\t{line}");
+                    //Console.WriteLine($"{AddrFlag}{pos:X}\t{line}");
                     continue;
                 }
 
                 line = ReadInstruction();
                 list.Add((pos, line));
-                Console.WriteLine($"{AddrFlag}{pos:X}\t{line}");
+                //Console.WriteLine($"{AddrFlag}{pos:X}\t{line}");
             }
         }
 

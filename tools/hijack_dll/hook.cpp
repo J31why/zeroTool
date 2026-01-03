@@ -56,30 +56,37 @@ namespace hook {
     loadNoteHelpKey_posMap_t ori_loadNoteHelpKey_posMap = nullptr;
     get_mess_string_key_t get_mess_string_key = reinterpret_cast<get_mess_string_key_t>(get_mess_string_key_addr);
 
+    int matchedAddrCount = 0;
+    int totalAddrCount = 20;
+
     void search_all_addresses() {
         vector<uintptr_t> matchResults;
 
         if (SearchModuleMemory(sjis2uni_addr_pattern, matchResults, true) && matchResults.size() == 1) {
             sjis2uni_addr = matchResults[0];
             cout << "sjis2uni_addr : 0x" << hex << sjis2uni_addr << endl;
+            matchedAddrCount++;
         }
         else throw runtime_error("sjis2uni_addr pattern not found or multiple results.");
 
         if (SearchModuleMemory(check_encoding_addr_pattern, matchResults) && matchResults.size() == 1) {
             check_encoding_addr = matchResults[0] + 0xd;
             cout << "check_encoding_addr : 0x" << hex << check_encoding_addr << endl;
+            matchedAddrCount++;
         }
         else throw runtime_error("check_encoding_addr pattern not found or multiple results.");
 
         if (SearchModuleMemory(load_mess_string_addr_pattern, matchResults) && matchResults.size() == 1) {
             load_mess_string_addr = matchResults[0] + 0x7;
             cout << "load_mess_string_addr : 0x" << hex << load_mess_string_addr << endl;
+            matchedAddrCount++;
         }
         else throw runtime_error("load_mess_string_addr pattern not found or multiple results.");
 
         if (SearchModuleMemory(get_mess_string_key_addr_pattern, matchResults) && matchResults.size() == 1) {
             get_mess_string_key_addr = matchResults[0];
             cout << "get_mess_string_key_addr : 0x" << hex << get_mess_string_key_addr << endl;
+            matchedAddrCount++;
         }
         else throw runtime_error("get_mess_string_key_addr pattern not found or multiple results.");
 
@@ -88,21 +95,25 @@ namespace hook {
             uint32_t* offset_ptr = reinterpret_cast<uint32_t*>(mess_string_jp_struct_addr);
             mess_string_jp_struct_addr += (uint64_t)*offset_ptr + 0x4;
             cout << "mess_string_jp_struct_addr : 0x" << hex << mess_string_jp_struct_addr << endl;
+            matchedAddrCount++;
         }
 
         if (SearchModuleMemory(sjis2utf8_addr_pattern, matchResults) && matchResults.size() == 1) {
             sjis2utf8_addr = matchResults[0];
             cout << "sjis2utf8_addr : 0x" << hex << sjis2utf8_addr << endl;
+            matchedAddrCount++;
         }
 
         if (SearchModuleMemory(utf82sjis_addr_pattern, matchResults) && matchResults.size() == 1) {
             utf82sjis_addr = matchResults[0];
             cout << "utf82sjis_addr : 0x" << hex << utf82sjis_addr << endl;
+            matchedAddrCount++;
         }
 
         if (SearchModuleMemory(check_text_end_pattern, matchResults) && matchResults.size() == 1) {
             check_text_end_addr = matchResults[0] + 1;
             cout << "check_text_end_addr : 0x" << hex << check_text_end_addr << endl;
+            matchedAddrCount++;
         }
 
         if (SearchModuleMemory(noteHelpKey_posMap_addr_pattern, matchResults) && matchResults.size() == 1) {
@@ -110,11 +121,13 @@ namespace hook {
             uint32_t* offset_ptr = reinterpret_cast<uint32_t*>(noteHelpKey_posMap_addr);
             noteHelpKey_posMap_addr += (uint64_t)*offset_ptr + 0x4;
             cout << "noteHelpKey_xy_map_addr : 0x" << hex << noteHelpKey_posMap_addr << endl;
+            matchedAddrCount++;
         }
 
         if (SearchModuleMemory(loadNoteHelpKey_posMap_addr_pattern, matchResults) && matchResults.size() == 1) {
             loadNoteHelpKey_posMap_addr = matchResults[0];
             cout << "loadNoteHelpKey_posMap_addr : 0x" << hex << loadNoteHelpKey_posMap_addr << endl;
+            matchedAddrCount++;
         }
 
         if (SearchModuleMemory(WebMPlayerOpen_addr_pattern, matchResults) && matchResults.size() == 1) {
@@ -123,6 +136,7 @@ namespace hook {
             WebMPlayerOpen_addr += (uint64_t)*offset_ptr + 0x4;
             WebMPlayerOpen_addr = *(uint64_t*)WebMPlayerOpen_addr;
             cout << "WebMPlayerOpen_addr : 0x" << hex << WebMPlayerOpen_addr << endl;
+            matchedAddrCount++;
         }
 
         cout << "==============================" << endl;
@@ -130,36 +144,43 @@ namespace hook {
         if (SearchModuleMemory(memo_sjis_byte_valid_addr_pattern, matchResults) && matchResults.size() == 1) {
             memo_sjis_byte_valid_addr = matchResults[0] + 0x4;
             cout << "memo_sjis_byte_valid_addr : 0x" << hex << memo_sjis_byte_valid_addr << endl;
+            matchedAddrCount++;
         }
 
         if (SearchModuleMemory(memo_2_sjis_byte_valid_addr_pattern, matchResults) && matchResults.size() == 1) {
             memo_2_sjis_byte_valid_addr = matchResults[0] + 0x4;
             cout << "memo_2_sjis_byte_valid_addr : 0x" << hex << memo_2_sjis_byte_valid_addr << endl;
+            matchedAddrCount++;
         }
 
         if (SearchModuleMemory(desc_sjis_byte_valid_addr_pattern, matchResults) && matchResults.size() == 1) {
             desc_sjis_byte_valid_addr = matchResults[0] + 0x4;
             cout << "desc_sjis_byte_valid_addr : 0x" << hex << desc_sjis_byte_valid_addr << endl;
+            matchedAddrCount++;
         }
 
         if (SearchModuleMemory(text_length_sjis_byte_valid_addr_pattern, matchResults) && matchResults.size() == 1) {
             text_length_sjis_byte_valid_addr = matchResults[0];
             cout << "text_length_sjis_byte_valid_addr : 0x" << hex << text_length_sjis_byte_valid_addr << endl;
+            matchedAddrCount++;
         }
 
         if (SearchModuleMemory(number_sjis_byte_valid_addr_pattern, matchResults) && matchResults.size() == 1) {
             number_sjis_byte_valid_addr = matchResults[0] + 0x3;
             cout << "number_sjis_byte_valid_addr : 0x" << hex << number_sjis_byte_valid_addr << endl;
+            matchedAddrCount++;
         }
 
         if (SearchModuleMemory(item_dialog_sjis_byte_valid_addr_pattern, matchResults) && matchResults.size() == 1) {
             item_dialog_sjis_byte_valid_addr = matchResults[0] + 0x3;
             cout << "item_dialog_sjis_byte_valid_addr : 0x" << hex << item_dialog_sjis_byte_valid_addr << endl;
+            matchedAddrCount++;
         }
 
         if (SearchModuleMemory(menu_rsi_sjis_byte_valid_addr_pattern, matchResults) && matchResults.size() == 1) {
             menu_rsi_sjis_byte_valid_addr = matchResults[0];
             cout << "menu_rsi_sjis_byte_valid_addr : 0x" << hex << menu_rsi_sjis_byte_valid_addr << endl;
+            matchedAddrCount++;
         }
 
         if (SearchModuleMemory(add_al_60_r15_sjis_byte_valid_addr_pattern, matchResults) && matchResults.size() == 2) {
@@ -167,6 +188,7 @@ namespace hook {
             {
                 add_al_60_r15_sjis_byte_valid_addr[i] = matchResults[i];
                 cout << "add_al_60_r15_sjis_byte_valid_addr " << dec << i << " : 0x" << hex << add_al_60_r15_sjis_byte_valid_addr[i] << endl;
+                matchedAddrCount++;
             }
         }
 
@@ -461,6 +483,7 @@ namespace hook {
 
             cout << endl;
             search_all_addresses();
+            cout << "匹配到地址数量：" <<dec<< matchedAddrCount <<"/"<<totalAddrCount <<hex<< endl;
             cout << "==============================" << endl;
             MH_STATUS status = MH_Initialize();
             if (status != MH_OK) {

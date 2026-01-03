@@ -60,6 +60,8 @@
       <PreprocessorDefinitions>_WIN64;_DEBUG;DXGI_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <AdditionalIncludeDirectories>include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -67,6 +69,8 @@
       <EnableUAC>false</EnableUAC>
       <ModuleDefinitionFile>dxgi.def</ModuleDefinitionFile>
       <AdditionalOptions>/ignore:4003 %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalLibraryDirectories>lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>libiconvStatic.lib;libMinHook.x64.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
