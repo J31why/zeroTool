@@ -4,9 +4,7 @@
 
 
 ### NISA   
-Dll1：运行参数+debug可开启console。   
-      1. GBK读取   
-      2. 外挂式载入文件   
+Dll1：运行参数+debug可开启console。功能：GBK读取和外挂式载入文件   
 hijack_dll：劫持版本的Dll1    
 
 ### 云豹   
