@@ -13,6 +13,6 @@ charTable：云豹双字节字符的自定义字库，前四个字节是字库�
 
 ### 通用   
 zCodec：可编译/反编译as/scena脚本、解密云豹文件/文本、云豹脚本繁转简。  
-calmareHook: 使用注入器注入calmare后可反编译GBK的scena脚本。   
+calmareHook: 使用注入器注入calmare后可反编译GBK的scena脚本。（反编译GBK脚本用，GBK编译使用zCodec）   
 ITFCreator：字体创建器    
 Injector：dll注入器    
