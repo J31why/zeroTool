@@ -12,7 +12,6 @@ public static partial class ExtraEncoding
     public static Encoding GBK { get; }
     public static Encoding SJIS { get; }
     public static Encoding UTF8NoBOM { get; } = new UTF8Encoding(false);
-    public static Regex DoubleByteCharReg { get; } = DoubleByteCharRegex();
 
     static ExtraEncoding()
     {
@@ -22,5 +21,5 @@ public static partial class ExtraEncoding
     }
 
     [GeneratedRegex("[\u00FF-\uffff]", RegexOptions.Compiled | RegexOptions.Multiline)]
-    private static partial Regex DoubleByteCharRegex();
+    public static partial Regex DoubleByteCharRegex();
 }

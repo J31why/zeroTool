@@ -1,0 +1,904 @@
+calmare zero_k scena
+scena:
+	name "t4020" "t4020" "t4020"
+	town town[93]
+	bgm bgm[124]
+	flags 8192
+	item_use fn[0,255]
+	unk 255 0
+
+entry:
+	pos (0, 0, -1000)
+	unk1 0
+	cam_from (0, 2500, 34000)
+	cam_pers 262
+	unk2 30
+	cam_deg 45deg
+	cam_limit 0deg 360deg
+	cam_at (260000, 0, 0)
+	unk3 0
+	unk4 0
+	flags 0x0001
+	town town[93]
+	init fn[0,2]
+	reinit fn[0,3]
+
+chip[0] "chr/ch20000.itc"
+
+npc char[0]:
+	name "昆特老人"
+	pos (260260, 0, 250)
+	angle 0deg
+	flags 0x0101
+	unk2 0
+	chip chip[0]
+	init fn[0,0]
+	talk fn[0,4]
+	unk4 255
+
+fn[0]:
+	var[2] = random % 8
+	switch var[2]:
+		case 0:
+			ED7_A0 self 1450ms 0 251
+			break
+		case 1:
+			ED7_A0 self 1550ms 0 251
+			break
+		case 2:
+			ED7_A0 self 1600ms 0 251
+			break
+		case 3:
+			ED7_A0 self 1400ms 0 251
+			break
+		case 4:
+			ED7_A0 self 1650ms 0 251
+			break
+		case 5:
+			ED7_A0 self 1350ms 0 251
+			break
+		case 6:
+			ED7_A0 self 1500ms 0 251
+			break
+		default:
+			ED7_A0 self 1500ms 0 251
+			break
+	while 1:
+		ED7_A0 self 1500ms 0 251
+	Return
+
+fn[1]:
+	while 1:
+		CharIdle self (259350, null, -1480) (261390, null, 2230) 1000mm/s
+		Sleep 600ms
+	Return
+
+fn[2]:
+	ForkFunc char[0] fork[0] fn[0,1]
+	if QuestTaskGet quest[46] 7 && !QuestFlagsGet quest[46] 0x10:
+		Event fn[0,9]
+	if flag[1792]:
+		if !QuestFlagsGet quest[46] 0x10:
+			CharFlagsSet char[0] 0x0080
+	elif flag[1566]:
+		if QuestFlagsGet quest[46] 0x02 && !QuestFlagsGet quest[46] 0x10:
+			CharSetPos char[0] (260000, 0, 2000) 270deg
+			ForkFunc char[0] fork[0] fn[0,0]
+	elif flag[1554]:
+		if QuestFlagsGet quest[46] 0x02 && !QuestFlagsGet quest[46] 0x10:
+			CharSetPos char[0] (260000, 0, 2000) 270deg
+			ForkFunc char[0] fork[0] fn[0,0]
+	elif flag[1536]:
+		CharFlagsSet char[0] 0x0080
+	elif flag[1346]:
+		CharFlagsSet char[0] 0x0080
+	elif flag[1342]:
+		CharFlagsSet char[0] 0x0080
+	elif flag[1307]:
+	elif flag[1292]:
+		CharFlagsSet char[0] 0x0080
+	elif flag[1282]:
+	elif flag[1280]:
+	elif flag[1040]:
+		CharFlagsSet char[0] 0x0080
+	elif flag[1024]:
+	elif flag[801]:
+	Return
+
+fn[3]:
+	if flag[1792]:
+		MapColor 0x00C8D2FF 0ms
+	Return
+
+fn[4]:
+	if QuestFlagsGet quest[46] 0x10 && flag[1]:
+		TextStart self
+		TextTalk self {
+			多虧你們，
+			我才能給重要的朋友們掃墓，
+			真是非常感謝。{wait}
+		}
+		TextWait
+		TextTalk self {
+			如果以後還有什麼事的話，
+			我就再聯絡你們吧。{wait}
+		}
+		TextWait
+		TextEnd self
+		Return
+	elif QuestTaskGet quest[46] 2 && QuestTaskGet quest[46] 4 && QuestTaskGet quest[46] 5 && !QuestFlagsGet quest[46] 0x10:
+		Call fn[0,8]
+		Return
+	elif QuestTaskGet quest[46] 1 && !QuestFlagsGet quest[46] 0x10:
+		TextStart self
+		TextTalk self {
+			三番五次地前來確認委託
+			是不夠成熟的表現，真讓人不敢恭維啊！{wait}
+		}
+		TextWait
+		TextTalk self {
+			已經把花的生長場所
+			記錄在手冊上了吧？
+			自己在手冊裡確認一下就行了。{wait}
+		}
+		TextWait
+		TextTalk self {
+			收集到三種花之後，
+			就帶來交給我吧。
+			拜託你們了。{wait}
+		}
+		TextWait
+		TextEnd self
+		Return
+	elif QuestFlagsGet quest[46] 0x02 && !QuestTaskGet quest[46] 1:
+		Call fn[0,5]
+		Return
+	TextStart self
+	if flag[1792]:
+		if QuestFlagsGet quest[46] 0x10:
+			if !flag[1872]:
+				TextTalk self {
+					在這樣的黃昏，
+					會讓人回想起蓋呢。{wait}
+				}
+				TextWait
+				TextTalk self {
+					羅伊德，如果有朝一日，
+					你能夠獨當一面了……
+					到那個時候，就來和我一起喝酒吧。{wait}
+				}
+				TextWait
+				TextTalk self {
+					我會請你喝蓋
+					當年最喜歡的酒。{wait}
+				}
+				TextWait
+				TextTalk name[0] {
+					#0004F嗯，我很期待。{wait}
+				}
+				TextWait
+				FlagSet flag[1872]
+			else:
+				TextTalk self {
+					以前，蓋在休息的時候，
+					經常會帶酒過來，
+					在這裡和我喝到天亮。{wait}
+				}
+				TextWait
+				TextTalk self {
+					羅伊德，如果有朝一日，
+					你能夠獨當一面了……
+					到那個時候，就來和我一起喝酒吧。{wait}
+				}
+				TextWait
+		else:
+			TextTalk self {
+				在這樣的黃昏，
+				真讓人懷念那傢伙啊……{wait}
+			}
+			TextWait
+			TextTalk self {
+				……哈哈哈，
+				好像說了些沒意義的話呢。
+				忘掉它吧。{wait}
+			}
+			TextWait
+	elif flag[1566]:
+		TextTalk self {
+			好了……今天的工作也要開始了。{wait}
+		}
+		TextWait
+		TextTalk self {
+			對於很久以前就失去了家人的我來說，
+			這份守墓的工作就是生活的全部了。{wait}
+		}
+		TextWait
+	elif flag[1554]:
+		TextTalk self {
+			雖然這個國家的人大多都不會訴之於口，
+			但很多人的心裡都殘留有巨大的傷痕。{wait}
+		}
+		TextWait
+		TextTalk self {
+			……你要將此謹記於心。{wait}
+		}
+		TextWait
+	elif flag[1536]:
+	elif flag[1346]:
+	elif flag[1342]:
+	elif flag[1307]:
+		TextTalk self {
+			剛才上街去買東西，
+			看到港灣區已經人山人海了。{wait}
+		}
+		TextWait
+		TextTalk self {
+			大概都是想去遊憩區米修拉姆
+			遊玩的人吧。{wait}
+		}
+		TextWait
+		TextTalk self {
+			……我要是再年輕點的話……{wait}
+		}
+		TextWait
+	elif flag[1292]:
+	elif flag[1282]:
+		TextTalk self {
+			雖然試著對來掃墓的夫人說了
+			『至少在紀念慶典期間好好享受一下吧』
+			這種話……{wait}
+		}
+		TextWait
+		TextTalk self {
+			……但是不是
+			有些多事了呢……{wait}
+		}
+		TextWait
+	elif flag[1280]:
+		if !flag[0]:
+			TextTalk self {
+				昨天的彌撒
+				比想像中的要熱鬧。{wait}
+			}
+			TextWait
+			TextTalk self {
+				大部分來做禮拜的人，
+				在彌撒結束之後
+				都會到墓地祈禱。{wait}
+			}
+			TextWait
+			TextTalk self {
+				創立七十年……
+				無論對誰來說，今年果然
+				也都是個很特別的年份吧。{wait}
+			}
+			TextWait
+			FlagSet flag[0]
+		else:
+			TextTalk self {
+				創立七十年……
+				無論對誰來說，今年果然
+				也都是個很特別的年份吧。{wait}
+			}
+			TextWait
+	elif flag[1040]:
+	elif flag[1024]:
+		if !flag[0]:
+			TextTalk self {
+				說起來，
+				下個月就是創立紀念慶典了啊。{wait}
+			}
+			TextWait
+			TextTalk self {
+				……時間過得真是快呢。{wait}
+			}
+			TextWait
+			TextTalk self {
+				大概是因為在這種地方生活，
+				才會有這種感覺吧。{wait}
+			}
+			TextWait
+			FlagSet flag[0]
+		else:
+			TextTalk self {
+				下個月就是創立紀念慶典了啊……{wait}
+			}
+			TextWait
+			TextTalk self {
+				去年的紀念慶典還歷歷在目，
+				仿佛就像是發生在昨天一般。{wait}
+			}
+			TextWait
+	elif flag[801]:
+		if !flag[0]:
+			TextTalk self {
+				克洛斯貝爾自治州位於
+				帝國與共和國的夾縫之間，
+				曾經被捲入過很多場戰爭……{wait}
+			}
+			TextWait
+			TextTalk self {
+				很多生命也因此被時代的洪流所吞沒，
+				就此消亡。{wait}
+			}
+			TextWait
+			TextTalk self {
+				請為他們
+				獻上一份祈禱吧。{wait}
+			}
+			TextWait
+			FlagSet flag[0]
+		else:
+			TextTalk self {
+				克洛斯貝爾市的發展
+				是以許多生命為代價換來的……{wait}
+			}
+			TextWait
+			TextTalk self {
+				請為他們
+				獻上一份祈禱吧。{wait}
+			}
+			TextWait
+	TextEnd self
+	Return
+
+fn[5]:
+	EventBegin 0
+	CrossFade 500ms
+	_Char4A char[0] 255
+	CamSetDistance 259100 1700 -800 0ms
+	ED7CamRotate 45deg 30deg 0deg 0ms
+	CamPers 260 0ms
+	CamZoom 33530 0ms
+	CharSetPos name[0] (259000, 0, -300) 0deg
+	CharSetPos name[1] (260200, 0, -300) 0deg
+	CharSetPos name[2] (259000, 0, -1500) 0deg
+	CharSetPos name[3] (260200, 0, -1500) 0deg
+	if PartyPosition name[9] > -1:
+		CharSetPos name[9] (257760, 0, -580) 45deg
+		CharFlagsUnset field_party[4] 0x0080
+		CharFlags2Unset field_party[4] 0x8000
+	CharTurnTo char[0] 180deg 0deg/s
+	CharSetChipPattern char[0] 0
+	FadeWait
+	if !QuestTaskGet quest[46] 0:
+		TextTalk name[0] {
+			#12P#0000F不好意思，
+			請問您是昆特先生嗎？{wait}
+		}
+		TextWait
+		Emote char[0] 0mm 2000mm 38 38 250ms 1
+		Sleep 1000ms
+		TextTalk char[0] {
+			#5P……你們是警察嗎？{wait}
+		}
+		TextWait
+		TextTalk name[0] {
+			#12P#0000F啊，是的。
+			我們是特務支援課，
+			接到支援請求而來的。{wait}
+		}
+		TextWait
+		TextTalk char[0] {
+			#5P……嗯。{wait}
+		}
+		TextWait
+		TextTalk char[0] {
+			#5P有件任務想交給你們，
+			請替我收集三種
+			用來獻祭的花。{wait}
+		}
+		TextWait
+		TextTalk char[0] {
+			#5P可以儘快接受我的委託嗎？{wait}
+		}
+		TextWait
+		QuestTaskSet quest[46] 0
+	else:
+		TextTalk char[0] {
+			#5P嗯，其它的事情
+			都解決了嗎？{wait}
+		}
+		TextWait
+		TextTalk char[0] {
+			#5P有件任務想交給你們，
+			請替我收集三種
+			用來獻祭的花。{wait}
+		}
+		TextWait
+		TextTalk char[0] {
+			#5P可以接受我的委託嗎？{wait}
+		}
+		TextWait
+	Call fn[0,6]
+	if var[0] == 0:
+		Call fn[0,7]
+	if PartyPosition name[9] > -1:
+		CharFlagsSet field_party[4] 0x0080
+		CharFlags2Set field_party[4] 0x8000
+	CharSetPos field_party[0] (259600, 0, -300) 0deg
+	CharTurnTo char[0] 270deg 0deg/s
+	_Char4B char[0] 255
+	EventEnd 5
+	Return
+
+fn[6]:
+	FadeOut 300ms 0x00000000 100
+	Menu menu[0] -1 -1 0
+		"【接受】" // 0
+		"【拒絕】" // 1
+	MenuWait var[0]
+	MenuClose menu[0]
+	FadeIn 300ms 0x00000000
+	if var[0] != 0:
+		TextTalk name[0] {
+			#12P#0006F十分抱歉……
+			現在還有其它事需要處理，
+			不能立刻……{wait}
+		}
+		TextWait
+		TextTalk char[0] {
+			#5P唔，這樣啊，
+			那就沒辦法了。{wait}
+		}
+		TextWait
+		TextTalk char[0] {
+			#5P等你們有空接受我的委託時
+			再過來吧。{wait}
+		}
+		TextWait
+	Return
+
+fn[7]:
+	TextTalk name[0] {
+		#12P#0000F明白了，
+		我們可以接受。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#5P嗯，很好。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#5P那就別浪費時間了，
+		我現在就告訴你們
+		要收集哪三種花吧。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#5P準備好做筆記了嗎？{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#12P#0005F是，準備好了。{wait}
+	}
+	TextWait
+	CharTurnTo name[0] 180deg 500deg/s
+	TextTalk name[0] {
+		#12P#0000F緹歐，拜託你了。{wait}
+	}
+	TextWait
+	TextTalk name[2] {
+		#12P#0203F瞭解。{wait}
+	}
+	TextWait
+	CharTurnTo name[0] 0deg 500deg/s
+	TextTalk char[0] {
+		#5P第一種叫做『蕾瓦斯之花』，
+		盛開在西克洛斯貝爾街道的
+		警察學校附近。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#5P第二種叫做『利奎姆之花』，
+		可以在克洛斯貝爾市西側大道的
+		塔里茲商店買到。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#5P最後一種叫做『菲奈爾之花』，
+		進入東克洛斯貝爾街道後，
+		就能在附近的瞭望台旁找到。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#5P不過附近可能也會開有類似的花。
+		注意不要採錯了。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#5P……全部都收集完之後，
+		就帶來交給我吧。{wait}
+	}
+	TextWait
+	TextTalk name[2] {
+		#12P#0203F……收集地點已經記下了。{wait}
+	} {
+		#0200F話說回來……
+		您為什麼要收集這三種花呢？{wait}
+	}
+	TextWait
+	CharTurnToChar name[1] name[2] 500deg/s
+	TextTalk name[1] {
+		#0100F在克洛斯貝爾自治州，
+		黃、藍、白這三種顏色
+		代表『安魂』。{wait}
+	} {
+		在舉行葬禮的時候，要用這三種顏色的花
+		做成花束，獻給死者，
+		這是克洛斯貝爾的傳統。{wait}
+	}
+	TextWait
+	TextTalk name[3] {
+		#12P#0305F哎，這就是所謂的花語嗎？{wait}
+	}
+	TextWait
+	TextTalk name[2] {
+		#12P#0203F我想這兩者之間應該
+		有些微妙的區別……{wait}
+	} {
+		#0200F硬要說的話，
+		這應該算是克洛斯貝爾的
+		地方習俗。{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#12P#0003F（說起來，在大哥的葬禮上，
+		　好像也有人獻上了三色花束……）{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#5P…………………………{wait}
+	}
+	TextWait
+	CharTurnTo name[1] 0deg 500deg/s
+	Emote name[0] 0mm 2000mm 0 1 250ms 2
+	SoundPlay sound[29] 0 100 0
+	Emote name[1] 0mm 2000mm 0 1 250ms 2
+	SoundPlay sound[29] 0 100 0
+	Emote name[2] 0mm 2000mm 0 1 250ms 2
+	SoundPlay sound[29] 0 100 0
+	Emote name[3] 0mm 2000mm 0 1 250ms 2
+	SoundPlay sound[29] 0 100 0
+	Sleep 1000ms
+	TextTalk name[0] {
+		#12P#0005F那、那個……{wait}
+	}
+	TextWait
+	TextTalk name[3] {
+		#12P#0305F怎麼了，突然就不說話了。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#5P唉，真是的，
+		現在這些見識狹隘的年輕人
+		真是令人悲哀啊。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#5P竟連這種常識都不知道，
+		真為你們的未來感到擔憂。{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#12P#0005F那、那個……{wait}
+	}
+	TextWait
+	TextTalk name[3] {
+		#12P#0300F哈哈，不好意思，
+		我並不是克洛斯貝爾
+		出身的。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#5P嗯，算啦。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#5P我已經把事情交代完了，
+		你們就儘快處理吧。{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#12P#0005F知、知道了。{wait}
+	}
+	TextWait
+	if PartyPosition name[9] > -1:
+		TextTalk name[9] {
+			#6P#0603F………………………………{wait}
+		}
+		TextWait
+		Fork name[0] fork[1]:
+			CharTurnTo self 270deg 500deg/s
+		Sleep 50ms
+		Fork name[1] fork[1]:
+			CharTurnTo self 270deg 500deg/s
+		Sleep 50ms
+		Fork name[3] fork[1]:
+			CharTurnTo self 270deg 500deg/s
+		Sleep 50ms
+		Fork name[2] fork[1]:
+			CharTurnTo self 270deg 500deg/s
+		TextTalk name[0] {
+			#11P#0012F那個……
+			情況就是這麼回事……{wait}
+		}
+		TextWait
+		TextTalk name[9] {
+			#6P#0600F……哼，
+			什麼叫『情況就是這麼回事』啊。{wait}
+		} {
+			#0606F算了，話都聽到這裡了，
+			也總不能拒絕委託。{wait}
+		} {
+			#0600F既然要做就要做好，完美解決之後
+			再繼續進行調查吧。{wait}
+		}
+		TextWait
+		TextTalk name[3] {
+			#12P#0309F收到，明白了！{wait}
+		}
+		TextWait
+	FadeOut 300ms 0x00000000 100
+	SoundPlay sound[80] 0 100 0
+	TextSetPos -1 -1 -1 -1
+	TextSetName ""
+	TextMessage null {
+		{color 2}任務【收集慰靈之花】{color 0}開始！{wait}
+	}
+	TextWait
+	TextClose 0
+	FadeIn 300ms 0x00000000
+	TextSetPos -1 280 60 3
+	QuestTaskSet quest[46] 1
+	Return
+
+fn[8]:
+	EventBegin 0
+	FadeOut 1000ms 0x00000000 255
+	FadeWait
+	Sleep 500ms
+	_Char4A char[0] 255
+	CamSetDistance 259100 1700 -800 0ms
+	ED7CamRotate 45deg 30deg 0deg 0ms
+	CamPers 260 0ms
+	CamZoom 33530 0ms
+	CharSetPos name[0] (259000, 0, -300) 0deg
+	CharSetPos name[1] (260200, 0, -300) 0deg
+	CharSetPos name[2] (259000, 0, -1500) 0deg
+	CharSetPos name[3] (260200, 0, -1500) 0deg
+	if PartyPosition name[9] > -1:
+		CharSetPos name[9] (257760, 0, -580) 45deg
+		CharFlagsUnset field_party[4] 0x0080
+		CharFlags2Unset field_party[4] 0x8000
+	CharTurnTo char[0] 180deg 0deg/s
+	CharSetChipPattern char[0] 0
+	CharFlagsSet char[0] 0x0040
+	FadeIn 500ms 0x00000000
+	FadeWait
+	TextTalk name[0] {
+		#12P#0000F昆特先生，
+		我們回來了。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#5P嗯，
+		挺快的嘛。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#5P已經把花全部集齊了嗎？{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#12P#0000F是的，請您確認一下。{wait}
+	}
+	TextWait
+	FadeOut 300ms 0x00000000 100
+	TextSetPos -1 -1 -1 -1
+	TextSetName ""
+	SoundPlay sound[17] 0 100 0
+	TextMessage null {
+		交出了{item[841]}{color 0}。{wait}
+	} {
+		交出了{item[842]}{color 0}。{wait}
+	} {
+		交出了{item[843]}{color 0}。{wait}
+	}
+	TextWait
+	TextClose 0
+	FadeIn 300ms 0x00000000
+	TextSetPos -1 280 60 3
+	_59
+	ItemRemove item[841] 1
+	ItemRemove item[842] 1
+	ItemRemove item[843] 1
+	TextTalk char[0] {
+		#5P……嗯，沒錯，
+		三種花全部都集齊了。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#5P辛苦了，
+		特務支援課的各位。{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#12P#0000F請不必客氣，
+		完成委託是我們的分內之事。{wait}
+	}
+	TextWait
+	TextTalk name[3] {
+		#12P#0306F呼～這委託出乎意料地麻煩呢。{wait}
+	} {
+		還出現了雜貨店沒有花賣
+		這種意外。{wait}
+	}
+	TextWait
+	TextTalk name[2] {
+		#12P#0200F不過，最後總算還是完成了。{wait}
+	}
+	TextWait
+	TextTalk name[1] {
+		#0100F老爺爺，可以向您請教一個問題嗎？{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#5P……什麼事？{wait}
+	}
+	TextWait
+	TextTalk name[1] {
+		#0103F按照最近的風俗習慣來說，
+		在葬禮之外的場合使用三色花束
+		來獻祭是很少見的。{wait}
+	} {
+		#0100F而您這次為什麼要收集三色花束呢？{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#5P嗯，這次的確
+		不是為了葬禮而收集的……{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#5P……機會難得，現在我正好要去獻花，
+		你們也一起來吧。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#5P到時再告訴你們我要收集三色花束的理由。{wait}
+	}
+	TextWait
+	ForkFunc char[0] fork[3] fn[0,10]
+	Sleep 700ms
+	ForkFunc name[0] fork[3] fn[0,11]
+	ForkFunc name[1] fork[3] fn[0,12]
+	Sleep 500ms
+	ForkFunc name[2] fork[3] fn[0,11]
+	ForkFunc name[3] fork[3] fn[0,12]
+	if PartyPosition name[9] > -1:
+		Sleep 200ms
+		Fork name[9] fork[1]:
+			CharTurnTo self 135deg 500deg/s
+	ForkWait char[0] fork[3]
+	Emote name[0] 0mm 2000mm 0 1 250ms 2
+	SoundPlay sound[29] 0 100 0
+	Emote name[3] 0mm 2000mm 0 1 250ms 2
+	SoundPlay sound[29] 0 100 0
+	Emote name[2] 0mm 2000mm 0 1 250ms 2
+	SoundPlay sound[29] 0 100 0
+	Emote name[1] 0mm 2000mm 0 1 250ms 2
+	SoundPlay sound[29] 0 100 0
+	Sleep 1000ms
+	TextTalk name[2] {
+		#6P#0205F……到底是怎麼回事呢？{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#5P#0005F不、不知道……{wait}
+	} {
+		#0003F雖然不是很清楚，
+		不過，總之還是去看看吧。{wait}
+	}
+	TextWait
+	if PartyPosition name[9] > -1:
+		TextTalk name[9] {
+			#6P#0603F（……難道……）{wait}
+		}
+		TextWait
+	FadeOut 1000ms 0x00000000 255
+	FadeWait
+	QuestTaskSet quest[46] 7
+	NewScene "scena/t4100.bin" 0 0 0
+	Hcf
+	Return
+
+fn[9]:
+	EventBegin 0
+	FadeOut 0ms 0x00000000 255
+	CamSetDistance 259100 1700 -800 0ms
+	ED7CamRotate 45deg 30deg 0deg 0ms
+	CamPers 260 0ms
+	CamZoom 33530 0ms
+	CharSetPos name[0] (259000, 0, -300) 0deg
+	CharSetPos name[1] (260200, 0, -300) 0deg
+	CharSetPos name[2] (259000, 0, -1500) 0deg
+	CharSetPos name[3] (260200, 0, -1500) 0deg
+	if PartyPosition name[9] > -1:
+		CharSetPos name[9] (257760, 0, -580) 45deg
+		CharFlagsUnset field_party[4] 0x0080
+		CharFlags2Unset field_party[4] 0x8000
+	CharTurnTo char[0] 180deg 0deg/s
+	_Char4A char[0] 255
+	CharSetChipPattern char[0] 0
+	CamZoom 30720 3000ms
+	FadeIn 500ms 0x00000000
+	FadeWait
+	TextTalk char[0] {
+		#5P多虧你們，
+		我才能給重要的朋友們掃墓，
+		真是非常感謝。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#5P如果以後還有什麼事的話，
+		我就再聯絡你們吧。{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#12P#0000F嗯，隨時歡迎。
+		……那我們就先告辭了。{wait}
+	}
+	TextWait
+	FadeOut 300ms 0x00000000 100
+	SoundPlay sound[9] 0 100 0
+	TextSetPos -1 -1 -1 -1
+	TextSetName ""
+	TextMessage null {
+		{color 2}任務【收集慰靈之花】{color 0}完成！{wait}
+	}
+	TextWait
+	TextClose 0
+	FadeIn 300ms 0x00000000
+	TextSetPos -1 280 60 3
+	FadeOut 1000ms 0x00000000 255
+	FadeWait
+	CharSetPos field_party[0] (-350, 0, 12250) 0deg
+	QuestFlagsSet quest[46] 0x10
+	FlagSet flag[1]
+	Sleep 500ms
+	CharSetPos field_party[0] (259600, 0, -300) 0deg
+	CharTurnTo char[0] 270deg 0deg/s
+	_Char4B char[0] 255
+	if PartyPosition name[9] > -1:
+		CharFlagsSet field_party[4] 0x0080
+		CharFlags2Set field_party[4] 0x8000
+	EventEnd 5
+	Return
+
+fn[10]:
+	Fork self fork[1]:
+		_Char91 self 0 0 -7000 2000 0
+	Sleep 2500ms
+	Fork self fork[2]:
+		CharColor self 0x00FFFFFF 500ms
+	ForkWait self fork[1]
+	Return
+
+fn[11]:
+	Fork self fork[1]:
+		_Char91 self -300 0 0 2000 0
+	ForkWait self fork[1]
+	Fork self fork[1]:
+		CharTurnTo self 135deg 500deg/s
+	ForkWait self fork[1]
+	Return
+
+fn[12]:
+	Fork self fork[1]:
+		_Char91 self 300 0 0 2000 0
+	ForkWait self fork[1]
+	Fork self fork[1]:
+		CharTurnTo self 225deg 500deg/s
+	ForkWait self fork[1]
+	Return

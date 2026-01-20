@@ -2,6 +2,7 @@
 
 using System.Text;
 using Enums;
+using zCodec.Calmare;
 using static Enums.ParameterType;
 
 #endregion
@@ -90,14 +91,25 @@ public partial class AsCodec
         }
         _currentIns = ParseInsLine(line);
         var code = OpFuncCode[_currentIns.code];
-        var types = _opFuncs[code].Params(this);
-        _bWriter.Write(OpFuncCode[_currentIns.code]);
-        for (var index = 0; index < types.Length; index++)
+        try
         {
-            var type = types[index];
-            var p = _currentIns.param[index];
-            Write(type, p);
+          
+            var types = _opFuncs[code].Params(this);
+          
+            _bWriter.Write(OpFuncCode[_currentIns.code]);
+            for (var index = 0; index < types.Length; index++)
+            {
+                var type = types[index];
+                var p = _currentIns.param[index];
+                Write(type, p);
+            }
         }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
+   
     }
 
     private void CompileHeaderLine(string line)
@@ -162,7 +174,7 @@ public partial class AsCodec
                 _bWriter!.Write(Convert.ToInt32(p, 16));
                 break;
             case str:
-                _bWriter!.Write([..Encoding.GetBytes(p.Trim('"')), 0]);
+                _bWriter!.Write([..CalmareCodec.ClmStringToBytes(p.Trim('"'),Encoding), 0]);
                 break;
             case sp:
                 if (!_holderAddrDic!.TryGetValue(p, out var list))

@@ -1,0 +1,410 @@
+calmare zero_k scena
+scena:
+	name "c133b" "c133b" "c133b"
+	town town[27]
+	bgm bgm[513]
+	flags 8192
+	item_use fn[0,255]
+	unk 255 0
+
+entry:
+	pos (0, 0, -1000)
+	unk1 0
+	cam_from (0, 0, 34000)
+	cam_pers 262
+	unk2 30
+	cam_deg 45deg
+	cam_limit 0deg 360deg
+	cam_at (0, 0, 0)
+	unk3 0
+	unk4 0
+	flags 0x0001
+	town town[1]
+	init fn[0,0]
+	reinit fn[0,1]
+
+npc char[0]:
+	name "艾莉"
+	pos (0, 0, 0)
+	angle 0deg
+	flags 0x00C4
+	unk2 0
+	chip chip[0]
+	init fn[255,255]
+	talk fn[255,255]
+	unk4 255
+
+fn[0]:
+	if global[2] == 10 && !flag[1828]:
+		Event fn[0,3]
+	elif flag[736]:
+		FlagUnset flag[736]
+		Event fn[0,4]
+	else:
+		Event fn[0,2]
+	Return
+
+fn[1]:
+	Return
+
+fn[2]:
+	EventBegin 1
+	FadeOut 0ms 0x00000000 255
+	CamSetDistance 600 1000 0 0ms
+	ED7CamRotate 45deg 23deg 0deg 0ms
+	CamPers 500 0ms
+	CamZoom 19500 0ms
+	CharSetPos field_party[0] (2200, 0, 0) 90deg
+	if system[11] != 255:
+		CharSetPos field_party[1] (500, 0, -500) 90deg
+	if system[12] != 255:
+		CharSetPos field_party[2] (500, 0, 500) 90deg
+	if system[13] != 255:
+		CharSetPos field_party[3] (-700, 0, 0) 90deg
+	if system[14] != 255:
+		CharSetPos field_party[4] (-1900, 0, -600) 90deg
+	if system[15] != 255:
+		CharSetPos field_party[5] (-1900, 0, 600) 90deg
+	FadeIn 500ms 0x00000000
+	FadeWait
+	var[0] = 0
+	if system[0] == 101:
+		Menu menu[0] 10 10 0
+			"★【１６Ｆ】" // 0
+			"　【 １Ｆ 】" // 1
+			"　【 Ｂ５ 】" // 2
+			"　【 離開 】" // 3
+		var[2] = 0
+	elif system[0] == 100:
+		Menu menu[0] 10 10 0
+			"　【１６Ｆ】" // 0
+			"★【 １Ｆ 】" // 1
+			"　【 Ｂ５ 】" // 2
+			"　【 離開 】" // 3
+		var[2] = 1
+	elif system[0] == 102:
+		Menu menu[0] 10 10 0
+			"　【１６Ｆ】" // 0
+			"　【 １Ｆ 】" // 1
+			"★【 Ｂ５ 】" // 2
+			"　【 離開 】" // 3
+		var[2] = 2
+	MenuWait var[0]
+	MenuClose menu[0]
+	TextClose 0
+	if var[0] == 3:
+		FadeOut 500ms 0x00000000 255
+		FadeWait
+	elif var[2] < var[0]:
+		FadeOut 2000ms 0x00000000 255
+		SoundPlay sound[159] 0 100 0
+		CamSetDistance 600 16000 0 2000ms
+		FadeWait
+		CamWait 1
+		Sleep 800ms
+	elif var[2] > var[0]:
+		FadeOut 2000ms 0x00000000 255
+		SoundPlay sound[159] 0 100 0
+		CamSetDistance 600 -14000 0 2000ms
+		FadeWait
+		CamWait 1
+		Sleep 800ms
+	else:
+		FadeOut 500ms 0x00000000 255
+		FadeWait
+	if var[0] == 3:
+		switch var[2]:
+			case 0:
+				EventEnd 5
+				NewScene "scena/c134b.bin" 100 0 0
+				Hcf
+				break
+			case 1:
+				EventEnd 5
+				NewScene "scena/c131b.bin" 101 0 0
+				Hcf
+				break
+			case 2:
+				EventEnd 5
+				NewScene "scena/c1320.bin" 103 0 0
+				Hcf
+				break
+	else:
+		switch var[0]:
+			case 0:
+				FlagSet flag[761]
+				Sleep 500ms
+				EventEnd 5
+				NewScene "scena/c134b.bin" 100 0 0
+				Hcf
+				break
+			case 1:
+				FlagSet flag[761]
+				Sleep 500ms
+				EventEnd 5
+				NewScene "scena/c131b.bin" 101 0 0
+				Hcf
+				break
+			case 2:
+				FlagSet flag[761]
+				Sleep 500ms
+				EventEnd 5
+				NewScene "scena/c1320.bin" 103 0 0
+				Hcf
+				break
+	Return
+
+fn[3]:
+	EventBegin 0
+	FadeOut 0ms 0x00000000 255
+	ED7LoadChip "apl/ch50011.itc" chip[30]
+	SoundLoad sound[806]
+	CamSetDistance 0 1000 0 0ms
+	ED7CamRotate 45deg 23deg 0deg 0ms
+	CamPers 500 0ms
+	CamZoom 19500 0ms
+	CharSetPos name[0] (-4500, 0, 0) 90deg
+	CharColor name[0] 0x00FFFFFF 0ms
+	VisShow vis[0] 180 0 436 256 0 0 256 256 0 0 256 256 0x00FFFFFF 1 "c_vis007.itp"
+	FadeIn 1000ms 0x00000000
+	Sleep 500ms
+	Fork name[0] fork[1]:
+		CharWalkToPos2 self (0, 0, 0) 2000mm/s 0
+	Fork name[0] fork[2]:
+		CharColor self 0xFFFFFFFF 500ms
+	ForkWait name[0] fork[1]
+	SoundPlay sound[806] 2 100 0
+	Sleep 500ms
+	Emote name[0] 0mm 2000mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Sleep 1000ms
+	CrossFade 250ms
+	CharFlagsSet name[0] 0x0020
+	CharFlagsSet name[0] 0x0002
+	CharSetChipBase name[0] chip[30]
+	CharSetChipPattern name[0] 4
+	SoundPlay sound[804] 0 100 0
+	FadeWait
+	Sleep 300ms
+	CharSetChipPattern name[0] 5
+	SoundStop sound[806]
+	SoundPlay sound[807] 0 100 0
+	VisSet vis[0] 3 0xFFFFFFFF 500ms 0 0
+	FadeOut 500ms 0x00000000 100
+	FadeWait
+	VisWait vis[0] 3
+	TextSetPos 90 130 -1 -1
+	TextMessage name[0] {
+		{color 0}#15200807V#0000F您好，我是特務支援課的
+		羅伊德・班寧斯！{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	TextSetPos 170 50 -1 -1
+	TextSetName "男性的聲音"
+	TextMessage null {
+		{color 5}#15200808V啊，是我。
+		迪塔・庫羅伊斯。{wait}
+	} {
+		#15200809V不好意思，讓你誤以為是
+		警察局總部的聯絡了嗎？{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	TextSetPos 90 130 -1 -1
+	TextMessage name[0] {
+		{color 0}#15200810V#0006F哪、哪裡……{wait}
+	} {
+		#15200811V#0001F難道已經和什麼地方
+		取得聯絡了嗎？{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	TextSetPos 170 50 -1 -1
+	TextSetName "迪塔的聲音"
+	TextMessage null {
+		{color 5}#15200812V不，很遺憾，還沒有。{wait}
+	} {
+		#15200813V其實，門前的警備員發來的報告
+		讓我有些在意。{wait}
+	} {
+		#15200814V不好意思，打攪你休息了，
+		不過能來一趟我的房間嗎？{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	TextSetPos 90 130 -1 -1
+	TextMessage name[0] {
+		{color 0}#15200815V#0001F我知道了，
+		馬上就過去。{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	TextSetPos -1 280 60 3
+	VisSet vis[0] 3 0x00FFFFFF 500ms 0 0
+	FadeIn 500ms 0x00000000
+	FadeWait
+	VisWait vis[0] 3
+	CrossFade 250ms
+	CharSetChipPattern name[0] 4
+	SoundPlay sound[807] 0 100 0
+	FadeWait
+	Sleep 300ms
+	TextTalk name[0] {
+		#15200816V#0008F（警備員的報告……
+		　……有種不祥的預感啊。）{wait}
+	} {
+		#15200817V#0001F（總之，至少先好好檢查
+		　一下裝備吧。）{wait}
+	}
+	TextWait
+	FadeOut 1000ms 0x00000000 255
+	FadeWait
+	CharFlagsUnset name[0] 0x0020
+	CharFlagsUnset name[0] 0x0002
+	CharSetChipBase name[0] chip[255]
+	CharSetChipPattern name[0] 0
+	NextFrame
+	VisHide vis[255] 0
+	UnloadChip chip[30]
+	FlagSet flag[1828]
+	QuestTaskSet quest[78] 1
+	global[2] = 0
+	SoundStop sound[806]
+	EventEnd 5
+	Call fn[0,2]
+	Return
+
+fn[4]:
+	EventBegin 0
+	FadeOut 0ms 0x00000000 255
+	SoundLoad sound[861]
+	CamSetDistance 600 -3000 0 0ms
+	ED7CamRotate 45deg 23deg 0deg 0ms
+	CamPers 500 0ms
+	CamZoom 19500 0ms
+	CharSetPos name[1] (600, 0, -600) 90deg
+	CharSetPos name[0] (600, 0, 600) 90deg
+	CharSetPos name[2] (-600, 0, -800) 90deg
+	CharSetPos name[3] (-600, 0, 800) 90deg
+	CharFlagsSet char[0] 0x0008
+	CharFlagsUnset char[0] 0x0080
+	CharFlags2Unset char[0] 0x8000
+	CharSetPos char[0] (1000, 0, 0) 90deg
+	ForkFunc name[0] fork[3] fn[0,5]
+	SoundPlay sound[861] 2 100 0
+	CamSetDistance 600 1000 0 5000ms
+	CamZoom 18500 5000ms
+	FadeIn 4000ms 0x00000000
+	FadeWait
+	CamWait 1
+	Sleep 500ms
+	TextTalk name[0] {
+		#15200890V#0004F#5P………………………………{wait}
+	}
+	TextWait
+	TextTalk name[1] {
+		#15200891V#0102F#5P一定要……保護好這裡。{wait}
+	}
+	TextWait
+	TextTalk name[2] {
+		#15200892V#6P#0201F……是……！{wait}
+	}
+	TextWait
+	TextTalk name[3] {
+		#15200893V#6P#0303F先把話說在前面……
+		克洛斯貝爾警備隊可是精銳部隊。{wait}
+	} {
+		#15200894V雖然被人操縱了，但也不能小看
+		藥物對他們身體能力的提高。{wait}
+	} {
+		#15200895V#0301F等待著我們的，很可能是
+		至今為止最艱難的一場戰鬥。{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#15200896V#0004F#5P嗯……我明白。{wait}
+	} {
+		#15200897V#0000F也就是說，考驗我們
+		團隊合作的時候到了啊。{wait}
+	}
+	TextWait
+	BlurOn 1ms 0xBBFFFFFF 0 0 0
+	CamZoom 17500 800ms
+	Fork name[0] fork[2]:
+		CharTurnToChar self name[2] 500deg/s
+	Sleep 50ms
+	Fork name[1] fork[2]:
+		CharTurnToChar self name[0] 500deg/s
+	Sleep 50ms
+	Fork name[2] fork[2]:
+		CharTurnToChar self name[0] 500deg/s
+	Sleep 50ms
+	Fork name[3] fork[2]:
+		CharTurnToChar self name[0] 500deg/s
+	ForkWait name[0] fork[2]
+	CamWait 16
+	BlurOff 0ms
+	Sleep 300ms
+	TextTalk name[0] {
+		#15200898V#0003F#5P──首先要拆除導力炸彈。{wait}
+	} {
+		#15200899V#0013F接下來，要在門前阻止
+		警備隊員們的突入。{wait}
+	}
+	TextWait
+	Sleep 500ms
+	Shake 200 0 3000 300ms
+	TextTalk name[0] {
+		#15200900V#0007F#5P願女神#4R愛德斯#保佑！
+		大家務必要小心！{wait}
+	}
+	TextWait
+	Sleep 500ms
+	Sc_C4Set 2147483648
+	Shake 200 0 3000 300ms
+	SoundPlay sound[15200901] 255 100 0
+	SoundPlay sound[15200902] 255 100 1
+	SoundPlay sound[15200903] 255 100 2
+	TextTalk char[0] {
+		#0107F#1K#2P嗯！{wait}
+	}
+	TextTalk name[2] {
+		#0201F#1K#6P是……！{wait}
+	}
+	TextTalk name[3] {
+		#0307F#1K#1P哦！{wait}
+	}
+	TextClose 1
+	_59
+	Sc_C4Unset 2147483648
+	FadeOut 2000ms 0x00000000 255
+	SoundPlay sound[862] 0 100 0
+	SoundStop sound[861]
+	CamSetDistance 600 16000 0 2000ms
+	FadeWait
+	ForkQuit name[0] fork[3]
+	CamWait 1
+	Sleep 1000ms
+	if QuestFlagsGet quest[49] 0x02 && !QuestFlagsGet quest[49] 0x10:
+		QuestFlagsSet quest[49] 0x40
+	elif !QuestFlagsGet quest[46] 0x02:
+		QuestFlagsSet quest[49] 0x40
+	FlagSet flag[1853]
+	FlagSet flag[761]
+	SoundStop sound[861]
+	EventEnd 5
+	NewScene "scena/c131b.bin" 101 0 0
+	Hcf
+	Return
+
+fn[5]:
+	while 1:
+		Shake 0 20 3000 500ms
+		Sleep 500ms
+	Return

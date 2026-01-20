@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -6,6 +7,7 @@ using System.Text;
 using Extensions;
 using MiniExcelLibs;
 using MiniExcelLibs.Attributes;
+using zCodec.Calmare;
 
 namespace zCodec.Dats;
 
@@ -17,59 +19,57 @@ public class NameDatItem
     public string Name { get; set; } = string.Empty;
 }
 
-public static class NameDat
+public class NameDat(bool isAo) : IDatCodec
 {
-    public static byte[] Serialize(this List<NameDatItem> items,Encoding encoding)
-    {
-        using var ms = new MemoryStream();
-        using var bw = new BinaryWriter(ms);
-        bw.Write(new byte[items.Count * 0x14]);
-        foreach (var item in items)
-        {
-            item.pName = (ushort)ms.Position;
-            bw.Write([..encoding.GetBytes(item.Name), 0]);
-        }
-        ms.Position = 0;
-        foreach (var item in items)
-        {
-            bw.Write(item.Id);
-            bw.Write(item.pName);
-            bw.Write(Convert.FromBase64String(item.Data));
-        }
-        return ms.ToArray();
-    }
+    public IList<NameDatItem>? Data { get; private set; }
 
-    public static void ToDat(string file, string outDir,Encoding encoding)
+    public bool IsAo { get; } = isAo;
+    public bool CanDecompile(string file) => Path.GetFileNameWithoutExtension(file) == "t_name";
+    public DatSaveFormat DatSaveFormat => DatSaveFormat.Csv;
+    public IDatCodec Load(string file)
     {
-        var list = MiniExcel.Query<NameDatItem>(file).ToList();
-        var data = Serialize(list,encoding);
-        var dtName = Path.GetFileNameWithoutExtension(file) + "._dt";
-        File.WriteAllBytes(Path.Combine(outDir, dtName), data);
+        Data = MiniExcel.Query<NameDatItem>(file).ToList();
+        return this;
     }
-    
-    public static List<NameDatItem> Deserialize(string file, Encoding encoding)
+    public object Decompile(string file, Encoding encoding)
     {
         var itemList = new List<NameDatItem>();
         using var fs = new FileStream(file, FileMode.Open, FileAccess.Read, FileShare.Read);
         using var br = new BinaryReader(fs);
-        do
-        {
+        do{
             var item = new NameDatItem
             {
                 Id = br.ReadUInt16(),
                 pName =  br.ReadUInt16(),
                 Data = Convert.ToBase64String(br.ReadBytes(0x10))
             };
-            item.Name = br.ReadCStringWithOffset(item.pName, encoding) ?? throw new Exception();
+            item.Name = $"\"{br.ReadClmStringWithOffset(item.pName, encoding)}\"";
             itemList.Add(item);
         } while (fs.Position < itemList.First().pName);
         return itemList;
     }
 
-    public static void ToCsv(string file, string outDir,Encoding encoding)
+    public byte[] Compile(Encoding encoding)
     {
-        var list = Deserialize(file, encoding);
-        var csvName = Path.GetFileNameWithoutExtension(file) + ".csv";
-        MiniExcel.SaveAs(Path.Combine(outDir,csvName), list,overwriteFile:true,excelType:ExcelType.CSV);
+        if (Data == null)
+            throw new ArgumentNullException(nameof(Data));
+        
+        using var ms = new MemoryStream();
+        using var bw = new BinaryWriter(ms);
+        bw.Write(new byte[Data.Count * 0x14]);
+        foreach (var item in Data)
+        {
+            item.pName = (ushort)ms.Position;
+            bw.Write(CalmareCodec.ClmStringToBytes(item.Name.Trim('\"'),encoding));
+            bw.Write((byte)0);
+        }
+        ms.Position = 0;
+        foreach (var item in Data)
+        {
+            bw.Write(item.Id);
+            bw.Write(item.pName);
+            bw.Write(Convert.FromBase64String(item.Data));
+        }
+        return ms.ToArray();
     }
 }

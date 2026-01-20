@@ -21,9 +21,6 @@ public class MessString
 
     private static string Replace(string cn)
     {
-        foreach (var c in CalmareCodec.Remaps)
-            if (cn.Contains(c.Key))
-                cn = cn.Replace(c.Key, c.Value);
-        return cn;
+        return CalmareCodec.Remap(cn);
     }
 }

@@ -36,7 +36,7 @@ public partial class MainWindowViewModel : ViewModelBase
     [ObservableProperty]private float _baselineOffset = -8;
     [ObservableProperty] private string? _fontName = "霞鹜臻楷 GB";
     
-    [ObservableProperty] private string? _unicodeRange ="0x20-0xffff";
+    [ObservableProperty] private string? _unicodeRange ="0x20-0x32ff,0x4e00-0x9fff,0xff00-0xfff0";
     public SKFontStyleWeight[] FontWeights =>
     [
         SKFontStyleWeight.Thin ,
@@ -76,6 +76,7 @@ public partial class MainWindowViewModel : ViewModelBase
 
     private void LoadITF(byte[] bytes)
     {
+        _stream?.Dispose();
         _reader?.Dispose();
         _stream = new MemoryStream(bytes);
         _reader = new ITFReader(_stream);

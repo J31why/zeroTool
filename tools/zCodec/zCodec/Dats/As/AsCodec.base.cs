@@ -6,13 +6,13 @@ using System.Text;
 
 namespace zCodec.Dats.As;
 
-public partial class AsCodec(Encoding encoding)
+public partial class AsCodec(bool isAo,Encoding encoding)
 {
     private string _fileName = "";
     private const string AddrFlag = "loc:";
     private bool _isRead;
     private Encoding Encoding { get; } = encoding;
-
+    private bool IsAo { get; } = isAo;
     private void Reset()
     {
         _addrSet.Clear();

@@ -1,19 +1,21 @@
 ﻿#region
 
 using System.Text;
+using static zCodec.Calmare.CalmareCodec;
 
 #endregion
 
 namespace zCodec.Calmare.Opcodes;
 
-public class Menu(string text) : Opcode(0x5E, text)
+public class Menu(string text) : ScenaOpcode(text)
 {
+    protected override byte Code => 0x5E;
     public override byte[] Compile(Encoding encoding)
     {
         try
         {
             List<byte> bytes = new(0x200) { Code };
-            var menu = NumReg.Match(Param[0]).Value;
+            var menu = NumRegex().Match(Param[0]).Value;
             bytes.AddRange(BitConverter.GetBytes(Convert.ToUInt16(menu)));
             bytes.AddRange(BitConverter.GetBytes(Convert.ToInt16(Param[1])));
             bytes.AddRange(BitConverter.GetBytes(Convert.ToInt16(Param[2])));
@@ -21,7 +23,7 @@ public class Menu(string text) : Opcode(0x5E, text)
             for (var i = 4; i < Param.Count; i++)
             {
                 var text = Param[i];
-                bytes.AddRange([..CompileString(text, encoding), 1]);
+                bytes.AddRange([..ClmStringToBytes(text, encoding), 1]);
             }
 
             bytes.Add(0);

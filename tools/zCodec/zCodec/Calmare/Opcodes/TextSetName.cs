@@ -6,10 +6,11 @@ using System.Text;
 
 namespace zCodec.Calmare.Opcodes;
 
-public class TextSetName(string text) : Opcode(0x61, text)
+public class TextSetName(string text) : ScenaOpcode(text)
 {
+    protected override byte Code => 0x61;
     public override byte[] Compile(Encoding encoding)
     {
-        return [Code, ..encoding.GetBytes(Param[0]), 0];
+        return [Code, ..CalmareCodec.ClmStringToBytes(Param[0],encoding), 0];
     }
 }

@@ -1,0 +1,1030 @@
+﻿#include "hook.h"
+
+using namespace std;
+
+
+namespace hook {
+    string sjis2uni_addr_pattern = "48 89 54 24 10 55 41 54 41 57 48";
+    string check_encoding_addr_pattern = "5F 5B 5D C3 CC CC CC CC CC CC CC CC CC 48 89 5C 24 08"; // result+0xd
+    string load_mess_string_addr_pattern = "FF C3 CC CC CC CC CC 48 89 5C 24 18 48 89 4C 24 08"; //result+0x7
+    string get_mess_string_key_addr_pattern = "40 53 48 83 EC 20 48 8B D9 81 FA ?? ?? 00 00 0f";
+    string mess_string_jp_struct_addr_pattern = "89 5d ?? 48 8d 15 ?? ?? ?? 00"; //result+0x10+0x38af17
+    string sjis2utf8_addr_pattern = "40 56 48 83 EC 10";
+    string utf82sjis_addr_pattern = "48 89 5C 24 10 56 49 8B D9";
+    string noteHelpKey_posMap_addr_pattern = "F3 0F 10 05 ?? ?? ?? 00 F3 0F 11 05 ?? ?? ?? 00 4c 8b c0 41";
+    string loadNoteHelpKey_posMap_addr_pattern = "48 89 5C 24 ?? 48 89 4C 24 ?? 55 56 57 41 54 41 55 41 56 41 57 48 8D AC 24 ?? ?? FF FF 48 81 EC ?? ?? 00 00 48 8d 05 ?? ?? ?? 00";
+    string WebMPlayerOpen_addr_pattern = "72 03 48 8B 16 48 8B CB FF 15";
+
+    string memo_sjis_byte_valid_addr_pattern = "41 0f b6 0f 80 f9 7f 76 ?? 8d 41 60 3c 3f 76 ??"; //result+0x7
+    string memo_2_sjis_byte_valid_addr_pattern = "41 0F B6 0F 80 F9 7F 0F"; //result+0x4
+    string desc_sjis_byte_valid_addr_pattern = "00 0F B6 0F 80 F9 7F 76 ?? 8d";  //result+0x4
+    string item_dialog_sjis_byte_valid_addr_pattern = "49 FF C6 80 F9 7F 76"; //result+3
+    string text_length_sjis_byte_valid_addr_pattern = "80 f9 7f 76 ?? 8d 41 60 3c 3f 76 ?? 41 83";
+    string add_al_60_r15_sjis_byte_valid_addr_pattern = "3C 7F 0F 86 ?? ?? 00 00 04 60";
+    string menu_rsi_sjis_byte_valid_addr_pattern = "8D 41 60 3C 3F 76 ?? 44";
+    string number_sjis_byte_valid_addr_pattern = "0f b6 0b  80 f9 7f"; // result +0x3
+    string check_talk_sjis_byte_valid_addr_pattern = "3C A0 73"; 
+    string talk_cl_sjis_byte_valid_addr_pattern = "3C 1f 76 ?? 80 f9";
+    string talk_dl_sjis_byte_valid_addr_pattern = "3C 1f 76 ?? 80 fa";
+    string escape_sjis_byte_valid_addr_pattern = "41 8D 48 60 80 f9 3f";//result+7
+
+
+    uintptr_t sjis2uni_addr = 0x140078FB0;
+    uintptr_t check_encoding_addr = 0x140078850;
+    uintptr_t load_mess_string_addr = 0x1401015C0;
+    uintptr_t get_mess_string_key_addr = 0x1400C72B0;
+    uintptr_t mess_string_jp_struct_addr = 0x14048C938;
+    uintptr_t sjis2utf8_addr = 0x140078B20;
+    uintptr_t utf82sjis_addr = 0x140078D00;
+    uintptr_t noteHelpKey_posMap_addr = 0x1404DCCE0;
+    uintptr_t loadNoteHelpKey_posMap_addr = 0x1400BF990;
+    uintptr_t WebMPlayerOpen_addr = 0x1403D2EB0;                   //[1403D2EB0]
+
+    uintptr_t check_talk_sjis_byte_valid_addr = 0x14020EEEC;          //
+    uintptr_t talk_cl_sjis_byte_valid_addr = 0x140104D5F;             //
+    uintptr_t talk_dl_sjis_byte_valid_addr = 0x1402151DE;             //
+    uintptr_t escape_sjis_byte_valid_addr = 0x1402874C4;
+    uintptr_t memo_sjis_byte_valid_addr = 0x140289c33;                //手册Messstring
+    uintptr_t memo_2_sjis_byte_valid_addr = 0x14028B905;              //
+    uintptr_t desc_sjis_byte_valid_addr = 0x1401CE400;                //
+    uintptr_t item_dialog_sjis_byte_valid_addr = 0x140210677;         //
+    uintptr_t text_length_sjis_byte_valid_addr = 0x140215C22;         //
+    uintptr_t menu_rsi_sjis_byte_valid_addr = 0x140332CC7;            //
+    uintptr_t number_sjis_byte_valid_addr = 0x14028ADF0;              //
+    uintptr_t add_al_60_r15_sjis_byte_valid_addr[2] = { 0x140211D65 ,0x140214998 };    //0: 对话printText2; 1: unk
+
+    CreateFileA_t ori_CreateFileA = nullptr;
+    CreateWindowExA_t ori_CreateWindowExA = nullptr;
+    sjis2uni_t ori_sjis2uni = nullptr;
+    checkEncoding_t ori_check_encoding = nullptr;
+    load_mess_string_t ori_load_mess_string = nullptr;
+    sjis2utf8_t ori_sjis2utf8 = nullptr;
+    utf82sjis_t ori_utf82sjis = nullptr;
+    WebMPlayerOpen_t ori_WebMPlayerOpen = nullptr;
+    loadNoteHelpKey_posMap_t ori_loadNoteHelpKey_posMap = nullptr;
+    get_mess_string_key_t get_mess_string_key = nullptr;
+
+    int matchedAddrCount = 0;
+    int totalAddrCount = 23;
+    bool isHookSuccessful = false;
+
+    void search_all_addresses() {
+        vector<uintptr_t> matchResults;
+
+        if (SearchModuleMemory(sjis2uni_addr_pattern, matchResults, true) && matchResults.size() == 1) {
+            sjis2uni_addr = matchResults[0];
+            cout << "sjis2uni_addr : 0x" << hex << sjis2uni_addr << endl;
+            matchedAddrCount++;
+        }
+
+        if (SearchModuleMemory(check_encoding_addr_pattern, matchResults) && matchResults.size() == 1) {
+            check_encoding_addr = matchResults[0] + 0xd;
+            cout << "check_encoding_addr : 0x" << hex << check_encoding_addr << endl;
+            matchedAddrCount++;
+        }
+
+        if (SearchModuleMemory(load_mess_string_addr_pattern, matchResults) && matchResults.size() == 1) {
+            load_mess_string_addr = matchResults[0] + 0x7;
+            cout << "load_mess_string_addr : 0x" << hex << load_mess_string_addr << endl;
+            matchedAddrCount++;
+        }
+
+        if (SearchModuleMemory(get_mess_string_key_addr_pattern, matchResults) && matchResults.size() == 1) {
+            get_mess_string_key_addr = matchResults[0];
+            get_mess_string_key = reinterpret_cast<get_mess_string_key_t>(get_mess_string_key_addr);
+            cout << "get_mess_string_key_addr : 0x" << hex << get_mess_string_key_addr << endl;
+            matchedAddrCount++;
+        }
+
+        if (SearchModuleMemory(mess_string_jp_struct_addr_pattern, matchResults) && matchResults.size() == 1) {
+            mess_string_jp_struct_addr = matchResults[0] + 0x6;
+            uint32_t* offset_ptr = reinterpret_cast<uint32_t*>(mess_string_jp_struct_addr);
+            mess_string_jp_struct_addr += (uint64_t)*offset_ptr + 0x4;
+            cout << "mess_string_jp_struct_addr : 0x" << hex << mess_string_jp_struct_addr << endl;
+            matchedAddrCount++;
+        }
+
+        if (SearchModuleMemory(sjis2utf8_addr_pattern, matchResults) && matchResults.size() == 1) {
+            sjis2utf8_addr = matchResults[0];
+            cout << "sjis2utf8_addr : 0x" << hex << sjis2utf8_addr << endl;
+            matchedAddrCount++;
+        }
+
+        if (SearchModuleMemory(utf82sjis_addr_pattern, matchResults) && matchResults.size() == 1) {
+            utf82sjis_addr = matchResults[0];
+            cout << "utf82sjis_addr : 0x" << hex << utf82sjis_addr << endl;
+            matchedAddrCount++;
+        }
+
+        if (SearchModuleMemory(noteHelpKey_posMap_addr_pattern, matchResults) && matchResults.size() == 1) {
+            noteHelpKey_posMap_addr = matchResults[0] + 0xc;
+            uint32_t* offset_ptr = reinterpret_cast<uint32_t*>(noteHelpKey_posMap_addr);
+            noteHelpKey_posMap_addr += (uint64_t)*offset_ptr + 0x4;
+            cout << "noteHelpKey_posMap_addr : 0x" << hex << noteHelpKey_posMap_addr << endl;
+            matchedAddrCount++;
+        }
+
+        if (SearchModuleMemory(loadNoteHelpKey_posMap_addr_pattern, matchResults) && matchResults.size() == 1) {
+            loadNoteHelpKey_posMap_addr = matchResults[0];
+            cout << "loadNoteHelpKey_posMap_addr : 0x" << hex << loadNoteHelpKey_posMap_addr << endl;
+            matchedAddrCount++;
+        }
+
+        if (SearchModuleMemory(WebMPlayerOpen_addr_pattern, matchResults) && matchResults.size() == 1) {
+            WebMPlayerOpen_addr = matchResults[0] + 0xa;
+            uint32_t* offset_ptr = reinterpret_cast<uint32_t*>(WebMPlayerOpen_addr);
+            WebMPlayerOpen_addr += (uint64_t)*offset_ptr + 0x4;
+            WebMPlayerOpen_addr = *(uint64_t*)WebMPlayerOpen_addr;
+            cout << "WebMPlayerOpen_addr : 0x" << hex << WebMPlayerOpen_addr << endl;
+            matchedAddrCount++;
+        }
+
+        cout << "==============================" << endl;
+
+        if (SearchModuleMemory(check_talk_sjis_byte_valid_addr_pattern, matchResults) && matchResults.size() == 1) {
+            check_talk_sjis_byte_valid_addr = matchResults[0];
+            cout << "check_talk_sjis_byte_valid_addr : 0x" << hex << check_talk_sjis_byte_valid_addr << endl;
+            matchedAddrCount++;
+        }
+
+        if (SearchModuleMemory(talk_cl_sjis_byte_valid_addr_pattern, matchResults) && matchResults.size() == 1) {
+            talk_cl_sjis_byte_valid_addr = matchResults[0];
+            cout << "talk_cl_sjis_byte_valid_addr : 0x" << hex << talk_cl_sjis_byte_valid_addr << endl;
+            matchedAddrCount++;
+        }
+
+        if (SearchModuleMemory(talk_dl_sjis_byte_valid_addr_pattern, matchResults) && matchResults.size() == 1) {
+            talk_dl_sjis_byte_valid_addr = matchResults[0];
+            cout << "talk_dl_sjis_byte_valid_addr : 0x" << hex << talk_dl_sjis_byte_valid_addr << endl;
+            matchedAddrCount++;
+        }
+
+        if (SearchModuleMemory(escape_sjis_byte_valid_addr_pattern, matchResults) && matchResults.size() == 1) {
+            escape_sjis_byte_valid_addr = matchResults[0]+7;
+            cout << "escape_sjis_byte_valid_addr : 0x" << hex << escape_sjis_byte_valid_addr << endl;
+            matchedAddrCount++;
+        }
+
+        if (SearchModuleMemory(memo_sjis_byte_valid_addr_pattern, matchResults) && matchResults.size() == 1) {
+            memo_sjis_byte_valid_addr = matchResults[0] + 0x4;
+            cout << "memo_sjis_byte_valid_addr : 0x" << hex << memo_sjis_byte_valid_addr << endl;
+            matchedAddrCount++;
+        }
+
+        if (SearchModuleMemory(memo_2_sjis_byte_valid_addr_pattern, matchResults) && matchResults.size() == 1) {
+            memo_2_sjis_byte_valid_addr = matchResults[0] + 0x4;
+            cout << "memo_2_sjis_byte_valid_addr : 0x" << hex << memo_2_sjis_byte_valid_addr << endl;
+            matchedAddrCount++;
+        }
+
+        if (SearchModuleMemory(desc_sjis_byte_valid_addr_pattern, matchResults) && matchResults.size() == 1) {
+            desc_sjis_byte_valid_addr = matchResults[0] + 0x4;
+            cout << "desc_sjis_byte_valid_addr : 0x" << hex << desc_sjis_byte_valid_addr << endl;
+            matchedAddrCount++;
+        }
+
+        if (SearchModuleMemory(text_length_sjis_byte_valid_addr_pattern, matchResults) && matchResults.size() == 1) {
+            text_length_sjis_byte_valid_addr = matchResults[0];
+            cout << "text_length_sjis_byte_valid_addr : 0x" << hex << text_length_sjis_byte_valid_addr << endl;
+            matchedAddrCount++;
+        }
+
+        if (SearchModuleMemory(number_sjis_byte_valid_addr_pattern, matchResults) && matchResults.size() == 1) {
+            number_sjis_byte_valid_addr = matchResults[0] + 0x3;
+            cout << "number_sjis_byte_valid_addr : 0x" << hex << number_sjis_byte_valid_addr << endl;
+            matchedAddrCount++;
+        }
+
+        if (SearchModuleMemory(item_dialog_sjis_byte_valid_addr_pattern, matchResults) && matchResults.size() == 1) {
+            item_dialog_sjis_byte_valid_addr = matchResults[0] + 0x3;
+            cout << "item_dialog_sjis_byte_valid_addr : 0x" << hex << item_dialog_sjis_byte_valid_addr << endl;
+            matchedAddrCount++;
+        }
+
+        if (SearchModuleMemory(menu_rsi_sjis_byte_valid_addr_pattern, matchResults) && matchResults.size() == 1) {
+            menu_rsi_sjis_byte_valid_addr = matchResults[0];
+            cout << "menu_rsi_sjis_byte_valid_addr : 0x" << hex << menu_rsi_sjis_byte_valid_addr << endl;
+            matchedAddrCount++;
+        }
+
+        if (SearchModuleMemory(add_al_60_r15_sjis_byte_valid_addr_pattern, matchResults) && matchResults.size() == 2) {
+            for (size_t i = 0; i < 2; i++)
+            {
+                add_al_60_r15_sjis_byte_valid_addr[i] = matchResults[i];
+                cout << "add_al_60_r15_sjis_byte_valid_addr " << dec << i << " : 0x" << hex << add_al_60_r15_sjis_byte_valid_addr[i] << endl;
+                matchedAddrCount++;
+            }
+        }
+
+    }
+
+    static void hook_memo_2_sjis_byte_valid(uintptr_t ptr) {
+
+        hook_sjis* hook = new hook_sjis(ptr, 20, 20);
+        hook->calcJmpAddr(5, 4);
+        hook->start();
+        hook->cmp_cl(0x7f);
+        hook->jna_jmpAddr();
+        hook->cmp_cl(0x81);
+        hook->jb_jmpAddr();
+        hook->cmp_cl(0xFE);
+        hook->ja_jmpAddr();
+        hook->cmp_byte_r15(1, 0x40);
+        hook->jb_jmpAddr();
+        hook->cmp_byte_r15(1, 0xFE);
+        hook->ja_jmpAddr();
+        hook->end();
+        delete hook;
+        hook = nullptr;
+        /* original r15
+            14028B901 - 41 0FB6 0F            - movzx ecx,byte ptr [r15]
+            14028B905 - 80 F9 7F              - cmp cl,7F { 127 }           <--input ptr
+            14028B908 - 0F86 E2060000         - jbe 14028BFF0
+            14028B90E - 8D 41 60              - lea eax,[rcx+60]
+            14028B911 - 3C 3F                 - cmp al,3F { 63 }
+            14028B913 - 0F86 D7060000         - jbe 14028BFF0
+            14028B919 - 41 8B D0              - mov edx,r8d
+            14028B91C - 65 48 8B 04 25 58000000  - mov rax,gs:[00000058]
+            14028B925 - 48 8B 08              - mov rcx,[rax]               <--return
+        */
+    }
+
+    static void hook_menu_rsi_sjis_byte_valid(uintptr_t ptr) {
+        hook_sjis* hook = new hook_sjis(ptr, 7, 14);
+        hook->calcJmpAddr(6, 1);
+        hook->start();
+        hook->cmp_cl(0x7f);
+        hook->jna_jmpAddr();
+        hook->cmp_cl(0x81);
+        hook->jb_jmpAddr();
+        hook->cmp_cl(0xFE);
+        hook->ja_jmpAddr();
+        hook->cmp_byte_rsi(0, 0x40);
+        hook->jb_jmpAddr();
+        hook->cmp_byte_rsi(0, 0xFE);
+        hook->ja_jmpAddr();
+        hook->end();
+        delete hook;
+        hook = nullptr;
+        /* original r15
+            140332CC7 - 8D 41 60              - lea eax,[rcx+60]
+            140332CCA - 3C 3F                 - cmp al,3F { 63 }
+            140332CCC - 76 AD                 - jna 140332C7B
+            140332CCE - 44 38 A5 79100000     - cmp [rbp+00001079],r12l
+            140332CD5 - 75 0C                 - jne 140332CE3
+            140332CD7 - 88 0B                 - mov [rbx],cl
+            140332CD9 - 0FB6 06               - movzx eax,byte ptr [rsi]
+        */
+    }
+
+    static void hook_item_dialog_sjis_byte_valid(uintptr_t ptr) {
+        hook_sjis* hook = new hook_sjis(ptr, 12, 14);
+        hook->calcJmpAddr(4, 1);
+        hook->start();
+        hook->cmp_cl(0x7f);
+        hook->jna_jmpAddr();
+        hook->cmp_cl(0x81);
+        hook->jb_jmpAddr();
+        hook->cmp_cl(0xFE);
+        hook->ja_jmpAddr();
+        hook->cmp_byte_r10(1, 0x40);
+        hook->jb_jmpAddr();
+        hook->cmp_byte_r10(1, 0xFE);
+        hook->ja_jmpAddr();
+        hook->end();
+        delete hook;
+        hook = nullptr;
+        /* original r15
+            140210674 - 49 FF C6              - inc r14
+            140210677 - 80 F9 7F              - cmp cl,7F { 127 }                <--input ptr
+            14021067A - 76 2D                 - jna 1402106A9                    <--singleByte
+            14021067C - 8D 41 60              - lea eax,[rcx+60]
+            14021067F - 3C 3F                 - cmp al,3F { 63 }
+            140210681 - 76 26                 - jna 1402106A9
+            140210683 - 88 0A                 - mov [rdx],cl
+            140210685 - F3 45 0F10 98 80000000  - movss xmm11,[r8+00000080]      <--return
+            14021068E - 49 FF C2              - inc r10
+        */
+    }
+
+    static void hook_desc_sjis_byte_valid(uintptr_t ptr) {
+        hook_sjis* hook = new hook_sjis(ptr, 12, 16);
+        hook->calcJmpAddr(4, 1);
+        hook->start();
+        hook->cmp_cl(0x7f);
+        hook->jna_jmpAddr();
+        hook->cmp_cl(0x81);
+        hook->jb_jmpAddr();
+        hook->cmp_cl(0xFE);
+        hook->ja_jmpAddr();
+        hook->cmp_byte_rdi(1, 0x40);
+        hook->jb_jmpAddr();
+        hook->cmp_byte_rdi(1, 0xFE);
+        hook->ja_jmpAddr();
+        hook->end();
+        delete hook;
+        hook = nullptr;
+        /* original
+        zero.exe+1CE400 - 80 F9 7F              - cmp cl,7F { 127 }             <--input ptr
+        zero.exe+1CE403 - 76 23                 - jna zero.exe+1CE428           <--singleByte
+        zero.exe+1CE405 - 8D 41 60              - lea eax,[rcx+60]
+        zero.exe+1CE408 - 3C 3F                 - cmp al,3F { 63 }
+        zero.exe+1CE40A - 76 1C                 - jna zero.exe+1CE428
+        zero.exe+1CE40C - 0FB6 47 01            - movzx eax,byte ptr [rdi+01]
+        zero.exe+1CE410 - 48 83 C7 02           - add rdi,02 { 2 }              <--return
+        */
+    }
+    static void hook_add_al_60_r15_sjis_byte_valid(uintptr_t ptr) {
+        hook_sjis* hook = new hook_sjis(ptr, 18, 18);
+        hook->calcJmpAddr(4, 4);
+        hook->start();
+        hook->cmp_al(0x7f);
+        hook->jna_jmpAddr();
+        hook->cmp_al(0x81);
+        hook->jb_jmpAddr();
+        hook->cmp_al(0xFE);
+        hook->ja_jmpAddr();
+        hook->cmp_byte_r15(1, 0x40);
+        hook->jb_jmpAddr();
+        hook->cmp_byte_r15(1, 0xFE);
+        hook->ja_jmpAddr();
+        hook->end();
+        delete hook;
+        hook = nullptr;
+        /*  original code:
+        140211D65 - 3C 7F                 - cmp al,7F { 127 }       <--input ptr
+        140211D67 - 0F86 2A070000         - jbe 140212497
+        140211D6D - 04 60                 - add al,60 { 96 }
+        140211D6F - 3C 3F                 - cmp al,3F { 63 }
+        140211D71 - 0F86 20070000         - jbe 140212497
+        140211D77 - 41 B8 02000000        - mov r8d,00000002 { 2 }  <--return
+        */
+    }
+
+    static void hook_memo_sjis_byte_valid(uintptr_t ptr) {
+        hook_sjis* hook = new hook_sjis(ptr, 12, 17);
+        hook->calcJmpAddr(4, 1);
+        hook->start();
+        hook->cmp_cl(0x7f);
+        hook->jna_jmpAddr();
+        hook->cmp_cl(0x81);
+        hook->jb_jmpAddr();
+        hook->cmp_cl(0xFE);
+        hook->ja_jmpAddr();
+        hook->cmp_byte_r15(1, 0x40);
+        hook->jb_jmpAddr();
+        hook->cmp_byte_r15(1, 0xFE);
+        hook->ja_jmpAddr();
+        hook->end();
+        delete hook;
+        hook = nullptr;
+        /* original code:
+            140289C33 - 80 F9 7F              - cmp cl,7F { 127 }
+            140289C36 - 76 36                 - jna 140289C6E
+            140289C38 - 8D 41 60              - lea eax,[rcx+60]
+            140289C3B - 3C 3F                 - cmp al,3F { 63 }
+            140289C3D - 76 2F                 - jna 140289C6E
+            140289C3F - 41 0FB6 47 01         - movzx eax,byte ptr [r15+01]
+            140289C44 - 83 C7 02              - add edi,02 { 2 }
+            140289C47 - 49 83 C7 02           - add r15,02 { 2 }
+        */
+    }
+
+    static void text_length_sjis_byte_valid(uintptr_t ptr) {
+        hook_sjis* hook = new hook_sjis(ptr, 12, 16);
+        hook->calcJmpAddr(4, 1);
+        hook->start();
+        hook->cmp_cl(0x7f);
+        hook->jna_jmpAddr();
+        hook->cmp_cl(0x81);
+        hook->jb_jmpAddr();
+        hook->cmp_cl(0xFE);
+        hook->ja_jmpAddr();
+        hook->cmp_byte_r14(1, 0x40);
+        hook->jb_jmpAddr();
+        hook->cmp_byte_r14(1, 0xFE);
+        hook->ja_jmpAddr();
+        hook->end();
+        delete hook;
+        hook = nullptr;
+        /* original code:
+            140215C1D - 80 F9 7F              - cmp cl,7F { 127 }   <--input ptr
+            140215C20 - 76 6A                 - jna 140215C8C
+            140215C22 - 8D 41 60              - lea eax,[rcx+60]
+            140215C25 - 3C 3F                 - cmp al,3F { 63 }
+            140215C27 - 76 63                 - jna 140215C8C
+            140215C29 - 41 83 C2 02           - add r10d,02 { 2 }
+            140215C2D - 44 89 95 88060000     - mov [rbp+00000688],r10d
+            140215C34 - 49 8B 47 40           - mov rax,[r15+40]
+        */
+    }
+
+    static void number_sjis_byte_valid(uintptr_t ptr) {
+        hook_sjis* hook = new hook_sjis(ptr, 12, 16);
+        hook->calcJmpAddr(4, 1);
+        hook->start();
+        hook->cmp_cl(0x7f);
+        hook->jna_jmpAddr();
+        hook->cmp_cl(0x81);
+        hook->jb_jmpAddr();
+        hook->cmp_cl(0xFE);
+        hook->ja_jmpAddr();
+        hook->cmp_byte_rbx(1, 0x40);
+        hook->jb_jmpAddr();
+        hook->cmp_byte_rbx(1, 0xFE);
+        hook->ja_jmpAddr();
+        hook->end();
+        delete hook;
+        hook = nullptr;
+        /* original code:
+            14028ADED - 0FB6 0B               - movzx ecx,byte ptr [rbx]
+            14028ADF0 - 80 F9 7F              - cmp cl,7F { 127 }       <--input ptr
+            14028ADF3 - 76 2F                 - jna 14028AE24
+            14028ADF5 - 8D 41 60              - lea eax,[rcx+60]
+            14028ADF8 - 3C 3F                 - cmp al,3F { 63 }
+            14028ADFA - 76 28                 - jna 14028AE24
+            14028ADFC - 0FB6 43 01            - movzx eax,byte ptr [rbx+01]
+            14028AE00 - 41 83 C6 02           - add r14d,02 { 2 }
+        */
+    }
+
+    static void fix_talk_cl_sjis_byte_valid(uintptr_t ptr) {
+        DWORD old_protect = 0;
+        if (!VirtualProtect((LPVOID)ptr, 0x100, PAGE_EXECUTE_READWRITE, &old_protect)) {
+            throw runtime_error("无法更改内存保护");
+        }
+        /*
+        140104D5F - 80 F9 80              - cmp cl,-80 { 128 }
+        140104D62 - 77 04                 - ja 140104D68
+        140104D64 - 90                    - nop
+        140104D65 - 90                    - nop
+        140104D66 - EB 2B                 - jmp 140104D93
+        */
+        uint8_t patch_bytes[] = { 0x80, 0xF9, 0x80, 0x77, 0x04, 0x90, 0x90 ,0xeb};
+        void* patch_addr = reinterpret_cast<void*>(ptr);
+		memcpy_s(patch_addr, sizeof(patch_bytes), patch_bytes, sizeof(patch_bytes));
+        
+        if (!VirtualProtect((LPVOID)ptr, 0x100, old_protect, &old_protect)) {
+            throw runtime_error("无法更改内存保护");
+        }
+        /*
+        140104D5C - 8D 41 80              - lea eax,[rcx-80]
+        140104D5F - 3C 1F                 - cmp al,1F { 31 }    <--input ptr
+        140104D61 - 76 05                 - jna 140104D68
+        140104D63 - 80 F9 E0              - cmp cl,-20 { 224 }
+        140104D66 - 72 2B                 - jb 140104D93
+        140104D68 - 48 3B 5C 24 40        - cmp rbx,[rsp+40]
+        140104D6D - 74 0C                 - je 140104D7B
+        */
+    }
+
+    static void fix_talk_dl_sjis_byte_valid(uintptr_t ptr) {
+        DWORD old_protect = 0;
+        if (!VirtualProtect((LPVOID)ptr, 0x100, PAGE_EXECUTE_READWRITE, &old_protect)) {
+            throw runtime_error("无法更改内存保护");
+        }
+        /*
+        1402151DE - 80 FA 80              - cmp dl,-80 { 128 }
+        1402151E1 - 77 04                 - ja 1402151E7
+        1402151E3 - 90                    - nop 
+        1402151E4 - 90                    - nop 
+        1402151E5 - EB 0C                 - jmp 1402151F3
+        */
+        uint8_t patch_bytes[] = { 0x80, 0xFA, 0x80, 0x77, 0x04, 0x90, 0x90 ,0xeb };
+        void* patch_addr = reinterpret_cast<void*>(ptr);
+        memcpy_s(patch_addr, sizeof(patch_bytes), patch_bytes, sizeof(patch_bytes));
+
+        if (!VirtualProtect((LPVOID)ptr, 0x100, old_protect, &old_protect)) {
+            throw runtime_error("无法更改内存保护");
+        }
+        /*
+        1402151DB - 48 FF C1              - inc rcx
+        1402151DE - 3C 1F                 - cmp al,1F { 31 }
+        1402151E0 - 76 05                 - jna 1402151E7
+        1402151E2 - 80 FA E0              - cmp dl,-20 { 224 }
+        1402151E5 - 72 0C                 - jb 1402151F3
+        1402151E7 - 0FB6 03               - movzx eax,byte ptr [rbx]
+        */
+    }
+
+    static void fix_escape_sjis_byte_valid(uintptr_t ptr) {
+        DWORD old_protect = 0;
+        if (!VirtualProtect((LPVOID)ptr, 0x100, PAGE_EXECUTE_READWRITE, &old_protect)) {
+            throw runtime_error("无法更改内存保护");
+        }
+        memset((LPVOID)ptr, 0x90, 2);
+        if (!VirtualProtect((LPVOID)ptr, 0x100, old_protect, &old_protect)) {
+            throw runtime_error("无法更改内存保护");
+        }
+    }
+
+    static void fix_check_talk_sjis_byte_valid(uintptr_t ptr) {
+        DWORD old_protect = 0;
+        if (!VirtualProtect((LPVOID)ptr, 0x100, PAGE_EXECUTE_READWRITE, &old_protect)) {
+            throw runtime_error("无法更改内存保护");
+        }
+		memset((LPVOID)ptr, 0x90, 4);
+        if (!VirtualProtect((LPVOID)ptr, 0x100, old_protect, &old_protect)) {
+            throw runtime_error("无法更改内存保护");
+        }
+    }
+
+    static void fix_noteHelpKey_pos(uintptr_t ptr) {
+        uintptr_t pDic = ptr;
+        pDic = (uintptr_t) * (uint64_t*)(pDic + 0x18);
+        pDic = (uintptr_t) * (uint64_t*)(pDic + 0x48);
+        pDic = (uintptr_t) * (uint64_t*)(pDic + 0x30);
+        //0x50 关于手册
+        uintptr_t pDic_key = (uintptr_t) * (uint64_t*)(pDic + 0x50);
+        pDic_key = (uintptr_t) * (uint64_t*)(pDic_key + 0x30);
+        pDic_key += 0xc;
+        *(float_t*)pDic_key = 90.0f;
+        for (size_t i = 0; i < 4; i++)
+        {
+            pDic_key += 0x1c;
+            *(float_t*)pDic_key += 3.0f;
+        }
+        pDic_key += 0x1c;
+        *(float_t*)pDic_key = 94.0f;
+        // 战技2
+        pDic_key = (uintptr_t) * (uint64_t*)(pDic + 0x48);
+        pDic_key = (uintptr_t) * (uint64_t*)(pDic_key + 0x30);
+        pDic_key += 0xc;
+        *(float_t*)pDic_key = 89.0f;
+        *(float_t*)(pDic_key + 0x4) += 1.0f;
+        for (size_t i = 0; i < 4; i++)
+        {
+            pDic_key += 0x1c;
+            *(float_t*)pDic_key += 3.0f;
+            *(float_t*)(pDic_key + 0x4) += 5.0f;
+        }
+        cout << "[INFO]Fixed note help key position" << endl;
+    }
+
+    int32_t __fastcall hooked_loadNoteHelpKey_posMap() {
+        int32_t result = ori_loadNoteHelpKey_posMap();
+        fix_noteHelpKey_pos(noteHelpKey_posMap_addr);
+        return result;
+    }
+
+    void hook_install() {
+
+        try
+        {
+
+            cout << endl;
+            search_all_addresses();
+            cout << "匹配到地址数量：" <<dec<< matchedAddrCount <<"/"<<totalAddrCount <<hex<< endl;
+            if (matchedAddrCount == totalAddrCount) {
+                cout << endl << "[INFO]Hook成功" << endl << endl;
+                isHookSuccessful = true;
+            }
+            else {
+				throw runtime_error("部分地址未匹配成功，停止hook以防止崩溃");
+            }
+            cout << "==============================" << endl;
+            MH_STATUS status = MH_Initialize();
+            if (status != MH_OK) {
+                throw runtime_error("MinHook initialize failed!");
+            }
+            cout << "[INFO]hooking CreateFileA" << endl;
+            status = MH_CreateHook(&CreateFileA, &hooked_CreateFileA, reinterpret_cast<LPVOID*>(&ori_CreateFileA));
+            if (status != MH_OK) {
+                throw runtime_error("MinHook create CreateFileA hook failed!");
+            }
+            cout << "[INFO]hooking CreateWindowExW" << endl;
+            status = MH_CreateHook(&CreateWindowExA, &hooked_CreateWindowExA, reinterpret_cast<LPVOID*>(&ori_CreateWindowExA));
+            if (status != MH_OK) {
+                throw runtime_error("MinHook create CreateWindowExW hook failed!");
+            }
+
+            cout << "[INFO]hooking sjis2uni" << endl;
+            status = MH_CreateHook((LPVOID)sjis2uni_addr, &hooked_sjis2uni, reinterpret_cast<LPVOID*>(&ori_sjis2uni));
+            if (status != MH_OK) {
+                throw runtime_error("MinHook create sjis2uni hook failed!");
+            }
+
+            cout << "[INFO]hooking load_mess_string" << endl;
+            status = MH_CreateHook((LPVOID)load_mess_string_addr, &hooked_load_mess_string, reinterpret_cast<LPVOID*>(&ori_load_mess_string));
+            if (status != MH_OK) {
+                throw runtime_error("MinHook create load_mess_string hook failed!");
+            }
+
+            cout << "[INFO]hooking check_encoding" << endl;
+            status = MH_CreateHook((LPVOID)check_encoding_addr, &hooked_check_encoding, reinterpret_cast<LPVOID*>(&ori_check_encoding));
+            if (status != MH_OK) {
+                throw runtime_error("MinHook create check_encoding hook failed!");
+            }
+
+            cout << "[INFO]hooking sjis2utf8" << endl;
+            status = MH_CreateHook((LPVOID)sjis2utf8_addr, &hooked_sjis2utf8, reinterpret_cast<LPVOID*>(&ori_sjis2utf8));
+            if (status != MH_OK) {
+                throw runtime_error("MinHook create sjis2utf8 hook failed!");
+            }
+            cout << "[INFO]hooking utf82sjis" << endl;
+            status = MH_CreateHook((LPVOID)utf82sjis_addr, &hooked_utf82sjis, reinterpret_cast<LPVOID*>(&ori_utf82sjis));
+            if (status != MH_OK) {
+                throw runtime_error("MinHook create utf82sjis hook failed!");
+            }
+
+            cout << "[INFO]hooking loadNoteHelpKeyPos" << endl;
+            status = MH_CreateHook((LPVOID)loadNoteHelpKey_posMap_addr, &hooked_loadNoteHelpKey_posMap, reinterpret_cast<LPVOID*>(&ori_loadNoteHelpKey_posMap));
+            if (status != MH_OK) {
+                throw runtime_error("MinHook create loadNoteHelpKeyPos hook failed!");
+            }
+
+            cout << "[INFO]hooking WebMPlayerOpen" << endl;
+            status = MH_CreateHook((LPVOID)WebMPlayerOpen_addr, &hooked_WebMPlayerOpen, reinterpret_cast<LPVOID*>(&ori_WebMPlayerOpen));
+            if (status != MH_OK) {
+                throw runtime_error("MinHook create WebMPlayerOpen hook failed!");
+            }
+
+            cout << "[INFO]fix memo_sjis_byte_valid" << endl;
+            hook_memo_sjis_byte_valid(memo_sjis_byte_valid_addr);
+
+            cout << "[INFO]fix memo_2_sjis_byte_valid" << endl;
+            hook_memo_2_sjis_byte_valid(memo_2_sjis_byte_valid_addr);
+
+            cout << "[INFO]fix desc_sjis_byte_valid" << endl;
+            hook_desc_sjis_byte_valid(desc_sjis_byte_valid_addr);
+
+            cout << "[INFO]fix item_dialog_sjis_byte_valid" << endl;
+            hook_item_dialog_sjis_byte_valid(item_dialog_sjis_byte_valid_addr);
+
+            cout << "[INFO]fix menu_rsi_sjis_byte_valid" << endl;
+            hook_menu_rsi_sjis_byte_valid(menu_rsi_sjis_byte_valid_addr);
+
+            cout << "[INFO]fix text_length_sjis_byte_valid" << endl;
+            text_length_sjis_byte_valid(text_length_sjis_byte_valid_addr);
+
+            cout << "[INFO]fix number_sjis_byte_valid" << endl;
+            number_sjis_byte_valid(number_sjis_byte_valid_addr);
+
+            for (size_t i = 0; i < 2; i++) {
+                cout << "[INFO]fix add_al_60_r15_sjis_byte_valid " << dec << i << endl;
+                hook_add_al_60_r15_sjis_byte_valid(add_al_60_r15_sjis_byte_valid_addr[i]);
+            }
+
+            cout << "[INFO]fix check_talk_sjis_byte_valid" << endl;
+            fix_check_talk_sjis_byte_valid(check_talk_sjis_byte_valid_addr);
+            cout << "[INFO]fix talk_cl_sjis_byte_valid" << endl;
+            fix_talk_cl_sjis_byte_valid(talk_cl_sjis_byte_valid_addr);
+            cout << "[INFO]fix talk_dl_sjis_byte_valid" << endl;
+            fix_talk_dl_sjis_byte_valid(talk_dl_sjis_byte_valid_addr);
+            cout << "[INFO]fix escape_sjis_byte_valid" << endl;
+            fix_escape_sjis_byte_valid(escape_sjis_byte_valid_addr);
+
+            status = MH_EnableHook(MH_ALL_HOOKS);
+            if (status != MH_OK) {
+                throw runtime_error("MinHook enable hook failed!");
+            }
+  
+            
+        }
+        catch (const std::exception& e)
+        {
+            MH_Uninitialize();
+            cerr << "[Error]" << e.what() << endl;
+            cerr << "[Error]Hook失败" << endl << endl;
+        }
+    }
+
+    void hook_uninstall() {
+        MH_DisableHook(MH_ALL_HOOKS);
+        MH_Uninitialize();
+    }
+
+    static int32_t FindUnicodeInTable(int32_t cp, uint64_t* fontIndexTable, size_t totalCount) {
+        int32_t nodeIndex = 1;
+        while (true)
+        {
+            int32_t arrayIndex = nodeIndex - 1;
+            if (arrayIndex >= totalCount)
+                return -1;
+            int32_t currentUnicode = *(int32_t*)(fontIndexTable + arrayIndex);
+            if (currentUnicode == cp) {
+                return arrayIndex;
+            }
+            nodeIndex *= 2;
+            if (cp >= currentUnicode)
+                nodeIndex |= 1;
+        }
+        return -1;
+    }
+
+    void write_mess_string(const char* ptr, const string& text) {
+        const size_t len = text.size();
+        const size_t capacity = len >= 16 ? len | 0xf : 0xf;
+
+        char* mutable_ptr = const_cast<char*>(ptr);
+        intptr_t* ptr_as_int = reinterpret_cast<intptr_t*>(mutable_ptr);
+
+        if (len >= 16) {
+            char* heap_mem = static_cast<char*>(malloc(capacity));
+            if (heap_mem == nullptr) {
+                throw runtime_error("Memory allocation failed for mess string.");
+            }
+            // +1 终止符
+            memcpy(heap_mem, text.data(), len + 1);
+            ptr_as_int[0] = reinterpret_cast<intptr_t>(heap_mem);
+        }
+        else if (len > 0) {
+            memcpy(mutable_ptr, text.data(), len + 1);
+        }
+        else {
+            ptr_as_int[0] = 0;
+        }
+
+        ptr_as_int[2] = static_cast<intptr_t>(len);     // mutable_ptr + 0x10
+        ptr_as_int[3] = static_cast<intptr_t>(capacity); // mutable_ptr + 0x18
+    }
+
+    string trim_mess_string(string& str) {
+        size_t pos = 0;
+        str.erase(0, str.find_first_not_of(" \t\""));
+        str.erase(str.find_last_not_of(" \t\"") + 1); // 去除头尾空白
+        while ((pos = str.find("\\n", pos)) != string::npos) {
+            str.replace(pos, 2, "\n");
+            pos += 1;
+        }
+        return str;
+    }
+
+    unordered_map<string, string> build_mess_string_map(const char* data, const size_t len) {
+        unordered_map<string, string> mess_map;
+        size_t pos = 0;
+        while (pos < len) {
+            // 查找下一个换行符
+            size_t line_end = pos;
+            while (line_end < len && data[line_end] != '\n' && data[line_end] != '\r') {
+                line_end++;
+            }
+            size_t line_len = line_end - pos; // 一行的长度
+            if (line_len > 0) {
+                // 查找冒号分隔符
+                size_t colon_pos = pos;
+                while (colon_pos < line_end && data[colon_pos] != ':') {
+                    colon_pos++;
+                }
+                if (colon_pos < line_end) {
+                    string key(data + pos, colon_pos - pos);
+                    string value(data + colon_pos + 1, line_end - colon_pos - 1);
+
+                    trim_mess_string(value);
+                    mess_map[key] = value;
+                    //cout << "Loaded key: \"" << key <<"\"" << " value: \"" << value << "\"" << endl;
+                }
+            }
+            pos = line_end + 1;
+        }
+        return mess_map;
+    }
+
+    bool load_mess_string_cn() {
+        char path[] = "data_cn\\localization\\mess_strings_cn.txt";
+        FILE* file = nullptr;
+
+        if (fopen_s(&file, path, "rb") != 0) {
+            return false;
+        }
+        fseek(file, 0, SEEK_END);
+        long fileSize = ftell(file);
+        std::vector<char> buffer(fileSize);
+        fseek(file, 0, 0);
+        char* pbuffer = buffer.data();
+        size_t readBytes = fread(pbuffer, 1, fileSize, file);
+        fclose(file);
+        file = nullptr;
+        if (fileSize != readBytes)
+            return false;
+        unordered_map<string, string> mess_map = build_mess_string_map(pbuffer, fileSize);
+        string FileName[2];
+
+        for (int32_t i = 1; i < 0xA1C; i++)
+        {
+            auto key = get_mess_string_key(reinterpret_cast<__int64>(FileName), i);
+
+            if (!FileName[0].empty() && mess_map.count(FileName[0])) {
+                write_mess_string((char*)(mess_string_jp_struct_addr + (int64_t)i * 0x20), mess_map[FileName[0]]);
+            }
+            else {
+                //cerr << "[INFO]未找到 mess string : " << FileName[0] << endl;
+            }
+        }
+        memset(pbuffer, 0, buffer.size());
+        cout << "[INFO]已载入mess_strings_cn" << endl;
+        return true;
+    }
+
+    int64_t __fastcall hooked_sjis2utf8(char* output, uint8_t* input, int64_t max_output, int32_t* _pTable) {
+        try {
+            if (max_output == 0)
+                return 0;
+            iconv_t _hiconv = iconv_open("UTF-8", "CP936");
+            if (_hiconv == (iconv_t)-1) {
+                throw EncodingError("encoding error: gbk to utf8 iconv initialize failed.");
+            }
+
+            char* pdata = const_cast<char*>(reinterpret_cast<char*>(input));
+            size_t in_len = encoding::get_input_length(pdata);
+            size_t out_len = in_len * 3;
+            vector<char> out_buffer(out_len, 0);
+            char* out_ptr = out_buffer.data();
+
+            size_t ret = iconv(_hiconv, &pdata, &in_len, &out_ptr, &out_len);
+            if (ret == (size_t)-1) {
+                throw EncodingError("encoding error: gbk to utf8 iconv convert failed.");
+            }
+            int32_t utf8_len = out_buffer.size() - out_len;
+            utf8_len = min(utf8_len, max_output - 1);
+            memcpy(output, out_buffer.data(), utf8_len);
+            output[utf8_len] = 0;
+            iconv_close(_hiconv);
+            return utf8_len;
+        }
+        catch (const std::exception& e)
+        {
+            cout << e.what() << endl;
+            throw;
+        }
+    }
+
+    int64_t __fastcall hooked_utf82sjis(char* output, uint8_t* input, int64_t max_output) {
+        try {
+
+            if (max_output == 0)
+                return 0;
+            iconv_t _hiconv = iconv_open("CP936", "UTF-8");
+            if (_hiconv == (iconv_t)-1) {
+                throw EncodingError("encoding error: utf8 to gbk iconv initialize failed.");
+            }
+            char* pdata = const_cast<char*>(reinterpret_cast<char*>(input));
+            size_t in_len = encoding::get_input_length(pdata);
+            size_t out_len = in_len * 3;
+            vector<char> out_buffer(out_len, 0);
+            char* out_ptr = out_buffer.data();
+            size_t ret = iconv(_hiconv, &pdata, &in_len, &out_ptr, &out_len);
+            if (ret == (size_t)-1) {
+                throw EncodingError("encoding error: utf8 to gbk iconv convert failed.");
+            }
+            int32_t gbk_len = (int32_t)out_buffer.size() - out_len;
+            gbk_len = min(gbk_len, max_output - 1);
+            memcpy(output, out_buffer.data(), gbk_len);
+            output[gbk_len] = 0;
+
+            iconv_close(_hiconv);
+            return gbk_len;
+
+        }
+        catch (const std::exception& e)
+        {
+            cout << e.what() << endl;
+            throw;
+        }
+    }
+
+    int64_t __fastcall hooked_check_encoding(char* input_str) {
+        return encoding::check_encoding(input_str);
+    }
+
+    int32_t __fastcall hooked_load_mess_string() {
+        int32_t result = ori_load_mess_string();
+        load_mess_string_cn();
+        return result;
+    }
+
+    int32_t cp_mapping(int32_t cp) {
+        switch (cp)
+        {
+        case 0x4E04:
+            return 0x30FB;  // 丄 → ・
+        case 0x4E05:
+            return 0x266A;  // 丅 → ♪
+        default:
+            return cp;
+        }
+    }
+
+    int64_t __fastcall hooked_sjis2uni(int64_t ctx, int32_t* output_addr, char* input_str, int64_t max_output)
+    {
+        if (!max_output)
+            return 0;
+        // font table
+        uintptr_t fontAddr = *(uintptr_t*)(ctx + 0x10);
+        if (!fontAddr || !input_str || max_output == 1) {
+            *output_addr = -1;
+            return 0;
+        }
+        uint64_t* fontEntryAddr = (uint64_t*)(fontAddr + 0x50);
+        uint64_t* fontIndexTable = *(uint64_t**)(fontAddr + 0x58);
+
+        if (!*fontEntryAddr || encoding::check_encoding(input_str) == 0) {
+            *output_addr = -1;
+            return 0;
+        }
+        int32_t totalCharCount = *(int32_t*)(*fontEntryAddr + 0x8);
+        int32_t unfound_symbol_index = -1;
+
+        // search
+        try
+        {
+            vector<int32_t> unicodes = encoding::chars_to_unicode(input_str, max_output);
+            size_t uni_len = unicodes.size();
+
+            for (uint32_t i = 0; i < uni_len; i++)
+            {
+                int32_t* output = (int32_t*)(output_addr + i);
+                int32_t cp = unicodes[i];
+
+                if (cp == -1) {
+                    *output = -1;
+                    break;
+                }
+                cp = cp_mapping(cp);
+
+                int32_t index = FindUnicodeInTable(cp, fontIndexTable, totalCharCount);
+
+                if (index == -1)// not found
+                {
+                    if (unfound_symbol_index == -1) {
+                        unfound_symbol_index = FindUnicodeInTable(9632, fontIndexTable, totalCharCount);
+                    }
+                    *output = unfound_symbol_index;
+                }
+                else
+                {
+                    *output = index;
+                }
+            }
+            return uni_len - 1;
+        }
+        catch (EncodingError e)
+        {
+            stringstream ss; // 已初始化
+            ss << e.what() << endl;
+            ss << "input_str_ptr: " << hex << (intptr_t)(input_str) << endl;
+            ss << "size: " << dec << encoding::get_input_length(input_str) << endl;
+            ss << "max_output: " << dec << max_output << endl;
+            cerr << ss.str() << endl;
+        }
+
+        int64_t original_count = ori_sjis2uni(ctx, output_addr, input_str, max_output);
+        return original_count;
+    }
+
+    string redirect_dir(string file) {
+        vector<pair<string, string>> patterns = {
+          {"data/", "data_cn/"},
+          {"./data/", "./data_cn/"},
+          {".//data/", ".//data_cn/"},
+          {"data_pc/", "data_cn/pc/"},
+          {"./data_pc/", "./data_cn/pc/"},
+          {".//data_pc/", ".//data_cn/pc/"},
+        };
+        for (size_t i = 0; i < patterns.size(); i++)
+        {
+            if (file.compare(0, patterns[i].first.size(), patterns[i].first) == 0) {
+                string cnFile = patterns[i].second + file.substr(patterns[i].first.size());
+                if (std::filesystem::exists(cnFile))
+                {
+                    cout << "[INFO]重定向：" << cnFile << endl;
+                    file = cnFile;
+                    break;
+                }
+            }
+        }
+        return file;
+    }
+
+
+    bool __fastcall hooked_WebMPlayerOpen(int64_t h, char* file) {
+        string fileName = redirect_dir(string(file));
+        char buf[256] = { 0 };
+        strncpy_s(buf, fileName.c_str(), sizeof(buf) - 1);
+        return ori_WebMPlayerOpen(h, buf);
+    }
+
+    HANDLE WINAPI hooked_CreateFileA(LPCSTR lpFileName, DWORD dwDesiredAccess, DWORD dwShareMode,
+        LPSECURITY_ATTRIBUTES lpSecurityAttributes, DWORD dwCreationDisposition,
+        DWORD dwFlagsAndAttributes, HANDLE hTemplateFile) {
+
+        string fileName = redirect_dir(string(lpFileName));
+
+        return ori_CreateFileA(fileName.c_str(), dwDesiredAccess, dwShareMode,
+            lpSecurityAttributes, dwCreationDisposition,
+            dwFlagsAndAttributes, hTemplateFile);
+    };
+
+    HANDLE WINAPI hooked_CreateWindowExA(DWORD dwExStyle, LPCSTR lpClassName, LPCSTR lpWindowName,
+        DWORD dwStyle, int X, int Y, int nWidth, int nHeight, HWND hWndParent, HMENU hMenu,
+        HINSTANCE hInstance, LPVOID lpParam) {
+        string name = lpWindowName ? string(lpWindowName) : "";
+        if (name.find("The Legend of Heroes: Trails from Zero") != string::npos) {
+            lpWindowName = "英雄传说 零之轨迹：改";
+        }
+        return ori_CreateWindowExA(dwExStyle, lpClassName, lpWindowName,
+            dwStyle, X, Y, nWidth, nHeight, hWndParent, hMenu,
+			hInstance, lpParam);
+    };
+
+}

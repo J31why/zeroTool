@@ -1,0 +1,6198 @@
+calmare zero_k scena
+scena:
+	name "t1530" "t1530" "t1530_1"
+	town town[79]
+	bgm bgm[123]
+	flags 8192
+	item_use fn[0,255]
+	unk 255 0
+
+entry:
+	pos (0, 0, -1000)
+	unk1 0
+	cam_from (0, 2500, 34000)
+	cam_pers 262
+	unk2 30
+	cam_deg 45deg
+	cam_limit 0deg 360deg
+	cam_at (0, 0, 0)
+	unk3 0
+	unk4 0
+	flags 0x0001
+	town town[79]
+	init fn[0,255]
+	reinit fn[0,255]
+
+fn[0]:
+	Call fn[1,1]
+	Return
+
+fn[1]:
+	if flag[783] && !flag[784]:
+		Call fn[0,9]
+	elif flag[1562] && !flag[1563]:
+		Call fn[0,14]
+	elif QuestFlagsGet quest[22] 0x02 && !QuestTaskGet quest[22] 0:
+		Call fn[1,76]
+	else:
+		TextStart char[0]
+		if flag[1566]:
+			if !flag[0]:
+				TextTalk char[0] {
+					今天早上，黑月貿易公司的諸位
+					都自行出院了。{wait}
+				}
+				TextWait
+				TextTalk char[0] {
+					明明還沒有痊癒呢，
+					只是剛剛能行走，就堅持要……{wait}
+				}
+				TextWait
+				if PartyPosition name[9] != -1:
+					TextTalk name[9] {
+						#0603F哼……該說不愧是曹的部下嗎，
+						看來都經受過相當嚴酷的體能訓練啊。{wait}
+					}
+					TextWait
+				FlagSet flag[0]
+			else:
+				TextTalk char[0] {
+					今天早上，黑月貿易公司的諸位
+					都自行出院了。{wait}
+				}
+				TextWait
+				TextTalk char[0] {
+					我本來是想阻止的，
+					因為他們的槍傷還沒有治好……{wait}
+				}
+				TextWait
+		elif flag[1565]:
+			TextTalk char[0] {
+				看來你們已經和約亞西姆醫生談過了啊，
+				這真是再好不過了。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				隨時都歡迎諸位再來哦。{wait}
+			}
+			TextWait
+		elif flag[1554]:
+			TextTalk char[0] {
+				約亞西姆醫生正在研究區四樓的
+				研究室裡等候各位。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				……最好趁他還沒有偷懶出去玩，
+				趕快過去找他吧。{wait}
+			}
+			TextWait
+		elif flag[1536]:
+			if !flag[1733]:
+				TextTalk char[0] {
+					歡迎來到聖烏爾斯拉醫院。
+					您今天有何貴幹呢？{wait}
+				}
+				TextWait
+				TextTalk name[8] {
+					#0500F真是很久都沒來
+					烏爾斯拉醫院了啊。{wait}
+				} {
+					從那場狼型魔獸事件以後，
+					最多也就是巡邏時路過這裡而已。{wait}
+				}
+				TextWait
+				TextTalk name[0] {
+					#0000F哈哈，這麼說也許有些失禮，
+					不過，上士好像從不會生病啊。{wait}
+				}
+				TextWait
+				TextTalk name[8] {
+					#0504F嗯，那當然啦。{wait}
+				} {
+					#0500F自從進了警備隊，
+					我就一直很注重保持身體健康，
+					儘量讓自己連小病也不要得。{wait}
+				}
+				TextWait
+				TextTalk char[0] {
+					呵呵，真厲害啊。
+					儘量不要讓自己生病就醫，
+					這可比什麼都重要。{wait}
+				}
+				TextWait
+				TextTalk char[0] {
+					不過，身體一旦真的出現了什麼問題，
+					也還是應該立刻來醫院的。
+					因為有些事情，光靠自己是無法解決的。{wait}
+				}
+				TextWait
+				FlagSet flag[1733]
+			else:
+				TextTalk char[0] {
+					調理好自己的身體，保持健康，
+					儘量不來醫院，比什麼都重要呢。{wait}
+				}
+				TextWait
+				TextTalk char[0] {
+					呵呵，這位警備隊員的健康理念
+					是非常正確的。{wait}
+				}
+				TextWait
+		elif flag[1351]:
+			Call fn[1,26]
+		elif flag[1346]:
+			TextTalk char[0] {
+				約亞西姆醫生的研究室
+				就在研究區的四樓。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				只要去院區的屋頂，
+				就很容易看到研究區的位置了。{wait}
+			}
+			TextWait
+		elif flag[1307]:
+			if !flag[0]:
+				TextTalk char[0] {
+					歡迎光臨烏爾斯拉醫院。{wait}
+				}
+				TextWait
+				TextTalk char[0] {
+					各位教授今天都出差
+					參加教授會議去了。{wait}
+				}
+				TextWait
+				TextTalk char[0] {
+					在確認過主治醫生之後，
+					請辦理診察手續。{wait}
+				}
+				TextWait
+				FlagSet flag[0]
+			else:
+				TextTalk char[0] {
+					各位教授今天都出差
+					參加教授會議去了。{wait}
+				}
+				TextWait
+				TextTalk char[0] {
+					在確認過主治醫生之後，
+					請辦理診察手續。{wait}
+				}
+				TextWait
+		elif flag[1292]:
+			if !flag[0]:
+				TextTalk char[0] {
+					今天好像有遊客
+					前來接受身體檢查。{wait}
+				}
+				TextWait
+				TextTalk char[0] {
+					我雖然也能理解他們很想體驗
+					最先進醫療設備的心情……{wait}
+				}
+				TextWait
+				TextTalk char[0] {
+					但那樣做的話，就可能會耽誤
+					重病患者的檢查。
+					總覺得有些不太好呢。{wait}
+				}
+				TextWait
+				FlagSet flag[0]
+			else:
+				TextTalk char[0] {
+					好像有一些遊客前來
+					做健康檢查之類的。{wait}
+				}
+				TextWait
+				TextTalk char[0] {
+					……既然是外來的客人，
+					我們就不能怠慢……
+					但一想到他們的動機，心情還是很複雜。{wait}
+				}
+				TextWait
+		elif flag[1282]:
+			CharTurnTo char[0] 266deg 0deg/s
+			_Char4A char[15] 255
+			TextTalk char[0] {
+				啊，迪塔總裁……{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				真是十分感謝您
+				今年也能光臨本院。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				患者們一定也會很高興吧。{wait}
+			}
+			TextWait
+			TextTalk char[15] {
+				#2804F哪裡的話，別那麼客氣。{wait}
+			} {
+				這只是我的個人行為而已。{wait}
+			}
+			TextWait
+			_Char4B char[15] 255
+		elif flag[1280]:
+			if QuestFlagsGet quest[22] 0x10 && !flag[0]:
+				TextTalk char[0] {
+					聽說賽西兒小姐和其他護理師們
+					順利地分配好工作，安排出假期。{wait}
+				}
+				TextWait
+				TextTalk char[0] {
+					真是羨慕她們啊。
+					事務部門這邊的人手比較少，
+					所以幾乎都沒有休假。{wait}
+				}
+				TextWait
+			elif QuestFlagsGet quest[22] 0x10:
+				TextTalk char[0] {
+					如果今後再有什麼問題，
+					歡迎隨時光臨本院。{wait}
+				}
+				TextWait
+				TextTalk char[0] {
+					我們一定會誠心誠意地
+					為您服務。{wait}
+				}
+				TextWait
+			elif QuestTaskGet quest[22] 0:
+				TextTalk char[0] {
+					必須讓約亞西姆醫生
+					快點回來……{wait}
+				}
+				TextWait
+				TextTalk char[0] {
+					諸位，一切都拜託你們了。{wait}
+				}
+				TextWait
+			elif QuestFlagsGet quest[22] 0x02:
+		elif flag[1040]:
+			if !flag[0]:
+				TextTalk char[0] {
+					職員宿舍的琪秀宿舍長和
+					瑪洛妮雖然算是
+					克拉克事務長的部下，不過……{wait}
+				}
+				TextWait
+				TextTalk char[0] {
+					你可不要把這些話告訴別人哦，
+					其實事務長在琪秀宿舍長
+					的面前很恭順呢。{wait}
+				}
+				TextWait
+				FlagSet flag[0]
+			else:
+				TextTalk char[0] {
+					你可不要告訴別人哦，
+					其實克拉克事務長在琪秀宿舍長
+					的面前很恭順呢。{wait}
+				}
+				TextWait
+		elif flag[1024]:
+			if !flag[0]:
+				TextTalk char[0] {
+					院長一直都巡遊於各個國家之間，
+					進行技術交流並挖掘人才，
+					很少會出現在醫院裡。{wait}
+				}
+				TextWait
+				TextTalk char[0] {
+					其實，這麼一說，
+					連我也沒有見到過院長……
+					到底是個怎樣的人呢？{wait}
+				}
+				TextWait
+				FlagSet flag[0]
+			else:
+				TextTalk char[0] {
+					院長十分忙碌，
+					幾乎都不會
+					出現在醫院裡。{wait}
+				}
+				TextWait
+				TextTalk char[0] {
+					實際上，醫院的經營是
+					交由教授們來負責的。{wait}
+				}
+				TextWait
+		elif flag[799]:
+			TextTalk char[0] {
+				今天的來訪者接待就到此為止了。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				如果太晚的話，也會不安全，
+				請前來探病的客人抓緊時間。{wait}
+			}
+			TextWait
+		elif flag[793]:
+			TextTalk char[0] {
+				臨近傍晚，外來的患者及訪客
+				也逐漸散去了。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				之前發生過利頓醫生受傷的事情，
+				所以一定要趁天還沒黑之前，
+				讓大家都回到市裡呢。{wait}
+			}
+			TextWait
+		elif flag[784]:
+			if !flag[0]:
+				TextTalk char[0] {
+					……那個，賽西兒小姐。{wait}
+				}
+				TextWait
+				TextTalk char[0] {
+					再怎麼說，這裡也是工作場所，
+					是不是也該稍微收斂一點，
+					不要在別人面前進行太親密的身體接觸呢。{wait}
+				}
+				TextWait
+				TextTalk name[0] {
+					#0006F……真不好意思。{wait}
+				}
+				TextWait
+				TextTalk name[53] {
+					#1305F哎呀，羅伊德有什麼
+					好道歉的啊？{wait}
+				} {
+					#1309F呵呵……榭拉小姐，
+					你是在羨慕我吧？
+					我有個這～麼可愛的弟弟。{wait}
+				}
+				TextWait
+				TextTalk char[0] {
+					唉……隨妳去好了。{wait}
+				}
+				TextWait
+				FlagSet flag[0]
+			else:
+				TextTalk char[0] {
+					……反正我已經不想阻止妳了，
+					你們想繼續抱在一起也好，
+					還是怎樣也好，都請隨意吧。{wait}
+				}
+				TextWait
+				TextTalk name[0] {
+					#0006F（啞口無言……）{wait}
+				}
+				TextWait
+		elif flag[777]:
+		TextEnd char[0]
+	Return
+
+fn[2]:
+	Call fn[1,3]
+	Return
+
+fn[3]:
+	TextStart char[1]
+	if flag[1566]:
+		TextTalk char[1] {
+			雖然院長一直不在，
+			但醫院的經營狀況卻非常不錯。{wait}
+		}
+		TextWait
+		TextTalk char[1] {
+			長年以來，在市民中累積的深厚信賴感
+			也起到了很大作用。{wait}
+		}
+		TextWait
+	elif flag[1565]:
+		TextTalk char[1] {
+			榭拉負責接待以及院內聯絡的工作，
+			她做得非常努力。{wait}
+		}
+		TextWait
+		TextTalk char[1] {
+			單看工作量的話，
+			甚至都不會輸給賽西兒小姐呢。{wait}
+		}
+		TextWait
+	elif flag[1554]:
+		TextTalk char[1] {
+			只要是送來的患者，就一定要救助。
+			這就是烏爾斯拉醫院的座右銘。{wait}
+		}
+		TextWait
+		TextTalk char[1] {
+			即使是面對十惡不赦的壞人，
+			本院也會貫徹這個原則。{wait}
+		}
+		TextWait
+	elif flag[1536]:
+		TextTalk char[1] {
+			雖然本醫院從各國的各機關
+			領取資金。
+			但在經營方針上，仍然是推崇節儉。{wait}
+		}
+		TextWait
+		TextTalk char[1] {
+			要把資金儘量都用於補貼
+			那些負擔不起醫療費用
+			的患者們。{wait}
+		}
+		TextWait
+	elif flag[1351]:
+		TextTalk char[1] {
+			既然在這間醫院工作，
+			我們便不是普通的業務人員，
+			而是為了救助患者而工作。{wait}
+		}
+		TextWait
+		TextTalk char[1] {
+			如果患者能面帶笑容地出院，
+			我就會感到很幸福呢。{wait}
+		}
+		TextWait
+	elif flag[1346]:
+		TextTalk char[1] {
+			教授們既要搞研究，又要指導實習醫生，
+			還要兼任複診的工作，
+			所以非常繁忙。{wait}
+		}
+		TextWait
+		TextTalk char[1] {
+			不過，約亞西姆醫生例外，
+			他好像一直都不怎麼忙呢。{wait}
+		}
+		TextWait
+	elif flag[1307]:
+		if !flag[1]:
+			TextTalk char[1] {
+				我負責管理這間醫院的
+				一切事務。{wait}
+			}
+			TextWait
+			TextTalk char[1] {
+				從設備的預算分配，
+				到導力網路的調整……{wait}
+			}
+			TextWait
+			TextTalk char[1] {
+				雖然工作多到讓人頭痛，
+				但是很有挑戰性啊。{wait}
+			}
+			TextWait
+			FlagSet flag[1]
+		else:
+			TextTalk char[1] {
+				尤其是導力網路的調整，真是非常辛苦。
+				因為醫院裡除了我之外，
+				再沒有會操作的人了。{wait}
+			}
+			TextWait
+			TextTalk char[1] {
+				如果可以的話，真希望能從
+				克洛斯貝爾市那邊調來一位技師呢。{wait}
+			}
+			TextWait
+	elif flag[1292]:
+		CharTurnTo char[1] 180deg 0deg/s
+		CharTurnTo char[58] 15deg 0deg/s
+		_Char4A char[58] 255
+		TextTalk char[1] {
+			您想做健康診斷嗎？
+			那麼，請在這邊的
+			文件上簽名。{wait}
+		}
+		TextWait
+		TextTalk char[1] {
+			因為是初診，
+			所以可能會多花一些時間。
+			您可以等待一下嗎？{wait}
+		}
+		TextWait
+		TextTalk char[58] {
+			嗯，沒問題。{wait}
+		}
+		TextWait
+		_Char4B char[58] 255
+	elif flag[1282]:
+		TextTalk char[1] {
+			迪塔總裁每年都會
+			送來很多禮物，就算分給
+			全部患者也是足夠的。{wait}
+		}
+		TextWait
+		TextTalk char[1] {
+			哎呀，真是位了不起的人啊。{wait}
+		}
+		TextWait
+	elif flag[1280]:
+		if !flag[1]:
+			TextTalk char[1] {
+				我們正在商討，是否應該
+				在接待處實行卡片制度。{wait}
+			}
+			TextWait
+			TextTalk char[1] {
+				預先準備好記載著
+				個人資訊的卡片鑰匙，
+				這樣就可以大大縮減接待處的手續量了。{wait}
+			}
+			TextWait
+			TextTalk char[1] {
+				只是，由於目前還存在著卡片量產體制，
+				以及個人情報保護工作等問題，
+				新制度的實行還很艱難呢。{wait}
+			}
+			TextWait
+			FlagSet flag[1]
+		else:
+			TextTalk char[1] {
+				我們正在商討，是否應該
+				在接待處實行卡片制度。{wait}
+			}
+			TextWait
+			TextTalk char[1] {
+				不過，也有不少問題
+				阻礙了新制度的施行……
+				看來在短時間之內還難以實現。{wait}
+			}
+			TextWait
+	elif flag[1040]:
+		if !flag[1]:
+			TextTalk char[1] {
+				我本來在宿舍的食堂吃午飯，
+				結果宿舍長說『職員不要在中午過來』，
+				然後就把我趕出來了。{wait}
+			}
+			TextWait
+			TextTalk char[1] {
+				哎呀呀……
+				琪秀宿舍長真是
+				讓人敬畏啊。{wait}
+			}
+			TextWait
+			FlagSet flag[1]
+		else:
+			TextTalk char[1] {
+				哎呀呀……
+				琪秀宿舍長真是
+				讓人敬畏啊。{wait}
+			}
+			TextWait
+			TextTalk char[1] {
+				……這就是所謂的女強人吧。{wait}
+			}
+			TextWait
+	elif flag[1024]:
+		if !flag[1]:
+			TextTalk char[1] {
+				導力網路將烏爾斯拉醫院
+				與克洛斯貝爾市緊密聯繫在了一起。{wait}
+			}
+			TextWait
+			TextTalk char[1] {
+				市民還可以透過導力網路
+				進行預約服務，
+				雖然目前還在試驗階段。{wait}
+			}
+			TextWait
+			TextTalk char[1] {
+				不過，因為普及率的問題，
+				它並沒有被廣泛利用。{wait}
+			}
+			TextWait
+			FlagSet flag[1]
+		else:
+			TextTalk char[1] {
+				如果在導力網路上進行事先
+				預約服務，就可以免去等待
+				時間，順利進行診察。{wait}
+			}
+			TextWait
+			TextTalk char[1] {
+				不過，因為普及率的問題，
+				它並沒有被廣泛利用。{wait}
+			}
+			TextWait
+	elif flag[799]:
+		TextTalk char[1] {
+			警察局的諸位……
+			感謝你們幫助
+			安置防護欄。{wait}
+		}
+		TextWait
+		TextTalk char[1] {
+			但願這樣就能讓
+			魔獸無法再進來……{wait}
+		}
+		TextWait
+	elif flag[793]:
+		TextTalk char[1] {
+			警察局的諸位……
+			你們的調查有什麼進展了嗎？{wait}
+		}
+		TextWait
+	elif flag[784]:
+		TextTalk char[1] {
+			實在是不願意相信有魔獸
+			闖入了醫院……
+			如果那是真的，事情可就嚴重了。{wait}
+		}
+		TextWait
+		TextTalk char[1] {
+			關於利頓是否真的遭到了魔獸襲擊，
+			我希望你們能找出確鑿的證據。{wait}
+		}
+		TextWait
+	elif flag[777]:
+		TextTalk char[1] {
+			歡迎您光臨聖烏爾斯拉
+			醫科大學附屬醫院。{wait}
+		}
+		TextWait
+		TextTalk char[1] {
+			旁邊的接待處負責
+			接待業務。
+			如有需要，請您去那邊諮詢。{wait}
+		}
+		TextWait
+	TextEnd char[1]
+	Return
+
+fn[4]:
+	TextStart self
+	if flag[1566]:
+		CharTurnToChar self char[52] 0deg/s
+		TextTalk self {
+			哎呀，今天有何貴幹呢？{wait}
+		}
+		TextWait
+		TextTalk self {
+			初診的客人，請先在接待處
+			辦理相關的手續。{wait}
+		}
+		TextWait
+	elif flag[1565]:
+		TextTalk self {
+			之前送進來的那些傷患，
+			現在正在ＩＣＵ區的病房裡休息。{wait}
+		}
+		TextWait
+		TextTalk self {
+			他們倒是沒有性命之憂，
+			明天應該就能下地行走了吧。{wait}
+		}
+		TextWait
+	elif flag[1554]:
+		TextTalk self {
+			今天送來的那些傷患，
+			總算是保住了性命。{wait}
+		}
+		TextWait
+		TextTalk self {
+			……從傷勢狀況可以看出，
+			似乎是遭受了槍擊與毆打呢。
+			火藥味真是相當重啊……{wait}
+		}
+		TextWait
+	elif flag[1536]:
+		CharTurnToChar self char[45] 0deg/s
+		TextTalk self {
+			哎呀，小朋友，你不要緊嗎？
+			你好像發燒得很嚴重呢……{wait}
+		}
+		TextWait
+		TextTalk self {
+			把這個溫度計夾在腋窩下面，
+			老老實實待一會哦。{wait}
+		}
+		TextWait
+	elif flag[1351]:
+		if !flag[2]:
+			TextTalk self {
+				怎麼回事，又被捲入到
+				什麼糾紛中了嗎？{wait}
+			}
+			TextWait
+			TextTalk name[0] {
+				#0006F沒、沒有啦……
+				並不是那麼
+				嚴重的問題。{wait}
+			}
+			TextWait
+			TextTalk self {
+				呵呵，警察弟弟真是有趣呢，
+				平常聊天時總是談起你。{wait}
+			}
+			TextWait
+			if PartyPosition name[1] > -1:
+				TextTalk name[1] {
+					#0100F呵呵，羅伊德好受歡迎啊。{wait}
+				}
+				TextWait
+			elif PartyPosition name[2] > -1:
+				TextTalk name[2] {
+					#0200F或許正是因為
+					有羅伊德前輩在，
+					才會發生各式各樣的事件呢。{wait}
+				}
+				TextWait
+			elif PartyPosition name[3] > -1:
+				TextTalk name[3] {
+					#0306F羅伊德在護理師們間
+					成為熱門話題了嗎？
+					真是個讓人嫉妒的傢伙啊……{wait}
+				}
+				TextWait
+			TextTalk name[0] {
+				#0006F饒了我吧……{wait}
+			}
+			TextWait
+			FlagSet flag[2]
+		else:
+			TextTalk self {
+				呵呵，警察弟弟真是有趣呢。{wait}
+			}
+			TextWait
+			TextTalk self {
+				那個……你和賽西兒前輩
+				自那次之後又有什麼進展了嗎？{wait}
+			}
+			TextWait
+			TextTalk name[0] {
+				#0011F現、現在可不是說這些的時候，
+				我們先告辭了！{wait}
+			}
+			TextWait
+	elif flag[1346]:
+		if !flag[2]:
+			TextTalk self {
+				在我睡覺的時候，也經常會有急診患者被送到，
+				然後被突然叫起來，幾乎都沒有休息時間呢……{wait}
+			}
+			TextWait
+			TextTalk self {
+				仔細想想，
+				像這種工作，如果不是非常喜歡的話，
+				實在是很難堅持下來啊。{wait}
+			}
+			TextWait
+			TextTalk self {
+				我雖然是一個
+				沒多少耐心的人，
+				但卻意外地有韌性……{wait}
+			}
+			TextWait
+			FlagSet flag[2]
+		else:
+			TextTalk self {
+				如果不是非常喜歡的話，
+				真是很難把這項工作堅持做下去。{wait}
+			}
+			TextWait
+			TextTalk self {
+				賽西兒前輩似乎
+				非常喜歡護理師這項工作呢。{wait}
+			}
+			TextWait
+	elif flag[1307]:
+		if !flag[2]:
+			TextTalk self {
+				裡面的房間是
+				加護病房#8RＩＣＵ#
+				和Ｘ光照片拍攝室。{wait}
+			}
+			TextWait
+			TextTalk self {
+				所謂的Ｘ光照片，
+				是我們最近同雷米菲利亞的設備製造廠商
+				共同開發的最新型醫療器材。{wait}
+			}
+			TextWait
+			TextTalk self {
+				它使用了特殊的感光結晶迴路，
+				是一種可以透過人體，把骨頭與內臟
+				的狀況映照在相片上的設備。{wait}
+			}
+			TextWait
+			TextTalk self {
+				只要有了它，無需開刀，
+				就可以直接發現病因了。{wait}
+			}
+			TextWait
+			TextTalk name[2] {
+				#0205F我之前聽說過有關它的開發消息……
+				原來都已經進展到正式使用的階段了啊。{wait}
+			} {
+				#0204F真不愧是烏爾斯拉醫院呢。{wait}
+			}
+			TextWait
+			TextTalk name[0] {
+				#0006F……哈哈，雖說我
+				只聽懂了一半……
+				但也能感覺到，那是個非常厲害的東西呢。{wait}
+			}
+			TextWait
+			FlagSet flag[2]
+		else:
+			TextTalk self {
+				所謂的Ｘ光照片，
+				是一種可以透過人體，把骨頭與內臟
+				的狀況映照在相片上的醫療器械。{wait}
+			}
+			TextWait
+			TextTalk self {
+				只要有了它，無需開刀，
+				就可以直接發現病因了。{wait}
+			}
+			TextWait
+			TextTalk self {
+				……不過，關於詳細的原理，
+				其實我也不怎麼懂啦。{wait}
+			}
+			TextWait
+	elif flag[1292]:
+		if !flag[2]:
+			Call fn[1,23]
+		else:
+			TextTalk self {
+				賽西兒前輩真是個很勤勞的人。
+				不僅會把自己的工作做好，
+				還經常會給別人幫忙。{wait}
+			}
+			TextWait
+			TextTalk self {
+				像約亞西姆醫生那樣的人，
+				真應該好好向她學習啊。{wait}
+			}
+			TextWait
+	elif flag[1282]:
+		if !flag[2]:
+			TextTalk self {
+				我在烏爾斯拉醫院工作了很多年，
+				一到這個時期就很忙呢。{wait}
+			}
+			TextWait
+			TextTalk self {
+				忙到根本沒時間休息，
+				也是很平常的事情啊。{wait}
+			}
+			TextWait
+			FlagSet flag[2]
+		else:
+			TextTalk self {
+				這樣一想的話，慶典第一天的時候，
+				我還休了一天假，已經很幸運了……{wait}
+			}
+			TextWait
+	elif flag[1280]:
+		TextTalk self {
+			凱瑞教授的兒子
+			似乎混跡在克洛斯貝爾市的
+			不良份子裡……{wait}
+		}
+		TextWait
+		TextTalk self {
+			大概是正處於叛逆期吧。
+			我想，代溝這種東西，
+			隨著時間的流逝就會慢慢消失的。{wait}
+		}
+		TextWait
+	elif flag[1040]:
+		TextTalk self {
+			我去問過了賽西兒前輩，
+			問她是不是認識彩虹劇團的
+			伊莉雅・普拉提耶。{wait}
+		}
+		TextWait
+		TextTalk self {
+			……結果她大大方方地直接承認了，
+			好像根本就沒把它當成什麼秘密呢。{wait}
+		}
+		TextWait
+	elif flag[1024]:
+		if !flag[2]:
+			TextTalk self {
+				賽西兒前輩好像
+				和一位超級名人很熟呢。{wait}
+			}
+			TextWait
+			TextTalk self {
+				警察弟弟，你知道嗎？{wait}
+			}
+			TextWait
+			if !flag[1029]:
+				TextTalk name[0] {
+					#0005F…………是、是嗎……？{wait}
+				}
+				TextWait
+				CharTurnToChar char[2] name[0] 500deg/s
+				TextTalk self {
+					哦，你也不知道嗎，
+					那究竟會是誰呢？{wait}
+				}
+				TextWait
+			else:
+				TextTalk name[0] {
+					#0003F（……多半是指伊莉雅小姐吧。）{wait}
+				}
+				TextWait
+			FlagSet flag[2]
+		else:
+			TextTalk self {
+				賽西兒前輩好像
+				和一位超級名人很熟呢。{wait}
+			}
+			TextWait
+			TextTalk self {
+				那究竟會是誰呢？{wait}
+			}
+			TextWait
+	elif flag[799]:
+		TextTalk self {
+			凱瑞教授的兒子
+			似乎正和一群可疑的人混在一起。{wait}
+		}
+		TextWait
+		TextTalk self {
+			他明明有那麼出色的父親，
+			到底還有什麼不滿的呢……{wait}
+		}
+		TextWait
+	elif flag[793]:
+		TextTalk self {
+			哎呀，您是等候診察的病人嗎？{wait}
+		}
+		TextWait
+		TextTalk self {
+			如果您已經登記過了，
+			就請坐在這裡候診。{wait}
+		}
+		TextWait
+	elif flag[784]:
+		TextTalk self {
+			……下一個接受診察的……是那位患者吧。{wait}
+		}
+		TextWait
+	elif flag[777]:
+		if !flag[2]:
+			Call fn[1,5]
+		else:
+			TextTalk self {
+				請把這個體溫計
+				夾在腋下。{wait}
+			}
+			TextWait
+	TextEnd self
+	Return
+
+fn[5]:
+	CharSetChipPattern char[17] 0
+	_Char4A char[2] 255
+	TextTalk char[2] {
+		今天有什麼地方不舒服嗎？{wait}
+	}
+	TextWait
+	TextTalk char[17] {
+		啊，好像有點發燒……
+		大概是感冒了吧。{wait}
+	}
+	TextWait
+	TextTalk char[2] {
+		那麼，在等待診察的這段時間，
+		請先測量一下體溫吧。{wait}
+	}
+	TextWait
+	_Char4B char[2] 255
+	CharSetChipPattern char[17] 0
+	FlagSet flag[2]
+	Return
+
+fn[6]:
+	TextStart self
+	if flag[1566]:
+		if !flag[5]:
+			Call fn[1,11]
+		else:
+			TextTalk self {
+				哇哇哇哇……！{wait}
+			}
+			TextWait
+	elif flag[1565]:
+	elif flag[1554]:
+	elif flag[1536]:
+	elif flag[1351]:
+	elif flag[1346]:
+	elif flag[1307]:
+	elif flag[1292]:
+		if !flag[5]:
+			Call fn[1,11]
+		else:
+			TextTalk self {
+				呀呀呀呀……！！{wait}
+			}
+			TextWait
+	elif flag[1282]:
+	elif flag[1280]:
+	elif flag[1040]:
+	elif flag[1024]:
+		if !flag[19]:
+			Call fn[1,73]
+		else:
+			_Char4A char[63] 255
+			_Char4A char[3] 255
+			TextTalk char[3] {
+				對了……之前那件事，
+				你考慮了沒有啊？{wait}
+			}
+			TextWait
+			TextTalk char[63] {
+				啊……是讓我在研究區
+				進行特別講座的事嗎？{wait}
+			}
+			TextWait
+			TextTalk char[63] {
+				嗯，因為臨近紀念慶典，
+				現在越來越忙了，所以……{wait}
+			}
+			TextWait
+			TextTalk char[3] {
+				嗯……真可惜，
+				但既然如此，我也就不勉強你了。{wait}
+			}
+			TextWait
+			_Char4B char[63] 255
+			_Char4B char[3] 255
+	elif flag[799]:
+		if !flag[5]:
+			Call fn[1,11]
+		else:
+			TextTalk self {
+				嗚呼呼呼……！！{wait}
+			}
+			TextWait
+	elif flag[793]:
+	elif flag[784]:
+	elif flag[777]:
+	TextEnd self
+	Return
+
+fn[7]:
+	field_party[0].5 = self.4
+	self.5 = self.4
+	TextStart self
+	CharFlagsUnset self 0x0010
+	CharTurnToChar self field_party[0] 0deg/s
+	self.4 = (self.4 + 360) % 360
+	self.4 = self.4 + 360 - self.5
+	self.5 = self.4 / 180
+	if self.4 <= 45 | self.4 >= 315 && self.4 <= 405 | self.4 >= 675:
+	elif self.5 < 1:
+		self.8 = 2
+	elif self.5 > 2:
+		self.8 = 1
+	else:
+		self.8 = self.5
+	self.4 = field_party[0].5
+	field_party[0].5 = 0
+	self.5 = 0
+	CharFlagsSet self 0x0010
+	if flag[1566]:
+	elif flag[1565]:
+		if !flag[3]:
+			TextTalk self {
+				在接待內科患者時，
+				我總是會這樣想……{wait}
+			}
+			TextWait
+			TextTalk self {
+				像內科醫術這種以促進身體自愈為主
+				的醫療方式，有時也存在效率不足的情況，
+				而此時憑藉外科醫術的速度優勢，便有可能拯救患者。{wait}
+			}
+			TextWait
+			TextTalk self {
+				靈活地結合兩種醫術，互相彌補彼此的不足，
+				這才是理想中的醫療形態吧。{wait}
+			}
+			TextWait
+			TextTalk self {
+				……我與凱瑞教授之間可以說是水火不容，
+				所以從我嘴裡說出這樣的話，或許有點奇怪吧。{wait}
+			}
+			TextWait
+			FlagSet flag[3]
+		else:
+			TextTalk self {
+				……咳咳！啊，算啦。
+				你就把我剛才說的話給忘掉吧。{wait}
+			}
+			TextWait
+			TextTalk self {
+				……我剛才說的話，
+				無論如何也不能
+				告訴凱瑞教授哦。{wait}
+			}
+			TextWait
+	elif flag[1554]:
+		TextTalk self {
+			咳咳！
+			凱瑞教授那傢伙，好像用外科手術
+			順利救助了今早的那些傷患呢。{wait}
+		}
+		TextWait
+		TextTalk self {
+			……哼，外科醫術
+			倒也有點用啊。{wait}
+		}
+		TextWait
+	elif flag[1536]:
+		TextTalk self {
+			約亞西姆最近似乎
+			總是在研究室裡埋頭研究。{wait}
+		}
+		TextWait
+		TextTalk self {
+			雖說他平時總有偷懶的壞習慣，
+			但在專業研究方面，
+			卻是個很能幹的男人呢。{wait}
+		}
+		TextWait
+	elif flag[1351]:
+		TextTalk self {
+			嗯……你們那麼著急做什麼？{wait}
+		}
+		TextWait
+		TextTalk self {
+			除了患者以外，
+			誰也沒有來過這裡哦。{wait}
+		}
+		TextWait
+	elif flag[1346]:
+		if !flag[3]:
+			TextTalk self {
+				咳咳！
+				幹什麼？你們幾個。{wait}
+			}
+			TextWait
+			TextTalk name[0] {
+				#0005F那個，我們稍微有些事情，
+				要來找神經・藥物學科的……{wait}
+			}
+			TextWait
+			TextTalk self {
+				啊，原來如此。{wait}
+			}
+			TextWait
+			TextTalk self {
+				神經・藥物學科確實是
+				屬於內科的範疇，
+				但說到底，也還只是研究中的領域。{wait}
+			}
+			TextWait
+			TextTalk self {
+				要是有什麼事的話，
+				直接去找約亞西姆就可以了。{wait}
+			}
+			TextWait
+			FlagSet flag[3]
+		else:
+			TextTalk self {
+				神經・藥物學科確實是
+				屬於內科的範疇，
+				但說到底，也還只是研究中的領域。{wait}
+			}
+			TextWait
+			TextTalk self {
+				要是有什麼事的話，
+				直接去找約亞西姆就可以了。{wait}
+			}
+			TextWait
+	elif flag[1307]:
+	elif flag[1292]:
+	elif flag[1282]:
+		if !flag[3]:
+			TextTalk self {
+				前段時間，
+				我試著把內科的診斷工作
+				託付給了古恩。{wait}
+			}
+			TextWait
+			TextTalk self {
+				她的技術水準雖然無可挑剔，
+				但對患者的關懷卻還不夠……{wait}
+			}
+			TextWait
+			TextTalk self {
+				為了不辱烏爾斯拉醫院的
+				實習醫生之名，
+				我希望她能更上一層樓。{wait}
+			}
+			TextWait
+			FlagSet flag[3]
+		else:
+			TextTalk self {
+				如果想掌握確切的病情，
+				就需要擁有能與患者
+				良好溝通的能力。{wait}
+			}
+			TextWait
+			TextTalk self {
+				古恩在那方面
+				還不夠成熟呢。{wait}
+			}
+			TextWait
+	elif flag[1280]:
+		TextTalk self {
+			自從紀念慶典開始之後，
+			實習醫生們似乎就
+			有些鬆懈呢。{wait}
+		}
+		TextWait
+		TextTalk self {
+			嗯哼！
+			這種時候，就要給他們
+			一記當頭棒喝才行。{wait}
+		}
+		TextWait
+	elif flag[1040]:
+		if QuestFlagsGet quest[19] 0x10:
+			if !flag[3]:
+				TextTalk self {
+					給你們添了不少
+					麻煩呢。{wait}
+				}
+				TextWait
+				TextTalk self {
+					我馬上還要講課，
+					下次有機會再聊吧。{wait}
+				}
+				TextWait
+				TextTalk self {
+					以後也請多多關照。{wait}
+				}
+				TextWait
+				FlagSet flag[3]
+			else:
+				TextTalk self {
+					在七耀教會學習的日子，
+					真是讓人難以忘懷。{wait}
+				}
+				TextWait
+				TextTalk self {
+					以後得找個時間去向艾拉爾達
+					大主教表示感謝才行啊。{wait}
+				}
+				TextWait
+		elif QuestTaskGet quest[19] 2:
+			Call fn[1,75]
+		elif QuestTaskGet quest[19] 0:
+			TextTalk self {
+				請去克洛斯貝爾大教堂，
+				幫我向艾拉爾達大主教
+				要來『羽扇豆草』吧。{wait}
+			}
+			TextWait
+			TextTalk self {
+				對了，我事先提醒一下……
+				大主教可是比我還要難相處的人……{wait}
+			}
+			TextWait
+			TextTalk self {
+				一定不能有失禮節啊。{wait}
+			}
+			TextWait
+		elif QuestFlagsGet quest[19] 0x02:
+			Call fn[1,74]
+		else:
+			TextTalk self {
+				……唔，只是這種無關緊要的請求，
+				他們真的會來嗎……{wait}
+			}
+			TextWait
+			TextTalk self {
+				果然還是應該
+				去拜託遊擊士嗎……？{wait}
+			}
+			TextWait
+			TextTalk self {
+				不過，我又不想因為這種
+				程度的小事而花費米拉……{wait}
+			}
+			TextWait
+	elif flag[1024]:
+	elif flag[799]:
+	elif flag[793]:
+		TextTalk self {
+			那天，讓利頓
+			交報告的人是我……
+			真沒想到會發生那樣的事情。{wait}
+		}
+		TextWait
+		TextTalk self {
+			嗯，其他的實習醫生
+			沒有再遭到襲擊，
+			真是不幸中的萬幸啊。{wait}
+		}
+		TextWait
+	elif flag[784]:
+		if !flag[3]:
+			TextTalk self {
+				嗯哼！……有什麼事嗎？
+				你們好像不是這裡的學生啊……{wait}
+			}
+			TextWait
+			TextTalk self {
+				……嗯，仔細一看的話，
+				似乎都是很聰明的孩子呢。{wait}
+			}
+			TextWait
+			TextTalk self {
+				你們幾個，要不要來挑戰一下
+				明年的入學考試呢？{wait}
+			}
+			TextWait
+			TextTalk name[3] {
+				#0305F噢！原來我們還有這種潛質嗎！{wait}
+			} {
+				#0304F蘭迪醫生華麗的
+				護理師後宮生活……
+				聽起來好像很不錯呢……{wait}
+			}
+			TextWait
+			TextTalk name[0] {
+				#0006F喂喂……{wait}
+			}
+			TextWait
+			TextTalk name[1] {
+				#0111F話說回來，這間烏爾斯拉醫院
+				也從鄰國吸引了很多考生，
+				接受考試的人數可是非常多的。{wait}
+			} {
+				#0103F去年的錄取率……
+				好像是一百二十分之一吧。{wait}
+			}
+			TextWait
+			TextTalk name[3] {
+				#0303F這麼難啊，那還是放棄吧。{wait}
+			}
+			TextWait
+			TextTalk name[2] {
+				#0211F……放棄得真乾脆。{wait}
+			}
+			TextWait
+			FlagSet flag[3]
+		else:
+			TextTalk self {
+				這間烏爾斯拉醫院，
+				是一家連醫療大國雷米菲利亞也敬畏三分
+				的最尖端醫療研究所。{wait}
+			}
+			TextWait
+			TextTalk self {
+				克洛斯貝爾本地就不必說了，
+				埃雷波尼亞帝國、卡爾瓦德共和國、
+				雷米菲利亞公國以及利貝爾王國……{wait}
+			}
+			TextWait
+			TextTalk self {
+				各國的優秀年輕人都以這裡為目標，
+				經過拚命學習，並通過嚴格的考試，
+				才能得到入學的機會。{wait}
+			}
+			TextWait
+	elif flag[777]:
+	CharSetChipPattern self 0
+	TextEnd self
+	Return
+
+fn[8]:
+	TextStart self
+	if flag[1566]:
+	elif flag[1565]:
+		TextTalk self {
+			據說，今天用救護車送來的那些傷患
+			已經恢復意識了。{wait}
+		}
+		TextWait
+		TextTalk self {
+			本院醫生的水準真是一流呢。{wait}
+		}
+		TextWait
+	elif flag[1554]:
+	elif flag[1536]:
+		TextTalk self {
+			前段時間，我又參加了
+			臨床實習……{wait}
+		}
+		TextWait
+		TextTalk self {
+			我盡可能用
+			最溫和的態度來接觸患者，
+			結果，評價從Ｂ－變成了Ｂ＋呢。{wait}
+		}
+		TextWait
+		TextTalk self {
+			雖然只是很小的進步……
+			不過，距離我成為內科醫生的夢想，
+			總算是又向前邁進了一步。{wait}
+		}
+		TextWait
+	elif flag[1351]:
+		if !flag[6]:
+			TextTalk self {
+				剛才拉格教授在為病人診察，
+				我看著他時，
+				忽然注意到一件事。{wait}
+			}
+			TextWait
+			TextTalk self {
+				就連那個難以相處的教授，
+				在患者面前也都會
+				表現得那麼耐心和藹……{wait}
+			}
+			TextWait
+			TextTalk self {
+				仔細想想，
+				我原來只注重技術方面的評價，
+				卻忽視了這個重要的部分啊。{wait}
+			}
+			TextWait
+			FlagSet flag[6]
+		else:
+			TextTalk self {
+				就連那個壞脾氣的拉格教授，
+				在患者的面前也都會
+				表現得那麼耐心和藹……{wait}
+			}
+			TextWait
+			TextTalk self {
+				我所缺少的東西，
+				大概就是那種態度吧？{wait}
+			}
+			TextWait
+	elif flag[1346]:
+		if !flag[6]:
+			TextTalk self {
+				拉格教授
+				給我的評價
+				總是不高呢。{wait}
+			}
+			TextWait
+			TextTalk self {
+				就算我去問他到底有什麼不足，
+				他也只會說『自己去體會』。{wait}
+			}
+			TextWait
+			TextTalk self {
+				可惡，既然如此，
+				我平時就要多觀察教授了。{wait}
+			}
+			TextWait
+			FlagSet flag[6]
+		else:
+			TextTalk self {
+				既然如此，
+				我就來觀察拉格教授好了。{wait}
+			}
+			TextWait
+			TextTalk self {
+				無論如何我也要找出
+				得到好評價的秘訣。{wait}
+			}
+			TextWait
+	elif flag[1307]:
+		TextTalk self {
+			教授今天不在，
+			所以必須努力和利頓配合，
+			把工作做好才行。{wait}
+		}
+		TextWait
+		TextTalk self {
+			但是……
+			這好像和評定分數沒什麼關係，
+			做起來真是沒什麼動力啊。{wait}
+		}
+		TextWait
+	elif flag[1292]:
+		if !flag[6]:
+			TextTalk self {
+				那兩位教授，彼此之間的關係很差呢。{wait}
+			}
+			TextWait
+			TextTalk self {
+				真搞不懂，兩人在各方面都那麼相似，
+				為什麼就是看對方不順眼呢。{wait}
+			}
+			TextWait
+			FlagSet flag[6]
+		else:
+			TextTalk self {
+				不過，畢竟沒有像某些醫院那樣，
+				內外科之間還進行著齷齪的黨派鬥爭……
+				也還算好了。{wait}
+			}
+			TextWait
+	elif flag[1282]:
+		if !flag[6]:
+			TextTalk self {
+				昨天有臨床實習呢。{wait}
+			}
+			TextWait
+			TextTalk self {
+				雖然我個人覺得
+				自己做得不錯。
+				但教授卻給了我Ｂ－的評價……{wait}
+			}
+			TextWait
+			TextTalk self {
+				可惡，通往女強人醫生的
+				道路真是意外地艱難呢……{wait}
+			}
+			TextWait
+			FlagSet flag[6]
+		else:
+			TextTalk self {
+				這幾天的臨床實習……
+				雖然我個人覺得
+				自己的表現足以拿到Ａ＋評價。{wait}
+			}
+			TextWait
+			TextTalk self {
+				但最後竟然是Ｂ－啊……
+				一定要繼續努力才行啊。{wait}
+			}
+			TextWait
+	elif flag[1280]:
+	elif flag[1040]:
+	elif flag[1024]:
+		TextTalk self {
+			利頓的傷好像已經治好了，
+			正在幹勁十足地工作呢。{wait}
+		}
+		TextWait
+		TextTalk self {
+			但是，因為他太過努力，
+			好像連約亞西姆醫生也把工作
+			都推到他身上了……{wait}
+		}
+		TextWait
+	elif flag[799]:
+		CharTurnTo self 180deg 0deg/s
+		TextTalk self {
+			教、教授～！
+			請冷靜一點啊！{wait}
+		}
+		TextWait
+	elif flag[793]:
+		TextTalk self {
+			不過，利頓
+			也真是不走運呢。{wait}
+		}
+		TextWait
+		TextTalk self {
+			好不容易把報告寫好了，
+			竟然遇到了那樣的事。{wait}
+		}
+		TextWait
+		TextTalk self {
+			居然會在自己學習的地方住院，
+			他一定沒想到
+			自己會遇到這樣的倒楣事吧。{wait}
+		}
+		TextWait
+	elif flag[784]:
+		TextTalk self {
+			由於利頓受傷的緣故，
+			輪值變得更加辛苦了呢。{wait}
+		}
+		TextWait
+		TextTalk self {
+			真是的……
+			說是被魔獸襲擊了，
+			但到底是真的假的啊？{wait}
+		}
+		TextWait
+	elif flag[777]:
+	TextEnd self
+	Return
+
+fn[9]:
+	TextStart self
+	if flag[1566]:
+		if !flag[5]:
+			Call fn[1,11]
+		else:
+			TextTalk self {
+				哇哦哦哦哦……！{wait}
+			}
+			TextWait
+	elif flag[1565]:
+	elif flag[1554]:
+	elif flag[1536]:
+	elif flag[1351]:
+	elif flag[1346]:
+	elif flag[1307]:
+	elif flag[1292]:
+		if !flag[5]:
+			Call fn[1,11]
+		else:
+			TextTalk self {
+				哦呀呀呀呀……！！{wait}
+			}
+			TextWait
+	elif flag[1282]:
+	elif flag[1280]:
+	elif flag[1040]:
+	elif flag[1024]:
+	elif flag[799]:
+		if !flag[5]:
+			Call fn[1,11]
+		else:
+			TextTalk self {
+				哇呀呀呀呀……！！{wait}
+			}
+			TextWait
+	elif flag[793]:
+	elif flag[784]:
+	elif flag[777]:
+	TextEnd self
+	Return
+
+fn[10]:
+	field_party[0].5 = self.4
+	self.5 = self.4
+	TextStart self
+	CharFlagsUnset self 0x0010
+	CharTurnToChar self field_party[0] 0deg/s
+	self.4 = (self.4 + 360) % 360
+	self.4 = self.4 + 360 - self.5
+	self.5 = self.4 / 180
+	if self.4 <= 45 | self.4 >= 315 && self.4 <= 405 | self.4 >= 675:
+	elif self.5 < 1:
+		self.8 = 2
+	elif self.5 > 2:
+		self.8 = 1
+	else:
+		self.8 = self.5
+	self.4 = field_party[0].5
+	field_party[0].5 = 0
+	self.5 = 0
+	CharFlagsSet self 0x0010
+	if flag[1566]:
+	elif flag[1565]:
+		if !flag[4]:
+			TextTalk self {
+				今天早上救治重傷患者的時候……
+				不，其實我一直都在考慮
+				這個問題……{wait}
+			}
+			TextWait
+			TextTalk self {
+				即使是在外科的治療現場，
+				也必須要有麻醉及
+				點滴之類的內科醫療技術呢。{wait}
+			}
+			TextWait
+			TextTalk self {
+				我想，只有外科與內科
+				攜手合作、互相彌補，
+				才是最理想的醫療狀態吧。{wait}
+			}
+			TextWait
+			TextTalk self {
+				……但我和拉格教授
+				總是吵個沒完，
+				說出這樣的話，或許有點奇怪吧。{wait}
+			}
+			TextWait
+			FlagSet flag[4]
+		else:
+			TextTalk self {
+				……咳咳！
+				一不小心說漏嘴了，
+				講出了不該講的話呢。{wait}
+			}
+			TextWait
+			TextTalk self {
+				聽好，剛才那些話可千萬不能
+				透露給拉格教授哦！{wait}
+			}
+			TextWait
+	elif flag[1554]:
+		if !flag[4]:
+			TextTalk self {
+				就在剛才，從克洛斯貝爾市那邊
+				送來了幾名急救患者。{wait}
+			}
+			TextWait
+			TextTalk self {
+				我和約亞西姆他們一起
+				為患者做了些基本處理。{wait}
+			}
+			TextWait
+			TextTalk self {
+				呼，真是累壞了。
+				我也上年紀了吧……{wait}
+			}
+			TextWait
+			FlagSet flag[4]
+		else:
+			TextTalk self {
+				從克洛斯貝爾市送來一些急救患者，
+				總算是做完了基本處理。{wait}
+			}
+			TextWait
+			TextTalk self {
+				呼，真是累壞了。
+				我也上年紀了吧……{wait}
+			}
+			TextWait
+	elif flag[1536]:
+		if !flag[4]:
+			TextTalk self {
+				趁著還沒忘記的時候，
+				不斷複習學過的東西，
+				就能讓它變成長期記憶。{wait}
+			}
+			TextWait
+			TextTalk self {
+				也就是說，作為『知識』
+				清晰地刻在腦子裡。{wait}
+			}
+			TextWait
+			TextTalk self {
+				我們這裡的實習醫生之所以很優秀，
+				或許就是得益於養成了經常複習的
+				好習慣吧。{wait}
+			}
+			TextWait
+			FlagSet flag[4]
+		else:
+			TextTalk self {
+				趁著還沒忘記的時候，
+				不斷複習學過的東西，
+				它就會變成『知識』，儲藏在腦海裡。{wait}
+			}
+			TextWait
+			TextTalk self {
+				……哈，這也是從約亞西姆那裡現學現賣的。{wait}
+			}
+			TextWait
+	elif flag[1351]:
+		if !flag[4]:
+			TextTalk self {
+				護理師剛才通知我說，
+				我兒子琴茲
+				來醫院了。{wait}
+			}
+			TextWait
+			TextTalk self {
+				大概是我妻子讓他來送飯，
+				他才會過來的吧。{wait}
+			}
+			TextWait
+			TextTalk self {
+				雖然他現在可能
+				正在滿嘴抱怨……
+				但我還是非常高興呢。{wait}
+			}
+			TextWait
+			FlagSet flag[4]
+		else:
+			TextTalk self {
+				我兒子琴茲
+				好像來醫院
+				給我送飯了呢。{wait}
+			}
+			TextWait
+			TextTalk self {
+				我真是很高興啊。
+				呵呵，這樣的表情，
+				可不能讓拉格教授看見啊。{wait}
+			}
+			TextWait
+	elif flag[1346]:
+		TextTalk self {
+			在院區屋頂的那個研究區裡，
+			保存著在至今為止的研究中
+			所得到的貴重資料。{wait}
+		}
+		TextWait
+		TextTalk self {
+			如果沒有必要，
+			我希望外部人員最好不要進去。{wait}
+		}
+		TextWait
+	elif flag[1307]:
+	elif flag[1292]:
+	elif flag[1282]:
+		if !flag[4]:
+			TextTalk self {
+				……克洛斯貝爾市昨天發生的那起騷亂，
+				我的兒子琴茲似乎也參加了呢。{wait}
+			}
+			TextWait
+			TextTalk self {
+				多虧有警察的干預，
+				好像並沒有人受傷……{wait}
+			}
+			TextWait
+			TextTalk self {
+				……唉……
+				真希望他能讓我少操點心。{wait}
+			}
+			TextWait
+			FlagSet flag[4]
+		else:
+			TextTalk self {
+				本來應該要好好教訓他一番，
+				但我卻無法到場……{wait}
+			}
+			TextWait
+			TextTalk self {
+				……唉……
+				我真是個不稱職的父親啊。{wait}
+			}
+			TextWait
+	elif flag[1280]:
+		TextTalk self {
+			我本來打算明天和兒子一起去看
+			彩虹劇團的演出……
+			但目前看來，應該是去不成了吧。{wait}
+		}
+		TextWait
+		TextTalk self {
+			……竟然去討好孩子，
+			身為父親，我真是很失敗。{wait}
+		}
+		TextWait
+	elif flag[1040]:
+		if !flag[4]:
+			CharSetChipPattern self 0
+			TextTalk self {
+				在上上個月，那群不良份子的成員
+				不是被送到醫院了嗎。{wait}
+			}
+			TextWait
+			TextTalk self {
+				我當時很擔心傷患中會不會有我兒子琴茲，
+				嚇得脊背發涼。{wait}
+			}
+			TextWait
+			TextTalk self {
+				……明明發生了那樣的事情，
+				他卻還要繼續
+				留在不良份子裡面……{wait}
+			}
+			TextWait
+			TextTalk self {
+				真是的，真希望
+				他能讓我少操點心啊。{wait}
+			}
+			TextWait
+			FlagSet flag[4]
+		else:
+			TextTalk self {
+				……我在兒子心中的形象
+				似乎並不怎麼好呢。{wait}
+			}
+			TextWait
+			TextTalk self {
+				一直以來，我因為工作繁忙的緣故，
+				總是待在醫院，很少在家裡陪伴家人，
+				所以才得不到兒子的尊敬吧。{wait}
+			}
+			TextWait
+			TextTalk self {
+				我兒子會成為不良份子的成員，
+				我或許應該承擔一部分責任……{wait}
+			}
+			TextWait
+	elif flag[1024]:
+		if !flag[4]:
+			Call fn[1,12]
+		else:
+			CharSetChipPattern self 0
+			TextTalk self {
+				聽好了，亞蘇拉。
+				你已經是負責教授
+				機械醫療課程的主任了，{wait}
+			}
+			TextWait
+			TextTalk self {
+				總保持這種學生的心態可不行哦。{wait}
+			}
+			TextWait
+	elif flag[799]:
+	elif flag[793]:
+		if !flag[4]:
+			TextTalk self {
+				所謂外科，就是在近年
+				逐漸普及開來的
+				一種近代醫療手段。{wait}
+			}
+			TextWait
+			TextTalk self {
+				但是，不管怎麼說，
+				它還是一種新技術。{wait}
+			}
+			TextWait
+			TextTalk self {
+				用手術刀割開身體，
+				這樣的事，直到現在
+				也難以得到大眾的理解。{wait}
+			}
+			TextWait
+			FlagSet flag[4]
+		else:
+			TextTalk self {
+				包括那個拉格教授在內，
+				對外科醫術持有偏見的人
+				並不在少數，這便是現狀。{wait}
+			}
+			TextWait
+			TextTalk self {
+				不過，那種跟不上近代醫療
+				進化速度的落伍老頭，
+				我才懶得理呢。{wait}
+			}
+			TextWait
+	elif flag[784]:
+		TextTalk self {
+			亞蘇拉……
+			今天好像也遲到了呢。{wait}
+		}
+		TextWait
+		TextTalk self {
+			真是的……
+			都多少次了，總是不知悔改。{wait}
+		}
+		TextWait
+	elif flag[777]:
+	CharSetChipPattern self 0
+	TextEnd self
+	Return
+
+fn[11]:
+	_Char4A char[3] 255
+	_Char4A char[6] 255
+	CharTurnToChar char[3] char[6] 0deg/s
+	CharTurnToChar char[6] char[3] 0deg/s
+	if flag[1566]:
+		TextTalk char[3] {
+			嗯哼！
+			我還以為是誰呢，這不是凱瑞教授嘛。{wait}
+		}
+		TextWait
+		TextTalk char[6] {
+			哎呀，原來是拉格教授。{wait}
+		}
+		TextWait
+		TextTalk char[3] {
+			……啊，對了。
+			關於昨天那個重傷患者的處理……{wait}
+		}
+		TextWait
+		TextTalk char[6] {
+			啊呀，您已經聽說了
+			我昨天的成果了嗎？{wait}
+		}
+		TextWait
+		TextTalk char[6] {
+			哼哼哼，你們內科的時代
+			就快要面臨終結了吧？{wait}
+		}
+		TextWait
+		TextTalk char[3] {
+			#4S……你說什麼！？{wait}
+		}
+		TextWait
+		TextTalk char[6] {
+			#4S……想打架嗎！？{wait}
+		}
+		TextWait
+	elif flag[1565]:
+	elif flag[1554]:
+	elif flag[1536]:
+	elif flag[1351]:
+	elif flag[1346]:
+	elif flag[1307]:
+	elif flag[1292]:
+		TextTalk char[3] {
+			嗯哼！我還以為是誰呢，
+			這不是凱瑞教授嘛。{wait}
+		}
+		TextWait
+		TextTalk char[3] {
+			您那髒兮兮的鬍子，
+			今天也給醫生的形象抹黑了呢。{wait}
+		}
+		TextWait
+		TextTalk char[6] {
+			哎呀呀，
+			拉格教授您也不遜色啊。{wait}
+		}
+		TextWait
+		TextTalk char[6] {
+			您那好像被野火燒盡一樣的禿頭，
+			竟然還沒有春風吹又生，真是讓人吃驚。{wait}
+		}
+		TextWait
+		TextTalk char[3] {
+			……您那難看的鬍子……
+			就用您擅長的外科手術，
+			把它永久拔除如何？{wait}
+		}
+		TextWait
+		TextTalk char[6] {
+			……您那荒蕪的頭頂才是呢，
+			您對內科醫療這麼拿手，
+			怎麼就沒讓它恢復茂密啊？{wait}
+		}
+		TextWait
+		TextTalk char[3] {
+			#4S……你說什麼！？{wait}
+		}
+		TextWait
+		TextTalk char[6] {
+			#4S……想打架嗎！？{wait}
+		}
+		TextWait
+	elif flag[1282]:
+	elif flag[1280]:
+	elif flag[1040]:
+	elif flag[1024]:
+	elif flag[799]:
+		TextTalk char[3] {
+			嗯哼！
+			……那張骯髒的鬍子臉，我還以為是誰呢，
+			這不是凱瑞教授嘛。{wait}
+		}
+		TextWait
+		TextTalk char[6] {
+			哎呀呀，原來是拉格教授啊。
+			哎呀，您的光頭今天也亮得刺眼啊。{wait}
+		}
+		TextWait
+		TextTalk char[3] {
+			……哼！
+			真是讓人歎息啊，{wait}
+		}
+		TextWait
+		TextTalk char[3] {
+			那些前途無量的實習醫生們竟然要
+			向您這樣的人學習用刀子切人的手法。{wait}
+		}
+		TextWait
+		TextTalk char[6] {
+			……哼！
+			這麼說來，您可真是輕鬆呢。{wait}
+		}
+		TextWait
+		TextTalk char[6] {
+			有了七耀教會遺留的，現成的過時技術……
+			光憑這點本事，就能擺出資深教授的架子了。{wait}
+		}
+		TextWait
+		TextTalk char[3] {
+			#4S……你說什麼！？{wait}
+		}
+		TextWait
+		TextTalk char[6] {
+			#4S……想打架嗎！？{wait}
+		}
+		TextWait
+	elif flag[793]:
+	elif flag[784]:
+	elif flag[777]:
+	FlagSet flag[5]
+	_Char4B char[3] 255
+	_Char4B char[6] 255
+	Return
+
+fn[12]:
+	_Char4A char[11] 255
+	CharSetChipPattern char[7] 0
+	CharTurnToChar char[11] char[7] 0deg/s
+	TextTalk char[7] {
+		亞蘇拉……
+		你又遲到了呢。{wait}
+	}
+	TextWait
+	TextTalk char[7] {
+		都已經是講課的老師了，
+		竟然還遲到，真是豈有此理！{wait}
+	}
+	TextWait
+	TextTalk char[11] {
+		非、非常抱歉……{wait}
+	}
+	TextWait
+	TextTalk char[11] {
+		我昨天光顧著研究新到的器材，
+		結果完全入迷了，不知不覺就
+		研究了一整夜。{wait}
+	}
+	TextWait
+	TextTalk char[11] {
+		然後稍微小睡了一下，
+		結果一直睡到剛才……{wait}
+	}
+	TextWait
+	TextTalk char[7] {
+		……呼……
+		你和學生時代相比，
+		真是完全沒有變化呢。{wait}
+	}
+	TextWait
+	_Char4B char[11] 255
+	CharSetChipPattern char[7] 0
+	FlagSet flag[4]
+	FlagSet flag[8]
+	Return
+
+fn[13]:
+	TextStart self
+	if flag[1566]:
+		if !flag[7]:
+			CharTurnToChar self char[12] 0deg/s
+			TextTalk self {
+				亞蘇拉主任……
+				不管怎麼說，在這裡
+				睡覺還是不太好吧。{wait}
+			}
+			TextWait
+			TextTalk self {
+				哎呀，趁凱瑞教授他們
+				吵架結束之前，要快點起來才行……{wait}
+			}
+			TextWait
+			TextTalk char[12] {
+				嗯～嗯……再睡五分鐘……{wait}
+			}
+			TextWait
+			TextTalk self {
+				還是不行啊……{wait}
+			}
+			TextWait
+			FlagSet flag[7]
+		else:
+			TextTalk self {
+				沒辦法，最後還是
+				縱容了亞蘇拉主任呢。{wait}
+			}
+			TextWait
+			TextTalk self {
+				她睏得不行……{wait}
+			}
+			TextWait
+	elif flag[1565]:
+		if !flag[7]:
+			TextTalk self {
+				亞蘇拉主任最活躍
+				的研究時間，
+				毫無疑問是在晚上。{wait}
+			}
+			TextWait
+			TextTalk self {
+				……只不過，出於這個原因，
+				主任變成了睡懶覺大王，
+				這也是事實。{wait}
+			}
+			TextWait
+			TextTalk self {
+				雖然擁有副教授的頭銜，
+				但在她身上卻感覺不到主任的威嚴，
+				或許就是因為這個緣故吧。{wait}
+			}
+			TextWait
+			FlagSet flag[7]
+		else:
+			TextTalk self {
+				亞蘇拉主任就是所謂的夜貓子呢，
+				因此也是個睡懶覺大王。{wait}
+			}
+			TextWait
+			TextTalk self {
+				雖然擁有副教授的頭銜，
+				但在她身上卻感覺不到主任的威嚴，
+				或許就是因為這個緣故吧。{wait}
+			}
+			TextWait
+	elif flag[1554]:
+		TextTalk self {
+			雖然器械的開發很困難，
+			但能使用新技術
+			也是樂趣所在。{wait}
+		}
+		TextWait
+		TextTalk self {
+			一想到在這裡研發出來的醫療器械
+			將會在未來的醫療領域中發揮巨大作用，
+			就不由自主地心潮澎湃。{wait}
+		}
+		TextWait
+	elif flag[1536]:
+		TextTalk self {
+			哎呀……真希望亞蘇拉主任
+			別再硬撐了，繼續睡懶覺去吧。{wait}
+		}
+		TextWait
+		TextTalk self {
+			話說回來，她畢竟都熬了快一個通宵，
+			早上很難起得來吧……{wait}
+		}
+		TextWait
+	elif flag[1351]:
+		TextTalk self {
+			亞蘇拉主任睡懶覺
+			是預料之中的事情……
+			事到如今，連教授都懶得再生氣了。{wait}
+		}
+		TextWait
+		TextTalk self {
+			呼，我也耐心地
+			等著她來吧。{wait}
+		}
+		TextWait
+	elif flag[1346]:
+		TextTalk self {
+			……亞蘇拉主任今天好像
+			又睡懶覺了呢。{wait}
+		}
+		TextWait
+		TextTalk self {
+			沒辦法，今天研究的準備工作
+			就讓我來做吧。{wait}
+		}
+		TextWait
+	elif flag[1307]:
+		TextTalk self {
+			凱瑞教授和亞蘇拉主任
+			不在的時候，
+			這間診察室真是冷清呢。{wait}
+		}
+		TextWait
+		TextTalk self {
+			現在有些人手不足，
+			要不要把芙蘿拉叫來呢……{wait}
+		}
+		TextWait
+	elif flag[1292]:
+		TextTalk self {
+			……一切都和往日沒有任何不同，
+			根本感覺不到自己處在紀念慶典中呢。{wait}
+		}
+		TextWait
+		TextTalk self {
+			看樣子，就算我去勸解應該也沒用，
+			不如還是去找本書看看吧……{wait}
+		}
+		TextWait
+	elif flag[1282]:
+	elif flag[1280]:
+		TextTalk self {
+			……已經是紀念慶典的第二天了吧，{wait}
+		}
+		TextWait
+		TextTalk self {
+			我陪著亞蘇拉主任進行了
+			三天三夜的研究，一直沒有睡覺，
+			所以都不太清楚日期了呢……{wait}
+		}
+		TextWait
+	elif flag[1040]:
+		TextTalk self {
+			亞蘇拉主任的職位雖然是
+			『主任』，但實際地位
+			卻相當於副教授。{wait}
+		}
+		TextWait
+		TextTalk self {
+			但是，比起去傳道授業，
+			主任更願意悶在研究室
+			裡面搞開發呢。{wait}
+		}
+		TextWait
+		TextTalk self {
+			在某種意義上說，
+			或許算是個地位很特殊的人物吧。{wait}
+		}
+		TextWait
+	elif flag[1024]:
+		if !flag[7]:
+			TextTalk self {
+				目前，諸多國家都在致力於開發
+				各式各樣的導力器，其中，醫療器械的研究
+				還是要屬雷米菲利亞公國的技術最為尖端。{wait}
+			}
+			TextWait
+			TextTalk self {
+				在這所醫院中所使用的醫療器械，
+				也幾乎都是由雷米菲利亞公國的
+				賽蘭德公司所製造的。{wait}
+			}
+			TextWait
+			FlagSet flag[7]
+		else:
+			TextTalk self {
+				說起賽蘭德公司，
+				可是整個大陸中首屈一指的醫療器械製造商，
+				同時也是這所醫院的贊助商之一呢。{wait}
+			}
+			TextWait
+			TextTalk self {
+				所謂的醫療器械科，
+				主要工作就是將醫療器械進行臨床應用，
+				同時摸索它們的改良餘地。{wait}
+			}
+			TextWait
+	elif flag[799]:
+	elif flag[793]:
+		if !flag[7]:
+			TextTalk self {
+				在這棟研究區中，
+				正在研究著最先進的
+				醫療技術。{wait}
+			}
+			TextWait
+			TextTalk self {
+				特別是『醫療器械科』，
+				正在日夜不停地研究著
+				運用導力的醫療器械。{wait}
+			}
+			TextWait
+			TextTalk self {
+				……醫療器械科中有位亞蘇拉主任，
+				今天還沒來上班，
+				她是那裡的一把手呢。{wait}
+			}
+			TextWait
+			FlagSet flag[7]
+		else:
+			TextTalk self {
+				醫療器械的研究工作，比所謂的
+				近代醫學領域──外科還要更加高深……{wait}
+			}
+			TextWait
+			TextTalk self {
+				你能想像在這個部門擔任一把手的
+				亞蘇拉主任有多麼優秀了吧？{wait}
+			}
+			TextWait
+	elif flag[784]:
+		TextTalk self {
+			我的夢想，就是在祖國埃雷波尼亞帝國
+			建立一所大醫院。{wait}
+		}
+		TextWait
+		TextTalk self {
+			這所烏爾斯拉醫院
+			正是最適合實現
+			這個夢想的地方。{wait}
+		}
+		TextWait
+		TextTalk self {
+			因為這裡擁有最尖端的醫學技術，
+			並彙聚了最優秀的醫生呢。{wait}
+		}
+		TextWait
+	elif flag[777]:
+	TextEnd self
+	Return
+
+fn[14]:
+	TextStart self
+	if !flag[9]:
+		Call fn[1,16]
+	else:
+		TextTalk char[9] {
+			#2400F雖然我也會幫忙查房，
+			不過日常工作還是以研究為主。{wait}
+		} {
+			以現在的狀況來看，似乎是一直在給
+			貝爾達因醫生增加負擔呢。{wait}
+		} {
+			#2406F利頓可要儘快恢復過來，
+			給我精精神神地幹活才行。{wait}
+		}
+		TextWait
+	TextEnd self
+	Return
+
+fn[15]:
+	TextStart self
+	if !flag[9]:
+		Call fn[1,16]
+	else:
+		TextTalk self {
+			我接待了一位病情比較複雜的患者，
+			剛剛才結束了診察工作。{wait}
+		}
+		TextWait
+		TextTalk self {
+			……呼……
+			去食堂喝杯紅茶吧。{wait}
+		}
+		TextWait
+	TextEnd self
+	Return
+
+fn[16]:
+	CharTurnToChar char[9] char[10] 0deg/s
+	CharTurnToChar char[10] char[9] 0deg/s
+	_Char4A char[9] 255
+	_Char4A char[10] 255
+	TextTalk char[9] {
+		#2400F貝爾達因醫生，
+		您好像是累壞了啊。{wait}
+	} {
+		不介意的話，給您開一劑
+		添加了蜂王漿的營養劑如何？{wait}
+	} {
+		#2409F那可是阿爾摩利卡產的東西，
+		效果很不錯呢。{wait}
+	}
+	TextWait
+	TextTalk char[10] {
+		啊，還是算了吧。{wait}
+	}
+	TextWait
+	TextTalk char[10] {
+		因為你的營養劑實在是太有效果了。
+		要是產生了依賴性可就麻煩啦。{wait}
+	}
+	TextWait
+	_Char4B char[9] 255
+	_Char4B char[10] 255
+	FlagSet flag[9]
+	Return
+
+fn[17]:
+	TextStart self
+	if flag[1566]:
+	elif flag[1565]:
+		TextTalk self {
+			哼哼哼哼……♪{wait}
+		}
+		TextWait
+		TextTalk self {
+			呵呵，一到了晚上就睡不著，
+			工作效率反倒會提升呢。{wait}
+		}
+		TextWait
+		TextTalk self {
+			很好，從現在開始的十二個小時……
+			要好好幹活啦～！{wait}
+		}
+		TextWait
+	elif flag[1554]:
+		if !flag[8]:
+			TextTalk self {
+				對於醫療類導力器的開發而言，
+				首先應該保證的就是安全性。{wait}
+			}
+			TextWait
+			TextTalk self {
+				既然作用物件是人體，
+				就絕對不能出現什麼差錯。{wait}
+			}
+			TextWait
+			TextTalk self {
+				這就是開發醫療器械的困難之處吧。{wait}
+			}
+			TextWait
+			FlagSet flag[8]
+		else:
+			TextTalk self {
+				對於醫療類導力器的開發而言，
+				安全性比什麼都重要。{wait}
+			}
+			TextWait
+			TextTalk self {
+				有關對人體影響的確切資料，
+				並不一定僅僅透過小白鼠實驗
+				就能得到。{wait}
+			}
+			TextWait
+	elif flag[1536]:
+		if QuestFlagsGet quest[44] 0x10:
+			TextTalk self {
+				啊，那個掛墜扣
+				派上什麼用場了嗎？{wait}
+			}
+			TextWait
+			TextTalk self {
+				那是用即使被魔獸踩踏也不會損壞
+				的耐久型合金製成的，
+				一定能保存很久呢～{wait}
+			}
+			TextWait
+		elif QuestTaskGet quest[44] 2:
+			TextTalk self {
+				那個掛墜扣可是非常結實的東西，
+				它曾被捲入到實驗失敗時的爆炸中，
+				但也仍然完好無損呢。{wait}
+			}
+			TextWait
+			TextTalk self {
+				運氣這麼好的東西，
+				一定非常適合當作製作禮物的材料呢。{wait}
+			}
+			TextWait
+		elif QuestFlagsGet quest[44] 0x02:
+			Call fn[1,78]
+		elif !flag[8]:
+			TextTalk self {
+				我總是睡懶覺，
+				經常給夏魯魯添麻煩，
+				所以從上周開始就想努力早起。{wait}
+			}
+			TextWait
+			TextTalk self {
+				早晨設定十二個鬧鈴，
+				我差不多就能起床了……{wait}
+			}
+			TextWait
+			TextTalk self {
+				哎呀，就算熬了將近一通宵，
+				只要努努力，也還是可以起來的嘛。{wait}
+			}
+			TextWait
+			Emote self 0mm 2000mm 24 27 250ms 0
+			Sleep 1000ms
+			EmoteStop self
+			TextTalk self {
+				………………唔。{wait}
+			}
+			TextWait
+			FlagSet flag[8]
+		else:
+			TextTalk self {
+				………………呼。{wait}
+			}
+			TextWait
+			TextTalk self {
+				啊、啊啊……我可沒睡著哦！
+				只是稍微有點累了而已。{wait}
+			}
+			TextWait
+			TextTalk self {
+				好、好啦！今天也要努力地研究研究再研究！{wait}
+			}
+			TextWait
+			TextTalk self {
+				………………唔。{wait}
+			}
+			TextWait
+	elif flag[1351]:
+	elif flag[1346]:
+	elif flag[1307]:
+	elif flag[1292]:
+	elif flag[1282]:
+		if !flag[8]:
+			CharTurnTo self 90deg 0deg/s
+			TextTalk self {
+				…………啊！{wait}
+			}
+			TextWait
+			CharTurnToChar self field_party[0] 500deg/s
+			TextTalk self {
+				那、那個，開始講課了哦。{wait}
+			}
+			TextWait
+			TextTalk self {
+				今天的課程是關於
+				醫療器械中使用的結晶迴路的構造……{wait}
+			}
+			TextWait
+			TextTalk name[0] {
+				#0006F那個……
+				我們並不是這裡的學生……{wait}
+			}
+			TextWait
+			TextTalk name[1] {
+				#0100F好像是睡迷糊了呢。{wait}
+			}
+			TextWait
+			FlagSet flag[8]
+			ForkFunc char[11] fork[0] fn[0,0]
+		else:
+			TextTalk self {
+				啊……那個……對不起。
+				授課的時候，外部人員是禁止進入的。{wait}
+			}
+			TextWait
+	elif flag[1280]:
+		CharTurnTo self 90deg 0deg/s
+		if !flag[8]:
+			TextTalk self {
+				……呼……呼…………{wait}
+			}
+			TextWait
+			TextTalk name[0] {
+				#0005F站、站著就睡著了……！？{wait}
+			}
+			TextWait
+			TextTalk name[2] {
+				#0200F真厲害啊，
+				真想學會這個絕技。{wait}
+			}
+			TextWait
+			FlagSet flag[8]
+		else:
+			TextTalk self {
+				……呼……呼…………
+				……呼嚕。{wait}
+			}
+			TextWait
+			TextTalk self {
+				……呼……呼…………{wait}
+			}
+			TextWait
+	elif flag[1040]:
+		if !flag[8]:
+			TextTalk self {
+				我身為一個技術人員，
+				有個非常尊敬的人。{wait}
+			}
+			TextWait
+			TextTalk self {
+				那就是利貝爾・ＺＣＦ的
+				艾莉卡・拉塞爾博士……
+				也就是那個有名的Ａ・拉塞爾博士的女兒。{wait}
+			}
+			TextWait
+			TextTalk self {
+				她雖然身為女性，
+				卻擁有利貝爾王國
+				最頂級的技術知識……{wait}
+			}
+			TextWait
+			TextTalk self {
+				身為一名女醫生，我也想在醫療器械
+				領域建立偉大的功績。{wait}
+			}
+			TextWait
+			FlagSet flag[8]
+		else:
+			TextTalk self {
+				利貝爾的艾莉卡博士……
+				她是足以與Ａ・拉塞爾博士比肩的
+				優秀技術員。{wait}
+			}
+			TextWait
+			TextTalk self {
+				身為一名女醫生，我也想在醫療器械
+				領域建立偉大的功績。{wait}
+			}
+			TextWait
+	elif flag[1024]:
+		if !flag[4]:
+			Call fn[1,12]
+		else:
+			TextTalk self {
+				（唔……這麼下去的話，想從凱瑞教授
+				　手中逃出去就難了……）{wait}
+			}
+			TextWait
+			TextTalk char[7] {
+				……你在聽嗎，亞蘇拉！{wait}
+			}
+			TextWait
+			CharTurnToChar self char[7] 500deg/s
+			TextTalk self {
+				啊，是！
+				我以後會多加注意的！{wait}
+			}
+			TextWait
+	elif flag[799]:
+		if !flag[8]:
+			CharTurnTo self 90deg 0deg/s
+			TextTalk self {
+				（稀裡嘩啦
+				　稀裡嘩啦）{wait}
+			}
+			TextWait
+			TextTalk self {
+				……原來如此……
+				這個結晶迴路應該這樣……{wait}
+			}
+			TextWait
+			TextTalk name[1] {
+				#0101F（似乎完全沒有注意到我們。
+				　好強的專注力啊……）{wait}
+			}
+			TextWait
+			FlagSet flag[8]
+		else:
+			TextTalk self {
+				……嗯？
+				房間外面似乎有些吵啊。{wait}
+			}
+			TextWait
+			TextTalk self {
+				算啦，不管了，不管了。
+				繼續繼續～♪{wait}
+			}
+			TextWait
+	elif flag[793]:
+	elif flag[784]:
+	elif flag[777]:
+	TextEnd self
+	Return
+
+fn[18]:
+	TextStart self
+	if !flag[4]:
+		TextTalk self {
+			……呼……呼…………{wait}
+		}
+		TextWait
+		TextTalk self {
+			……呵呵，完成了…………{wait}
+		}
+		TextWait
+		TextTalk self {
+			這樣一來……與我的偶像艾莉卡博士
+			之間的距離就又拉近了一步……吧。
+			……唔。{wait}
+		}
+		TextWait
+		FlagSet flag[4]
+	else:
+		TextTalk self {
+			……呼……呼…………{wait}
+		}
+		TextWait
+		TextTalk self {
+			這樣一來……與我的偶像艾莉卡博士
+			之間的距離就又拉近了一步……吧。
+			……唔。{wait}
+		}
+		TextWait
+	TextEnd self
+	Return
+
+fn[19]:
+	TextStart self
+	if flag[1566]:
+		TextTalk self {
+			啊啊……
+			又開始了啊。{wait}
+		}
+		TextWait
+		TextTalk self {
+			他們兩位應該都很認同對方的實力，
+			但彼此之間的關係卻莫名地惡劣呢……{wait}
+		}
+		TextWait
+	elif flag[1565]:
+	elif flag[1554]:
+		TextTalk self {
+			今天的值班是到傍晚為止。{wait}
+		}
+		TextWait
+		TextTalk self {
+			一想到可以離開約亞西姆醫生，
+			我的心情就感到無比平靜……{wait}
+		}
+		TextWait
+		TextTalk self {
+			嗯，回到自己的房間之後，
+			好好放鬆一下吧。{wait}
+		}
+		TextWait
+	elif flag[1536]:
+		TextTalk self {
+			約亞西姆醫生所在的藥物學・神經科
+			一直進行著各式各樣的研究。{wait}
+		}
+		TextWait
+		TextTalk self {
+			在外科手術中使用的麻醉劑，
+			還有用於滋補健體的營養劑等藥劑，
+			都是在那裡研究調配出的。{wait}
+		}
+		TextWait
+	elif flag[1351]:
+		if !flag[10]:
+			TextTalk self {
+				約亞西姆醫生所管理的
+				藥物學・神經科，
+				是一個讓人深感興趣的領域呢。{wait}
+			}
+			TextWait
+			TextTalk self {
+				作為近代醫療體系的一部分，
+				同時也涉及到心理與精神領域……
+				真是非常神秘啊。{wait}
+			}
+			TextWait
+			TextTalk self {
+				我之所以會以內科醫生為目標，
+				也是出於對約亞西姆醫生的崇拜之情。{wait}
+			}
+			TextWait
+			FlagSet flag[10]
+		else:
+			TextTalk self {
+				約亞西姆醫生所管理的
+				藥物學・神經科，
+				是一個讓人深感興趣的領域呢。{wait}
+			}
+			TextWait
+			TextTalk self {
+				我之所以會以內科醫生為目標，
+				也是出於對約亞西姆醫生的崇拜之情。{wait}
+			}
+			TextWait
+	elif flag[1346]:
+		TextTalk self {
+			嗯，你們是要去
+			約亞西姆醫生那裡嗎？{wait}
+		}
+		TextWait
+		TextTalk self {
+			教授和副教授的研究室
+			在研究區的四樓。{wait}
+		}
+		TextWait
+		TextTalk self {
+			其他教授的研究室也都在那裡，
+			你們可別搞錯了啊。{wait}
+		}
+		TextWait
+	elif flag[1307]:
+		if !flag[10]:
+			TextTalk self {
+				拉格教授他們要出席教授會議，
+				今天不會回來了。{wait}
+			}
+			TextWait
+			TextTalk self {
+				在教授會議中，
+				眾多醫院的教授們
+				為了醫術交流而聚集一堂。{wait}
+			}
+			TextWait
+			TextTalk self {
+				醫學就是依靠這樣的互補互助，
+				才能一步一步向前發展吧。{wait}
+			}
+			TextWait
+			FlagSet flag[10]
+		else:
+			TextTalk self {
+				在教授會議中，
+				眾多醫院的教授們
+				為了醫術交流而聚集一堂。{wait}
+			}
+			TextWait
+			TextTalk self {
+				為了醫學的進步，
+				教授們每天也都在進行學習呢。{wait}
+			}
+			TextWait
+	elif flag[1292]:
+	elif flag[1282]:
+	elif flag[1280]:
+	elif flag[1040]:
+	elif flag[1024]:
+		if !flag[10]:
+			Call fn[1,21]
+		else:
+			CharTurnToChar char[13] char[14] 0deg/s
+			TextTalk self {
+				算了，這種事情，
+				我也沒辦法強行執行啊。{wait}
+			}
+			TextWait
+			TextTalk self {
+				跟你的爺爺說，讓他趁著
+				病情惡化之前到這裡來哦。{wait}
+			}
+			TextWait
+	elif flag[799]:
+	elif flag[793]:
+	elif flag[784]:
+	elif flag[777]:
+	TextEnd self
+	Return
+
+fn[20]:
+	field_party[0].5 = self.4
+	self.5 = self.4
+	TextStart self
+	CharFlagsUnset self 0x0010
+	CharTurnToChar self field_party[0] 0deg/s
+	self.4 = (self.4 + 360) % 360
+	self.4 = self.4 + 360 - self.5
+	self.5 = self.4 / 180
+	if self.4 <= 45 | self.4 >= 315 && self.4 <= 405 | self.4 >= 675:
+	elif self.5 < 1:
+		self.8 = 2
+	elif self.5 > 2:
+		self.8 = 1
+	else:
+		self.8 = self.5
+	self.4 = field_party[0].5
+	field_party[0].5 = 0
+	self.5 = 0
+	CharFlagsSet self 0x0010
+	if flag[1566]:
+	elif flag[1565]:
+	elif flag[1554]:
+	elif flag[1536]:
+	elif flag[1351]:
+	elif flag[1346]:
+	elif flag[1307]:
+	elif flag[1292]:
+	elif flag[1282]:
+	elif flag[1280]:
+		TextTalk self {
+			我是來
+			幫爺爺取藥的。{wait}
+		}
+		TextWait
+		TextTalk self {
+			哎呀……{wait}
+		}
+		TextWait
+		TextTalk self {
+			我希望爺爺能夠
+			按時吃藥呢……{wait}
+		}
+		TextWait
+	elif flag[1040]:
+	elif flag[1024]:
+		if !flag[11]:
+			Call fn[1,21]
+		else:
+			CharSetChipPattern char[14] 0
+			TextTalk self {
+				一直都是我替他來……
+				醫生，真對不起。{wait}
+			}
+			TextWait
+	elif flag[799]:
+	elif flag[793]:
+	elif flag[784]:
+	elif flag[777]:
+		if !flag[11]:
+			TextTalk self {
+				我是來
+				幫爺爺取藥的。{wait}
+			}
+			TextWait
+			TextTalk self {
+				因為爺爺討厭醫院，
+				所以不自己來取。{wait}
+			}
+			TextWait
+		else:
+			TextTalk self {
+				我的爺爺
+				特別頑固呢。{wait}
+			}
+			TextWait
+			TextTalk self {
+				呼…其實醫生本來
+				要求他住院呢。{wait}
+			}
+			TextWait
+	CharSetChipPattern self 0
+	TextEnd self
+	Return
+
+fn[21]:
+	CharTurnToChar char[13] char[14] 0deg/s
+	CharSetChipPattern char[14] 0
+	_Char4A char[13] 255
+	_Char4A char[14] 255
+	TextTalk char[14] {
+		我爺爺
+		還是應該來住院才
+		比較利於病情的恢復吧……{wait}
+	}
+	TextWait
+	TextTalk char[13] {
+		話是這麼說……
+		但他實在太頑固了。{wait}
+	}
+	TextWait
+	TextTalk char[14] {
+		對、對不起……
+		我雖然一直勸他，
+		哪怕偶爾來趟醫院也好……{wait}
+	}
+	TextWait
+	_Char4B char[13] 255
+	_Char4B char[14] 255
+	FlagSet flag[10]
+	FlagSet flag[11]
+	Return
+
+fn[22]:
+	TextStart self
+	if !flag[2]:
+		Call fn[1,23]
+	else:
+		TextTalk char[60] {
+			#1305F……啊，羅伊德！{wait}
+		} {
+			#1306F我雖然很想和你多聊聊，
+			但今天的時間實在有些緊呢。
+			……抱歉哦。{wait}
+		}
+		TextWait
+		TextTalk name[0] {
+			#0003F（賽西兒姊姊……似乎很忙呢。）{wait}
+		}
+		TextWait
+	TextEnd self
+	Return
+
+fn[23]:
+	_Char4A char[60] 255
+	_Char4A char[2] 255
+	CharTurnToChar char[60] char[2] 0deg/s
+	CharTurnToChar char[2] char[60] 0deg/s
+	TextTalk char[60] {
+		#1300F貝爾達因醫生要的
+		病例就是這個。{wait}
+	} {
+		稍後可以幫我交給他嗎？{wait}
+	}
+	TextWait
+	TextTalk char[2] {
+		嗯，明白了。{wait}
+	}
+	TextWait
+	TextTalk char[60] {
+		#1309F呵呵，拜託了。{wait}
+	}
+	TextWait
+	_Char4B char[60] 255
+	_Char4B char[2] 255
+	FlagSet flag[2]
+	Return
+
+fn[24]:
+	TextStart self
+	if !flag[1395]:
+		TextTalk name[0] {
+			#0005F迪塔總裁……？{wait}
+		}
+		TextWait
+		TextTalk char[15] {
+			#2800F呀，諸位，
+			能在這裡會面，真是很巧啊。{wait}
+		} {
+			#2805F……難道你們在執行任務時
+			受了什麼重傷嗎？{wait}
+		}
+		TextWait
+		TextTalk name[3] {
+			#0305F不，這倒是
+			沒有啦……{wait}
+		}
+		TextWait
+		TextTalk name[2] {
+			#0200F總裁您呢，不會是哪裡不舒服吧？{wait}
+		}
+		TextWait
+		TextTalk name[1] {
+			#0102F呵呵……{wait}
+		} {
+			其實叔叔他也是位慈善家呢，
+			平時都會以個人名義從事著許多慈善事業。{wait}
+		} {
+			作為其中的一環，
+			在每年的這個時候，他都會給
+			正在住院的患者們贈送禮品。{wait}
+		} {
+			#0102F算是彌補他們無法參加紀念慶典的遺憾。{wait}
+		}
+		TextWait
+		TextTalk name[0] {
+			#0005F……原來如此啊。{wait}
+		}
+		TextWait
+		TextTalk char[15] {
+			#2804F哈哈……雖說是慈善事業，
+			但其實根本就沒花多少錢。{wait}
+		} {
+			#2800F偶爾做些這樣的事情，
+			也可以暫時從工作中解脫出來。{wait}
+		} {
+			或許有人會說我只是為了自我滿足，
+			但不管別人怎麼說，這也是我自己的原則。{wait}
+		}
+		TextWait
+		TextTalk name[3] {
+			#0303F（這、這還真是……
+			　讓人意外的一面呢。）{wait}
+		}
+		TextWait
+		TextTalk name[2] {
+			#0200F（一直都感覺是個單純爽朗的大叔，
+			　但也考慮得很多呢。）{wait}
+		}
+		TextWait
+		FlagSet flag[1395]
+	else:
+		TextTalk char[15] {
+			#2803F雖說是慈善事業，
+			但其實根本就沒花多少錢，
+			只是我個人的一點堅持而已。{wait}
+		} {
+			#2800F儘管如此……瑪利亞貝爾
+			每年也都會陪我一起來。{wait}
+		} {
+			哈哈，身邊的人一直都給予
+			著我理解與支持啊。{wait}
+		} {
+			#2803F……這份溫暖的感覺，
+			我想盡可能地分享給周圍的人。{wait}
+		}
+		TextWait
+	TextEnd self
+	Return
+
+fn[25]:
+	TextStart self
+	Call fn[1,26]
+	TextEnd self
+	Return
+
+fn[26]:
+	_Char4A char[0] 255
+	_Char4A char[16] 255
+	CharTurnToChar char[0] char[16] 0deg/s
+	CharTurnToChar char[16] char[0] 0deg/s
+	if !flag[0]:
+		TextTalk char[0] {
+			啊，你是凱瑞醫生的
+			兒子吧？{wait}
+		}
+		TextWait
+		TextTalk char[0] {
+			如果要找醫生的話，
+			我可以立刻幫你去叫……{wait}
+		}
+		TextWait
+		TextTalk char[16] {
+			哼……哼……！
+			那種男人，
+			我根本就連他的臉都不想看到。{wait}
+		}
+		TextWait
+		TextTalk char[16] {
+			幫我把飯交給他就好啦。
+			我這就回去了！{wait}
+		}
+		TextWait
+		TextTalk char[0] {
+			呵呵……老是這樣子，
+			一點也不坦率呢。{wait}
+		}
+		TextWait
+		FlagSet flag[0]
+	else:
+		TextTalk char[16] {
+			我、我只是受老媽所托，
+			來給他送東西而已。{wait}
+		}
+		TextWait
+		TextTalk char[16] {
+			行了，只要幫我把東西
+			給他送去就好啦！{wait}
+		}
+		TextWait
+		TextTalk char[0] {
+			好的，那我就
+			先保管了哦。{wait}
+		}
+		TextWait
+	_Char4B char[0] 255
+	_Char4B char[16] 255
+	Return
+
+fn[27]:
+	field_party[0].5 = self.4
+	self.5 = self.4
+	TextStart self
+	CharFlagsUnset self 0x0010
+	CharTurnToChar self field_party[0] 0deg/s
+	self.4 = (self.4 + 360) % 360
+	self.4 = self.4 + 360 - self.5
+	self.5 = self.4 / 180
+	if self.4 <= 45 | self.4 >= 315 && self.4 <= 405 | self.4 >= 675:
+	elif self.5 < 1:
+		self.8 = 2
+	elif self.5 > 2:
+		self.8 = 1
+	else:
+		self.8 = self.5
+	self.4 = field_party[0].5
+	field_party[0].5 = 0
+	self.5 = 0
+	CharFlagsSet self 0x0010
+	if flag[784]:
+		TextTalk self {
+			好像果然有點感冒啊……
+			提前過來真是太對了。{wait}
+		}
+		TextWait
+	elif flag[777]:
+		if !flag[2]:
+			Call fn[1,5]
+		else:
+			TextTalk self {
+				唔，體溫計……
+				剛夾的時候會被冰一下，
+				所以稍微有點怕這東西呢。{wait}
+			}
+			TextWait
+	CharSetChipPattern self 0
+	TextEnd self
+	Return
+
+fn[28]:
+	field_party[0].5 = self.4
+	self.5 = self.4
+	TextStart self
+	CharFlagsUnset self 0x0010
+	CharTurnToChar self field_party[0] 0deg/s
+	self.4 = (self.4 + 360) % 360
+	self.4 = self.4 + 360 - self.5
+	self.5 = self.4 / 180
+	if self.4 <= 45 | self.4 >= 315 && self.4 <= 405 | self.4 >= 675:
+	elif self.5 < 1:
+		self.8 = 2
+	elif self.5 > 2:
+		self.8 = 1
+	else:
+		self.8 = self.5
+	self.4 = field_party[0].5
+	field_party[0].5 = 0
+	self.5 = 0
+	CharFlagsSet self 0x0010
+	if flag[784]:
+		TextTalk self {
+			哎，做飯的時候被燙傷了，
+			我還以為會有多嚴重呢……{wait}
+		}
+		TextWait
+		TextTalk self {
+			結果沒什麼大礙，
+			真是太好了。{wait}
+		}
+		TextWait
+	elif flag[777]:
+		TextTalk self {
+			今天人不多，真是得救了。
+			我最害怕的就是排隊了。{wait}
+		}
+		TextWait
+	CharSetChipPattern self 0
+	TextEnd self
+	Return
+
+fn[29]:
+	field_party[0].5 = self.4
+	self.5 = self.4
+	TextStart self
+	CharFlagsUnset self 0x0010
+	CharTurnToChar self field_party[0] 0deg/s
+	self.4 = (self.4 + 360) % 360
+	self.4 = self.4 + 360 - self.5
+	self.5 = self.4 / 180
+	if self.4 <= 45 | self.4 >= 315 && self.4 <= 405 | self.4 >= 675:
+	elif self.5 < 1:
+		self.8 = 2
+	elif self.5 > 2:
+		self.8 = 1
+	else:
+		self.8 = self.5
+	self.4 = field_party[0].5
+	field_party[0].5 = 0
+	self.5 = 0
+	CharFlagsSet self 0x0010
+	if flag[793]:
+		TextTalk self {
+			我還是第一次來醫院，
+			稍微有點不知所措呢。
+			診察終於結束了啊。{wait}
+		}
+		TextWait
+		TextTalk self {
+			嗯嗯，這還真是個不錯的地方。
+			今後我會再來的。{wait}
+		}
+		TextWait
+	elif flag[784]:
+		if !flag[12]:
+			TextTalk self {
+				……哦，那個護理師，
+				正偷偷看向這邊呢。{wait}
+			}
+			TextWait
+			TextTalk self {
+				嗯，護理師小姐大多都是
+				非常漂亮的美人呢。{wait}
+			}
+			TextWait
+			TextTalk name[3] {
+				#0309F完全贊同！
+				是吧，賽西兒小姐！{wait}
+			}
+			TextWait
+			TextTalk name[53] {
+				#1309F哎呀呀……呵呵。
+				就算你這麼說，我也沒有任何好東西給你哦。{wait}
+			}
+			TextWait
+			TextTalk name[0] {
+				#0006F（賽西兒姊姊，太容易親近了……）{wait}
+			}
+			TextWait
+			FlagSet flag[12]
+		else:
+			TextTalk self {
+				嗯，馬上就要輪到我了。
+				得作好心理準備才行。{wait}
+			}
+			TextWait
+	elif flag[777]:
+		TextTalk self {
+			嗯，我是第一次來這個醫院……
+			倒是個乾淨漂亮的地方啊。{wait}
+		}
+		TextWait
+	CharSetChipPattern self 0
+	TextEnd self
+	Return
+
+fn[30]:
+	field_party[0].5 = self.4
+	self.5 = self.4
+	TextStart self
+	CharFlagsUnset self 0x0010
+	CharTurnToChar self field_party[0] 0deg/s
+	self.4 = (self.4 + 360) % 360
+	self.4 = self.4 + 360 - self.5
+	self.5 = self.4 / 180
+	if self.4 <= 45 | self.4 >= 315 && self.4 <= 405 | self.4 >= 675:
+	elif self.5 < 1:
+		self.8 = 2
+	elif self.5 > 2:
+		self.8 = 1
+	else:
+		self.8 = self.5
+	self.4 = field_party[0].5
+	field_party[0].5 = 0
+	self.5 = 0
+	CharFlagsSet self 0x0010
+	if flag[793]:
+		TextTalk self {
+			今天就是最後一天了。
+			呼，這麼快就能將病治癒，真是太好了。{wait}
+		}
+		TextWait
+	elif flag[784]:
+		TextTalk self {
+			如果只是治病的話，
+			去大教堂那裡配藥
+			倒是更便宜些。{wait}
+		}
+		TextWait
+		TextTalk self {
+			不過在這裡能接受各式各樣的檢查，
+			感覺更加放心一點呢。{wait}
+		}
+		TextWait
+	elif flag[777]:
+		TextTalk self {
+			這間醫院真不錯呢，
+			醫生會非常親切地為病人進行診察。{wait}
+		}
+		TextWait
+		TextTalk self {
+			雖然離市區稍微有點遠，
+			不過幸好有巴士，所以花費不了多長時間。{wait}
+		}
+		TextWait
+	CharSetChipPattern self 0
+	TextEnd self
+	Return
+
+fn[31]:
+	field_party[0].5 = self.4
+	self.5 = self.4
+	TextStart self
+	CharFlagsUnset self 0x0010
+	CharTurnToChar self field_party[0] 0deg/s
+	self.4 = (self.4 + 360) % 360
+	self.4 = self.4 + 360 - self.5
+	self.5 = self.4 / 180
+	if self.4 <= 45 | self.4 >= 315 && self.4 <= 405 | self.4 >= 675:
+	elif self.5 < 1:
+		self.8 = 2
+	elif self.5 > 2:
+		self.8 = 1
+	else:
+		self.8 = self.5
+	self.4 = field_party[0].5
+	field_party[0].5 = 0
+	self.5 = 0
+	CharFlagsSet self 0x0010
+	TextTalk self {
+		我至今為止，只服用過
+		七耀教會開的藥呢。{wait}
+	}
+	TextWait
+	TextTalk self {
+		像醫院這種地方，總覺得不太可信……{wait}
+	}
+	TextWait
+	CharSetChipPattern self 0
+	TextEnd self
+	Return
+
+fn[32]:
+	field_party[0].5 = self.4
+	self.5 = self.4
+	TextStart self
+	CharFlagsUnset self 0x0010
+	CharTurnToChar self field_party[0] 0deg/s
+	self.4 = (self.4 + 360) % 360
+	self.4 = self.4 + 360 - self.5
+	self.5 = self.4 / 180
+	if self.4 <= 45 | self.4 >= 315 && self.4 <= 405 | self.4 >= 675:
+	elif self.5 < 1:
+		self.8 = 2
+	elif self.5 > 2:
+		self.8 = 1
+	else:
+		self.8 = self.5
+	self.4 = field_party[0].5
+	field_party[0].5 = 0
+	self.5 = 0
+	CharFlagsSet self 0x0010
+	TextTalk self {
+		嘿嘿……希望有個漂亮
+		的女醫生為我診察。{wait}
+	}
+	TextWait
+	TextTalk self {
+		一定不要是個大叔啊！{wait}
+	}
+	TextWait
+	CharSetChipPattern self 0
+	TextEnd self
+	Return
+
+fn[33]:
+	field_party[0].5 = self.4
+	self.5 = self.4
+	TextStart self
+	CharFlagsUnset self 0x0010
+	CharTurnToChar self field_party[0] 0deg/s
+	self.4 = (self.4 + 360) % 360
+	self.4 = self.4 + 360 - self.5
+	self.5 = self.4 / 180
+	if self.4 <= 45 | self.4 >= 315 && self.4 <= 405 | self.4 >= 675:
+	elif self.5 < 1:
+		self.8 = 2
+	elif self.5 > 2:
+		self.8 = 1
+	else:
+		self.8 = self.5
+	self.4 = field_party[0].5
+	field_party[0].5 = 0
+	self.5 = 0
+	CharFlagsSet self 0x0010
+	CharSetChipPattern self 0
+	TextTalk self {
+		喂！
+		在醫院裡安靜一點！{wait}
+	}
+	TextWait
+	CharSetChipPattern self 0
+	TextEnd self
+	Return
+
+fn[34]:
+	field_party[0].5 = self.4
+	self.5 = self.4
+	TextStart self
+	CharFlagsUnset self 0x0010
+	CharTurnToChar self field_party[0] 0deg/s
+	self.4 = (self.4 + 360) % 360
+	self.4 = self.4 + 360 - self.5
+	self.5 = self.4 / 180
+	if self.4 <= 45 | self.4 >= 315 && self.4 <= 405 | self.4 >= 675:
+	elif self.5 < 1:
+		self.8 = 2
+	elif self.5 > 2:
+		self.8 = 1
+	else:
+		self.8 = self.5
+	self.4 = field_party[0].5
+	field_party[0].5 = 0
+	self.5 = 0
+	CharFlagsSet self 0x0010
+	TextTalk self {
+		知道給我看病的醫生
+		是位教授的時候，
+		我還稍微有點害怕呢……{wait}
+	}
+	TextWait
+	TextTalk self {
+		不過他說話很和藹，
+		是位很不錯的醫生呢。{wait}
+	}
+	TextWait
+	CharSetChipPattern self 0
+	TextEnd self
+	Return
+
+fn[35]:
+	field_party[0].5 = self.4
+	self.5 = self.4
+	TextStart self
+	CharFlagsUnset self 0x0010
+	CharTurnToChar self field_party[0] 0deg/s
+	self.4 = (self.4 + 360) % 360
+	self.4 = self.4 + 360 - self.5
+	self.5 = self.4 / 180
+	if self.4 <= 45 | self.4 >= 315 && self.4 <= 405 | self.4 >= 675:
+	elif self.5 < 1:
+		self.8 = 2
+	elif self.5 > 2:
+		self.8 = 1
+	else:
+		self.8 = self.5
+	self.4 = field_party[0].5
+	field_party[0].5 = 0
+	self.5 = 0
+	CharFlagsSet self 0x0010
+	TextTalk self {
+		啊，今天還有生意要談，
+		希望能早點回去啊……{wait}
+	}
+	TextWait
+	TextTalk self {
+		唔，好想睡。
+		真希望能快點排到我啊。{wait}
+	}
+	TextWait
+	CharSetChipPattern self 0
+	TextEnd self
+	Return
+
+fn[36]:
+	field_party[0].5 = self.4
+	self.5 = self.4
+	TextStart self
+	CharFlagsUnset self 0x0010
+	CharTurnToChar self field_party[0] 0deg/s
+	self.4 = (self.4 + 360) % 360
+	self.4 = self.4 + 360 - self.5
+	self.5 = self.4 / 180
+	if self.4 <= 45 | self.4 >= 315 && self.4 <= 405 | self.4 >= 675:
+	elif self.5 < 1:
+		self.8 = 2
+	elif self.5 > 2:
+		self.8 = 1
+	else:
+		self.8 = self.5
+	self.4 = field_party[0].5
+	field_party[0].5 = 0
+	self.5 = 0
+	CharFlagsSet self 0x0010
+	TextTalk self {
+		我稍微有點
+		著涼了呢。{wait}
+	}
+	TextWait
+	TextTalk self {
+		……在大半夜
+		一直開著窗子睡覺，
+		果然是不行的啊。{wait}
+	}
+	TextWait
+	CharSetChipPattern self 0
+	TextEnd self
+	Return
+
+fn[37]:
+	field_party[0].5 = self.4
+	self.5 = self.4
+	TextStart self
+	CharFlagsUnset self 0x0010
+	CharTurnToChar self field_party[0] 0deg/s
+	self.4 = (self.4 + 360) % 360
+	self.4 = self.4 + 360 - self.5
+	self.5 = self.4 / 180
+	if self.4 <= 45 | self.4 >= 315 && self.4 <= 405 | self.4 >= 675:
+	elif self.5 < 1:
+		self.8 = 2
+	elif self.5 > 2:
+		self.8 = 1
+	else:
+		self.8 = self.5
+	self.4 = field_party[0].5
+	field_party[0].5 = 0
+	self.5 = 0
+	CharFlagsSet self 0x0010
+	if !flag[13]:
+		CharSetChipPattern self 0
+		TextTalk self {
+			呼嚕……{wait}
+		}
+		TextWait
+		field_party[0].5 = self.4
+		self.5 = self.4
+		TextStart self
+		CharFlagsUnset self 0x0010
+		CharTurnToChar self field_party[0] 0deg/s
+		self.4 = (self.4 + 360) % 360
+		self.4 = self.4 + 360 - self.5
+		self.5 = self.4 / 180
+		if self.4 <= 45 | self.4 >= 315 && self.4 <= 405 | self.4 >= 675:
+		elif self.5 < 1:
+			self.8 = 2
+		elif self.5 > 2:
+			self.8 = 1
+		else:
+			self.8 = self.5
+		self.4 = field_party[0].5
+		field_party[0].5 = 0
+		self.5 = 0
+		CharFlagsSet self 0x0010
+		TextTalk self {
+			……啊！
+			都已經等了好久了，
+			差點睡過去。{wait}
+		}
+		TextWait
+		FlagSet flag[13]
+	else:
+		TextTalk self {
+			呼，好險好險。
+			總覺得醫院的候診室
+			有點催眠效果呢。{wait}
+		}
+		TextWait
+	CharSetChipPattern self 0
+	TextEnd self
+	Return
+
+fn[38]:
+	field_party[0].5 = self.4
+	self.5 = self.4
+	TextStart self
+	CharFlagsUnset self 0x0010
+	CharTurnToChar self field_party[0] 0deg/s
+	self.4 = (self.4 + 360) % 360
+	self.4 = self.4 + 360 - self.5
+	self.5 = self.4 / 180
+	if self.4 <= 45 | self.4 >= 315 && self.4 <= 405 | self.4 >= 675:
+	elif self.5 < 1:
+		self.8 = 2
+	elif self.5 > 2:
+		self.8 = 1
+	else:
+		self.8 = self.5
+	self.4 = field_party[0].5
+	field_party[0].5 = 0
+	self.5 = 0
+	CharFlagsSet self 0x0010
+	TextTalk self {
+		我去參觀了一下開幕式，
+		結果在人群中被擠得腰痛。{wait}
+	}
+	TextWait
+	TextTalk self {
+		紀念慶典才剛剛開始。
+		真想趕快治好，去玩個痛快啊。{wait}
+	}
+	TextWait
+	CharSetChipPattern self 0
+	TextEnd self
+	Return
+
+fn[39]:
+	field_party[0].5 = self.4
+	self.5 = self.4
+	TextStart self
+	CharFlagsUnset self 0x0010
+	CharTurnToChar self field_party[0] 0deg/s
+	self.4 = (self.4 + 360) % 360
+	self.4 = self.4 + 360 - self.5
+	self.5 = self.4 / 180
+	if self.4 <= 45 | self.4 >= 315 && self.4 <= 405 | self.4 >= 675:
+	elif self.5 < 1:
+		self.8 = 2
+	elif self.5 > 2:
+		self.8 = 1
+	else:
+		self.8 = self.5
+	self.4 = field_party[0].5
+	field_party[0].5 = 0
+	self.5 = 0
+	CharFlagsSet self 0x0010
+	TextTalk self {
+		這間醫院還是老樣子，
+		看起來好像很忙呢。{wait}
+	}
+	TextWait
+	CharSetChipPattern self 0
+	TextEnd self
+	Return
+
+fn[40]:
+	field_party[0].5 = self.4
+	self.5 = self.4
+	TextStart self
+	CharFlagsUnset self 0x0010
+	CharTurnToChar self field_party[0] 0deg/s
+	self.4 = (self.4 + 360) % 360
+	self.4 = self.4 + 360 - self.5
+	self.5 = self.4 / 180
+	if self.4 <= 45 | self.4 >= 315 && self.4 <= 405 | self.4 >= 675:
+	elif self.5 < 1:
+		self.8 = 2
+	elif self.5 > 2:
+		self.8 = 1
+	else:
+		self.8 = self.5
+	self.4 = field_party[0].5
+	field_party[0].5 = 0
+	self.5 = 0
+	CharFlagsSet self 0x0010
+	if !flag[14]:
+		char[31].5 = self.4
+		self.5 = self.4
+		TextStart self
+		CharFlagsUnset self 0x0010
+		CharTurnToChar self char[31] 0deg/s
+		self.4 = (self.4 + 360) % 360
+		self.4 = self.4 + 360 - self.5
+		self.5 = self.4 / 180
+		if self.4 <= 45 | self.4 >= 315 && self.4 <= 405 | self.4 >= 675:
+		elif self.5 < 1:
+			self.8 = 2
+		elif self.5 > 2:
+			self.8 = 1
+		else:
+			self.8 = self.5
+		self.4 = char[31].5
+		char[31].5 = 0
+		self.5 = 0
+		CharFlagsSet self 0x0010
+		TextTalk self {
+			喂喂，
+			在醫院裡要安靜一點哦。{wait}
+		}
+		TextWait
+		TextTalk self {
+			只要燒退下去，
+			我就帶你去看紀念慶典哦。{wait}
+		}
+		TextWait
+		CharSetChipPattern self 0
+		FlagSet flag[14]
+	else:
+		TextTalk self {
+			這孩子，似乎因為太期待
+			紀念慶典而失眠，
+			所以發燒了呢。{wait}
+		}
+		TextWait
+	CharSetChipPattern self 0
+	TextEnd self
+	Return
+
+fn[41]:
+	field_party[0].5 = self.4
+	self.5 = self.4
+	TextStart self
+	CharFlagsUnset self 0x0010
+	CharTurnToChar self field_party[0] 0deg/s
+	self.4 = (self.4 + 360) % 360
+	self.4 = self.4 + 360 - self.5
+	self.5 = self.4 / 180
+	if self.4 <= 45 | self.4 >= 315 && self.4 <= 405 | self.4 >= 675:
+	elif self.5 < 1:
+		self.8 = 2
+	elif self.5 > 2:
+		self.8 = 1
+	else:
+		self.8 = self.5
+	self.4 = field_party[0].5
+	field_party[0].5 = 0
+	self.5 = 0
+	CharFlagsSet self 0x0010
+	TextTalk self {
+		哇哇，我想去紀念慶典。{wait}
+	}
+	TextWait
+	CharSetChipPattern self 0
+	TextEnd self
+	Return
+
+fn[42]:
+	field_party[0].5 = self.4
+	self.5 = self.4
+	TextStart self
+	CharFlagsUnset self 0x0010
+	CharTurnToChar self field_party[0] 0deg/s
+	self.4 = (self.4 + 360) % 360
+	self.4 = self.4 + 360 - self.5
+	self.5 = self.4 / 180
+	if self.4 <= 45 | self.4 >= 315 && self.4 <= 405 | self.4 >= 675:
+	elif self.5 < 1:
+		self.8 = 2
+	elif self.5 > 2:
+		self.8 = 1
+	else:
+		self.8 = self.5
+	self.4 = field_party[0].5
+	field_party[0].5 = 0
+	self.5 = 0
+	CharFlagsSet self 0x0010
+	TextTalk self {
+		咳咳……
+		嗚，好難受。{wait}
+	}
+	TextWait
+	TextTalk self {
+		該不會是被傳染了吧……{wait}
+	}
+	TextWait
+	CharSetChipPattern self 0
+	TextEnd self
+	Return
+
+fn[43]:
+	field_party[0].5 = self.4
+	self.5 = self.4
+	TextStart self
+	CharFlagsUnset self 0x0010
+	CharTurnToChar self field_party[0] 0deg/s
+	self.4 = (self.4 + 360) % 360
+	self.4 = self.4 + 360 - self.5
+	self.5 = self.4 / 180
+	if self.4 <= 45 | self.4 >= 315 && self.4 <= 405 | self.4 >= 675:
+	elif self.5 < 1:
+		self.8 = 2
+	elif self.5 > 2:
+		self.8 = 1
+	else:
+		self.8 = self.5
+	self.4 = field_party[0].5
+	field_party[0].5 = 0
+	self.5 = 0
+	CharFlagsSet self 0x0010
+	CharSetChipPattern self 2
+	TextTalk self {
+		喂喂，
+		你可別傳染給我啊！{wait}
+	}
+	TextWait
+	CharSetChipPattern self 0
+	CharSetChipPattern self 0
+	TextEnd self
+	Return
+
+fn[44]:
+	field_party[0].5 = self.4
+	self.5 = self.4
+	TextStart self
+	CharFlagsUnset self 0x0010
+	CharTurnToChar self field_party[0] 0deg/s
+	self.4 = (self.4 + 360) % 360
+	self.4 = self.4 + 360 - self.5
+	self.5 = self.4 / 180
+	if self.4 <= 45 | self.4 >= 315 && self.4 <= 405 | self.4 >= 675:
+	elif self.5 < 1:
+		self.8 = 2
+	elif self.5 > 2:
+		self.8 = 1
+	else:
+		self.8 = self.5
+	self.4 = field_party[0].5
+	field_party[0].5 = 0
+	self.5 = 0
+	CharFlagsSet self 0x0010
+	if !flag[15]:
+		TextTalk self {
+			昨天，在克洛斯貝爾市的舊市街
+			發生了非常熱鬧的事件哦。{wait}
+		}
+		TextWait
+		TextTalk self {
+			我也去觀戰了，
+			因為興奮過頭，不小心摔了一跤。
+			結果就成了這副德行。{wait}
+		}
+		TextWait
+		TextTalk name[3] {
+			#0306F（……從某種意義上說，
+			　好像是我們間接
+			　導致他受傷了吧？）{wait}
+		}
+		TextWait
+		TextTalk name[0] {
+			#0005F（這、這個嘛……
+			　我覺得你有點
+			　想多了吧……）{wait}
+		}
+		TextWait
+		TextTalk self {
+			算啦，雖然受傷了，不過都怪自己。
+			不管怎麼說，反正那天挺開心的，無所謂啦。{wait}
+		}
+		TextWait
+		FlagSet flag[15]
+	else:
+		TextTalk self {
+			那個比賽，如果每年都搞一場的話，
+			肯定會相當受歡迎吧。{wait}
+		}
+		TextWait
+	CharSetChipPattern self 0
+	TextEnd self
+	Return
+
+fn[45]:
+	field_party[0].5 = self.4
+	self.5 = self.4
+	TextStart self
+	CharFlagsUnset self 0x0010
+	CharTurnToChar self field_party[0] 0deg/s
+	self.4 = (self.4 + 360) % 360
+	self.4 = self.4 + 360 - self.5
+	self.5 = self.4 / 180
+	if self.4 <= 45 | self.4 >= 315 && self.4 <= 405 | self.4 >= 675:
+	elif self.5 < 1:
+		self.8 = 2
+	elif self.5 > 2:
+		self.8 = 1
+	else:
+		self.8 = self.5
+	self.4 = field_party[0].5
+	field_party[0].5 = 0
+	self.5 = 0
+	CharFlagsSet self 0x0010
+	TextTalk self {
+		呼～複查日偏偏趕在今天，
+		真是倒楣啊。
+		看來是徹底錯過遊行活動了。{wait}
+	}
+	TextWait
+	TextTalk self {
+		算啦，只要不是明天就好。
+		趕快接受診察，然後回家去吧。{wait}
+	}
+	TextWait
+	CharSetChipPattern self 0
+	TextEnd self
+	Return
+
+fn[46]:
+	field_party[0].5 = self.4
+	self.5 = self.4
+	TextStart self
+	CharFlagsUnset self 0x0010
+	CharTurnToChar self field_party[0] 0deg/s
+	self.4 = (self.4 + 360) % 360
+	self.4 = self.4 + 360 - self.5
+	self.5 = self.4 / 180
+	if self.4 <= 45 | self.4 >= 315 && self.4 <= 405 | self.4 >= 675:
+	elif self.5 < 1:
+		self.8 = 2
+	elif self.5 > 2:
+		self.8 = 1
+	else:
+		self.8 = self.5
+	self.4 = field_party[0].5
+	field_party[0].5 = 0
+	self.5 = 0
+	CharFlagsSet self 0x0010
+	TextTalk self {
+		按照預定的話，
+		我的療程到今天就結束了。{wait}
+	}
+	TextWait
+	TextTalk self {
+		接受完診察之後，
+		就陪老伴一起
+		逛逛紀念慶典吧。{wait}
+	}
+	TextWait
+	CharSetChipPattern self 0
+	TextEnd self
+	Return
+
+fn[47]:
+	field_party[0].5 = self.4
+	self.5 = self.4
+	TextStart self
+	CharFlagsUnset self 0x0010
+	CharTurnToChar self field_party[0] 0deg/s
+	self.4 = (self.4 + 360) % 360
+	self.4 = self.4 + 360 - self.5
+	self.5 = self.4 / 180
+	if self.4 <= 45 | self.4 >= 315 && self.4 <= 405 | self.4 >= 675:
+	elif self.5 < 1:
+		self.8 = 2
+	elif self.5 > 2:
+		self.8 = 1
+	else:
+		self.8 = self.5
+	self.4 = field_party[0].5
+	field_party[0].5 = 0
+	self.5 = 0
+	CharFlagsSet self 0x0010
+	TextTalk self {
+		呵呵，
+		我老伴的心態
+		一直都很年輕呢。{wait}
+	}
+	TextWait
+	CharSetChipPattern self 0
+	TextEnd self
+	Return
+
+fn[48]:
+	field_party[0].5 = self.4
+	self.5 = self.4
+	TextStart self
+	CharFlagsUnset self 0x0010
+	CharTurnToChar self field_party[0] 0deg/s
+	self.4 = (self.4 + 360) % 360
+	self.4 = self.4 + 360 - self.5
+	self.5 = self.4 / 180
+	if self.4 <= 45 | self.4 >= 315 && self.4 <= 405 | self.4 >= 675:
+	elif self.5 < 1:
+		self.8 = 2
+	elif self.5 > 2:
+		self.8 = 1
+	else:
+		self.8 = self.5
+	self.4 = field_party[0].5
+	field_party[0].5 = 0
+	self.5 = 0
+	CharFlagsSet self 0x0010
+	TextTalk self {
+		現在去接受診察，
+		然後坐巴士回到市裡，
+		接著去乘坐水上巴士……{wait}
+	}
+	TextWait
+	TextTalk self {
+		嗯，好像還有時間玩呢。
+		太好了，太好了。{wait}
+	}
+	TextWait
+	CharSetChipPattern self 0
+	TextEnd self
+	Return
+
+fn[49]:
+	field_party[0].5 = self.4
+	self.5 = self.4
+	TextStart self
+	CharFlagsUnset self 0x0010
+	CharTurnToChar self field_party[0] 0deg/s
+	self.4 = (self.4 + 360) % 360
+	self.4 = self.4 + 360 - self.5
+	self.5 = self.4 / 180
+	if self.4 <= 45 | self.4 >= 315 && self.4 <= 405 | self.4 >= 675:
+	elif self.5 < 1:
+		self.8 = 2
+	elif self.5 > 2:
+		self.8 = 1
+	else:
+		self.8 = self.5
+	self.4 = field_party[0].5
+	field_party[0].5 = 0
+	self.5 = 0
+	CharFlagsSet self 0x0010
+	TextTalk self {
+		我今天傍晚和男朋友
+		約好要去米修拉姆呢。{wait}
+	}
+	TextWait
+	char[38].5 = self.4
+	self.5 = self.4
+	TextStart self
+	CharFlagsUnset self 0x0010
+	CharTurnToChar self char[38] 0deg/s
+	self.4 = (self.4 + 360) % 360
+	self.4 = self.4 + 360 - self.5
+	self.5 = self.4 / 180
+	if self.4 <= 45 | self.4 >= 315 && self.4 <= 405 | self.4 >= 675:
+	elif self.5 < 1:
+		self.8 = 2
+	elif self.5 > 2:
+		self.8 = 1
+	else:
+		self.8 = self.5
+	self.4 = char[38].5
+	char[38].5 = 0
+	self.5 = 0
+	CharFlagsSet self 0x0010
+	TextTalk self {
+		……哎呀，下一個就是我了吧，
+		快點叫我啊！{wait}
+	}
+	TextWait
+	CharSetChipPattern self 0
+	CharSetChipPattern self 0
+	TextEnd self
+	Return
+
+fn[50]:
+	field_party[0].5 = self.4
+	self.5 = self.4
+	TextStart self
+	CharFlagsUnset self 0x0010
+	CharTurnToChar self field_party[0] 0deg/s
+	self.4 = (self.4 + 360) % 360
+	self.4 = self.4 + 360 - self.5
+	self.5 = self.4 / 180
+	if self.4 <= 45 | self.4 >= 315 && self.4 <= 405 | self.4 >= 675:
+	elif self.5 < 1:
+		self.8 = 2
+	elif self.5 > 2:
+		self.8 = 1
+	else:
+		self.8 = self.5
+	self.4 = field_party[0].5
+	field_party[0].5 = 0
+	self.5 = 0
+	CharFlagsSet self 0x0010
+	TextTalk self {
+		明明是紀念慶典最後一天了，
+		但今天也有不少人來呢……{wait}
+	}
+	TextWait
+	CharSetChipPattern self 0
+	TextEnd self
+	Return
+
+fn[51]:
+	field_party[0].5 = self.4
+	self.5 = self.4
+	TextStart self
+	CharFlagsUnset self 0x0010
+	CharTurnToChar self field_party[0] 0deg/s
+	self.4 = (self.4 + 360) % 360
+	self.4 = self.4 + 360 - self.5
+	self.5 = self.4 / 180
+	if self.4 <= 45 | self.4 >= 315 && self.4 <= 405 | self.4 >= 675:
+	elif self.5 < 1:
+		self.8 = 2
+	elif self.5 > 2:
+		self.8 = 1
+	else:
+		self.8 = self.5
+	self.4 = field_party[0].5
+	field_party[0].5 = 0
+	self.5 = 0
+	CharFlagsSet self 0x0010
+	if flag[1351]:
+		TextTalk self {
+			我被忠告說，不應該依賴藥物，
+			而應該換一種更加健康的生活方式。{wait}
+		}
+		TextWait
+		TextTalk self {
+			但由於工作原因，這很困難吧……
+			呼，沒有任何東西能夠替代健康呢。{wait}
+		}
+		TextWait
+	elif flag[1346]:
+		TextTalk self {
+			咳咳……果然還是該早點來
+			接受診察呢。{wait}
+		}
+		TextWait
+		TextTalk self {
+			我總是全心投入到
+			工作之中……{wait}
+		}
+		TextWait
+	CharSetChipPattern self 0
+	TextEnd self
+	Return
+
+fn[52]:
+	field_party[0].5 = self.4
+	self.5 = self.4
+	TextStart self
+	CharFlagsUnset self 0x0010
+	CharTurnToChar self field_party[0] 0deg/s
+	self.4 = (self.4 + 360) % 360
+	self.4 = self.4 + 360 - self.5
+	self.5 = self.4 / 180
+	if self.4 <= 45 | self.4 >= 315 && self.4 <= 405 | self.4 >= 675:
+	elif self.5 < 1:
+		self.8 = 2
+	elif self.5 > 2:
+		self.8 = 1
+	else:
+		self.8 = self.5
+	self.4 = field_party[0].5
+	field_party[0].5 = 0
+	self.5 = 0
+	CharFlagsSet self 0x0010
+	if flag[1351]:
+		TextTalk self {
+			已經從醫生那裡開完藥了。{wait}
+		}
+		TextWait
+		TextTalk self {
+			吃下這個藥，公公的病情
+			應該就會有所好轉吧。{wait}
+		}
+		TextWait
+	elif flag[1346]:
+		TextTalk self {
+			在大廳裡排隊，
+			總會感覺時間特別漫長。{wait}
+		}
+		TextWait
+		TextTalk self {
+			如果是陪同別人前來，
+			這種感覺就更明顯了。{wait}
+		}
+		TextWait
+	CharSetChipPattern self 0
+	TextEnd self
+	Return
+
+fn[53]:
+	field_party[0].5 = self.4
+	self.5 = self.4
+	TextStart self
+	CharFlagsUnset self 0x0010
+	CharTurnToChar self field_party[0] 0deg/s
+	self.4 = (self.4 + 360) % 360
+	self.4 = self.4 + 360 - self.5
+	self.5 = self.4 / 180
+	if self.4 <= 45 | self.4 >= 315 && self.4 <= 405 | self.4 >= 675:
+	elif self.5 < 1:
+		self.8 = 2
+	elif self.5 > 2:
+		self.8 = 1
+	else:
+		self.8 = self.5
+	self.4 = field_party[0].5
+	field_party[0].5 = 0
+	self.5 = 0
+	CharFlagsSet self 0x0010
+	if flag[1351]:
+		TextTalk self {
+			按順序算的話，就快到我了吧。{wait}
+		}
+		TextWait
+		TextTalk self {
+			嗯，要是帶本書來就好了……{wait}
+		}
+		TextWait
+	elif flag[1346]:
+		TextTalk self {
+			呼，真夠麻煩的。{wait}
+		}
+		TextWait
+		TextTalk self {
+			不過，為了讓診察順利進行，
+			這也是沒辦法的事啊。{wait}
+		}
+		TextWait
+	CharSetChipPattern self 0
+	TextEnd self
+	Return
+
+fn[54]:
+	field_party[0].5 = self.4
+	self.5 = self.4
+	TextStart self
+	CharFlagsUnset self 0x0010
+	CharTurnToChar self field_party[0] 0deg/s
+	self.4 = (self.4 + 360) % 360
+	self.4 = self.4 + 360 - self.5
+	self.5 = self.4 / 180
+	if self.4 <= 45 | self.4 >= 315 && self.4 <= 405 | self.4 >= 675:
+	elif self.5 < 1:
+		self.8 = 2
+	elif self.5 > 2:
+		self.8 = 1
+	else:
+		self.8 = self.5
+	self.4 = field_party[0].5
+	field_party[0].5 = 0
+	self.5 = 0
+	CharFlagsSet self 0x0010
+	if flag[1351]:
+		TextTalk self {
+			我的老毛病似乎
+			快要完全治好了呢。{wait}
+		}
+		TextWait
+		TextTalk self {
+			堅持來接受複查，
+			真是值得啊。{wait}
+		}
+		TextWait
+	elif flag[1346]:
+		TextTalk self {
+			真希望快點輪到我……{wait}
+		}
+		TextWait
+	CharSetChipPattern self 0
+	TextEnd self
+	Return
+
+fn[55]:
+	field_party[0].5 = self.4
+	self.5 = self.4
+	TextStart self
+	CharFlagsUnset self 0x0010
+	CharTurnToChar self field_party[0] 0deg/s
+	self.4 = (self.4 + 360) % 360
+	self.4 = self.4 + 360 - self.5
+	self.5 = self.4 / 180
+	if self.4 <= 45 | self.4 >= 315 && self.4 <= 405 | self.4 >= 675:
+	elif self.5 < 1:
+		self.8 = 2
+	elif self.5 > 2:
+		self.8 = 1
+	else:
+		self.8 = self.5
+	self.4 = field_party[0].5
+	field_party[0].5 = 0
+	self.5 = 0
+	CharFlagsSet self 0x0010
+	if flag[1351]:
+		TextTalk self {
+			呵呵，爺爺的病情似乎好轉了，
+			我也總算放下心來了。{wait}
+		}
+		TextWait
+	elif flag[1346]:
+		TextTalk self {
+			爺爺，靜下心來，慢慢等吧。{wait}
+		}
+		TextWait
+	CharSetChipPattern self 0
+	TextEnd self
+	Return
+
+fn[56]:
+	field_party[0].5 = self.4
+	self.5 = self.4
+	TextStart self
+	CharFlagsUnset self 0x0010
+	CharTurnToChar self field_party[0] 0deg/s
+	self.4 = (self.4 + 360) % 360
+	self.4 = self.4 + 360 - self.5
+	self.5 = self.4 / 180
+	if self.4 <= 45 | self.4 >= 315 && self.4 <= 405 | self.4 >= 675:
+	elif self.5 < 1:
+		self.8 = 2
+	elif self.5 > 2:
+		self.8 = 1
+	else:
+		self.8 = self.5
+	self.4 = field_party[0].5
+	field_party[0].5 = 0
+	self.5 = 0
+	CharFlagsSet self 0x0010
+	TextTalk self {
+		嗯……
+		似乎有點發熱……{wait}
+	}
+	TextWait
+	CharSetChipPattern self 0
+	TextEnd self
+	Return
+
+fn[57]:
+	field_party[0].5 = self.4
+	self.5 = self.4
+	TextStart self
+	CharFlagsUnset self 0x0010
+	CharTurnToChar self field_party[0] 0deg/s
+	self.4 = (self.4 + 360) % 360
+	self.4 = self.4 + 360 - self.5
+	self.5 = self.4 / 180
+	if self.4 <= 45 | self.4 >= 315 && self.4 <= 405 | self.4 >= 675:
+	elif self.5 < 1:
+		self.8 = 2
+	elif self.5 > 2:
+		self.8 = 1
+	else:
+		self.8 = self.5
+	self.4 = field_party[0].5
+	field_party[0].5 = 0
+	self.5 = 0
+	CharFlagsSet self 0x0010
+	TextTalk self {
+		咳咳……
+		我自作主張，不來複診，
+		結果病症很快就復發了。{wait}
+	}
+	TextWait
+	TextTalk self {
+		過於相信自己的判斷，
+		果然很危險呢。{wait}
+	}
+	TextWait
+	CharSetChipPattern self 0
+	TextEnd self
+	Return
+
+fn[58]:
+	field_party[0].5 = self.4
+	self.5 = self.4
+	TextStart self
+	CharFlagsUnset self 0x0010
+	CharTurnToChar self field_party[0] 0deg/s
+	self.4 = (self.4 + 360) % 360
+	self.4 = self.4 + 360 - self.5
+	self.5 = self.4 / 180
+	if self.4 <= 45 | self.4 >= 315 && self.4 <= 405 | self.4 >= 675:
+	elif self.5 < 1:
+		self.8 = 2
+	elif self.5 > 2:
+		self.8 = 1
+	else:
+		self.8 = self.5
+	self.4 = field_party[0].5
+	field_party[0].5 = 0
+	self.5 = 0
+	CharFlagsSet self 0x0010
+	TextTalk self {
+		這裡的實習醫生都在
+		專心學習著，真不錯呢。{wait}
+	}
+	TextWait
+	TextTalk self {
+		我不由自主就想給他們加油呢。{wait}
+	}
+	TextWait
+	CharSetChipPattern self 0
+	TextEnd self
+	Return
+
+fn[59]:
+	field_party[0].5 = self.4
+	self.5 = self.4
+	TextStart self
+	CharFlagsUnset self 0x0010
+	CharTurnToChar self field_party[0] 0deg/s
+	self.4 = (self.4 + 360) % 360
+	self.4 = self.4 + 360 - self.5
+	self.5 = self.4 / 180
+	if self.4 <= 45 | self.4 >= 315 && self.4 <= 405 | self.4 >= 675:
+	elif self.5 < 1:
+		self.8 = 2
+	elif self.5 > 2:
+		self.8 = 1
+	else:
+		self.8 = self.5
+	self.4 = field_party[0].5
+	field_party[0].5 = 0
+	self.5 = 0
+	CharFlagsSet self 0x0010
+	TextTalk self {
+		為了健康，我正在練習一種
+		模仿東方拳法動作的運動……
+		結果用力過猛摔倒了。{wait}
+	}
+	TextWait
+	TextTalk self {
+		哎呀，真不該勉強呢，
+		哇哈哈。{wait}
+	}
+	TextWait
+	CharSetChipPattern self 0
+	TextEnd self
+	Return
+
+fn[60]:
+	field_party[0].5 = self.4
+	self.5 = self.4
+	TextStart self
+	CharFlagsUnset self 0x0010
+	CharTurnToChar self field_party[0] 0deg/s
+	self.4 = (self.4 + 360) % 360
+	self.4 = self.4 + 360 - self.5
+	self.5 = self.4 / 180
+	if self.4 <= 45 | self.4 >= 315 && self.4 <= 405 | self.4 >= 675:
+	elif self.5 < 1:
+		self.8 = 2
+	elif self.5 > 2:
+		self.8 = 1
+	else:
+		self.8 = self.5
+	self.4 = field_party[0].5
+	field_party[0].5 = 0
+	self.5 = 0
+	CharFlagsSet self 0x0010
+	if flag[1565]:
+		TextTalk self {
+			馬上就要輪到我接受診察了啊。{wait}
+		}
+		TextWait
+		TextTalk self {
+			如果耗到太晚，
+			還是住在院內的招待所為好吧。{wait}
+		}
+		TextWait
+	elif flag[1554]:
+		TextTalk self {
+			我還是第一次看到
+			被救護車送來的患者。{wait}
+		}
+		TextWait
+		TextTalk self {
+			哎呀……還是不看為好……
+			好像真的很疼呢……{wait}
+		}
+		TextWait
+	CharSetChipPattern self 0
+	TextEnd self
+	Return
+
+fn[61]:
+	field_party[0].5 = self.4
+	self.5 = self.4
+	TextStart self
+	CharFlagsUnset self 0x0010
+	CharTurnToChar self field_party[0] 0deg/s
+	self.4 = (self.4 + 360) % 360
+	self.4 = self.4 + 360 - self.5
+	self.5 = self.4 / 180
+	if self.4 <= 45 | self.4 >= 315 && self.4 <= 405 | self.4 >= 675:
+	elif self.5 < 1:
+		self.8 = 2
+	elif self.5 > 2:
+		self.8 = 1
+	else:
+		self.8 = self.5
+	self.4 = field_party[0].5
+	field_party[0].5 = 0
+	self.5 = 0
+	CharFlagsSet self 0x0010
+	if flag[1565]:
+		TextTalk self {
+			雖然已經接受醫生的診察了……
+			但真的只是普通的感冒嗎！？{wait}
+		}
+		TextWait
+		TextTalk self {
+			要是出現什麼嚴重的併發症，
+			那可如何是好啊！？{wait}
+		}
+		TextWait
+	elif flag[1554]:
+		TextTalk self {
+			哦，女神啊，
+			求您保佑我的女兒
+			不要患上重病……{wait}
+		}
+		TextWait
+	CharSetChipPattern self 0
+	TextEnd self
+	Return
+
+fn[62]:
+	field_party[0].5 = self.4
+	self.5 = self.4
+	TextStart self
+	CharFlagsUnset self 0x0010
+	CharTurnToChar self field_party[0] 0deg/s
+	self.4 = (self.4 + 360) % 360
+	self.4 = self.4 + 360 - self.5
+	self.5 = self.4 / 180
+	if self.4 <= 45 | self.4 >= 315 && self.4 <= 405 | self.4 >= 675:
+	elif self.5 < 1:
+		self.8 = 2
+	elif self.5 > 2:
+		self.8 = 1
+	else:
+		self.8 = self.5
+	self.4 = field_party[0].5
+	field_party[0].5 = 0
+	self.5 = 0
+	CharFlagsSet self 0x0010
+	if flag[1565]:
+		TextTalk self {
+			……真是的，媽媽
+			嚇得驚慌失措的，
+			真讓人難為情……{wait}
+		}
+		TextWait
+		TextTalk self {
+			醫生都說過了，
+			只是普通的感冒，不必擔心啊。{wait}
+		}
+		TextWait
+	elif flag[1554]:
+		TextTalk self {
+			咳咳……
+			真是的，媽媽就是愛操心，
+			只是普通的感冒而已。{wait}
+		}
+		TextWait
+	CharSetChipPattern self 0
+	TextEnd self
+	Return
+
+fn[63]:
+	field_party[0].5 = self.4
+	self.5 = self.4
+	TextStart self
+	CharFlagsUnset self 0x0010
+	CharTurnToChar self field_party[0] 0deg/s
+	self.4 = (self.4 + 360) % 360
+	self.4 = self.4 + 360 - self.5
+	self.5 = self.4 / 180
+	if self.4 <= 45 | self.4 >= 315 && self.4 <= 405 | self.4 >= 675:
+	elif self.5 < 1:
+		self.8 = 2
+	elif self.5 > 2:
+		self.8 = 1
+	else:
+		self.8 = self.5
+	self.4 = field_party[0].5
+	field_party[0].5 = 0
+	self.5 = 0
+	CharFlagsSet self 0x0010
+	CharSetChipPattern self 0
+	TextTalk self {
+		嗯，原來是這樣的內部構造啊。{wait}
+	}
+	TextWait
+	TextTalk self {
+		哎呀，這裡太大了，
+		我都有點轉暈了……{wait}
+	}
+	TextWait
+	CharSetChipPattern self 0
+	TextEnd self
+	Return
+
+fn[64]:
+	field_party[0].5 = self.4
+	self.5 = self.4
+	TextStart self
+	CharFlagsUnset self 0x0010
+	CharTurnToChar self field_party[0] 0deg/s
+	self.4 = (self.4 + 360) % 360
+	self.4 = self.4 + 360 - self.5
+	self.5 = self.4 / 180
+	if self.4 <= 45 | self.4 >= 315 && self.4 <= 405 | self.4 >= 675:
+	elif self.5 < 1:
+		self.8 = 2
+	elif self.5 > 2:
+		self.8 = 1
+	else:
+		self.8 = self.5
+	self.4 = field_party[0].5
+	field_party[0].5 = 0
+	self.5 = 0
+	CharFlagsSet self 0x0010
+	TextTalk self {
+		說起醫院，
+		好像總有一種特殊的味道。{wait}
+	}
+	TextWait
+	TextTalk self {
+		應該是消毒用的酒精……
+		我好像有些喜歡呢。{wait}
+	}
+	TextWait
+	CharSetChipPattern self 0
+	TextEnd self
+	Return
+
+fn[65]:
+	field_party[0].5 = self.4
+	self.5 = self.4
+	TextStart self
+	CharFlagsUnset self 0x0010
+	CharTurnToChar self field_party[0] 0deg/s
+	self.4 = (self.4 + 360) % 360
+	self.4 = self.4 + 360 - self.5
+	self.5 = self.4 / 180
+	if self.4 <= 45 | self.4 >= 315 && self.4 <= 405 | self.4 >= 675:
+	elif self.5 < 1:
+		self.8 = 2
+	elif self.5 > 2:
+		self.8 = 1
+	else:
+		self.8 = self.5
+	self.4 = field_party[0].5
+	field_party[0].5 = 0
+	self.5 = 0
+	CharFlagsSet self 0x0010
+	TextTalk self {
+		剛剛上午就有這麼多人……{wait}
+	}
+	TextWait
+	TextTalk self {
+		對於克洛斯貝爾人來說，
+		這裡似乎是非常值得信賴的設施呢。{wait}
+	}
+	TextWait
+	CharSetChipPattern self 0
+	TextEnd self
+	Return
+
+fn[66]:
+	field_party[0].5 = self.4
+	self.5 = self.4
+	TextStart self
+	CharFlagsUnset self 0x0010
+	CharTurnToChar self field_party[0] 0deg/s
+	self.4 = (self.4 + 360) % 360
+	self.4 = self.4 + 360 - self.5
+	self.5 = self.4 / 180
+	if self.4 <= 45 | self.4 >= 315 && self.4 <= 405 | self.4 >= 675:
+	elif self.5 < 1:
+		self.8 = 2
+	elif self.5 > 2:
+		self.8 = 1
+	else:
+		self.8 = self.5
+	self.4 = field_party[0].5
+	field_party[0].5 = 0
+	self.5 = 0
+	CharFlagsSet self 0x0010
+	TextTalk self {
+		我明明是一大早趕來的，
+		竟然要等這麼久……{wait}
+	}
+	TextWait
+	TextTalk self {
+		快點啊，真是的！
+		我的腰部正在發出悲鳴啊！{wait}
+	}
+	TextWait
+	CharSetChipPattern self 0
+	TextEnd self
+	Return
+
+fn[67]:
+	TextStart self
+	TextTalk self {
+		嗯，奶奶的病房
+		是在哪裡呢……{wait}
+	}
+	TextWait
+	TextEnd self
+	Return
+
+fn[68]:
+	TextStart self
+	TextTalk self {
+		哇哇～醫院可真大啊！{wait}
+	}
+	TextWait
+	TextEnd self
+	Return
+
+fn[69]:
+	TextStart self
+	CharTurnTo char[1] 180deg 0deg/s
+	CharTurnTo char[58] 15deg 0deg/s
+	_Char4A char[1] 255
+	TextTalk char[1] {
+		您想做健康診斷嗎？
+		那麼，請在這邊的
+		文件上簽名。{wait}
+	}
+	TextWait
+	TextTalk char[1] {
+		因為是初診，
+		所以可能會多花一些時間。
+		您可以等待一下嗎？{wait}
+	}
+	TextWait
+	TextTalk self {
+		嗯，沒問題。{wait}
+	}
+	TextWait
+	_Char4B char[1] 255
+	TextEnd self
+	Return
+
+fn[70]:
+	TextStart self
+	if !flag[16]:
+		TextTalk self {
+			嗯？寫著什麼？
+			『關於健康檢查的通知』……{wait}
+		}
+		TextWait
+		TextTalk self {
+			『為了在早期發現體內隱藏的疾病，
+			我們推薦您做一次
+			使用最新器械的綜合檢查』……{wait}
+		}
+		TextWait
+		TextTalk self {
+			原來如此，不愧是
+			有名的烏爾斯拉醫院呢。
+			在別處都見不到這種東西呢。{wait}
+		}
+		TextWait
+	else:
+		TextTalk self {
+			健康檢查嗎……
+			雖然現在沒時間做……{wait}
+		}
+		TextWait
+		TextTalk self {
+			但烏爾斯拉醫院果然很先進呢。
+			這裡被譽為最新醫療技術的寶庫，
+			看來真是名不虛傳。{wait}
+		}
+		TextWait
+	TextEnd self
+	Return
+
+fn[71]:
+	TextStart self
+	if flag[17]:
+		TextTalk char[61] {
+			我、我昨天宵夜吃得太多了。
+			肚子好疼啊……！{wait}
+		}
+		TextWait
+	else:
+		TextTalk char[61] {
+			肚、肚子好疼……{wait}
+		}
+		TextWait
+		TextTalk char[61] {
+			還沒輪到我嗎……！{wait}
+		}
+		TextWait
+		FlagSet flag[17]
+	TextEnd self
+	Return
+
+fn[72]:
+	TextStart self
+	if flag[1024]:
+		if !flag[18]:
+			Emote field_party[0] 0mm 2000mm 38 38 250ms 1
+			Emote field_party[1] 0mm 2000mm 38 38 250ms 1
+			Emote field_party[2] 0mm 2000mm 38 38 250ms 1
+			Emote field_party[3] 0mm 2000mm 38 38 250ms 1
+			Sleep 500ms
+			TextTalk name[0] {
+				#0005F哎，這不是那位遊擊士嗎……{wait}
+			}
+			TextWait
+			TextTalk name[1] {
+				#0101F難道是……
+				發生了什麼事情嗎？{wait}
+			}
+			TextWait
+			TextTalk self {
+				嗯，有位旅行者鑽入密林，
+				似乎是被毒蛇之類的東西
+				咬傷了呢。{wait}
+			}
+			TextWait
+			TextTalk self {
+				我們急忙趕了過去，
+				然後就把他送來了。{wait}
+			}
+			TextWait
+			TextTalk self {
+				還好，艾歐莉雅已經為他
+				做了適當處理，應該不會有什麼大礙。{wait}
+			}
+			TextWait
+			TextTalk name[3] {
+				#0305F處理嗎……
+				遊擊士竟然連
+				這種技術都會啊？{wait}
+			}
+			TextWait
+			TextTalk self {
+				是艾歐莉雅比較特殊啦。{wait}
+			}
+			TextWait
+			TextTalk self {
+				她出身於醫療發達國家雷米菲利亞，
+				而且好像還擁有醫生資格證呢。{wait}
+			}
+			TextWait
+			TextTalk name[2] {
+				#0211F……真難想像現在說的這個人，
+				就是每次見面時都要粘著我的那位遊擊士啊。{wait}
+			}
+			TextWait
+			TextTalk self {
+				哈哈，雖然她平時那個樣子，
+				但其實是個非常厲害的人呢。{wait}
+			}
+			TextWait
+			FlagSet flag[18]
+		else:
+			TextTalk self {
+				艾歐莉雅出身於雷米菲利亞，
+				而且還持有醫生資格證。{wait}
+			}
+			TextWait
+			TextTalk self {
+				雖然平時對可愛的東西沒有抵抗力，
+				但其實是個非常厲害的人呢。{wait}
+			}
+			TextWait
+	TextEnd self
+	Return
+
+fn[73]:
+	TextStart self
+	if flag[1024]:
+		if !flag[19]:
+			_Char4A char[63] 255
+			_Char4A char[3] 255
+			CharTurnToChar char[63] char[3] 0deg/s
+			TextTalk char[3] {
+				那位旅行者正在加護病房
+				保持靜養。{wait}
+			}
+			TextWait
+			TextTalk char[3] {
+				哎呀，那個時候如果稍有閃失，
+				搞不好就必須得截肢了……{wait}
+			}
+			TextWait
+			TextTalk char[3] {
+				幸好有艾歐莉雅在，
+				才避免了那麼嚴重的後果。
+				總是給你們添麻煩啊。{wait}
+			}
+			TextWait
+			TextTalk char[63] {
+				哪裡哪裡，身為遊擊士，
+				這些都是我們應該做的。{wait}
+			}
+			TextWait
+			TextTalk name[3] {
+				#0307F#4S（可惡，真讓人羨慕！！）{wait}
+			} {
+				#0304F（我也好想接受
+				　艾歐莉雅小姐的溫柔護理啊！）{wait}
+			}
+			TextWait
+			TextTalk name[2] {
+				#0211F（……請不要莫名其妙地興奮起來。）{wait}
+			}
+			TextWait
+			FlagSet flag[19]
+			_Char4B char[63] 255
+			_Char4B char[3] 255
+		else:
+			TextTalk char[63] {
+				啊～！！
+				這不是小緹歐和各位嘛！{wait}
+			}
+			TextWait
+			TextTalk char[63] {
+				呵呵，稍等一下哦。
+				等我的工作結束之後，
+				就把滿腔的愛意獻給你㈱{wait}
+			}
+			TextWait
+			TextTalk name[2] {
+				#0206F……恕我謝絕。{wait}
+			}
+			TextWait
+	TextEnd self
+	Return
+
+fn[74]:
+	EventBegin 0
+	FadeOut 1000ms 0x00000000 255
+	FadeWait
+	CamSetDistance 49870 1000 57910 0ms
+	ED7CamRotate 64deg 30deg 0deg 0ms
+	CamPers 440 0ms
+	CamZoom 20540 0ms
+	CharSetPos name[0] (48800, 0, 57000) 0deg
+	CharSetPos name[1] (50000, 0, 57000) 0deg
+	CharSetPos name[2] (48800, 0, 55500) 0deg
+	CharSetPos name[3] (50000, 0, 55500) 0deg
+	CharSetChipPattern char[4] 0
+	Sleep 500ms
+	FadeIn 500ms 0x00000000
+	FadeWait
+	TextTalk char[4] {
+		#5P……唔，只是這種無關緊要的請求，
+		他們真的會來嗎……{wait}
+	}
+	TextWait
+	TextTalk char[4] {
+		#5P果然還是應該
+		去拜託遊擊士嗎……？{wait}
+	}
+	TextWait
+	TextTalk char[4] {
+		#5P不過，我又不想因為這種
+		程度的小事而花費米拉……{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#12P#0006F（呃，不太好搭話呢……）{wait}
+	} {
+		#0000F那、那個……
+		我們是克洛斯貝爾警察局
+		特務支援課的成員……{wait}
+	}
+	TextWait
+	Emote char[4] 0mm 2000mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Sleep 1000ms
+	CharSetChipPattern char[4] 1
+	TextTalk char[4] {
+		#5P哦哦……你們來了啊！{wait}
+	}
+	TextWait
+	TextTalk char[4] {
+		#5P我一直在等你們呢，
+		來來，快過來坐。{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#12P#0003F不用了，我們站著就行。{wait}
+	} {
+		#0000F可以請您將委託內容
+		詳細說給我們聽聽嗎？{wait}
+	}
+	TextWait
+	TextTalk char[4] {
+		#5P嗯，好、好的。{wait}
+	}
+	TextWait
+	TextTalk char[4] {
+		#5P……咳咳。
+		那個，所謂的委託其實很簡單。{wait}
+	}
+	TextWait
+	TextTalk char[4] {
+		#5P這次內科研究中，需要用到一種藥草，
+		希望你們能幫我取來。{wait}
+	}
+	TextWait
+	TextTalk char[4] {
+		#5P它的名字叫做『羽扇豆草』……
+		如今已是一種
+		很稀少的藥草了。{wait}
+	}
+	TextWait
+	TextTalk name[2] {
+		#12P#0205F說到羽扇豆的話……
+		就會讓人聯想起流經
+		克洛斯貝爾港灣區的『羽扇河』呢……{wait}
+	}
+	TextWait
+	TextTalk name[3] {
+		#12P#0300F您是想讓我們去採摘
+		那種珍奇的藥草嗎？{wait}
+	}
+	TextWait
+	TextTalk char[4] {
+		#5P不，嚴格來說並非如此。{wait}
+	}
+	TextWait
+	TextTalk char[4] {
+		#5P其實，這種藥草在
+		克洛斯貝爾大教堂有少量儲備。{wait}
+	}
+	TextWait
+	TextTalk char[4] {
+		#5P我已經和艾拉爾達大主教
+		聯絡過了，希望你們
+		能作為我的代理人，去幫我取來。{wait}
+	}
+	TextWait
+	TextTalk char[4] {
+		#5P……其實本來應該由我親自去的……
+		嗯……不過因為有些忙嘛。{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#12P#0005F……？{wait}
+	}
+	TextWait
+	TextTalk name[1] {
+		#12P#0100F原來如此，我們知道了。
+		去找克洛斯貝爾大教堂的
+		艾拉爾達大主教就可以了吧。{wait}
+	}
+	TextWait
+	TextTalk char[4] {
+		#5P嗯，那就拜託你們了。{wait}
+	}
+	TextWait
+	TextTalk char[4] {
+		#5P拿到『羽扇豆草』之後，
+		請把它拿到我這裡來。{wait}
+	}
+	TextWait
+	FadeOut 300ms 0x00000000 100
+	SoundPlay sound[80] 0 100 0
+	TextSetPos -1 -1 -1 -1
+	TextSetName ""
+	TextMessage null {
+		{color 2}任務【稀有藥草的回收】{color 0}開始！{wait}
+	}
+	TextWait
+	TextClose 0
+	FadeIn 300ms 0x00000000
+	TextSetPos -1 280 60 3
+	FadeOut 1000ms 0x00000000 255
+	FadeWait
+	CamSetDistance 50500 1000 57500 0ms
+	ED7CamRotate 45deg 28deg 0deg 0ms
+	CamPers 440 0ms
+	CamZoom 22000 0ms
+	QuestTaskSet quest[19] 0
+	CharSetPos field_party[0] (50500, 0, 57500) 0deg
+	CharSetPos field_party[1] (50500, 0, 57500) 0deg
+	CharSetPos field_party[2] (50500, 0, 57500) 0deg
+	CharSetPos field_party[3] (50500, 0, 57500) 0deg
+	Sleep 500ms
+	CharSetChipPattern char[4] 0
+	EventEnd 5
+	Return
+
+fn[75]:
+	EventBegin 0
+	FadeOut 1000ms 0x00000000 255
+	FadeWait
+	CamSetDistance 49870 1000 57910 0ms
+	ED7CamRotate 64deg 30deg 0deg 0ms
+	CamPers 440 0ms
+	CamZoom 20540 0ms
+	CharSetPos name[0] (48800, 0, 57000) 0deg
+	CharSetPos name[1] (50000, 0, 57000) 0deg
+	CharSetPos name[2] (48800, 0, 55500) 0deg
+	CharSetPos name[3] (50000, 0, 55500) 0deg
+	CharSetChipPattern char[4] 1
+	Sleep 500ms
+	FadeIn 500ms 0x00000000
+	FadeWait
+	TextTalk char[4] {
+		#5P哦，是你們啊……{wait}
+	}
+	TextWait
+	TextTalk char[4] {
+		#5P已經幫我把羽扇豆草
+		順利取來了嗎？{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#12P#0000F嗯，已經拿來了。{wait}
+	} {
+		這就是我們取來的物品。{wait}
+	}
+	TextWait
+	FadeOut 300ms 0x00000000 100
+	TextSetPos -1 -1 -1 -1
+	TextSetName ""
+	TextMessage null {
+		交出了{item[833]}{color 0}。{wait}
+	}
+	SoundPlay sound[17] 0 100 0
+	TextWait
+	FadeIn 300ms 0x00000000
+	TextClose 0
+	TextSetPos -1 280 60 3
+	_59
+	ItemRemove item[833] 1
+	TextTalk char[4] {
+		#5P嗯，就是它，
+		我要向你們表示感謝。{wait}
+	}
+	TextWait
+	TextTalk char[4] {
+		#5P嗯……嗯……
+		然後，那個……{wait}
+	}
+	TextWait
+	TextTalk char[4] {
+		#5P……艾拉爾達大主教
+		說過什麼關於我的話嗎？{wait}
+	}
+	TextWait
+	TextTalk name[2] {
+		#12P#0203F……不，並沒說什麼。{wait}
+	} {
+		#0200F而且他似乎也沒有看過
+		教授您寫給他的信。{wait}
+	}
+	TextWait
+	TextTalk char[4] {
+		#5P……唔，果然是這樣啊。{wait}
+	}
+	TextWait
+	TextTalk char[4] {
+		#5P我等了好久也沒有等到
+		回音，就已經想到
+		會是這麼一回事了。{wait}
+	}
+	TextWait
+	TextTalk name[3] {
+		#12P#0301F什麼嘛，之前還說已經聯絡過了，
+		原來是騙人的啊。{wait}
+	} {
+		#0306F我們到了之後，才發現你們根本就
+		沒有聯絡過，緊張得都冒冷汗了呢。{wait}
+	}
+	TextWait
+	TextTalk char[4] {
+		#5P唔……真抱歉啊，
+		因為有些難以啟齒。{wait}
+	}
+	TextWait
+	TextTalk char[4] {
+		#5P我有些害怕見到大主教，
+		所以沒法自己去取，
+		不得已之下，才會拜託你們呢。{wait}
+	}
+	TextWait
+	TextTalk name[1] {
+		#12P#0100F祭司和我們說了很多。{wait}
+	} {
+		他說，艾拉爾達大主教雖然有些頑固，
+		但對拉格教授肯定
+		還是持認同態度的。{wait}
+	}
+	TextWait
+	TextTalk char[4] {
+		#5P是嗎……{wait}
+	}
+	TextWait
+	TextTalk char[4] {
+		#5P我當然也是一樣啊。
+		直到如今，我也非常
+		尊敬艾拉爾達大主教。{wait}
+	}
+	TextWait
+	TextTalk char[4] {
+		#5P我一直在想，如果有朝一日
+		先進的醫療技術能得到普及，
+		我一定要去向他道歉，並鄭重表示感謝。{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#12P#0000F是嗎……
+		那真是再好不過了。{wait}
+	}
+	TextWait
+	TextTalk char[4] {
+		#5P……那麼，真是
+		給你們添麻煩了。{wait}
+	}
+	TextWait
+	TextTalk char[4] {
+		#5P以後也請多多關照。{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#12P#0000F嗯，我們隨時恭候。{wait}
+	}
+	TextWait
+	FadeOut 300ms 0x00000000 100
+	SoundPlay sound[9] 0 100 0
+	TextSetPos -1 -1 -1 -1
+	TextSetName ""
+	TextMessage null {
+		{color 2}任務【稀有藥草的回收】{color 0}完成！{wait}
+	}
+	TextWait
+	TextClose 0
+	FadeIn 300ms 0x00000000
+	TextSetPos -1 280 60 3
+	FadeOut 1000ms 0x00000000 255
+	FadeWait
+	CamSetDistance 50500 1000 57500 0ms
+	ED7CamRotate 45deg 28deg 0deg 0ms
+	CamPers 440 0ms
+	CamZoom 22000 0ms
+	QuestTaskSet quest[19] 3
+	QuestFlagsSet quest[19] 0x10
+	CharSetPos field_party[0] (50500, 0, 57500) 0deg
+	CharSetPos field_party[1] (50500, 0, 57500) 0deg
+	CharSetPos field_party[2] (50500, 0, 57500) 0deg
+	CharSetPos field_party[3] (50500, 0, 57500) 0deg
+	Sleep 500ms
+	CharSetChipPattern char[4] 0
+	EventEnd 5
+	Return
+
+fn[76]:
+	_Char4A char[0] 255
+	_Char4A char[13] 255
+	CharTurnToChar char[0] field_party[0] 0deg/s
+	CharTurnToChar field_party[0] char[0] 0deg/s
+	EventBegin 0
+	FadeOut 1000ms 0x00000000 255
+	FadeWait
+	CamSetDistance 15620 400 7920 0ms
+	ED7CamRotate 45deg 18deg 0deg 0ms
+	CamPers 400 0ms
+	CamZoom 25000 0ms
+	CharSetPos name[0] (14410, 0, 6710) 90deg
+	CharSetPos name[1] (13420, 0, 4760) 90deg
+	CharSetPos name[2] (12160, 0, 4910) 90deg
+	CharSetPos name[3] (12810, 0, 6540) 90deg
+	CharSetPos char[0] (17210, 0, 7430) 266deg
+	CharSetPos char[13] (11940, 1230, 16600) 0deg
+	CharFlagsSet char[13] 0x0040
+	CharFlagsUnset char[13] 0x0004
+	CharFlagsSet char[2] 0x0080
+	CharFlags2Set char[2] 0x8000
+	CharFlagsSet char[30] 0x0080
+	CharFlags2Set char[30] 0x8000
+	FadeIn 1000ms 0x00000000
+	FadeWait
+	TextTalk char[0] {
+		#11P哎呀……醫生到底去哪裡了……{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#6P#0001F榭拉小姐，您好。{wait}
+	} {
+		我們是接到了支援請求而來的。{wait}
+	}
+	TextWait
+	Emote char[0] 0mm 2000mm 38 38 250ms 1
+	Sleep 500ms
+	TextTalk char[0] {
+		#11P特務支援課的諸位……{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#11P太好了，
+		你們能來，可真是幫了我大忙。{wait}
+	}
+	TextWait
+	Emote field_party[0] 0mm 2000mm 24 27 250ms 0
+	Emote field_party[1] 0mm 2000mm 24 27 250ms 0
+	Emote field_party[2] 0mm 2000mm 24 27 250ms 0
+	Emote field_party[3] 0mm 2000mm 24 27 250ms 0
+	Sleep 1500ms
+	EmoteStop field_party[0]
+	EmoteStop field_party[1]
+	EmoteStop field_party[2]
+	EmoteStop field_party[3]
+	Sleep 300ms
+	Emote char[0] 0mm 2000mm 0 1 250ms 2
+	SoundPlay sound[29] 0 100 0
+	Sleep 1000ms
+	TextTalk char[0] {
+		#11P……嗯，怎麼了？{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#6P#0006F那、那個……{wait}
+	} {
+		#0005F委託中好像說一位副教授失蹤了，
+		希望我們進行搜尋……對吧？{wait}
+	}
+	TextWait
+	TextTalk name[3] {
+		#6P#0305F但是，您卻這麼鎮定，
+		讓人感覺有些奇怪呢……{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#11P哦，這個嘛。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#11P與其說是鎮定……
+		倒不如說是
+		已經麻木了。{wait}
+	}
+	TextWait
+	TextTalk name[1] {
+		#12P#0105F麻、麻木了……？{wait}
+	}
+	TextWait
+	TextTalk name[2] {
+		#6P#0203F……那個，如果可以的話，
+		請把詳細情況告訴我們吧。{wait}
+	} {
+		#0200F看樣子，這和我們所想像的失蹤事件
+		似乎在嚴重程度上有很大差距呢。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#11P嗯，好的。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#11P失蹤的那位
+		副教授名叫
+		約亞西姆・瓊塔……{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#11P約亞西姆醫生他，那個……
+		雖然是位很優秀的醫生，但是
+		偶爾卻會突然失蹤。{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#6P#0003F約亞西姆醫生……
+		啊，就是那位藍色頭髮，戴眼鏡的……{wait}
+	} {
+		#0005F也就是說，那個……{wait}
+	}
+	TextWait
+	TextTalk name[3] {
+		#6P#0306F簡單來說，就是偷懶曠工吧。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#11P沒錯，說白了其實就是那樣。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#11P今天也是，把大量的工作丟下不管，
+		不知跑到哪裡去了……{wait}
+	}
+	TextWait
+	TextTalk name[1] {
+		#12P#0106F……就是說……{wait}
+	} {
+		#0100F約亞西姆醫生只是不知道
+		跑到哪裡去玩了……
+		是這樣吧？{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#11P就、就是這樣啦。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#11P對不起，我把委託寫成
+		『行蹤不明』，
+		也許是有些輕率了。{wait}
+	}
+	TextWait
+	Emote field_party[0] 0mm 2000mm 16 19 250ms 1
+	SoundPlay sound[23] 0 100 0
+	Emote field_party[1] 0mm 2000mm 16 19 250ms 1
+	SoundPlay sound[23] 0 100 0
+	Emote field_party[2] 0mm 2000mm 16 19 250ms 1
+	SoundPlay sound[23] 0 100 0
+	Emote field_party[3] 0mm 2000mm 16 19 250ms 1
+	SoundPlay sound[23] 0 100 0
+	Sleep 1200ms
+	TextTalk name[0] {
+		#6P#0003F……要怎麼辦呢，各位？{wait}
+	}
+	TextWait
+	TextTalk name[2] {
+		#6P#0203F……說實話，我覺得這個不妨延後處理。{wait}
+	} {
+		#0200F從瞭解到的情報來看，
+		緊急性似乎很低呢。{wait}
+	}
+	TextWait
+	TextTalk name[3] {
+		#6P#0306F但畢竟是榭拉小姐的請求，
+		我還是很想幫忙的。{wait}
+	}
+	TextWait
+	TextTalk name[1] {
+		#12P#0105F不過，那位醫生也許真的被捲入到
+		某些事件中了呢。以防萬一，或許還是應該……{wait}
+	}
+	TextWait
+	TextTalkNamed char[13] "男人的聲音" {
+		#4S榭、榭──榭拉小姐！！{wait}
+	}
+	TextWait
+	Emote char[0] 0mm 2000mm 38 38 250ms 1
+	Emote field_party[0] 0mm 2000mm 38 38 250ms 1
+	Emote field_party[1] 0mm 2000mm 38 38 250ms 1
+	Emote field_party[2] 0mm 2000mm 38 38 250ms 1
+	Emote field_party[3] 0mm 2000mm 38 38 250ms 1
+	Sleep 500ms
+	Fork field_party[0] fork[1]:
+		CharTurnTo self 0deg 500deg/s
+	Fork field_party[1] fork[1]:
+		CharTurnTo self 0deg 500deg/s
+	Fork field_party[2] fork[1]:
+		CharTurnTo self 0deg 500deg/s
+	Fork field_party[3] fork[1]:
+		CharTurnTo self 0deg 500deg/s
+	ForkLoop char[0] fork[1]:
+		CharTurnToChar self char[13] 500deg/s
+	CamSetDistance 14200 600 9330 1500ms
+	ED7CamRotate 45deg 18deg 0deg 1500ms
+	CamPers 400 1500ms
+	CamZoom 25000 1500ms
+	Sleep 1500ms
+	CharFlagsUnset char[13] 0x0080
+	CharWalkToPos char[13] (11810, 0, 9710) 7000mm/s 0
+	Fork char[13] fork[1]:
+		CharWalkToPos self (13460, 0, 8990) 6000mm/s 0
+	CamSetDistance 14770 600 8480 500ms
+	ED7CamRotate 45deg 18deg 0deg 500ms
+	CamPers 400 500ms
+	CamZoom 25000 500ms
+	Sleep 500ms
+	ForkQuit char[0] fork[1]
+	CharTurnTo char[0] 270deg 0deg/s
+	TextTalk char[13] {
+		#5P呼、呼、呼……{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#11P啊……利頓醫生，
+		在醫院裡不可以大聲喊叫哦。{wait}
+	}
+	TextWait
+	TextTalk char[13] {
+		#5P呼、呼……
+		對……對不起……{wait}
+	}
+	TextWait
+	TextTalk name[3] {
+		#6P#0300F啊，這不是之前住院的
+		那位實習醫生嗎？
+		身體還好吧？{wait}
+	}
+	TextWait
+	CharTurnToChar char[13] name[3] 0deg/s
+	TextTalk char[13] {
+		#5P……啊，你、你們好。
+		當時可真是多謝了……{wait}
+	}
+	TextWait
+	CharTurnToChar char[13] char[0] 0deg/s
+	TextTalk char[13] {
+		#5P……不對！現在不是說這些的時候！
+		榭拉小姐，約亞西姆醫生呢！？{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#11P那個，對不起。
+		他好像還沒回來……{wait}
+	}
+	TextWait
+	TextTalk char[13] {
+		#5P怎、怎麼會這樣……{wait}
+	}
+	TextWait
+	TextTalk char[13] {
+		#5P嗚嗚……
+		那麼大的工作量，讓我這個
+		實習醫生如何是好啊……{wait}
+	}
+	TextWait
+	TextTalk char[13] {
+		#5P……啊啊，沒時間在這裡抱怨了！
+		再不趕快去處理的話，可就……！{wait}
+	}
+	TextWait
+	ForkLoop char[0] fork[1]:
+		CharTurnToChar self char[13] 500deg/s
+	CharWalkToPos char[13] (11810, 0, 9710) 6000mm/s 0
+	CharWalkToPos char[13] (11940, 1230, 16600) 7000mm/s 0
+	CharFlagsSet char[13] 0x0080
+	Sleep 800ms
+	TextTalk name[0] {
+		#6P#0005F剛、剛才那是……？{wait}
+	}
+	TextWait
+	Sleep 200ms
+	Fork field_party[0] fork[1]:
+		CharTurnTo self 90deg 300deg/s
+	Fork field_party[1] fork[1]:
+		CharTurnTo self 90deg 300deg/s
+	Fork field_party[2] fork[1]:
+		CharTurnTo self 90deg 300deg/s
+	Fork field_party[3] fork[1]:
+		CharTurnTo self 90deg 300deg/s
+	Sleep 100ms
+	ForkQuit char[0] fork[1]
+	CharTurnTo char[0] 270deg 300deg/s
+	Sleep 200ms
+	TextTalk char[0] {
+		#11P約亞西姆醫生經常把
+		工作硬推給利頓醫生。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#11P醫生這次偷跑出去，
+		留下的一大堆爛攤子也正是
+		由他在拼命收拾呢……{wait}
+	}
+	TextWait
+	TextTalk name[1] {
+		#12P#0106F真、真是辛苦啊……{wait}
+	}
+	TextWait
+	TextTalk name[3] {
+		#6P#0306F嗯，看起來，這件事
+		果然還是不能放著不管啊。{wait}
+	} {
+		#0300F其它的先不說，
+		畢竟那個傢伙太可憐了啊。{wait}
+	}
+	TextWait
+	TextTalk name[2] {
+		#6P#0206F……我也有同感。
+		不過，該說他是倒楣才對吧……{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#6P#0006F是啊……{wait}
+	} {
+		#0000F榭拉小姐，關於約亞西姆醫生
+		有可能去的地方，
+		您有沒有什麼線索……？{wait}
+	}
+	TextWait
+	Emote char[0] 0mm 2000mm 38 38 250ms 1
+	Sleep 500ms
+	TextTalk char[0] {
+		#11P啊，諸位願意接受
+		這個委託嗎，
+		真是很感謝你們！{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#11P約亞西姆醫生最近好像
+		一直在到處宣揚
+		『要在紀念慶典中參加釣魚大賽』。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#11P他這次的行蹤或許跟這個大賽
+		有什麼關聯吧。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#11P約亞西姆醫生是在
+		工作途中直接偷跑出去的，
+		身上應該還穿著白大褂。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#11P所以一定比較顯眼，即使離很遠也能認出來。{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#6P#0006F釣魚大賽嗎……
+		他還真是很喜歡釣魚啊。{wait}
+	} {
+		#0003F（既然如此，去東側大道的那個設施裡
+		　問問的話，說不定會有什麼線索呢。）{wait}
+	} {
+		#0000F……總之，我們正式接受委託。
+		找到他之後，會再與您聯絡的。
+		可以先在這裡等我們的消息嗎？{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#11P明白了，
+		那就拜託各位了。{wait}
+	}
+	TextWait
+	FadeOut 300ms 0x00000000 100
+	SoundPlay sound[80] 0 100 0
+	TextSetPos -1 -1 -1 -1
+	TextSetName ""
+	TextMessage null {
+		{color 2}任務【搜尋副教授的請求】{color 0}開始！{wait}
+	}
+	TextWait
+	TextClose 0
+	FadeIn 300ms 0x00000000
+	TextSetPos -1 280 60 3
+	FadeOut 1000ms 0x00000000 255
+	FadeWait
+	CamSetDistance 14410 1000 6710 0ms
+	ED7CamRotate 45deg 28deg 0deg 0ms
+	CamPers 440 0ms
+	CamZoom 24000 0ms
+	CharSetPos field_party[0] (14410, 0, 6710) 90deg
+	CharSetPos field_party[1] (14410, 0, 6710) 90deg
+	CharSetPos field_party[2] (14410, 0, 6710) 90deg
+	CharSetPos field_party[3] (14410, 0, 6710) 90deg
+	_Char4B char[0] 255
+	_Char4B char[13] 255
+	CharFlagsUnset char[13] 0x0040
+	CharFlagsSet char[13] 0x0004
+	CharFlagsUnset char[2] 0x0080
+	CharFlags2Unset char[2] 0x8000
+	CharFlagsUnset char[30] 0x0080
+	CharFlags2Unset char[30] 0x8000
+	QuestTaskSet quest[22] 0
+	Sleep 500ms
+	EventEnd 5
+	Return
+
+fn[77]:
+	FadeOut 0ms 0x00000000 255
+	EventBegin 0
+	_Char4A char[0] 255
+	_Char4A char[9] 255
+	CamSetDistance 15690 500 7880 0ms
+	ED7CamRotate 51deg 20deg 0deg 0ms
+	CamPers 400 0ms
+	CamZoom 25880 0ms
+	CharSetPos name[0] (14410, 0, 6210) 0deg
+	CharSetPos name[1] (13420, 0, 4260) 0deg
+	CharSetPos name[3] (12160, 0, 4410) 0deg
+	CharSetPos name[2] (12810, 0, 6140) 0deg
+	CharSetPos char[0] (17210, 0, 7430) 266deg
+	CharSetPos char[9] (13650, 0, 7450) 90deg
+	CharFlagsSet char[9] 0x0040
+	CharFlagsUnset char[9] 0x0080
+	CharFlagsUnset char[9] 0x0004
+	CharFlagsSet char[2] 0x0080
+	CharFlags2Set char[2] 0x8000
+	CharFlagsSet char[30] 0x0080
+	CharFlags2Set char[30] 0x8000
+	Sleep 500ms
+	CamZoom 24880 2000ms
+	FadeIn 2000ms 0x00000000
+	FadeWait
+	CamWait 121
+	TextTalk char[0] {
+		#11P真是的……您之前
+		到底跑到哪裡去了啊？{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#11P因為醫生您擅自離開，給別人添了
+		多大的麻煩，您到底知不知道啊……{wait}
+	}
+	TextWait
+	TextTalk char[9] {
+		#6P#2409F哈哈哈，其實我去參加了一個叫做
+		『費瑟爾杯』的重要比賽呢。{wait}
+	} {
+		#2400F既然我肩負著釣公師團的名譽，
+		就絕對不能錯過這種比賽，對不對？{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#11P真是的，您多少也該對本職工作
+		認真一點吧……{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#11P利頓他直到現在，
+		都在替約亞西姆醫生
+		您拼命工作呢！{wait}
+	}
+	TextWait
+	TextTalk char[9] {
+		#6P#2405F哦哦，利頓啊！{wait}
+	} {
+		#2400F哎呀，能有這麼一個有出息的學生，
+		我可真是幸福啊。{wait}
+	} {
+		#2403F我現在過去打斷他的積極工作也不好……
+		不然，乾脆就把剩下的工作
+		都交給他算了～{wait}
+	} {
+		#2409F嗯嗯，果然還是這樣最好啊。
+		對他的成長也一定很有幫助……{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#11P#4S#200W請您趕快
+		回去工作好嗎？{wait}
+	}
+	TextWait
+	TextTalk char[9] {
+		#6P#2406F……是。{wait}
+	}
+	TextWait
+	Emote field_party[0] 0mm 2000mm 16 19 250ms 1
+	SoundPlay sound[23] 0 100 0
+	Emote field_party[1] 0mm 2000mm 16 19 250ms 1
+	SoundPlay sound[23] 0 100 0
+	Emote field_party[2] 0mm 2000mm 16 19 250ms 1
+	SoundPlay sound[23] 0 100 0
+	Emote field_party[3] 0mm 2000mm 16 19 250ms 1
+	SoundPlay sound[23] 0 100 0
+	Sleep 1200ms
+	TextTalk name[0] {
+		#12P#0006F（這個人……一直
+		　都是那種狀態嗎？）{wait}
+	}
+	TextWait
+	TextTalk name[2] {
+		#12P#0200F（既然身為副教授，
+		　應該是一位很優秀的人才對……）{wait}
+	}
+	TextWait
+	TextTalk name[3] {
+		#12P#0309F（天才和那個什麼，其實只有一線之隔吧。）{wait}
+	}
+	TextWait
+	TextTalk name[1] {
+		#12P#0106F（喂……會被聽到啦。）{wait}
+	}
+	TextWait
+	CharTurnTo char[9] 180deg 300deg/s
+	Sleep 300ms
+	TextTalk char[9] {
+		#5P#2400F……那麼，諸位，
+		我就此失陪啦。{wait}
+	} {
+		#2409F如果今後再有機會，
+		我們還要一起去享受釣魚的樂趣哦。{wait}
+	}
+	TextWait
+	ForkLoop field_party[0] fork[1]:
+		CharTurnToChar self char[9] 300deg/s
+	ForkLoop field_party[1] fork[1]:
+		CharTurnToChar self char[9] 300deg/s
+	ForkLoop field_party[2] fork[1]:
+		CharTurnToChar self char[9] 300deg/s
+	ForkLoop field_party[3] fork[1]:
+		CharTurnToChar self char[9] 300deg/s
+	ForkLoop char[0] fork[1]:
+		CharTurnToChar self char[9] 300deg/s
+	CharWalkToPos char[9] (11810, 0, 9710) 2000mm/s 0
+	CharWalkToPos char[9] (11940, 1230, 16600) 2000mm/s 0
+	CharFlagsSet char[9] 0x0080
+	Sleep 800ms
+	TextTalk char[0] {
+		#11P……還要？{wait}
+	}
+	TextWait
+	ForkQuit field_party[0] fork[1]
+	ForkQuit field_party[1] fork[1]
+	ForkQuit field_party[2] fork[1]
+	ForkQuit field_party[3] fork[1]
+	Fork field_party[0] fork[1]:
+		CharTurnTo self 90deg 300deg/s
+	Fork field_party[1] fork[1]:
+		CharTurnTo self 90deg 300deg/s
+	Fork field_party[2] fork[1]:
+		CharTurnTo self 90deg 300deg/s
+	Fork field_party[3] fork[1]:
+		CharTurnTo self 90deg 300deg/s
+	Sleep 300ms
+	TextTalk name[0] {
+		#6P#0003F那、那個……
+		請您不必在意。{wait}
+	} {
+		#0000F總之……
+		這樣應該就算是
+		完成任務了吧。{wait}
+	}
+	TextWait
+	ForkQuit char[0] fork[1]
+	CharTurnTo char[0] 270deg 300deg/s
+	Sleep 200ms
+	TextTalk char[0] {
+		#11P嗯，是的。
+		真是非常感謝。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#11P醫生能這麼快就
+		回到這裡，
+		全都是諸位的功勞。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#11P如果今後再有什麼問題，
+		歡迎隨時光臨本院。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#11P我們一定會誠心誠意地
+		為您服務。{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#6P#0000F嗯，到時候就要麻煩你們了。
+		……那麼，我們告辭了。{wait}
+	}
+	TextWait
+	FadeOut 300ms 0x00000000 100
+	SoundPlay sound[9] 0 100 0
+	TextSetPos -1 -1 -1 -1
+	TextSetName ""
+	TextMessage null {
+		{color 2}任務【搜尋副教授的請求】{color 0}完成！{wait}
+	}
+	TextWait
+	TextClose 0
+	FadeIn 300ms 0x00000000
+	TextSetPos -1 280 60 3
+	FadeOut 1000ms 0x00000000 255
+	FadeWait
+	CamSetDistance 14410 1000 6710 0ms
+	ED7CamRotate 45deg 28deg 0deg 0ms
+	CamPers 440 0ms
+	CamZoom 24000 0ms
+	CharSetPos field_party[0] (14410, 0, 6710) 90deg
+	CharSetPos field_party[1] (14410, 0, 6710) 90deg
+	CharSetPos field_party[2] (14410, 0, 6710) 90deg
+	CharSetPos field_party[3] (14410, 0, 6710) 90deg
+	_Char4B char[0] 255
+	_Char4B char[9] 255
+	CharFlagsUnset char[9] 0x0040
+	CharFlagsSet char[9] 0x0004
+	CharFlagsUnset char[2] 0x0080
+	CharFlags2Unset char[2] 0x8000
+	CharFlagsUnset char[30] 0x0080
+	CharFlags2Unset char[30] 0x8000
+	QuestFlagsSet quest[22] 0x10
+	QuestTaskSet quest[22] 6
+	FlagSet flag[0]
+	Sleep 500ms
+	EventEnd 5
+	Return
+
+fn[78]:
+	EventBegin 0
+	FadeOut 1000ms 0x00000000 255
+	FadeWait
+	CamSetDistance 55410 1000 -55440 0ms
+	ED7CamRotate 55deg 15deg 0deg 0ms
+	CamPers 440 0ms
+	CamZoom 18950 0ms
+	CharSetPos name[0] (55250, 0, -54750) 135deg
+	CharSetPos name[1] (54080, 0, -54680) 90deg
+	CharSetPos name[2] (54670, 0, -57660) 45deg
+	CharSetPos name[3] (53490, 0, -57740) 45deg
+	CharSetPos name[8] (52630, 0, -56430) 90deg
+	CharFlagsUnset field_party[4] 0x0080
+	CharFlags2Unset field_party[4] 0x8000
+	CharTurnTo char[11] 270deg 0deg/s
+	CharSetChipPattern char[11] 0
+	FadeIn 500ms 0x00000000
+	FadeWait
+	TextTalk char[11] {
+		#11P呼啊啊……{wait}
+	}
+	TextWait
+	TextTalk char[11] {
+		#11P昨天我通宵研究了
+		醫療器械呢。{wait}
+	}
+	TextWait
+	TextTalk char[11] {
+		#11P雖然想出了非常方便的
+		可攜式設計，
+		但是進行得並不順利……{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#5P#0005F（這個人……
+		　是負責開發醫療器械的啊。）{wait}
+	} {
+		#0003F（對了！要幫小滴
+		　找的禮物材料……
+		　她這裡或許會有什麼合適的東西吧。）{wait}
+	} {
+		#0000F那個……打擾一下。
+		可以和您說幾句話嗎？{wait}
+	}
+	TextWait
+	TextTalk char[11] {
+		#11P啊？有什麼事嗎？{wait}
+	}
+	TextWait
+	TextMessage null {
+		{color 5}羅伊德說明了正在收集
+		禮物材料的事由。{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	TextTalk name[0] {
+		#5P#0000F……事情就是這樣，
+		如果您有什麼不需要的東西，
+		可以送給我們嗎？{wait}
+	}
+	TextWait
+	TextTalk char[11] {
+		#11P啊，原來如此，
+		想親手給父親做禮物，
+		小滴她還真是很可愛呢。{wait}
+	}
+	TextWait
+	TextTalk char[11] {
+		#11P這個嘛，嗯……
+		這個東西應該很合適吧。{wait}
+	}
+	TextWait
+	FadeOut 300ms 0x00000000 100
+	TextSetPos -1 -1 -1 -1
+	TextSetName ""
+	SoundPlay sound[17] 0 100 0
+	TextMessage null {
+		收下了{item[834]}{color 0}。{wait}
+	}
+	TextWait
+	TextClose 0
+	FadeIn 300ms 0x00000000
+	TextSetPos -1 280 60 3
+	_59
+	ItemAdd item[834] 1
+	TextTalk name[0] {
+		#5P#0005F這是……
+		可以鑲嵌寶石的
+		掛墜扣吧。{wait}
+	}
+	TextWait
+	TextTalk char[11] {
+		#11P嗯，沒錯。{wait}
+	}
+	TextWait
+	TextTalk char[11] {
+		#11P這是我在研究
+		『墜飾型可攜式醫療器械』的過程中，
+		失敗之後得到的副產品。{wait}
+	}
+	TextWait
+	TextTalk name[2] {
+		#12P#0205F可攜式醫療器械……
+		竟然還出了那種東西嗎？{wait}
+	}
+	TextWait
+	TextTalk char[11] {
+		#11P不不，目前還只是試製品而已，
+		還無法投入到實際應用中呢～{wait}
+	}
+	TextWait
+	TextTalk char[11] {
+		#11P使用帶有治療效果的結晶迴路，
+		透過它來促進身體的自癒能力。
+		這就是我的構想。{wait}
+	}
+	TextWait
+	TextTalk name[3] {
+		#12P#0305F呼……
+		真不愧是烏爾斯拉醫院，
+		所做的研究都很厲害啊。{wait}
+	}
+	TextWait
+	TextTalk name[8] {
+		#6P#0500F如果以後能成為警備隊的
+		實戰裝備，應該會非常有用吧。{wait}
+	}
+	TextWait
+	TextTalk name[1] {
+		#6P#0105F不過，您剛才好像說，
+		實驗失敗了呢。{wait}
+	}
+	TextWait
+	TextTalk char[11] {
+		#11P嗯，昨天晚上，
+		我試著做出了試製品……{wait}
+	}
+	TextWait
+	TextTalk char[11] {
+		#11P但不知是哪裡出了差錯，
+		將做完的試製品啟動之後，
+		竟然發生了爆炸。{wait}
+	}
+	TextWait
+	Emote field_party[0] 0mm 2000mm 16 19 250ms 1
+	SoundPlay sound[23] 0 100 0
+	Emote field_party[1] 0mm 2000mm 16 19 250ms 1
+	SoundPlay sound[23] 0 100 0
+	Emote field_party[2] 0mm 2000mm 16 19 250ms 1
+	SoundPlay sound[23] 0 100 0
+	Emote field_party[3] 0mm 2000mm 16 19 250ms 1
+	SoundPlay sound[23] 0 100 0
+	Emote field_party[4] 0mm 2000mm 16 19 250ms 1
+	SoundPlay sound[23] 0 100 0
+	Sleep 1000ms
+	TextTalk name[0] {
+		#5P#0006F啊，真危險啊……{wait}
+	}
+	TextWait
+	TextTalk char[11] {
+		#11P不過，那個掛墜扣
+		當時就在爆炸的正中心，
+		結果卻奇跡般地毫無傷痕呢。{wait}
+	}
+	TextWait
+	TextTalk char[11] {
+		#11P運氣這麼好的東西，
+		一定很適合作為製作禮物的材料吧。{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#5P#0006F（身為研究醫療器械的人，
+		　說的話還真是缺乏科學性啊……）{wait}
+	} {
+		#0000F……那麼，非常感謝您。
+		我們就不客氣地收下了。{wait}
+	}
+	TextWait
+	TextTalk char[11] {
+		#11P收下吧～收下吧～{wait}
+	}
+	TextWait
+	if !QuestTaskGet quest[44] 4:
+		TextTalk name[0] {
+			#5P#0003F（把小滴的
+			　石頭鑲嵌在裡面，
+			　就可以做成護身符了吧。）{wait}
+		} {
+			#0000F（只要再有個鏈子之類的東西，
+			　就能做成一條漂亮的
+			　項鍊了。）{wait}
+		}
+		TextWait
+	QuestTaskSet quest[44] 2
+	if QuestTaskGet quest[44] 0 && QuestTaskGet quest[44] 1 && QuestTaskGet quest[44] 2 && QuestTaskGet quest[44] 4:
+		QuestTaskSet quest[44] 5
+		TextTalk name[0] {
+			#5P#0000F（製作禮物的材料收集齊了，
+			　包裝用的盒子與緞帶也找到了……）{wait}
+		} {
+			（好，差不多該拿去
+			　給小滴了。）{wait}
+		}
+		TextWait
+	FadeOut 1000ms 0x00000000 255
+	FadeWait
+	CharTurnTo char[11] 90deg 0deg/s
+	CharSetPos field_party[0] (54500, 0, -55500) 90deg
+	CharSetPos field_party[1] (54500, 0, -55500) 90deg
+	CharSetPos field_party[2] (54500, 0, -55500) 90deg
+	CharSetPos field_party[3] (54500, 0, -55500) 90deg
+	CharFlagsSet field_party[4] 0x0080
+	CharFlags2Set field_party[4] 0x8000
+	Sleep 500ms
+	EventEnd 5
+	Return

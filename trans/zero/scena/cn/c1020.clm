@@ -1,0 +1,2694 @@
+calmare zero_k scena
+scena:
+	name "c1020" "c1020" "c1020"
+	town town[20]
+	bgm bgm[100]
+	flags 8192
+	item_use fn[0,255]
+	unk 255 0
+
+entry:
+	pos (0, 0, -1000)
+	unk1 0
+	cam_from (0, 2500, 34000)
+	cam_pers 262
+	unk2 30
+	cam_deg 45deg
+	cam_limit 0deg 360deg
+	cam_at (0, 0, 0)
+	unk3 0
+	unk4 0
+	flags 0x0001
+	town town[20]
+	init fn[0,1]
+	reinit fn[0,2]
+
+chip[0] "chr/ch32200.itc"
+chip[1] "chr/ch23600.itc"
+chip[2] "chr/ch24200.itc"
+
+npc char[0]:
+	name "塞爾當分部長"
+	pos (7230, 0, 9069)
+	angle 180deg
+	flags 0x0105
+	unk2 0
+	chip chip[0]
+	init fn[0,0]
+	talk fn[0,4]
+	unk4 255
+
+npc char[1]:
+	name "寇潘"
+	pos (-519, 0, 43310)
+	angle 90deg
+	flags 0x0185
+	unk2 0
+	chip chip[1]
+	init fn[0,0]
+	talk fn[0,6]
+	unk4 255
+
+npc char[2]:
+	name "彼得"
+	pos (7530, 0, 6780)
+	angle 0deg
+	flags 0x0105
+	unk2 0
+	chip chip[2]
+	init fn[0,0]
+	talk fn[0,7]
+	unk4 255
+
+look_point[0]:
+	pos (6580, 0, 7980)
+	radius 1500
+	bubble_pos (7230, 1500, 9070)
+	unk1 126
+	unk2 0
+	function fn[0,3]
+	unk3 0
+	unk4 0
+
+look_point[1]:
+	pos (470, 0, 43660)
+	radius 1200
+	bubble_pos (470, 1500, 43360)
+	unk1 124
+	unk2 0
+	function fn[0,14]
+	unk3 0
+	unk4 0
+
+fn[0]:
+	var[2] = random % 8
+	switch var[2]:
+		case 0:
+			ED7_A0 self 1450ms 0 251
+			break
+		case 1:
+			ED7_A0 self 1550ms 0 251
+			break
+		case 2:
+			ED7_A0 self 1600ms 0 251
+			break
+		case 3:
+			ED7_A0 self 1400ms 0 251
+			break
+		case 4:
+			ED7_A0 self 1650ms 0 251
+			break
+		case 5:
+			ED7_A0 self 1350ms 0 251
+			break
+		case 6:
+			ED7_A0 self 1500ms 0 251
+			break
+		default:
+			ED7_A0 self 1500ms 0 251
+			break
+	while 1:
+		ED7_A0 self 1500ms 0 251
+	Return
+
+fn[1]:
+	if flag[1792]:
+		CharSetPos char[1] (-3550, 0, 51630) 0deg
+		CharFlagsSet char[1] 0x0010
+		CharFlagsUnset char[1] 0x0080
+		CharSetPos char[2] (4310, 0, 310) 90deg
+	elif flag[1566]:
+		CharFlagsSet char[2] 0x0080
+	elif flag[1554]:
+		CharFlagsSet char[2] 0x0080
+	elif flag[1536]:
+		CharFlagsSet char[2] 0x0080
+	elif flag[1342]:
+	elif flag[1055]:
+		CharFlagsSet char[2] 0x0080
+	elif flag[1040]:
+		CharFlagsSet char[2] 0x0080
+	elif flag[1031]:
+		CharSetPos char[2] (4310, 0, 310) 90deg
+	elif flag[1024]:
+	elif flag[801]:
+		CharFlagsUnset char[1] 0x0080
+	elif flag[777]:
+		CharFlagsUnset char[1] 0x0080
+	elif flag[768]:
+		CharFlagsSet char[0] 0x0010
+		CharFlagsSet char[2] 0x0010
+	elif flag[533]:
+		CharSetPos char[1] (-3550, 0, 51630) 0deg
+		CharFlagsUnset char[1] 0x0080
+		if !QuestTaskGet quest[3] 4:
+			CharFlagsSet char[0] 0x0010
+			CharFlagsSet char[2] 0x0010
+	elif flag[526]:
+		CharSetPos char[1] (-3550, 0, 51630) 0deg
+		CharFlagsUnset char[1] 0x0080
+		if !QuestTaskGet quest[3] 4:
+			CharFlagsSet char[0] 0x0010
+			CharFlagsSet char[2] 0x0010
+	if QuestTaskGet quest[3] 1 && !QuestTaskGet quest[3] 3 && !QuestFlagsGet quest[3] 0x40:
+		SystemFlagsSet 0x10000000
+		Event fn[0,8]
+	Return
+
+fn[2]:
+	if flag[1037] && !flag[1038]:
+		MapColor 0x00C8D2FF 0ms
+	elif flag[1792]:
+		MapColor 0x00C8D2FF 0ms
+	else:
+	Return
+
+fn[3]:
+	Call fn[0,4]
+	Return
+
+fn[4]:
+	if QuestTaskGet quest[3] 1 && !QuestTaskGet quest[3] 4 && !QuestFlagsGet quest[3] 0x40:
+		_Char4A char[0] 255
+		_Char4A char[2] 255
+		Call fn[0,9]
+		Return
+	TextStart char[0]
+	if flag[777]:
+		if !flag[881]:
+			if flag[1282]:
+				TextTalk char[0] {
+					對了，羅伊德團員，你知道
+					『等級認證考試』嗎？{wait}
+				}
+				TextWait
+				TextTalk char[0] {
+					在釣公師團，根據垂釣的實力，
+					會劃分出不同的『等級』。{wait}
+				}
+				TextWait
+				TextTalk char[0] {
+					哇哈哈，如果取得了高階的釣師等級，肯定就會
+					在垂釣愛好者圈子裡受到無數讚賞與崇拜啊。{wait}
+				}
+				TextWait
+				TextTalk char[0] {
+					好了，要是還有什麼不明白的事，可以隨時來問我。
+					我一定會耐心詳細地告訴你的。{wait}
+				}
+				TextWait
+				FlagSet flag[881]
+				TextEnd char[0]
+				Return
+			elif flag[1024]:
+				TextTalk char[0] {
+					歡迎來到釣公師團！{wait}
+				}
+				TextWait
+				TextTalk char[0] {
+					呵呵，你是羅伊德團員吧？
+					早就聽說過你的事情了。{wait}
+				}
+				TextWait
+				TextTalk char[0] {
+					你是在寇潘的邀請之下
+					才加入我們團的吧。{wait}
+				}
+				TextWait
+				TextTalk char[0] {
+					我是釣公師團・克洛斯貝爾分部
+					的分部長塞爾當。
+					以後還請多多關照啊，羅伊德團員！{wait}
+				}
+				TextWait
+				TextTalk name[0] {
+					#0003F那個，請多指教……{wait}
+				} {
+					#0005F不對，我是
+					什麼時候……加入
+					釣公師團的啊？{wait}
+				} {
+					#0003F以前確實收下過
+					寇潘先生贈送的釣竿，可是……{wait}
+				}
+				TextWait
+				TextTalk char[0] {
+					哇哈哈，那種小事就不用在意啦！
+					總之，你已經徹底成為我們的同伴啦！{wait}
+				}
+				TextWait
+				TextTalk name[0] {
+					#0006F（這、這真是強硬的人啊……）{wait}
+				} {
+					#0000F（算啦，反正大家也有著相同的愛好，
+					　在釣魚方面，應該會很聊得來……）{wait}
+				}
+				TextWait
+				TextTalk char[0] {
+					對了，羅伊德團員，你知道
+					『等級認證考試』嗎？{wait}
+				}
+				TextWait
+				TextTalk char[0] {
+					在釣公師團，根據垂釣的實力，
+					會劃分出不同的『等級』。{wait}
+				}
+				TextWait
+				TextTalk char[0] {
+					哇哈哈，如果取得了高階的釣師等級，肯定就會
+					在垂釣愛好者圈子裡受到無數讚賞與崇拜啊。{wait}
+				}
+				TextWait
+				TextTalk char[0] {
+					好了，要是還有什麼不明白的事，可以隨時來問我。
+					我一定會耐心詳細地告訴你的。{wait}
+				}
+				TextWait
+				FlagSet flag[881]
+				TextEnd char[0]
+				Return
+			elif system[4] == 1:
+				if QuestTaskGet quest[3] 4:
+					TextTalk char[0] {
+						恭喜！
+						聽說你終於入團了啊。{wait}
+					}
+					TextWait
+					TextTalk char[0] {
+						話說回來，寇潘那傢伙動作可真快啊。
+						我還想親自拉你加入，他就已經先下手了……{wait}
+					}
+					TextWait
+					TextTalk name[0] {
+						#0003F……果然
+						是這麼回事。{wait}
+					} {
+						#0005F不對，我是
+						什麼時候……加入
+						釣公師團的啊？{wait}
+					} {
+						#0003F我只記得自己曾經收下過
+						寇潘先生贈送的釣竿而已……{wait}
+					}
+					TextWait
+				else:
+					TextTalk char[0] {
+						恭喜你入團！
+						羅伊德團員，很高興見到你啊。{wait}
+					}
+					TextWait
+					TextTalk char[0] {
+						我是釣公師團・克洛斯貝爾分部
+						的分部長塞爾當。{wait}
+					}
+					TextWait
+					TextTalk char[0] {
+						以後還請多多關照啊，羅伊德團員！{wait}
+					}
+					TextWait
+					TextTalk name[0] {
+						#0004F哈哈，好的……{wait}
+					} {
+						#0005F不對，我是
+						什麼時候……加入
+						釣公師團的啊？{wait}
+					} {
+						#0003F我只記得自己曾經收下過
+						寇潘先生贈送的釣竿而已……{wait}
+					}
+					TextWait
+				TextTalk char[0] {
+					哇哈哈，那種小事就不用在意啦！
+					總之，你已經徹底成為我們的同伴啦！{wait}
+				}
+				TextWait
+				TextTalk name[0] {
+					#0003F（這、這真是強硬的人啊……）{wait}
+				} {
+					#0000F（算啦，反正大家也有著相同的愛好，
+					　在釣魚方面，應該會很聊得來……）{wait}
+				}
+				TextWait
+				TextTalk char[0] {
+					對了，羅伊德團員，你知道
+					『等級認證考試』嗎？{wait}
+				}
+				TextWait
+				TextTalk char[0] {
+					在釣公師團，根據垂釣的實力，
+					會劃分出不同的『等級』。{wait}
+				}
+				TextWait
+				TextTalk char[0] {
+					哇哈哈，如果取得了高階的釣師等級，肯定就會
+					在垂釣愛好者圈子裡受到無數讚賞與崇拜啊。{wait}
+				}
+				TextWait
+				TextTalk char[0] {
+					好了，要是還有什麼不明白的事，可以隨時來問我。
+					我一定會耐心詳細地告訴你的。{wait}
+				}
+				TextWait
+				FlagSet flag[881]
+				TextEnd char[0]
+				Return
+	if flag[881]:
+		var[0] = 99
+		while var[0] == 99:
+			FadeOut 300ms 0x00000000 100
+			if global[3] == 6:
+				Menu menu[0] -1 -1 1
+					"對話" // 0
+					"購物" // 1
+					"放棄" // 2
+				MenuWait var[0]
+				if var[0] != 1:
+					MenuClose menu[0]
+					FadeIn 300ms 0x00000000
+					FadeWait
+				if var[0] == 1:
+					ShopOpen shop[55]
+					var[0] = 99
+				elif var[0] != 0:
+				elif var[0] == 0:
+					var[0] = 99
+					Call fn[0,5]
+			elif global[3] >= 4:
+				Menu menu[0] -1 -1 1
+					"對話" // 0
+					"鑒定等級" // 1
+					"購物" // 2
+					"放棄" // 3
+				MenuWait var[0]
+				if var[0] != 2:
+					MenuClose menu[0]
+					FadeIn 300ms 0x00000000
+					FadeWait
+				if var[0] == 1:
+					Call fn[0,13]
+					Call fn[0,12]
+					var[0] = 99
+				elif var[0] == 2:
+					if global[3] == 4:
+						ShopOpen shop[54]
+					else:
+						ShopOpen shop[55]
+					var[0] = 99
+				elif var[0] != 0:
+				elif var[0] == 0:
+					var[0] = 99
+					Call fn[0,5]
+			else:
+				Menu menu[0] -1 -1 1
+					"對話" // 0
+					"鑒定等級" // 1
+					"放棄" // 2
+				MenuWait var[0]
+				MenuClose menu[0]
+				FadeIn 300ms 0x00000000
+				FadeWait
+				if var[0] == 1:
+					Call fn[0,13]
+					Call fn[0,12]
+					var[0] = 99
+				elif var[0] != 0:
+				elif var[0] == 0:
+					var[0] = 99
+					Call fn[0,5]
+	else:
+		Call fn[0,5]
+	TextEnd char[0]
+	CharTurnTo char[0] 180deg 0deg/s
+	Return
+
+fn[5]:
+	if flag[3]:
+		TextTalk char[0] {
+			這條街最西邊的建築
+			是一棟名為洋槐莊園的公寓。{wait}
+		}
+		TextWait
+		TextTalk char[0] {
+			沒記錯的話，應該有一間房一直空著。
+			你們要找的應該就是那裡吧？{wait}
+		}
+		TextWait
+	elif flag[4]:
+		if global[3] == 5:
+			if !flag[0]:
+				TextTalk char[0] {
+					羅伊德團員，你聽說過這個傳聞嗎？{wait}
+				}
+				TextWait
+				TextTalk char[0] {
+					在克洛斯貝爾，棲息著傳說中的魚王
+					──『霸王蛇魚』。{wait}
+				}
+				TextWait
+				TextTalk char[0] {
+					牠們以艾魯姆湖為主要棲息地，
+					性情可謂兇殘非常，
+					據說在從前，連漁民都懼怕牠們。{wait}
+				}
+				TextWait
+				TextTalk char[0] {
+					但是，最近這十幾年來，
+					卻幾乎沒有人目擊過牠們……{wait}
+				}
+				TextWait
+				TextTalk char[0] {
+					如果能把這傢伙釣上來，
+					毫無疑問就能得到榮譽勳章了……{wait}
+				}
+				TextWait
+				FlagSet flag[0]
+			else:
+				TextTalk char[0] {
+					『霸王蛇魚』簡直是
+					魚王中的魚王……
+					釣到那傢伙可是我們釣公師團的共同夢想。{wait}
+				}
+				TextWait
+				TextTalk char[0] {
+					雖然這十幾年來都沒有人目擊過牠們，
+					但如果是已經成為『特級釣師』的你，
+					說不定還真有可能將它釣上來吧……{wait}
+				}
+				TextWait
+		elif !flag[0]:
+			TextTalk char[0] {
+				不愧是羅伊德團員，
+				都成了『釣聖』還這麼謙虛。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				哇哈哈，我非常欣賞你！
+				今天晚上不如去夜釣吧。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				我們分部在舉辦聯歡會時，
+				就經常會去夜釣！{wait}
+			}
+			TextWait
+			TextTalk name[0] {
+				#0000F哈哈，不好意思。
+				今天晚上稍微有些不方便……{wait}
+			} {
+				下次如果有機會，
+				我絕對樂意奉陪到底。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				哇哈哈哈，連拒絕的方式都這麼謙遜有禮！{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				好吧！那等你有空時，就來和我說。
+				到時候連同慶祝會一起，舉辦一場釣魚大賽吧。{wait}
+			}
+			TextWait
+			FlagSet flag[0]
+		else:
+			TextTalk char[0] {
+				一定要慶祝羅伊德團員
+				取得了『釣聖』的稱號啊。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				到時候把你釣到霸王蛇魚的神勇經過
+				慢慢說給我聽吧，哇哈哈哈！{wait}
+			}
+			TextWait
+	elif flag[1792]:
+		TextTalk char[0] {
+			太陽下山了啊……
+			不然就去市外的
+			什麼地方逛逛吧。{wait}
+		}
+		TextWait
+		TextTalk char[0] {
+			我感覺今晚的夜釣
+			會遇到前所未聞的
+			大傢伙哦。{wait}
+		}
+		TextWait
+	elif flag[1566]:
+		TextTalk char[0] {
+			奇怪了……
+			聯絡不上約亞西姆大師。{wait}
+		}
+		TextWait
+		TextTalk char[0] {
+			我們可是昨晚就約好
+			要一起去夜釣的。{wait}
+		}
+		TextWait
+		TextTalk name[0] {
+			#0006F（……莫非還在埋頭檢驗
+			　那個藥物的成分嗎？）{wait}
+		}
+		TextWait
+		TextTalk name[3] {
+			#0300F（如果是那位醫生的話，
+			　應該很有可能吧。）{wait}
+		}
+		TextWait
+	elif flag[1554]:
+		TextTalk char[0] {
+			金鮭是傳說中的夢幻之魚，
+			據說牠棲息在瑪因茲地區
+			的某個地方。{wait}
+		}
+		TextWait
+		TextTalk char[0] {
+			流光溢彩的金色鱗片
+			排列成流線型……{wait}
+		}
+		TextWait
+		TextTalk char[0] {
+			簡直是鮭魚中的
+			極品鮭魚。{wait}
+		}
+		TextWait
+	elif flag[1536]:
+		if !flag[0]:
+			TextTalk char[0] {
+				羅伊德團員，不得了啦！{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				今天早上，約亞西姆團員
+				釣起一條超級大的
+				錦鯉呢！！{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				所以那傢伙終於如願以償，
+				晉升為特級釣師了。{wait}
+			}
+			TextWait
+			TextTalk name[2] {
+				#0200F約亞西姆醫生……
+				還是老樣子啊。{wait}
+			}
+			TextWait
+			TextTalk name[0] {
+				#0000F等一會去向賽西兒姊姊
+				告密吧。{wait}
+			}
+			TextWait
+			FlagSet flag[0]
+		else:
+			TextTalk char[0] {
+				約亞西姆團員已經
+				升為特級釣師了。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				從今往後，
+				不得不稱呼他為約亞西姆大師了。{wait}
+			}
+			TextWait
+	elif flag[1342]:
+		TextTalk char[0] {
+			話說回來，羅伊德團員，
+			最近好像一直都沒有看到你啊。{wait}
+		}
+		TextWait
+		TextTalk char[0] {
+			沒有退步吧，
+			有堅持一日一釣嗎？{wait}
+		}
+		TextWait
+	elif flag[1055]:
+		if !flag[0]:
+			TextTalk char[0] {
+				其實我正考慮
+				趁著紀念慶典辦一場比賽……{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				我想從利貝爾
+				請一位
+				技藝高超的釣師來。{wait}
+			}
+			TextWait
+			Emote char[0] 0mm 2000mm 38 38 250ms 1
+			Sleep 500ms
+			CharTurnToChar char[0] name[0] 500deg/s
+			TextTalk char[0] {
+				嗯，話說回來……
+				你的名字也是『羅伊德』呢。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				哇哈哈，這可真巧……！{wait}
+			}
+			TextWait
+			TextTalk name[0] {
+				#0005F什、什麼啊……？？
+				……怎麼了？{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				那個，沒什麼。
+				這事還沒定下來呢。{wait}
+			}
+			TextWait
+			FlagSet flag[0]
+		else:
+			TextTalk char[0] {
+				我正在考慮趁著紀念慶典，
+				從利貝爾請位
+				技藝高超的釣師來。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				就是所謂的特別嘉賓。
+				哇哈哈，很令人期待吧！{wait}
+			}
+			TextWait
+	elif flag[1040]:
+		if !flag[0]:
+			TextTalk char[0] {
+				這個時節的最佳晨釣地點
+				大概非烏爾斯拉小徑莫屬吧。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				其實在烏爾斯拉醫院
+				有我們的同好。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				他經常在工作時間偷溜出來釣魚，
+				他可是對垂釣十分癡迷呢，
+				哇哈哈哈！{wait}
+			}
+			TextWait
+			Emote field_party[0] 0mm 2000mm 38 38 250ms 1
+			Emote field_party[1] 0mm 2000mm 38 38 250ms 1
+			Emote field_party[2] 0mm 2000mm 38 38 250ms 1
+			Emote field_party[3] 0mm 2000mm 38 38 250ms 1
+			Sleep 500ms
+			TextTalk name[0] {
+				#0005F烏爾斯拉醫院的垂釣愛好者……？{wait}
+			}
+			TextWait
+			TextTalk name[3] {
+				#0306F不、不會是……{wait}
+			}
+			TextWait
+			FlagSet flag[0]
+		else:
+			TextTalk char[0] {
+				這個時節的最佳晨釣地點
+				大概非烏爾斯拉小徑莫屬吧。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				羅伊德團員有興趣的話
+				就去看看吧！{wait}
+			}
+			TextWait
+	elif flag[1031]:
+		TextTalk char[0] {
+			如果釣不到自己想釣的魚，
+			可以試著變換釣竿或者釣餌。{wait}
+		}
+		TextWait
+		TextTalk char[0] {
+			這樣一來，能釣到的魚就會隨之變化了。{wait}
+		}
+		TextWait
+		TextTalk char[0] {
+			總之，整個過程就是要不斷嘗試。{wait}
+		}
+		TextWait
+	elif flag[1024]:
+		if !flag[0]:
+			TextTalk char[0] {
+				歡迎來到釣公師團。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				羅伊德團員，
+				垂釣還順利嗎？{wait}
+			}
+			TextWait
+			TextTalk name[0] {
+				#0000F呵呵，還算過得去吧。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				是嗎，不過聽說你們
+				警察確實很忙呢。{wait}
+			}
+			TextWait
+			if global[3] != 6:
+				TextTalk char[0] {
+					有好成果時
+					一定要來報告哦。{wait}
+				}
+				TextWait
+				TextTalk char[0] {
+					隨著釣師等級的上升
+					我們會贈送豪華獎品哦。{wait}
+				}
+				TextWait
+			else:
+				TextTalk char[0] {
+					如果釣到了大傢伙，
+					一定要來向我報告哦。
+					我很期待你的成果呢。{wait}
+				}
+				TextWait
+			FlagSet flag[0]
+		elif global[3] != 6:
+			TextTalk char[0] {
+				等級認證考試的內容
+				就是要釣得
+				指定的魚。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				有好成果時
+				一定要來報告哦。{wait}
+			}
+			TextWait
+		else:
+			TextTalk char[0] {
+				羅伊德團員，如果再釣上大傢伙
+				一定要來向我報告哦。{wait}
+			}
+			TextWait
+	elif flag[801]:
+		if !flag[870]:
+			_Char4A char[0] 255
+			_Char4A char[2] 255
+			CharTurnToChar char[0] name[0] 0deg/s
+			CharTurnToChar char[2] name[0] 0deg/s
+			TextTalk char[2] {
+				羅伊德團員，你聽說了嗎？{wait}
+			}
+			TextWait
+			TextTalk char[2] {
+				其實前幾天，我們分部又增加了
+				一個團員哦。{wait}
+			}
+			TextWait
+			TextTalk name[0] {
+				#0000F哎，是嗎？{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				嗯，還是一位女釣師哦，
+				而且相當厲害。{wait}
+			}
+			TextWait
+			Emote field_party[0] 0mm 2000mm 0 1 250ms 2
+			SoundPlay sound[29] 0 100 0
+			Emote field_party[1] 0mm 2000mm 0 1 250ms 2
+			SoundPlay sound[29] 0 100 0
+			Emote field_party[2] 0mm 2000mm 0 1 250ms 2
+			SoundPlay sound[29] 0 100 0
+			Emote field_party[3] 0mm 2000mm 0 1 250ms 2
+			SoundPlay sound[29] 0 100 0
+			Sleep 1200ms
+			TextTalk char[2] {
+				她叫艾絲蒂爾，
+				聽說是個有名的遊擊士呢。
+				你沒在雜誌上看到過嗎？{wait}
+			}
+			TextWait
+			Emote field_party[0] 0mm 2000mm 16 19 250ms 1
+			SoundPlay sound[23] 0 100 0
+			Emote field_party[1] 0mm 2000mm 16 19 250ms 1
+			SoundPlay sound[23] 0 100 0
+			Emote field_party[2] 0mm 2000mm 16 19 250ms 1
+			SoundPlay sound[23] 0 100 0
+			Emote field_party[3] 0mm 2000mm 16 19 250ms 1
+			SoundPlay sound[23] 0 100 0
+			Sleep 1200ms
+			TextTalk char[0] {
+				我也跟她一起
+				去釣過一次魚，
+				真不愧是遊擊士，反應就是敏捷……{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				哼哼，羅伊德團員，
+				強敵出現了哦。{wait}
+			}
+			TextWait
+			TextTalk name[0] {
+				#0006F之前便已經
+				是強敵了……
+				（沒想到她連釣魚都會……）{wait}
+			}
+			TextWait
+			TextTalk name[3] {
+				#0300F艾絲蒂爾，
+				好像無所不能啊……{wait}
+			}
+			TextWait
+			CharTurnTo char[2] 0deg 0deg/s
+			_Char4B char[2] 255
+			FlagSet flag[870]
+		else:
+			TextTalk char[0] {
+				聽說艾絲蒂爾團員
+				在利貝爾王國時
+				就喜歡上釣魚了……{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				說到利貝爾
+				那可是我們釣公師團的創辦地。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				羅伊德團員，你可
+				不能馬虎大意哦。{wait}
+			}
+			TextWait
+	elif flag[777]:
+		if global[3] != 6:
+			TextTalk char[0] {
+				我們釣公師團
+				是為了普及釣魚文化
+				而成立的團體。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				為了讓大家更加具備上進心，
+				我們才實施了這個『等級認證考試』。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				有什麼不懂的問題，
+				隨時都可以來問我！{wait}
+			}
+			TextWait
+		elif !flag[0]:
+			TextTalk char[0] {
+				不愧是羅伊德團員，
+				都成了『釣聖』還這麼謙虛。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				哇哈哈，我非常欣賞你！
+				今天晚上不如去夜釣吧。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				我們分部在舉辦聯歡會時，
+				就經常會去夜釣！{wait}
+			}
+			TextWait
+			TextTalk name[0] {
+				#0000F哈哈，不好意思。
+				今天晚上稍微有些不方便……{wait}
+			} {
+				下次如果有機會，
+				我絕對樂意奉陪到底。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				哇哈哈哈，連拒絕的方式都這麼謙遜有禮！{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				好吧！那等你有空時，就來和我說。
+				到時候連同慶祝會一起，
+				舉辦一場釣魚大賽吧。{wait}
+			}
+			TextWait
+			FlagSet flag[0]
+		else:
+			TextTalk char[0] {
+				一定要慶祝羅伊德團員
+				取得了『釣聖』的稱號啊。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				到時候把你釣到霸王蛇魚的神勇經過
+				慢慢說給我聽吧，哇哈哈哈！{wait}
+			}
+			TextWait
+	elif flag[768]:
+		_Char4A char[0] 255
+		_Char4A char[2] 255
+		TextTalk char[0] {
+			寇潘那小子，
+			又釣上大傢伙了。{wait}
+		}
+		TextWait
+		TextTalk char[0] {
+			彼得，這樣的話，
+			我們也不能輸給他哦。{wait}
+		}
+		TextWait
+		TextTalk char[2] {
+			是啊，
+			我已經開始技癢了。{wait}
+		}
+		TextWait
+		TextTalk char[2] {
+			呵呵，今晚
+			一起去
+			夜釣好了。{wait}
+		}
+		TextWait
+		_Char4B char[0] 255
+		_Char4B char[2] 255
+	elif !QuestTaskGet quest[3] 4:
+		TextTalk char[0] {
+			彼得團員，
+			你知道我喜歡
+			比賽吧。{wait}
+		}
+		TextWait
+		TextTalk char[0] {
+			哇哈哈，那就開個溪流垂釣
+			大賽如何？{wait}
+		}
+		TextWait
+		TextTalk name[1] {
+			#0105F（他們是什麼人啊……）{wait}
+		}
+		TextWait
+	elif !flag[0]:
+		TextTalk char[0] {
+			我們釣公師團
+			一直歡迎新人加入。{wait}
+		}
+		TextWait
+		CharTurnToChar char[0] name[0] 0deg/s
+		TextTalk char[0] {
+			如何啊，年輕人，要不要
+			成為我們的夥伴呢？{wait}
+		}
+		TextWait
+		TextTalk char[0] {
+			呵呵，如果是有經驗的人，
+			我們更加歡迎哦！{wait}
+		}
+		TextWait
+		TextTalk name[0] {
+			#0006F抱歉，我們還在執行公務，所以……
+			（現在可沒有那個空閒啊……）{wait}
+		}
+		TextWait
+		FlagSet flag[0]
+	else:
+		TextTalk char[0] {
+			我們釣公師團
+			一直歡迎新人加入哦。{wait}
+		}
+		TextWait
+		TextTalk char[0] {
+			如果你們覺得我在騙人，只需入團看看就好啦。
+			哇哈哈哈哈！{wait}
+		}
+		TextWait
+		Emote field_party[0] 0mm 2000mm 16 19 250ms 1
+		SoundPlay sound[23] 0 100 0
+		Emote field_party[1] 0mm 2000mm 16 19 250ms 1
+		SoundPlay sound[23] 0 100 0
+		Emote field_party[2] 0mm 2000mm 16 19 250ms 1
+		SoundPlay sound[23] 0 100 0
+		Emote field_party[3] 0mm 2000mm 16 19 250ms 1
+		SoundPlay sound[23] 0 100 0
+		Sleep 1200ms
+	Return
+
+fn[6]:
+	TextStart self
+	if flag[1792]:
+		if !flag[1]:
+			TextTalk self {
+				來，這是釣餌喔。{wait}
+			}
+			TextWait
+			TextTalk self {
+				多吃點吧。{wait}
+			}
+			TextWait
+			CharFlagsUnset char[1] 0x0010
+			FlagSet flag[1]
+		else:
+			TextTalk self {
+				……剩下一些紅蟲沒用完，
+				僅此而已。{wait}
+			}
+			TextWait
+	elif flag[1342]:
+	elif flag[801]:
+		if !flag[902]:
+			TextTalk self {
+				啊，你們好。{wait}
+			}
+			TextWait
+			TextTalk self {
+				分部長他們在下邊
+				有事請去找他吧。{wait}
+			}
+			TextWait
+			TextTalk self {
+				先聽聽等級認證考試的事
+				是沒有壞處的說。{wait}
+			}
+			TextWait
+			FlagSet flag[902]
+		else:
+			TextTalk self {
+				釣餌不同，
+				可以釣到的魚也會隨之變化。{wait}
+			}
+			TextWait
+			TextTalk self {
+				如果釣不到自己想釣的魚，
+				可以試著變換釣餌的說。{wait}
+			}
+			TextWait
+			TextTalk self {
+				總之，釣餌的選擇就是不斷嘗試。{wait}
+			}
+			TextWait
+	elif flag[777]:
+		if !flag[902]:
+			TextTalk self {
+				咦，大家也是坐巴士
+				回來的嗎……？{wait}
+			}
+			TextWait
+			TextTalk self {
+				感覺我們乘坐的
+				好像不是同一班車的說……{wait}
+			}
+			TextWait
+			TextTalk self {
+				……不過算了。{wait}
+			}
+			TextWait
+			TextTalk self {
+				已經事先跟分部長他們說過了。
+				大家都在下邊，
+				有事請去找他們。{wait}
+			}
+			TextWait
+			TextTalk self {
+				先聽聽等級認證考試的事
+				是沒有壞處的說。{wait}
+			}
+			TextWait
+			FlagSet flag[902]
+		else:
+			TextTalk self {
+				你們好。{wait}
+			}
+			TextWait
+			TextTalk self {
+				我經常來這裡，
+				有什麼不明白的地方，
+				可以隨時問我的說。{wait}
+			}
+			TextWait
+			TextTalk self {
+				我會給你推薦
+				很棒的釣場哦。{wait}
+			}
+			TextWait
+	elif flag[768]:
+	elif !QuestTaskGet quest[3] 4:
+		if !flag[1]:
+			TextTalk self {
+				為什麼我要
+				負責打掃魚缸啊……{wait}
+			}
+			TextWait
+			TextTalk self {
+				啊，好累。
+				真麻煩……{wait}
+			}
+			TextWait
+			TextTalk name[0] {
+				{} #0005F這、這麼大的魚缸！
+				（這裡到底是
+				　什麼地方呢……）{wait}
+			}
+			TextWait
+			FlagSet flag[1]
+		else:
+			TextTalk self {
+				這個魚缸是我們
+				從導力商店特別訂做的說。{wait}
+			}
+			TextWait
+			TextTalk self {
+				因為我們的分部長是個有錢人。{wait}
+			}
+			TextWait
+	elif !flag[1]:
+		TextTalk self {
+			所謂的『釣公師團』，就是由一群
+			住在克洛斯貝爾的垂釣愛好者所組成的集團。{wait}
+		}
+		TextWait
+		TextTalk self {
+			嗯，我也算是團員之一的說。{wait}
+		}
+		TextWait
+		TextTalk self {
+			我是團員Ｎｏ．３，寇潘。
+			等級是特級釣師的說。{wait}
+		}
+		TextWait
+		FlagSet flag[1]
+	else:
+		TextTalk self {
+			雖說也是團員，
+			但我卻不太喜歡與他們一起行動。{wait}
+		}
+		TextWait
+		TextTalk self {
+			因為覺得很麻煩。{wait}
+		}
+		TextWait
+	TextEnd self
+	Return
+
+fn[7]:
+	if QuestTaskGet quest[3] 1 && !QuestTaskGet quest[3] 4 && !QuestFlagsGet quest[3] 0x40:
+		_Char4A char[0] 255
+		_Char4A char[2] 255
+		Call fn[0,9]
+		Return
+	TextStart self
+	if flag[1792]:
+		if global[3] != 6:
+			if !flag[2]:
+				TextTalk self {
+					哦！羅伊德團員，
+					這是要去夜釣？{wait}
+				}
+				TextWait
+				TextTalk self {
+					呵呵，加油哦。{wait}
+				}
+				TextWait
+				TextTalk self {
+					以你的實力，說不定可以
+					獲得特級釣師之上的稱號哦。
+					我有這種預感。{wait}
+				}
+				TextWait
+				FlagSet flag[2]
+			else:
+				TextTalk self {
+					以你的實力，說不定可以
+					獲得特級釣師之上的稱號呢。
+					要加油夜釣哦。{wait}
+				}
+				TextWait
+		else:
+			TextTalk self {
+				話說回來，
+				真不愧是羅伊德團員啊。{wait}
+			}
+			TextWait
+			TextTalk self {
+				入團後這麼短的時間內
+				就成為了『釣聖』。{wait}
+			}
+			TextWait
+			TextTalk self {
+				呵呵，我們今後也要一起
+				把釣公師團・克洛斯貝爾分部
+				辦得風生水起。{wait}
+			}
+			TextWait
+	elif flag[1342]:
+		TextTalk self {
+			從利貝爾來的客人
+			上周已經回國了。{wait}
+		}
+		TextWait
+		TextTalk self {
+			呵呵，與那位釣師比賽之後，
+			我獲得了很寶貴的經驗。{wait}
+		}
+		TextWait
+		TextTalk self {
+			我必須要更加努力地
+			鍛煉自己的技巧了。{wait}
+		}
+		TextWait
+	elif flag[1031]:
+		TextTalk self {
+			今天我也打算
+			出去釣魚哦。{wait}
+		}
+		TextWait
+		TextTalk self {
+			那位遊擊士
+			艾絲蒂爾小姐似乎
+			收穫頗豐啊……{wait}
+		}
+		TextWait
+		TextTalk self {
+			呵呵，我可不能
+			輸給她。{wait}
+		}
+		TextWait
+	elif flag[1024]:
+		if !flag[2]:
+			TextTalk self {
+				羅伊德團員，
+				你去西克洛斯貝爾街道
+				看過嗎？{wait}
+			}
+			TextWait
+			TextTalk self {
+				最近，導力巴士
+				又增加了好幾班哦。
+				所以想到哪裡釣魚都可以了。{wait}
+			}
+			TextWait
+			FlagSet flag[2]
+		else:
+			TextTalk self {
+				啊，對了，聽說寇潘
+				去了瑪因茲山道。{wait}
+			}
+			TextWait
+			TextTalk self {
+				大概是在山道中段的巴士站下了車，
+				正在瀑布附近釣魚吧。
+				那是他喜歡的地方呢。{wait}
+			}
+			TextWait
+	elif flag[801] && flag[881]:
+		if !flag[870]:
+			_Char4A char[0] 255
+			_Char4A char[2] 255
+			CharTurnToChar char[0] name[0] 0deg/s
+			CharTurnToChar char[2] name[0] 0deg/s
+			TextTalk char[2] {
+				羅伊德團員，你聽說了嗎？{wait}
+			}
+			TextWait
+			TextTalk char[2] {
+				今天新加入了
+				一名團員哦。{wait}
+			}
+			TextWait
+			TextTalk name[0] {
+				#0000F哎，是嗎？{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				嗯，還是一位女釣師哦，
+				而且相當厲害。{wait}
+			}
+			TextWait
+			Emote field_party[0] 0mm 2000mm 0 1 250ms 2
+			SoundPlay sound[29] 0 100 0
+			Emote field_party[1] 0mm 2000mm 0 1 250ms 2
+			SoundPlay sound[29] 0 100 0
+			Emote field_party[2] 0mm 2000mm 0 1 250ms 2
+			SoundPlay sound[29] 0 100 0
+			Emote field_party[3] 0mm 2000mm 0 1 250ms 2
+			SoundPlay sound[29] 0 100 0
+			Sleep 1200ms
+			TextTalk char[2] {
+				她叫艾絲蒂爾，
+				聽說是個有名的遊擊士呢。
+				你沒在雜誌上看到過嗎？{wait}
+			}
+			TextWait
+			Emote field_party[0] 0mm 2000mm 16 19 250ms 1
+			SoundPlay sound[23] 0 100 0
+			Emote field_party[1] 0mm 2000mm 16 19 250ms 1
+			SoundPlay sound[23] 0 100 0
+			Emote field_party[2] 0mm 2000mm 16 19 250ms 1
+			SoundPlay sound[23] 0 100 0
+			Emote field_party[3] 0mm 2000mm 16 19 250ms 1
+			SoundPlay sound[23] 0 100 0
+			Sleep 1200ms
+			TextTalk char[0] {
+				我也跟她一起
+				去釣過一次魚，
+				真不愧是遊擊士，反應就是敏捷……{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				哼哼，羅伊德團員，
+				強敵出現了哦。{wait}
+			}
+			TextWait
+			TextTalk name[0] {
+				#0006F之前便已經
+				是強敵了……
+				（沒想到她連釣魚都會……）{wait}
+			}
+			TextWait
+			TextTalk name[3] {
+				#0300F艾絲蒂爾，
+				好像無所不能啊……{wait}
+			}
+			TextWait
+			CharTurnTo char[0] 180deg 0deg/s
+			CharTurnTo char[2] 0deg 0deg/s
+			_Char4B char[0] 255
+			_Char4B char[2] 255
+			FlagSet flag[870]
+		else:
+			TextTalk self {
+				聽說艾絲蒂爾小姐在利貝爾
+				擁有很高等級的
+				釣師稱號哦。{wait}
+			}
+			TextWait
+			TextTalk self {
+				雖然她好像工作很忙，
+				但我真想
+				跟她比試一次。{wait}
+			}
+			TextWait
+	elif flag[777]:
+		if global[3] != 6:
+			if !flag[2]:
+				TextTalk self {
+					我已經從寇潘那裡聽說了哦！{wait}
+				}
+				TextWait
+				TextTalk self {
+					有新同伴加入
+					真是令人高興啊。{wait}
+				}
+				TextWait
+				TextTalk self {
+					如果釣到了大魚
+					請一定要來哦。
+					我們都十分期待呢。{wait}
+				}
+				TextWait
+				FlagSet flag[2]
+			else:
+				TextTalk self {
+					呵呵，如果釣到了大魚，
+					請一定再來哦。{wait}
+				}
+				TextWait
+				TextTalk self {
+					我們都
+					十分期待呢。{wait}
+				}
+				TextWait
+		elif !flag[2]:
+			TextTalk self {
+				羅伊德團員，恭喜你獲得
+				『釣聖』的稱號。{wait}
+			}
+			TextWait
+			TextTalk self {
+				釣公師團在克洛斯貝爾和
+				利貝爾王國都有設立據點……{wait}
+			}
+			TextWait
+			TextTalk self {
+				成為『釣聖』的成員，
+				包括羅伊德團員你在內
+				也只有兩名哦。{wait}
+			}
+			TextWait
+			TextTalk self {
+				『利貝爾的釣聖』聽說
+				是名女遊擊士呢。{wait}
+			}
+			TextWait
+			FlagSet flag[2]
+		else:
+			TextTalk self {
+				羅伊德團員，恭喜你獲得
+				『釣聖』的稱號。{wait}
+			}
+			TextWait
+			TextTalk self {
+				今後我們也要把分部
+				辦得風生水起。{wait}
+			}
+			TextWait
+	elif flag[768]:
+		Call fn[0,4]
+	elif !QuestTaskGet quest[3] 4:
+		TextTalk self {
+			呵呵，在瑪因茲山道的
+			溪流垂釣是嗎？{wait}
+		}
+		TextWait
+		TextTalk self {
+			真期待呢。
+			感覺好興奮啊。{wait}
+		}
+		TextWait
+		TextTalk name[0] {
+			#0000F（他們好像正在聊天……）{wait}
+		}
+		TextWait
+	else:
+		TextTalk self {
+			各位如果有機會，
+			也請加入釣公師團。{wait}
+		}
+		TextWait
+		TextTalk self {
+			呵呵，我們很歡迎各位哦。{wait}
+		}
+		TextWait
+	TextEnd self
+	Return
+
+fn[8]:
+	EventBegin 0
+	FadeOut 0ms 0x00000000 255
+	CamSetDistance 470 1400 310 0ms
+	ED7CamRotate 45deg 33deg 0deg 0ms
+	CamPers 400 0ms
+	CamZoom 22440 0ms
+	CharSetPos name[0] (-1580, 0, -580) 45deg
+	CharSetPos name[1] (-580, 0, -1580) 45deg
+	CharSetPos name[3] (-1580, 0, -2580) 45deg
+	CharSetPos name[2] (-2580, 0, -1580) 45deg
+	CharColor name[0] 0x00FFFFFF 0ms
+	CharColor name[1] 0x00FFFFFF 0ms
+	CharColor name[2] 0x00FFFFFF 0ms
+	CharColor name[3] 0x00FFFFFF 0ms
+	CharFlagsSet char[2] 0x0080
+	CharFlags2Set char[2] 0x8000
+	FadeIn 1000ms 0x00000000
+	FadeWait
+	CamSetDistance 1850 1400 1760 3000ms
+	ED7CamRotate 45deg 34deg 0deg 3000ms
+	CamPers 400 3000ms
+	CamZoom 20100 3000ms
+	Fork name[0] fork[1]:
+		CharWalkToPos self (1310, 0, 2330) 2000mm/s 0
+	Fork name[1] fork[1]:
+		CharWalkToPos self (2310, 0, 1130) 2000mm/s 0
+	Fork name[3] fork[1]:
+		CharWalkToPos self (1310, 0, 130) 2000mm/s 0
+	Fork name[2] fork[1]:
+		CharWalkToPos self (110, 0, 1130) 2000mm/s 0
+	Fork name[0] fork[2]:
+		CharColor self 0xFFFFFFFF 500ms
+	Fork name[1] fork[2]:
+		CharColor self 0xFFFFFFFF 500ms
+	Fork name[3] fork[2]:
+		CharColor self 0xFFFFFFFF 500ms
+	Fork name[2] fork[2]:
+		CharColor self 0xFFFFFFFF 500ms
+	Sleep 3000ms
+	TextTalk name[0] {
+		#5P#0005F遊擊士協會的右側……
+		嗯？這裡應該是空無一人的啊。{wait}
+	}
+	TextWait
+	_59
+	CrossFade 500ms
+	CamSetDistance 3480 1400 3380 0ms
+	ED7CamRotate 45deg 22deg 0deg 0ms
+	CamPers 400 0ms
+	CamZoom 24740 0ms
+	CharFlagsUnset char[2] 0x0080
+	CharFlags2Unset char[2] 0x8000
+	FadeWait
+	Sleep 700ms
+	TextTalk name[2] {
+		#5P#0200F但怎麼看
+		都不像是空著的呢……{wait}
+	}
+	TextWait
+	TextTalk name[3] {
+		#11P#0300F總之先問問
+		接待人員吧？{wait}
+	}
+	TextWait
+	_59
+	CharSetPos field_party[0] (1210, 0, 1210) 45deg
+	CharSetPos field_party[1] (1210, 0, 1210) 45deg
+	CharSetPos field_party[2] (1210, 0, 1210) 45deg
+	CharSetPos field_party[3] (1210, 0, 1210) 45deg
+	SystemFlagsUnset 0x10000000
+	QuestTaskSet quest[3] 3
+	EventEnd 5
+	Return
+
+fn[9]:
+	EventBegin 0
+	FadeOut 1000ms 0x00000000 255
+	FadeWait
+	_Char4A char[0] 255
+	_Char4A char[2] 255
+	CamSetDistance 5760 1300 6920 0ms
+	ED7CamRotate 19deg 19deg 0deg 0ms
+	CamPers 400 0ms
+	CamZoom 22710 0ms
+	CharSetPos name[0] (4560, 0, 6480) 45deg
+	CharSetPos name[1] (5370, 0, 5660) 45deg
+	CharSetPos name[2] (3590, 0, 5480) 45deg
+	CharSetPos name[3] (4390, 0, 4680) 45deg
+	CharTurnTo char[0] 135deg 0deg/s
+	FadeIn 1000ms 0x00000000
+	FadeWait
+	TextTalk char[2] {
+		#11P真想再來一次
+		垂釣之旅啊。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#5P哇哈哈，真是期待呢。{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#5P#0005F那個，不好意思。
+		我們是……{wait}
+	}
+	TextWait
+	Emote char[0] 0mm 2000mm 38 38 250ms 1
+	Emote char[2] 0mm 2000mm 38 38 250ms 1
+	Sleep 500ms
+	CharTurnTo char[0] 225deg 500deg/s
+	CharTurnTo char[2] 225deg 500deg/s
+	Sleep 300ms
+	TextTalk char[0] {
+		#11P哦，是想入團嗎？
+		哇哈哈，歡迎歡迎！{wait}
+	}
+	TextWait
+	TextTalk char[2] {
+		#11P歡迎來到我們『釣公師團』！{wait}
+	}
+	TextWait
+	TextTalk char[2] {
+		#11P真開心啊，竟然會有這麼多年輕人
+		想要加入我們團……{wait}
+	}
+	TextWait
+	Emote field_party[0] 0mm 2000mm 16 19 250ms 1
+	SoundPlay sound[23] 0 100 0
+	Sleep 30ms
+	Emote field_party[1] 0mm 2000mm 16 19 250ms 1
+	SoundPlay sound[23] 0 100 0
+	Sleep 10ms
+	Emote field_party[2] 0mm 2000mm 16 19 250ms 1
+	SoundPlay sound[23] 0 100 0
+	Sleep 10ms
+	Emote field_party[3] 0mm 2000mm 16 19 250ms 1
+	SoundPlay sound[23] 0 100 0
+	Sleep 1200ms
+	TextTalk name[3] {
+		#6P#0305F加入……『釣公師團』……？{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#5P#0006F不好意思，這裡到底是……{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#11P哦，這裡可是釣魚愛好者的聚集地──
+		『釣公師團』的克洛斯貝爾分部呢。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#11P嗯……穿夾克的年輕人，
+		你似乎有釣魚的經驗啊。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#11P想隱藏也沒用，我都看得出來。
+		……如何，要加入我們嗎？{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#5P#0005F咦……？
+		確、確實，我在小時候
+		曾經釣過一段時間的魚……{wait}
+	}
+	TextWait
+	Emote name[0] 0mm 2000mm 40 43 100ms 3
+	Sleep 1000ms
+	TextTalk name[0] {
+		#5P#0011F不過……那個……
+		我現在還在執行公務，所以不好意思了！{wait}
+	}
+	TextWait
+	TextTalk name[1] {
+		#12P#0109F（啊哈哈……似乎
+		　被猜中了啊。）{wait}
+	}
+	TextWait
+	TextTalk name[2] {
+		#6P#0203F（總覺得這些大叔都很奇怪呢。）{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#5P#0006F（呼，真是有點不知所措……）{wait}
+	} {
+		#0000F那個……總之
+		這裡並不是空房吧？{wait}
+	} {
+		但根據市政府的記錄，
+		這裡應該是空著的……{wait}
+	}
+	TextWait
+	Emote char[0] 0mm 2000mm 0 1 250ms 2
+	SoundPlay sound[29] 0 100 0
+	Emote char[2] 0mm 2000mm 0 1 250ms 2
+	SoundPlay sound[29] 0 100 0
+	Sleep 1000ms
+	TextTalk char[2] {
+		#11P不不，
+		那不可能。{wait}
+	}
+	TextWait
+	TextTalk char[2] {
+		#11P如你們所見，我們的
+		活動正進展得如火如荼呢。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#11P唔，說到空房……{wait}
+	}
+	TextWait
+	Emote field_party[0] 0mm 2000mm 38 38 250ms 1
+	Emote field_party[1] 0mm 2000mm 38 38 250ms 1
+	Emote field_party[2] 0mm 2000mm 38 38 250ms 1
+	Emote field_party[3] 0mm 2000mm 38 38 250ms 1
+	Sleep 500ms
+	TextTalk char[0] {
+		#11P這條街最西邊的建築
+		是一棟名為洋槐莊園的公寓。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#11P那裡好像有一間房間是空房哦。
+		你們說的應該是那裡吧？{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#11P洋槐莊園在我們隔壁兩棟處，
+		在遊擊士協會的左邊。{wait}
+	}
+	TextWait
+	Emote field_party[0] 0mm 2000mm 24 27 250ms 0
+	Emote field_party[1] 0mm 2000mm 24 27 250ms 0
+	Emote field_party[2] 0mm 2000mm 24 27 250ms 0
+	Emote field_party[3] 0mm 2000mm 24 27 250ms 0
+	Sleep 2000ms
+	EmoteStop field_party[0]
+	EmoteStop field_party[1]
+	EmoteStop field_party[2]
+	EmoteStop field_party[3]
+	Sleep 300ms
+	Fork name[0] fork[1]:
+		CharTurnTo self 180deg 500deg/s
+	Fork name[1] fork[1]:
+		CharTurnTo self 270deg 500deg/s
+	Fork name[2] fork[1]:
+		CharTurnTo self 90deg 500deg/s
+	Fork name[3] fork[1]:
+		CharTurnTo self 0deg 500deg/s
+	Sleep 500ms
+	TextTalk name[3] {
+		#0303F#12P與實際地址相差兩棟建築……
+		也就是說，市政府的資料出錯了嗎？{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#5P#0000F嗯……
+		有可能。{wait}
+	}
+	TextWait
+	TextTalk name[1] {
+		#12P#0100F總之，市政府的記錄
+		好像不太準確……
+		我們還是去實際確認一下比較好。{wait}
+	}
+	TextWait
+	_59
+	_Char4B char[0] 255
+	_Char4B char[2] 255
+	CharFlagsUnset char[0] 0x0010
+	CharFlagsUnset char[2] 0x0010
+	CharSetPos field_party[0] (4780, 0, 5260) 225deg
+	CharSetPos field_party[1] (4780, 0, 5260) 225deg
+	CharSetPos field_party[2] (4780, 0, 5260) 225deg
+	CharSetPos field_party[3] (4780, 0, 5260) 225deg
+	CharTurnTo char[0] 180deg 0deg/s
+	CharTurnTo char[2] 0deg 0deg/s
+	QuestTaskSet quest[3] 4
+	FlagSet flag[3]
+	EventEnd 5
+	Return
+
+fn[10]:
+	EventBegin 0
+	FadeOut 500ms 0x00000000 255
+	FadeWait
+	CamSetDistance 6970 1400 7010 0ms
+	ED7CamRotate 45deg 25deg 0deg 0ms
+	CamPers 400 0ms
+	CamZoom 19720 0ms
+	if flag[1342] && !flag[1536]:
+		CharSetPos name[0] (6200, 0, 6250) 0deg
+		CharSetPos party[1] (7400, 0, 6250) 0deg
+		CharSetPos name[82] (6200, 0, 5050) 0deg
+	elif flag[1536] && !flag[1548]:
+		CharSetPos name[0] (6200, 0, 6250) 0deg
+		CharSetPos name[1] (7400, 0, 6250) 0deg
+		CharSetPos name[2] (6200, 0, 5050) 0deg
+		CharSetPos name[3] (7400, 0, 5050) 0deg
+		CharSetPos name[8] (6200, 0, 3850) 0deg
+		CharFlagsUnset field_party[4] 0x0080
+		CharFlags2Unset field_party[4] 0x8000
+	elif flag[1569] && !flag[1792]:
+		CharSetPos name[0] (6200, 0, 6250) 0deg
+		CharSetPos name[1] (7400, 0, 6250) 0deg
+		CharSetPos name[2] (6200, 0, 5050) 0deg
+		CharSetPos name[3] (7400, 0, 5050) 0deg
+		CharSetPos name[9] (6200, 0, 3850) 0deg
+		CharFlagsUnset field_party[4] 0x0080
+		CharFlags2Unset field_party[4] 0x8000
+	else:
+		CharSetPos name[0] (6200, 0, 6250) 0deg
+		CharSetPos name[1] (7400, 0, 6250) 0deg
+		CharSetPos name[2] (6200, 0, 5050) 0deg
+		CharSetPos name[3] (7400, 0, 5050) 0deg
+	CharTurnTo char[0] 180deg 0deg/s
+	CharSetChipPattern char[0] 0
+	_Char4A char[0] 255
+	CharFlagsSet char[2] 0x0080
+	CharFlags2Set char[2] 0x8000
+	FadeIn 500ms 0x00000000
+	FadeWait
+	Return
+
+fn[11]:
+	FadeOut 500ms 0x00000000 255
+	FadeWait
+	if flag[1342] && !flag[1536]:
+	elif flag[1536] && !flag[1548]:
+		CharFlagsSet field_party[4] 0x0080
+		CharFlags2Set field_party[4] 0x8000
+	elif flag[1569] && !flag[1792]:
+		CharFlagsSet field_party[4] 0x0080
+		CharFlags2Set field_party[4] 0x8000
+	else:
+	if flag[1040] && !flag[1280]:
+	elif flag[1282] && !flag[1342]:
+	elif flag[1536] && !flag[1792]:
+	else:
+		CharFlagsUnset char[2] 0x0080
+		CharFlags2Unset char[2] 0x8000
+	_Char4B char[0] 255
+	CharSetPos field_party[0] (5410, 0, 6840) 45deg
+	CharTurnToChar char[0] field_party[0] 0deg/s
+	EventEnd 5
+	TextStart char[0]
+	Return
+
+fn[12]:
+	if !flag[846] && global[3] == 0:
+		TextTalk char[0] {
+			釣公師團為了普及釣魚文化，提高釣魚技術
+			而設立了『等級認證考試』。{wait}
+		}
+		TextWait
+		TextTalk char[0] {
+			在對你的釣魚技術進行鑒定後，
+			我們還會授予各種榮譽稱號及獎品哦。{wait}
+		}
+		TextWait
+		TextTalk char[0] {
+			嗯，因為羅伊德團員才剛剛入團，
+			所以現在的等級是『新手釣師』。{wait}
+		}
+		TextWait
+		if var[3] < 4:
+			TextTalk char[0] {
+				提升至下一個等級的條件是
+				釣得『４種以上的魚』。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				打開釣魚手冊，就可以查看
+				已經釣到過的魚了。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				如果釣到４種以上的話，一定要來報告啊。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				哇哈哈，釣魚很快樂吧？
+				多下些工夫，繼續挑戰吧。{wait}
+			}
+			TextWait
+		else:
+			TextTalk char[0] {
+				提升至下一個等級的條件是
+				釣到『４種以上的魚』……{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				……嗯，怎麼了。
+				已經釣到過４種以上的魚了嗎？{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				嗯，反正我會仔細檢查
+				你的釣魚手冊的。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				要檢查的話，就再來找我吧。
+				哇哈哈，要進行升至下個等級的鑒定嗎？{wait}
+			}
+			TextWait
+		FlagSet flag[846]
+	elif global[3] == 0:
+		if var[3] >= 4:
+			Call fn[0,10]
+			FadeOut 300ms 0x00000000 100
+			TextSetName ""
+			TextMessage null {
+				{color 5}塞爾當分部長檢查了
+				羅伊德的釣魚手冊。{wait}
+			}
+			TextWait
+			TextClose 0
+			FadeIn 300ms 0x00000000
+			_59
+			TextTalk char[0] {
+				噢……羅伊德團員，
+				你的釣魚成果挺不錯呀。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				幹得好。
+				從今天開始，你就是『業餘釣師』了！{wait}
+			}
+			TextWait
+			FadeOut 300ms 0x00000000 100
+			TextSetPos -1 -1 -1 -1
+			TextSetName ""
+			SoundPlay sound[74] 0 100 0
+			TextMessage null {
+				{color 5}等級上升為『業餘釣師』！{wait}
+			}
+			TextWait
+			TextClose 0
+			SoundPlay sound[17] 0 100 0
+			TextMessage null {
+				{color 0}作為褒獎，收下了{item[90]}{color 0}。{wait}
+			}
+			TextWait
+			FadeIn 300ms 0x00000000
+			TextSetPos -1 280 60 3
+			_59
+			ItemAdd item[90] 1
+			global[3] = 1
+			TextTalk char[0] {
+				這是我以前
+				愛用的草帽，
+				釣魚的時候就戴著它吧。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				羅伊德團員，把這個帶在身上，
+				今後也繼續努力釣魚吧。{wait}
+			}
+			TextWait
+			TextTalk name[0] {
+				#0002F這是釣魚的必備道具啊，
+				那我就不客氣了。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				嗯，『業餘釣師』的話，級別只能算是
+				馬馬虎虎，如果繼續提高等級，
+				還能得到更多豪華的獎品哦。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				呵呵……順便把下一個等級的
+				鑒定條件告訴你好了。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				如果想提升至下一個等級，
+				就必須釣到『８種以上的魚』。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				多下些工夫，努力去挑戰吧。{wait}
+			}
+			TextWait
+			Call fn[0,11]
+		else:
+			TextTalk char[0] {
+				羅伊德團員現在的等級是
+				『新手釣師』啊。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				如果想提升至下一個等級，
+				就要釣到『４種以上的魚』。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				如果想知道自己目前已經釣到過哪幾種魚，
+				只要查看釣魚手冊，就全都一目了然啦。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				呵呵……等垂釣有了更大成果之後，再將手冊拿來給我看吧。
+				到時我會給你鑒定等級的。{wait}
+			}
+			TextWait
+	elif global[3] == 1:
+		if var[3] >= 8:
+			Call fn[0,10]
+			FadeOut 300ms 0x00000000 100
+			TextSetName ""
+			TextMessage null {
+				{color 5}塞爾當分部長檢查了
+				羅伊德的釣魚手冊。{wait}
+			}
+			TextWait
+			TextClose 0
+			FadeIn 300ms 0x00000000
+			_59
+			TextTalk char[0] {
+				噢……羅伊德團員
+				你的釣魚成果相當不錯呀。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				做得好。
+				從今天開始，你就是『專業釣師』啦！{wait}
+			}
+			TextWait
+			FadeOut 300ms 0x00000000 100
+			TextSetPos -1 -1 -1 -1
+			TextSetName ""
+			SoundPlay sound[74] 0 100 0
+			TextMessage null {
+				{color 5}等級上升為『專業釣師』！{color 0}{wait}
+			}
+			TextWait
+			TextClose 0
+			SoundPlay sound[17] 0 100 0
+			TextMessage null {
+				{color 0}作為褒獎，收下了{item[158]}{color 0}。{wait}
+			}
+			TextWait
+			FadeIn 300ms 0x00000000
+			TextSetPos -1 280 60 3
+			_59
+			ItemAdd item[158] 1
+			global[3] = 2
+			TextTalk char[0] {
+				你又讓我回憶起了自己
+				剛成為『專業釣師』的那一天……{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				原本就喜好釣魚的我，出於工作原因
+				去了利貝爾王國，在那裡遇到了一名
+				自稱是『釣公師團』成員的男子。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				哇哈哈，不用我說，恐怕你也猜到了，
+				他就是傳說中的釣師費瑟爾團長！{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				經過一番曲折之後，團長親自將
+				『專業釣師』的等級授予我了。
+				真是懷念啊……{wait}
+			}
+			TextWait
+			TextTalk name[0] {
+				#0012F是、是這樣啊。
+				（分部長的過往經歷嗎……
+				似乎要講上很久呢。）{wait}
+			} {
+				#0000F哎，不過，因為工作原因
+				而前往利貝爾王國……
+				莫非您以前是貿易商之類的嗎？{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				哇哈哈，不不不，
+				只是幫我家老頭子做些事。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				雖然還算是精明能幹，但現在
+				因為分部長的工作而忙得不可開交啊。{wait}
+			}
+			TextWait
+			TextTalk name[0] {
+				#0012F啊，原來如此……
+				（果然是個把興趣擺在第一位的人呀……）{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				哦……忘了一件事。
+				把下一個等級的鑒定條件
+				告訴你吧。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				羅伊德團員，如果想提升至下一個等級，
+				就必須釣到『１２種以上的魚』。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				這可需要花費相當多的工夫啊，
+				好好努力吧！{wait}
+			}
+			TextWait
+			Call fn[0,11]
+		else:
+			TextTalk char[0] {
+				羅伊德團員的等級是
+				『業餘釣師』啊。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				如果想提升至下一個等級，
+				就必須釣到『８種以上的魚』。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				呵呵……等垂釣有了更大成果之後，再將手冊拿來給我看吧。
+				到時我會給你鑒定等級的。{wait}
+			}
+			TextWait
+	elif global[3] == 2:
+		if var[3] >= 12:
+			Call fn[0,10]
+			FadeOut 300ms 0x00000000 100
+			TextSetName ""
+			TextMessage null {
+				{color 5}塞爾當分部長檢查了
+				羅伊德的釣魚手冊。{wait}
+			}
+			TextWait
+			TextClose 0
+			FadeIn 300ms 0x00000000
+			_59
+			TextTalk char[0] {
+				噢……羅伊德團員，
+				你的釣魚成果真是相當了得呀。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				幹得漂亮。
+				從今天開始，你就是『二級釣師』了！{wait}
+			}
+			TextWait
+			FadeOut 300ms 0x00000000 100
+			TextSetPos -1 -1 -1 -1
+			TextSetName ""
+			SoundPlay sound[74] 0 100 0
+			TextMessage null {
+				{color 5}等級上升為『二級釣師』！{color 0}{wait}
+			}
+			TextWait
+			TextClose 0
+			SoundPlay sound[17] 0 100 0
+			TextMessage null {
+				收下了{item[830]}{color 0}。{wait}
+			}
+			TextWait
+			_59
+			SoundPlay sound[17] 0 100 0
+			TextMessage null {
+				{color 0}作為褒獎，收下了{item[164]}{color 0}。{wait}
+			}
+			TextWait
+			_59
+			FadeIn 300ms 0x00000000
+			TextSetPos -1 280 60 3
+			_59
+			ItemAdd item[830] 1
+			ItemAdd item[164] 1
+			global[3] = 3
+			TextTalk char[0] {
+				你還真有一套啊，羅伊德團員。
+				我以前取得『二級釣師』這個等級時
+				也是下了相當大的苦功。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				哇哈哈，想當年，我還
+				鑽到深山老林中去修行……{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				在大自然中不斷磨練自己的感覺，
+				最後終於釣到了稀有的珍珠草魚，
+				才成為了『二級釣師』！{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				……羅伊德團員也很辛苦吧，但你付出
+				的這份汗水，正是釣師的勳章啊。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				羅伊德團員，今後也繼續努力吧，
+				我期待著你的活躍表現！{wait}
+			}
+			TextWait
+			TextTalk name[0] {
+				#0009F哈哈，謝謝您。{wait}
+			} {
+				#0000F話說回來……既然是『二級』，
+				那肯定也有『一級』吧？{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				這個自然，
+				接下來的等級就是『一級釣師』了。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				如果想晉升為『一級釣師』，
+				就要釣到『１６種以上的魚』。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				羅伊德團員終於也步入
+				高等級成員的隊伍了啊。
+				哇哈哈，我也很期待你今後的表現！{wait}
+			}
+			TextWait
+			Call fn[0,11]
+		else:
+			TextTalk char[0] {
+				羅伊德團員的等級是
+				『專業釣師』啊。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				如果想提升至下一個等級，
+				就必須釣到『１２種以上的魚』。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				呵呵……等垂釣有了更大成果之後，再將手冊拿來給我看吧。
+				到時我會給你鑒定等級的。{wait}
+			}
+			TextWait
+	elif global[3] == 3:
+		if var[3] >= 16:
+			Call fn[0,10]
+			FadeOut 300ms 0x00000000 100
+			TextSetName ""
+			TextMessage null {
+				{color 5}塞爾當分部長檢查了
+				羅伊德的釣魚手冊。{wait}
+			}
+			TextWait
+			TextClose 0
+			FadeIn 300ms 0x00000000
+			_59
+			TextTalk char[0] {
+				噢……看來你的釣魚成果
+				還真的再度提高了呀。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				羅伊德團員，你非常了不起。
+				從今天開始，你就是『一級釣師』了！
+				哎呀，你還真是厲害啊！{wait}
+			}
+			TextWait
+			FadeOut 300ms 0x00000000 100
+			TextSetPos -1 -1 -1 -1
+			TextSetName ""
+			SoundPlay sound[74] 0 100 0
+			TextMessage null {
+				{color 5}等級上升為『一級釣師』！{color 0}{wait}
+			}
+			TextWait
+			TextClose 0
+			SoundPlay sound[17] 0 100 0
+			TextMessage null {
+				收下了{item[831]}{color 0}。{wait}
+			}
+			TextWait
+			FadeIn 300ms 0x00000000
+			TextSetPos -1 280 60 3
+			_59
+			ItemAdd item[831] 1
+			global[3] = 4
+			TextTalk char[0] {
+				羅伊德團員終於也成為『一級釣師』了嗎，
+				速度還真是快啊……{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				我大概在五六年前取得了這個等級，
+				這也是我決心在克洛斯貝爾
+				設立分部的契機。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				回想當年，在我做出這個提議的時候，
+				費瑟爾團長感動得眼含熱淚……{wait}
+			}
+			TextWait
+			Emote name[0] 0mm 2000mm 16 19 250ms 1
+			SoundPlay sound[23] 0 100 0
+			Sleep 1000ms
+			TextTalk char[0] {
+				……好啦。
+				羅伊德團員，接下來
+				告訴你一件事。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				成為一級釣師的人，
+				就可以在本分部購買
+				『糰狀餌ＤＸ』了。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				這是我們研製出來的
+				萬能釣餌哦，
+				各種魚類都會來吃的。{wait}
+			}
+			TextWait
+			TextTalk name[0] {
+				#0005F這好像是全新的釣餌啊。{wait}
+			} {
+				#0008F……我記得如果更換釣餌，
+				就能釣到不同種類的魚，
+				這樣一來，就可以嘗試其它搭配了吧……{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				哇哈哈，不愧是羅伊德團員啊。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				如你所說，即使是在常去的釣場，
+				一旦更換了釣餌，也相當於進入了全新的垂釣世界。
+				多去嘗試一下吧。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				接下來……就把下一個等級
+				的鑒定條件告訴你吧。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				接下來的等級可就是『特級釣師』了。
+				如果想成為『特級釣師』，
+				就必須釣到『２３種以上的魚』。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				這個條件實在是相當艱難呢……
+				但還是要努力去挑戰呀，羅伊德團員！{wait}
+			}
+			TextWait
+			Call fn[0,11]
+		else:
+			TextTalk char[0] {
+				羅伊德團員的等級是『二級釣師』啊。
+				雖然這個等級已經很厲害了……{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				但如果想提升至下一個等級，
+				就必須釣到『１６種以上的魚』。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				嘗試各種釣餌，尋找各種釣場，
+				確實是很耗費精力的事情……{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				呵呵……等垂釣有了更大成果之後，再將手冊拿來給我看吧。
+				到時我會給你鑒定等級的。{wait}
+			}
+			TextWait
+	elif global[3] == 4:
+		if var[3] >= 23:
+			Call fn[0,10]
+			FadeOut 300ms 0x00000000 100
+			TextSetName ""
+			TextMessage null {
+				{color 5}塞爾當分部長檢查了
+				羅伊德的釣魚手冊。{wait}
+			}
+			TextWait
+			TextClose 0
+			FadeIn 300ms 0x00000000
+			_59
+			TextTalk char[0] {
+				噢……！？
+				連那夢幻之魚『錦鯉』和『金鮭』
+				也都被你釣到了嗎！{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				羅伊德團員，你真是太了不起啦。
+				從今天開始，你就是『特級釣師』了！{wait}
+			}
+			TextWait
+			FadeOut 300ms 0x00000000 100
+			TextSetPos -1 -1 -1 -1
+			TextSetName ""
+			SoundPlay sound[74] 0 100 0
+			TextMessage null {
+				{color 5}等級上升為『特級釣師』！{color 0}{wait}
+			}
+			TextWait
+			TextClose 0
+			SoundPlay sound[17] 0 100 0
+			TextMessage null {
+				收下了{item[832]}{color 0}。{wait}
+			}
+			TextWait
+			SoundPlay sound[17] 0 100 0
+			TextMessage null {
+				收下了{item[55]}{color 0}。{wait}
+			}
+			TextWait
+			FadeIn 300ms 0x00000000
+			TextSetPos -1 280 60 3
+			_59
+			ItemAdd item[832] 1
+			ItemAdd item[55] 1
+			global[3] = 5
+			TextTalk char[0] {
+				羅伊德團員終於升到了
+				和我同樣的等級了啊。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				從今以後，無論是對於金鮭那絕妙的尾鰭角度，
+				還是釣到錦鯉時的那種獨特手感……{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				我們都可以暢所欲言
+				地進行交流啦。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				哇哈哈，所謂的特級釣師，就是要對
+				有關垂釣的一切事情都知無不盡。
+				可以盡情討論的朋友又多了一個，我真是很高興啊。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				……羅伊德團員，我已經沒有什麼東西可以教你了。
+				從今以後，就請你盡情貫徹自己的釣魚之道吧！{wait}
+			}
+			TextWait
+			TextTalk name[0] {
+				#0009F哈哈哈……
+				謝謝您了。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				不過……在克洛斯貝爾的某處，
+				還棲息著傳說中的魚王，
+				牠可是個超級龐然大物。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				這次送給你的釣竿『水中魔法師』
+				就蘊藏著將其釣到的可能性……{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				羅伊德團員，如果你有此意向的話，
+				就去挑戰傳說中的魚王吧。{wait}
+			}
+			TextWait
+			FlagSet flag[4]
+			FlagUnset flag[0]
+			Call fn[0,11]
+		else:
+			TextTalk char[0] {
+				羅伊德團員的等級是『一級釣師』啊。
+				在如此短的時間內就能取得如此成績，真是很了不起。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				但是，在此之上，還有更高的等級
+				『特級釣師』在等著你。
+				授予條件是釣到『２３種以上的魚』。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				確實是相當困難啊……
+				必須要把『錦鯉』
+				和『金鮭』也給釣到才行。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				……羅伊德團員，等你取得更大的垂釣成果後，
+				就來這裡將手冊拿給我看吧！{wait}
+			}
+			TextWait
+	elif global[3] == 5:
+		if ED7NoteFishCount 23 >= 1:
+			Call fn[0,10]
+			FadeOut 300ms 0x00000000 100
+			TextSetName ""
+			TextMessage null {
+				{color 5}塞爾當分部長檢查了
+				羅伊德的釣魚手冊。{wait}
+			}
+			TextWait
+			TextClose 0
+			FadeIn 300ms 0x00000000
+			_59
+			Emote char[0] 0mm 2000mm 2 7 80ms 1
+			SoundPlay sound[28] 0 100 0
+			Sleep 1000ms
+			TextTalk char[0] {
+				什麼……！？
+				羅伊德團員，你竟然釣到了
+				傳說中的『霸王蛇魚』嗎！？{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				難以置信……
+				終於成功了啊，
+				哇哈哈哈……！{wait}
+			}
+			TextWait
+			TextTalk name[0] {
+				#0005F那、那個果然就是
+				傳說中的魚王啊。{wait}
+			} {
+				#0003F尺寸非常大，
+				當時確實是吃了一驚呢。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				這傢伙可是咱們克洛斯貝爾
+				分部的全體成員常年追尋的
+				最大對手啊。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				你竟然能把牠給釣到……{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				好！現在就授予你
+				特別的稱號吧。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				那就是『釣聖』……
+				這可是每個分部中僅限一人
+				才能得到的傳說稱號哦！{wait}
+			}
+			TextWait
+			FadeOut 300ms 0x00000000 100
+			TextSetPos -1 -1 -1 -1
+			TextSetName ""
+			SoundPlay sound[74] 0 100 0
+			TextMessage null {
+				{color 5}得到了『釣聖』的稱號！{color 0}{wait}
+			}
+			TextWait
+			TextClose 0
+			SoundPlay sound[17] 0 100 0
+			TextMessage null {
+				收下了{item[96]}{color 0}。{wait}
+			}
+			TextWait
+			TextClose 0
+			FadeIn 300ms 0x00000000
+			TextSetPos -1 280 60 3
+			_59
+			ItemAdd item[96] 1
+			global[3] = 6
+			TextTalk char[0] {
+				居然能超越我，
+				成為釣聖……{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				今後也請多多關照了，
+				『克洛斯貝爾的釣聖』！{wait}
+			}
+			TextWait
+			TextTalk name[0] {
+				#0012F唔……總覺得有點不好意思呢。{wait}
+			} {
+				#0000F嗯，總之，長久以來承蒙關照了。
+				今後也請您繼續
+				指點我。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				喔，羅伊德團員還真是
+				謙虛啊……{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				哇哈哈，真是名不虛傳呀！
+				哇哈哈哈哈……！{wait}
+			}
+			TextWait
+			FlagSet flag[4]
+			FlagUnset flag[0]
+			Call fn[0,11]
+		else:
+			TextTalk char[0] {
+				羅伊德團員的等級是『特級釣師』啊。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				在釣公師團的克洛斯貝爾分部，
+				已經沒有等級比你更高的成員了。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				不過，如果是羅伊德團員的話，
+				說不定還能釣到更大的傢伙呢。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				哇哈哈，如果以後真的釣到了，
+				可一定要拿來給我看看呀。
+				我可是很想拜見一下的。{wait}
+			}
+			TextWait
+	Return
+
+fn[13]:
+	var[3] = 0
+	if ED7NoteFishCount 0 > 0:
+		var[3] += 1
+	if ED7NoteFishCount 1 > 0:
+		var[3] += 1
+	if ED7NoteFishCount 2 > 0:
+		var[3] += 1
+	if ED7NoteFishCount 3 > 0:
+		var[3] += 1
+	if ED7NoteFishCount 4 > 0:
+		var[3] += 1
+	if ED7NoteFishCount 5 > 0:
+		var[3] += 1
+	if ED7NoteFishCount 6 > 0:
+		var[3] += 1
+	if ED7NoteFishCount 7 > 0:
+		var[3] += 1
+	if ED7NoteFishCount 8 > 0:
+		var[3] += 1
+	if ED7NoteFishCount 9 > 0:
+		var[3] += 1
+	if ED7NoteFishCount 10 > 0:
+		var[3] += 1
+	if ED7NoteFishCount 11 > 0:
+		var[3] += 1
+	if ED7NoteFishCount 12 > 0:
+		var[3] += 1
+	if ED7NoteFishCount 13 > 0:
+		var[3] += 1
+	if ED7NoteFishCount 14 > 0:
+		var[3] += 1
+	if ED7NoteFishCount 15 > 0:
+		var[3] += 1
+	if ED7NoteFishCount 16 > 0:
+		var[3] += 1
+	if ED7NoteFishCount 17 > 0:
+		var[3] += 1
+	if ED7NoteFishCount 18 > 0:
+		var[3] += 1
+	if ED7NoteFishCount 19 > 0:
+		var[3] += 1
+	if ED7NoteFishCount 20 > 0:
+		var[3] += 1
+	if ED7NoteFishCount 21 > 0:
+		var[3] += 1
+	if ED7NoteFishCount 22 > 0:
+		var[3] += 1
+	if ED7NoteFishCount 23 > 0:
+		var[3] += 1
+	Return
+
+fn[14]:
+	TextStart null
+	FadeOut 300ms 0x00000000 100
+	TextMessage null {
+		{color 5}書架上放著書籍《簡單的魚類料理》。{wait}
+	}
+	TextWait
+	if flag[561]:
+		if !RecipeLearn 8:
+			FadeOut 300ms 0x00000000 100
+			TextSetPos -1 -1 -1 -1
+			TextSetName ""
+			SoundPlay sound[17] 0 100 0
+			TextMessage null {
+				#0C書裡寫著{item[422]}{color 0}的做法。{wait}
+			}
+			TextWait
+			TextMessage null {
+				#0C記住了{item[422]}{color 0}的食譜。{wait}
+			}
+			TextWait
+			TextClose 0
+			FadeIn 300ms 0x00000000
+			TextSetPos -1 280 60 3
+			_59
+			RecipeLearn 8
+	TextClose 0
+	FadeIn 300ms 0x00000000
+	_59
+	FadeWait
+	TextEnd null
+	Return

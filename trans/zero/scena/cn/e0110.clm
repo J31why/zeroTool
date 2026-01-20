@@ -1,0 +1,191 @@
+calmare zero_k scena
+scena:
+	name "e0110" "e0110" "e0110"
+	town town[1]
+	bgm bgm[102]
+	flags 8192
+	item_use fn[0,255]
+	unk 255 0
+
+entry:
+	pos (0, 0, -1000)
+	unk1 0
+	cam_from (0, 2500, 34000)
+	cam_pers 262
+	unk2 30
+	cam_deg 45deg
+	cam_limit 0deg 360deg
+	cam_at (0, 0, 0)
+	unk3 0
+	unk4 0
+	flags 0x0001
+	town town[1]
+	init fn[0,0]
+	reinit fn[0,1]
+
+npc char[0]:
+	name "雷克多"
+	pos (-449, 150, 1500)
+	angle 90deg
+	flags 0x01F4
+	unk2 0
+	chip chip[0]
+	init fn[255,255]
+	talk fn[255,255]
+	unk4 255
+
+npc char[1]:
+	name "迪塔總裁"
+	pos (750, 150, 3150)
+	angle 180deg
+	flags 0x01F4
+	unk2 0
+	chip chip[1]
+	init fn[255,255]
+	talk fn[255,255]
+	unk4 255
+
+fn[0]:
+	if flag[736]:
+		FlagUnset flag[736]
+		Event fn[0,2]
+	Return
+
+fn[1]:
+	Return
+
+fn[2]:
+	EventBegin 0
+	FadeOut 0ms 0x00000000 255
+	ED7LoadChip "chr/ch07402.itc" chip[30]
+	ED7LoadChip "chr/ch05602.itc" chip[31]
+	CamSetDistance 0 1000 2650 0ms
+	ED7CamRotate 315deg 17deg 0deg 0ms
+	CamPers 260 0ms
+	CamZoom 28500 0ms
+	CharFlagsSet field_party[0] 0x0080
+	CharFlags2Set field_party[0] 0x8000
+	CharFlagsSet field_party[1] 0x0080
+	CharFlags2Set field_party[1] 0x8000
+	CharFlagsSet field_party[2] 0x0080
+	CharFlags2Set field_party[2] 0x8000
+	CharFlagsSet field_party[3] 0x0080
+	CharFlags2Set field_party[3] 0x8000
+	CharSetChipBase char[0] chip[30]
+	CharSetChipBase char[1] chip[31]
+	CharSetChipPattern char[0] 0
+	CharSetChipPattern char[1] 0
+	CharFlagsUnset char[0] 0x0080
+	CharFlags2Unset char[0] 0x8000
+	CharFlagsUnset char[1] 0x0080
+	CharFlags2Unset char[1] 0x8000
+	ObjFlagsSet object[0] 0x0004
+	ED7_76_2 object[1] "main" "stop"
+	ED7_76_0 object[255] "bg00" 1
+	ED7_76_0 object[255] "bg00_y" 1
+	ED7_76_0 object[255] "effect00_add" 1
+	BgmVolume 50 500ms
+	FadeIn 500ms 0x00000000
+	FadeWait
+	Sleep 300ms
+	if flag[1695]:
+		TextTalk char[1] {
+			#2801F──那我就直說吧。
+			怎麼樣，要不要來我們ＩＢＣ呢！？{wait}
+		}
+		TextWait
+		TextTalk char[0] {
+			#3510F嗯～這個嘛。
+			……要是按小時支付薪水的話……{wait}
+		} {
+			#3509F此外，如果還有
+			加班補助和風險補助
+			的話就更好了～！{wait}
+		}
+		TextWait
+		TextTalk char[1] {
+			#2809F哈哈哈哈哈……！
+			這種程度的要求完全沒有問題啦！{wait}
+		}
+		TextWait
+		TextTalk name[8] {
+			#0500F#3P（？？？
+			　那是ＩＢＣ的總裁和……
+			　假期來觀光的遊客？）{wait}
+		} {
+			（好奇妙的組合啊……）{wait}
+		}
+		TextWait
+		TextTalk name[0] {
+			#0006F#3P（……算啦，我想應該
+			　沒必要太在意他們……）{wait}
+		}
+		TextWait
+	else:
+		TextTalk char[0] {
+			#3509F哎呀～那時可真有點急了呢，
+			不過後來確實是派上用場了～{wait}
+		}
+		TextWait
+		TextTalk char[1] {
+			#2809F哈哈哈，你可真是與眾不同啊！{wait}
+		} {
+			#2803F但是，那份感性……
+			如果丟棄的話，實在很可惜。{wait}
+		} {
+			#2801F──那我就直說吧。
+			怎麼樣，要不要來我們ＩＢＣ呢！？{wait}
+		}
+		TextWait
+		Emote char[0] 0mm 2000mm 38 38 250ms 1
+		Sleep 1000ms
+		CharSetChipPattern char[0] 1
+		TextTalk char[0] {
+			#3505F嗯……？
+			說起來，總裁您……{wait}
+		} {
+			#3502F一小時能給我多少薪水呢？{wait}
+		}
+		TextWait
+		Emote char[0] 0mm 2000mm 24 27 250ms 0
+		Emote char[1] 0mm 2000mm 24 27 250ms 0
+		Sleep 2000ms
+		EmoteStop char[0]
+		EmoteStop char[1]
+		TextTalk char[1] {
+			#2809F哈哈哈哈哈……！
+			你可真是有趣啊！{wait}
+		}
+		TextWait
+		TextTalk char[0] {
+			#3509F啊哈哈哈哈哈～～～♪{wait}
+		}
+		TextWait
+		TextTalk name[3] {
+			#0306F#3P（那、那傢伙到底
+			　做了什麼好事啊……）{wait}
+		}
+		TextWait
+		TextTalk name[1] {
+			#0111F#3P（居然……連叔叔都
+			　被他拉攏了……）{wait}
+		}
+		TextWait
+		TextTalk name[0] {
+			#0012F#3P（該、該怎麼說
+			　才好呢……）{wait}
+		}
+		TextWait
+		TextTalk name[2] {
+			#0211F#3P（……那個人到底是
+			　何方神聖呢……）{wait}
+		}
+		TextWait
+	FadeOut 1000ms 0x00000000 255
+	FadeWait
+	BgmVolume 100 500ms
+	FlagSet flag[1695]
+	FlagSet flag[736]
+	NewScene "scena/c1300.bin" 0 0 0
+	Hcf
+	Return

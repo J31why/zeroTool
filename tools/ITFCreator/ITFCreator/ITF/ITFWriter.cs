@@ -131,6 +131,8 @@ public class ITFWriter(Stream stream) : BinaryWriter(stream)
         ch.PixelHeight = (ushort)Math.Ceiling(charBounds.Height);
         ch.Left = (short)charBounds.Left;
         ch.Width = (ushort)(width - ch.Left);
+        if (c is ' ' or '-')
+            ch.Width = 0x1d;
         ch.Top= (short)(-_font.Metrics.Ascent+ charBounds.Top + baselineYOffset);
      
         using var bitmap = new SKBitmap(ch.PixelWidth, ch.PixelHeight, SKColorType.Alpha8, SKAlphaType.Premul);

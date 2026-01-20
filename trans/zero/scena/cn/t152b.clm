@@ -1,0 +1,1460 @@
+calmare zero_k scena
+scena:
+	name "t152b" "t152b" "t152b"
+	town town[78]
+	bgm bgm[123]
+	flags 8192
+	item_use fn[0,255]
+	unk 255 0
+
+entry:
+	pos (0, 0, -1000)
+	unk1 0
+	cam_from (0, 0, 34000)
+	cam_pers 262
+	unk2 30
+	cam_deg 45deg
+	cam_limit 0deg 360deg
+	cam_at (0, 0, 0)
+	unk3 0
+	unk4 0
+	flags 0x0001
+	town town[78]
+	init fn[0,1]
+	reinit fn[0,2]
+
+chip[0] "chr/ch29800.itc"
+chip[1] "chr/ch29900.itc"
+chip[2] "apl/ch50362.itc"
+chip[3] "apl/ch50363.itc"
+chip[4] null
+chip[5] null
+chip[6] null
+chip[7] null
+chip[8] null
+chip[9] null
+chip[10] null
+chip[11] null
+chip[12] null
+chip[13] null
+chip[14] null
+chip[15] null
+chip[16] null
+chip[17] null
+chip[18] null
+chip[19] null
+chip[20] null
+chip[21] null
+chip[22] null
+chip[23] null
+chip[24] null
+chip[25] null
+chip[26] null
+chip[27] null
+chip[28] null
+chip[29] null
+
+npc char[0]:
+	name "黑手黨"
+	pos (0, 0, 0)
+	angle 0deg
+	flags 0x01C5
+	unk2 0
+	chip chip[3]
+	init fn[255,255]
+	talk fn[0,3]
+	unk4 255
+
+npc char[1]:
+	name "黑手黨"
+	pos (0, 0, 0)
+	angle 0deg
+	flags 0x01C5
+	unk2 0
+	chip chip[3]
+	init fn[255,255]
+	talk fn[0,3]
+	unk4 255
+
+npc char[2]:
+	name "護理師梅菲爾"
+	pos (204550, 0, 53200)
+	angle 180deg
+	flags 0x0105
+	unk2 0
+	chip chip[0]
+	init fn[0,0]
+	talk fn[0,4]
+	unk4 255
+
+npc char[3]:
+	name "護理師希蓉"
+	pos (204550, 0, 52250)
+	angle 0deg
+	flags 0x0105
+	unk2 0
+	chip chip[1]
+	init fn[0,0]
+	talk fn[0,5]
+	unk4 255
+
+npc char[4]:
+	name "賽西兒"
+	pos (0, 0, 0)
+	angle 0deg
+	flags 0x01C5
+	unk2 0
+	chip chip[0]
+	init fn[255,255]
+	talk fn[255,255]
+	unk4 255
+
+trigger[0]:
+	pos (100000.0, 9000.0, -1000.0)
+	radius 144000.0
+	transform
+		0.125 -0.0 0.0 -12.5
+		-0.0 0.33333334 -0.0 -3.0
+		0.0 -0.0 0.20000002 0.20000002
+		0.0 0.0 0.0 1.0
+		// translate (99.99999, 8.999999, -1.0)
+		// rotate (1.0, 0.0, 0.0) 0.0deg
+		// scale (8.0, 2.9999998, 4.999999)
+	unk1 0
+	unk2 0
+	function fn[0,11]
+	unk3 0
+	unk4 0
+	unk5 0
+	unk6 0
+
+look_point[0]:
+	pos (155770, 0, 53330)
+	radius 1500
+	bubble_pos (155770, 1500, 53330)
+	unk1 124
+	unk2 0
+	function fn[0,14]
+	unk3 0
+	unk4 0
+
+// NB: the first five sepith sets are seemingly junk data.
+sepith[0] 100 1 2 3 70 89 99 0
+sepith[1] 100 5 1 5 1 5 1 0
+sepith[2] 100 5 1 5 1 5 1 0
+sepith[3] 100 5 0 5 0 5 0 0
+sepith[4] 100 5 0 5 0 5 0 0
+
+at_roll[0]: none 100
+at_roll[1]: none 100; hp10 5; hp50 1; ep10 5; ep50 1; cp10 5; cp50 1; unk1 5; unk2 5; unk6 1
+at_roll[2]: none 100; hp10 5; hp50 1; ep10 5; ep50 1; cp10 5; cp50 1; unk1 5; unk2 5; unk3 5; unk4 5; unk5 5; unk6 5
+at_roll[3]: none 100; hp10 5; ep10 5; cp10 5; unk1 5; unk2 5; unk6 2
+at_roll[4]: none 100; hp10 5; ep10 5; cp10 5; unk2 5; unk6 2
+
+placement[0]:
+	pos 7 9 180deg
+	pos 11 10 180deg
+	pos 10 13 180deg
+	pos 5 11 180deg
+	pos 12 12 180deg
+	pos 4 14 180deg
+	pos 14 14 180deg
+	pos 2 13 180deg
+
+placement[1]:
+	pos 8 8 180deg
+	pos 5 9 180deg
+	pos 11 10 180deg
+	pos 6 12 180deg
+	pos 10 12 180deg
+	pos 13 13 180deg
+	pos 4 14 180deg
+	pos 8 14 180deg
+
+placement[2]:
+	pos 7 8 180deg
+	pos 9 9 180deg
+	pos 6 10 180deg
+	pos 10 11 180deg
+	pos 6 12 180deg
+	pos 10 13 180deg
+	pos 7 14 180deg
+	pos 9 15 180deg
+
+placement[3]:
+	pos 8 8 180deg
+	pos 6 9 180deg
+	pos 10 10 180deg
+	pos 7 11 180deg
+	pos 10 12 180deg
+	pos 8 14 180deg
+	pos 10 14 180deg
+	pos 6 15 180deg
+
+placement[4]:
+	pos 7 4 0deg
+	pos 10 11 225deg
+	pos 4 7 90deg
+	pos 12 7 270deg
+	pos 4 11 135deg
+	pos 11 4 315deg
+	pos 7 12 180deg
+	pos 5 5 45deg
+
+battle[0]:
+	flags 2
+	level 34
+	unk1 6
+	vision_range 0
+	move_range 0
+	can_move 0
+	move_speed 0
+	unk2 0
+	battlefield "bt152b"
+	sepith null
+	setup 100:
+		enemies "ms31003.dat" "ms31103.dat" "ms67101.dat" null null null null null
+		placement placement[0] placement[4]
+		bgm bgm[402] bgm[403]
+		at_roll at_roll[1]
+
+fn[0]:
+	var[2] = random % 8
+	switch var[2]:
+		case 0:
+			ED7_A0 self 1450ms 0 251
+			break
+		case 1:
+			ED7_A0 self 1550ms 0 251
+			break
+		case 2:
+			ED7_A0 self 1600ms 0 251
+			break
+		case 3:
+			ED7_A0 self 1400ms 0 251
+			break
+		case 4:
+			ED7_A0 self 1650ms 0 251
+			break
+		case 5:
+			ED7_A0 self 1350ms 0 251
+			break
+		case 6:
+			ED7_A0 self 1500ms 0 251
+			break
+		default:
+			ED7_A0 self 1500ms 0 251
+			break
+	while 1:
+		ED7_A0 self 1500ms 0 251
+	Return
+
+fn[1]:
+	if system[0] == 115 && flag[1796] && !flag[1802]:
+		Event fn[0,13]
+	if flag[736]:
+		FlagUnset flag[736]
+		Event fn[0,6]
+	Return
+
+fn[2]:
+	ED7_76_0 object[255] "BED01" 1
+	ED7_76_0 object[255] "BED02" 1
+	TriggerFlagsSet trigger[0] 0x0080
+	if flag[1796] && !flag[1801]:
+		TriggerFlagsUnset trigger[0] 0x0080
+	if flag[1801] && !flag[1822]:
+		Call fn[0,12]
+	Return
+
+fn[3]:
+	TextStart self
+	TextSetName ""
+	TextMessage null {
+		{color 5}黑手黨成員失去了意識。{color 0}{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	TextEnd self
+	Return
+
+fn[4]:
+	TextStart self
+	if !flag[0]:
+		TextTalk self {
+			我們工作結束之後
+			就在房間裡聊天……{wait}
+		}
+		TextWait
+		TextTalk self {
+			突然間就有黑衣人和狗闖進來，
+			我們嚇得動都不敢動。{wait}
+		}
+		TextWait
+		TextTalk self {
+			還好你們來了，
+			總算是放心了。
+			謝謝，真的很感謝你們。{wait}
+		}
+		TextWait
+		FlagSet flag[0]
+	else:
+		CharTurnToChar self char[3] 0deg/s
+		TextTalk self {
+			……那些黑衣人和狗
+			還在外面四處晃悠呢……{wait}
+		}
+		TextWait
+		TextTalk self {
+			希蓉，可不能離開這裡哦。{wait}
+		}
+		TextWait
+	TextEnd self
+	Return
+
+fn[5]:
+	TextStart self
+	if !flag[1]:
+		TextTalk self {
+			賽西兒前輩和其他護理師們
+			都還留在院區內值夜班。{wait}
+		}
+		TextWait
+		TextTalk self {
+			請、請努力救出她們吧。
+			我和梅菲爾
+			就躲在這裡……{wait}
+		}
+		TextWait
+		FlagSet flag[1]
+	else:
+		TextTalk self {
+			呼…………
+			安下心之後，就全身無力了。{wait}
+		}
+		TextWait
+		TextTalk self {
+			咦、咦……
+			腳在發抖，都動不了……{wait}
+		}
+		TextWait
+	TextEnd self
+	Return
+
+fn[6]:
+	EventBegin 0
+	FadeOut 0ms 0x00000000 255
+	ED7LoadChip "chr/ch05300.itc" chip[30]
+	ED7LoadChip "apl/ch50411.itc" chip[31]
+	VisShow vis[0] 234 0 490 256 0 0 512 512 0 0 512 512 0x00FFFFFF 1 "bu05500.itp"
+	CamSetDistance 151770 800 52760 0ms
+	ED7CamRotate 45deg 20deg 0deg 0ms
+	CamPers 400 0ms
+	CamZoom 21940 0ms
+	CharSetPos name[0] (148870, 0, 55580) 45deg
+	CharSetPos name[1] (149220, 0, 54230) 0deg
+	CharSetPos name[3] (151350, 0, 55460) 315deg
+	CharSetPos name[2] (150150, 100, 57600) 270deg
+	CharFlagsSet name[2] 0x0002
+	CharFlagsSet name[2] 0x0010
+	CharFlagsSet name[2] 0x0004
+	CharSetChipBase name[2] chip[31]
+	CharSetChipPattern name[2] 31
+	CharSetChipBase char[4] chip[30]
+	CharSetChipPattern char[4] 0
+	_Char4A char[4] 255
+	CharFlagsUnset char[4] 0x0080
+	CharFlags2Unset char[4] 0x8000
+	CharSetPos char[4] (150080, 0, 55940) 0deg
+	ED7_76_1 object[255] "BED02" 1
+	FadeIn 1000ms 0x00000000
+	CamSetDistance 150040 800 56760 4000ms
+	CamWait 121
+	FadeWait
+	TextTalk char[4] {
+		#14201001V#1309F#11P呵呵……
+		太好了，只是貧血。{wait}
+	} {
+		#14201002V#1300F我想她很快
+		就會醒來的。{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#14201003V#0006F#6P是嗎……{wait}
+	}
+	TextWait
+	TextTalk name[1] {
+		#14201004V#0102F#12P太、太好了……{wait}
+	}
+	TextWait
+	TextTalk name[3] {
+		#14201005V#0306F#11P嗯……
+		還以為她會有個三長兩短呢。{wait}
+	}
+	TextWait
+	CharTurnToChar char[4] name[0] 500deg/s
+	TextTalk char[4] {
+		#14201006V#1306F#11P不過，真對不起，
+		只能先讓她睡我的床。{wait}
+	} {
+		#14201007V#1301F因為院區那邊
+		現在沒有空著的個人病房了……{wait}
+	}
+	TextWait
+	Fork name[0] fork[1]:
+		CharTurnToChar name[0] char[4] 500deg/s
+	Sleep 50ms
+	Fork name[3] fork[1]:
+		CharTurnTo name[3] 270deg 500deg/s
+	Sleep 300ms
+	TextTalk name[0] {
+		#14201008V#0002F#6P哪裡，真是幫大忙了。{wait}
+	} {
+		#14201009V在這裡的話，
+		緹歐說不定能更加安心地休息……{wait}
+	}
+	TextWait
+	TextTalk name[1] {
+		#14201010V#0104F#12P賽西兒小姐……
+		真是太感謝了。{wait}
+	}
+	TextWait
+	CharTurnToChar char[4] name[1] 500deg/s
+	TextTalk char[4] {
+		#14201011V#1309F#5P呵呵，不必放在心上。{wait}
+	} {
+		#14201012V#1300F反正我今晚也要值夜班，
+		讓她一直睡到
+		早上也沒關係的。{wait}
+	} {
+		#14201013V那麼，我先失陪了哦。{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#14201014V#0002F#6P啊，好的……辛苦了。{wait}
+	}
+	TextWait
+	TextTalk name[3] {
+		#14201015V#0302F#11P謝啦～！
+		辛苦了！{wait}
+	}
+	TextWait
+	CamSetDistance 150040 800 55260 3000ms
+	ForkLoop name[0] fork[1]:
+		CharTurnToChar name[0] char[4] 500deg/s
+	ForkLoop name[1] fork[1]:
+		CharTurnToChar name[1] char[4] 500deg/s
+	ForkLoop name[3] fork[1]:
+		CharTurnToChar name[3] char[4] 500deg/s
+	ForkFunc char[4] fork[3] fn[0,7]
+	ForkWait char[4] fork[3]
+	ForkQuit name[0] fork[1]
+	ForkQuit name[1] fork[1]
+	ForkQuit name[3] fork[1]
+	CharFlagsSet char[4] 0x0080
+	CharFlags2Set char[4] 0x8000
+	CamWait 121
+	Sleep 1000ms
+	Fork name[1] fork[1]:
+		CharTurnToPos self (150080, null, 55440) 400deg/s
+	ForkWait name[1] fork[1]
+	CamSetDistance 150000 800 57600 3500ms
+	ED7CamRotate 33deg 21deg 0deg 3500ms
+	Fork name[0] fork[1]:
+		CharTurnToChar self name[2] 300deg/s
+	Fork name[3] fork[1]:
+		CharTurnTo self 315deg 300deg/s
+	Fork name[1] fork[1]:
+		CharWalkToPos self (150080, 0, 55440) 2000mm/s 0
+	ForkWait name[0] fork[1]
+	ForkWait name[3] fork[1]
+	ForkWait name[1] fork[1]
+	CharTurnToChar name[1] name[2] 500deg/s
+	CamWait 121
+	TextTalk name[0] {
+		#14201016V#0008F#6P……緹歐……
+		我要是能早點察覺的話……{wait}
+	}
+	TextWait
+	TextTalk name[1] {
+		#14201017V#0106F#12P仔細想來，在聽約亞西姆醫生
+		說話的時候，她的樣子
+		好像就有點不對勁呢……{wait}
+	} {
+		#14201018V#0108F當時正在談的是……{wait}
+	}
+	TextWait
+	TextTalk name[3] {
+		#14201019V#0306F#11P那些崇拜惡魔的傢伙們
+		製造的藥物吧……{wait}
+	}
+	TextWait
+	Emote name[0] 0mm 2000mm 24 27 250ms 0
+	Emote name[1] 0mm 2000mm 24 27 250ms 0
+	Emote name[3] 0mm 2000mm 24 27 250ms 0
+	Sleep 2000ms
+	EmoteStop name[0]
+	EmoteStop name[1]
+	EmoteStop name[3]
+	TextTalk name[2] {
+		#14201020V#5P#40W#2S──沒關係，
+		你們可以儘管問我……{wait}
+	}
+	TextWait
+	Emote name[0] 0mm 2000mm 38 38 250ms 1
+	Emote name[1] 0mm 2000mm 38 38 250ms 1
+	Emote name[3] 0mm 2000mm 38 38 250ms 1
+	Sleep 1000ms
+	CrossFade 250ms
+	ForkFunc name[2] fork[0] fn[0,8]
+	FadeWait
+	Sleep 500ms
+	TextTalk name[0] {
+		#14201021V#0002F#6P緹歐……妳醒了啊。{wait}
+	}
+	TextWait
+	TextTalk name[1] {
+		#14201022V#0102F#12P太好了……{wait}
+	}
+	TextWait
+	TextTalk name[3] {
+		#14201023V#0304F#12P真是的……
+		真會讓人擔心。{wait}
+	}
+	TextWait
+	ForkQuit name[2] fork[0]
+	CrossFade 250ms
+	SoundPlay sound[14201024] 255 90 0
+	SoundPlay sound[804] 0 100 0
+	ED7CharAnimation name[2] 1000ms 30 31 32 33 34 35
+	FadeWait
+	Sleep 300ms
+	ED7CharAnimation name[2] 1000ms 36 37 26 27 28
+	VisSet vis[0] 3 0xFFFFFFFF 500ms 0 0
+	VisSet vis[0] 0 -10000 0 500ms 0
+	VisWait vis[0] 3
+	VisWait vis[0] 0
+	TextSetPos -1 280 35 3
+	Sleep 800ms
+	TextMessage name[2] {
+		#14201025V#40W請不用……
+		太過顧慮我。{wait}
+	} {
+		#14201026V身為藥物調查任務的負責人，
+		各位有必要瞭解……{wait}
+	} {
+		#14201027V我所知道的情報。{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	TextSetPos -1 280 60 3
+	VisSet vis[0] 3 0x00FFFFFF 500ms 0 0
+	VisSet vis[0] 0 0 0 500ms 0
+	VisWait vis[0] 3
+	VisWait vis[0] 0
+	Emote name[0] 0mm 2000mm 24 27 250ms 0
+	Sleep 1500ms
+	EmoteStop name[0]
+	TextTalk name[0] {
+		#14201028V#0006F#6P……我說啊，緹歐。{wait}
+	} {
+		#14201029V#0000F妳覺得我們會特意去問那些
+		妳不願意提起的事情嗎？{wait}
+	}
+	TextWait
+	TextTalk name[2] {
+		#14201030V#5505F#5P#40W哎……{wait}
+	}
+	TextWait
+	TextTalk name[1] {
+		#14201031V#0100F#12P當然了，調查的確也很重要，
+		但這完全是兩回事。{wait}
+	} {
+		#14201032V#0104F對我們來說，妳當然是
+		一起工作的同事……{wait}
+	} {
+		#14201033V#0102F但在那之上，妳更是
+		無可替代的同伴啊。{wait}
+	}
+	TextWait
+	TextTalk name[2] {
+		#14201034V#5508F#5P#40W……啊………{wait}
+	}
+	TextWait
+	TextTalk name[3] {
+		#14201035V#0300F#12P每個人都會有一些
+		不想被他人知道的隱情啦。{wait}
+	} {
+		#14201036V#0306F嗯，雖說我的過去
+		已經曝光了一點點……{wait}
+	} {
+		#14201037V#0303F小緹，如果妳不願意
+		讓別人知道妳的過去……{wait}
+	} {
+		#14201038V#0302F我們肯定會全力支援妳的。{wait}
+	}
+	TextWait
+	TextTalk name[2] {
+		#14201039V#5506F#5P#40W艾莉前輩……蘭迪前輩……{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#14201040V#0000F#6P……就是這樣。{wait}
+	} {
+		#14201041V#0003F但是，如果緹歐
+		願意對我們說……{wait}
+	} {
+		#14201042V覺得說出來能讓心情
+		變得輕鬆一點的話……{wait}
+	} {
+		#14201043V#0002F那就請務必
+		讓我們幫妳分擔這個包袱。{wait}
+	}
+	TextWait
+	TextTalk name[2] {
+		#14201044V#5508F#5P#40W……羅伊德前輩………{wait}
+	} {
+		#14201045V#5510F#40W……………………………………{wait}
+	}
+	TextWait
+	Emote name[2] 0mm 1700mm 24 27 250ms 0
+	Sleep 2000ms
+	EmoteStop name[2]
+	Sleep 500ms
+	TextTalk name[2] {
+		#14201046V#5504F#5P#30W呵呵……虧你說得出
+		這麼令人臉紅的話呢。{wait}
+	} {
+		#14201047V不光是羅伊德前輩，
+		還有艾莉前輩和蘭迪前輩……{wait}
+	} {
+		#14201048V#5511F你們兩位不會也受了
+		羅伊德前輩的影響吧？{wait}
+	}
+	TextWait
+	TextTalk name[3] {
+		#14201049V#0309F#12P哈哈，可能是吧。{wait}
+	}
+	TextWait
+	TextTalk name[1] {
+		#14201050V#0104F#12P嗯～的確是
+		無法否認呢。{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#14201051V#0006F#6P你們還是否認吧……{wait}
+	}
+	TextWait
+	BgmStop 4000ms
+	TextTalk name[2] {
+		#14201052V#5509F#5P#40W……呵呵…………{wait}
+	}
+	TextWait
+	Sleep 300ms
+	CrossFade 500ms
+	SoundPlay sound[820] 0 100 0
+	CharSetPos name[2] (150000, 200, 56750) 270deg
+	ED7CharAnimation name[2] 1000ms 0 1 2
+	FadeWait
+	Sleep 500ms
+	Emote name[2] 0mm 1700mm 24 27 250ms 0
+	Sleep 2000ms
+	EmoteStop name[2]
+	Sleep 500ms
+	TextTalk name[2] {
+		#14201053V#5506F#5P其實我以前和羅伊德前輩
+		稍微說過一點點……{wait}
+	} {
+		#14201054V我在五歲的時候，
+		就和父母分離了。{wait}
+	} {
+		#14201055V#5508F因為被某個狂熱宗教團體
+		綁架了……{wait}
+	}
+	TextWait
+	Emote name[0] 0mm 2000mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Sleep 50ms
+	Emote name[1] 0mm 2000mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Sleep 50ms
+	Emote name[3] 0mm 2000mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Sleep 1000ms
+	BgmWait
+	Sleep 10ms
+	BgmPlay bgm[534] 0
+	CamZoom 21000 100000ms
+	TextTalk name[0] {
+		#14201056V#0013F#6P！？{wait}
+	}
+	TextWait
+	TextTalk name[1] {
+		#14201057V#0101F#12P啊……{wait}
+	}
+	TextWait
+	TextTalk name[3] {
+		#14201058V#0310F#12P……這……{wait}
+	}
+	TextWait
+	ED7CharAnimation name[2] 1000ms 2 1 0
+	Sleep 300ms
+	TextTalk name[2] {
+		#14201059V#5508F#5P那個教團的真正教義與目的，
+		直到現在也不清楚……{wait}
+	} {
+		#14201060V不過，他們當時企圖
+		透過否定女神#4R愛德斯#並崇拜惡魔，
+		來獲取某種東西。{wait}
+	} {
+		#14201061V#5506F包括我在內的所有孩子……
+		應該都是他們的『供品』。{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#14201062V#0001F#6P供品……{wait}
+	}
+	TextWait
+	TextTalk name[2] {
+		#14201063V#5502F#5P雖說是供品，
+		但並非活祭品……{wait}
+	} {
+		#14201064V#5506F……不過，或許也有一些孩子
+		慘遭那種毒手吧……{wait}
+	} {
+		#14201065V總之，那個教團擁有數個據點，
+		每個據點都用不同的方法
+		嘗試著各種『儀式』。{wait}
+	} {
+		#14201066V#5508F而我被帶去的
+		那個據點所進行的……{wait}
+	} {
+		#14201067V是被冠名為『儀式』的人體實驗。{wait}
+	}
+	TextWait
+	TextTalk name[1] {
+		#14201068V#0107F#12P人、人體實驗……！？{wait}
+	}
+	TextWait
+	TextTalk name[3] {
+		#14201069V#0301F#12P難道說，
+		妳的感應力就是……？{wait}
+	}
+	TextWait
+	ED7CharAnimation name[2] 1000ms 0 1 2 3 4
+	Sleep 300ms
+	TextTalk name[2] {
+		#14201070V#5503F#5P#30W……是的。{wait}
+	} {
+		#14201071V被迫服用藥物……
+		全身裝滿感測器……{wait}
+	} {
+		#14201072V利用能想出的一切方法，
+		進行提高五感的實驗。{wait}
+	} {
+		#14201073V#5508F更以強制性的暗示
+		和施加精神負荷的方法
+		來提高所謂的靈感……{wait}
+	} {
+		#14201074V三年間……
+		每天都在重複著這些。{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#14201075V#0013F#6P………啊…………{wait}
+	}
+	TextWait
+	TextTalk name[1] {
+		#14201076V#0108F#12P……怎、怎麼會…………{wait}
+	}
+	TextWait
+	TextTalk name[3] {
+		#14201077V#0303F#12P………………………………{wait}
+	}
+	TextWait
+	ED7CharAnimation name[2] 1000ms 42 43
+	TextTalk name[2] {
+		#14201078V#5502F#5P#30W即使如此……
+		我或許都還算是幸運的。{wait}
+	} {
+		#14201079V除了我以外的孩子……
+		全都沒能忍受下去。{wait}
+	} {
+		#14201080V#5508F周圍的孩子們
+		一個接一個地離開……{wait}
+	} {
+		#14201081V就在只剩下我一個人的時候，
+		我終於獲得了……{wait}
+	} {
+		#14201082V#5506F即使透過堅厚的岩壁，
+		也能聽到其他孩子發出臨終哀嚎
+		的感應能力……{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#14201083V#0010F#6P…………！！{wait}
+	}
+	TextWait
+	TextTalk name[1] {
+		#14201084V#0106F#12P緹歐…………{wait}
+	}
+	TextWait
+	TextTalk name[3] {
+		#14201085V#0308F#12P……這些禽獸………{wait}
+	}
+	TextWait
+	TextTalk name[2] {
+		#14201086V#5508F#5P#40W…………………………………{wait}
+	}
+	TextWait
+	ED7CharAnimation name[2] 1000ms 43 42 4 3 2 1 0
+	TextTalk name[2] {
+		#14201087V#5502F#5P──就在那個時候。{wait}
+	} {
+		#14201088V羅伊德前輩的哥哥……
+		蓋先生潛入了
+		我所在的據點。{wait}
+	}
+	TextWait
+	Emote name[0] 0mm 2000mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Sleep 50ms
+	Emote name[1] 0mm 2000mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Sleep 50ms
+	Emote name[3] 0mm 2000mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Sleep 1000ms
+	TextTalk name[0] {
+		#14201089V#0011F#6P啊……{wait}
+	}
+	TextWait
+	TextTalk name[2] {
+		#14201090V#5503F#5P蓋先生所在的小隊
+		一路制伏教團的信徒們，
+		搗毀了據點。{wait}
+	} {
+		#14201091V他們當時遭到了激烈抵抗。據說，到搗毀行動結束時，
+		幾乎所有還活著的教團信徒都自行了斷了。{wait}
+	} {
+		#14201092V#5508F然後，他們踏過重重屍體，
+		到達了『儀式堂』……{wait}
+	} {
+		#14201093V在那裡，蓋先生發現了
+		唯一一個倖存下來的孩子。{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#14201094V#0008F#6P………………………………{wait}
+	}
+	TextWait
+	TextTalk name[2] {
+		#14201095V#5506F#5P被蓋先生救出的時候……
+		我已經衰弱到了極點。{wait}
+	} {
+		#14201096V於是便被帶到這間醫院裡，
+		進行了幾個月的療養……{wait}
+	} {
+		#14201097V#5508F……那之後的事情，
+		就如以前告訴過羅伊德前輩的那樣。{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#14201098V#0003F#6P……是嗎………{wait}
+	}
+	TextWait
+	TextTalk name[1] {
+		#14201099V#0106F#12P……緹歐………{wait}
+	}
+	TextWait
+	ED7CharAnimation name[2] 1000ms 0 1 2 3 4
+	Sleep 300ms
+	TextTalk name[2] {
+		#14201100V#5504F#5P……真是諷刺呢。{wait}
+	} {
+		#14201101V身為受了他這麼多照顧，
+		對他萬分感激的人……{wait}
+	} {
+		#14201102V#5502F在三年前，聽說
+		蓋先生不幸殉職的時候，
+		我卻並沒有感到十分悲傷。{wait}
+	} {
+		#14201103V#5508F簡直就像是作為獲得力量的代價一般，
+		我彷彿因此失去了人類應有的感情……{wait}
+	} {
+		#14201104V我甚至有過這種不可思議的感慨。{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#14201105V#0008F#6P緹歐……{wait}
+	}
+	TextWait
+	TextTalk name[3] {
+		#14201106V#0308F#12P………………………………{wait}
+	}
+	TextWait
+	TextTalk name[2] {
+		#14201107V#5504F#5P……或許我
+		是想問問他吧。{wait}
+	} {
+		#14201108V問問那個樂觀到耀眼，
+		並如此堅強的人……{wait}
+	} {
+		#14201109V像我這種『有缺陷的存在』
+		到底該如何生存下去……{wait}
+	} {
+		#14201110V#5508F但最終，我沒有問到答案
+		就被愛普斯泰恩財團收留……{wait}
+	} {
+		#14201111V然後來到支援課，
+		和大家一起生活……{wait}
+	} {
+		#14201112V#5506F#40W時至今日……
+		我也還是不太明白。{wait}
+	} {
+		#14201113V#40W到底該怎麼生存下去才好……{wait}
+	} {
+		#14201114V#40W……為什麼……
+		我還活著呢。{wait}
+	}
+	TextWait
+	Sleep 100ms
+	Shake 100 0 3000 300ms
+	TextTalk name[1] {
+		#14201115V#0101F#12P……緹歐……！{wait}
+	}
+	TextWait
+	CamSetDistance 150220 800 57570 1200ms
+	ForkFunc name[1] fork[3] fn[0,10]
+	ForkWait name[1] fork[3]
+	BgmStop 4000ms
+	Sleep 500ms
+	ED7CharAnimation name[2] 1000ms 5 6 7
+	Sleep 300ms
+	CrossFade 1000ms
+	CamZoom 20500 0ms
+	CharFlagsSet name[1] 0x0080
+	CharFlags2Set name[1] 0x8000
+	CharSetChipPattern name[2] 8
+	SoundPlay sound[820] 0 100 0
+	FadeWait
+	SoundPlay sound[1269] 255 65 0
+	TextTalk name[2] {
+		#14201116V#5P#30W……啊………{wait}
+	}
+	TextWait
+	ED7CharAnimation name[2] 1000ms 8 9 10 9
+	BgmWait
+	Sleep 10ms
+	BgmPlay bgm[514] 0
+	TextTalkNamed name[2] "艾莉" {
+		#14201117V#0103F#11P沒關係啊……！
+		不明白也沒關係啊……！{wait}
+	} {
+		#14201118V#0107F因為我們也和妳一樣，
+		有很多事情都不明白啊……！{wait}
+	}
+	TextWait
+	TextTalk name[2] {
+		#14201119V#5505F#5P#30W………哎…………{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#14201120V#0003F#6P……為什麼活著，
+		怎樣活下去才好……{wait}
+	} {
+		#14201121V其實根本就沒有多少人
+		知道這個問題的答案。{wait}
+	} {
+		#14201122V#0000F我、艾莉，還有蘭迪……
+		大家都是一樣。{wait}
+	}
+	TextWait
+	TextTalk name[3] {
+		#14201123V#0304F#12P哈哈，其實我更嚴重呢，
+		連自己的道路都要迷失了……{wait}
+	} {
+		#14201124V#0302F話說回來，小緹，
+		妳也太愛鑽牛角尖了。{wait}
+	} {
+		#14201125V這麼困難的問題，
+		怎麼能這麼急著尋找答案呢？{wait}
+	}
+	TextWait
+	ED7CharAnimation name[2] 1000ms 10 11 12
+	TextTalk name[2] {
+		#14201126V#5506F#5P#30W……但、但是………{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#14201127V#0004F#6P如果妳仍然在意的話……
+		那就繼續尋找答案好了。{wait}
+	} {
+		#14201128V只是，不需要急躁，
+		也沒必要自己一個人去尋找。{wait}
+	} {
+		#14201129V#0000F我們可以陪妳一起找嘛。{wait}
+	}
+	TextWait
+	TextTalk name[2] {
+		#14201130V#5508F#5P#40W………啊……………{wait}
+	}
+	TextWait
+	TextTalkNamed name[2] "艾莉" {
+		#14201131V#0104F#11P我自然不用說……{wait}
+	} {
+		#14201132V蘭迪、課長、
+		琪雅和賽特，
+		大家都會幫助妳……{wait}
+	} {
+		#14201133V陪妳一起去尋找
+		這個難題的答案……{wait}
+	}
+	TextWait
+	TextTalk name[2] {
+		#14201134V#5510F#5P#40W…………………………………{wait}
+	}
+	TextWait
+	Emote name[2] 0mm 1700mm 24 27 250ms 0
+	Sleep 1500ms
+	EmoteStop name[2]
+	ED7CharAnimation name[2] 1000ms 15 16 17 18
+	TextTalk name[2] {
+		#14201135V#5508F#5P#40W……艾莉前輩和蘭迪前輩
+		好像也都被羅伊德前輩感化了呢……{wait}
+	} {
+		#14201136V#5513F真的……我光是聽著……
+		就覺得好難為情……{wait}
+	} {
+		#14201137V……為什麼會如此………{wait}
+	}
+	TextWait
+	TextTalk name[3] {
+		#14201138V#0309F#12P嗯，這也是緣分嘛。{wait}
+	} {
+		#14201139V從選擇留在支援課的那一刻開始，
+		我們就都成了某人的受害者啦。{wait}
+	}
+	TextWait
+	TextTalkNamed name[2] "艾莉" {
+		#14201140V#0109F#11P呵呵，是啊……{wait}
+	} {
+		#14201141V#0102F這種難為情的時光
+		也要大家一起分享才行呢。{wait}
+	}
+	TextWait
+	Emote name[0] 0mm 2000mm 16 19 250ms 1
+	SoundPlay sound[23] 0 100 0
+	Sleep 1200ms
+	TextTalk name[0] {
+		#14201142V#0012F#6P雖然不明白我為什麼
+		變成了加害者……{wait}
+	} {
+		#14201143V#0000F不過，我也贊成
+		大家一起分享時光啦。{wait}
+	} {
+		#14201144V#0004F要分享的不光是難為情的時光，
+		難過的時光、痛苦的時光也一樣……{wait}
+	} {
+		#14201145V當然了，還有
+		開心的時光、快樂的時光。{wait}
+	} {
+		#14201146V#0002F這不就是『同伴』嗎？{wait}
+	}
+	TextWait
+	ED7CharAnimation name[2] 1000ms 18 19 20
+	SoundPlay sound[1277] 255 100 0
+	ED7CharAnimation name[2] 1500ms 21 22 23 22
+	ED7CharAnimation name[2] 1500ms 21 22 23 22
+	ED7CharAnimation name[2] 1500ms 21 22 23 22
+	Sleep 150ms
+	TextTalk name[2] {
+		#14201147V#5512F#5P#40W……真是的………{wait}
+	} {
+		#14201148V好難為情……好肉麻……
+		……都這麼難堪了……{wait}
+	}
+	TextWait
+	ED7CharAnimation name[2] 1000ms 23 24 25 24
+	Sleep 150ms
+	TextTalk name[2] {
+		#14201149V#5513F#5P#40W……但是……
+		感覺卻並不壞……{wait}
+	}
+	TextWait
+	ForkFunc name[2] fork[0] fn[0,9]
+	FadeOut 2000ms 0x00000000 255
+	CamZoom 22000 3000ms
+	CamWait 16
+	FadeWait
+	Sleep 1000ms
+	TextSetName ""
+	TextMessage null {
+		{color 5}之後，羅伊德等人和緹歐一起
+		乘巴士返回了入夜的克洛斯貝爾市。{wait}
+	} {
+		到達支援課，讓疲憊的緹歐
+		先回自己的房間休息後……{wait}
+	} {
+		羅伊德等人才將情況報告給賽爾蓋。{color 0}{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	BgmStop 6000ms
+	BgmWait
+	system[76] = 0
+	CharFlagsSet char[4] 0x0080
+	CharFlags2Set char[4] 0x8000
+	CharFlagsUnset name[1] 0x0080
+	CharFlags2Unset name[1] 0x8000
+	ForkQuit name[2] fork[3]
+	CharSetChipBase name[2] chip[255]
+	CharSetChipPattern name[2] 0
+	CharFlagsUnset name[2] 0x0002
+	CharFlagsUnset name[2] 0x0010
+	CharFlagsUnset name[2] 0x0004
+	NextFrame
+	UnloadChip chip[30]
+	UnloadChip chip[31]
+	VisHide vis[255] 0
+	FlagSet flag[742]
+	NewScene "scena/c011b.bin" 0 0 0
+	Hcf
+	Return
+
+fn[7]:
+	Fork self fork[1]:
+		CharWalkToPos self (150120, 0, 49160) 2000mm/s 0
+	Sleep 2700ms
+	SoundPlay sound[103] 0 100 0
+	Sleep 300ms
+	Fork self fork[2]:
+		CharColor self 0x00FFFFFF 500ms
+	ForkWait self fork[1]
+	ForkWait self fork[2]
+	SoundPlay sound[104] 0 100 0
+	Return
+
+fn[8]:
+	while 1:
+		ED7CharAnimation self 1000ms 31 30 29
+		Sleep 4000ms
+	Return
+
+fn[9]:
+	while 1:
+		ED7CharAnimation self 1000ms 21 22 23 22
+	Return
+
+fn[10]:
+	Fork self fork[1]:
+		CharWalkToPos2 self (150460, 0, 56210) 2000mm/s 0
+	ForkWait self fork[1]
+	Return
+
+fn[11]:
+	EventBegin 0
+	FadeOut 500ms 0x00000000 255
+	FadeWait
+	ED7LoadChip "chr/ch00050.itc" chip[30]
+	ED7LoadChip "chr/ch00150.itc" chip[31]
+	ED7LoadChip "chr/ch00250.itc" chip[32]
+	ED7LoadChip "chr/ch00350.itc" chip[33]
+	ED7LoadChip "chr/ch00550.itc" chip[34]
+	ED7LoadChip "chr/ch31000.itc" chip[35]
+	ED7LoadChip "chr/ch31050.itc" chip[36]
+	ED7LoadChip "chr/ch31051.itc" chip[37]
+	ED7LoadChip "chr/ch31100.itc" chip[38]
+	ED7LoadChip "chr/ch31150.itc" chip[39]
+	ED7LoadChip "chr/ch31151.itc" chip[40]
+	CamSetDistance 99060 1000 12500 0ms
+	ED7CamRotate 45deg 20deg 0deg 0ms
+	CamPers 400 0ms
+	CamZoom 24500 0ms
+	CharSetPos name[0] (97690, 0, 11720) 270deg
+	CharSetPos name[1] (98330, 0, 10890) 270deg
+	CharSetPos name[2] (99270, 0, 12710) 270deg
+	CharSetPos name[3] (100540, 0, 12610) 270deg
+	CharSetPos name[5] (99810, 0, 10770) 270deg
+	CharFlagsUnset field_party[4] 0x0080
+	CharFlags2Unset field_party[4] 0x8000
+	CharSetChipBase char[0] chip[37]
+	CharSetChipPattern char[0] 0
+	CharSetChipBase char[1] chip[40]
+	CharSetChipPattern char[1] 0
+	CharFlagsUnset char[0] 0x0080
+	CharFlags2Unset char[0] 0x8000
+	CharFlagsUnset char[1] 0x0080
+	CharFlags2Unset char[1] 0x8000
+	CharSetPos char[0] (85000, 0, 12690) 90deg
+	CharSetPos char[1] (85000, 0, 11100) 90deg
+	FadeIn 1000ms 0x00000000
+	FadeWait
+	Emote name[0] 0mm 2000mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Emote name[5] 0mm 2000mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Sleep 50ms
+	Emote name[1] 0mm 2000mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Emote name[2] 0mm 2000mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Sleep 50ms
+	Emote name[3] 0mm 2000mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Sleep 1000ms
+	CrossFade 500ms
+	CamSetDistance 92640 1000 12400 0ms
+	CamSetDistance 97340 1000 12400 1750ms
+	CamZoom 17500 1750ms
+	Fork char[0] fork[1]:
+		_94 0 self 0deg 11000 6000mm/s 0
+	Fork char[1] fork[1]:
+		_94 0 self 0deg 11000 6000mm/s 0
+	Sleep 750ms
+	CharSetChipBase name[0] chip[30]
+	CharSetChipPattern name[0] 0
+	CharSetChipBase name[1] chip[31]
+	CharSetChipPattern name[1] 0
+	CharSetChipBase name[2] chip[32]
+	CharSetChipPattern name[2] 0
+	CharSetChipBase name[3] chip[33]
+	CharSetChipPattern name[3] 0
+	CharSetChipBase name[5] chip[34]
+	CharSetChipPattern name[5] 0
+	SoundPlay sound[808] 0 100 0
+	SoundPlay sound[531] 0 100 0
+	FadeWait
+	Sleep 500ms
+	BlurOn 500ms 0xBBFFFFFF 0 1 10
+	Sleep 500ms
+	ED7Battle battle[0] null 0 0 0 null
+	FadeOut 0ms 0x00000000 255
+	EventBegin 0
+	ForkQuit char[0] fork[1]
+	ForkQuit char[1] fork[1]
+	Call fn[0,12]
+	CharSetChipBase name[0] chip[255]
+	CharSetChipPattern name[0] 0
+	CharSetChipBase name[1] chip[255]
+	CharSetChipPattern name[1] 0
+	CharSetChipBase name[2] chip[255]
+	CharSetChipPattern name[2] 0
+	CharSetChipBase name[3] chip[255]
+	CharSetChipPattern name[3] 0
+	CharSetChipBase name[5] chip[255]
+	CharSetChipPattern name[5] 0
+	CharSetPos field_party[0] (98700, 0, 11800) 270deg
+	CharFlagsSet field_party[4] 0x0080
+	CharFlags2Set field_party[4] 0x8000
+	TriggerFlagsSet trigger[0] 0x0080
+	FlagSet flag[1801]
+	Sleep 500ms
+	EventEnd 5
+	Return
+
+fn[12]:
+	CharSetChipBase char[0] chip[3]
+	CharSetChipPattern char[0] 0
+	CharSetChipBase char[1] chip[3]
+	CharSetChipPattern char[1] 1
+	CharFlagsUnset char[0] 0x0080
+	CharFlags2Unset char[0] 0x8000
+	CharFlagsUnset char[1] 0x0080
+	CharFlags2Unset char[1] 0x8000
+	char[0].36 = 168
+	char[1].36 = 168
+	CharFlagsUnset char[0] 0x0040
+	CharFlagsUnset char[0] 0x0001
+	CharFlagsUnset char[1] 0x0040
+	CharFlagsUnset char[1] 0x0001
+	CharSetPos char[0] (93740, 0, 13280) 270deg
+	CharSetPos char[1] (94870, 0, 10340) 90deg
+	CharFlagsSet char[0] 0x0010
+	CharFlagsSet char[1] 0x0010
+	Return
+
+fn[13]:
+	EventBegin 0
+	FadeOut 0ms 0x00000000 255
+	CamSetDistance 200880 900 52400 0ms
+	ED7CamRotate 45deg 21deg 0deg 0ms
+	CamPers 400 0ms
+	CamZoom 23500 0ms
+	CharSetPos name[0] (199450, 0, 49200) 0deg
+	CharSetPos name[1] (200570, 0, 49200) 0deg
+	CharSetPos name[2] (199450, 0, 47900) 0deg
+	CharSetPos name[3] (200570, 0, 47900) 0deg
+	CharSetPos name[5] (200000, 0, 46600) 0deg
+	CharFlagsUnset field_party[4] 0x0080
+	CharFlags2Unset field_party[4] 0x8000
+	CharColor name[0] 0x00FFFFFF 0ms
+	CharColor name[1] 0x00FFFFFF 0ms
+	CharColor name[2] 0x00FFFFFF 0ms
+	CharColor name[3] 0x00FFFFFF 0ms
+	CharColor name[5] 0x00FFFFFF 0ms
+	_Char4A char[2] 255
+	_Char4A char[3] 255
+	FadeIn 1000ms 0x00000000
+	CamSetDistance 201940 900 53610 3000ms
+	Fork name[0] fork[1]:
+		_94 0 self 0deg 4000 2000mm/s 0
+	Fork name[1] fork[1]:
+		_94 0 self 0deg 4000 2000mm/s 0
+	Fork name[2] fork[1]:
+		_94 0 self 0deg 4000 2000mm/s 0
+	Fork name[3] fork[1]:
+		_94 0 self 0deg 4000 2000mm/s 0
+	Fork name[5] fork[1]:
+		_94 0 self 0deg 4000 2000mm/s 0
+	Sleep 200ms
+	Fork name[0] fork[2]:
+		CharColor self 0xFFFFFFFF 500ms
+	Fork name[1] fork[2]:
+		CharColor self 0xFFFFFFFF 500ms
+	Sleep 500ms
+	Fork name[2] fork[2]:
+		CharColor self 0xFFFFFFFF 500ms
+	Fork name[3] fork[2]:
+		CharColor self 0xFFFFFFFF 500ms
+	Sleep 500ms
+	Fork name[5] fork[2]:
+		CharColor self 0xFFFFFFFF 500ms
+	ForkWait name[0] fork[1]
+	ForkWait name[1] fork[1]
+	Fork name[0] fork[1]:
+		CharTurnTo self 90deg 300deg/s
+	Fork name[1] fork[1]:
+		CharTurnTo self 90deg 500deg/s
+	ForkWait name[2] fork[1]
+	ForkWait name[3] fork[1]
+	Fork name[2] fork[1]:
+		CharTurnTo self 90deg 500deg/s
+	Fork name[3] fork[1]:
+		CharTurnTo self 90deg 300deg/s
+	ForkWait name[5] fork[1]
+	Fork name[5] fork[1]:
+		CharTurnTo self 90deg 500deg/s
+	ForkWait name[0] fork[1]
+	ForkWait name[1] fork[1]
+	ForkWait name[2] fork[1]
+	ForkWait name[3] fork[1]
+	ForkWait name[5] fork[1]
+	ForkWait name[0] fork[2]
+	ForkWait name[1] fork[2]
+	ForkWait name[2] fork[2]
+	ForkWait name[3] fork[2]
+	ForkWait name[5] fork[2]
+	Emote char[2] 0mm 2000mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Sleep 50ms
+	Emote char[3] 0mm 2000mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Sleep 1000ms
+	Emote char[2] 0mm 2000mm 40 43 100ms 3
+	Fork char[2] fork[1]:
+		CharTurnToChar self name[0] 600deg/s
+	Sleep 50ms
+	Emote char[3] 0mm 2000mm 40 43 100ms 3
+	Fork char[3] fork[1]:
+		CharTurnToChar self name[0] 600deg/s
+	ForkWait char[2] fork[1]
+	ForkWait char[3] fork[1]
+	TextTalk char[2] {
+		#15100508V#5P咿……！{wait}
+	}
+	TextWait
+	TextTalk char[3] {
+		#15100509V#11P不、不要……！{wait}
+	}
+	TextWait
+	TextTalk name[1] {
+		#15100510V#0100F#6P請放心吧，
+		我們是警察。{wait}
+	}
+	TextWait
+	Emote char[2] 0mm 2000mm 38 38 250ms 1
+	Sleep 50ms
+	Emote char[3] 0mm 2000mm 38 38 250ms 1
+	Sleep 1000ms
+	TextTalk char[3] {
+		#15100511V#11P女、女人……？{wait}
+	}
+	TextWait
+	TextTalk char[2] {
+		#15100512V#5P警察……
+		是來救我們的嗎！？{wait}
+	}
+	TextWait
+	TextTalk name[1] {
+		#15100513V#0103F#6P嗯，我們正在制伏入侵者，
+		確保這裡的安全。{wait}
+	} {
+		#15100514V#0101F請你們暫時
+		留在這裡。{wait}
+	}
+	TextWait
+	TextTalk char[2] {
+		#15100515V#5P明、明白了。{wait}
+	}
+	TextWait
+	TextTalk char[3] {
+		#15100516V#11P請、請加油吧～！{wait}
+	}
+	TextWait
+	FadeOut 1000ms 0x00000000 255
+	FadeWait
+	QuestBonusBp quest[77] 1
+	CharSetPos field_party[0] (200200, 0, 52410) 180deg
+	CharFlagsSet field_party[4] 0x0080
+	CharFlags2Set field_party[4] 0x8000
+	_Char4B char[2] 255
+	_Char4B char[3] 255
+	FlagSet flag[1802]
+	QuestTaskSet quest[77] 6
+	EventEnd 5
+	Return
+
+fn[14]:
+	TextStart null
+	VisShow vis[0] 112 8 368 264 0 0 256 256 0 0 256 256 0x00FFFFFF 1 "c_vis000.itp"
+	VisSet vis[0] 3 0xFFFFFFFF 500ms 0 0
+	VisWait vis[0] 3
+	TextSetName ""
+	TextMessage null {
+		{color 5}賽西兒和羅伊德，
+		還有一位面容精悍的青年
+		的合影照片擺在這裡。{color 0}{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	if !flag[845]:
+		if flag[1397] | flag[1566]:
+			TextMessage name[0] {
+				#0008F（……是和賽西兒姊姊
+				　還有大哥一起拍的照片。）{wait}
+			} {
+				（我一直都寸步不離地帶在身上，
+				　原來賽西兒姊姊也一直擺著啊。）{wait}
+			}
+			TextWait
+		else:
+			TextMessage name[0] {
+				#0005F（啊……是和賽西兒姊姊
+				　還有大哥一起拍的照片。）{wait}
+			} {
+				#0003F（既然擺著這張照片，
+				　也就是說，這裡莫非是
+				　賽西兒姊姊的宿舍嗎？）{wait}
+			}
+			TextWait
+		FlagSet flag[845]
+	VisSet vis[0] 3 0x00FFFFFF 500ms 0 0
+	VisWait vis[0] 3
+	VisHide vis[255] 0
+	TextEnd null
+	Return

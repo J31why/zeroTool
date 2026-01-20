@@ -1,13 +1,15 @@
 ﻿#region
 
 using System.Text;
+using static zCodec.Calmare.CalmareCodec;
 
 #endregion
 
 namespace zCodec.Calmare.Opcodes;
 
-public class TextTalk(string text) : Opcode(0x5C, text)
+public class TextTalk(string text) : ScenaOpcode( text)
 {
+    protected override byte Code => 0x5C;
     public override byte[] Compile(Encoding encoding)
     {
         List<byte> bytes = new(0x200) { Code };
@@ -17,7 +19,7 @@ public class TextTalk(string text) : Opcode(0x5C, text)
             if (index > 1)
                 bytes.Add(3);
             var text = Param[index];
-            bytes.AddRange(CompileString(text, encoding));
+            bytes.AddRange(ClmStringToBytes(text, encoding));
         }
 
         bytes.Add(0);

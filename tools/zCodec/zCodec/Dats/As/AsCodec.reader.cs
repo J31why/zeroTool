@@ -1,5 +1,6 @@
 ﻿#region
 
+using System.Data;
 using System.Text;
 using Enums;
 using Extensions;
@@ -25,10 +26,10 @@ public partial class AsCodec
             _isRead = true;
             _sBuilder = new StringBuilder();
             _bReader = new BinaryReader(new MemoryStream(File.ReadAllBytes(file)));
-            _sBuilder.AppendLine($"//zero\n//{Path.GetFileNameWithoutExtension(file)}\n");
+            _sBuilder.AppendLine($"//{(IsAo?"ao":"zero")}\n//{Path.GetFileNameWithoutExtension(file)}\n");
             _sBuilder.AppendLine(DecompileHeader());
             _sBuilder.AppendLine("Func:");
-            var set = DecompileFns();
+            var set = DecompileFunc();
             foreach ((ushort addr, string line) tuple in set)
             {
                 if (_addrSet.TryGetValue(tuple.addr, out var addr))
@@ -50,6 +51,7 @@ public partial class AsCodec
         switch (_fileName)
         {
             case "as90000":
+                throw new Exception();
                 sb.AppendLine($"\tfn[0] = {Read(sp)}");
                 break;
             case "as90001":
@@ -76,12 +78,12 @@ public partial class AsCodec
         return sb.ToString();
     }
 
-    private List<(ushort, string)> DecompileFns()
+    private List<(ushort, string)> DecompileFunc()
     {
         List<(ushort, string)> list = new(2000);
 
         if (_fileName == "as90001")
-            return DecompileAs90001Fns();
+            return DecompileAs90001Func();
         while (_bReader!.BaseStream.Position < _bReader.BaseStream.Length)
         {
             var pos = (ushort)_bReader.BaseStream.Position;
@@ -93,7 +95,7 @@ public partial class AsCodec
         return list;
     }
 
-    private List<(ushort, string)> DecompileAs90001Fns()
+    private List<(ushort, string)> DecompileAs90001Func()
     {
         List<(ushort, string)> list = new(2000);
         var fnList = _addrSet.Skip(1).ToList();
@@ -150,7 +152,7 @@ public partial class AsCodec
                 return $"{_bReader!.ReadInt32():X}";
             case str:
                 return
-                    $"\"{_bReader!.ReadCString(Encoding) ?? throw new Exception("read null string")}\"";
+                    $"\"{_bReader!.ReadClmString(Encoding) ?? throw new Exception("read null string")}\"";
             case sp:
                 var addr = _bReader!.ReadUInt16();
                 _addrSet.Add(addr);

@@ -3,7 +3,8 @@
 using System.Security.Cryptography;
 using System.Text;
 using System.Text.RegularExpressions;
-using OpenCCNET;
+using JiebaNet.Segmenter;
+using OpenccNetLib;
 
 #endregion
 
@@ -14,16 +15,14 @@ namespace Common;
 public static partial class CLEDecrypter
 {
     private static byte[]? _table;
-    private static readonly Regex TextReg = TextRegex();
-
+    private static Opencc _opencc;
+    private static JiebaSegmenter _segmenter;
+    public static bool IsAo { get; set; }
     static CLEDecrypter()
     {
-        var currentDir = Environment.ProcessPath ?? throw new DirectoryNotFoundException();
-        currentDir = Path.GetDirectoryName(currentDir) ?? throw new DirectoryNotFoundException();
-        ZhConverter.Initialize(Path.Combine(currentDir, "Dictionary"),
-            Path.Combine(currentDir, "JiebaResource"),
-            true);
-        ZhConverter.ZhSegment.Jieba.AddWord("明瞭");
+        Opencc.UseDictionaryFromPath(Path.Combine(Utils.CurrentDir, "dicts"));
+        _opencc = new Opencc(OpenccConfig.Tw2Sp);
+        _segmenter = new JiebaSegmenter();
     }
 
     public static byte[] DecryptFile(string file)
@@ -73,21 +72,19 @@ public static partial class CLEDecrypter
 
     public static string Tw2s(string input)
     {
-        input = TextReg.Replace(input, x => ZhConverter.TWToHans(x.Value, true));
+        input = TextRegex().Replace(input, match =>
+        {
+            return string.Concat(_segmenter.Cut(match.Value).Select(x => _opencc.Convert(x)));
+        });
         return input;
     }
 
     public static string DecryptChar(string input, out List<string> warnList)
     {
-        if (_table == null)
-        {
-            var currentDir = Environment.ProcessPath ?? throw new DirectoryNotFoundException();
-            currentDir = Path.GetDirectoryName(currentDir) ?? throw new DirectoryNotFoundException();
-            _table = File.ReadAllBytes(Path.Combine(currentDir, "utf8.table"));
-        }
+        _table ??= File.ReadAllBytes(Path.Combine(Utils.CurrentDir, IsAo ? "ao.table" : "zero.table"));
 
         var warn = new List<string>(200);
-        input = ExtraEncoding.DoubleByteCharReg.Replace(input, x =>
+        input = ExtraEncoding.DoubleByteCharRegex().Replace(input, x =>
         {
             var sjisBytes = ExtraEncoding.SJIS.GetBytes(x.Value);
             var index = (sjisBytes[0] << 8) - 0x8900 + sjisBytes[1];

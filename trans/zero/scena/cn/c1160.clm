@@ -1,0 +1,1658 @@
+calmare zero_k scena
+scena:
+	name "c1160" "c1160" "c1160"
+	town town[24]
+	bgm bgm[111]
+	flags 8192
+	item_use fn[0,255]
+	unk 255 0
+
+entry:
+	pos (0, 0, -1000)
+	unk1 0
+	cam_from (0, 2500, 34000)
+	cam_pers 262
+	unk2 30
+	cam_deg 45deg
+	cam_limit 0deg 360deg
+	cam_at (0, 0, 0)
+	unk3 0
+	unk4 0
+	flags 0x0001
+	town town[24]
+	init fn[0,0]
+	reinit fn[0,1]
+
+chip[0] "chr/ch06402.itc"
+chip[1] "chr/ch06400.itc"
+chip[2] null
+chip[3] null
+chip[4] null
+chip[5] null
+chip[6] null
+chip[7] null
+chip[8] null
+chip[9] null
+chip[10] null
+chip[11] null
+chip[12] null
+chip[13] null
+chip[14] null
+chip[15] null
+chip[16] null
+chip[17] null
+chip[18] null
+chip[19] null
+chip[20] null
+chip[21] null
+chip[22] null
+chip[23] null
+chip[24] null
+chip[25] null
+chip[26] null
+chip[27] null
+chip[28] null
+chip[29] null
+
+npc char[0]:
+	name "皮埃爾副局長"
+	pos (0, 0, 0)
+	angle 0deg
+	flags 0x01C5
+	unk2 0
+	chip chip[0]
+	init fn[255,255]
+	talk fn[255,255]
+	unk4 255
+
+npc char[1]:
+	name "索妮亞副司令"
+	pos (0, 0, 0)
+	angle 0deg
+	flags 0x01C5
+	unk2 0
+	chip chip[0]
+	init fn[255,255]
+	talk fn[255,255]
+	unk4 255
+
+npc char[2]:
+	name "諾艾兒"
+	pos (0, 0, 0)
+	angle 0deg
+	flags 0x01C5
+	unk2 0
+	chip chip[0]
+	init fn[255,255]
+	talk fn[255,255]
+	unk4 255
+
+fn[0]:
+	if flag[736]:
+		FlagUnset flag[736]
+		Event fn[0,4]
+	elif flag[737]:
+		FlagUnset flag[737]
+		Event fn[0,5]
+	elif flag[738]:
+		FlagUnset flag[738]
+		Event fn[0,2]
+	Return
+
+fn[1]:
+	if flag[520] && !flag[521]:
+		system[1] = 0
+	Return
+
+fn[2]:
+	EventBegin 0
+	FadeOut 0ms 0x00000000 255
+	PartyRemove name[27] 0
+	FlagUnset flag[1182]
+	Sc_C4Unset 4096
+	PartyAdd name[1] null 255
+	PartyAdd name[3] null 255
+	CamSetDistance 40710 1200 -390 0ms
+	ED7CamRotate 42deg 24deg 0deg 0ms
+	CamPers 400 0ms
+	CamZoom 20840 0ms
+	CharSetPos name[0] (41600, 0, -2500) 0deg
+	CharSetPos name[2] (40600, 0, -2750) 0deg
+	CharSetPos name[1] (41600, 0, -4000) 0deg
+	CharSetPos name[3] (40600, 0, -4250) 0deg
+	CharSetChipBase char[0] chip[0]
+	CharSetChipPattern char[0] 0
+	CharSetPos char[0] (41100, 200, 1700) 180deg
+	CharFlagsUnset char[0] 0x0080
+	CharFlags2Unset char[0] 0x8000
+	FadeIn 1000ms 0x00000000
+	FadeWait
+	TextTalk char[0] {
+		#5P……然後呢？{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#5P你們說已經找到了，
+		是真的吧！？{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#12P#0000F嗯，那當然。{wait}
+	}
+	TextWait
+	TextTalk name[1] {
+		#12P#0106F副局長，請您這次
+		一定要仔細保存好啊。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#5P什麼啊，你到底想說什麼。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#5P#5P不過就是一枚戒指罷了……
+		我怕老婆這件事
+		難道有那麼滑稽嗎，啊！？{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#12P#0006F不，那個……
+		總之，先容我報告吧。{wait}
+	}
+	TextWait
+	FadeOut 1000ms 0x00000000 255
+	FadeWait
+	Sleep 2000ms
+	FadeIn 2000ms 0x00000000
+	FadeWait
+	TextTalk name[0] {
+		#12P#0003F……事情就是這樣。{wait}
+	} {
+		#0001F最後是公關小姐
+		交還給我們的……{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#5P什、什、什麼……{wait}
+	}
+	TextWait
+	CrossFade 500ms
+	CharSetChipBase char[0] chip[1]
+	CharSetChipPattern char[0] 0
+	CharSetPos char[0] (41320, 30, 1710) 180deg
+	SoundPlay sound[820] 0 100 0
+	FadeWait
+	CamSetDistance 40720 1200 -2260 3000ms
+	CharWalkToPos char[0] (43880, 30, 1710) 2000mm/s 0
+	CharWalkToPos char[0] (43880, 30, -870) 2000mm/s 0
+	CharWalkToPos char[0] (41100, 30, -870) 2000mm/s 0
+	Sleep 500ms
+	ForkFunc char[0] fork[1] fn[0,3]
+	TextTalk char[0] {
+		#5P一、一定是什麼
+		地方搞錯了吧！？{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#5P我、我怎麼會……！{wait}
+	}
+	TextWait
+	TextTalk name[3] {
+		#12P#0300F這看起來好像就是您說的紅耀石戒指，
+		應該沒有搞錯吧？{wait}
+	}
+	TextWait
+	TextTalk name[2] {
+		#12P#0203F賽特也利用嗅覺確認
+		過了，沒有錯。{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#12P#0000F那個，這就是我們
+		發現的那個戒指。{wait}
+	}
+	TextWait
+	_Char90 name[0] 0 0 500 1000 0
+	ForkQuit char[0] fork[1]
+	CharWalkToPos char[0] (41600, 30, -870) 3000mm/s 0
+	Emote char[0] 0mm 2000mm 38 38 250ms 1
+	CharTurnTo char[0] 180deg 750deg/s
+	Sleep 750ms
+	CharWalkToPos char[0] (41600, 30, -1250) 1000mm/s 0
+	Sleep 500ms
+	FadeOut 300ms 0x00000000 100
+	TextSetPos -1 -1 -1 -1
+	TextSetName ""
+	TextMessage null {
+		交出了{color 2}#800M紅耀石的結婚戒指{color 0}。{wait}
+	}
+	SoundPlay sound[17] 0 100 0
+	TextWait
+	FadeIn 300ms 0x00000000
+	TextClose 0
+	TextSetPos -1 280 60 3
+	_59
+	_Char91 name[0] 0 0 -500 1000 0
+	Emote char[0] 0mm 2000mm 24 27 250ms 0
+	Sleep 1000ms
+	CharTurnTo char[0] 0deg 500deg/s
+	Emote char[0] 0mm 2000mm 24 27 250ms 0
+	Sleep 1000ms
+	EmoteStop char[0]
+	TextTalk char[0] {
+		#5P哎～咳咳！{wait}
+	}
+	TextWait
+	CharTurnTo char[0] 180deg 500deg/s
+	TextTalk char[0] {
+		#5P做得很好，
+		你們可以走了。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#5P不過呢，這次的事情
+		絕對要保密。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#5P當然也包括那個賽爾蓋哦。
+		絕對不能和任何人說！
+		──明白了嗎！？{wait}
+	}
+	TextWait
+	TextTalk name[2] {
+		#12P#0205F呼，可是，
+		賽特的功績還沒……{wait}
+	}
+	TextWait
+	CharTurnToChar char[0] name[2] 750deg/s
+	TextTalk char[0] {
+		#5P（瞪眼）……！{wait}
+	}
+	TextWait
+	TextTalk name[2] {
+		#12P#0211F明白了……
+		（稍後申請購買一些
+		　獎勵牠用的肉骨頭好了。）{wait}
+	}
+	TextWait
+	ForkLoop field_party[0] fork[1]:
+		CharTurnToChar self char[0] 500deg/s
+	ForkLoop field_party[1] fork[1]:
+		CharTurnToChar self char[0] 500deg/s
+	ForkLoop field_party[2] fork[1]:
+		CharTurnToChar self char[0] 500deg/s
+	ForkLoop field_party[3] fork[1]:
+		CharTurnToChar self char[0] 500deg/s
+	CharWalkToPos char[0] (43880, 30, -1250) 2000mm/s 0
+	CharWalkToPos char[0] (43880, 30, 0) 2000mm/s 0
+	ForkQuit field_party[0] fork[1]
+	ForkQuit field_party[1] fork[1]
+	ForkQuit field_party[2] fork[1]
+	ForkQuit field_party[3] fork[1]
+	TextTalk char[0] {
+		#5P呼呼……總算是得救了啊，
+		應該算是得救了吧……{wait}
+	}
+	TextWait
+	Emote char[0] 300mm 1600mm 54 57 250ms 0
+	Sleep 2000ms
+	TextTalk name[3] {
+		#12P#0300F（好像有種奇妙的爽快感啊。）{wait}
+	}
+	TextWait
+	TextTalk name[1] {
+		#12P#0100F（總算是解決了一件事啊。）{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#12P#0000F（哈哈……別再打擾他了，
+		　我們差不多也該回去工作了吧。）{wait}
+	}
+	TextWait
+	TextTalk name[2] {
+		#6P#0200F（嗯，就這麼辦吧。）{wait}
+	}
+	TextWait
+	FadeOut 300ms 0x00000000 100
+	SoundPlay sound[9] 0 100 0
+	TextSetPos -1 -1 -1 -1
+	TextSetName ""
+	TextMessage null {
+		{color 2}任務【遺失的結婚戒指】{color 0}完成！{wait}
+	}
+	TextWait
+	TextClose 0
+	FadeIn 300ms 0x00000000
+	TextSetPos -1 280 60 3
+	ItemRemove item[829] 1
+	FadeOut 1000ms 0x00000000 255
+	FadeWait
+	QuestTaskSet quest[21] 9
+	QuestFlagsSet quest[21] 0x10
+	FlagSet flag[738]
+	NewScene "scena/c1150.bin" 0 0 0
+	Hcf
+	Return
+
+fn[3]:
+	while 1:
+		CharWalkToPos char[0] (42500, 30, -870) 3000mm/s 0
+		CharWalkToPos char[0] (40500, 30, -870) 3000mm/s 0
+	Return
+
+fn[4]:
+	EventBegin 0
+	FadeOut 0ms 0x00000000 255
+	CamSetDistance 41000 1900 -500 0ms
+	ED7CamRotate 50deg 21deg 0deg 0ms
+	CamPers 400 0ms
+	CamZoom 23000 0ms
+	CharSetPos name[0] (41100, 0, -2500) 0deg
+	CharSetPos name[1] (40100, 0, -2500) 0deg
+	CharSetPos name[2] (39100, 0, -2500) 0deg
+	CharSetPos name[3] (42100, 0, -2500) 0deg
+	CharFlagsUnset char[0] 0x0080
+	CharSetPos char[0] (41100, 200, 1700) 180deg
+	SoundPlay sound[818] 0 100 0
+	Sleep 1000ms
+	TextSetPos -1 -1 -1 -1
+	TextSetName "聽上去很神經質的聲音"
+	TextMessage null {
+		#10100805V#4S──真是的！
+		究竟打算要幹什麼啊！？{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	TextSetPos -1 280 60 3
+	BgmPlay bgm[111] 0
+	CamSetDistance 41000 900 -500 3000ms
+	FadeIn 1000ms 0x00000000
+	FadeWait
+	CamWait 1
+	TextTalk char[0] {
+		#10100806V#5P竟然多管閒事，擅自去
+		處理和任務無關的事情……！{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#10100807V#5P而且還被那個亞里歐斯・馬克萊因
+		給搶走了功勞……！{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#10100808V#5P更、更氣人的是，
+		居然還讓《克洛斯貝爾時報周刊》的
+		人看了笑話！！！{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#10100809V#12P#0011F那個，但是……{wait}
+	}
+	TextWait
+	Sleep 300ms
+	Shake 100 0 3000 400ms
+	TextTalk char[0] {
+		#10100810V#5P#4S閉嘴，找藉口也沒用！{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#10100811V#5P#3S真是的，所以說
+		我才反對設立什麼新部門！{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#10100812V#5P要不是因為那個惹人討厭的
+		賽爾蓋提出了交換條件，
+		我才不會同意這種事……！{wait}
+	}
+	TextWait
+	TextTalk name[1] {
+		#10100813V#12P#0105F那個，交換條件是……{wait}
+	}
+	TextWait
+	Sleep 300ms
+	Shake 100 0 3000 500ms
+	TextTalk char[0] {
+		#10100814V#5P#4S唔～這和你們沒有關係！{wait}
+	}
+	TextWait
+	Emote char[0] 0mm 1700mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Sleep 1000ms
+	CharSetChipPattern char[0] 1
+	Sleep 300ms
+	TextTalk char[0] {
+		#10100815V#1P#2S等、等一下……
+		……對了，有辦法了。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#10100816V#1P#2S如果連一名部下都沒有，
+		那個瘟神也就無計可施了……{wait}
+	}
+	TextWait
+	Emote char[0] 0mm 1700mm 24 27 250ms 0
+	Sleep 2000ms
+	EmoteStop char[0]
+	CharSetChipPattern char[0] 0
+	Sleep 300ms
+	TextTalk char[0] {
+		#10100817V#5P你們幾個，我也不想說太難聽的話了。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#10100818V#5P在一兩天之內，給我主動從
+		『特務支援課』這個部門辭職。{wait}
+	}
+	TextWait
+	Emote name[0] 0mm 2000mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Sleep 50ms
+	Emote name[1] 0mm 2000mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Sleep 50ms
+	Emote name[2] 0mm 2000mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Sleep 50ms
+	Emote name[3] 0mm 2000mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Sleep 1000ms
+	TextTalk name[0] {
+		#10100819V#12P#0005F哎……！？{wait}
+	}
+	TextWait
+	TextTalk name[3] {
+		#10100820V#2P#0301F喂喂……
+		這話從何說起啊？{wait}
+	}
+	TextWait
+	TextTalk name[2] {
+		#10100821V#6P#0211F……完全不明白您的意思。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#10100822V#5P很簡單，就是字面上的意思。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#10100823V#5P反正也只是個連半年都支撐不下去的部門，
+		絕對不可能立下什麼功績的。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#10100824V#5P反而有可能被捲入一些問題中，
+		給自己的工作經歷增添污點……{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#10100825V#5P你們不覺得很愚蠢嗎？{wait}
+	}
+	TextWait
+	Emote name[0] 0mm 2000mm 24 27 250ms 0
+	Emote name[1] 0mm 2000mm 24 27 250ms 0
+	Emote name[2] 0mm 2000mm 24 27 250ms 0
+	Emote name[3] 0mm 2000mm 24 27 250ms 0
+	Sleep 2000ms
+	EmoteStop name[0]
+	EmoteStop name[1]
+	EmoteStop name[2]
+	EmoteStop name[3]
+	TextTalk char[0] {
+		#10100826V#5P羅伊德的志願是搜查官吧？
+		那就把你轉到搜查課的某個崗位吧。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#10100827V#5P至於其他人，我也會把你們
+		調到更加適合自己的新崗位上。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#10100828V#5P放心，我不會虧待你們的。
+		給你們一個晚上的時間，好好考慮一下吧。{wait}
+	}
+	TextWait
+	CamZoom 23500 2000ms
+	FadeOut 2000ms 0x00000000 255
+	FadeWait
+	CamWait 16
+	FlagSet flag[737]
+	NewScene "scena/c1150.bin" 0 0 0
+	Hcf
+	Return
+
+fn[5]:
+	EventBegin 0
+	FadeOut 0ms 0x00000000 255
+	ED7LoadChip "chr/ch05700.itc" chip[30]
+	ED7LoadChip "chr/ch00800.itc" chip[31]
+	ED7LoadChip "apl/ch50109.itc" chip[32]
+	CamSetDistance -2000 1100 15900 0ms
+	ED7CamRotate 45deg 25deg 0deg 0ms
+	CamPers 400 0ms
+	CamZoom 24000 0ms
+	CharSetPos name[0] (-2300, 0, 16500) 180deg
+	CharSetPos name[1] (-1700, 0, 16500) 180deg
+	CharSetPos name[2] (-2300, 0, 16500) 180deg
+	CharSetPos name[3] (-1700, 0, 16500) 180deg
+	CharColor name[0] 0x00FFFFFF 0ms
+	CharColor name[1] 0x00FFFFFF 0ms
+	CharColor name[2] 0x00FFFFFF 0ms
+	CharColor name[3] 0x00FFFFFF 0ms
+	ObjFlagsUnset object[3] 0x0010
+	VisShow vis[0] 234 0 490 256 0 0 512 512 0 0 512 512 0x00FFFFFF 1 "bu02000.itp"
+	VisShow vis[2] 234 0 490 256 0 0 512 512 0 0 512 512 0x00FFFFFF 1 "bu00500.itp"
+	VisShow vis[1] 0 8 480 264 0 0 512 256 0 0 480 256 0x00FFFFFF 1 "c_vis163.itp"
+	Sc_C4Set 2048
+	TextSetPos -1 -1 -1 -1
+	TextMessage null {
+		{0x18}{color 0}警察局總部３樓──{color 0}{wait}
+	}
+	Sleep 2500ms
+	TextSetPos -1 280 60 3
+	Sc_C4Unset 2048
+	CamSetDistance -2000 1100 12900 4000ms
+	FadeIn 1000ms 0x00000000
+	FadeWait
+	SoundPlay sound[160] 0 100 0
+	Sleep 1000ms
+	ED7ObjPlay object[3] 0 10 0 0
+	SoundPlay sound[107] 0 100 0
+	ObjWait object[3]
+	Fork name[0] fork[1]:
+		CharWalkToPos2 self (-2600, 0, 12300) 2000mm/s 0
+	Fork name[0] fork[2]:
+		CharColor self 0xFFFFFFFF 500ms
+	Sleep 350ms
+	Fork name[1] fork[1]:
+		CharWalkToPos2 self (-1400, 0, 12300) 2000mm/s 0
+	Fork name[1] fork[2]:
+		CharColor self 0xFFFFFFFF 500ms
+	Sleep 350ms
+	Fork name[2] fork[1]:
+		CharWalkToPos2 self (-2600, 0, 13500) 2000mm/s 0
+	Fork name[2] fork[2]:
+		CharColor self 0xFFFFFFFF 500ms
+	Sleep 350ms
+	Fork name[3] fork[1]:
+		CharWalkToPos2 self (-1400, 0, 13500) 2000mm/s 0
+	Fork name[3] fork[2]:
+		CharColor self 0xFFFFFFFF 500ms
+	ForkWait name[0] fork[1]
+	Fork name[0] fork[2]:
+		CharTurnTo self 45deg 500deg/s
+	ED7ObjPlay object[3] 10 0 0 0
+	SoundPlay sound[107] 0 100 0
+	ObjWait object[3]
+	ForkWait name[1] fork[1]
+	Fork name[1] fork[2]:
+		CharTurnTo self 315deg 500deg/s
+	ForkWait name[2] fork[1]
+	Fork name[2] fork[2]:
+		CharTurnTo self 135deg 500deg/s
+	ForkWait name[3] fork[1]
+	Fork name[3] fork[2]:
+		CharTurnTo self 225deg 500deg/s
+	ForkWait name[3] fork[2]
+	CamWait 1
+	TextTalk name[3] {
+		#11100070V#0306F竟然又被那個討厭的
+		副局長叫來了啊……{wait}
+	} {
+		#11100071V#0301F到底有什麼事啊？{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#11100072V#6P#0003F嗯……
+		說是有客人在等我們。{wait}
+	} {
+		#11100073V#0000F我想應該並不是只為了
+		訓話或批評而把我們叫來的。{wait}
+	}
+	TextWait
+	TextTalk name[2] {
+		#11100074V#0203F……但我感覺，不管怎樣
+		都會被挖苦諷刺一番呢。{wait}
+	}
+	TextWait
+	TextTalk name[1] {
+		#11100075V#0106F是啊……
+		算了，讓他隨便說去吧。{wait}
+	}
+	TextWait
+	Fork name[0] fork[2]:
+		CharTurnTo self 180deg 500deg/s
+	Sleep 100ms
+	Fork name[1] fork[2]:
+		CharTurnTo self 180deg 500deg/s
+	Sleep 50ms
+	Fork name[2] fork[2]:
+		CharTurnTo self 180deg 500deg/s
+	Sleep 50ms
+	Fork name[3] fork[2]:
+		CharTurnTo self 180deg 500deg/s
+	ForkWait name[0] fork[2]
+	CamSetDistance -2000 1100 9900 3000ms
+	Fork name[0] fork[1]:
+		_Char90 self 0 0 -10000 2000 0
+	Sleep 100ms
+	ForkWait name[1] fork[2]
+	Fork name[1] fork[1]:
+		_Char90 self 0 0 -10000 2000 0
+	Sleep 50ms
+	ForkWait name[2] fork[2]
+	Fork name[2] fork[1]:
+		_Char90 self 0 0 -10000 2000 0
+	Sleep 100ms
+	ForkWait name[3] fork[2]
+	Fork name[3] fork[1]:
+		_Char90 self 0 0 -10000 2000 0
+	Sleep 2500ms
+	CrossFade 1000ms
+	ForkQuit name[0] fork[1]
+	ForkQuit name[1] fork[1]
+	ForkQuit name[2] fork[1]
+	ForkQuit name[3] fork[1]
+	CamSetDistance 700 1100 2300 0ms
+	ED7CamRotate 45deg 25deg 0deg 0ms
+	CamPers 400 0ms
+	CamZoom 24000 0ms
+	CharSetPos name[0] (700, 30, 2300) 90deg
+	CharSetPos name[1] (700, 30, 900) 90deg
+	CharSetPos name[2] (-500, 30, 2300) 90deg
+	CharSetPos name[3] (-500, 30, 900) 90deg
+	CamSetDistance 3700 1100 2300 2000ms
+	Fork name[0] fork[1]:
+		CharWalkToPos2 self (3700, 30, 2300) 2000mm/s 0
+	Sleep 50ms
+	Fork name[1] fork[1]:
+		CharWalkToPos2 self (3700, 30, 900) 2000mm/s 0
+	Sleep 50ms
+	Fork name[2] fork[1]:
+		CharWalkToPos2 self (2500, 30, 2300) 2000mm/s 0
+	Sleep 50ms
+	Fork name[3] fork[1]:
+		CharWalkToPos2 self (2500, 30, 900) 2000mm/s 0
+	ForkWait name[0] fork[1]
+	Fork name[0] fork[2]:
+		CharTurnTo self 0deg 500deg/s
+	ForkWait name[1] fork[1]
+	Fork name[1] fork[2]:
+		CharTurnTo self 0deg 500deg/s
+	ForkWait name[2] fork[1]
+	Fork name[2] fork[2]:
+		CharTurnTo self 0deg 500deg/s
+	ForkWait name[3] fork[1]
+	Fork name[3] fork[2]:
+		CharTurnTo self 0deg 500deg/s
+	ForkWait name[3] fork[2]
+	Fork name[0] fork[1]:
+		CharWalkToPos self (3700, 0, 3200) 1500mm/s 0
+	ForkWait name[0] fork[1]
+	Sleep 300ms
+	SoundPlay sound[811] 0 100 0
+	Sleep 800ms
+	TextTalk name[0] {
+		#11100076V#2P#0001F──特務支援課，
+		班寧斯等四名成員前來報到。{wait}
+	}
+	TextWait
+	CharFlagsUnset char[0] 0x0080
+	CharFlags2Unset char[0] 0x8000
+	CharColor char[0] 0x00FFFFFF 0ms
+	CharSetPos char[0] (3500, 0, 5200) 0deg
+	TextTalkNamed char[0] "聽上去很神經質的聲音" {
+		#11100077V#2S#5P哼……進來吧。{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#11100078V#2P#0003F打擾了。{wait}
+	}
+	TextWait
+	ObjFlagsUnset object[0] 0x0010
+	ED7ObjPlay object[0] 0 5 0 0
+	SoundPlay sound[103] 0 100 0
+	FadeOut 1000ms 0x00000000 255
+	ObjWait object[0]
+	Sleep 300ms
+	Fork name[0] fork[1]:
+		CharWalkToPos self (3700, 0, 4500) 1500mm/s 0
+	FadeWait
+	ForkWait name[0] fork[1]
+	CamSetDistance 41270 1000 -4180 0ms
+	ED7CamRotate 55deg 20deg 0deg 0ms
+	CamPers 400 0ms
+	CamZoom 22000 0ms
+	CharSetChipBase char[0] chip[1]
+	CharSetChipPattern char[0] 0
+	CharFlagsUnset char[0] 0x0080
+	CharFlags2Unset char[0] 0x8000
+	CharColor char[0] 0xFFFFFFFF 0ms
+	CharSetPos char[0] (42100, 30, 1900) 180deg
+	CharSetChipBase char[1] chip[30]
+	CharSetChipPattern char[1] 0
+	CharFlagsUnset char[1] 0x0080
+	CharFlags2Unset char[1] 0x8000
+	CharSetPos char[1] (42100, 30, -900) 180deg
+	CharSetChipBase char[2] chip[31]
+	CharSetChipPattern char[2] 0
+	CharFlagsUnset char[2] 0x0080
+	CharFlags2Unset char[2] 0x8000
+	CharSetPos char[2] (43000, 0, -1400) 180deg
+	CharSetPos name[0] (41000, 0, -7000) 0deg
+	CharSetPos name[1] (41000, 0, -7000) 0deg
+	CharSetPos name[2] (41000, 0, -7000) 0deg
+	CharSetPos name[3] (41000, 0, -7000) 0deg
+	CharColor name[0] 0x00FFFFFF 0ms
+	CharColor name[1] 0x00FFFFFF 0ms
+	CharColor name[2] 0x00FFFFFF 0ms
+	CharColor name[3] 0x00FFFFFF 0ms
+	FadeIn 1000ms 0x00000000
+	CamSetDistance 41840 1000 -2380 2500ms
+	CamZoom 22000 2500ms
+	Fork name[0] fork[1]:
+		CharWalkToPos2 self (40700, 0, -3900) 2000mm/s 0
+	Fork name[0] fork[2]:
+		CharColor self 0xFFFFFFFF 500ms
+	Sleep 350ms
+	Fork name[1] fork[1]:
+		CharWalkToPos2 self (41800, 0, -3900) 2000mm/s 0
+	Fork name[1] fork[2]:
+		CharColor self 0xFFFFFFFF 500ms
+	Sleep 350ms
+	Fork name[2] fork[1]:
+		CharWalkToPos2 self (40700, 0, -5000) 2000mm/s 0
+	Fork name[2] fork[2]:
+		CharColor self 0xFFFFFFFF 500ms
+	Sleep 350ms
+	Fork name[3] fork[1]:
+		CharWalkToPos2 self (41800, 0, -5000) 2000mm/s 0
+	Fork name[3] fork[2]:
+		CharColor self 0xFFFFFFFF 500ms
+	ForkWait name[0] fork[1]
+	ForkWait name[1] fork[1]
+	ForkWait name[2] fork[1]
+	ForkWait name[3] fork[1]
+	CamWait 17
+	TextTalk name[0] {
+		#11100079V#6P#0005F（哎，那個制服是……）{wait}
+	}
+	TextWait
+	TextTalk name[1] {
+		#11100080V#6P#0105F（好像是……警備隊的成員吧？）{wait}
+	}
+	TextWait
+	Emote name[3] 0mm 2000mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Sleep 1000ms
+	Emote name[3] 0mm 2000mm 40 43 100ms 3
+	Fork name[3] fork[1]:
+		CharWalkToPos2 self (41800, 0, -5400) 1000mm/s 0
+	SoundPlay sound[1365] 255 100 0
+	Shake 200 0 3000 300ms
+	TextTalk name[3] {
+		#11100081V#11P#0307F#4S咦咦……！？{wait}
+	}
+	TextWait
+	Sleep 300ms
+	TextTalkNamed char[1] "戴眼鏡的女性" {
+		#11100082V#2004F#5P哎呀，這算是打招呼嗎，
+		蘭迪・奧蘭多。{wait}
+	} {
+		#11100083V#2002F『咦咦』是什麼意思呢？{wait}
+	}
+	TextWait
+	TextTalk name[3] {
+		#11100084V#12P#0309F啊，不不……
+		應該說是稍微有點出乎意料吧。{wait}
+	}
+	TextWait
+	Fork name[0] fork[2]:
+		CharTurnToChar self name[3] 500deg/s
+	Sleep 50ms
+	Fork name[1] fork[2]:
+		CharTurnToChar self name[3] 500deg/s
+	Sleep 50ms
+	CharTurnToChar name[2] name[3] 500deg/s
+	TextTalk name[0] {
+		#11100085V#5P#0005F怎麼，你們認識嗎？{wait}
+	}
+	TextWait
+	TextTalk name[2] {
+		#11100086V#6P#0211F這種反應，感覺好像是
+		做過什麼虧心事一樣呢……{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#11100087V#5P哎～咳咳！{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#11100088V#5P你們幾個，快點敬禮！{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#11100089V#5P這位是擔任警備隊副司令的
+		索妮亞二校！{wait}
+	}
+	TextWait
+	Emote name[0] 0mm 2000mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Sleep 50ms
+	Emote name[1] 0mm 2000mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Sleep 1000ms
+	Fork name[0] fork[2]:
+		CharTurnTo self 0deg 500deg/s
+	Sleep 50ms
+	Fork name[1] fork[2]:
+		CharTurnTo self 0deg 500deg/s
+	Sleep 50ms
+	CharTurnTo name[2] 0deg 500deg/s
+	TextTalk name[0] {
+		#11100090V#6P#0005F警備隊的副司令……！{wait}
+	}
+	TextWait
+	TextTalk name[1] {
+		#11100091V#12P#0101F失、失禮了。{wait}
+	}
+	TextWait
+	Sleep 300ms
+	TextTalk name[2] {
+		#11100092V#6P#0208F（所謂二校，在普通的軍隊中
+		　應該就相當於中校吧……）{wait}
+	} {
+		#11100093V（原來是這麼了不起的人嗎？）{wait}
+	}
+	TextWait
+	TextTalk name[3] {
+		#11100094V#0306F#12P（那還用說……
+		　她可是警備隊中真正的二把手啊。）{wait}
+	} {
+		#11100095V#0300F（但要說身為指揮官的領導力，
+		　則是毫無疑問的Ｎｏ．１了。）{wait}
+	}
+	TextWait
+	TextTalk char[1] {
+		#11100096V#2004F#5P呵呵……
+		請不用那麼拘謹。{wait}
+	} {
+		#11100097V#2000F你們就是『特務支援課』的成員吧？{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#11100098V#6P#0000F是、是的。{wait}
+	} {
+		#11100099V今天找我們特務支援課，
+		是有何要事呢……？{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#11100100V#5P哼哼，你們應該感到光榮。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#11100101V#5P像你們這種毫無用處的新手
+		竟然也會被叫來啊。{wait}
+	}
+	TextWait
+	Emote name[0] 0mm 2000mm 14 15 250ms 2
+	SoundPlay sound[23] 0 100 0
+	Emote name[1] 0mm 2000mm 14 15 250ms 2
+	SoundPlay sound[23] 0 100 0
+	Emote name[2] 0mm 2000mm 14 15 250ms 2
+	SoundPlay sound[23] 0 100 0
+	Emote name[3] 0mm 2000mm 14 15 250ms 2
+	SoundPlay sound[23] 0 100 0
+	Sleep 1200ms
+	CharTurnTo char[1] 350deg 500deg/s
+	TextTalk char[1] {
+		#11100102V#12P#2003F……副局長，
+		交代的事情就由我來吧。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#11100103V#5P可、可是……{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#11100104V#5P……明白了，
+		那就全部交給您吧。{wait}
+	}
+	TextWait
+	TextTalk char[1] {
+		#11100105V#12P#2000F謝謝。{wait}
+	}
+	TextWait
+	CharTurnTo char[1] 180deg 500deg/s
+	Sleep 500ms
+	VisSet vis[0] 3 0xFFFFFFFF 500ms 0 0
+	VisSet vis[0] 0 -10000 0 500ms 0
+	VisWait vis[0] 3
+	VisWait vis[0] 0
+	TextSetPos -1 280 35 3
+	TextMessage char[1] {
+		#11100106V──正式自我介紹一下。
+		我是克洛斯貝爾警備隊的副司令，
+		索妮亞・貝爾茨。{wait}
+	} {
+		#11100107V今日來此，是希望借助你們
+		『特務支援課』的力量。{wait}
+	} {
+		#11100108V首先，容我先將事情的情況
+		向你們大概介紹一下吧。{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	TextSetPos -1 280 60 3
+	VisSet vis[0] 3 0x00FFFFFF 500ms 0 0
+	VisSet vis[0] 0 0 0 500ms 0
+	CamZoom 21500 2000ms
+	FadeOut 2000ms 0x00000000 255
+	FadeWait
+	CamWait 16
+	Sleep 1000ms
+	CamSetDistance 41300 900 -2100 0ms
+	ED7CamRotate 47deg 20deg 0deg 0ms
+	CamPers 400 0ms
+	CamZoom 22000 0ms
+	CharSetPos char[1] (42200, 0, -2100) 270deg
+	CharSetPos char[2] (42500, 0, -3000) 270deg
+	CharSetPos name[0] (39700, 0, -2600) 90deg
+	CharSetPos name[1] (39700, 0, -1600) 90deg
+	CharSetPos name[3] (38400, 0, -2500) 90deg
+	CharSetPos name[2] (38400, 0, -1500) 90deg
+	TextSetPos -1 -1 -1 -1
+	TextMessage name[0] {
+		#11100109V#0001F魔獸侵害事件的調查……！？{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	TextSetPos -1 280 60 3
+	CamZoom 22500 1500ms
+	FadeIn 1000ms 0x00000000
+	FadeWait
+	CamWait 16
+	TextTalk char[1] {
+		#11100110V#2003F#11P嗯，正是。{wait}
+	} {
+		#11100111V#2000F在最近這一個月左右，自治州各地
+		都相繼發生了某種特定魔獸的侵害事件。{wait}
+	} {
+		#11100112V希望你們能夠
+		幫忙進行調查。{wait}
+	}
+	TextWait
+	Emote name[0] 0mm 2000mm 24 27 250ms 0
+	Emote name[1] 0mm 2000mm 24 27 250ms 0
+	Emote name[2] 0mm 2000mm 24 27 250ms 0
+	Emote name[3] 0mm 2000mm 24 27 250ms 0
+	Sleep 2000ms
+	EmoteStop name[0]
+	EmoteStop name[1]
+	EmoteStop name[2]
+	EmoteStop name[3]
+	TextTalk name[0] {
+		#11100113V#6P#0011F請、請稍等一下。{wait}
+	} {
+		#11100114V不是克洛斯貝爾市內……
+		而是調查市外的魔獸侵害事件嗎？{wait}
+	}
+	TextWait
+	TextTalk char[1] {
+		#11100115V#2000F#11P啊，有什麼異議嗎？{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#11100116V#6P#0003F不、不……並非如此。{wait}
+	}
+	TextWait
+	TextTalk name[1] {
+		#11100117V#0101F#6P那個，警備隊方面
+		應該已經在進行調查了吧？{wait}
+	} {
+		#11100118V在這種情況下，還有我們
+		可以幫忙的餘地嗎？{wait}
+	}
+	TextWait
+	TextTalk char[1] {
+		#11100119V#2006F#11P嗯～有很多呢。{wait}
+	} {
+		#11100120V#2001F如果說是普通的魔獸侵害事件，
+		令人費解的疑點也過多了。{wait}
+	} {
+		#11100121V光靠我們的調查實在是不夠，
+		情況目前已經陷入僵局了。{wait}
+	} {
+		#11100122V所以說，希望能有人從
+		別的視角來切入調查。{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#11100123V#6P#0005F別的視角嗎？{wait}
+	}
+	TextWait
+	TextTalk char[1] {
+		#11100124V#2003F#11P沒錯，也就是說，並非以職業警備隊員的視角，
+		而是以職業搜查官的視角來調查。{wait}
+	} {
+		#11100125V#2000F從這層意義上來說，
+		也並不是非要找你們支援課不可。{wait}
+	}
+	TextWait
+	CharTurnTo char[1] 315deg 500deg/s
+	Sleep 300ms
+	TextTalk char[1] {
+		#11100126V#2002F#2P比如說，也可以去拜託知名
+		精英部門──『搜查一課』之類的。{wait}
+	}
+	TextWait
+	Emote char[0] 0mm 2000mm 40 43 100ms 3
+	Sleep 800ms
+	TextTalk char[0] {
+		#11100127V#5P不，那個……哈哈。
+		雖然我很樂意為您介紹。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#11100128V#5P但是，那個，那些傢伙一直都非常忙。{wait}
+	}
+	TextWait
+	CharTurnToChar char[1] name[0] 500deg/s
+	Sleep 300ms
+	TextTalk char[1] {
+		#11100129V#2004F#11P──就是這樣，
+		因為有種種原因，
+		所以最後就指名要找你們了。{wait}
+	} {
+		#11100130V#2000F是不是有什麼為難之處呢？{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#11100131V#6P#0002F不，沒有……{wait}
+	} {
+		#11100132V#0004F──我明白了。
+		既然發生了這種事，我們很願意提供協助。{wait}
+	} {
+		#11100133V#0001F不過，說是要對魔獸侵害事件進行調查，
+		但具體應該做些什麼好呢？{wait}
+	}
+	TextWait
+	CharTurnTo char[1] 225deg 500deg/s
+	Sleep 300ms
+	TextTalk char[1] {
+		#11100134V#5P#2000F──諾艾兒，把那東西給他。{wait}
+	}
+	TextWait
+	Sleep 200ms
+	SoundPlay sound[1491] 255 100 0
+	TextTalkNamed char[2] "女性隊員" {
+		#11100135V#11P#0500F是。{wait}
+	}
+	TextWait
+	_59
+	CamSetDistance 40840 900 -2120 1000ms
+	ForkLoop name[1] fork[2]:
+		CharTurnToChar self char[2] 500deg/s
+	ForkLoop name[2] fork[2]:
+		CharTurnToChar self char[2] 500deg/s
+	Fork char[2] fork[1]:
+		CharWalkToPos self (40500, 0, -2800) 1500mm/s 0
+	ForkWait char[2] fork[1]
+	Fork char[1] fork[2]:
+		CharTurnTo self 270deg 500deg/s
+	ForkQuit name[1] fork[2]
+	Fork name[1] fork[2]:
+		CharTurnTo self 180deg 500deg/s
+	ForkQuit name[2] fork[2]
+	VisSet vis[2] 3 0xFFFFFFFF 500ms 0 0
+	VisSet vis[2] 0 -10000 0 500ms 0
+	VisWait vis[2] 3
+	VisWait vis[2] 0
+	TextSetPos -1 280 35 3
+	Sleep 300ms
+	SoundPlay sound[1492] 255 100 0
+	TextSetName "女性隊員"
+	TextMessage null {
+		#11100136V──請。{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	TextSetPos 60 180 -1 -1
+	TextMessage name[0] {
+		#11100137V#0000F啊，謝謝。{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	TextSetPos -1 280 60 3
+	TextSetPos -1 280 60 3
+	VisSet vis[2] 3 0x00FFFFFF 500ms 0 0
+	VisSet vis[2] 0 0 0 500ms 0
+	VisWait vis[2] 3
+	VisWait vis[2] 0
+	Emote name[0] 0mm 2000mm 38 38 250ms 1
+	Sleep 1000ms
+	TextTalk name[0] {
+		#11100138V#6P#0005F（哎，這個人……？）{wait}
+	}
+	TextWait
+	TextTalkNamed char[2] "女性隊員" {
+		#11100139V#11P#0505F嗯？怎麼了？{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#11100140V#6P#0003F不，沒什麼……不好意思。{wait}
+	} {
+		#11100141V#0008F（嗯……
+		　感覺好像在什麼地方見過。）{wait}
+	}
+	TextWait
+	FadeOut 300ms 0x00000000 100
+	TextSetPos -1 -1 -1 -1
+	TextSetName ""
+	SoundPlay sound[17] 0 100 0
+	TextMessage null {
+		收下了{item[724]}{color 0}。{wait}
+	}
+	TextWait
+	TextClose 0
+	FadeIn 300ms 0x00000000
+	TextSetPos -1 280 60 3
+	_59
+	ItemAdd item[724] 1
+	Emote name[0] 0mm 2000mm 24 27 250ms 0
+	CamSetDistance 41300 900 -2100 1000ms
+	Fork char[2] fork[1]:
+		CharWalkToPos2 self (42500, 0, -3000) 1500mm/s 0
+	ForkWait char[2] fork[1]
+	Sleep 500ms
+	EmoteStop name[0]
+	Sleep 300ms
+	TextTalk name[0] {
+		#11100142V#6P#0001F這是……{wait}
+	}
+	TextWait
+	TextTalk name[1] {
+		#11100143V#0101F#5P警備隊的調查報告書啊。{wait}
+	}
+	TextWait
+	TextTalk char[1] {
+		#11100144V#2003F#11P我們這邊調查得知的案情，
+		都已經寫在這上面了。{wait}
+	} {
+		#11100145V#2000F希望各位看完那份調查簡介，
+		然後就立刻展開調查工作。{wait}
+	} {
+		#11100146V這也是為了避免給你們增添先入為主的多餘觀點。{wait}
+	}
+	TextWait
+	Fork name[1] fork[2]:
+		CharTurnTo self 90deg 500deg/s
+	Sleep 100ms
+	CharTurnTo name[2] 90deg 500deg/s
+	Sleep 200ms
+	TextTalk name[1] {
+		#11100147V#0100F#6P原來如此……{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#11100148V#6P#0000F既然是這樣，
+		那麼我們稍後就看。{wait}
+	}
+	TextWait
+	TextTalk char[1] {
+		#11100149V#2004F#11P呵呵，那就拜託了。{wait}
+	} {
+		#11100150V#2002F那麼，不好意思，
+		我們就先行告辭了。{wait}
+	} {
+		#11100151V今後會與支援課直接進行溝通，
+		如果發現了什麼，就來向我報告吧。{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#11100152V#6P#0000F明白了。{wait}
+	}
+	TextWait
+	CharTurnTo char[1] 0deg 500deg/s
+	Sleep 300ms
+	TextTalk char[1] {
+		#11100153V#2000F#12P──副局長，
+		實在是打擾了。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#11100154V#5P不不，哪裡哪裡。
+		不用客氣，歡迎再來。{wait}
+	}
+	TextWait
+	CharTurnTo char[1] 225deg 500deg/s
+	ForkLoop name[0] fork[2]:
+		CharTurnToChar self char[1] 500deg/s
+	ForkLoop name[1] fork[2]:
+		CharTurnToChar self char[1] 500deg/s
+	ForkLoop name[2] fork[2]:
+		CharTurnToChar self char[1] 500deg/s
+	ForkLoop name[3] fork[2]:
+		CharTurnToChar self char[1] 500deg/s
+	Fork char[1] fork[1]:
+		CharWalkToPos self (40500, 0, -3900) 2000mm/s 0
+	ForkWait char[1] fork[1]
+	Emote char[1] 0mm 2000mm 38 38 250ms 1
+	Sleep 1000ms
+	CharTurnToChar char[1] name[3] 500deg/s
+	Sleep 300ms
+	TextTalk char[1] {
+		#11100155V#2002F#11P呵呵……{wait}
+	} {
+		#11100156V看起來，你好像已經
+		非常適應現在的工作了啊？{wait}
+	}
+	TextWait
+	TextTalk name[3] {
+		#11100157V#0302F#6P這個，哈哈……{wait}
+	} {
+		#11100158V#0304F嗯，比起監視國境和演習，
+		確實還是在這裡過得愉快啊。{wait}
+	}
+	TextWait
+	TextTalk char[1] {
+		#11100159V#2004F#11P那就好……
+		不枉我將你介紹到這裡了。{wait}
+	}
+	TextWait
+	CharTurnToChar char[1] char[2] 500deg/s
+	Sleep 300ms
+	TextTalk char[1] {
+		#11100160V#6P#2000F諾艾兒，我們走吧。{wait}
+	}
+	TextWait
+	CharTurnToChar char[2] char[1] 500deg/s
+	SoundPlay sound[1478] 255 100 0
+	TextTalkNamed char[2] "女性隊員" {
+		#11100161V#0500F#5P是。{wait}
+	}
+	TextWait
+	CharTurnToChar char[2] name[0] 500deg/s
+	Sleep 300ms
+	CrossFade 250ms
+	CharSetChipBase char[2] chip[32]
+	CharSetChipPattern char[2] 0
+	SoundPlay sound[804] 0 100 0
+	FadeWait
+	SoundPlay sound[1498] 255 100 0
+	Sleep 1000ms
+	CamSetDistance 41300 1000 -3600 2000ms
+	ForkFunc char[1] fork[3] fn[0,6]
+	ForkFunc char[2] fork[3] fn[0,7]
+	ForkWait char[1] fork[3]
+	ForkQuit name[3] fork[2]
+	Fork name[3] fork[2]:
+		CharTurnTo self 180deg 500deg/s
+	ForkWait char[2] fork[3]
+	ForkQuit name[0] fork[2]
+	ForkQuit name[1] fork[2]
+	ForkQuit name[2] fork[2]
+	CharFlagsSet char[1] 0x0080
+	CharFlags2Set char[1] 0x8000
+	CharFlagsSet char[2] 0x0080
+	CharFlags2Set char[2] 0x8000
+	SoundPlay sound[104] 0 100 0
+	CamWait 1
+	Sleep 500ms
+	CrossFade 500ms
+	CamSetDistance 39100 1000 -2100 0ms
+	ED7CamRotate 40deg 25deg 0deg 0ms
+	CamPers 400 0ms
+	CamZoom 21850 0ms
+	CharTurnTo char[0] 225deg 0deg/s
+	CharSetPos name[1] (39700, 0, -1500) 180deg
+	CharSetPos name[2] (38400, 0, -1400) 180deg
+	FadeWait
+	TextTalk name[3] {
+		#11100163V#6P#0300F呼……真是嚇我一跳。{wait}
+	}
+	TextWait
+	Fork name[0] fork[2]:
+		CharTurnToChar self name[3] 500deg/s
+	Sleep 100ms
+	CharTurnToChar name[1] name[3] 500deg/s
+	Sleep 200ms
+	TextTalk name[0] {
+		#11100164V#11P#0000F莫非是你在警備隊
+		時期的長官嗎？{wait}
+	}
+	TextWait
+	CharTurnToChar name[3] name[0] 500deg/s
+	TextTalk name[3] {
+		#11100165V#6P#0300F是啊……
+		不過倒也不是直屬上司。{wait}
+	} {
+		#11100166V只是在訓練和軍事演習的時候，
+		曾經多次接受過她的指導。{wait}
+	} {
+		#11100167V#0306F雖然是個美人，但發怒的
+		時候可是超級恐怖啊。{wait}
+	}
+	TextWait
+	TextTalk name[2] {
+		#11100168V#0200F#5P對蘭迪前輩發怒的話，
+		原因八成是生活態度之類的吧……？{wait}
+	}
+	TextWait
+	TextTalk name[1] {
+		#11100169V#5P#0104F呵呵，我想也是。{wait}
+	} {
+		#11100170V#0100F他好像總會引起一些
+		和女性有關的麻煩呢。{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#11100171V#11P#0005F說起來……{wait}
+	} {
+		#11100172V#0001F陪同在副司令身邊的那位
+		女性隊員，你也認識嗎？{wait}
+	}
+	TextWait
+	TextTalk name[3] {
+		#11100173V#6P#0300F不……
+		是個從沒見過的生面孔。{wait}
+	} {
+		#11100174V多半是負責輔佐副司令的
+		唐古拉姆門隊員吧。{wait}
+	}
+	TextWait
+	Emote name[3] 0mm 2000mm 38 38 250ms 1
+	Sleep 1000ms
+	TextTalk name[3] {
+		#11100175V#6P#0305F嗯，這麼一說，
+		你好像很在意她啊？{wait}
+	} {
+		#11100176V#0309F怎麼回事，怎麼回事，
+		難不成是對人家一見鍾情了嗎～？{wait}
+	}
+	TextWait
+	Fork name[1] fork[2]:
+		CharTurnToChar self name[0] 500deg/s
+	CharTurnToChar name[2] name[0] 500deg/s
+	Sleep 300ms
+	TextTalk name[1] {
+		#11100177V#5P#0111F哎呀……{wait}
+	}
+	TextWait
+	TextTalk name[2] {
+		#11100178V#0211F#5P………………………（瞪～）{wait}
+	}
+	TextWait
+	Emote name[0] 0mm 2000mm 40 43 100ms 3
+	Sleep 500ms
+	TextTalk name[0] {
+		#11100179V#11P#0011F不、不是啦，
+		才沒有那種事。{wait}
+	} {
+		#11100180V只是，感覺好像曾在
+		什麼地方見到過她……{wait}
+	}
+	TextWait
+	Sleep 300ms
+	Shake 100 0 3000 300ms
+	TextTalk char[0] {
+		#11100181V#4S咳咳！{wait}
+	}
+	TextWait
+	Emote name[0] 0mm 2000mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Sleep 50ms
+	Emote name[1] 0mm 2000mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Sleep 50ms
+	Emote name[2] 0mm 2000mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Sleep 50ms
+	Emote name[3] 0mm 2000mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Sleep 1000ms
+	CamSetDistance 40800 800 0 1200ms
+	CamZoom 22800 1200ms
+	Fork name[0] fork[2]:
+		CharTurnTo self 45deg 400deg/s
+	Sleep 50ms
+	Fork name[1] fork[2]:
+		CharTurnTo self 45deg 400deg/s
+	Sleep 50ms
+	Fork name[2] fork[2]:
+		CharTurnTo self 45deg 400deg/s
+	Sleep 50ms
+	Fork name[3] fork[2]:
+		CharTurnTo self 45deg 400deg/s
+	ForkWait name[0] fork[2]
+	ForkWait name[1] fork[2]
+	ForkWait name[2] fork[2]
+	ForkWait name[3] fork[2]
+	CamWait 121
+	TextTalk name[0] {
+		#11100182V#0005F#12P啊……{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#11100183V#5P……你們幾個，一直在那裡說些無聊的話，
+		到底還想說到什麼時候？{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#11100184V#5P難道說……你們是……{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#11100185V#5P受賽爾蓋之類的傢伙所指示，
+		故意來這裡戲弄我的嗎……？{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#11100186V#12P#0011F不、不是，怎麼會！{wait}
+	}
+	TextWait
+	TextTalk name[1] {
+		#11100187V#0103F#6P那個……我們這就告辭了。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#11100188V#5P哼……
+		那就趕快出去吧。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#11100189V#5P真是的，竟然全都
+		無視我的忠告……{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#11100190V#5P這樣做意味著什麼，
+		你們肯定也心知肚明吧？{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#11100191V#12P#0001F這……{wait}
+	}
+	TextWait
+	TextTalk name[3] {
+		#11100192V#6P#0301F喂喂……{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#11100193V#5P哼哼，算啦，你們就趕快到
+		荒山裡起早貪黑地尋找魔獸吧。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#11100194V#5P要不然，乾脆全員一起
+		調職到警備隊裡如何啊？{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#11100195V#5P最好再把那個可憎的賽爾蓋也一起帶上。{wait}
+	}
+	TextWait
+	TextTalk name[2] {
+		#11100196V#6P#0211F………………………………{wait}
+	}
+	TextWait
+	TextTalk name[1] {
+		#11100197V#0103F#6P……告辭了。{wait}
+	}
+	TextWait
+	CamZoom 23300 2000ms
+	FadeOut 2000ms 0x00000000 255
+	FadeWait
+	CamWait 1
+	CamSetDistance 3700 1000 3500 0ms
+	ED7CamRotate 55deg 25deg 0deg 0ms
+	CamPers 400 0ms
+	CamZoom 23500 0ms
+	CharSetPos name[0] (3700, 0, 4000) 180deg
+	CharSetPos name[1] (3700, 0, 4000) 180deg
+	CharSetPos name[2] (3700, 0, 4000) 180deg
+	CharSetPos name[3] (3700, 0, 4000) 180deg
+	CharColor name[0] 0x00FFFFFF 0ms
+	CharColor name[1] 0x00FFFFFF 0ms
+	CharColor name[2] 0x00FFFFFF 0ms
+	CharColor name[3] 0x00FFFFFF 0ms
+	ObjFlagsUnset object[0] 0x0010
+	ObjFrame object[0] 0
+	FadeIn 1000ms 0x00000000
+	FadeWait
+	ED7ObjPlay object[0] 0 5 0 0
+	SoundPlay sound[103] 0 100 0
+	ObjWait object[0]
+	CamSetDistance 3700 1100 1400 2500ms
+	Fork name[0] fork[1]:
+		CharWalkToPos2 self (3700, 0, 300) 2000mm/s 0
+	Fork name[0] fork[2]:
+		CharColor self 0xFFFFFFFF 500ms
+	Sleep 500ms
+	Fork name[1] fork[1]:
+		CharWalkToPos2 self (4700, 0, 1400) 2000mm/s 0
+	Fork name[1] fork[2]:
+		CharColor self 0xFFFFFFFF 500ms
+	Sleep 500ms
+	Fork name[2] fork[1]:
+		CharWalkToPos2 self (2700, 0, 1400) 2000mm/s 0
+	Fork name[2] fork[2]:
+		CharColor self 0xFFFFFFFF 500ms
+	Sleep 500ms
+	Fork name[3] fork[1]:
+		CharWalkToPos2 self (3700, 0, 2500) 2000mm/s 0
+	Fork name[3] fork[2]:
+		CharColor self 0xFFFFFFFF 500ms
+	Sleep 500ms
+	ED7ObjPlay object[0] 5 0 0 0
+	SoundPlay sound[104] 0 100 0
+	ObjWait object[0]
+	ForkWait name[0] fork[1]
+	Fork name[0] fork[2]:
+		CharTurnTo self 0deg 500deg/s
+	ForkWait name[1] fork[1]
+	Fork name[1] fork[2]:
+		CharTurnTo self 270deg 500deg/s
+	ForkWait name[2] fork[1]
+	Fork name[2] fork[2]:
+		CharTurnTo self 90deg 500deg/s
+	ForkWait name[3] fork[1]
+	Fork name[3] fork[2]:
+		CharTurnTo self 180deg 500deg/s
+	ForkWait name[3] fork[2]
+	CamWait 1
+	TextTalk name[3] {
+		#11100198V#0306F#5P真是的……
+		那傢伙還是那麼惹人討厭啊。{wait}
+	}
+	TextWait
+	TextTalk name[2] {
+		#11100199V#0203F#6P……剛才真希望有個耳塞。{wait}
+	}
+	TextWait
+	TextTalk name[1] {
+		#11100200V#11P#0106F算了，其實我們剛才
+		也有一點做得不對的地方。{wait}
+	} {
+		#11100201V#0101F……但還是覺得
+		他的言行太過粗暴惡劣了。{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#11100202V#12P#0003F──不管這些了，
+		就算和他針鋒相對也沒什麼意義。{wait}
+	} {
+		#11100203V#0001F總之，我們還是先回去
+		研究一下調查報告書吧。{wait}
+	} {
+		#11100204V然後，還要決定調查方針，
+		展開進一步的行動。{wait}
+	}
+	TextWait
+	Fork name[1] fork[2]:
+		CharTurnToChar self name[0] 500deg/s
+	Sleep 50ms
+	CharTurnToChar name[2] name[0] 500deg/s
+	Sleep 200ms
+	TextTalk name[1] {
+		#11100205V#5P#0100F是啊，這看起來似乎
+		不像是普通的魔獸侵害事件。{wait}
+	}
+	TextWait
+	TextTalk name[2] {
+		#11100206V#6P#0200F令人費解的疑點……
+		究竟是指什麼呢？{wait}
+	}
+	TextWait
+	CamZoom 24000 2000ms
+	FadeOut 2000ms 0x00000000 255
+	FadeWait
+	CamWait 16
+	BgmStop 4000ms
+	BgmWait
+	VisSet vis[1] 3 0xFFFFFFFF 500ms 0 0
+	VisWait vis[1] 3
+	Sleep 2000ms
+	VisSet vis[1] 3 0x00FFFFFF 500ms 0 0
+	VisWait vis[1] 3
+	NextFrame
+	VisHide vis[255] 0
+	FlagSet flag[739]
+	NewScene "scena/c0110.bin" 0 0 0
+	Hcf
+	Return
+
+fn[6]:
+	CharTurnTo char[1] 180deg 500deg/s
+	Fork char[1] fork[1]:
+		CharWalkToPos self (40500, 0, -7500) 2000mm/s 0
+	Sleep 1000ms
+	Fork char[1] fork[2]:
+		CharColor self 0x00FFFFFF 500ms
+	SoundPlay sound[103] 0 100 0
+	ForkWait char[1] fork[1]
+	ForkWait char[1] fork[2]
+	Return
+
+fn[7]:
+	Sleep 600ms
+	CharSetChipBase char[2] chip[31]
+	CharSetChipPattern char[2] 0
+	Fork char[2] fork[1]:
+		CharWalkToPos self (40500, 0, -5000) 2000mm/s 0
+	ForkWait char[2] fork[1]
+	Fork char[2] fork[1]:
+		CharWalkToPos self (40500, 0, -7500) 2000mm/s 0
+	Sleep 500ms
+	Fork char[2] fork[2]:
+		CharColor self 0x00FFFFFF 500ms
+	ForkWait char[2] fork[1]
+	ForkWait char[2] fork[2]
+	Return

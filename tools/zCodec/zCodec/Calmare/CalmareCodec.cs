@@ -12,11 +12,13 @@ namespace zCodec.Calmare;
 
 public partial class CalmareCodec
 {
-    public static readonly Dictionary<string, string> Remaps = new()
+    public static readonly Dictionary<string, string> RemapChars = new()
     {
         ["・"] = "丄",
-        ["♪"] = "丅"
+        ["♪"] = "丅",
+        ["⑪"] = "丆"
     };
+    public static string Remap(string str) => RemapChars.Aggregate(str, (current, ch) => current.Replace(ch.Key, ch.Value));
 
     public void ParseFromFile(string file)
     {
@@ -27,29 +29,29 @@ public partial class CalmareCodec
 
     private void Parse(string clmText)
     {
-        clmText = Remaps.Aggregate(clmText, (current, ch) => current.Replace(ch.Key, ch.Value));
         UsingText = clmText;
-        var matches = FnReg.Matches(clmText);
+        var matches = FnRegex().Matches(clmText);
         Functions.AddRange(matches.Select(x => x.Value));
-        matches = NpcNameStringReg.Matches(clmText);
+        matches = NpcNameStringRegex().Matches(clmText);
         NpcNameStrings.AddRange(matches.Select(x => x.Value));
-        matches = LabelNameStringReg.Matches(clmText);
+        matches = LabelNameStringRegex().Matches(clmText);
         LabelNameStrings.AddRange(matches.Select(x => x.Value));
-        BattleCount = BattleReg.Count(clmText);
+        BattleCount = BattleRegex().Count(clmText);
         ParseText();
     }
 
+ 
     private void ParseText()
     {
         for (var index = 0; index < Functions.Count; index++)
         {
             var func = Functions[index];
-            var matches = FnTextReg.Matches(func);
+            var matches = FnTextRegex().Matches(func);
             if (matches.Count == 0)
                 continue;
             FnTexts.Add((index,
                 matches.Select(x =>
-                        Opcode.TryParse(x.Value, out var opcode)
+                        ScenaOpcode.TryParse(x.Value, out var opcode)
                             ? opcode
                             : throw new Exception($"Unknown func: {x.Value}"))
                     .ToList()));
@@ -58,10 +60,10 @@ public partial class CalmareCodec
 
     public bool CompileToFile(string outPath, string calmareFile, Encoding encoding)
     {
-        var holderText = ExtraEncoding.DoubleByteCharReg.Replace(UsingText ?? throw new InvalidOperationException(), x =>
+        var holderText = ExtraEncoding.DoubleByteCharRegex().Replace(UsingText ?? throw new InvalidOperationException(), x =>
         {
             var value = x.Value;
-            if (Remaps.TryGetValue(value, out var c))
+            if (RemapChars.TryGetValue(value, out var c))
                 value = c;
             var count = encoding.GetByteCount(value);
             return count switch
@@ -76,7 +78,7 @@ public partial class CalmareCodec
             holderCodec.NpcNameStrings.Count != NpcNameStrings.Count ||
             holderCodec.BattleCount != BattleCount || holderCodec.LabelNameStrings.Count != LabelNameStrings.Count)
             return false;
-        File.WriteAllText(outPath, holderText);
+        File.WriteAllText(outPath, holderText.Replace("\r",""));
         var success = Utils.RunExe(calmareFile, $"\"{outPath}\"", 2);
         if (!success)
             return false;
@@ -102,7 +104,7 @@ public partial class CalmareCodec
         var strings = new Queue<string>();
         while (br.BaseStream.Position < br.BaseStream.Length)
         {
-            var str = br.ReadCString(ExtraEncoding.SJIS) ?? throw new Exception("读取文本失败");
+            var str = br.ReadClmString(ExtraEncoding.SJIS) ?? throw new Exception("读取文本失败");
             strings.Enqueue(str);
         }
 
@@ -122,7 +124,7 @@ public partial class CalmareCodec
                 if (holderStr != binStr)
                     throw new Exception($"未找到NameString[{index}]: {replaceStr}");
                 byte[] sjisBytes = [..ExtraEncoding.SJIS.GetBytes(holderStr), 0];
-                byte[] replaceBytes = [..encoding.GetBytes(replaceStr), 0];
+                byte[] replaceBytes = [..ClmStringToBytes(replaceStr,encoding), 0];
                 var result = BitHelper.Replace(binData, sjisBytes, replaceBytes, pString, (int)br.BaseStream.Length, 1);
                 if (!result.replaced)
                     throw new Exception($"未找到NameString[{index}]: {replaceStr}");
@@ -160,35 +162,107 @@ public partial class CalmareCodec
             }
         }
     }
+    public static byte[] ClmStringToBytes(string text, Encoding encoding)
+    {
+        if (encoding.CodePage == 936)
+            text = Remap(text);
+        var texts = ContentSplitRegex().Matches(text.Replace("\r", "")).Select(x => x.Value);
+        var bytes = new List<byte>(0x200);
+        foreach (var str in texts)
+            bytes.AddRange(str switch
+            {
+                "\n" => [1],
+                "{}" => [],
+                "{wait}" => [2],
+                _ when str.StartsWith("{color") => [07, Convert.ToByte(str[7..^1])],
+                _ when str.StartsWith("{item[") =>
+                    [0x1F, ..BitConverter.GetBytes(Convert.ToUInt16(str[6..^2]))],
+                _ when str.StartsWith("{0x") =>
+                    [Convert.ToByte(str[3..^1], 16)],
+                _ => encoding.GetBytes(str)
+            });
+        return bytes.ToArray();
+    }
 
+    public static string BytesToClmString(byte[] bytes, Encoding encoding)
+    {
+        var sb = new  StringBuilder();
+        var temp = new List<byte>(0x100);
+        for (var index = 0; index < bytes.Length; index++)
+        {
+            var b = bytes[index];
+            if (b > 0x1f)
+            {
+                temp.Add(b);
+                continue;
+            }
+            if (temp.Count > 0)
+            {
+                sb.Append(encoding.GetString(temp.ToArray()));
+                temp.Clear();
+            }
+            switch (b)
+            {
+                case 0:
+                    throw new ArgumentException();
+                case 1:
+                    sb.Append('\n');
+                    break;
+                case 2:
+                    sb.Append("{wait}");
+                    break;
+                case 7:
+                    b = bytes[++index];
+                    sb.Append($"{{color {b}}}");
+                    break;
+                case 0x1f:
+                    var id = BitConverter.ToUInt16([bytes[++index], bytes[++index]]);
+                    sb.Append($"{{item[{id}]}}");
+                    break;
+                default:
+                    sb.Append($"{{0x{b:X2}}}");
+                    break;
+            }
+        }
+
+        if (temp.Count > 0)
+        {
+            sb.Append(encoding.GetString(temp.ToArray()));
+            temp.Clear();
+        }
+     
+        return sb.ToString();
+    }
+    
     public string? FileName;
     public string? UsingText;
     public readonly List<string> NpcNameStrings = new(100);
     public int BattleCount;
     public readonly List<string> LabelNameStrings = new(100);
-    public readonly List<(int index, List<Opcode> func)> FnTexts = [];
+    public readonly List<(int index, List<ScenaOpcode> func)> FnTexts = [];
     public readonly List<string> Functions = new(100);
-    private static readonly Regex FnReg = FnRegex();
-    private static readonly Regex FnTextReg = FnTextRegex();
-    private static readonly Regex NpcNameStringReg = NpcNameStringRegex();
-    private static readonly Regex LabelNameStringReg = LabelNameStringRegex();
-    private static readonly Regex BattleReg = BattleRegex();
 
+
+    
+    [GeneratedRegex(@"\d+", RegexOptions.Compiled | RegexOptions.Multiline)]
+    public static partial Regex NumRegex();
+    [GeneratedRegex("""\n|\{[\s\S]*?\}|[\s\S]+?(?=$|\n|{)""", RegexOptions.Compiled | RegexOptions.Multiline)]
+    public static partial Regex ContentSplitRegex();
     [GeneratedRegex("""(?<=^npc.*?:\n\tname ").*?(?="$)""", RegexOptions.Multiline)]
-    private static partial Regex NpcNameStringRegex();
+    public static partial Regex NpcNameStringRegex();
 
     [GeneratedRegex("""(?<=^label.*?:\n\tname ").*?(?="$)""", RegexOptions.Multiline)]
-    private static partial Regex LabelNameStringRegex();
+    public static partial Regex LabelNameStringRegex();
 
     [GeneratedRegex("""^battle\[\d+\]:$""", RegexOptions.Multiline)]
-    private static partial Regex BattleRegex();
+    public static partial Regex BattleRegex();
 
     [GeneratedRegex("""fn\[\d+\]:$[\s\S]*?(?=\nfn|\z)""", RegexOptions.Multiline)]
-    private static partial Regex FnRegex();
+    public static partial Regex FnRegex();
 
     //menu: c133b
     [GeneratedRegex("""
-                    \t+TextSetName ".+?"$|\t+(?:TextMessage|TextTalk |TextTalkNamed).*?{$[\s\S]*?\n\t+}$|\t+Menu .*?$[\s\S]*?(?=\n(?!\t+"))|\t+ED7MenuAdd.*?$|\t+ScMenuSetTitle.*?$
+                    \t+TextSetName ".+?"$|\t+(?:TextMessage|TextTalk |TextTalkNamed).*?{$[\s\S]*?\n\t+}$|\t+Menu .*?$[\s\S]*?(?=\n(?!\t+"))|\t+ED7MenuAdd.*?$|\t+ScMenuSetTitle.*?$|\t+CharSetName.*?$
                     """, RegexOptions.Compiled | RegexOptions.Multiline)]
-    private static partial Regex FnTextRegex();
+    public static partial Regex FnTextRegex();
 }

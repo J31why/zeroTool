@@ -9,6 +9,20 @@ namespace Common;
 
 public static class Utils
 {
+    private static string? _currentDir;
+    
+    public static string CurrentDir
+    {
+        get
+        {
+            if(_currentDir != null)
+                return _currentDir;
+            var currentDir = Environment.ProcessPath ?? throw new DirectoryNotFoundException();
+            _currentDir = Path.GetDirectoryName(currentDir) ?? throw new DirectoryNotFoundException();
+            return _currentDir;
+        }
+    }
+    
     public static bool RunExe(string exePath, string exeArgs, int timeoutSeconds)
     {
         StringBuilder output = new(), error = new();
