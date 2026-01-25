@@ -253,7 +253,6 @@ internal static class Program
             var codec = DatCodecFactory.Get(file);
             if (codec == null)
                 continue;
-            _encoding = ExtraEncoding.SJIS;
             var obj = codec.Decompile(file, _encoding);
             switch (codec.DatSaveFormat)
             {

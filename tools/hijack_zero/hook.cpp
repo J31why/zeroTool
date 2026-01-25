@@ -15,6 +15,7 @@ namespace hook {
     string noteHelpKey_posMap_addr_pattern = "F3 0F 10 05 ?? ?? ?? 00 F3 0F 11 05 ?? ?? ?? 00 4c 8b c0 41";
     string loadNoteHelpKey_posMap_addr_pattern = "48 89 5C 24 ?? 48 89 4C 24 ?? 55 56 57 41 54 41 55 41 56 41 57 48 8D AC 24 ?? ?? FF FF 48 81 EC ?? ?? 00 00 48 8d 05 ?? ?? ?? 00";
     string WebMPlayerOpen_addr_pattern = "72 03 48 8B 16 48 8B CB FF 15";
+    string TextLengthScalefactor_addr_pattern = "F3 0F 59 D1 F3 41 0F 59 D0 F3 0F 58 C2 F3 41 0F 59 C0 ";
 
     string main_sjis_byte_valid_addr_pattern = "80 ?? 7F 76";
     string ui_sjis_byte_valid_addr_pattern = "3C 3F 77";
@@ -36,7 +37,7 @@ namespace hook {
     uintptr_t noteHelpKey_posMap_addr = 0x1404DCCE0;
     uintptr_t loadNoteHelpKey_posMap_addr = 0x1400BF990;
     uintptr_t WebMPlayerOpen_addr = 0x1403D2EB0;  //[1403D2EB0]
-
+    uintptr_t TextLengthScalefactor_addr = 0x14041E994;
 
     uintptr_t memo_sjis_byte_valid_addr = 0x14028B905;  //memo 2
     uintptr_t menu_sjis_byte_valid_addr = 0x140332CC7;   //menu
@@ -67,6 +68,7 @@ namespace hook {
         0x14021558D,
         0x140216763
     };
+
     CreateFileA_t ori_CreateFileA = nullptr;
     CreateWindowExA_t ori_CreateWindowExA = nullptr;
     sjis2uni_t ori_sjis2uni = nullptr;
@@ -79,7 +81,7 @@ namespace hook {
     get_mess_string_key_t get_mess_string_key = nullptr;
 
     int matchedAddrCount = 0;
-    int totalAddrCount = 28;
+    int totalAddrCount = 29;
     bool isHookSuccessful = false;
 
     void search_all_addresses() {
@@ -158,6 +160,14 @@ namespace hook {
             WebMPlayerOpen_addr += (uint64_t)*offset_ptr + 0x4;
             WebMPlayerOpen_addr = *(uint64_t*)WebMPlayerOpen_addr;
             cout << "WebMPlayerOpen_addr : 0x" << hex << WebMPlayerOpen_addr << endl;
+            matchedAddrCount++;
+        }
+
+        if (SearchModuleMemory(TextLengthScalefactor_addr_pattern, matchResults) && matchResults.size() == 1) {
+            TextLengthScalefactor_addr = matchResults[0]+0x16;
+            uint32_t* offset_ptr = reinterpret_cast<uint32_t*>(TextLengthScalefactor_addr);
+            TextLengthScalefactor_addr += (uint64_t)*offset_ptr + 0x4;
+            cout << "TextLengthScalefactor_addr : 0x" << hex << TextLengthScalefactor_addr << endl;
             matchedAddrCount++;
         }
 
@@ -338,6 +348,13 @@ namespace hook {
         fix_end(ptr);
     }
 
+    void fix_TextLengthScalefactor(uintptr_t ptr) {
+        fix_begin(ptr);
+        float* pScaleFactor = reinterpret_cast<float*>(TextLengthScalefactor_addr);
+        *pScaleFactor = 0.88f;
+        fix_end(ptr);
+    }
+
     void hook_install() {
         try
         {
@@ -407,6 +424,9 @@ namespace hook {
             if (status != MH_OK) {
                 throw runtime_error("MinHook create WebMPlayerOpen hook failed!");
             }
+
+            cout << "[INFO]fix text length scale factor" << endl;
+            fix_TextLengthScalefactor(TextLengthScalefactor_addr);
 
             cout << "[INFO]fix main_sjis_byte_valid" << endl;
             for (size_t i = 0; i < size(main_sjis_byte_valid_addr); i++)

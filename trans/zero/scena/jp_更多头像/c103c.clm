@@ -1,0 +1,1296 @@
+calmare zero_k scena
+scena:
+	name "c103c" "c103c" "c103c"
+	town town[18]
+	bgm bgm[100]
+	flags 8192
+	item_use fn[0,255]
+	unk 255 0
+
+entry:
+	pos (0, 0, -1000)
+	unk1 0
+	cam_from (0, 0, 34000)
+	cam_pers 262
+	unk2 30
+	cam_deg 45deg
+	cam_limit 0deg 360deg
+	cam_at (0, 0, 0)
+	unk3 0
+	unk4 0
+	flags 0x0001
+	town town[18]
+	init fn[0,3]
+	reinit fn[0,4]
+
+chip[0] "chr/ch31600.itc"
+chip[1] "chr/ch25100.itc"
+chip[2] "chr/ch32500.itc"
+chip[3] "chr/ch26302.itc"
+chip[4] "chr/ch20402.itc"
+chip[5] "chr/ch21202.itc"
+chip[6] "chr/ch24202.itc"
+chip[7] "chr/ch27202.itc"
+chip[8] "chr/ch27302.itc"
+chip[9] "chr/ch32002.itc"
+chip[10] "chr/ch07302.itc"
+
+npc char[0]:
+	name "チャンホイ"
+	pos (16000, 0, 15989)
+	angle 0deg
+	flags 0x0105
+	unk2 0
+	chip chip[0]
+	init fn[0,0]
+	talk fn[0,6]
+	unk4 255
+
+npc char[1]:
+	name "フェン"
+	pos (16030, 0, 6050)
+	angle 270deg
+	flags 0x0105
+	unk2 0
+	chip chip[1]
+	init fn[0,0]
+	talk fn[0,8]
+	unk4 255
+
+npc char[2]:
+	name "サンサン"
+	pos (12310, 0, -1990)
+	angle 225deg
+	flags 0x0105
+	unk2 0
+	chip chip[2]
+	init fn[0,1]
+	talk fn[0,10]
+	unk4 255
+
+npc char[3]:
+	name "グリッド"
+	pos (7130, 150, -1480)
+	angle 180deg
+	flags 0x0105
+	unk2 0
+	chip chip[3]
+	init fn[255,255]
+	talk fn[0,11]
+	unk4 255
+
+npc char[4]:
+	name "パック"
+	pos (10689, 150, 3170)
+	angle 270deg
+	flags 0x0105
+	unk2 0
+	chip chip[4]
+	init fn[255,255]
+	talk fn[0,12]
+	unk4 255
+
+npc char[5]:
+	name "ルース"
+	pos (7300, 150, 3230)
+	angle 90deg
+	flags 0x0105
+	unk2 0
+	chip chip[5]
+	init fn[255,255]
+	talk fn[0,13]
+	unk4 255
+
+npc char[6]:
+	name "見物客"
+	pos (13949, 150, 2900)
+	angle 90deg
+	flags 0x0105
+	unk2 0
+	chip chip[6]
+	init fn[255,255]
+	talk fn[0,14]
+	unk4 255
+
+npc char[7]:
+	name "遊撃士スコット"
+	pos (3220, 150, 5539)
+	angle 0deg
+	flags 0x0185
+	unk2 0
+	chip chip[7]
+	init fn[255,255]
+	talk fn[0,15]
+	unk4 255
+
+npc char[8]:
+	name "遊撃士ヴェンツェル"
+	pos (3130, 150, 8930)
+	angle 180deg
+	flags 0x0185
+	unk2 0
+	chip chip[8]
+	init fn[255,255]
+	talk fn[0,16]
+	unk4 255
+
+npc char[9]:
+	name "遊撃士リン"
+	pos (1440, 150, 7170)
+	angle 90deg
+	flags 0x0185
+	unk2 0
+	chip chip[9]
+	init fn[255,255]
+	talk fn[0,17]
+	unk4 255
+
+npc char[10]:
+	name "キリカ"
+	pos (4989, 150, 7179)
+	angle 270deg
+	flags 0x0185
+	unk2 0
+	chip chip[10]
+	init fn[255,255]
+	talk fn[0,18]
+	unk4 255
+
+look_point[0]:
+	pos (14590, 0, 4630)
+	radius 1000
+	bubble_pos (16030, 1500, 6050)
+	unk1 126
+	unk2 0
+	function fn[0,5]
+	unk3 0
+	unk4 0
+
+sepith[0] 0 0 0 0 0 0 0 0
+
+fn[0]:
+	var[2] = random % 8
+	switch var[2]:
+		case 0:
+			ED7_A0 self 1450ms 0 251
+			break
+		case 1:
+			ED7_A0 self 1550ms 0 251
+			break
+		case 2:
+			ED7_A0 self 1600ms 0 251
+			break
+		case 3:
+			ED7_A0 self 1400ms 0 251
+			break
+		case 4:
+			ED7_A0 self 1650ms 0 251
+			break
+		case 5:
+			ED7_A0 self 1350ms 0 251
+			break
+		case 6:
+			ED7_A0 self 1500ms 0 251
+			break
+		default:
+			ED7_A0 self 1500ms 0 251
+			break
+	while 1:
+		ED7_A0 self 1500ms 0 251
+	Return
+
+fn[1]:
+	while 1:
+		CharWalkToPos self (7200, 0, 370) 1000mm/s 0
+		CharWalkToPos self (7280, 30, 1390) 1000mm/s 0
+		CharTurnTo self 45deg 500deg/s
+		Sleep 1300ms
+		CharWalkToPos self (5850, 0, 1930) 1000mm/s 0
+		CharWalkToPos self (4730, 0, 3700) 1000mm/s 0
+		CharWalkToPos self (4840, 0, 5570) 1000mm/s 0
+		CharTurnTo self 315deg 500deg/s
+		Sleep 1500ms
+		CharWalkToPos self (5660, 0, 5540) 1000mm/s 0
+		CharWalkToPos self (10470, 0, 10350) 1000mm/s 0
+		CharTurnTo self 0deg 500deg/s
+		Sleep 1200ms
+		CharWalkToPos self (12980, 0, 7230) 1000mm/s 0
+		CharWalkToPos self (12730, 0, 2100) 1000mm/s 0
+		CharWalkToPos self (13200, 0, 1420) 1000mm/s 0
+		CharTurnTo self 90deg 500deg/s
+		Sleep 1600ms
+		CharWalkToPos self (12280, 0, 680) 1000mm/s 0
+		CharWalkToPos self (11230, 0, 110) 1000mm/s 0
+		CharWalkToPos self (8930, 30, -1570) 1000mm/s 0
+		Sleep 1400ms
+		CharWalkToPos self (8720, 0, -510) 1000mm/s 0
+	Return
+
+fn[2]:
+	while 1:
+		CharIdle self (-49010, null, -53000) (-51420, null, -56470) 1000mm/s
+		Sleep 300ms
+	Return
+
+fn[3]:
+	if flag[1307]:
+		CharFlagsUnset char[9] 0x0080
+		CharFlagsUnset char[10] 0x0080
+	elif flag[1362]:
+		CharSetPos char[0] (16030, 0, 6050) 270deg
+		CharSetPos char[1] (12310, 0, -1990) 225deg
+		ForkFunc char[1] fork[0] fn[0,1]
+		CharSetPos char[2] (-49600, 30, -55300) 135deg
+		ForkFunc char[2] fork[0] fn[0,2]
+		CharFlagsUnset char[7] 0x0080
+		CharFlagsUnset char[8] 0x0080
+	elif flag[1292]:
+		CharSetPos char[0] (16030, 0, 6050) 270deg
+		CharSetPos char[1] (12310, 0, -1990) 225deg
+		ForkFunc char[1] fork[0] fn[0,1]
+		CharSetPos char[2] (-53960, 0, -55210) 180deg
+		ForkFunc char[2] fork[0] fn[0,0]
+	elif flag[1282]:
+		CharTurnTo char[0] 180deg 0deg/s
+		CharFlagsSet char[0] 0x0010
+	elif flag[1280]:
+	Return
+
+fn[4]:
+	if flag[1307]:
+		FlagSet flag[8]
+	elif flag[1362]:
+		FlagSet flag[7]
+	elif flag[1292]:
+		FlagSet flag[7]
+	elif flag[1282]:
+		FlagSet flag[8]
+	elif flag[1280]:
+		FlagSet flag[8]
+	Return
+
+fn[5]:
+	if flag[1307]:
+		Call fn[0,8]
+	elif flag[1362]:
+		Call fn[0,6]
+	elif flag[1292]:
+		Call fn[0,6]
+	elif flag[1282]:
+		Call fn[0,8]
+	elif flag[1280]:
+		Call fn[0,8]
+	Return
+
+fn[6]:
+	TextStart char[0]
+	if flag[7]:
+		var[0] = 99
+		while var[0] == 99:
+			FadeOut 300ms 0x00000000 100
+			Menu menu[0] -1 -1 1
+				"話をする" // 0
+				"買い物をする" // 1
+				"休憩をする" // 2
+				"やめる" // 3
+			MenuWait var[0]
+			if var[0] < 1 | var[0] > 2:
+				MenuClose menu[0]
+				FadeIn 300ms 0x00000000
+				FadeWait
+			if var[0] == 1:
+				ShopOpen shop[52]
+				var[0] = 99
+			elif var[0] == 2:
+				ShopOpen shop[50]
+				var[0] = 99
+			elif var[0] != 0:
+			elif var[0] == 0:
+				var[0] = 99
+				Call fn[0,7]
+	else:
+		Call fn[0,7]
+	TextEnd char[0]
+	Return
+
+fn[7]:
+	if flag[1307]:
+		if !flag[0]:
+			TextTalk char[0] {
+				特製チャーハン２、お待ち！{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				……今日の客入りはそれほどでもない。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				何とか乗り切れそうね。{wait}
+			}
+			TextWait
+			FlagSet flag[0]
+		else:
+			TextTalk char[0] {
+				この人出も今日限り。
+				また明日からは常連客ばかりの営業ね。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				……何とか乗り切れそうね。{wait}
+			}
+			TextWait
+	elif flag[1362]:
+		if !flag[0]:
+			TextTalk char[0] {
+				ハイお客さん！　ご注文は何ね！{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				ん？　んん？
+				何を食べるかね……ッ！？{wait}
+			}
+			TextWait
+			FlagSet flag[0]
+		else:
+			TextTalk char[0] {
+				宿のチェックインは
+				夕方５時からよ。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				それまでは
+				宿部屋に入ってはいけない。
+				……いいね？{wait}
+			}
+			TextWait
+	elif flag[1292]:
+		if !flag[0]:
+			TextTalk char[0] {
+				……何か食べるか？{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				ん？　何か食べるかね……ッ！？{wait}
+			}
+			TextWait
+			FlagSet flag[0]
+		else:
+			TextTalk char[0] {
+				サンサンは奥に下がらせたよ。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				大勢の男どもに
+				さらすのは、やはり心配ね。{wait}
+			}
+			TextWait
+	elif flag[1282]:
+		if !flag[0]:
+			CharTurnToChar char[0] char[6] 300deg/s
+			TextTalk char[0] {
+				……あそこの席の男、
+				ちらちらサンサンに色目使っている。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				………ギンッ…………………{wait}
+			}
+			TextWait
+			TextTalk char[6] {
+				お、おかしいな……
+				何だか寒気が……{wait}
+			}
+			TextWait
+			CharFlagsUnset char[0] 0x0010
+			FlagSet flag[0]
+		else:
+			TextTalk char[0] {
+				サンサンに手を
+				出したら許さないよ。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				よく覚えておくよろし。{wait}
+			}
+			TextWait
+	elif flag[1280]:
+		if !flag[0]:
+			Emote char[0] 0mm 2000mm 14 15 250ms 2
+			SoundPlay sound[23] 0 100 0
+			Sleep 1200ms
+			TextTalk char[0] {
+				さすが記念祭は騒がしいね……{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				ワタシは静かな店が好き。
+				……客なんて来なくていいよ。{wait}
+			}
+			TextWait
+			FlagSet flag[0]
+		else:
+			TextTalk char[0] {
+				……あまり騒がしいと
+				東方人街を思い出すよ。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				あの街はいつもこんな空気だった。{wait}
+			}
+			TextWait
+	Return
+
+fn[8]:
+	TextStart char[1]
+	if flag[8]:
+		var[0] = 99
+		while var[0] == 99:
+			FadeOut 300ms 0x00000000 100
+			Menu menu[0] -1 -1 1
+				"話をする" // 0
+				"買い物をする" // 1
+				"休憩をする" // 2
+				"やめる" // 3
+			MenuWait var[0]
+			if var[0] < 1 | var[0] > 2:
+				MenuClose menu[0]
+				FadeIn 300ms 0x00000000
+				FadeWait
+			if var[0] == 1:
+				ShopOpen shop[52]
+				var[0] = 99
+			elif var[0] == 2:
+				ShopOpen shop[50]
+				var[0] = 99
+			elif var[0] != 0:
+			elif var[0] == 0:
+				var[0] = 99
+				Call fn[0,9]
+	else:
+		Call fn[0,9]
+	TextEnd char[1]
+	Return
+
+fn[9]:
+	if flag[1307]:
+		if !flag[1]:
+			TextTalk char[1] {
+				いやあ、今年は色々あった。{wait}
+			}
+			TextWait
+			TextTalk char[1] {
+				サンサンが店を手伝い始めて
+				初めての記念祭だったし……{wait}
+			}
+			TextWait
+			TextTalk char[1] {
+				お陰で客入りは倍増した㈱{wait}
+			}
+			TextWait
+			TextTalk char[1] {
+				店長は気が気じゃ
+				なかったみたいだけどな。{wait}
+			}
+			TextWait
+			FlagSet flag[1]
+		else:
+			TextTalk char[1] {
+				今年はサンサンが
+				店を手伝い始めたんだよな。{wait}
+			}
+			TextWait
+			TextTalk char[1] {
+				店長があたふたして
+				色々と面白かったぜ。{wait}
+			}
+			TextWait
+	elif flag[1362]:
+		if !flag[1]:
+			TextTalk char[1] {
+				はいそこ、座れ座れ～。{wait}
+			}
+			TextWait
+			TextTalk char[1] {
+				立ってると邪魔になんだろ。{wait}
+			}
+			TextWait
+			FlagSet flag[1]
+		else:
+			TextTalk char[1] {
+				俺っちはいま手一杯だ。
+				注文ならマスターに言いな～！{wait}
+			}
+			TextWait
+			TextTalk char[1] {
+				すっげー怖ぇ顔してるけどな。
+				はははは……！{wait}
+			}
+			TextWait
+	elif flag[1292]:
+		if !flag[1]:
+			TextTalk char[1] {
+				うっす！　警察の人か。
+				お仕事ご苦労さん！{wait}
+			}
+			TextWait
+			TextTalk char[1] {
+				何か食べてくか？
+				今日は大変だろ～。{wait}
+			}
+			TextWait
+			FlagSet flag[1]
+		else:
+			TextTalk char[1] {
+				マスターは昨日から
+				ちょーっと気が立ってんだよな。{wait}
+			}
+			TextWait
+			TextTalk char[1] {
+				ま、無理もねえ。
+				サンサンは可愛くて目立つからなぁ。{wait}
+			}
+			TextWait
+	elif flag[1282]:
+		if !flag[1]:
+			TextTalk char[1] {
+				昨日は旧市街の方で
+				ドタバタがあったらしいな。{wait}
+			}
+			TextWait
+			TextTalk char[1] {
+				客が興奮して話してたぜ。
+				一体何があったんだ？{wait}
+			}
+			TextWait
+			FlagSet flag[1]
+		else:
+			TextTalk char[1] {
+				昨日は旧市街の方で
+				ドタバタがあったらしいな。{wait}
+			}
+			TextWait
+			TextTalk char[1] {
+				客は面白かったとか言ってたが
+				一体何があったんだろうな。{wait}
+			}
+			TextWait
+	elif flag[1280]:
+		if !flag[1]:
+			TextTalk char[1] {
+				４００００、５００００、
+				６００００ミラ……{wait}
+			}
+			TextWait
+			TextTalk char[1] {
+				うひゃひゃ、
+				いい儲かりっぷりだ～。{wait}
+			}
+			TextWait
+			TextTalk char[1] {
+				記念祭さまさまだな～！{wait}
+			}
+			TextWait
+			FlagSet flag[1]
+		else:
+			TextTalk char[1] {
+				いよう、場末の宿酒場へようこそっ！{wait}
+			}
+			TextWait
+			TextTalk char[1] {
+				『東口に一番近い店』ってのは
+				うちのことだぜ。
+				今後もよろしくぅ～！{wait}
+			}
+			TextWait
+	Return
+
+fn[10]:
+	TextStart self
+	if flag[1307]:
+		TextTalk self {
+			#15004Fせっせっ……
+			今日は創立記念祭の最終日よ。{wait}
+		} {
+			#15002Fお客さんも張り切って食べていくの。
+			最後に思いっきり楽しむんだって。{wait}
+		}
+		TextWait
+	elif flag[1362]:
+		if !flag[2]:
+			TextTalk self {
+				#15003Fパパが今日は
+				宿の掃除をしろというの。{wait}
+			} {
+				#15014Fパパ、どうしたんだろ。
+				そんなに掃除する所もないよ……？{wait}
+			}
+			TextWait
+			FlagSet flag[2]
+		else:
+			TextTalk self {
+				#15003F宿の掃除なんて
+				すぐに済んでしまうのに。{wait}
+			} {
+				#15006Fふう、パレード見たかったなぁ……
+				もう終わっちゃったのかな……{wait}
+			}
+			TextWait
+	elif flag[1292]:
+		if !flag[2]:
+			TextTalk self {
+				#15000Fリーシャ、今ごろ
+				公演ガンバッてるかな～。{wait}
+			} {
+				#15002Fふふっ、きっと大勢のお客さんに
+				拍手されているに違いないね。{wait}
+			} {
+				#15009F私も負けてられないよ。
+				お仕事頑張らなくっちゃ♪{wait}
+			}
+			TextWait
+			FlagSet flag[2]
+		else:
+			TextTalk self {
+				#15000F今日はお泊りの部屋も満室だったの。{wait}
+			} {
+				#15004Fせっせっ……
+				はりきって綺麗にしないとね。{wait}
+			}
+			TextWait
+	elif flag[1282]:
+		TextTalk self {
+			#15006Fパパったら
+			またお客さんをおどかして……{wait}
+		} {
+			#15001Fダメよ、お客さんには
+			いつもスマイルでないと。{wait}
+		}
+		TextWait
+	elif flag[1280]:
+		if !flag[2]:
+			TextTalk self {
+				#15002Fあ、いらっしゃい～！{wait}
+			} {
+				#15006Fふう、お客さん多くてびっくり。
+				注文をとるのも大変ね。{wait}
+			}
+			TextWait
+			FlagSet flag[2]
+		else:
+			Emote self 0mm 2000mm 40 43 100ms 3
+			Sleep 1200ms
+			TextTalk self {
+				#15006Fうう……手が足りないよ～。{wait}
+			}
+			TextWait
+	TextEnd self
+	Return
+
+fn[11]:
+	field_party[0].5 = self.4
+	self.5 = self.4
+	TextStart self
+	CharFlagsUnset self 0x0010
+	CharTurnToChar self field_party[0] 0deg/s
+	self.4 = (self.4 + 360) % 360
+	self.4 = self.4 + 360 - self.5
+	self.5 = self.4 / 180
+	if self.4 <= 45 | self.4 >= 315 && self.4 <= 405 | self.4 >= 675:
+	elif self.5 < 1:
+		self.8 = 2
+	elif self.5 > 2:
+		self.8 = 1
+	else:
+		self.8 = self.5
+	self.4 = field_party[0].5
+	field_party[0].5 = 0
+	self.5 = 0
+	CharFlagsSet self 0x0010
+	if flag[1307]:
+		if !flag[3]:
+			TextTalk self {
+				もぐもぐ……
+				みんな盛り上がってるなぁ。{wait}
+			}
+			TextWait
+			TextTalk self {
+				俺は今日も変わらず
+				共和国までドライブだ。{wait}
+			}
+			TextWait
+			TextTalk self {
+				運送業には休みがないんだよな～。{wait}
+			}
+			TextWait
+			FlagSet flag[3]
+		else:
+			TextTalk self {
+				もぐもぐ……
+				盛り上がってる奴が羨ましいぜ。{wait}
+			}
+			TextWait
+	elif flag[1362]:
+		if !flag[3]:
+			TextTalk self {
+				やれやれ、この人出じゃ
+				表通りを走るのは難しそうだな。{wait}
+			}
+			TextWait
+			TextTalk self {
+				事故っても困るし
+				裏通りから街道に出るとするか。{wait}
+			}
+			TextWait
+			FlagSet flag[3]
+		else:
+			TextTalk self {
+				やれやれ、今日の運送は
+				だいぶ遅れちまいそうだな。{wait}
+			}
+			TextWait
+	elif flag[1292]:
+		if !flag[3]:
+			TextTalk self {
+				今日はパレードがあるんだってな。{wait}
+			}
+			TextWait
+			TextTalk self {
+				ウチの会社も
+				運転手を１人貸し出してるぜ。{wait}
+			}
+			TextWait
+			TextTalk self {
+				なにせ俺たちは
+				運転のプロだからなぁ。{wait}
+			}
+			TextWait
+			FlagSet flag[3]
+		else:
+			TextTalk self {
+				ウチの会社も
+				運転手を１人貸し出してるんだ。{wait}
+			}
+			TextWait
+			TextTalk self {
+				……その分こっちは
+				忙しくなっちまったけどな。{wait}
+			}
+			TextWait
+	elif flag[1282]:
+		TextTalk self {
+			観光バスがぞくぞく
+			来てるみたいだな。{wait}
+		}
+		TextWait
+		TextTalk self {
+			タングラム門の方には
+			まだ何台も入国待ちしてたぜ。{wait}
+		}
+		TextWait
+	elif flag[1280]:
+		if !flag[3]:
+			TextTalk self {
+				記念祭の影響で
+				共和国方面の道が渋滞していたんだ。{wait}
+			}
+			TextWait
+			TextTalk self {
+				驚いたぜ……
+				導力車で道が埋まっちまうなんて
+				世界初なんじゃないか？{wait}
+			}
+			TextWait
+			FlagSet flag[3]
+		else:
+			TextTalk self {
+				クロスベルは導力車が多いし
+				共和国も導力バスが普及してるからな。{wait}
+			}
+			TextWait
+			TextTalk self {
+				共和国方面は
+				だいぶ混雑してたぜ。{wait}
+			}
+			TextWait
+	CharSetChipPattern self 0
+	TextEnd self
+	Return
+
+fn[12]:
+	field_party[0].5 = self.4
+	self.5 = self.4
+	TextStart self
+	CharFlagsUnset self 0x0010
+	CharTurnToChar self field_party[0] 0deg/s
+	self.4 = (self.4 + 360) % 360
+	self.4 = self.4 + 360 - self.5
+	self.5 = self.4 / 180
+	if self.4 <= 45 | self.4 >= 315 && self.4 <= 405 | self.4 >= 675:
+	elif self.5 < 1:
+		self.8 = 2
+	elif self.5 > 2:
+		self.8 = 1
+	else:
+		self.8 = self.5
+	self.4 = field_party[0].5
+	field_party[0].5 = 0
+	self.5 = 0
+	CharFlagsSet self 0x0010
+	if flag[1307]:
+		TextTalk self {
+			相棒とやり直すことにしたんだ。{wait}
+		}
+		TextWait
+		TextTalk self {
+			へへっ、ルースの奴……
+			やっぱりオレと
+			店を出したいんじゃないか。{wait}
+		}
+		TextWait
+	elif flag[1362]:
+		TextTalk self {
+			すごい観光客だったよなぁ……{wait}
+		}
+		TextWait
+		TextTalk self {
+			確かにルースの言うとおり、
+			観光客相手の商売なら売れそうだぜ。{wait}
+		}
+		TextWait
+	elif flag[1292]:
+		if !flag[4]:
+			TextTalk self {
+				確かに……人が多いよな。{wait}
+			}
+			TextWait
+			TextTalk self {
+				うん、オレも素直に認めるぜ。{wait}
+			}
+			TextWait
+			FlagSet flag[4]
+		else:
+			TextTalk self {
+				相棒とは喧嘩してたんだけど……{wait}
+			}
+			TextWait
+			TextTalk self {
+				確かに人が多いよな。
+				オレも素直に認めるぜ。{wait}
+			}
+			TextWait
+	elif flag[1282]:
+		TextTalk self {
+			相棒の奴、ぼそぼそと
+			独り言を言いやがるんだ。{wait}
+		}
+		TextWait
+		TextTalk self {
+			……もう商売は
+			やめるって言ったのにな。{wait}
+		}
+		TextWait
+	elif flag[1280]:
+		CharSetChipPattern char[4] 0
+		TextTalk self {
+			もぐもぐ……
+			ふん、オレがどこで
+			楽しもうが勝手じゃないか。{wait}
+		}
+		TextWait
+		TextTalk self {
+			ルースこそオレの
+			楽しい記念祭を邪魔するなよっ！{wait}
+		}
+		TextWait
+	CharSetChipPattern self 0
+	TextEnd self
+	Return
+
+fn[13]:
+	field_party[0].5 = self.4
+	self.5 = self.4
+	TextStart self
+	CharFlagsUnset self 0x0010
+	CharTurnToChar self field_party[0] 0deg/s
+	self.4 = (self.4 + 360) % 360
+	self.4 = self.4 + 360 - self.5
+	self.5 = self.4 / 180
+	if self.4 <= 45 | self.4 >= 315 && self.4 <= 405 | self.4 >= 675:
+	elif self.5 < 1:
+		self.8 = 2
+	elif self.5 > 2:
+		self.8 = 1
+	else:
+		self.8 = self.5
+	self.4 = field_party[0].5
+	field_party[0].5 = 0
+	self.5 = 0
+	CharFlagsSet self 0x0010
+	if flag[1307]:
+		TextTalk self {
+			……パックと
+			店を出す事にしたんだ。{wait}
+		}
+		TextWait
+		TextTalk self {
+			記念祭には間に合わないが……
+			クロスベルは観光客が多いもんな。{wait}
+		}
+		TextWait
+		TextTalk self {
+			うん、今度はきっと大丈夫だ。
+			いい店が出せそうな気がするぜ。{wait}
+		}
+		TextWait
+	elif flag[1362]:
+		TextTalk self {
+			ついつい観光客の
+			チェックをしちまうんだ。{wait}
+		}
+		TextWait
+		TextTalk self {
+			どんな商品なら
+			売れそうか……とかな。{wait}
+		}
+		TextWait
+		TextTalk self {
+			うーん、俺も正直言うと
+			商売をしたいんだよな……{wait}
+		}
+		TextWait
+	elif flag[1292]:
+		TextTalk self {
+			こんなに
+			観光客が来るなんてな……{wait}
+		}
+		TextWait
+		TextTalk self {
+			観光客相手の商売をしたら
+			儲かりそうだぜ。{wait}
+		}
+		TextWait
+	elif flag[1282]:
+		CharSetChipPattern char[5] 0
+		TextTalk self {
+			おいパック……
+			外は凄い人出だぞ。{wait}
+		}
+		TextWait
+		TextTalk self {
+			………………………………{wait}
+		}
+		TextWait
+		TextTalk self {
+			商売したら
+			儲かりそうだよな……{wait}
+		}
+		TextWait
+	elif flag[1280]:
+		CharSetChipPattern char[5] 0
+		TextTalk self {
+			むしゃむしゃ……
+			おいパック、
+			なんでここに来てるんだよ。{wait}
+		}
+		TextWait
+		TextTalk self {
+			もう顔を
+			合わせねえって約束だろ？{wait}
+		}
+		TextWait
+	CharSetChipPattern self 0
+	TextEnd self
+	Return
+
+fn[14]:
+	field_party[0].5 = self.4
+	self.5 = self.4
+	TextStart self
+	CharFlagsUnset self 0x0010
+	CharTurnToChar self field_party[0] 0deg/s
+	self.4 = (self.4 + 360) % 360
+	self.4 = self.4 + 360 - self.5
+	self.5 = self.4 / 180
+	if self.4 <= 45 | self.4 >= 315 && self.4 <= 405 | self.4 >= 675:
+	elif self.5 < 1:
+		self.8 = 2
+	elif self.5 > 2:
+		self.8 = 1
+	else:
+		self.8 = self.5
+	self.4 = field_party[0].5
+	field_party[0].5 = 0
+	self.5 = 0
+	CharFlagsSet self 0x0010
+	if flag[1307]:
+		TextTalk self {
+			ここのマスター、怖い人だね。{wait}
+		}
+		TextWait
+		TextTalk self {
+			ウェイトレスさんに
+			声を掛けたら、お玉で殴られたよ。
+			とほほ……{wait}
+		}
+		TextWait
+	elif flag[1362]:
+		TextTalk self {
+			あれ、ウェイトレスさんが
+			居なくなっちゃったな……{wait}
+		}
+		TextWait
+		TextTalk self {
+			残念だよ……
+			スゴク可愛い子だったのに……{wait}
+		}
+		TextWait
+	elif flag[1292]:
+		TextTalk self {
+			今日はパレードがあるらしいねえ。
+			私も見に行ってみよう。{wait}
+		}
+		TextWait
+		TextTalk self {
+			ところで……ここのマスター
+			何だか威圧的だね。
+			気のせいかな。{wait}
+		}
+		TextWait
+	elif flag[1282]:
+		TextTalk self {
+			ずずー……いやあしかし
+			ここのメシは美味いな。{wait}
+		}
+		TextWait
+		TextTalk self {
+			ウェイトレスさんも可愛いし……
+			むふふ、長居したくなっちゃうよ。{wait}
+		}
+		TextWait
+	elif flag[1280]:
+		TextTalk self {
+			いやあ、参った参った。
+			外は大した賑わいだよ。{wait}
+		}
+		TextWait
+		TextTalk self {
+			やっぱり地図も持たずに
+			回るものじゃないねえ。{wait}
+		}
+		TextWait
+	CharSetChipPattern self 0
+	TextEnd self
+	Return
+
+fn[15]:
+	field_party[0].5 = self.4
+	self.5 = self.4
+	TextStart self
+	CharFlagsUnset self 0x0010
+	CharTurnToChar self field_party[0] 0deg/s
+	self.4 = (self.4 + 360) % 360
+	self.4 = self.4 + 360 - self.5
+	self.5 = self.4 / 180
+	if self.4 <= 45 | self.4 >= 315 && self.4 <= 405 | self.4 >= 675:
+	elif self.5 < 1:
+		self.8 = 2
+	elif self.5 > 2:
+		self.8 = 1
+	else:
+		self.8 = self.5
+	self.4 = field_party[0].5
+	field_party[0].5 = 0
+	self.5 = 0
+	CharFlagsSet self 0x0010
+	if flag[1362]:
+		if !flag[5]:
+			TextTalk self {
+				#08402Fやあ君たち、今戻ったのか？{wait}
+			} {
+				#08400F俺は今さっき、
+				依頼結果の報告を済ませたところだ。{wait}
+			} {
+				#08409Fまた力を合わせるような
+				機会があるといいな。{wait}
+			}
+			TextWait
+			TextTalk name[0] {
+				#0000Fええ、そのときは
+				よろしくお願いします。{wait}
+			}
+			TextWait
+			FlagSet flag[5]
+		else:
+			TextTalk self {
+				#08401Fあの時、アリオスさんが来てくれて
+				本当に助かったよ。{wait}
+			} {
+				#08403F俺もまだまだだなぁ。{wait}
+			}
+			TextWait
+	CharSetChipPattern self 0
+	TextEnd self
+	Return
+
+fn[16]:
+	field_party[0].5 = self.4
+	self.5 = self.4
+	TextStart self
+	CharFlagsUnset self 0x0010
+	CharTurnToChar self field_party[0] 0deg/s
+	self.4 = (self.4 + 360) % 360
+	self.4 = self.4 + 360 - self.5
+	self.5 = self.4 / 180
+	if self.4 <= 45 | self.4 >= 315 && self.4 <= 405 | self.4 >= 675:
+	elif self.5 < 1:
+		self.8 = 2
+	elif self.5 > 2:
+		self.8 = 1
+	else:
+		self.8 = self.5
+	self.4 = field_party[0].5
+	field_party[0].5 = 0
+	self.5 = 0
+	CharFlagsSet self 0x0010
+	if flag[1362]:
+		TextTalk self {
+			#08500Fスコットと協力して
+			依頼を達成したそうだな。{wait}
+		} {
+			#08502F……それは我々にとって、
+			本来あるべき姿なのかもしれないな。{wait}
+		}
+		TextWait
+	CharSetChipPattern self 0
+	TextEnd self
+	Return
+
+fn[17]:
+	field_party[0].5 = self.4
+	self.5 = self.4
+	TextStart self
+	CharFlagsUnset self 0x0010
+	CharTurnToChar self field_party[0] 0deg/s
+	self.4 = (self.4 + 360) % 360
+	self.4 = self.4 + 360 - self.5
+	self.5 = self.4 / 180
+	if self.4 <= 45 | self.4 >= 315 && self.4 <= 405 | self.4 >= 675:
+	elif self.5 < 1:
+		self.8 = 2
+	elif self.5 > 2:
+		self.8 = 1
+	else:
+		self.8 = self.5
+	self.4 = field_party[0].5
+	field_party[0].5 = 0
+	self.5 = 0
+	CharFlagsSet self 0x0010
+	CharSetChipPattern char[9] 0
+	CharSetChipPattern char[10] 0
+	if flag[1307]:
+		if !flag[6]:
+			TextTalk char[10] {
+				#3400F久し振りね、リン。
+				大きくなったものだわ。{wait}
+			}
+			TextWait
+			TextTalk char[9] {
+				#08602Fふふ、そりゃあ８年ぶりですから……{wait}
+			} {
+				#08604Fお手合わせしてもらった
+				あの日のことは
+				今でも鮮明に覚えていますよ。{wait}
+			}
+			TextWait
+			TextTalk char[10] {
+				#3404Fふふ……
+				そんなこともあったかしら。{wait}
+			}
+			TextWait
+			TextTalk name[0] {
+				#0005F（リンさん、キリカさんと
+				{}  知り合いだったのか……）{wait}
+			}
+			TextWait
+			TextTalk name[3] {
+				#0300F（つーか、キリカさんも
+				{}  武術ができる人みたいだな。
+				{}  只者じゃねぇとは思っていたが……）{wait}
+			}
+			TextWait
+			FlagSet flag[6]
+		else:
+			TextTalk char[9] {
+				#08605Fえっ……あの２人には
+				会っていかないんですか？{wait}
+			} {
+				#08619Fせっかく、クロスベルに
+				来ているのに……{wait}
+			}
+			TextWait
+			TextTalk char[10] {
+				#3403F今回は遠慮しておくわ。
+				私は一抜けした身だし……{wait}
+			} {
+				#3400Fあなたの方から
+				よろしく言っておいて頂戴。{wait}
+			}
+			TextWait
+			TextTalk char[9] {
+				#08603Fそうですか……
+				絶対喜ぶと思うんだけどな。{wait}
+			}
+			TextWait
+	CharSetChipPattern self 0
+	TextEnd self
+	Return
+
+fn[18]:
+	field_party[0].5 = self.4
+	self.5 = self.4
+	TextStart self
+	CharFlagsUnset self 0x0010
+	CharTurnToChar self field_party[0] 0deg/s
+	self.4 = (self.4 + 360) % 360
+	self.4 = self.4 + 360 - self.5
+	self.5 = self.4 / 180
+	if self.4 <= 45 | self.4 >= 315 && self.4 <= 405 | self.4 >= 675:
+	elif self.5 < 1:
+		self.8 = 2
+	elif self.5 > 2:
+		self.8 = 1
+	else:
+		self.8 = self.5
+	self.4 = field_party[0].5
+	field_party[0].5 = 0
+	self.5 = 0
+	CharFlagsSet self 0x0010
+	CharSetChipPattern char[9] 0
+	CharSetChipPattern char[10] 0
+	if flag[1307]:
+		if !flag[6]:
+			Call fn[0,17]
+		else:
+			TextTalk char[10] {
+				#3404F話には聞いていたけど、
+				立派に遊撃士をしているみたいね。{wait}
+			} {
+				#3400F男勝りな喋り方は
+				子供の頃から変わってないけれど。{wait}
+			}
+			TextWait
+			TextTalk char[9] {
+				#08612Fはは……お恥ずかしい限りです。{wait}
+			} {
+				#08602F……キリカ先輩は……
+				この８年、何をしていたんですか？{wait}
+			}
+			TextWait
+			TextTalk char[10] {
+				#3404Fふふ……
+				色々、とだけ言っておくわ。{wait}
+			}
+			TextWait
+	CharSetChipPattern self 0
+	TextEnd self
+	Return

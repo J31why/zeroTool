@@ -1,0 +1,616 @@
+calmare zero_k scena
+scena:
+	name "m3031" "m3031" "m3031"
+	town town[126]
+	bgm bgm[305]
+	flags 0
+	item_use fn[0,255]
+	unk 255 0
+
+entry:
+	pos (0, 0, -1000)
+	unk1 0
+	cam_from (0, 2500, 34000)
+	cam_pers 262
+	unk2 30
+	cam_deg 45deg
+	cam_limit 0deg 360deg
+	cam_at (-3000, -7000, -9000)
+	unk3 0
+	unk4 0
+	flags 0x0001
+	town town[126]
+	init fn[0,0]
+	reinit fn[0,1]
+
+chip[0] null
+chip[1] null
+chip[2] null
+chip[3] null
+chip[4] null
+chip[5] null
+chip[6] null
+chip[7] null
+chip[8] null
+chip[9] null
+chip[10] null
+chip[11] null
+chip[12] null
+chip[13] null
+chip[14] null
+chip[15] null
+chip[16] "monster/ch60750.itc"
+chip[17] "monster/ch60750.itc"
+chip[18] "monster/ch75350.itc"
+chip[19] "monster/ch75350.itc"
+chip[20] "monster/ch72550.itc"
+chip[21] "monster/ch72551.itc"
+chip[22] "monster/ch61550.itc"
+chip[23] "monster/ch61550.itc"
+
+monster char[0]:
+	pos (-28800, -7000, -14090)
+	angle 0
+	flags 0x0101
+	battle battle[0]
+	flag flag[0]
+	chip chip[16]
+	unk2 65535
+	stand_anim anim[0]
+	walk_anim anim[1]
+
+monster char[1]:
+	pos (-40820, 3000, -520)
+	angle 0
+	flags 0x0101
+	battle battle[3]
+	flag flag[0]
+	chip chip[22]
+	unk2 65535
+	stand_anim anim[6]
+	walk_anim anim[7]
+
+monster char[2]:
+	pos (133590, 0, 14320)
+	angle 0
+	flags 0x0101
+	battle battle[2]
+	flag flag[0]
+	chip chip[20]
+	unk2 65535
+	stand_anim anim[4]
+	walk_anim anim[5]
+
+monster char[3]:
+	pos (144880, -4500, -29970)
+	angle 0
+	flags 0x0101
+	battle battle[1]
+	flag flag[0]
+	chip chip[18]
+	unk2 65535
+	stand_anim anim[2]
+	walk_anim anim[3]
+
+monster char[4]:
+	pos (169360, -4500, -1300)
+	angle 0
+	flags 0x0101
+	battle battle[0]
+	flag flag[0]
+	chip chip[16]
+	unk2 65535
+	stand_anim anim[0]
+	walk_anim anim[1]
+
+look_point[0]:
+	pos (-48250, 3000, 0)
+	radius 1200
+	bubble_pos (-48250, 4000, 0)
+	unk1 124
+	unk2 0
+	function fn[0,2]
+	unk3 0
+	unk4 0
+
+look_point[1]:
+	pos (144140, -4500, -35640)
+	radius 1200
+	bubble_pos (144140, -3500, -35640)
+	unk1 124
+	unk2 0
+	function fn[0,3]
+	unk3 0
+	unk4 0
+
+look_point[2]:
+	pos (185700, 1030, 16500)
+	radius 2500
+	bubble_pos (185700, 2029, 16500)
+	unk1 124
+	unk2 0
+	function fn[0,4]
+	unk3 0
+	unk4 0
+
+anim[0] 1000ms 0 1 2 3 4 3 2 1
+anim[1] 2000ms 0 1 2 3 4 3 2 1
+anim[2] 1000ms 0 1 2 3 4 5
+anim[3] 1500ms 0 1 2 3 4 5
+anim[4] 1000ms 0 1 2 3 4 3 2 1
+anim[5] 1000ms 0 1 2 3
+anim[6] 1000ms 0 1 2 3 4 3 2 1
+anim[7] 1500ms 0 1 2 3 4 3 2 1
+
+// NB: the first five sepith sets are seemingly junk data.
+sepith[0] 100 1 2 3 70 89 99 0
+sepith[1] 100 5 1 5 1 5 1 0
+sepith[2] 100 5 1 5 1 5 1 0
+sepith[3] 100 5 0 5 0 5 0 0
+sepith[4] 100 5 0 5 0 5 0 0
+
+sepith[5] 4 4 20 0 16 12 7 0
+sepith[6] 0 29 0 0 9 3 19 0
+sepith[7] 24 0 0 2 8 14 14 0
+sepith[8] 3 0 3 23 9 9 13 0
+sepith[9] 12 6 17 9 12 4 2 0
+sepith[10] 9 12 6 16 2 13 4 0
+sepith[11] 15 9 14 5 3 0 14 0
+sepith[12] 4 19 9 16 4 4 8 0
+sepith[13] 0 4 12 0 24 8 16 0
+sepith[14] 0 13 2 4 14 20 9 0
+sepith[15] 2 0 4 14 16 9 18 0
+sepith[16] 12 6 0 2 9 18 16 0
+sepith[17] 12 0 0 8 18 10 16 0
+sepith[18] 9 9 9 9 10 10 10 0
+sepith[19] 9 9 9 12 11 9 9 0
+sepith[20] 18 12 12 12 4 4 4 0
+sepith[21] 7 7 14 7 9 12 12 0
+sepith[22] 5 18 5 5 12 12 12 0
+
+at_roll[0]: none 100
+at_roll[1]: none 100; hp10 5; hp50 1; ep10 5; ep50 1; cp10 5; cp50 1; unk1 5; unk2 5; unk6 1
+at_roll[2]: none 100; hp10 5; hp50 1; ep10 5; ep50 1; cp10 5; cp50 1; unk1 5; unk2 5; unk3 5; unk4 5; unk5 5; unk6 5
+at_roll[3]: none 100; hp10 5; ep10 5; cp10 5; unk1 5; unk2 5; unk6 2
+at_roll[4]: none 100; hp10 5; ep10 5; cp10 5; unk2 5; unk6 2
+
+placement[0]:
+	pos 7 9 180deg
+	pos 11 10 180deg
+	pos 10 13 180deg
+	pos 5 11 180deg
+	pos 12 12 180deg
+	pos 4 14 180deg
+	pos 14 14 180deg
+	pos 2 13 180deg
+
+placement[1]:
+	pos 8 8 180deg
+	pos 5 9 180deg
+	pos 11 10 180deg
+	pos 6 12 180deg
+	pos 10 12 180deg
+	pos 13 13 180deg
+	pos 4 14 180deg
+	pos 8 14 180deg
+
+placement[2]:
+	pos 7 8 180deg
+	pos 9 9 180deg
+	pos 6 10 180deg
+	pos 10 11 180deg
+	pos 6 12 180deg
+	pos 10 13 180deg
+	pos 7 14 180deg
+	pos 9 15 180deg
+
+placement[3]:
+	pos 8 8 180deg
+	pos 6 9 180deg
+	pos 10 10 180deg
+	pos 7 11 180deg
+	pos 10 12 180deg
+	pos 8 14 180deg
+	pos 10 14 180deg
+	pos 6 15 180deg
+
+placement[4]:
+	pos 7 4 0deg
+	pos 10 11 225deg
+	pos 4 7 90deg
+	pos 12 7 270deg
+	pos 4 11 135deg
+	pos 11 4 315deg
+	pos 7 12 180deg
+	pos 5 5 45deg
+
+battle[0]:
+	flags 0
+	level 43
+	unk1 6
+	vision_range 60
+	move_range 4
+	can_move 1
+	move_speed 30
+	unk2 0
+	battlefield "bm3040"
+	sepith sepith[17]
+	setup 60:
+		enemies "ms60700.dat" null null null null null null null
+		placement placement[1] placement[4]
+		bgm bgm[402] bgm[403]
+		at_roll at_roll[1]
+	setup 25:
+		enemies "ms60700.dat" "ms77300.dat" null null null null null null
+		placement placement[0] placement[4]
+		bgm bgm[402] bgm[403]
+		at_roll at_roll[1]
+	setup 10:
+		enemies "ms60700.dat" "ms77300.dat" "ms77300.dat" null null null null null
+		placement placement[1] placement[4]
+		bgm bgm[402] bgm[403]
+		at_roll at_roll[1]
+	setup 5:
+		enemies "ms60700.dat" "ms77300.dat" "ms77300.dat" "ms77300.dat" null null null null
+		placement placement[0] placement[4]
+		bgm bgm[402] bgm[403]
+		at_roll at_roll[1]
+
+battle[1]:
+	flags 0
+	level 43
+	unk1 6
+	vision_range 60
+	move_range 4
+	can_move 1
+	move_speed 30
+	unk2 0
+	battlefield "bm3040"
+	sepith sepith[22]
+	setup 60:
+		enemies "ms75300.dat" null null null null null null null
+		placement placement[1] placement[4]
+		bgm bgm[402] bgm[403]
+		at_roll at_roll[1]
+	setup 25:
+		enemies "ms75300.dat" "ms77300.dat" null null null null null null
+		placement placement[0] placement[4]
+		bgm bgm[402] bgm[403]
+		at_roll at_roll[1]
+	setup 10:
+		enemies "ms75300.dat" "ms77300.dat" "ms77300.dat" null null null null null
+		placement placement[1] placement[4]
+		bgm bgm[402] bgm[403]
+		at_roll at_roll[1]
+	setup 5:
+		enemies "ms75300.dat" "ms77300.dat" "ms77300.dat" "ms77300.dat" null null null null
+		placement placement[0] placement[4]
+		bgm bgm[402] bgm[403]
+		at_roll at_roll[1]
+
+battle[2]:
+	flags 0
+	level 43
+	unk1 6
+	vision_range 60
+	move_range 4
+	can_move 1
+	move_speed 60
+	unk2 0
+	battlefield "bm3030"
+	sepith sepith[21]
+	setup 60:
+		enemies "ms72500.dat" null null null null null null null
+		placement placement[1] placement[4]
+		bgm bgm[402] bgm[403]
+		at_roll at_roll[1]
+	setup 25:
+		enemies "ms72500.dat" "ms77300.dat" null null null null null null
+		placement placement[0] placement[4]
+		bgm bgm[402] bgm[403]
+		at_roll at_roll[1]
+	setup 10:
+		enemies "ms72500.dat" "ms77300.dat" "ms77300.dat" null null null null null
+		placement placement[1] placement[4]
+		bgm bgm[402] bgm[403]
+		at_roll at_roll[1]
+	setup 5:
+		enemies "ms72500.dat" "ms77300.dat" "ms77300.dat" "ms77300.dat" null null null null
+		placement placement[0] placement[4]
+		bgm bgm[402] bgm[403]
+		at_roll at_roll[1]
+
+battle[3]:
+	flags 0
+	level 43
+	unk1 6
+	vision_range 60
+	move_range 4
+	can_move 1
+	move_speed 30
+	unk2 0
+	battlefield "bm3030"
+	sepith sepith[18]
+	setup 60:
+		enemies "ms61500.dat" null null null null null null null
+		placement placement[1] placement[4]
+		bgm bgm[402] bgm[403]
+		at_roll at_roll[1]
+	setup 25:
+		enemies "ms61500.dat" "ms77300.dat" null null null null null null
+		placement placement[0] placement[4]
+		bgm bgm[402] bgm[403]
+		at_roll at_roll[1]
+	setup 10:
+		enemies "ms61500.dat" "ms77300.dat" "ms77300.dat" null null null null null
+		placement placement[1] placement[4]
+		bgm bgm[402] bgm[403]
+		at_roll at_roll[1]
+	setup 5:
+		enemies "ms61500.dat" "ms77300.dat" "ms77300.dat" "ms77300.dat" null null null null
+		placement placement[0] placement[4]
+		bgm bgm[402] bgm[403]
+		at_roll at_roll[1]
+
+fn[0]:
+	Return
+
+fn[1]:
+	ObjFlagsUnset object[3] 0x0010
+	if flag[1965]:
+		ObjFrame object[6] 150
+		ObjFrame object[3] 30
+	else:
+		ObjFrame object[6] 120
+		ObjFrame object[3] 0
+	char[0].12 = 128
+	char[0].20 = 223
+	char[0].13 = 128
+	char[0].21 = 223
+	char[0].14 = 128
+	char[0].22 = 223
+	char[0].15 = 128
+	char[0].23 = 223
+	char[0].16 = 128
+	char[0].24 = 223
+	char[0].17 = 128
+	char[0].25 = 223
+	char[0].18 = 128
+	char[0].26 = 223
+	char[0].19 = 128
+	char[0].27 = 223
+	char[4].12 = 128
+	char[4].20 = 223
+	char[4].13 = 128
+	char[4].21 = 223
+	char[4].14 = 128
+	char[4].22 = 223
+	char[4].15 = 128
+	char[4].23 = 223
+	char[4].16 = 128
+	char[4].24 = 223
+	char[4].17 = 128
+	char[4].25 = 223
+	char[4].18 = 128
+	char[4].26 = 223
+	char[4].19 = 128
+	char[4].27 = 223
+	char[3].12 = 128
+	char[3].20 = 207
+	char[3].13 = 128
+	char[3].21 = 207
+	char[3].14 = 128
+	char[3].22 = 207
+	char[3].15 = 128
+	char[3].23 = 207
+	char[3].16 = 128
+	char[3].24 = 207
+	char[3].17 = 128
+	char[3].25 = 207
+	char[3].18 = 128
+	char[3].26 = 207
+	char[3].19 = 128
+	char[3].27 = 207
+	char[2].12 = 128
+	char[2].20 = 228
+	char[2].13 = 128
+	char[2].21 = 228
+	char[2].14 = 128
+	char[2].22 = 228
+	char[2].15 = 128
+	char[2].23 = 228
+	char[2].16 = 128
+	char[2].24 = 228
+	char[2].17 = 128
+	char[2].25 = 228
+	char[2].18 = 128
+	char[2].26 = 228
+	char[2].19 = 128
+	char[2].27 = 228
+	char[1].12 = 128
+	char[1].20 = 223
+	char[1].13 = 128
+	char[1].21 = 223
+	char[1].14 = 128
+	char[1].22 = 223
+	char[1].15 = 128
+	char[1].23 = 223
+	char[1].16 = 128
+	char[1].24 = 223
+	char[1].17 = 128
+	char[1].25 = 223
+	char[1].18 = 128
+	char[1].26 = 223
+	char[1].19 = 128
+	char[1].27 = 223
+	char[0].51 = 1500
+	char[4].51 = 1500
+	char[3].51 = 1500
+	char[2].51 = 1500
+	char[1].51 = 1500
+	char[0].7 = 1500
+	char[4].7 = 1500
+	char[3].7 = 2000
+	char[2].7 = 2000
+	char[1].7 = 2000
+	if !flag[2286]:
+		ObjFrame object[4] 0
+	else:
+		ObjFrame object[4] 30
+	if !flag[2287]:
+		ObjFrame object[5] 0
+	else:
+		ObjFrame object[5] 30
+	if system[0] == 104 | system[0] == 105 | system[0] == 106 | system[0] == 107 | system[0] == 108 | system[0] == 109:
+		SoundStop sound[130]
+	else:
+		SoundPlay sound[130] 1 100 0
+	Return
+
+fn[2]:
+	ED7_F2 1
+	SystemFlagsSet 0x08000000
+	if !flag[2286]:
+		SoundPlay sound[14] 0 100 0
+		ED7ObjPlay object[4] 0 30 0 0
+		Sleep 500ms
+		if ItemAdd item[502] 1:
+			FadeOut 300ms 0x00000000 100
+			SoundPlay sound[17] 0 100 0
+			TextSetPos -1 -1 -1 -1
+			TextSetName ""
+			TextMessage name[742] {
+				{color 0}已取得{item[502]}{color 0}。{wait}
+			}
+			TextWait
+			TextClose 0
+			TextSetPos -1 280 60 3
+			FadeIn 300ms 0x00000000
+			FlagSet flag[2286]
+			ED7_DE 6
+		else:
+			FadeOut 300ms 0x00000000 100
+			TextSetName ""
+			TextMessage name[742] {
+				寶箱內裝著{item[502]}{color 0}。
+				但因持有物品已滿而放棄{item[502]}{color 0}。{wait}
+			}
+			TextWait
+			TextClose 0
+			FadeIn 300ms 0x00000000
+			SoundPlay sound[15] 0 100 0
+			ED7ObjPlay object[4] 30 0 0 0
+	else:
+		FadeOut 300ms 0x00000000 100
+		TextSetPos -1 -1 -1 -1
+		TextSetName ""
+		TextMessage name[742] {
+			{0x06}{color 5}寶箱內空無一物。{color 0}{wait}
+		}
+		TextWait
+		TextClose 0
+		FadeIn 300ms 0x00000000
+	Sleep 30ms
+	TextEnd null
+	SystemFlagsUnset 0x08000000
+	Return
+
+fn[3]:
+	ED7_F2 1
+	SystemFlagsSet 0x08000000
+	if !flag[2287]:
+		SoundPlay sound[14] 0 100 0
+		ED7ObjPlay object[5] 0 30 0 0
+		Sleep 500ms
+		if ItemAdd item[505] 1:
+			FadeOut 300ms 0x00000000 100
+			SoundPlay sound[17] 0 100 0
+			TextSetPos -1 -1 -1 -1
+			TextSetName ""
+			TextMessage name[742] {
+				{color 0}已取得{item[505]}{color 0}。{wait}
+			}
+			TextWait
+			TextClose 0
+			TextSetPos -1 280 60 3
+			FadeIn 300ms 0x00000000
+			FlagSet flag[2287]
+			ED7_DE 6
+		else:
+			FadeOut 300ms 0x00000000 100
+			TextSetName ""
+			TextMessage name[742] {
+				寶箱內裝著{item[505]}{color 0}。
+				但因持有物品已滿而放棄{item[505]}{color 0}。{wait}
+			}
+			TextWait
+			TextClose 0
+			FadeIn 300ms 0x00000000
+			SoundPlay sound[15] 0 100 0
+			ED7ObjPlay object[5] 30 0 0 0
+	else:
+		FadeOut 300ms 0x00000000 100
+		TextSetPos -1 -1 -1 -1
+		TextSetName ""
+		TextMessage name[742] {
+			{0x06}{color 5}寶箱內空無一物。{color 0}{wait}
+		}
+		TextWait
+		TextClose 0
+		FadeIn 300ms 0x00000000
+	Sleep 30ms
+	TextEnd null
+	SystemFlagsUnset 0x08000000
+	Return
+
+fn[4]:
+	SystemFlagsSet 0x08000000
+	if flag[1965]:
+		TextStart null
+		TextSetName ""
+		TextMessage null {
+			{color 5}拉杆已經被扳下了。{wait}
+		}
+		TextWait
+		TextClose 0
+		_59
+		SystemFlagsUnset 0x08000000
+		TextEnd null
+	else:
+		EventBegin 1
+		TextMessage null {
+			{color 5}有一個拉杆。
+			要操作嗎？{wait}
+		}
+		Menu menu[0] -1 -1 1
+			"是" // 0
+			"否" // 1
+		MenuWait var[0]
+		MenuClose menu[0]
+		TextClose 0
+		_59
+		if var[0] == 0:
+			CrossFade 500ms
+			CharSetPos field_party[0] (184570, 0, 16470) 89deg
+			CharSetPos field_party[1] (183000, 0, 17440) 89deg
+			CharSetPos field_party[2] (183000, 0, 15470) 89deg
+			CharSetPos field_party[3] (181500, 0, 16440) 89deg
+			CamSetDistance 184180 1800 17890 0ms
+			ED7CamRotate 45deg 26deg 0deg 0ms
+			CamPers 600 0ms
+			CamZoom 26000 0ms
+			FadeWait
+			SoundPlay sound[143] 0 100 0
+			ED7ObjPlay object[6] 120 150 0 0
+			ObjWait object[6]
+			Sleep 500ms
+			SoundPlay sound[155] 0 100 0
+			ED7ObjPlay object[3] 0 30 0 0
+			ObjWait object[3]
+			SoundPlay sound[149] 0 100 0
+			Shake 0 300 3000 200ms
+			Sleep 500ms
+			FlagSet flag[1965]
+		SystemFlagsUnset 0x08000000
+		EventEnd 5
+	Return

@@ -1,0 +1,6190 @@
+calmare zero_k scena
+scena:
+	name "t1530" "t1530" "t1530_1"
+	town town[79]
+	bgm bgm[123]
+	flags 8192
+	item_use fn[0,255]
+	unk 255 0
+
+entry:
+	pos (0, 0, -1000)
+	unk1 0
+	cam_from (0, 2500, 34000)
+	cam_pers 262
+	unk2 30
+	cam_deg 45deg
+	cam_limit 0deg 360deg
+	cam_at (0, 0, 0)
+	unk3 0
+	unk4 0
+	flags 0x0001
+	town town[79]
+	init fn[0,255]
+	reinit fn[0,255]
+
+// NB: this line is meaningless, it's just here for roundtripping.
+label blank
+
+fn[0]:
+	Call fn[1,1]
+	Return
+
+fn[1]:
+	if flag[783] && !flag[784]:
+		Call fn[0,9]
+	elif flag[1562] && !flag[1563]:
+		Call fn[0,14]
+	elif QuestFlagsGet quest[22] 0x02 && !QuestTaskGet quest[22] 0:
+		Call fn[1,76]
+	else:
+		TextStart char[0]
+		if flag[1566]:
+			if !flag[0]:
+				TextTalk char[0] {
+					今朝方、黒月貿易公司の方々が
+					退院されていきました。{wait}
+				}
+				TextWait
+				TextTalk char[0] {
+					まだ完治されていなかったのですが
+					歩けるからと無理矢理に……{wait}
+				}
+				TextWait
+				if PartyPosition name[9] != -1:
+					TextTalk name[9] {
+						#0603Fフン……さすがツァオの部下か。
+						なかなかタフに出来ているようだな。{wait}
+					}
+					TextWait
+				FlagSet flag[0]
+			else:
+				TextTalk char[0] {
+					今朝方、黒月貿易公司の方々が
+					退院されていきました。{wait}
+				}
+				TextWait
+				TextTalk char[0] {
+					銃を受けた傷もあるので
+					お止めしたかったんですけどね……{wait}
+				}
+				TextWait
+		elif flag[1565]:
+			TextTalk char[0] {
+				ヨアヒム先生とお話できたようで
+				なによりでした。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				またいつでもいらっしゃってくださいね。{wait}
+			}
+			TextWait
+		elif flag[1554]:
+			TextTalk char[0] {
+				ヨアヒム先生が研究棟４階の
+				研究室でお待ちです。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				……サボリに行かないうちに
+				向かった方がよろしいかと思いますよ。{wait}
+			}
+			TextWait
+		elif flag[1536]:
+			if !flag[1733]:
+				TextTalk char[0] {
+					聖ウルスラ病院へようこそ。
+					本日はどういったご用件でしょう？{wait}
+				}
+				TextWait
+				TextTalk name[8] {
+					#0500Fウルスラ病院に来るのは
+					結構久しぶりですね。{wait}
+				} {
+					例の狼魔獣の事件以来、この辺りには
+					巡回に来る程度でしたし。{wait}
+				}
+				TextWait
+				TextTalk name[0] {
+					#0000Fはは、こう言っちゃなんだけど
+					曹長は病気になんかかからなそうだしな。{wait}
+				}
+				TextWait
+				TextTalk name[8] {
+					#0504Fええ、もちろんですよ。{wait}
+				} {
+					#0500F警備隊に入ってからは
+					小さな病気もしないように
+					体調管理には気を遣ってますし。{wait}
+				}
+				TextWait
+				TextTalk char[0] {
+					ふふ、素晴らしいことですね。
+					一番大事なのは病院に
+					かからないようにすることですから。{wait}
+				}
+				TextWait
+				TextTalk char[0] {
+					でも、何かあったらすぐご相談くださいね。
+					個人じゃどうにも出来ないことも
+					あると思いますから。{wait}
+				}
+				TextWait
+				FlagSet flag[1733]
+			else:
+				TextTalk char[0] {
+					一番大事なのは病院にかからないよう
+					健康管理をすることだと思います。{wait}
+				}
+				TextWait
+				TextTalk char[0] {
+					ふふ、そちらの警備隊員さんの心がけは
+					素晴らしいことだと思いますよ。{wait}
+				}
+				TextWait
+		elif flag[1351]:
+			Call fn[1,26]
+		elif flag[1346]:
+			TextTalk char[0] {
+				ヨアヒム先生の研究室は
+				研究棟の４階にありますよ。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				病棟の屋上に出れば
+				研究棟の場所はすぐ分かるはずです。{wait}
+			}
+			TextWait
+		elif flag[1307]:
+			if !flag[0]:
+				TextTalk char[0] {
+					ようこそ、ウルスラ病院へ。{wait}
+				}
+				TextWait
+				TextTalk char[0] {
+					本日、教授の方々は
+					教授会のため出張となっております。{wait}
+				}
+				TextWait
+				TextTalk char[0] {
+					担当の先生をお確かめの上
+					診察手続きをお願いします。{wait}
+				}
+				TextWait
+				FlagSet flag[0]
+			else:
+				TextTalk char[0] {
+					本日、教授の方々は
+					教授会のため出張となっております。{wait}
+				}
+				TextWait
+				TextTalk char[0] {
+					担当の先生をお確かめの上
+					診察手続きをお願いします。{wait}
+				}
+				TextWait
+		elif flag[1292]:
+			if !flag[0]:
+				TextTalk char[0] {
+					今日は観光客の方が
+					診察を受けに来ているようです。{wait}
+				}
+				TextWait
+				TextTalk char[0] {
+					最先端の医療を体験したい気持ちは
+					分かる気がするんですが……{wait}
+				}
+				TextWait
+				TextTalk char[0] {
+					それで具合の悪い患者さんの
+					診察順が遅くなるのは
+					なにか違う気がしますね。{wait}
+				}
+				TextWait
+				FlagSet flag[0]
+			else:
+				TextTalk char[0] {
+					健康診断などをしに
+					観光客の方が来ているみたいです。{wait}
+				}
+				TextWait
+				TextTalk char[0] {
+					……外来として来ている以上
+					無下にはしませんけど……
+					動機を知るとなんだか複雑です。{wait}
+				}
+				TextWait
+		elif flag[1282]:
+			CharTurnTo char[0] 266deg 0deg/s
+			_Char4A char[15] 255
+			TextTalk char[0] {
+				まぁ、ディーター総裁……{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				今年もお越しいただいて
+				本当にありがとうございます。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				きっと患者の皆様も喜ばれますわ。{wait}
+			}
+			TextWait
+			TextTalk char[15] {
+				#2804Fなに、気にしないでくれたまえ。{wait}
+			} {
+				私の個人的な我が侭なのだからね。{wait}
+			}
+			TextWait
+			_Char4B char[15] 255
+		elif flag[1280]:
+			if QuestFlagsGet quest[22] 0x10 && !flag[0]:
+				TextTalk char[0] {
+					セシルさんたち看護師の方は、
+					うまく分担して休暇を取ったとか。{wait}
+				}
+				TextWait
+				TextTalk char[0] {
+					うらやましいです。
+					事務方は人が少ないですから
+					なかなか休めないんですよ。{wait}
+				}
+				TextWait
+			elif QuestFlagsGet quest[22] 0x10:
+				TextTalk char[0] {
+					またなにかあったら
+					病院にお越しくださいね。{wait}
+				}
+				TextWait
+				TextTalk char[0] {
+					誠意を以って
+					対応させていただきますから。{wait}
+				}
+				TextWait
+			elif QuestTaskGet quest[22] 0:
+				TextTalk char[0] {
+					ヨアヒム先生に
+					早く戻っていただかないと……{wait}
+				}
+				TextWait
+				TextTalk char[0] {
+					皆さん、どうかよろしくお願いします。{wait}
+				}
+				TextWait
+			elif QuestFlagsGet quest[22] 0x02:
+		elif flag[1040]:
+			if !flag[0]:
+				TextTalk char[0] {
+					職員寮のキルシュ寮長や
+					マローネさんもクラーク事務長の
+					部下にあたるんですが……{wait}
+				}
+				TextWait
+				TextTalk char[0] {
+					ここだけの話、事務長は
+					キルシュ寮長には
+					頭が上がらないそうです。{wait}
+				}
+				TextWait
+				FlagSet flag[0]
+			else:
+				TextTalk char[0] {
+					ここだけの話、クラーク事務長は
+					キルシュ寮長には
+					頭が上がらないそうです。{wait}
+				}
+				TextWait
+		elif flag[1024]:
+			if !flag[0]:
+				TextTalk char[0] {
+					院長は主に各国を渡り歩いて
+					技術交流や人材発掘をしているので
+					なかなか病院にいらっしゃらないんです。{wait}
+				}
+				TextWait
+				TextTalk char[0] {
+					実は、かく言う私も
+					お会いしたことがなくて……
+					どんな方なんでしょうね。{wait}
+				}
+				TextWait
+				FlagSet flag[0]
+			else:
+				TextTalk char[0] {
+					院長はとても忙しい方ですから、
+					なかなか病院に
+					いらっしゃらないんです。{wait}
+				}
+				TextWait
+				TextTalk char[0] {
+					実質、病院の経営は教授たちに
+					任されていることになりますね。{wait}
+				}
+				TextWait
+		elif flag[799]:
+			TextTalk char[0] {
+				本日の外来受付は終了しました。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				遅い時間になると物騒です、
+				お見舞いの方はお急ぎください。{wait}
+			}
+			TextWait
+		elif flag[793]:
+			TextTalk char[0] {
+				夕方が近づいて、外来のお客様も、
+				少しずつはけてきました。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				リットンさんのこともありますし、
+				暗くならないうちに
+				皆さんが帰れるようにしないと。{wait}
+			}
+			TextWait
+		elif flag[784]:
+			if !flag[0]:
+				TextTalk char[0] {
+					……あの、セシルさん。{wait}
+				}
+				TextWait
+				TextTalk char[0] {
+					一応職場ですし、
+					人前でああいうスキンシップは
+					慎んだ方がいいと思いますよ。{wait}
+				}
+				TextWait
+				TextTalk name[0] {
+					#0006F……面目ないです。{wait}
+				}
+				TextWait
+				TextTalk name[53] {
+					#1305Fあら、ロイドが謝ることは
+					ないでしょう？{wait}
+				} {
+					#1309Fふふ……セラさん、
+					うらやましいんでしょ？
+					私にこーんな可愛い弟がいて。{wait}
+				}
+				TextWait
+				TextTalk char[0] {
+					はぁ……もう好きにしてください。{wait}
+				}
+				TextWait
+				FlagSet flag[0]
+			else:
+				TextTalk char[0] {
+					……もう止めませんので
+					抱き合うなりなんなり
+					好きにすればいいと思いますよ。{wait}
+				}
+				TextWait
+				TextTalk name[0] {
+					#0006F（呆れられてる……）{wait}
+				}
+				TextWait
+		elif flag[777]:
+		TextEnd char[0]
+	Return
+
+fn[2]:
+	Call fn[1,3]
+	Return
+
+fn[3]:
+	TextStart char[1]
+	if flag[1566]:
+		TextTalk char[1] {
+			病院長が不在の中ですが
+			経営状態は非常に良好と言えます。{wait}
+		}
+		TextWait
+		TextTalk char[1] {
+			これもひとえに、長年で培われた
+			病院への信頼のお陰でしょうね。{wait}
+		}
+		TextWait
+	elif flag[1565]:
+		TextTalk char[1] {
+			受付に病院内の連絡係など、
+			セラくんはよく働いてくれています。{wait}
+		}
+		TextWait
+		TextTalk char[1] {
+			単純な仕事量ならセシルさんにも
+			ひけをとらないんじゃないでしょうか。{wait}
+		}
+		TextWait
+	elif flag[1554]:
+		TextTalk char[1] {
+			運ばれてきた患者は必ず助けるのが
+			ウルスラ病院のモットーです。{wait}
+		}
+		TextWait
+		TextTalk char[1] {
+			たとえ極悪人が相手でも
+			それは変わりませんよ。{wait}
+		}
+		TextWait
+	elif flag[1536]:
+		TextTalk char[1] {
+			当病院は各国各機関から
+			資金を受けていますが、
+			経営方針は実に倹約的です。{wait}
+		}
+		TextWait
+		TextTalk char[1] {
+			そうした資金はできるだけ、
+			通常診察を受けられない方に
+			使われるようにしてあるのですよ。{wait}
+		}
+		TextWait
+	elif flag[1351]:
+		TextTalk char[1] {
+			この病院に勤めている以上、
+			私たち事務もやり方は違えど
+			患者さんを助ける為に動いています。{wait}
+		}
+		TextWait
+		TextTalk char[1] {
+			患者さんたちが笑顔で退院されると
+			幸せな気持ちになりますよ。{wait}
+		}
+		TextWait
+	elif flag[1346]:
+		TextTalk char[1] {
+			教授たちは研修医への指導と研究、
+			回診の仕事を兼ねていますから
+			お忙しい方ばかりなのですよ。{wait}
+		}
+		TextWait
+		TextTalk char[1] {
+			ヨアヒム先生を見ていると
+			そうは見えないんですけどね。{wait}
+		}
+		TextWait
+	elif flag[1307]:
+		if !flag[1]:
+			TextTalk char[1] {
+				私はこの病院の事務全般を
+				統括しているのです。{wait}
+			}
+			TextWait
+			TextTalk char[1] {
+				設備への予算分配から
+				導力ネットワークの整備まで……{wait}
+			}
+			TextWait
+			TextTalk char[1] {
+				仕事が多くてなかなか大変ですが
+				やりがいはありますよ。{wait}
+			}
+			TextWait
+			FlagSet flag[1]
+		else:
+			TextTalk char[1] {
+				特に、導力ネットの整備が大変なのです。
+				病院には私以外に操作できる方が
+				いらっしゃいませんから。{wait}
+			}
+			TextWait
+			TextTalk char[1] {
+				できればクロスベル市のほうから
+				技師の一人でも回して欲しい所です。{wait}
+			}
+			TextWait
+	elif flag[1292]:
+		CharTurnTo char[1] 180deg 0deg/s
+		CharTurnTo char[58] 15deg 0deg/s
+		_Char4A char[58] 255
+		TextTalk char[1] {
+			健康診断をご希望ですか？
+			それでは、こちらの書類に
+			サインをお願いします。{wait}
+		}
+		TextWait
+		TextTalk char[1] {
+			初診ですので
+			お時間頂くと思いますが
+			お待ちいただいても？{wait}
+		}
+		TextWait
+		TextTalk char[58] {
+			ああ、構わないよ。{wait}
+		}
+		TextWait
+		_Char4B char[58] 255
+	elif flag[1282]:
+		TextTalk char[1] {
+			毎年、ディーター総裁には
+			入院患者全員に行き渡るほどの
+			プレゼントを寄贈して頂いています。{wait}
+		}
+		TextWait
+		TextTalk char[1] {
+			いやはや、本当に出来たお方ですよ。{wait}
+		}
+		TextWait
+	elif flag[1280]:
+		if !flag[1]:
+			TextTalk char[1] {
+				受付にカード制度を導入するか
+				検討しているのです。{wait}
+			}
+			TextWait
+			TextTalk char[1] {
+				事前に個人情報を登録した
+				カードキーを用意して、
+				受付の手間を削減するものです。{wait}
+			}
+			TextWait
+			TextTalk char[1] {
+				ただ、カードの量産体制や
+				個人情報の保護などの問題もありますから
+				開発が難航しているんですよ。{wait}
+			}
+			TextWait
+			FlagSet flag[1]
+		else:
+			TextTalk char[1] {
+				受付にカード制度を導入するか
+				検討しているのです。{wait}
+			}
+			TextWait
+			TextTalk char[1] {
+				ただ、こちらはなかなか
+				開発が難航していまして……
+				当分先の話になりそうですな。{wait}
+			}
+			TextWait
+	elif flag[1040]:
+		if !flag[1]:
+			TextTalk char[1] {
+				寮の食堂で昼食を食べていたら
+				職員が昼時に来るなと
+				叩き出されてしまいました。{wait}
+			}
+			TextWait
+			TextTalk char[1] {
+				いやはや……
+				キルシュ寮長には
+				頭が上がりません。{wait}
+			}
+			TextWait
+			FlagSet flag[1]
+		else:
+			TextTalk char[1] {
+				いやはや……
+				キルシュ寮長には
+				頭が上がりません。{wait}
+			}
+			TextWait
+			TextTalk char[1] {
+				……女性は強し、ですね。{wait}
+			}
+			TextWait
+	elif flag[1024]:
+		if !flag[1]:
+			TextTalk char[1] {
+				ウルスラ病院は導力ネットワークで
+				クロスベル市と繋がっています。{wait}
+			}
+			TextWait
+			TextTalk char[1] {
+				試験的にではあるんですが
+				導力ネットワークを使った
+				予約サービスなどもあります。{wait}
+			}
+			TextWait
+			TextTalk char[1] {
+				ただ、普及率の問題で
+				あまり活用されていないですけどね。{wait}
+			}
+			TextWait
+			FlagSet flag[1]
+		else:
+			TextTalk char[1] {
+				導力ネットワークでの
+				事前予約サービスを使えば、
+				待ち時間なくスムーズに診察できます。{wait}
+			}
+			TextWait
+			TextTalk char[1] {
+				ただ、普及率の問題で
+				あまり活用されていないですけどね。{wait}
+			}
+			TextWait
+	elif flag[799]:
+		TextTalk char[1] {
+			警察の皆様……
+			フェンスの設置にご協力
+			ありがとうございました。{wait}
+		}
+		TextWait
+		TextTalk char[1] {
+			これで魔獣が入り込むようなことが
+			なくなればいいのですが……{wait}
+		}
+		TextWait
+	elif flag[793]:
+		TextTalk char[1] {
+			警察の皆様……
+			何か捜査に進展はありましたか？{wait}
+		}
+		TextWait
+	elif flag[784]:
+		TextTalk char[1] {
+			病院施設に魔獣が入ることなど
+			信じたくはありませんが……
+			本当だとしたら由々しき事態です。{wait}
+		}
+		TextWait
+		TextTalk char[1] {
+			リットン君が魔獣に襲われた証拠を
+			押さえてほしいと思います。{wait}
+		}
+		TextWait
+	elif flag[777]:
+		TextTalk char[1] {
+			聖ウルスラ医科大学病院へ
+			ようこそいらっしゃいました。{wait}
+		}
+		TextWait
+		TextTalk char[1] {
+			受付はもう一方のカウンターで
+			承っております。
+			そちらをご利用くださいませ。{wait}
+		}
+		TextWait
+	TextEnd char[1]
+	Return
+
+fn[4]:
+	TextStart self
+	if flag[1566]:
+		CharTurnToChar self char[52] 0deg/s
+		TextTalk self {
+			あら、今日はどういったご用件でしょう。{wait}
+		}
+		TextWait
+		TextTalk self {
+			初診の方は、一旦受付で
+			手続きをお願いしますね。{wait}
+		}
+		TextWait
+	elif flag[1565]:
+		TextTalk self {
+			運び込まれた人は、
+			今はＩＣＵ横の病室で休んでいるわ。{wait}
+		}
+		TextWait
+		TextTalk self {
+			命に別状はないし、
+			明日にも歩けるようになるそうよ。{wait}
+		}
+		TextWait
+	elif flag[1554]:
+		TextTalk self {
+			今日運び込まれた患者さん、
+			とりあえず一命はとりとめたみたい。{wait}
+		}
+		TextWait
+		TextTalk self {
+			……怪我の様子があきらかに
+			銃や殴打によるものみたいだから
+			どうにもキナ臭いんだけどね……{wait}
+		}
+		TextWait
+	elif flag[1536]:
+		CharTurnToChar self char[45] 0deg/s
+		TextTalk self {
+			あらボク、大丈夫？
+			けっこう熱があるみたいね……{wait}
+		}
+		TextWait
+		TextTalk self {
+			この体温計を脇に挟んで、
+			大人しく待っててね。{wait}
+		}
+		TextWait
+	elif flag[1351]:
+		if !flag[2]:
+			TextTalk self {
+				なになに、また何か
+				トラブルに巻き込まれてるわけ？{wait}
+			}
+			TextWait
+			TextTalk name[0] {
+				#0006Fい、いや……
+				そこまで大したことじゃ
+				ないんですけどね。{wait}
+			}
+			TextWait
+			TextTalk self {
+				ふふ、弟君を見てると飽きないわね。
+				話のネタ的にも。{wait}
+			}
+			TextWait
+			if PartyPosition name[1] > -1:
+				TextTalk name[1] {
+					#0100Fふふ、人気者ねぇロイド。{wait}
+				}
+				TextWait
+			elif PartyPosition name[2] > -1:
+				TextTalk name[2] {
+					#0200Fロイドさんがいるから
+					色々な事件が起きているのかも
+					しれませんね。{wait}
+				}
+				TextWait
+			elif PartyPosition name[3] > -1:
+				TextTalk name[3] {
+					#0306Fナースたちの間で
+					噂になってるってのか？
+					つくづくうらやましい奴……{wait}
+				}
+				TextWait
+			TextTalk name[0] {
+				#0006F勘弁してくれよ……{wait}
+			}
+			TextWait
+			FlagSet flag[2]
+		else:
+			TextTalk self {
+				ふふ、弟君を見てると飽きないわ。{wait}
+			}
+			TextWait
+			TextTalk self {
+				で……セシル先輩とは
+				あれから進展はあったのかしら？{wait}
+			}
+			TextWait
+			TextTalk name[0] {
+				#0011Fい、今はそれどころではないので
+				失礼しますっ！{wait}
+			}
+			TextWait
+	elif flag[1346]:
+		if !flag[2]:
+			TextTalk self {
+				寝てたら急患でたたき起こされるわ
+				休みの日なんて殆どないわ……{wait}
+			}
+			TextWait
+			TextTalk self {
+				考えてみればこの仕事も、
+				相当好きじゃないと
+				続けられない仕事よね。{wait}
+			}
+			TextWait
+			TextTalk self {
+				私はあんまり根気のある方じゃ
+				ないと思ってたんだけど、
+				意外とタフなのかも……{wait}
+			}
+			TextWait
+			FlagSet flag[2]
+		else:
+			TextTalk self {
+				この仕事を続けるには
+				相当好きじゃないと無理ね。{wait}
+			}
+			TextWait
+			TextTalk self {
+				セシル先輩なんか、看護師の仕事は
+				すごく気に入ってそうだなぁ。{wait}
+			}
+			TextWait
+	elif flag[1307]:
+		if !flag[2]:
+			TextTalk self {
+				奥の部屋には集中治療室#10RＩ　　Ｃ　　Ｕ#や
+				レントゲン写真を撮るための
+				部屋があるわ。{wait}
+			}
+			TextWait
+			TextTalk self {
+				レントゲンっていうのは
+				最近、レミフェリアの機器メーカーと
+				共同開発した最新の医療機器なの。{wait}
+			}
+			TextWait
+			TextTalk self {
+				特殊な感光クオーツを使って、
+				人間の骨や内臓の様子を透過して
+				写真に収めてしまうの。{wait}
+			}
+			TextWait
+			TextTalk self {
+				これがあれば、切開しなくても
+				病巣を発見できたりするのよ。{wait}
+			}
+			TextWait
+			TextTalk name[2] {
+				#0205F開発中とは聞いていたんですが……
+				すでに実用レベルにありましたか。{wait}
+			} {
+				#0204Fさすがはウルスラ病院ですね。{wait}
+			}
+			TextWait
+			TextTalk name[0] {
+				#0006F……は、半分くらい
+				意味分からなかったけど……
+				何となく凄いのは伝わってきたよ。{wait}
+			}
+			TextWait
+			FlagSet flag[2]
+		else:
+			TextTalk self {
+				レントゲンっていうのは
+				人間の骨や内臓の様子を透過して
+				写真に収めてしまう医療機器なの。{wait}
+			}
+			TextWait
+			TextTalk self {
+				これがあれば、切開しなくても
+				病巣を発見できたりするのよ。{wait}
+			}
+			TextWait
+			TextTalk self {
+				……まぁ、私も詳しいことは
+				殆ど分からないんだけどね。{wait}
+			}
+			TextWait
+	elif flag[1292]:
+		if !flag[2]:
+			Call fn[1,23]
+		else:
+			TextTalk self {
+				セシル先輩はほんと働き者よ。
+				自分の仕事だけでなく
+				他人のフォローまでやってるんだから。{wait}
+			}
+			TextWait
+			TextTalk self {
+				ヨアヒム先生あたりには
+				是非見習わせたいわ。{wait}
+			}
+			TextWait
+	elif flag[1282]:
+		if !flag[2]:
+			TextTalk self {
+				ウルスラ病院に勤めて数年経つけど、
+				この時期はやっぱり忙しいわ。{wait}
+			}
+			TextWait
+			TextTalk self {
+				やっぱり休む暇なんて
+				ないのが普通よね。{wait}
+			}
+			TextWait
+			FlagSet flag[2]
+		else:
+			TextTalk self {
+				今考えると、初日に休めて
+				ラッキーだったなぁ……{wait}
+			}
+			TextWait
+	elif flag[1280]:
+		TextTalk self {
+			ゲイリー教授の息子さん、
+			クロスベル市の不良グループに
+			いるらしいんだけど……{wait}
+		}
+		TextWait
+		TextTalk self {
+			多分、反抗期なのよね。
+			時間が経てば溝なんて
+			なくなると思うわ。{wait}
+		}
+		TextWait
+	elif flag[1040]:
+		TextTalk self {
+			セシル先輩にアルカンシェルの
+			イリア・プラティエと
+			知り合いなのかって聞いてみたの。{wait}
+		}
+		TextWait
+		TextTalk self {
+			……普通に教えてくれちゃった。
+			べつに秘密にしてたわけじゃないみたいね。{wait}
+		}
+		TextWait
+	elif flag[1024]:
+		if !flag[2]:
+			TextTalk self {
+				セシル先輩って、
+				すごい有名人と知り合いらしいわよ。{wait}
+			}
+			TextWait
+			TextTalk self {
+				弟君、知ってた？{wait}
+			}
+			TextWait
+			if !flag[1029]:
+				TextTalk name[0] {
+					#0005F…………えっと……？{wait}
+				}
+				TextWait
+				CharTurnToChar char[2] name[0] 500deg/s
+				TextTalk self {
+					うーん、知らないか。
+					誰なのかしらねー？{wait}
+				}
+				TextWait
+			else:
+				TextTalk name[0] {
+					#0003F（……多分、イリアさんのことだな。）{wait}
+				}
+				TextWait
+			FlagSet flag[2]
+		else:
+			TextTalk self {
+				セシル先輩って、
+				すごい有名人と知り合いらしいわよ。{wait}
+			}
+			TextWait
+			TextTalk self {
+				誰のことなのかなぁ……{wait}
+			}
+			TextWait
+	elif flag[799]:
+		TextTalk self {
+			ゲイリー教授のお子さん、
+			妙な連中とつるんでるらしいのよ。{wait}
+		}
+		TextWait
+		TextTalk self {
+			あんな立派な父親がいて、
+			何が不満なのかしらね。{wait}
+		}
+		TextWait
+	elif flag[793]:
+		TextTalk self {
+			あら、診察待ちの方かしら？{wait}
+		}
+		TextWait
+		TextTalk self {
+			受付が済んでるなら
+			座って待っててね。{wait}
+		}
+		TextWait
+	elif flag[784]:
+		TextTalk self {
+			……次の診察は……あの患者さんね。{wait}
+		}
+		TextWait
+	elif flag[777]:
+		if !flag[2]:
+			Call fn[1,5]
+		else:
+			TextTalk self {
+				この体温計を
+				脇に挟んでおいてくださいね。{wait}
+			}
+			TextWait
+	TextEnd self
+	Return
+
+fn[5]:
+	CharSetChipPattern char[17] 0
+	_Char4A char[2] 255
+	TextTalk char[2] {
+		今日はどうされました？{wait}
+	}
+	TextWait
+	TextTalk char[17] {
+		ああ、どうにも熱っぽくてね……
+		どうも風邪をひいてしまったらしい。{wait}
+	}
+	TextWait
+	TextTalk char[2] {
+		では、診察待ちの間に
+		お熱を測っておきましょうね。{wait}
+	}
+	TextWait
+	_Char4B char[2] 255
+	CharSetChipPattern char[17] 0
+	FlagSet flag[2]
+	Return
+
+fn[6]:
+	TextStart self
+	if flag[1566]:
+		if !flag[5]:
+			Call fn[1,11]
+		else:
+			TextTalk self {
+				ほりゃぁあああ……！{wait}
+			}
+			TextWait
+	elif flag[1565]:
+	elif flag[1554]:
+	elif flag[1536]:
+	elif flag[1351]:
+	elif flag[1346]:
+	elif flag[1307]:
+	elif flag[1292]:
+		if !flag[5]:
+			Call fn[1,11]
+		else:
+			TextTalk self {
+				フヌギギギ……！！{wait}
+			}
+			TextWait
+	elif flag[1282]:
+	elif flag[1280]:
+	elif flag[1040]:
+	elif flag[1024]:
+		if !flag[19]:
+			Call fn[1,73]
+		else:
+			_Char4A char[63] 255
+			_Char4A char[3] 255
+			TextTalk char[3] {
+				ところで……例の件、
+				考えてくれたかね？{wait}
+			}
+			TextWait
+			TextTalk char[63] {
+				#08705Fあ……研究棟で
+				特別講義をして欲しいって話ですか？{wait}
+			} {
+				#08706Fうーん、記念祭も近づいてきて
+				段々忙しくなってますからねぇ……{wait}
+			}
+			TextWait
+			TextTalk char[3] {
+				ふむ……残念だが、
+				それなら無理にとは言わんよ。{wait}
+			}
+			TextWait
+			_Char4B char[63] 255
+			_Char4B char[3] 255
+	elif flag[799]:
+		if !flag[5]:
+			Call fn[1,11]
+		else:
+			TextTalk self {
+				グニニニ……！！{wait}
+			}
+			TextWait
+	elif flag[793]:
+	elif flag[784]:
+	elif flag[777]:
+	TextEnd self
+	Return
+
+fn[7]:
+	field_party[0].5 = self.4
+	self.5 = self.4
+	TextStart self
+	CharFlagsUnset self 0x0010
+	CharTurnToChar self field_party[0] 0deg/s
+	self.4 = (self.4 + 360) % 360
+	self.4 = self.4 + 360 - self.5
+	self.5 = self.4 / 180
+	if self.4 <= 45 | self.4 >= 315 && self.4 <= 405 | self.4 >= 675:
+	elif self.5 < 1:
+		self.8 = 2
+	elif self.5 > 2:
+		self.8 = 1
+	else:
+		self.8 = self.5
+	self.4 = field_party[0].5
+	field_party[0].5 = 0
+	self.5 = 0
+	CharFlagsSet self 0x0010
+	if flag[1566]:
+	elif flag[1565]:
+		if !flag[3]:
+			TextTalk self {
+				内科医療の現場に臨むとき、
+				いつも考えていることだが……{wait}
+			}
+			TextWait
+			TextTalk self {
+				体の自己治癒力を助けていく
+				内科医療では間に合わない場面でも、
+				外科医術の早さに救われることがある。{wait}
+			}
+			TextWait
+			TextTalk self {
+				足りない部分を柔軟に助け合うのが
+				理想的な医療の形じゃないか、とね。{wait}
+			}
+			TextWait
+			TextTalk self {
+				……ゲイリー教授と犬猿の仲の
+				わしが言ってもどうかとは思うがな。{wait}
+			}
+			TextWait
+			FlagSet flag[3]
+		else:
+			TextTalk self {
+				……うぉっほん！　あー、なんだ。
+				今のは忘れてくれたまえ、キミ。{wait}
+			}
+			TextWait
+			TextTalk self {
+				……さっきのわしのセリフは
+				間違ってもゲイリー教授に
+				言うんじゃないぞ。{wait}
+			}
+			TextWait
+	elif flag[1554]:
+		TextTalk self {
+			うぉっほん！
+			ゲイリー教授め、今朝の患者を
+			うまく外科医療で助けたそうじゃ。{wait}
+		}
+		TextWait
+		TextTalk self {
+			……フン、外科もなかなか
+			やるではないか。{wait}
+		}
+		TextWait
+	elif flag[1536]:
+		TextTalk self {
+			ヨアヒム君はここ最近、
+			研究室で熱心に研究しとるようだ。{wait}
+		}
+		TextWait
+		TextTalk self {
+			彼は確かにサボリの常習だが、
+			ここぞというところは
+			やる男なのだよ。{wait}
+		}
+		TextWait
+	elif flag[1351]:
+		TextTalk self {
+			ん……そんなに慌ててどうしたね？{wait}
+		}
+		TextWait
+		TextTalk self {
+			こちらには患者以外、
+			誰も来ていないぞ。{wait}
+		}
+		TextWait
+	elif flag[1346]:
+		if !flag[3]:
+			TextTalk self {
+				うぉっほん！
+				なんだね、君たちは。{wait}
+			}
+			TextWait
+			TextTalk name[0] {
+				#0005Fえっと、神経・薬学科に
+				用があって来たんですが……{wait}
+			}
+			TextWait
+			TextTalk self {
+				ああ、なるほどな。{wait}
+			}
+			TextWait
+			TextTalk self {
+				確かに神経・薬学科は
+				内科の範疇だが、
+				どちらかといえば研究中の部類だ。{wait}
+			}
+			TextWait
+			TextTalk self {
+				用があるならヨアヒム君を
+				たずねるがよかろう。{wait}
+			}
+			TextWait
+			FlagSet flag[3]
+		else:
+			TextTalk self {
+				確かに薬学・神経科は
+				内科の範疇だが、
+				どちらかといえば研究中の部類だ。{wait}
+			}
+			TextWait
+			TextTalk self {
+				用があるならヨアヒム君を
+				たずねるがよかろう。{wait}
+			}
+			TextWait
+	elif flag[1307]:
+	elif flag[1292]:
+	elif flag[1282]:
+		if !flag[3]:
+			TextTalk self {
+				この間、グェン君に
+				内科の診察を
+				任せてみたのだ。{wait}
+			}
+			TextWait
+			TextTalk self {
+				彼女は技術的には申し分ないが
+				患者への配慮などはまだまだ……{wait}
+			}
+			TextWait
+			TextTalk self {
+				ウルスラ病院の研修医の
+				名に恥じぬよう、
+				もっと伸びてほしいものだ。{wait}
+			}
+			TextWait
+			FlagSet flag[3]
+		else:
+			TextTalk self {
+				的確な病状を知るには
+				患者と上手く付き合って行く
+				能力が必要になる。{wait}
+			}
+			TextWait
+			TextTalk self {
+				グェン君はその方面は
+				まだまだ未熟だね。{wait}
+			}
+			TextWait
+	elif flag[1280]:
+		TextTalk self {
+			記念祭が始まったからか
+			研修医たちの気が
+			抜けて来ているようだ。{wait}
+		}
+		TextWait
+		TextTalk self {
+			うぉっほん！
+			ここはガツンと喝を
+			入れてやらんとな。{wait}
+		}
+		TextWait
+	elif flag[1040]:
+		if QuestFlagsGet quest[19] 0x10:
+			if !flag[3]:
+				TextTalk self {
+					君たちにはすっかり
+					世話になってしまったな。{wait}
+				}
+				TextWait
+				TextTalk self {
+					今から講義なので、
+					失礼させてもらおう。{wait}
+				}
+				TextWait
+				TextTalk self {
+					また何かあったらよろしく頼む。{wait}
+				}
+				TextWait
+				FlagSet flag[3]
+			else:
+				TextTalk self {
+					七耀教会で学んだ日々は
+					かけがえのないものだ。{wait}
+				}
+				TextWait
+				TextTalk self {
+					いつかエラルダ大司教には
+					お礼を言いに行かねばなるまいな。{wait}
+				}
+				TextWait
+		elif QuestTaskGet quest[19] 2:
+			Call fn[1,75]
+		elif QuestTaskGet quest[19] 0:
+			TextTalk self {
+				クロスベル大聖堂にいらっしゃる
+				エラルダ大司教から、
+				『ルピナス草』を貰ってきてくれ。{wait}
+			}
+			TextWait
+			TextTalk self {
+				あー、念のために言っておくが……
+				大司教は私以上に気難しい方だ。{wait}
+			}
+			TextWait
+			TextTalk self {
+				断じて粗相の無いようにな。{wait}
+			}
+			TextWait
+		elif QuestFlagsGet quest[19] 0x02:
+			Call fn[1,74]
+		else:
+			TextTalk self {
+				……ふむ、あのような要請で
+				本当に来るのだろうか……{wait}
+			}
+			TextWait
+			TextTalk self {
+				やはり、遊撃士に
+				頼むべきだったか……？{wait}
+			}
+			TextWait
+			TextTalk self {
+				いやしかし、この程度の仕事で
+				ミラをはたきたくはないし……{wait}
+			}
+			TextWait
+	elif flag[1024]:
+	elif flag[799]:
+	elif flag[793]:
+		TextTalk self {
+			あの日、リットン君に
+			レポート提出を課したのは私だが……
+			まさかあのようなことになるとは。{wait}
+		}
+		TextWait
+		TextTalk self {
+			ううむ、他の研修医が
+			まだ襲われていないのが
+			不幸中の幸いというところだな。{wait}
+		}
+		TextWait
+	elif flag[784]:
+		if !flag[3]:
+			TextTalk self {
+				うぉっほん！　……何か用かね？
+				ここの学生ではないようだが……{wait}
+			}
+			TextWait
+			TextTalk self {
+				……ふむ、見ればなかなか
+				賢そうな子らじゃないか。{wait}
+			}
+			TextWait
+			TextTalk self {
+				君達、よかったら来年の入学試験に
+				挑戦してみないかね？{wait}
+			}
+			TextWait
+			TextTalk name[3] {
+				#0305Fお、見込みありそうッスか俺たち！{wait}
+			} {
+				#0304Fドクターランディの
+				華麗なるナースハーレム生活……
+				結構悪くねぇかもな。{wait}
+			}
+			TextWait
+			TextTalk name[0] {
+				#0006Fおいおい……{wait}
+			}
+			TextWait
+			TextTalk name[1] {
+				#0111Fちなみに、このウルスラ病院には
+				近隣諸国から学生が集まるから、
+				かなりの人数が試験を受けるわよ。{wait}
+			} {
+				#0103F去年の倍率は確か……
+				１２０倍だったかしら。{wait}
+			}
+			TextWait
+			TextTalk name[3] {
+				#0303Fムリだな、あきらめよう。{wait}
+			}
+			TextWait
+			TextTalk name[2] {
+				#0211F……即答ですね。{wait}
+			}
+			TextWait
+			FlagSet flag[3]
+		else:
+			TextTalk self {
+				このウルスラ病院は、
+				医療大国レミフェリアにも一目置かれる
+				最先端の医療研究所でもある。{wait}
+			}
+			TextWait
+			TextTalk self {
+				このクロスベルはもちろん
+				エレボニア帝国やカルバード共和国、
+				レミフェリア公国にリベール王国……{wait}
+			}
+			TextWait
+			TextTalk self {
+				各国の将来有望な若者たちが
+				骨身を削る思いで勉強することで
+				ようやく入学できる場所なのだよ。{wait}
+			}
+			TextWait
+	elif flag[777]:
+	CharSetChipPattern self 0
+	TextEnd self
+	Return
+
+fn[8]:
+	TextStart self
+	if flag[1566]:
+	elif flag[1565]:
+		TextTalk self {
+			今日救急車で運び込まれた人、
+			もう意識が戻ってるんだって。{wait}
+		}
+		TextWait
+		TextTalk self {
+			さすがはウチの先生よね。{wait}
+		}
+		TextWait
+	elif flag[1554]:
+	elif flag[1536]:
+		TextTalk self {
+			この前、また実地研修が
+			あったんだけど……{wait}
+		}
+		TextWait
+		TextTalk self {
+			できるだけ患者さんに
+			にこやかに接していたら、
+			Ｂ－の評価がＢ＋に上がったわ。{wait}
+		}
+		TextWait
+		TextTalk self {
+			小さい進歩だけど……
+			ちょっと内科医の夢に
+			近づいたかな。{wait}
+		}
+		TextWait
+	elif flag[1351]:
+		if !flag[6]:
+			TextTalk self {
+				さっき、診察中の
+				ラゴー教授を見てて
+				気づいたことがあるの。{wait}
+			}
+			TextWait
+			TextTalk self {
+				あの気難しい教授ですら
+				患者さんの前では
+				穏やかにしていた……{wait}
+			}
+			TextWait
+			TextTalk self {
+				よく考えれば私、
+				評価ばかり気になって
+				その辺はないがしろだったかも。{wait}
+			}
+			TextWait
+			FlagSet flag[6]
+		else:
+			TextTalk self {
+				あの気難しいラゴー教授ですら
+				患者さんの前では
+				穏やかにしていた……{wait}
+			}
+			TextWait
+			TextTalk self {
+				私に足りないのは
+				そういうことかな？{wait}
+			}
+			TextWait
+	elif flag[1346]:
+		if !flag[6]:
+			TextTalk self {
+				ラゴー教授、
+				私になかなかいい評価を
+				くれないのよねー。{wait}
+			}
+			TextWait
+			TextTalk self {
+				何が悪いのか聞いてみても
+				『自分で気づけ』って言われるし。{wait}
+			}
+			TextWait
+			TextTalk self {
+				くそー、こうなったらとことん
+				教授を観察してやるわよ。{wait}
+			}
+			TextWait
+			FlagSet flag[6]
+		else:
+			TextTalk self {
+				こうなったらとことん
+				ラゴー教授を観察してやるわよ。{wait}
+			}
+			TextWait
+			TextTalk self {
+				いい評価をもらえるヒント、
+				なんとしても見つけてやるわ。{wait}
+			}
+			TextWait
+	elif flag[1307]:
+		TextTalk self {
+			今日は教授がいないから、
+			なんとかリットン君と協力して
+			回していかないと。{wait}
+		}
+		TextWait
+		TextTalk self {
+			でも……
+			別に高評価に繋がるわけでなし、
+			やる気でないのよねー。{wait}
+		}
+		TextWait
+	elif flag[1292]:
+		if !flag[6]:
+			TextTalk self {
+				教授たち、妙に仲が悪いのよね。{wait}
+			}
+			TextWait
+			TextTalk self {
+				似た物同士なのに
+				何が気に入らないんだか。{wait}
+			}
+			TextWait
+			FlagSet flag[6]
+		else:
+			TextTalk self {
+				ま、どこぞの病院みたいに
+				内外科のドロドロな派閥争い……
+				って感じじゃないからいっか。{wait}
+			}
+			TextWait
+	elif flag[1282]:
+		if !flag[6]:
+			TextTalk self {
+				昨日、実地研修だったのよ。{wait}
+			}
+			TextWait
+			TextTalk self {
+				個人的には
+				上手くやれたつもりだけど
+				教授の評価はＢ－……{wait}
+			}
+			TextWait
+			TextTalk self {
+				くぅ、デキる女医への道は
+				とてつもなく険しいわね……{wait}
+			}
+			TextWait
+			FlagSet flag[6]
+		else:
+			TextTalk self {
+				この間の実地研修……
+				個人的にはＡ＋を貰ってもいい出来だと
+				思ってたんだけどね。{wait}
+			}
+			TextWait
+			TextTalk self {
+				Ｂ－かぁ……
+				もっと勉強しないと。{wait}
+			}
+			TextWait
+	elif flag[1280]:
+	elif flag[1040]:
+	elif flag[1024]:
+		TextTalk self {
+			リットン君、怪我が治ってから
+			張り切って仕事してるみたい。{wait}
+		}
+		TextWait
+		TextTalk self {
+			でも、張り切りついでに
+			ヨアヒム先生の仕事まで
+			させられてるみたいなのよね……{wait}
+		}
+		TextWait
+	elif flag[799]:
+		CharTurnTo self 180deg 0deg/s
+		TextTalk self {
+			きょ、教授～！
+			落ち着いてくださいってば！{wait}
+		}
+		TextWait
+	elif flag[793]:
+		TextTalk self {
+			しかし、リットン君も
+			運が悪いわよね。{wait}
+		}
+		TextWait
+		TextTalk self {
+			せっかくレポートを書きあげたのに
+			あんな目にあっちゃうなんて。{wait}
+		}
+		TextWait
+		TextTalk self {
+			まさか自分が勉強してる場所に
+			入院するハメになるなんて
+			思いもよらなかったでしょうね。{wait}
+		}
+		TextWait
+	elif flag[784]:
+		TextTalk self {
+			リットン君がケガしたせいで、
+			シフトが大分キツくなったわ。{wait}
+		}
+		TextWait
+		TextTalk self {
+			んもう……
+			魔獣に襲われたなんて言ってたけど
+			本当なのかしらね。{wait}
+		}
+		TextWait
+	elif flag[777]:
+	TextEnd self
+	Return
+
+fn[9]:
+	TextStart self
+	if flag[1566]:
+		if !flag[5]:
+			Call fn[1,11]
+		else:
+			TextTalk self {
+				チェストォォォ……！{wait}
+			}
+			TextWait
+	elif flag[1565]:
+	elif flag[1554]:
+	elif flag[1536]:
+	elif flag[1351]:
+	elif flag[1346]:
+	elif flag[1307]:
+	elif flag[1292]:
+		if !flag[5]:
+			Call fn[1,11]
+		else:
+			TextTalk self {
+				ヌグヲヲヲ……！！{wait}
+			}
+			TextWait
+	elif flag[1282]:
+	elif flag[1280]:
+	elif flag[1040]:
+	elif flag[1024]:
+	elif flag[799]:
+		if !flag[5]:
+			Call fn[1,11]
+		else:
+			TextTalk self {
+				ヌグググ……！！{wait}
+			}
+			TextWait
+	elif flag[793]:
+	elif flag[784]:
+	elif flag[777]:
+	TextEnd self
+	Return
+
+fn[10]:
+	field_party[0].5 = self.4
+	self.5 = self.4
+	TextStart self
+	CharFlagsUnset self 0x0010
+	CharTurnToChar self field_party[0] 0deg/s
+	self.4 = (self.4 + 360) % 360
+	self.4 = self.4 + 360 - self.5
+	self.5 = self.4 / 180
+	if self.4 <= 45 | self.4 >= 315 && self.4 <= 405 | self.4 >= 675:
+	elif self.5 < 1:
+		self.8 = 2
+	elif self.5 > 2:
+		self.8 = 1
+	else:
+		self.8 = self.5
+	self.4 = field_party[0].5
+	field_party[0].5 = 0
+	self.5 = 0
+	CharFlagsSet self 0x0010
+	if flag[1566]:
+	elif flag[1565]:
+		if !flag[4]:
+			TextTalk self {
+				今朝の重傷患者の処置で……
+				いや、いつも思っている
+				ことなのだが……{wait}
+			}
+			TextWait
+			TextTalk self {
+				外科治療の現場でも、
+				麻酔や点滴などの内科的な医療は
+				必ず必要になってくる。{wait}
+			}
+			TextWait
+			TextTalk self {
+				外科と内科はやはり
+				手を取り合って
+				医療に望むべきだと思う。{wait}
+			}
+			TextWait
+			TextTalk self {
+				……ラゴー教授と
+				ケンカばかりしている
+				私が言うのも何だがな。{wait}
+			}
+			TextWait
+			FlagSet flag[4]
+		else:
+			TextTalk self {
+				……ゴホン！
+				ガラにもないことを
+				口走ってしまった。{wait}
+			}
+			TextWait
+			TextTalk self {
+				いいか、ラゴー教授にだけは
+				このことを漏らすんじゃないぞ！？{wait}
+			}
+			TextWait
+	elif flag[1554]:
+		if !flag[4]:
+			TextTalk self {
+				先ほど、クロスベル市のほうから
+				救急患者が何人も運ばれてきてね。{wait}
+			}
+			TextWait
+			TextTalk self {
+				ヨアヒム君たちと一緒に
+				先ほど処置を終えたところだ。{wait}
+			}
+			TextWait
+			TextTalk self {
+				ふぅ、さすがに疲れたな。
+				私も歳かね……{wait}
+			}
+			TextWait
+			FlagSet flag[4]
+		else:
+			TextTalk self {
+				クロスベル市からの救急患者だが、
+				とりあえず全員処置はできたよ。{wait}
+			}
+			TextWait
+			TextTalk self {
+				ふぅ、さすがに疲れたな。
+				私も歳かね……{wait}
+			}
+			TextWait
+	elif flag[1536]:
+		if !flag[4]:
+			TextTalk self {
+				学習したことは、
+				忘れないうちに復習を繰り返すことで
+				長期的な記憶となる。{wait}
+			}
+			TextWait
+			TextTalk self {
+				つまり、『知識』として
+				明確に脳に蓄えられるわけだな。{wait}
+			}
+			TextWait
+			TextTalk self {
+				うちの研修医が優秀なのは
+				まさに復習が習慣づいている
+				おかげだろう。{wait}
+			}
+			TextWait
+			FlagSet flag[4]
+		else:
+			TextTalk self {
+				学習したことは、
+				忘れないうちに復習を繰り返すことで
+				『知識』として蓄えられる。{wait}
+			}
+			TextWait
+			TextTalk self {
+				……ま、ヨアヒム君の受け売りだがね。{wait}
+			}
+			TextWait
+	elif flag[1351]:
+		if !flag[4]:
+			TextTalk self {
+				さっき、息子のキーンツが
+				病院に来ていると
+				看護師が報せてくれてな。{wait}
+			}
+			TextWait
+			TextTalk self {
+				弁当を届けさせると
+				妻が言ってたからそのことだろう。{wait}
+			}
+			TextWait
+			TextTalk self {
+				きっと今頃憎まれ口でも
+				叩いているのかもしれないが……
+				素直に嬉しいものだな。{wait}
+			}
+			TextWait
+			FlagSet flag[4]
+		else:
+			TextTalk self {
+				どうやら息子のキーンツが、
+				弁当を届けるために
+				病院を訪れているらしい。{wait}
+			}
+			TextWait
+			TextTalk self {
+				素直に嬉しいものだよ。
+				フフ、こんな顔は
+				ラゴー教授には見せられんな。{wait}
+			}
+			TextWait
+	elif flag[1346]:
+		TextTalk self {
+			屋上から行ける研究棟には
+			今までの研究で培われた
+			貴重なデータが保管されてある。{wait}
+		}
+		TextWait
+		TextTalk self {
+			必要最低限、部外者は
+			入らないでいただきたいのだがな。{wait}
+		}
+		TextWait
+	elif flag[1307]:
+	elif flag[1292]:
+	elif flag[1282]:
+		if !flag[4]:
+			TextTalk self {
+				……昨日クロスベル市であった騒ぎに
+				息子のキーンツが参加していたらしい。{wait}
+			}
+			TextWait
+			TextTalk self {
+				警察の介入のおかげで
+				怪我人などは出なかったそうだが……{wait}
+			}
+			TextWait
+			TextTalk self {
+				……ふーっ……
+				心配をかけさせないで欲しいものだ。{wait}
+			}
+			TextWait
+			FlagSet flag[4]
+		else:
+			TextTalk self {
+				本来叱らなければいけない時に
+				その場にいられないとは……{wait}
+			}
+			TextWait
+			TextTalk self {
+				……ふーっ……
+				私は情けない父親だな。{wait}
+			}
+			TextWait
+	elif flag[1280]:
+		TextTalk self {
+			明日、息子とアルカンシェルを
+			観に行くつもりだったが……
+			やはり行けそうもないな。{wait}
+		}
+		TextWait
+		TextTalk self {
+			……子供の機嫌取りなんて
+			父親として情けないがな。{wait}
+		}
+		TextWait
+	elif flag[1040]:
+		if !flag[4]:
+			CharSetChipPattern self 0
+			TextTalk self {
+				先々月、例の不良たちが
+				運び込まれただろう？{wait}
+			}
+			TextWait
+			TextTalk self {
+				患者が息子のキーンツじゃないかと
+				背筋が凍ったものだった。{wait}
+			}
+			TextWait
+			TextTalk self {
+				……あんなことがあっても
+				まだグループに
+				入っているというし……{wait}
+			}
+			TextWait
+			TextTalk self {
+				全く、あまり心配を
+				かけさせないでほしいものだ。{wait}
+			}
+			TextWait
+			FlagSet flag[4]
+		else:
+			TextTalk self {
+				……私はどうも、息子によく
+				思われていないらしくてな。{wait}
+			}
+			TextWait
+			TextTalk self {
+				昔から病院の仕事で
+				家に居ないことが多かったから、
+				尊敬はされてないだろう。{wait}
+			}
+			TextWait
+			TextTalk self {
+				息子が不良になった責任の一角は
+				私にあるのかもしれないな……{wait}
+			}
+			TextWait
+	elif flag[1024]:
+		if !flag[4]:
+			Call fn[1,12]
+		else:
+			CharSetChipPattern self 0
+			TextTalk self {
+				いいかね、アーシュラ君。
+				君ももう機器関係の医療を教える
+				主任という立場なのだ。{wait}
+			}
+			TextWait
+			TextTalk self {
+				いつまでも学生気分ではいかんぞ。{wait}
+			}
+			TextWait
+	elif flag[799]:
+	elif flag[793]:
+		if !flag[4]:
+			TextTalk self {
+				外科とは、近年
+				徐々に普及してきた
+				近代的な医療のことだ。{wait}
+			}
+			TextWait
+			TextTalk self {
+				ただ、なにぶん
+				新しい技術なのでな。{wait}
+			}
+			TextWait
+			TextTalk self {
+				体にメスを入れる事について
+				いまいち理解が
+				得られていないのだよ。{wait}
+			}
+			TextWait
+			FlagSet flag[4]
+		else:
+			TextTalk self {
+				あのラゴー教授も含め、
+				外科に対して偏見的な目を持つ者も
+				少なくないのが現状だ。{wait}
+			}
+			TextWait
+			TextTalk self {
+				近代医療の進化について来れん
+				時代遅れのジジイのことなど
+				知ったことではないがな。{wait}
+			}
+			TextWait
+	elif flag[784]:
+		TextTalk self {
+			アーシュラ君……
+			どうやら今日も遅刻か。{wait}
+		}
+		TextWait
+		TextTalk self {
+			まったく……
+			何度やっても懲りないな。{wait}
+		}
+		TextWait
+	elif flag[777]:
+	CharSetChipPattern self 0
+	TextEnd self
+	Return
+
+fn[11]:
+	_Char4A char[3] 255
+	_Char4A char[6] 255
+	CharTurnToChar char[3] char[6] 0deg/s
+	CharTurnToChar char[6] char[3] 0deg/s
+	if flag[1566]:
+		TextTalk char[3] {
+			うぉっほん！
+			誰かと思えばゲイリー教授ではないか。{wait}
+		}
+		TextWait
+		TextTalk char[6] {
+			おやおや、そういう貴方はラゴー教授。{wait}
+		}
+		TextWait
+		TextTalk char[3] {
+			……あー、なんだ。
+			昨日の重傷患者への処置だが……{wait}
+		}
+		TextWait
+		TextTalk char[6] {
+			おやぁ、わたしの活躍を
+			耳に入れてもらえましたかな？{wait}
+		}
+		TextWait
+		TextTalk char[6] {
+			ふっふっふ、内科の時代は
+			そろそろ終わりではないですかな？{wait}
+		}
+		TextWait
+		TextTalk char[3] {
+			#4S……なにをぉう！？{wait}
+		}
+		TextWait
+		TextTalk char[6] {
+			#4S……やるのか！？{wait}
+		}
+		TextWait
+	elif flag[1565]:
+	elif flag[1554]:
+	elif flag[1536]:
+	elif flag[1351]:
+	elif flag[1346]:
+	elif flag[1307]:
+	elif flag[1292]:
+		TextTalk char[3] {
+			うぉっほん！　誰かと思えば
+			ゲイリー教授ではないか。{wait}
+		}
+		TextWait
+		TextTalk char[3] {
+			そのみすぼらしいヒゲは
+			今日も医者にあるまじき風貌だね。{wait}
+		}
+		TextWait
+		TextTalk char[6] {
+			おやおや、
+			そういう貴方はラゴー教授。{wait}
+		}
+		TextWait
+		TextTalk char[6] {
+			その焼け野原のごときハゲ頭、
+			未だに整備していないとは驚きだ。{wait}
+		}
+		TextWait
+		TextTalk char[3] {
+			……そのヒゲ……
+			お得意の外科手術で、永久に
+			取り除いてみてはどうかね？{wait}
+		}
+		TextWait
+		TextTalk char[6] {
+			……貴方の頭こそ、
+			お得意の内科医療で
+			どうにかできなかったのかね？{wait}
+		}
+		TextWait
+		TextTalk char[3] {
+			#4S……なにをぉう！？{wait}
+		}
+		TextWait
+		TextTalk char[6] {
+			#4S……やるのか！？{wait}
+		}
+		TextWait
+	elif flag[1282]:
+	elif flag[1280]:
+	elif flag[1040]:
+	elif flag[1024]:
+	elif flag[799]:
+		TextTalk char[3] {
+			うぉっほん！
+			……その不潔なヒゲ面、
+			誰かと思えばゲイリー教授ではないか。{wait}
+		}
+		TextWait
+		TextTalk char[6] {
+			おやおや、そういう貴方はラゴー教授。
+			いやぁ、そのハゲ頭は今日も眩しいな。{wait}
+		}
+		TextWait
+		TextTalk char[3] {
+			……フン！
+			全く嘆かわしいことだよ。{wait}
+		}
+		TextWait
+		TextTalk char[3] {
+			君のような男が未来ある研修医に
+			人の切り刻み方を教えているなんてね。{wait}
+		}
+		TextWait
+		TextTalk char[6] {
+			……ハン！
+			その点、貴方は楽でいいな。{wait}
+		}
+		TextWait
+		TextTalk char[6] {
+			七耀教会譲りの枯れた技術を伝える……
+			それだけで教授ヅラが出来るんだから。{wait}
+		}
+		TextWait
+		TextTalk char[3] {
+			#4S……なにをぉう！？{wait}
+		}
+		TextWait
+		TextTalk char[6] {
+			#4S……やるのか！？{wait}
+		}
+		TextWait
+	elif flag[793]:
+	elif flag[784]:
+	elif flag[777]:
+	FlagSet flag[5]
+	_Char4B char[3] 255
+	_Char4B char[6] 255
+	Return
+
+fn[12]:
+	_Char4A char[11] 255
+	CharSetChipPattern char[7] 0
+	CharTurnToChar char[11] char[7] 0deg/s
+	TextTalk char[7] {
+		アーシュラ君……
+		また遅刻かね。{wait}
+	}
+	TextWait
+	TextTalk char[7] {
+		教える立場の者が
+		遅刻するとは言語道断だぞ？{wait}
+	}
+	TextWait
+	TextTalk char[11] {
+		す、すみませ～ん……{wait}
+	}
+	TextWait
+	TextTalk char[11] {
+		昨日届いた新しい機材に
+		夢中になって弄ってるうちに
+		朝になっちゃってて。{wait}
+	}
+	TextWait
+	TextTalk char[11] {
+		で、結局ついさっきまで
+		ぐっすりと……{wait}
+	}
+	TextWait
+	TextTalk char[7] {
+		……ふぅ……
+		君は学生時代から
+		全く変わらんな。{wait}
+	}
+	TextWait
+	_Char4B char[11] 255
+	CharSetChipPattern char[7] 0
+	FlagSet flag[4]
+	FlagSet flag[8]
+	Return
+
+fn[13]:
+	TextStart self
+	if flag[1566]:
+		if !flag[7]:
+			CharTurnToChar self char[12] 0deg/s
+			TextTalk self {
+				アーシュラ主任……
+				さすがに、ここで寝るのは
+				まずいかと思いますよ。{wait}
+			}
+			TextWait
+			TextTalk self {
+				ほら、ゲイリー教授たちの
+				喧嘩が終わる前に起きないと……{wait}
+			}
+			TextWait
+			TextTalk char[12] {
+				う～ん……あと５分……{wait}
+			}
+			TextWait
+			TextTalk self {
+				だめだこりゃ……{wait}
+			}
+			TextWait
+			FlagSet flag[7]
+		else:
+			TextTalk self {
+				結局はアーシュラ主任の貫徹に
+				付き合ってしまったな。{wait}
+			}
+			TextWait
+			TextTalk self {
+				眠くて仕方ない……{wait}
+			}
+			TextWait
+	elif flag[1565]:
+		if !flag[7]:
+			TextTalk self {
+				アーシュラ主任がもっとも輝く
+				研究の時間が
+				夜にあるのはまちがいない。{wait}
+			}
+			TextWait
+			TextTalk self {
+				……ただそのせいで
+				主任が寝坊がちになるのも
+				また確かだ。{wait}
+			}
+			TextWait
+			TextTalk self {
+				准教授クラスの地位を持つのに
+				主任に威厳を感じないのは、
+				そのあたりに原因がありそうだね。{wait}
+			}
+			TextWait
+			FlagSet flag[7]
+		else:
+			TextTalk self {
+				アーシュラ主任は夜型人間だからね。
+				そのせいで寝坊がちなのさ。{wait}
+			}
+			TextWait
+			TextTalk self {
+				准教授クラスの地位を持つのに
+				主任に威厳を感じないのは、
+				そのあたりに原因がありそうだね。{wait}
+			}
+			TextWait
+	elif flag[1554]:
+		TextTalk self {
+			機器開発は難しい反面、
+			新しい技術を扱っているという
+			面白さがある。{wait}
+		}
+		TextWait
+		TextTalk self {
+			ここで研究されている医療機器が
+			将来の医療の現場で活躍すると思うと
+			胸がおどる思いさ。{wait}
+		}
+		TextWait
+	elif flag[1536]:
+		TextTalk self {
+			やれやれ……アーシュラ主任も
+			無理しないで寝坊してくればいいのに。{wait}
+		}
+		TextWait
+		TextTalk self {
+			というか、徹夜してるのに
+			早起きなんて無理だと思うけど……{wait}
+		}
+		TextWait
+	elif flag[1351]:
+		TextTalk self {
+			アーシュラ主任が
+			寝坊するなんて予想の範疇……
+			教授も最早、怒ってすらいない。{wait}
+		}
+		TextWait
+		TextTalk self {
+			まぁ、僕も来るのを
+			気長に待つとしよう。{wait}
+		}
+		TextWait
+	elif flag[1346]:
+		TextTalk self {
+			……今日もアーシュラ主任は
+			寝坊みたいだな。{wait}
+		}
+		TextWait
+		TextTalk self {
+			しかたない、この僕が
+			今日の研究の準備だけでもしておこう。{wait}
+		}
+		TextWait
+	elif flag[1307]:
+		TextTalk self {
+			ゲイリー教授と
+			アーシュラ主任がいないと
+			この診察室も寂しいな。{wait}
+		}
+		TextWait
+		TextTalk self {
+			人手も不足しているし、
+			フローラ君を呼んでくるか……{wait}
+		}
+		TextWait
+	elif flag[1292]:
+		TextTalk self {
+			……記念祭中とは思えないほど
+			いつもどおりだな。{wait}
+		}
+		TextWait
+		TextTalk self {
+			どうせ言ってもやめないし、
+			本でも読んでいようかな……{wait}
+		}
+		TextWait
+	elif flag[1282]:
+	elif flag[1280]:
+		TextTalk self {
+			……もう記念祭も２日目だそうだね。{wait}
+		}
+		TextWait
+		TextTalk self {
+			アーシュラ主任に付き合って
+			三日三晩寝ずに研究していたから
+			分からなかったよ……{wait}
+		}
+		TextWait
+	elif flag[1040]:
+		TextTalk self {
+			アーシュラ主任の肩書きは
+			“主任”だけど、実際は
+			准教授並の地位があるんだ。{wait}
+		}
+		TextWait
+		TextTalk self {
+			講義をして学生を教えるよりも
+			研究室にこもって
+			開発をしている方が多いけどね。{wait}
+		}
+		TextWait
+		TextTalk self {
+			そういう意味では、
+			結構特殊な地位の人かもしれないね。{wait}
+		}
+		TextWait
+	elif flag[1024]:
+		if !flag[7]:
+			TextTalk self {
+				色々な国で様々な導力器の開発が
+				進められている中、医療機器の分野は
+				やはりレミフェリア公国が最先端だ。{wait}
+			}
+			TextWait
+			TextTalk self {
+				この病院で使われてる医療機器も、
+				ほとんどがレミフェリアにある
+				セイランド社というメーカーの製品なんだよ。{wait}
+			}
+			TextWait
+			FlagSet flag[7]
+		else:
+			TextTalk self {
+				セイランド社って言えば、
+				大陸でも有数の医療機器メーカーでね。
+				この病院のスポンサーの一つでもある。{wait}
+			}
+			TextWait
+			TextTalk self {
+				医療機器科では、
+				その医療機器を現場で運用しながら
+				改良の余地を模索してるという感じだね。{wait}
+			}
+			TextWait
+	elif flag[799]:
+	elif flag[793]:
+		if !flag[7]:
+			TextTalk self {
+				この研究棟では
+				先進的な医療技術が
+				研究されているのだよ。{wait}
+			}
+			TextWait
+			TextTalk self {
+				特に『医療機器科』では、
+				導力を利用した医療機器の研究が
+				日夜、進められている。{wait}
+			}
+			TextWait
+			TextTalk self {
+				……今日はまだ来ていないが、
+				アーシュラ主任という方が
+				医療機器科のトップなのさ。{wait}
+			}
+			TextWait
+			FlagSet flag[7]
+		else:
+			TextTalk self {
+				外科医療という近代的な分野の
+				更に先を行く医療機器の研究……{wait}
+			}
+			TextWait
+			TextTalk self {
+				トップを担うアーシュラ主任が
+				どれだけ優秀か分かるだろう？{wait}
+			}
+			TextWait
+	elif flag[784]:
+		TextTalk self {
+			僕の夢は、祖国エレボニア帝国に
+			大きな病院を建てることだ。{wait}
+		}
+		TextWait
+		TextTalk self {
+			このウルスラ病院は
+			僕の野望を叶えるに
+			うってつけの環境だよ。{wait}
+		}
+		TextWait
+		TextTalk self {
+			ここには最先端の医学と
+			優秀な医師が集まっているからね。{wait}
+		}
+		TextWait
+	elif flag[777]:
+	TextEnd self
+	Return
+
+fn[14]:
+	TextStart self
+	if !flag[9]:
+		Call fn[1,16]
+	else:
+		TextTalk char[9] {
+			#2400F僕も回診は手伝っているけど
+			どうしても研究がメインでね。{wait}
+		} {
+			ベルダイン先生にばかり
+			負担をかけてしまっている状況なんだ。{wait}
+		} {
+			#2406F早くリットン君に復帰してもらって
+			バリバリ働いてもらわないと。{wait}
+		}
+		TextWait
+	TextEnd self
+	Return
+
+fn[15]:
+	TextStart self
+	if !flag[9]:
+		Call fn[1,16]
+	else:
+		TextTalk self {
+			少々難しい患者を扱っていてな。
+			先程、診察が終わったところだ。{wait}
+		}
+		TextWait
+		TextTalk self {
+			……ふぅ……
+			食堂で紅茶でも飲んでくるか。{wait}
+		}
+		TextWait
+	TextEnd self
+	Return
+
+fn[16]:
+	CharTurnToChar char[9] char[10] 0deg/s
+	CharTurnToChar char[10] char[9] 0deg/s
+	_Char4A char[9] 255
+	_Char4A char[10] 255
+	TextTalk char[9] {
+		#2400Fベルダイン先生。
+		どうやらお疲れみたいですね。{wait}
+	} {
+		よかったらローヤルゼリー入りの
+		栄養剤でも処方しましょうか？{wait}
+	} {
+		#2409Fアルモリカ産のものですから
+		効き目はバッチリですよ。{wait}
+	}
+	TextWait
+	TextTalk char[10] {
+		いや、遠慮しておくよ。{wait}
+	}
+	TextWait
+	TextTalk char[10] {
+		君の栄養剤は効きすぎるからな。
+		頼ってしまうと後が恐そうだ。{wait}
+	}
+	TextWait
+	_Char4B char[9] 255
+	_Char4B char[10] 255
+	FlagSet flag[9]
+	Return
+
+fn[17]:
+	TextStart self
+	if flag[1566]:
+	elif flag[1565]:
+		TextTalk self {
+			ふんふんふん……♪{wait}
+		}
+		TextWait
+		TextTalk self {
+			うふふ、夜が近づくと眠くなくなって
+			作業能率が上がるんです。{wait}
+		}
+		TextWait
+		TextTalk self {
+			さぁて、いまから１２時間……
+			みっちりやりますよ～！{wait}
+		}
+		TextWait
+	elif flag[1554]:
+		if !flag[8]:
+			TextTalk self {
+				医療系オーブメント開発では
+				まず、安全性の保持が優先されます。{wait}
+			}
+			TextWait
+			TextTalk self {
+				人体に作用する以上、
+				万が一のことがあってはいけませんから。{wait}
+			}
+			TextWait
+			TextTalk self {
+				医療機器開発の難しいところですねぇ。{wait}
+			}
+			TextWait
+			FlagSet flag[8]
+		else:
+			TextTalk self {
+				医療系オーブメント開発では
+				まず安全であることが何より大事です。{wait}
+			}
+			TextWait
+			TextTalk self {
+				マウス実験では人体へ影響する
+				明確なデータが取れるわけでは
+				ないですからねぇ。{wait}
+			}
+			TextWait
+	elif flag[1536]:
+		if QuestFlagsGet quest[44] 0x10:
+			TextTalk self {
+				あ、ペンダントトップは
+				役に立ちましたか？{wait}
+			}
+			TextWait
+			TextTalk self {
+				魔獣が踏んでも壊れない
+				耐久性合金なので
+				きっと長持ちすると思いますよ～。{wait}
+			}
+			TextWait
+		elif QuestTaskGet quest[44] 2:
+			TextTalk self {
+				そのペンダントトップは
+				実験失敗時の爆発に巻き込まれて
+				なお無傷だった品なんです。{wait}
+			}
+			TextWait
+			TextTalk self {
+				そんな運の強い品なら、
+				きっと贈り物の材料に最適ですよ。{wait}
+			}
+			TextWait
+		elif QuestFlagsGet quest[44] 0x02:
+			Call fn[1,78]
+		elif !flag[8]:
+			TextTalk self {
+				寝坊でシャルールくんに
+				迷惑をかけてばかりなので、
+				先週から早起きを実践してるんです。{wait}
+			}
+			TextWait
+			TextTalk self {
+				朝、目覚まし１２個目くらいで
+				起きるんですけど……{wait}
+			}
+			TextWait
+			TextTalk self {
+				いやぁ、徹夜明けでも
+				なんとか起きれるもんですねぇ。{wait}
+			}
+			TextWait
+			Emote self 0mm 2000mm 24 27 250ms 0
+			Sleep 1000ms
+			EmoteStop self
+			TextTalk self {
+				………………ぐぅ。{wait}
+			}
+			TextWait
+			FlagSet flag[8]
+		else:
+			TextTalk self {
+				………………はっ。{wait}
+			}
+			TextWait
+			TextTalk self {
+				え、えーと……寝てませんよ？
+				ちょっとカクっとなっただけです。{wait}
+			}
+			TextWait
+			TextTalk self {
+				さ、さぁ！　今日も元気に研究研究です！{wait}
+			}
+			TextWait
+			TextTalk self {
+				………………ぐぅ。{wait}
+			}
+			TextWait
+	elif flag[1351]:
+	elif flag[1346]:
+	elif flag[1307]:
+	elif flag[1292]:
+	elif flag[1282]:
+		if !flag[8]:
+			CharTurnTo self 90deg 0deg/s
+			TextTalk self {
+				…………はっ！{wait}
+			}
+			TextWait
+			CharTurnToChar self field_party[0] 500deg/s
+			TextTalk self {
+				え、ええっと、講義を始めますね。{wait}
+			}
+			TextWait
+			TextTalk self {
+				今日は医療機器に使われる
+				結晶回路の構造について……です。{wait}
+			}
+			TextWait
+			TextTalk name[0] {
+				#0006F……あの。
+				俺たちは学生じゃないんですが……{wait}
+			}
+			TextWait
+			TextTalk name[1] {
+				#0100F寝ぼけてたみたいね。{wait}
+			}
+			TextWait
+			FlagSet flag[8]
+			ForkFunc char[11] fork[0] fn[0,0]
+		else:
+			TextTalk self {
+				あ……えっと……すみません。
+				講義中は部外者立入禁止なんですよ。{wait}
+			}
+			TextWait
+	elif flag[1280]:
+		CharTurnTo self 90deg 0deg/s
+		if !flag[8]:
+			TextTalk self {
+				……すー……すぴー…………{wait}
+			}
+			TextWait
+			TextTalk name[0] {
+				#0005Fた、立ったまま寝てる……！？{wait}
+			}
+			TextWait
+			TextTalk name[2] {
+				#0200F器用ですね。
+				ぜひ習得したいスキルです。{wait}
+			}
+			TextWait
+			FlagSet flag[8]
+		else:
+			TextTalk self {
+				……すー……すぴー…………
+				……ふがっ。{wait}
+			}
+			TextWait
+			TextTalk self {
+				……すー……すー…………{wait}
+			}
+			TextWait
+	elif flag[1040]:
+		if !flag[8]:
+			TextTalk self {
+				私、技術者として
+				とても尊敬してる人がいるんです。{wait}
+			}
+			TextWait
+			TextTalk self {
+				リベールにあるＺＣＦの
+				エリカ・ラッセル博士……
+				かの有名なＡ・ラッセル博士の娘さんです。{wait}
+			}
+			TextWait
+			TextTalk self {
+				彼女は女性ながら
+				リベール王国最高峰の
+				技術力を持っているとか……{wait}
+			}
+			TextWait
+			TextTalk self {
+				私も女医として、医療機器の分野で
+				大きな功績を立てたいです。{wait}
+			}
+			TextWait
+			FlagSet flag[8]
+		else:
+			TextTalk self {
+				リベールのエリカ博士……
+				彼女はＡ・ラッセル博士と並ぶ
+				優秀な技術者なんです。{wait}
+			}
+			TextWait
+			TextTalk self {
+				私も女医として、医療機器の分野で
+				大きな功績を立てたいです。{wait}
+			}
+			TextWait
+	elif flag[1024]:
+		if !flag[4]:
+			Call fn[1,12]
+		else:
+			TextTalk self {
+				（うぅ……こうなるとゲイリー教授は
+				{}  なかなか逃がしてくれません……）{wait}
+			}
+			TextWait
+			TextTalk char[7] {
+				……聞いているのかね、アーシュラ君！{wait}
+			}
+			TextWait
+			CharTurnToChar self char[7] 500deg/s
+			TextTalk self {
+				は、はひっ！
+				以後気をつけます！{wait}
+			}
+			TextWait
+	elif flag[799]:
+		if !flag[8]:
+			CharTurnTo self 90deg 0deg/s
+			TextTalk self {
+				（カチャカチャカチャ
+				{}  カチャカチャカチャ）{wait}
+			}
+			TextWait
+			TextTalk self {
+				……なるほど……
+				この結晶回路がこうなって……{wait}
+			}
+			TextWait
+			TextTalk name[1] {
+				#0101F（こっちに全然気づいてないみたい。
+				{}  すごい集中力ね……）{wait}
+			}
+			TextWait
+			FlagSet flag[8]
+		else:
+			TextTalk self {
+				……あら？
+				なんだか部屋の外が騒がしいですね。{wait}
+			}
+			TextWait
+			TextTalk self {
+				まぁ、気にしない気にしない。
+				続き続き～♪{wait}
+			}
+			TextWait
+	elif flag[793]:
+	elif flag[784]:
+	elif flag[777]:
+	TextEnd self
+	Return
+
+fn[18]:
+	TextStart self
+	if !flag[4]:
+		TextTalk self {
+			す～……すぴ～……{wait}
+		}
+		TextWait
+		TextTalk self {
+			……うふふっ完成～…………{wait}
+		}
+		TextWait
+		TextTalk self {
+			これで……憧れのエリカ博士に
+			一歩近づいた……かも……
+			……ぐぅ。{wait}
+		}
+		TextWait
+		FlagSet flag[4]
+	else:
+		TextTalk self {
+			……す～……すぴ～……{wait}
+		}
+		TextWait
+		TextTalk self {
+			これで……憧れのエリカ博士に
+			一歩近づいた……かも……
+			……ぐぅ。{wait}
+		}
+		TextWait
+	TextEnd self
+	Return
+
+fn[19]:
+	TextStart self
+	if flag[1566]:
+		TextTalk self {
+			あーあー……
+			また始まっちゃったよ。{wait}
+		}
+		TextWait
+		TextTalk self {
+			お互い、実力は認めてるはずなのに
+			妙に仲が悪いんだよね……{wait}
+		}
+		TextWait
+	elif flag[1565]:
+	elif flag[1554]:
+		TextTalk self {
+			今日は夕方までのシフトなんだ。{wait}
+		}
+		TextWait
+		TextTalk self {
+			ヨアヒム先生と
+			離れているだけでこの安らぎ……{wait}
+		}
+		TextWait
+		TextTalk self {
+			うん、部屋に帰ったら
+			ノンビリしていよう。{wait}
+		}
+		TextWait
+	elif flag[1536]:
+		TextTalk self {
+			ヨアヒム先生の薬学・神経科では
+			色々な研究が行なわれてるんだ。{wait}
+		}
+		TextWait
+		TextTalk self {
+			外科手術に使う麻酔や
+			滋養強壮の栄養剤なんかも
+			そこで作ってるんだよ。{wait}
+		}
+		TextWait
+	elif flag[1351]:
+		if !flag[10]:
+			TextTalk self {
+				ヨアヒム先生が受けもつ
+				薬学・神経科は
+				なかなか興味深い分野だよ。{wait}
+			}
+			TextWait
+			TextTalk self {
+				近代医療の一つでありながら
+				心と精神に干渉する分野……
+				なかなか神秘的だよね。{wait}
+			}
+			TextWait
+			TextTalk self {
+				僕が内科医を目指すのも、
+				ヨアヒム先生に憧れてのことなんだ。{wait}
+			}
+			TextWait
+			FlagSet flag[10]
+		else:
+			TextTalk self {
+				ヨアヒム先生が受けもつ
+				薬学・神経科は
+				なかなか興味深い分野だよ。{wait}
+			}
+			TextWait
+			TextTalk self {
+				僕が内科医を目指すのも、
+				先生に憧れてのことなんだ。{wait}
+			}
+			TextWait
+	elif flag[1346]:
+		TextTalk self {
+			ん、ヨアヒム先生の所に
+			行くのかい？{wait}
+		}
+		TextWait
+		TextTalk self {
+			教授や准教授の研究室は
+			研究棟の４階にあるんだ。{wait}
+		}
+		TextWait
+		TextTalk self {
+			他の教授の研究室もあるから
+			まちがえないようにね。{wait}
+		}
+		TextWait
+	elif flag[1307]:
+		if !flag[10]:
+			TextTalk self {
+				ラゴー教授たちは教授会でね。
+				今日は戻られないよ。{wait}
+			}
+			TextWait
+			TextTalk self {
+				教授会では、
+				沢山の病院の教授たちが
+				技術交流のために集まるんだ。{wait}
+			}
+			TextWait
+			TextTalk self {
+				そうして補い合うことで、
+				医学は一歩一歩前進するわけだね。{wait}
+			}
+			TextWait
+			FlagSet flag[10]
+		else:
+			TextTalk self {
+				教授会では、
+				沢山の病院の教授たちが
+				技術交流のために集まるんだ。{wait}
+			}
+			TextWait
+			TextTalk self {
+				医学の進歩の為、
+				教授たちも日々勉強してるんだよ。{wait}
+			}
+			TextWait
+	elif flag[1292]:
+	elif flag[1282]:
+	elif flag[1280]:
+	elif flag[1040]:
+	elif flag[1024]:
+		if !flag[10]:
+			Call fn[1,21]
+		else:
+			CharTurnToChar char[13] char[14] 0deg/s
+			TextTalk self {
+				まぁ、こればっかりは
+				こっちが強制できないからね。{wait}
+			}
+			TextWait
+			TextTalk self {
+				お爺さんには悪くならないうちに
+				来るように言っておいてね。{wait}
+			}
+			TextWait
+	elif flag[799]:
+	elif flag[793]:
+	elif flag[784]:
+	elif flag[777]:
+	TextEnd self
+	Return
+
+fn[20]:
+	field_party[0].5 = self.4
+	self.5 = self.4
+	TextStart self
+	CharFlagsUnset self 0x0010
+	CharTurnToChar self field_party[0] 0deg/s
+	self.4 = (self.4 + 360) % 360
+	self.4 = self.4 + 360 - self.5
+	self.5 = self.4 / 180
+	if self.4 <= 45 | self.4 >= 315 && self.4 <= 405 | self.4 >= 675:
+	elif self.5 < 1:
+		self.8 = 2
+	elif self.5 > 2:
+		self.8 = 1
+	else:
+		self.8 = self.5
+	self.4 = field_party[0].5
+	field_party[0].5 = 0
+	self.5 = 0
+	CharFlagsSet self 0x0010
+	if flag[1566]:
+	elif flag[1565]:
+	elif flag[1554]:
+	elif flag[1536]:
+	elif flag[1351]:
+	elif flag[1346]:
+	elif flag[1307]:
+	elif flag[1292]:
+	elif flag[1282]:
+	elif flag[1280]:
+		TextTalk self {
+			おじいちゃんのお薬を
+			受け取りに来たの。{wait}
+		}
+		TextWait
+		TextTalk self {
+			はあ……{wait}
+		}
+		TextWait
+		TextTalk self {
+			おじいちゃんにも
+			ちゃんとお薬飲んで欲しいな……{wait}
+		}
+		TextWait
+	elif flag[1040]:
+	elif flag[1024]:
+		if !flag[11]:
+			Call fn[1,21]
+		else:
+			CharSetChipPattern char[14] 0
+			TextTalk self {
+				いつも代理のわたしばかりで……
+				先生、ごめんなさい。{wait}
+			}
+			TextWait
+	elif flag[799]:
+	elif flag[793]:
+	elif flag[784]:
+	elif flag[777]:
+		if !flag[11]:
+			TextTalk self {
+				おじいちゃんのお薬を
+				受け取りに来たの。{wait}
+			}
+			TextWait
+			TextTalk self {
+				おじいちゃん、病院嫌いで
+				自分で取りに来ないんだもの。{wait}
+			}
+			TextWait
+		else:
+			TextTalk self {
+				ウチのおじいちゃん、
+				すっごい頑固なの。{wait}
+			}
+			TextWait
+			TextTalk self {
+				はあ……ホントは入院って
+				言われてるのになぁ。{wait}
+			}
+			TextWait
+	CharSetChipPattern self 0
+	TextEnd self
+	Return
+
+fn[21]:
+	CharTurnToChar char[13] char[14] 0deg/s
+	CharSetChipPattern char[14] 0
+	_Char4A char[13] 255
+	_Char4A char[14] 255
+	TextTalk char[14] {
+		うちのおじいちゃん、
+		やっぱり入院した方が
+		いいんですよね……{wait}
+	}
+	TextWait
+	TextTalk char[13] {
+		そうなんだけどねえ……
+		あの人頑固だから。{wait}
+	}
+	TextWait
+	TextTalk char[14] {
+		ご、ごめんなさい……
+		せめて通院するようには
+		言ってるんですけど……{wait}
+	}
+	TextWait
+	_Char4B char[13] 255
+	_Char4B char[14] 255
+	FlagSet flag[10]
+	FlagSet flag[11]
+	Return
+
+fn[22]:
+	TextStart self
+	if !flag[2]:
+		Call fn[1,23]
+	else:
+		TextTalk char[60] {
+			#1305F……あ、ロイド！{wait}
+		} {
+			#1306Fゆっくり話したいけど、
+			今日はちょっと時間がないの。
+			……ごめんね。{wait}
+		}
+		TextWait
+		TextTalk name[0] {
+			#0003F（セシル姉……忙しそうだな。）{wait}
+		}
+		TextWait
+	TextEnd self
+	Return
+
+fn[23]:
+	_Char4A char[60] 255
+	_Char4A char[2] 255
+	CharTurnToChar char[60] char[2] 0deg/s
+	CharTurnToChar char[2] char[60] 0deg/s
+	TextTalk char[60] {
+		#1300Fベルダイン先生に頼まれていた
+		例のカルテはこれね。{wait}
+	} {
+		後で渡しておいて貰える？{wait}
+	}
+	TextWait
+	TextTalk char[2] {
+		あ、はい分かりました。{wait}
+	}
+	TextWait
+	TextTalk char[60] {
+		#1309Fふふ、よろしくお願いね。{wait}
+	}
+	TextWait
+	_Char4B char[60] 255
+	_Char4B char[2] 255
+	FlagSet flag[2]
+	Return
+
+fn[24]:
+	TextStart self
+	if !flag[1395]:
+		TextTalk name[0] {
+			#0005Fディーター総裁……？{wait}
+		}
+		TextWait
+		TextTalk char[15] {
+			#2800Fやあ諸君か。
+			珍しい所で会うものだな。{wait}
+		} {
+			#2805F……もしや任務中に
+			大怪我でもしたのかい？{wait}
+		}
+		TextWait
+		TextTalk name[3] {
+			#0305Fいえ、そういう訳じゃ
+			ないッスけど……{wait}
+		}
+		TextWait
+		TextTalk name[2] {
+			#0200F総裁こそ、どこかお怪我でも？{wait}
+		}
+		TextWait
+		TextTalk name[1] {
+			#0102Fふふっ……{wait}
+		} {
+			おじさまは総裁職にいらっしゃるけど
+			個人的には慈善事業家として
+			いくつか事業を手がけてらっしゃるの。{wait}
+		} {
+			その一環として、毎年
+			この時期に入院している方々に
+			贈り物をなさっているのよ。{wait}
+		} {
+			#0102F記念祭を楽しめない代わりにってね。{wait}
+		}
+		TextWait
+		TextTalk name[0] {
+			#0005Fな……そうだったんですか。{wait}
+		}
+		TextWait
+		TextTalk char[15] {
+			#2804Fハハ……慈善事業といっても
+			金額的には大した事はないがね。{wait}
+		} {
+			#2800Fたまにこうして
+			仕事を抜け出しているのさ。{wait}
+		} {
+			人は自己満足と言うかもしれないが
+			これが私なりのルールでね。{wait}
+		}
+		TextWait
+		TextTalk name[3] {
+			#0303F（な、なんつーか……
+			{}  意外な一面だな。）{wait}
+		}
+		TextWait
+		TextTalk name[2] {
+			#0200F（爽やかオジサンかと思いきや
+			{}  渋い考えも持っているんですね。）{wait}
+		}
+		TextWait
+		FlagSet flag[1395]
+	else:
+		TextTalk char[15] {
+			#2803F慈善事業といっても
+			金額的には大した事はない。
+			ただの私のこだわりさ。{wait}
+		} {
+			#2800Fそれでも……マリアベルなどは
+			毎年付き合ってくれていてね。{wait}
+		} {
+			ハハ、この私も周囲の理解に
+			支えられているというわけだ。{wait}
+		} {
+			#2803F……この感謝を少しでも
+			還元できればいいんだが。{wait}
+		}
+		TextWait
+	TextEnd self
+	Return
+
+fn[25]:
+	TextStart self
+	Call fn[1,26]
+	TextEnd self
+	Return
+
+fn[26]:
+	_Char4A char[0] 255
+	_Char4A char[16] 255
+	CharTurnToChar char[0] char[16] 0deg/s
+	CharTurnToChar char[16] char[0] 0deg/s
+	if !flag[0]:
+		TextTalk char[0] {
+			ああ、ゲイリー先生の
+			お子さんですね？{wait}
+		}
+		TextWait
+		TextTalk char[0] {
+			先生ならすぐに
+			お呼びできますけど……{wait}
+		}
+		TextWait
+		TextTalk char[16] {
+			フ、フン……
+			あんな男、本当は
+			顔も見たくないんだ。{wait}
+		}
+		TextWait
+		TextTalk char[16] {
+			弁当だけ渡しておいてくれ。
+			僕はすぐに帰らせてもらう！{wait}
+		}
+		TextWait
+		TextTalk char[0] {
+			クス……いつも
+			素直じゃないんですから。{wait}
+		}
+		TextWait
+		FlagSet flag[0]
+	else:
+		TextTalk char[16] {
+			ぼ、僕はお袋に
+			届け物を頼まれただけさ。{wait}
+		}
+		TextWait
+		TextTalk char[16] {
+			いいから渡すだけ
+			渡しておいてくれ！{wait}
+		}
+		TextWait
+		TextTalk char[0] {
+			はいはい、それでは
+			お預かりしますね。{wait}
+		}
+		TextWait
+	_Char4B char[0] 255
+	_Char4B char[16] 255
+	Return
+
+fn[27]:
+	field_party[0].5 = self.4
+	self.5 = self.4
+	TextStart self
+	CharFlagsUnset self 0x0010
+	CharTurnToChar self field_party[0] 0deg/s
+	self.4 = (self.4 + 360) % 360
+	self.4 = self.4 + 360 - self.5
+	self.5 = self.4 / 180
+	if self.4 <= 45 | self.4 >= 315 && self.4 <= 405 | self.4 >= 675:
+	elif self.5 < 1:
+		self.8 = 2
+	elif self.5 > 2:
+		self.8 = 1
+	else:
+		self.8 = self.5
+	self.4 = field_party[0].5
+	field_party[0].5 = 0
+	self.5 = 0
+	CharFlagsSet self 0x0010
+	if flag[784]:
+		TextTalk self {
+			やっぱり風邪っぽいな……
+			早めに来ておいてよかったよ。{wait}
+		}
+		TextWait
+	elif flag[777]:
+		if !flag[2]:
+			Call fn[1,5]
+		else:
+			TextTalk self {
+				うっ、体温計か……
+				ひやっとするから
+				ちょっと苦手なんだよな。{wait}
+			}
+			TextWait
+	CharSetChipPattern self 0
+	TextEnd self
+	Return
+
+fn[28]:
+	field_party[0].5 = self.4
+	self.5 = self.4
+	TextStart self
+	CharFlagsUnset self 0x0010
+	CharTurnToChar self field_party[0] 0deg/s
+	self.4 = (self.4 + 360) % 360
+	self.4 = self.4 + 360 - self.5
+	self.5 = self.4 / 180
+	if self.4 <= 45 | self.4 >= 315 && self.4 <= 405 | self.4 >= 675:
+	elif self.5 < 1:
+		self.8 = 2
+	elif self.5 > 2:
+		self.8 = 1
+	else:
+		self.8 = self.5
+	self.4 = field_party[0].5
+	field_party[0].5 = 0
+	self.5 = 0
+	CharFlagsSet self 0x0010
+	if flag[784]:
+		TextTalk self {
+			いやぁ、料理中に火傷した時は
+			どうなるかと思ったが……{wait}
+		}
+		TextWait
+		TextTalk self {
+			大したことなくて
+			よかったわい。{wait}
+		}
+		TextWait
+	elif flag[777]:
+		TextTalk self {
+			今日は空いていて助かったわい。
+			待つのは苦手じゃからのう。{wait}
+		}
+		TextWait
+	CharSetChipPattern self 0
+	TextEnd self
+	Return
+
+fn[29]:
+	field_party[0].5 = self.4
+	self.5 = self.4
+	TextStart self
+	CharFlagsUnset self 0x0010
+	CharTurnToChar self field_party[0] 0deg/s
+	self.4 = (self.4 + 360) % 360
+	self.4 = self.4 + 360 - self.5
+	self.5 = self.4 / 180
+	if self.4 <= 45 | self.4 >= 315 && self.4 <= 405 | self.4 >= 675:
+	elif self.5 < 1:
+		self.8 = 2
+	elif self.5 > 2:
+		self.8 = 1
+	else:
+		self.8 = self.5
+	self.4 = field_party[0].5
+	field_party[0].5 = 0
+	self.5 = 0
+	CharFlagsSet self 0x0010
+	if flag[793]:
+		TextTalk self {
+			初めて病院に来たから
+			ちょっと戸惑ってたけど、
+			ようやく診察もおわったよ。{wait}
+		}
+		TextWait
+		TextTalk self {
+			うんうん、なかなかいい所だなここは。
+			これからも頼らせてもらうとしよう。{wait}
+		}
+		TextWait
+	elif flag[784]:
+		if !flag[12]:
+			TextTalk self {
+				……お、あの看護師さん
+				こっちをチラチラ見てる。{wait}
+			}
+			TextWait
+			TextTalk self {
+				うーん、看護師さんは
+				レベル高い人が多いなぁ。{wait}
+			}
+			TextWait
+			TextTalk name[3] {
+				#0309F全くもって同感だぜ。
+				ね、セシルさん！{wait}
+			}
+			TextWait
+			TextTalk name[53] {
+				#1309Fあらあら……ふふ。
+				そんなこと言っても何も出ないわよ？{wait}
+			}
+			TextWait
+			TextTalk name[0] {
+				#0006F（セシル姉、馴染みすぎ……）{wait}
+			}
+			TextWait
+			FlagSet flag[12]
+		else:
+			TextTalk self {
+				んー、そろそろ呼ばれそうだな。
+				心の準備をしとこう。{wait}
+			}
+			TextWait
+	elif flag[777]:
+		TextTalk self {
+			ふーん、初めてこの病院に来たけど……
+			結構小奇麗な所じゃないか。{wait}
+		}
+		TextWait
+	CharSetChipPattern self 0
+	TextEnd self
+	Return
+
+fn[30]:
+	field_party[0].5 = self.4
+	self.5 = self.4
+	TextStart self
+	CharFlagsUnset self 0x0010
+	CharTurnToChar self field_party[0] 0deg/s
+	self.4 = (self.4 + 360) % 360
+	self.4 = self.4 + 360 - self.5
+	self.5 = self.4 / 180
+	if self.4 <= 45 | self.4 >= 315 && self.4 <= 405 | self.4 >= 675:
+	elif self.5 < 1:
+		self.8 = 2
+	elif self.5 > 2:
+		self.8 = 1
+	else:
+		self.8 = self.5
+	self.4 = field_party[0].5
+	field_party[0].5 = 0
+	self.5 = 0
+	CharFlagsSet self 0x0010
+	if flag[793]:
+		TextTalk self {
+			今日で通院終わりなの。
+			うふ、早く終わってよかったわ。{wait}
+		}
+		TextWait
+	elif flag[784]:
+		TextTalk self {
+			ただ病気を治すだけなら、
+			大聖堂で調薬してもらった方が
+			安上がりなんだけどね。{wait}
+		}
+		TextWait
+		TextTalk self {
+			ここなら色々と検査してもらえるから
+			安心できるのよねー。{wait}
+		}
+		TextWait
+	elif flag[777]:
+		TextTalk self {
+			この病院はいいところよ。
+			親身になって診てくれるからね。{wait}
+		}
+		TextWait
+		TextTalk self {
+			街からちょっと遠いけど
+			バスのおかげですぐ来れるしね。{wait}
+		}
+		TextWait
+	CharSetChipPattern self 0
+	TextEnd self
+	Return
+
+fn[31]:
+	field_party[0].5 = self.4
+	self.5 = self.4
+	TextStart self
+	CharFlagsUnset self 0x0010
+	CharTurnToChar self field_party[0] 0deg/s
+	self.4 = (self.4 + 360) % 360
+	self.4 = self.4 + 360 - self.5
+	self.5 = self.4 / 180
+	if self.4 <= 45 | self.4 >= 315 && self.4 <= 405 | self.4 >= 675:
+	elif self.5 < 1:
+		self.8 = 2
+	elif self.5 > 2:
+		self.8 = 1
+	else:
+		self.8 = self.5
+	self.4 = field_party[0].5
+	field_party[0].5 = 0
+	self.5 = 0
+	CharFlagsSet self 0x0010
+	TextTalk self {
+		わしゃ、今まで七耀教会の薬しか
+		使うたことがないんじゃ。{wait}
+	}
+	TextWait
+	TextTalk self {
+		病院なんて、大丈夫なんかのう……{wait}
+	}
+	TextWait
+	CharSetChipPattern self 0
+	TextEnd self
+	Return
+
+fn[32]:
+	field_party[0].5 = self.4
+	self.5 = self.4
+	TextStart self
+	CharFlagsUnset self 0x0010
+	CharTurnToChar self field_party[0] 0deg/s
+	self.4 = (self.4 + 360) % 360
+	self.4 = self.4 + 360 - self.5
+	self.5 = self.4 / 180
+	if self.4 <= 45 | self.4 >= 315 && self.4 <= 405 | self.4 >= 675:
+	elif self.5 < 1:
+		self.8 = 2
+	elif self.5 > 2:
+		self.8 = 1
+	else:
+		self.8 = self.5
+	self.4 = field_party[0].5
+	field_party[0].5 = 0
+	self.5 = 0
+	CharFlagsSet self 0x0010
+	TextTalk self {
+		へへ……綺麗な女医さんに
+		診察してもらいてぇな。{wait}
+	}
+	TextWait
+	TextTalk self {
+		どうか、オッサンにあたりませんように！{wait}
+	}
+	TextWait
+	CharSetChipPattern self 0
+	TextEnd self
+	Return
+
+fn[33]:
+	field_party[0].5 = self.4
+	self.5 = self.4
+	TextStart self
+	CharFlagsUnset self 0x0010
+	CharTurnToChar self field_party[0] 0deg/s
+	self.4 = (self.4 + 360) % 360
+	self.4 = self.4 + 360 - self.5
+	self.5 = self.4 / 180
+	if self.4 <= 45 | self.4 >= 315 && self.4 <= 405 | self.4 >= 675:
+	elif self.5 < 1:
+		self.8 = 2
+	elif self.5 > 2:
+		self.8 = 1
+	else:
+		self.8 = self.5
+	self.4 = field_party[0].5
+	field_party[0].5 = 0
+	self.5 = 0
+	CharFlagsSet self 0x0010
+	CharSetChipPattern self 0
+	TextTalk self {
+		こらっ！
+		病院では静かになさい！{wait}
+	}
+	TextWait
+	CharSetChipPattern self 0
+	TextEnd self
+	Return
+
+fn[34]:
+	field_party[0].5 = self.4
+	self.5 = self.4
+	TextStart self
+	CharFlagsUnset self 0x0010
+	CharTurnToChar self field_party[0] 0deg/s
+	self.4 = (self.4 + 360) % 360
+	self.4 = self.4 + 360 - self.5
+	self.5 = self.4 / 180
+	if self.4 <= 45 | self.4 >= 315 && self.4 <= 405 | self.4 >= 675:
+	elif self.5 < 1:
+		self.8 = 2
+	elif self.5 > 2:
+		self.8 = 1
+	else:
+		self.8 = self.5
+	self.4 = field_party[0].5
+	field_party[0].5 = 0
+	self.5 = 0
+	CharFlagsSet self 0x0010
+	TextTalk self {
+		診てくれる先生は
+		教授って聞いてたから
+		少し怖い気がしてたけど……{wait}
+	}
+	TextWait
+	TextTalk self {
+		丁寧に話してくださるし、
+		なかなか良い先生じゃないかね。{wait}
+	}
+	TextWait
+	CharSetChipPattern self 0
+	TextEnd self
+	Return
+
+fn[35]:
+	field_party[0].5 = self.4
+	self.5 = self.4
+	TextStart self
+	CharFlagsUnset self 0x0010
+	CharTurnToChar self field_party[0] 0deg/s
+	self.4 = (self.4 + 360) % 360
+	self.4 = self.4 + 360 - self.5
+	self.5 = self.4 / 180
+	if self.4 <= 45 | self.4 >= 315 && self.4 <= 405 | self.4 >= 675:
+	elif self.5 < 1:
+		self.8 = 2
+	elif self.5 > 2:
+		self.8 = 1
+	else:
+		self.8 = self.5
+	self.4 = field_party[0].5
+	field_party[0].5 = 0
+	self.5 = 0
+	CharFlagsSet self 0x0010
+	TextTalk self {
+		あー、今日は商談があるから
+		早めに帰りたいのだが……{wait}
+	}
+	TextWait
+	TextTalk self {
+		うむむ、まどろっこしい。
+		はやく順番が回ってこないのかね。{wait}
+	}
+	TextWait
+	CharSetChipPattern self 0
+	TextEnd self
+	Return
+
+fn[36]:
+	field_party[0].5 = self.4
+	self.5 = self.4
+	TextStart self
+	CharFlagsUnset self 0x0010
+	CharTurnToChar self field_party[0] 0deg/s
+	self.4 = (self.4 + 360) % 360
+	self.4 = self.4 + 360 - self.5
+	self.5 = self.4 / 180
+	if self.4 <= 45 | self.4 >= 315 && self.4 <= 405 | self.4 >= 675:
+	elif self.5 < 1:
+		self.8 = 2
+	elif self.5 > 2:
+		self.8 = 1
+	else:
+		self.8 = self.5
+	self.4 = field_party[0].5
+	field_party[0].5 = 0
+	self.5 = 0
+	CharFlagsSet self 0x0010
+	TextTalk self {
+		ちょっとおなかを
+		冷やしちゃってね。{wait}
+	}
+	TextWait
+	TextTalk self {
+		……やっぱり、
+		夜中に窓開けっ放しで
+		寝たりしたらだめねぇ。{wait}
+	}
+	TextWait
+	CharSetChipPattern self 0
+	TextEnd self
+	Return
+
+fn[37]:
+	field_party[0].5 = self.4
+	self.5 = self.4
+	TextStart self
+	CharFlagsUnset self 0x0010
+	CharTurnToChar self field_party[0] 0deg/s
+	self.4 = (self.4 + 360) % 360
+	self.4 = self.4 + 360 - self.5
+	self.5 = self.4 / 180
+	if self.4 <= 45 | self.4 >= 315 && self.4 <= 405 | self.4 >= 675:
+	elif self.5 < 1:
+		self.8 = 2
+	elif self.5 > 2:
+		self.8 = 1
+	else:
+		self.8 = self.5
+	self.4 = field_party[0].5
+	field_party[0].5 = 0
+	self.5 = 0
+	CharFlagsSet self 0x0010
+	if !flag[13]:
+		CharSetChipPattern self 0
+		TextTalk self {
+			Ｚｚｚ……{wait}
+		}
+		TextWait
+		field_party[0].5 = self.4
+		self.5 = self.4
+		TextStart self
+		CharFlagsUnset self 0x0010
+		CharTurnToChar self field_party[0] 0deg/s
+		self.4 = (self.4 + 360) % 360
+		self.4 = self.4 + 360 - self.5
+		self.5 = self.4 / 180
+		if self.4 <= 45 | self.4 >= 315 && self.4 <= 405 | self.4 >= 675:
+		elif self.5 < 1:
+			self.8 = 2
+		elif self.5 > 2:
+			self.8 = 1
+		else:
+			self.8 = self.5
+		self.4 = field_party[0].5
+		field_party[0].5 = 0
+		self.5 = 0
+		CharFlagsSet self 0x0010
+		TextTalk self {
+			……はっ！
+			あんまり待たせるもんだから
+			寝ちゃってたよ。{wait}
+		}
+		TextWait
+		FlagSet flag[13]
+	else:
+		TextTalk self {
+			ふー、危ない危ない。
+			病院の待合室ってなんだか
+			眠っちゃうんだよね。{wait}
+		}
+		TextWait
+	CharSetChipPattern self 0
+	TextEnd self
+	Return
+
+fn[38]:
+	field_party[0].5 = self.4
+	self.5 = self.4
+	TextStart self
+	CharFlagsUnset self 0x0010
+	CharTurnToChar self field_party[0] 0deg/s
+	self.4 = (self.4 + 360) % 360
+	self.4 = self.4 + 360 - self.5
+	self.5 = self.4 / 180
+	if self.4 <= 45 | self.4 >= 315 && self.4 <= 405 | self.4 >= 675:
+	elif self.5 < 1:
+		self.8 = 2
+	elif self.5 > 2:
+		self.8 = 1
+	else:
+		self.8 = self.5
+	self.4 = field_party[0].5
+	field_party[0].5 = 0
+	self.5 = 0
+	CharFlagsSet self 0x0010
+	TextTalk self {
+		開会式の見物に行ったら
+		人ごみの中で腰を痛めてのう。{wait}
+	}
+	TextWait
+	TextTalk self {
+		記念祭もこれからだ。
+		とっとと治して遊びまくるぞい。{wait}
+	}
+	TextWait
+	CharSetChipPattern self 0
+	TextEnd self
+	Return
+
+fn[39]:
+	field_party[0].5 = self.4
+	self.5 = self.4
+	TextStart self
+	CharFlagsUnset self 0x0010
+	CharTurnToChar self field_party[0] 0deg/s
+	self.4 = (self.4 + 360) % 360
+	self.4 = self.4 + 360 - self.5
+	self.5 = self.4 / 180
+	if self.4 <= 45 | self.4 >= 315 && self.4 <= 405 | self.4 >= 675:
+	elif self.5 < 1:
+		self.8 = 2
+	elif self.5 > 2:
+		self.8 = 1
+	else:
+		self.8 = self.5
+	self.4 = field_party[0].5
+	field_party[0].5 = 0
+	self.5 = 0
+	CharFlagsSet self 0x0010
+	TextTalk self {
+		この病院は
+		相変わらず忙しそうじゃの。{wait}
+	}
+	TextWait
+	CharSetChipPattern self 0
+	TextEnd self
+	Return
+
+fn[40]:
+	field_party[0].5 = self.4
+	self.5 = self.4
+	TextStart self
+	CharFlagsUnset self 0x0010
+	CharTurnToChar self field_party[0] 0deg/s
+	self.4 = (self.4 + 360) % 360
+	self.4 = self.4 + 360 - self.5
+	self.5 = self.4 / 180
+	if self.4 <= 45 | self.4 >= 315 && self.4 <= 405 | self.4 >= 675:
+	elif self.5 < 1:
+		self.8 = 2
+	elif self.5 > 2:
+		self.8 = 1
+	else:
+		self.8 = self.5
+	self.4 = field_party[0].5
+	field_party[0].5 = 0
+	self.5 = 0
+	CharFlagsSet self 0x0010
+	if !flag[14]:
+		char[31].5 = self.4
+		self.5 = self.4
+		TextStart self
+		CharFlagsUnset self 0x0010
+		CharTurnToChar self char[31] 0deg/s
+		self.4 = (self.4 + 360) % 360
+		self.4 = self.4 + 360 - self.5
+		self.5 = self.4 / 180
+		if self.4 <= 45 | self.4 >= 315 && self.4 <= 405 | self.4 >= 675:
+		elif self.5 < 1:
+			self.8 = 2
+		elif self.5 > 2:
+			self.8 = 1
+		else:
+			self.8 = self.5
+		self.4 = char[31].5
+		char[31].5 = 0
+		self.5 = 0
+		CharFlagsSet self 0x0010
+		TextTalk self {
+			これこれ、
+			静かにしてないとだめよ。{wait}
+		}
+		TextWait
+		TextTalk self {
+			記念祭なら熱が下がってから
+			連れてってあげるからね。{wait}
+		}
+		TextWait
+		CharSetChipPattern self 0
+		FlagSet flag[14]
+	else:
+		TextTalk self {
+			この子、記念祭が楽しみで
+			眠れなかったせいか
+			熱を出しちゃったんです。{wait}
+		}
+		TextWait
+	CharSetChipPattern self 0
+	TextEnd self
+	Return
+
+fn[41]:
+	field_party[0].5 = self.4
+	self.5 = self.4
+	TextStart self
+	CharFlagsUnset self 0x0010
+	CharTurnToChar self field_party[0] 0deg/s
+	self.4 = (self.4 + 360) % 360
+	self.4 = self.4 + 360 - self.5
+	self.5 = self.4 / 180
+	if self.4 <= 45 | self.4 >= 315 && self.4 <= 405 | self.4 >= 675:
+	elif self.5 < 1:
+		self.8 = 2
+	elif self.5 > 2:
+		self.8 = 1
+	else:
+		self.8 = self.5
+	self.4 = field_party[0].5
+	field_party[0].5 = 0
+	self.5 = 0
+	CharFlagsSet self 0x0010
+	TextTalk self {
+		うあーん、お祭りいきたいよー。{wait}
+	}
+	TextWait
+	CharSetChipPattern self 0
+	TextEnd self
+	Return
+
+fn[42]:
+	field_party[0].5 = self.4
+	self.5 = self.4
+	TextStart self
+	CharFlagsUnset self 0x0010
+	CharTurnToChar self field_party[0] 0deg/s
+	self.4 = (self.4 + 360) % 360
+	self.4 = self.4 + 360 - self.5
+	self.5 = self.4 / 180
+	if self.4 <= 45 | self.4 >= 315 && self.4 <= 405 | self.4 >= 675:
+	elif self.5 < 1:
+		self.8 = 2
+	elif self.5 > 2:
+		self.8 = 1
+	else:
+		self.8 = self.5
+	self.4 = field_party[0].5
+	field_party[0].5 = 0
+	self.5 = 0
+	CharFlagsSet self 0x0010
+	TextTalk self {
+		ごほごほ……
+		うー、苦しい。{wait}
+	}
+	TextWait
+	TextTalk self {
+		こりゃ人にうつされたかな……{wait}
+	}
+	TextWait
+	CharSetChipPattern self 0
+	TextEnd self
+	Return
+
+fn[43]:
+	field_party[0].5 = self.4
+	self.5 = self.4
+	TextStart self
+	CharFlagsUnset self 0x0010
+	CharTurnToChar self field_party[0] 0deg/s
+	self.4 = (self.4 + 360) % 360
+	self.4 = self.4 + 360 - self.5
+	self.5 = self.4 / 180
+	if self.4 <= 45 | self.4 >= 315 && self.4 <= 405 | self.4 >= 675:
+	elif self.5 < 1:
+		self.8 = 2
+	elif self.5 > 2:
+		self.8 = 1
+	else:
+		self.8 = self.5
+	self.4 = field_party[0].5
+	field_party[0].5 = 0
+	self.5 = 0
+	CharFlagsSet self 0x0010
+	CharSetChipPattern self 2
+	TextTalk self {
+		ちょっとぉ
+		わたしにまでうつさないでよね？{wait}
+	}
+	TextWait
+	CharSetChipPattern self 0
+	CharSetChipPattern self 0
+	TextEnd self
+	Return
+
+fn[44]:
+	field_party[0].5 = self.4
+	self.5 = self.4
+	TextStart self
+	CharFlagsUnset self 0x0010
+	CharTurnToChar self field_party[0] 0deg/s
+	self.4 = (self.4 + 360) % 360
+	self.4 = self.4 + 360 - self.5
+	self.5 = self.4 / 180
+	if self.4 <= 45 | self.4 >= 315 && self.4 <= 405 | self.4 >= 675:
+	elif self.5 < 1:
+		self.8 = 2
+	elif self.5 > 2:
+		self.8 = 1
+	else:
+		self.8 = self.5
+	self.4 = field_party[0].5
+	field_party[0].5 = 0
+	self.5 = 0
+	CharFlagsSet self 0x0010
+	if !flag[15]:
+		TextTalk self {
+			昨日、クロスベル市の旧市街で
+			大白熱のイベントがあってね。{wait}
+		}
+		TextWait
+		TextTalk self {
+			俺は観戦してたんだけど、
+			興奮のあまりすっ転んじゃって
+			このザマさ。{wait}
+		}
+		TextWait
+		TextTalk name[3] {
+			#0306F（……これって間接的に、
+			{}  俺たちがケガさせたことに
+			{}  なっちまうのか？）{wait}
+		}
+		TextWait
+		TextTalk name[0] {
+			#0005F（え、ええと……
+			{}  そこまで考えすぎることは
+			{}  ないと思うけど……）{wait}
+		}
+		TextWait
+		TextTalk self {
+			ま、ケガはしたけど自分のせいだし
+			何より楽しかったから、よしとするさ。{wait}
+		}
+		TextWait
+		FlagSet flag[15]
+	else:
+		TextTalk self {
+			あのレース、毎年やれば
+			相当盛り上がると思うんだけどなー。{wait}
+		}
+		TextWait
+	CharSetChipPattern self 0
+	TextEnd self
+	Return
+
+fn[45]:
+	field_party[0].5 = self.4
+	self.5 = self.4
+	TextStart self
+	CharFlagsUnset self 0x0010
+	CharTurnToChar self field_party[0] 0deg/s
+	self.4 = (self.4 + 360) % 360
+	self.4 = self.4 + 360 - self.5
+	self.5 = self.4 / 180
+	if self.4 <= 45 | self.4 >= 315 && self.4 <= 405 | self.4 >= 675:
+	elif self.5 < 1:
+		self.8 = 2
+	elif self.5 > 2:
+		self.8 = 1
+	else:
+		self.8 = self.5
+	self.4 = field_party[0].5
+	field_party[0].5 = 0
+	self.5 = 0
+	CharFlagsSet self 0x0010
+	TextTalk self {
+		はぁ～、再診日が今日なんて
+		ついてないよ。
+		確実にパレードを見逃しちまう。{wait}
+	}
+	TextWait
+	TextTalk self {
+		まぁ、明日じゃないだけマシか。
+		さっさと診察を済ませて帰ろっと。{wait}
+	}
+	TextWait
+	CharSetChipPattern self 0
+	TextEnd self
+	Return
+
+fn[46]:
+	field_party[0].5 = self.4
+	self.5 = self.4
+	TextStart self
+	CharFlagsUnset self 0x0010
+	CharTurnToChar self field_party[0] 0deg/s
+	self.4 = (self.4 + 360) % 360
+	self.4 = self.4 + 360 - self.5
+	self.5 = self.4 / 180
+	if self.4 <= 45 | self.4 >= 315 && self.4 <= 405 | self.4 >= 675:
+	elif self.5 < 1:
+		self.8 = 2
+	elif self.5 > 2:
+		self.8 = 1
+	else:
+		self.8 = self.5
+	self.4 = field_party[0].5
+	field_party[0].5 = 0
+	self.5 = 0
+	CharFlagsSet self 0x0010
+	TextTalk self {
+		予定だとわしは今日で
+		通院が終わりなんじゃ。{wait}
+	}
+	TextWait
+	TextTalk self {
+		診察が終わったら、
+		婆さんとゆっくり記念祭を
+		回るかのう。{wait}
+	}
+	TextWait
+	CharSetChipPattern self 0
+	TextEnd self
+	Return
+
+fn[47]:
+	field_party[0].5 = self.4
+	self.5 = self.4
+	TextStart self
+	CharFlagsUnset self 0x0010
+	CharTurnToChar self field_party[0] 0deg/s
+	self.4 = (self.4 + 360) % 360
+	self.4 = self.4 + 360 - self.5
+	self.5 = self.4 / 180
+	if self.4 <= 45 | self.4 >= 315 && self.4 <= 405 | self.4 >= 675:
+	elif self.5 < 1:
+		self.8 = 2
+	elif self.5 > 2:
+		self.8 = 1
+	else:
+		self.8 = self.5
+	self.4 = field_party[0].5
+	field_party[0].5 = 0
+	self.5 = 0
+	CharFlagsSet self 0x0010
+	TextTalk self {
+		おほほ、主人たら
+		いつまでも気持ちばっかり
+		若いんですから。{wait}
+	}
+	TextWait
+	CharSetChipPattern self 0
+	TextEnd self
+	Return
+
+fn[48]:
+	field_party[0].5 = self.4
+	self.5 = self.4
+	TextStart self
+	CharFlagsUnset self 0x0010
+	CharTurnToChar self field_party[0] 0deg/s
+	self.4 = (self.4 + 360) % 360
+	self.4 = self.4 + 360 - self.5
+	self.5 = self.4 / 180
+	if self.4 <= 45 | self.4 >= 315 && self.4 <= 405 | self.4 >= 675:
+	elif self.5 < 1:
+		self.8 = 2
+	elif self.5 > 2:
+		self.8 = 1
+	else:
+		self.8 = self.5
+	self.4 = field_party[0].5
+	field_party[0].5 = 0
+	self.5 = 0
+	CharFlagsSet self 0x0010
+	TextTalk self {
+		今から診察受けて
+		定期バスで街に戻って
+		そこから水上バスに乗って……{wait}
+	}
+	TextWait
+	TextTalk self {
+		うん、まだ余裕で遊べそうだな。
+		よかったよかった。{wait}
+	}
+	TextWait
+	CharSetChipPattern self 0
+	TextEnd self
+	Return
+
+fn[49]:
+	field_party[0].5 = self.4
+	self.5 = self.4
+	TextStart self
+	CharFlagsUnset self 0x0010
+	CharTurnToChar self field_party[0] 0deg/s
+	self.4 = (self.4 + 360) % 360
+	self.4 = self.4 + 360 - self.5
+	self.5 = self.4 / 180
+	if self.4 <= 45 | self.4 >= 315 && self.4 <= 405 | self.4 >= 675:
+	elif self.5 < 1:
+		self.8 = 2
+	elif self.5 > 2:
+		self.8 = 1
+	else:
+		self.8 = self.5
+	self.4 = field_party[0].5
+	field_party[0].5 = 0
+	self.5 = 0
+	CharFlagsSet self 0x0010
+	TextTalk self {
+		今日は夕方から
+		彼とミシュラムに行く予定なの。{wait}
+	}
+	TextWait
+	char[38].5 = self.4
+	self.5 = self.4
+	TextStart self
+	CharFlagsUnset self 0x0010
+	CharTurnToChar self char[38] 0deg/s
+	self.4 = (self.4 + 360) % 360
+	self.4 = self.4 + 360 - self.5
+	self.5 = self.4 / 180
+	if self.4 <= 45 | self.4 >= 315 && self.4 <= 405 | self.4 >= 675:
+	elif self.5 < 1:
+		self.8 = 2
+	elif self.5 > 2:
+		self.8 = 1
+	else:
+		self.8 = self.5
+	self.4 = char[38].5
+	char[38].5 = 0
+	self.5 = 0
+	CharFlagsSet self 0x0010
+	TextTalk self {
+		……ほら、順番は次でしょ。
+		はやく呼ばれなさいよ！{wait}
+	}
+	TextWait
+	CharSetChipPattern self 0
+	CharSetChipPattern self 0
+	TextEnd self
+	Return
+
+fn[50]:
+	field_party[0].5 = self.4
+	self.5 = self.4
+	TextStart self
+	CharFlagsUnset self 0x0010
+	CharTurnToChar self field_party[0] 0deg/s
+	self.4 = (self.4 + 360) % 360
+	self.4 = self.4 + 360 - self.5
+	self.5 = self.4 / 180
+	if self.4 <= 45 | self.4 >= 315 && self.4 <= 405 | self.4 >= 675:
+	elif self.5 < 1:
+		self.8 = 2
+	elif self.5 > 2:
+		self.8 = 1
+	else:
+		self.8 = self.5
+	self.4 = field_party[0].5
+	field_party[0].5 = 0
+	self.5 = 0
+	CharFlagsSet self 0x0010
+	TextTalk self {
+		記念祭最終日だってのに
+		今日も人が来てるなぁ……{wait}
+	}
+	TextWait
+	CharSetChipPattern self 0
+	TextEnd self
+	Return
+
+fn[51]:
+	field_party[0].5 = self.4
+	self.5 = self.4
+	TextStart self
+	CharFlagsUnset self 0x0010
+	CharTurnToChar self field_party[0] 0deg/s
+	self.4 = (self.4 + 360) % 360
+	self.4 = self.4 + 360 - self.5
+	self.5 = self.4 / 180
+	if self.4 <= 45 | self.4 >= 315 && self.4 <= 405 | self.4 >= 675:
+	elif self.5 < 1:
+		self.8 = 2
+	elif self.5 > 2:
+		self.8 = 1
+	else:
+		self.8 = self.5
+	self.4 = field_party[0].5
+	field_party[0].5 = 0
+	self.5 = 0
+	CharFlagsSet self 0x0010
+	if flag[1351]:
+		TextTalk self {
+			とにかく、薬に頼るよりも
+			生活を改めるよう強く言われたよ。{wait}
+		}
+		TextWait
+		TextTalk self {
+			仕事柄なかなか厳しいけど……
+			まぁ、健康には代えられないか。{wait}
+		}
+		TextWait
+	elif flag[1346]:
+		TextTalk self {
+			ごほごほ……やはり
+			早めに診てもらえば良かったかな。{wait}
+		}
+		TextWait
+		TextTalk self {
+			つい仕事に
+			かまけてしまってなぁ……{wait}
+		}
+		TextWait
+	CharSetChipPattern self 0
+	TextEnd self
+	Return
+
+fn[52]:
+	field_party[0].5 = self.4
+	self.5 = self.4
+	TextStart self
+	CharFlagsUnset self 0x0010
+	CharTurnToChar self field_party[0] 0deg/s
+	self.4 = (self.4 + 360) % 360
+	self.4 = self.4 + 360 - self.5
+	self.5 = self.4 / 180
+	if self.4 <= 45 | self.4 >= 315 && self.4 <= 405 | self.4 >= 675:
+	elif self.5 < 1:
+		self.8 = 2
+	elif self.5 > 2:
+		self.8 = 1
+	else:
+		self.8 = self.5
+	self.4 = field_party[0].5
+	field_party[0].5 = 0
+	self.5 = 0
+	CharFlagsSet self 0x0010
+	if flag[1351]:
+		TextTalk self {
+			先生にお薬を貰ったのよ。{wait}
+		}
+		TextWait
+		TextTalk self {
+			これでお義父さんの具合も
+			良くなるかしらね。{wait}
+		}
+		TextWait
+	elif flag[1346]:
+		TextTalk self {
+			ロビーの順番待ちって
+			長く感じちゃうのよねぇ。{wait}
+		}
+		TextWait
+		TextTalk self {
+			付き添いで来てると
+			余計に感じちゃうわ。{wait}
+		}
+		TextWait
+	CharSetChipPattern self 0
+	TextEnd self
+	Return
+
+fn[53]:
+	field_party[0].5 = self.4
+	self.5 = self.4
+	TextStart self
+	CharFlagsUnset self 0x0010
+	CharTurnToChar self field_party[0] 0deg/s
+	self.4 = (self.4 + 360) % 360
+	self.4 = self.4 + 360 - self.5
+	self.5 = self.4 / 180
+	if self.4 <= 45 | self.4 >= 315 && self.4 <= 405 | self.4 >= 675:
+	elif self.5 < 1:
+		self.8 = 2
+	elif self.5 > 2:
+		self.8 = 1
+	else:
+		self.8 = self.5
+	self.4 = field_party[0].5
+	field_party[0].5 = 0
+	self.5 = 0
+	CharFlagsSet self 0x0010
+	if flag[1351]:
+		TextTalk self {
+			順番的には、そろそろ次だなー。{wait}
+		}
+		TextWait
+		TextTalk self {
+			ううむ、本でも持ってくればよかった……{wait}
+		}
+		TextWait
+	elif flag[1346]:
+		TextTalk self {
+			ふーん、結構面倒なんだな。{wait}
+		}
+		TextWait
+		TextTalk self {
+			ま、これで診察が
+			スムーズになるなら仕方ないか。{wait}
+		}
+		TextWait
+	CharSetChipPattern self 0
+	TextEnd self
+	Return
+
+fn[54]:
+	field_party[0].5 = self.4
+	self.5 = self.4
+	TextStart self
+	CharFlagsUnset self 0x0010
+	CharTurnToChar self field_party[0] 0deg/s
+	self.4 = (self.4 + 360) % 360
+	self.4 = self.4 + 360 - self.5
+	self.5 = self.4 / 180
+	if self.4 <= 45 | self.4 >= 315 && self.4 <= 405 | self.4 >= 675:
+	elif self.5 < 1:
+		self.8 = 2
+	elif self.5 > 2:
+		self.8 = 1
+	else:
+		self.8 = self.5
+	self.4 = field_party[0].5
+	field_party[0].5 = 0
+	self.5 = 0
+	CharFlagsSet self 0x0010
+	if flag[1351]:
+		TextTalk self {
+			持病も、かなり完治が
+			ちかづいとるらしい。{wait}
+		}
+		TextWait
+		TextTalk self {
+			がんばって通院した甲斐が
+			あったわい。{wait}
+		}
+		TextWait
+	elif flag[1346]:
+		TextTalk self {
+			はよう順番が来んかのう……{wait}
+		}
+		TextWait
+	CharSetChipPattern self 0
+	TextEnd self
+	Return
+
+fn[55]:
+	field_party[0].5 = self.4
+	self.5 = self.4
+	TextStart self
+	CharFlagsUnset self 0x0010
+	CharTurnToChar self field_party[0] 0deg/s
+	self.4 = (self.4 + 360) % 360
+	self.4 = self.4 + 360 - self.5
+	self.5 = self.4 / 180
+	if self.4 <= 45 | self.4 >= 315 && self.4 <= 405 | self.4 >= 675:
+	elif self.5 < 1:
+		self.8 = 2
+	elif self.5 > 2:
+		self.8 = 1
+	else:
+		self.8 = self.5
+	self.4 = field_party[0].5
+	field_party[0].5 = 0
+	self.5 = 0
+	CharFlagsSet self 0x0010
+	if flag[1351]:
+		TextTalk self {
+			うふふ、おじいさんの具合が
+			よくなりそうでほっとしたわ。{wait}
+		}
+		TextWait
+	elif flag[1346]:
+		TextTalk self {
+			おじいさん、落ち着いて待ちなさいな。{wait}
+		}
+		TextWait
+	CharSetChipPattern self 0
+	TextEnd self
+	Return
+
+fn[56]:
+	field_party[0].5 = self.4
+	self.5 = self.4
+	TextStart self
+	CharFlagsUnset self 0x0010
+	CharTurnToChar self field_party[0] 0deg/s
+	self.4 = (self.4 + 360) % 360
+	self.4 = self.4 + 360 - self.5
+	self.5 = self.4 / 180
+	if self.4 <= 45 | self.4 >= 315 && self.4 <= 405 | self.4 >= 675:
+	elif self.5 < 1:
+		self.8 = 2
+	elif self.5 > 2:
+		self.8 = 1
+	else:
+		self.8 = self.5
+	self.4 = field_party[0].5
+	field_party[0].5 = 0
+	self.5 = 0
+	CharFlagsSet self 0x0010
+	TextTalk self {
+		う～……
+		熱っぽいよう……{wait}
+	}
+	TextWait
+	CharSetChipPattern self 0
+	TextEnd self
+	Return
+
+fn[57]:
+	field_party[0].5 = self.4
+	self.5 = self.4
+	TextStart self
+	CharFlagsUnset self 0x0010
+	CharTurnToChar self field_party[0] 0deg/s
+	self.4 = (self.4 + 360) % 360
+	self.4 = self.4 + 360 - self.5
+	self.5 = self.4 / 180
+	if self.4 <= 45 | self.4 >= 315 && self.4 <= 405 | self.4 >= 675:
+	elif self.5 < 1:
+		self.8 = 2
+	elif self.5 > 2:
+		self.8 = 1
+	else:
+		self.8 = self.5
+	self.4 = field_party[0].5
+	field_party[0].5 = 0
+	self.5 = 0
+	CharFlagsSet self 0x0010
+	TextTalk self {
+		げほげほ……
+		通院を勝手にやめたら
+		すぐぶりかえしてしまった。{wait}
+	}
+	TextWait
+	TextTalk self {
+		やっぱり自分だけで判断するのは
+		危険だなぁ。{wait}
+	}
+	TextWait
+	CharSetChipPattern self 0
+	TextEnd self
+	Return
+
+fn[58]:
+	field_party[0].5 = self.4
+	self.5 = self.4
+	TextStart self
+	CharFlagsUnset self 0x0010
+	CharTurnToChar self field_party[0] 0deg/s
+	self.4 = (self.4 + 360) % 360
+	self.4 = self.4 + 360 - self.5
+	self.5 = self.4 / 180
+	if self.4 <= 45 | self.4 >= 315 && self.4 <= 405 | self.4 >= 675:
+	elif self.5 < 1:
+		self.8 = 2
+	elif self.5 > 2:
+		self.8 = 1
+	else:
+		self.8 = self.5
+	self.4 = field_party[0].5
+	field_party[0].5 = 0
+	self.5 = 0
+	CharFlagsSet self 0x0010
+	TextTalk self {
+		ここの研修医さんたちは
+		熱心に勉強していていいわよね。{wait}
+	}
+	TextWait
+	TextTalk self {
+		おばさんつい応援したくなっちゃうわ。{wait}
+	}
+	TextWait
+	CharSetChipPattern self 0
+	TextEnd self
+	Return
+
+fn[59]:
+	field_party[0].5 = self.4
+	self.5 = self.4
+	TextStart self
+	CharFlagsUnset self 0x0010
+	CharTurnToChar self field_party[0] 0deg/s
+	self.4 = (self.4 + 360) % 360
+	self.4 = self.4 + 360 - self.5
+	self.5 = self.4 / 180
+	if self.4 <= 45 | self.4 >= 315 && self.4 <= 405 | self.4 >= 675:
+	elif self.5 < 1:
+		self.8 = 2
+	elif self.5 > 2:
+		self.8 = 1
+	else:
+		self.8 = self.5
+	self.4 = field_party[0].5
+	field_party[0].5 = 0
+	self.5 = 0
+	CharFlagsSet self 0x0010
+	TextTalk self {
+		健康の為に東方拳法の型を真似して
+		運動していたのだが……
+		勢い余ってすっ転んでしまってな。{wait}
+	}
+	TextWait
+	TextTalk self {
+		いやはや、無理はいかんな。
+		わっはっは。{wait}
+	}
+	TextWait
+	CharSetChipPattern self 0
+	TextEnd self
+	Return
+
+fn[60]:
+	field_party[0].5 = self.4
+	self.5 = self.4
+	TextStart self
+	CharFlagsUnset self 0x0010
+	CharTurnToChar self field_party[0] 0deg/s
+	self.4 = (self.4 + 360) % 360
+	self.4 = self.4 + 360 - self.5
+	self.5 = self.4 / 180
+	if self.4 <= 45 | self.4 >= 315 && self.4 <= 405 | self.4 >= 675:
+	elif self.5 < 1:
+		self.8 = 2
+	elif self.5 > 2:
+		self.8 = 1
+	else:
+		self.8 = self.5
+	self.4 = field_party[0].5
+	field_party[0].5 = 0
+	self.5 = 0
+	CharFlagsSet self 0x0010
+	if flag[1565]:
+		TextTalk self {
+			そろそろ診察の順番が回ってくるなぁ。{wait}
+		}
+		TextWait
+		TextTalk self {
+			あまり遅くなるようなら
+			宿を借りた方がいいかもしれないね。{wait}
+		}
+		TextWait
+	elif flag[1554]:
+		TextTalk self {
+			初めて見ちゃったよ、
+			救急車で運ばれてくる患者。{wait}
+		}
+		TextWait
+		TextTalk self {
+			いやぁ……見なきゃよかった。
+			本当に痛そうなんだもんなぁ……{wait}
+		}
+		TextWait
+	CharSetChipPattern self 0
+	TextEnd self
+	Return
+
+fn[61]:
+	field_party[0].5 = self.4
+	self.5 = self.4
+	TextStart self
+	CharFlagsUnset self 0x0010
+	CharTurnToChar self field_party[0] 0deg/s
+	self.4 = (self.4 + 360) % 360
+	self.4 = self.4 + 360 - self.5
+	self.5 = self.4 / 180
+	if self.4 <= 45 | self.4 >= 315 && self.4 <= 405 | self.4 >= 675:
+	elif self.5 < 1:
+		self.8 = 2
+	elif self.5 > 2:
+		self.8 = 1
+	else:
+		self.8 = self.5
+	self.4 = field_party[0].5
+	field_party[0].5 = 0
+	self.5 = 0
+	CharFlagsSet self 0x0010
+	if flag[1565]:
+		TextTalk self {
+			先生に診てもらったけど……
+			本当にただの風邪なのかしら！？{wait}
+		}
+		TextWait
+		TextTalk self {
+			何か重い病気が併発してたり
+			してたらどうしましょう！？{wait}
+		}
+		TextWait
+	elif flag[1554]:
+		TextTalk self {
+			おお、女神よ。
+			娘が大病を患っていたり
+			しませぬように……{wait}
+		}
+		TextWait
+	CharSetChipPattern self 0
+	TextEnd self
+	Return
+
+fn[62]:
+	field_party[0].5 = self.4
+	self.5 = self.4
+	TextStart self
+	CharFlagsUnset self 0x0010
+	CharTurnToChar self field_party[0] 0deg/s
+	self.4 = (self.4 + 360) % 360
+	self.4 = self.4 + 360 - self.5
+	self.5 = self.4 / 180
+	if self.4 <= 45 | self.4 >= 315 && self.4 <= 405 | self.4 >= 675:
+	elif self.5 < 1:
+		self.8 = 2
+	elif self.5 > 2:
+		self.8 = 1
+	else:
+		self.8 = self.5
+	self.4 = field_party[0].5
+	field_party[0].5 = 0
+	self.5 = 0
+	CharFlagsSet self 0x0010
+	if flag[1565]:
+		TextTalk self {
+			……んもう、お母さんったら
+			取り乱しちゃって
+			恥ずかしいんだから……{wait}
+		}
+		TextWait
+		TextTalk self {
+			ただの風邪だから心配ないって、
+			先生も言っていたでしょ。{wait}
+		}
+		TextWait
+	elif flag[1554]:
+		TextTalk self {
+			こほこほ……
+			もう、お母さんったら心配性ね。
+			ただの風邪だってば。{wait}
+		}
+		TextWait
+	CharSetChipPattern self 0
+	TextEnd self
+	Return
+
+fn[63]:
+	field_party[0].5 = self.4
+	self.5 = self.4
+	TextStart self
+	CharFlagsUnset self 0x0010
+	CharTurnToChar self field_party[0] 0deg/s
+	self.4 = (self.4 + 360) % 360
+	self.4 = self.4 + 360 - self.5
+	self.5 = self.4 / 180
+	if self.4 <= 45 | self.4 >= 315 && self.4 <= 405 | self.4 >= 675:
+	elif self.5 < 1:
+		self.8 = 2
+	elif self.5 > 2:
+		self.8 = 1
+	else:
+		self.8 = self.5
+	self.4 = field_party[0].5
+	field_party[0].5 = 0
+	self.5 = 0
+	CharFlagsSet self 0x0010
+	CharSetChipPattern self 0
+	TextTalk self {
+		ふむ、そういうシステムなわけね。{wait}
+	}
+	TextWait
+	TextTalk self {
+		いやぁ、こうまで広いと
+		何がなにやら……{wait}
+	}
+	TextWait
+	CharSetChipPattern self 0
+	TextEnd self
+	Return
+
+fn[64]:
+	field_party[0].5 = self.4
+	self.5 = self.4
+	TextStart self
+	CharFlagsUnset self 0x0010
+	CharTurnToChar self field_party[0] 0deg/s
+	self.4 = (self.4 + 360) % 360
+	self.4 = self.4 + 360 - self.5
+	self.5 = self.4 / 180
+	if self.4 <= 45 | self.4 >= 315 && self.4 <= 405 | self.4 >= 675:
+	elif self.5 < 1:
+		self.8 = 2
+	elif self.5 > 2:
+		self.8 = 1
+	else:
+		self.8 = self.5
+	self.4 = field_party[0].5
+	field_party[0].5 = 0
+	self.5 = 0
+	CharFlagsSet self 0x0010
+	TextTalk self {
+		病院ってなんか、
+		独特の匂いがするよね。{wait}
+	}
+	TextWait
+	TextTalk self {
+		消毒用アルコールの匂い……
+		あたし、けっこう好きかも。{wait}
+	}
+	TextWait
+	CharSetChipPattern self 0
+	TextEnd self
+	Return
+
+fn[65]:
+	field_party[0].5 = self.4
+	self.5 = self.4
+	TextStart self
+	CharFlagsUnset self 0x0010
+	CharTurnToChar self field_party[0] 0deg/s
+	self.4 = (self.4 + 360) % 360
+	self.4 = self.4 + 360 - self.5
+	self.5 = self.4 / 180
+	if self.4 <= 45 | self.4 >= 315 && self.4 <= 405 | self.4 >= 675:
+	elif self.5 < 1:
+		self.8 = 2
+	elif self.5 > 2:
+		self.8 = 1
+	else:
+		self.8 = self.5
+	self.4 = field_party[0].5
+	field_party[0].5 = 0
+	self.5 = 0
+	CharFlagsSet self 0x0010
+	TextTalk self {
+		まだ午前中だというのにこの賑わい……{wait}
+	}
+	TextWait
+	TextTalk self {
+		クロスベルの者にとって、
+		随分と信頼の置ける施設のようですな。{wait}
+	}
+	TextWait
+	CharSetChipPattern self 0
+	TextEnd self
+	Return
+
+fn[66]:
+	field_party[0].5 = self.4
+	self.5 = self.4
+	TextStart self
+	CharFlagsUnset self 0x0010
+	CharTurnToChar self field_party[0] 0deg/s
+	self.4 = (self.4 + 360) % 360
+	self.4 = self.4 + 360 - self.5
+	self.5 = self.4 / 180
+	if self.4 <= 45 | self.4 >= 315 && self.4 <= 405 | self.4 >= 675:
+	elif self.5 < 1:
+		self.8 = 2
+	elif self.5 > 2:
+		self.8 = 1
+	else:
+		self.8 = self.5
+	self.4 = field_party[0].5
+	field_party[0].5 = 0
+	self.5 = 0
+	CharFlagsSet self 0x0010
+	TextTalk self {
+		朝早くきたのに
+		こんなに待つハメになるなんて……{wait}
+	}
+	TextWait
+	TextTalk self {
+		早くするザマス！
+		あたしの腰が悲鳴をあげているザマス！{wait}
+	}
+	TextWait
+	CharSetChipPattern self 0
+	TextEnd self
+	Return
+
+fn[67]:
+	TextStart self
+	TextTalk self {
+		うーん、おばあちゃんの病室って
+		どこにあるんだろう……{wait}
+	}
+	TextWait
+	TextEnd self
+	Return
+
+fn[68]:
+	TextStart self
+	TextTalk self {
+		わーいわーい、病院って広いね！{wait}
+	}
+	TextWait
+	TextEnd self
+	Return
+
+fn[69]:
+	TextStart self
+	CharTurnTo char[1] 180deg 0deg/s
+	CharTurnTo char[58] 15deg 0deg/s
+	_Char4A char[1] 255
+	TextTalk char[1] {
+		健康診断をご希望ですか？
+		それでは、こちらの書類に
+		サインをお願いします。{wait}
+	}
+	TextWait
+	TextTalk char[1] {
+		初診ですので
+		お時間頂くと思いますが
+		お待ちいただいても？{wait}
+	}
+	TextWait
+	TextTalk self {
+		ああ、構わないよ。{wait}
+	}
+	TextWait
+	_Char4B char[1] 255
+	TextEnd self
+	Return
+
+fn[70]:
+	TextStart self
+	if !flag[16]:
+		TextTalk self {
+			んーと、なになに？
+			『人間ドックのお知らせ』……{wait}
+		}
+		TextWait
+		TextTalk self {
+			『隠れた病気の早期発見には
+			{}  最新機器を駆使した
+			{}  総合検査をおすすめします』……{wait}
+		}
+		TextWait
+		TextTalk self {
+			なるほど、さすがは
+			名高いウルスラ病院だ。
+			他では見ないことをやってるなぁ。{wait}
+		}
+		TextWait
+	else:
+		TextTalk self {
+			人間ドック……なんて
+			今は受けてる時間ないけど……{wait}
+		}
+		TextWait
+		TextTalk self {
+			やっぱりウルスラ病院は進んでるな。
+			最新医療技術の宝庫というのは
+			ウソではなかったか。{wait}
+		}
+		TextWait
+	TextEnd self
+	Return
+
+fn[71]:
+	TextStart self
+	if flag[17]:
+		TextTalk char[61] {
+			や、やっぱり夜食を食べ過ぎた。
+			腹いてぇよ……！{wait}
+		}
+		TextWait
+	else:
+		TextTalk char[61] {
+			は、腹いてぇ……{wait}
+		}
+		TextWait
+		TextTalk char[61] {
+			順番はまだかぁ……！{wait}
+		}
+		TextWait
+		FlagSet flag[17]
+	TextEnd self
+	Return
+
+fn[72]:
+	TextStart self
+	if flag[1024]:
+		if !flag[18]:
+			Emote field_party[0] 0mm 2000mm 38 38 250ms 1
+			Emote field_party[1] 0mm 2000mm 38 38 250ms 1
+			Emote field_party[2] 0mm 2000mm 38 38 250ms 1
+			Emote field_party[3] 0mm 2000mm 38 38 250ms 1
+			Sleep 500ms
+			TextTalk name[0] {
+				#0005Fあれ、遊撃士の……{wait}
+			}
+			TextWait
+			TextTalk name[1] {
+				#0101Fもしかして……
+				何かあったんですか？{wait}
+			}
+			TextWait
+			TextTalk self {
+				#08601Fああ、旅行者が茂みに入って
+				毒ヘビか何かに
+				噛まれたらしくてね。{wait}
+			} {
+				#08601F急いで駆けつけて、
+				ここまで搬送したんだよ。{wait}
+			} {
+				#08600Fまぁ、エオリアが適切に処置したから
+				大丈夫だと思うけどね。{wait}
+			}
+			TextWait
+			TextTalk name[3] {
+				#0305F処置って……
+				遊撃士ってのは
+				そんなことまでできるんッスね？{wait}
+			}
+			TextWait
+			TextTalk self {
+				#08602Fエオリアは特別だよ。{wait}
+			} {
+				#08600F医療先進国のレミフェリア出身で
+				医師免許を持っているくらいだしね。{wait}
+			}
+			TextWait
+			TextTalk name[2] {
+				#0211F……会う度にわたしにベタベタする
+				彼女からは想像できないんですが。{wait}
+			}
+			TextWait
+			TextTalk self {
+				#08609Fはは、まぁ普段はあれだけど
+				結構凄い奴なんだよ。{wait}
+			}
+			TextWait
+			FlagSet flag[18]
+		else:
+			TextTalk self {
+				#08600Fエオリアはレミフェリア出身で
+				医師免許を持っているんだ。{wait}
+			} {
+				#08609F普段は可愛いものに目がないけど、
+				あれで結構凄い奴なんだよ。{wait}
+			}
+			TextWait
+	TextEnd self
+	Return
+
+fn[73]:
+	TextStart self
+	if flag[1024]:
+		if !flag[19]:
+			_Char4A char[63] 255
+			_Char4A char[3] 255
+			CharTurnToChar char[63] char[3] 0deg/s
+			TextTalk char[3] {
+				あの旅行者は集中治療室で
+				安静にしておるよ。{wait}
+			}
+			TextWait
+			TextTalk char[3] {
+				いや、下手をしたら足を切断しなければ
+				ならない所だったが……{wait}
+			}
+			TextWait
+			TextTalk char[3] {
+				エオリアくんのおかげで
+				大事なく済んでよかった。
+				いつも世話になるな。{wait}
+			}
+			TextWait
+			TextTalk char[63] {
+				#08710Fいえいえ、遊撃士として
+				当然のことをしたまでですから。{wait}
+			}
+			TextWait
+			TextTalk name[3] {
+				#0307F#4S（くそぉっ、羨ましい！！）{wait}
+			} {
+				#0304F（俺もエオリアさんに優しく
+				{}  介抱してもらいてえぜ！）{wait}
+			}
+			TextWait
+			TextTalk name[2] {
+				#0211F（……無駄に興奮しないでください。）{wait}
+			}
+			TextWait
+			FlagSet flag[19]
+			_Char4B char[63] 255
+			_Char4B char[3] 255
+		else:
+			TextTalk char[63] {
+				#08714Fあー！！
+				ティオちゃんたちじゃないの！{wait}
+			} {
+				#08712Fうふふ、ちょっと待ってて。
+				お仕事が終わったら
+				いっぱい愛でてあげる㈱{wait}
+			}
+			TextWait
+			TextTalk name[2] {
+				#0206F……遠慮しておきます。{wait}
+			}
+			TextWait
+	TextEnd self
+	Return
+
+fn[74]:
+	EventBegin 0
+	FadeOut 1000ms 0x00000000 255
+	FadeWait
+	CamSetDistance 49870 1000 57910 0ms
+	ED7CamRotate 64deg 30deg 0deg 0ms
+	CamPers 440 0ms
+	CamZoom 20540 0ms
+	CharSetPos name[0] (48800, 0, 57000) 0deg
+	CharSetPos name[1] (50000, 0, 57000) 0deg
+	CharSetPos name[2] (48800, 0, 55500) 0deg
+	CharSetPos name[3] (50000, 0, 55500) 0deg
+	CharSetChipPattern char[4] 0
+	Sleep 500ms
+	FadeIn 500ms 0x00000000
+	FadeWait
+	TextTalk char[4] {
+		#5P……ふむ、あのような要請で
+		本当に来るのだろうか……{wait}
+	}
+	TextWait
+	TextTalk char[4] {
+		#5Pやはり、遊撃士に
+		頼むべきだったか……？{wait}
+	}
+	TextWait
+	TextTalk char[4] {
+		#5Pいやしかし、この程度の仕事で
+		ミラをはたきたくはないし……{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#12P#0006F（うう、声をかけにくい……）{wait}
+	} {
+		#0000Fあ、あの……
+		クロスベル警察、
+		特務支援課の者ですが……{wait}
+	}
+	TextWait
+	Emote char[4] 0mm 2000mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Sleep 1000ms
+	CharSetChipPattern char[4] 1
+	TextTalk char[4] {
+		#5Pおお……来てくれたのかね！{wait}
+	}
+	TextWait
+	TextTalk char[4] {
+		#5P君たちを待っていたのだ、
+		ささ、腰掛けてくれたまえ。{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#12P#0003Fい、いえ、このままで結構です。{wait}
+	} {
+		#0000Fそれより、依頼内容を
+		聞かせて頂いてもよろしいですか？{wait}
+	}
+	TextWait
+	TextTalk char[4] {
+		#5Pむ、そ、そうかね。{wait}
+	}
+	TextWait
+	TextTalk char[4] {
+		#5P……うぉっほん。
+		いや、頼みというのは他でもない。{wait}
+	}
+	TextWait
+	TextTalk char[4] {
+		#5P今度内科の研究に使用する、
+		とある薬草を手に入れてきて欲しいのだ。{wait}
+	}
+	TextWait
+	TextTalk char[4] {
+		#5P『ルピナス草』と言ってな……
+		今では希少になってしまった
+		薬草なのだよ。{wait}
+	}
+	TextWait
+	TextTalk name[2] {
+		#12P#0205Fルピナス……というと、
+		クロスベル港湾区を流れる
+		『ルピナス川』が思い浮かびますが……{wait}
+	}
+	TextWait
+	TextTalk name[3] {
+		#12P#0300Fその珍しい薬草を俺たちに
+		採取して来いってことっスか？{wait}
+	}
+	TextWait
+	TextTalk char[4] {
+		#5Pいや、厳密に言えばそうではない。{wait}
+	}
+	TextWait
+	TextTalk char[4] {
+		#5P実はその薬草は、僅かながら
+		クロスベル大聖堂に備蓄があってな。{wait}
+	}
+	TextWait
+	TextTalk char[4] {
+		#5Pすでにエラルダ大司教に
+		連絡も差し上げているから、
+		代理人として取りに行って欲しいのだ。{wait}
+	}
+	TextWait
+	TextTalk char[4] {
+		#5P……本来なら自ら出向くのだが……
+		あー……少々、忙しくてね。{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#12P#0005F……？{wait}
+	}
+	TextWait
+	TextTalk name[1] {
+		#12P#0100Fなるほど、分かりました。
+		クロスベル大聖堂の
+		エラルダ大司教ですね。{wait}
+	}
+	TextWait
+	TextTalk char[4] {
+		#5Pうむ、よろしく頼んだぞ。{wait}
+	}
+	TextWait
+	TextTalk char[4] {
+		#5P『ルピナス草』を手に入れたら、
+		この私の所に持ってきてくれ。{wait}
+	}
+	TextWait
+	FadeOut 300ms 0x00000000 100
+	SoundPlay sound[80] 0 100 0
+	TextSetPos -1 -1 -1 -1
+	TextSetName ""
+	TextMessage null {
+		{color 2}クエスト【稀少薬草の回収】{color 0}を開始した！{wait}
+	}
+	TextWait
+	TextClose 0
+	FadeIn 300ms 0x00000000
+	TextSetPos -1 280 60 3
+	FadeOut 1000ms 0x00000000 255
+	FadeWait
+	CamSetDistance 50500 1000 57500 0ms
+	ED7CamRotate 45deg 28deg 0deg 0ms
+	CamPers 440 0ms
+	CamZoom 22000 0ms
+	QuestTaskSet quest[19] 0
+	CharSetPos field_party[0] (50500, 0, 57500) 0deg
+	CharSetPos field_party[1] (50500, 0, 57500) 0deg
+	CharSetPos field_party[2] (50500, 0, 57500) 0deg
+	CharSetPos field_party[3] (50500, 0, 57500) 0deg
+	Sleep 500ms
+	CharSetChipPattern char[4] 0
+	EventEnd 5
+	Return
+
+fn[75]:
+	EventBegin 0
+	FadeOut 1000ms 0x00000000 255
+	FadeWait
+	CamSetDistance 49870 1000 57910 0ms
+	ED7CamRotate 64deg 30deg 0deg 0ms
+	CamPers 440 0ms
+	CamZoom 20540 0ms
+	CharSetPos name[0] (48800, 0, 57000) 0deg
+	CharSetPos name[1] (50000, 0, 57000) 0deg
+	CharSetPos name[2] (48800, 0, 55500) 0deg
+	CharSetPos name[3] (50000, 0, 55500) 0deg
+	CharSetChipPattern char[4] 1
+	Sleep 500ms
+	FadeIn 500ms 0x00000000
+	FadeWait
+	TextTalk char[4] {
+		#5Pおお、君たちは……{wait}
+	}
+	TextWait
+	TextTalk char[4] {
+		#5P無事、ルピナス草を
+		受け取ってきてくれたかね？{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#12P#0000Fええ、何とか。{wait}
+	} {
+		こちらがお預かりの品です。{wait}
+	}
+	TextWait
+	FadeOut 300ms 0x00000000 100
+	TextSetPos -1 -1 -1 -1
+	TextSetName ""
+	TextMessage null {
+		{item[833]}{color 0}を渡した。{wait}
+	}
+	SoundPlay sound[17] 0 100 0
+	TextWait
+	FadeIn 300ms 0x00000000
+	TextClose 0
+	TextSetPos -1 280 60 3
+	_59
+	ItemRemove item[833] 1
+	TextTalk char[4] {
+		#5Pうむ、確かに。
+		礼を言わせて貰うぞ。{wait}
+	}
+	TextWait
+	TextTalk char[4] {
+		#5Pえー……あー。
+		それでそのぅ、なんだ。{wait}
+	}
+	TextWait
+	TextTalk char[4] {
+		#5P……エラルダ大司教は、
+		私について何か言っていたかね？{wait}
+	}
+	TextWait
+	TextTalk name[2] {
+		#12P#0203F……いえ、特には。{wait}
+	} {
+		#0200F教授から出した手紙にも
+		手をつけていないようでしたし。{wait}
+	}
+	TextWait
+	TextTalk char[4] {
+		#5P……うう、やはりか。{wait}
+	}
+	TextWait
+	TextTalk char[4] {
+		#5P返事がいつまでたっても
+		返ってこないから、
+		そんな事だろうとは思っていたが……{wait}
+	}
+	TextWait
+	TextTalk name[3] {
+		#12P#0301Fなんだ、結局連絡は取ったってのは
+		ウソだったわけか。{wait}
+	} {
+		#0306F行ってみたらアポなしなんだから
+		肝が冷えたッスよ。{wait}
+	}
+	TextWait
+	TextTalk char[4] {
+		#5Pうむ……すまんな。
+		こういう事は話しづらくてな。{wait}
+	}
+	TextWait
+	TextTalk char[4] {
+		#5P結局会いづらくて
+		自分で受け取りにも行けず、
+		諸君に依頼してしまったわけなのだよ。{wait}
+	}
+	TextWait
+	TextTalk name[1] {
+		#12P#0100F司祭の方が色々と話してくれました。{wait}
+	} {
+		エラルダ大司教は頑固だけど、
+		ラゴー教授のことはきっと
+		認めているはずだって。{wait}
+	}
+	TextWait
+	TextTalk char[4] {
+		#5P……そうかね。{wait}
+	}
+	TextWait
+	TextTalk char[4] {
+		#5Pもちろん私も、
+		今でもエラルダ大司教を
+		尊敬しているよ。{wait}
+	}
+	TextWait
+	TextTalk char[4] {
+		#5P将来的に先進医療が一般的になった時、
+		あらためて謝罪と感謝の言葉を
+		伝えに行こうと思っているんだ。{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#12P#0000Fそうですね……
+		それがいいでしょう。{wait}
+	}
+	TextWait
+	TextTalk char[4] {
+		#5P……さて、すっかり
+		世話になってしまったな。{wait}
+	}
+	TextWait
+	TextTalk char[4] {
+		#5Pまた何かあったらよろしく頼む。{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#12P#0000Fええ、お待ちしています。{wait}
+	}
+	TextWait
+	FadeOut 300ms 0x00000000 100
+	SoundPlay sound[9] 0 100 0
+	TextSetPos -1 -1 -1 -1
+	TextSetName ""
+	TextMessage null {
+		{color 2}クエスト【稀少薬草の回収】{color 0}を達成した！{wait}
+	}
+	TextWait
+	TextClose 0
+	FadeIn 300ms 0x00000000
+	TextSetPos -1 280 60 3
+	FadeOut 1000ms 0x00000000 255
+	FadeWait
+	CamSetDistance 50500 1000 57500 0ms
+	ED7CamRotate 45deg 28deg 0deg 0ms
+	CamPers 440 0ms
+	CamZoom 22000 0ms
+	QuestTaskSet quest[19] 3
+	QuestFlagsSet quest[19] 0x10
+	CharSetPos field_party[0] (50500, 0, 57500) 0deg
+	CharSetPos field_party[1] (50500, 0, 57500) 0deg
+	CharSetPos field_party[2] (50500, 0, 57500) 0deg
+	CharSetPos field_party[3] (50500, 0, 57500) 0deg
+	Sleep 500ms
+	CharSetChipPattern char[4] 0
+	EventEnd 5
+	Return
+
+fn[76]:
+	_Char4A char[0] 255
+	_Char4A char[13] 255
+	CharTurnToChar char[0] field_party[0] 0deg/s
+	CharTurnToChar field_party[0] char[0] 0deg/s
+	EventBegin 0
+	FadeOut 1000ms 0x00000000 255
+	FadeWait
+	CamSetDistance 15620 400 7920 0ms
+	ED7CamRotate 45deg 18deg 0deg 0ms
+	CamPers 400 0ms
+	CamZoom 25000 0ms
+	CharSetPos name[0] (14410, 0, 6710) 90deg
+	CharSetPos name[1] (13420, 0, 4760) 90deg
+	CharSetPos name[2] (12160, 0, 4910) 90deg
+	CharSetPos name[3] (12810, 0, 6540) 90deg
+	CharSetPos char[0] (17210, 0, 7430) 266deg
+	CharSetPos char[13] (11940, 1230, 16600) 0deg
+	CharFlagsSet char[13] 0x0040
+	CharFlagsUnset char[13] 0x0004
+	CharFlagsSet char[2] 0x0080
+	CharFlags2Set char[2] 0x8000
+	CharFlagsSet char[30] 0x0080
+	CharFlags2Set char[30] 0x8000
+	FadeIn 1000ms 0x00000000
+	FadeWait
+	TextTalk char[0] {
+		#11Pはぁ……先生ったらどこに……{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#6P#0001Fセラさん、こんにちは。{wait}
+	} {
+		支援要請を受けて伺ったんですけど……{wait}
+	}
+	TextWait
+	Emote char[0] 0mm 2000mm 38 38 250ms 1
+	Sleep 500ms
+	TextTalk char[0] {
+		#11P特務支援課の皆さん……{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#11Pよかった、
+		来てくれて助かりました。{wait}
+	}
+	TextWait
+	Emote field_party[0] 0mm 2000mm 24 27 250ms 0
+	Emote field_party[1] 0mm 2000mm 24 27 250ms 0
+	Emote field_party[2] 0mm 2000mm 24 27 250ms 0
+	Emote field_party[3] 0mm 2000mm 24 27 250ms 0
+	Sleep 1500ms
+	EmoteStop field_party[0]
+	EmoteStop field_party[1]
+	EmoteStop field_party[2]
+	EmoteStop field_party[3]
+	Sleep 300ms
+	Emote char[0] 0mm 2000mm 0 1 250ms 2
+	SoundPlay sound[29] 0 100 0
+	Sleep 1000ms
+	TextTalk char[0] {
+		#11P……どうされました？{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#6P#0006Fえ、ええっと……{wait}
+	} {
+		#0005F准教授が行方不明だから
+		捜索を依頼されたんですよ……ね？{wait}
+	}
+	TextWait
+	TextTalk name[3] {
+		#6P#0305F何だかいやに
+		落ち着いている気がするんだが……{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#11Pええ、まあ。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#11P落ち着いている……というか、
+		あきれていると言った方が
+		正しいかもしれません。{wait}
+	}
+	TextWait
+	TextTalk name[1] {
+		#12P#0105Fあ、あきれてる……？{wait}
+	}
+	TextWait
+	TextTalk name[2] {
+		#6P#0203F……あの、できれば状況を
+		詳しく教えていただけますか。{wait}
+	} {
+		#0200Fわたしたちの考える行方不明事件と
+		随分温度差があるようなんですが。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#11Pああ、そうですね。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#11P問題の准教授は
+		ヨアヒム・ギュンターという方
+		なのですが……{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#11Pヨアヒム先生は、その……
+		優秀なんですけど、たまにふらりと
+		姿を消してしまうんです。{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#6P#0003Fヨアヒム先生……
+		ああ、あの青い髪でメガネを掛けた……{wait}
+	} {
+		#0005Fっていうか、それって……{wait}
+	}
+	TextWait
+	TextTalk name[3] {
+		#6P#0306F要するに、サボりってやつか。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#11P身も蓋もない言い方をすればそうです。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#11P今日もまた、大量の仕事を残して
+		どこかに行ってしまって……{wait}
+	}
+	TextWait
+	TextTalk name[1] {
+		#12P#0106F……つまり……{wait}
+	} {
+		#0100F遊びに行ったヨアヒム先生が
+		どこにいるのか分からない……
+		そういうことですか？{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#11Pそ、そうなりますね。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#11Pすみません、『行方不明』なんて
+		書き方をしたのは
+		少し軽率だったかもしれませんね。{wait}
+	}
+	TextWait
+	Emote field_party[0] 0mm 2000mm 16 19 250ms 1
+	SoundPlay sound[23] 0 100 0
+	Emote field_party[1] 0mm 2000mm 16 19 250ms 1
+	SoundPlay sound[23] 0 100 0
+	Emote field_party[2] 0mm 2000mm 16 19 250ms 1
+	SoundPlay sound[23] 0 100 0
+	Emote field_party[3] 0mm 2000mm 16 19 250ms 1
+	SoundPlay sound[23] 0 100 0
+	Sleep 1200ms
+	TextTalk name[0] {
+		#6P#0003F……どうする、みんな？{wait}
+	}
+	TextWait
+	TextTalk name[2] {
+		#6P#0203F……正直、後回しでも良いかと。{wait}
+	} {
+		#0200F聞いている限りでは
+		緊急性も低そうですし。{wait}
+	}
+	TextWait
+	TextTalk name[3] {
+		#6P#0306Fセラさんの頼みだから
+		聞いてやりたいんだけどな。{wait}
+	}
+	TextWait
+	TextTalk name[1] {
+		#12P#0105Fでも、万が一にだって
+		事件に巻き込まれている可能性も……{wait}
+	}
+	TextWait
+	TextTalkNamed char[13] "男の声" {
+		#4Sセ、セラさーん！！{wait}
+	}
+	TextWait
+	Emote char[0] 0mm 2000mm 38 38 250ms 1
+	Emote field_party[0] 0mm 2000mm 38 38 250ms 1
+	Emote field_party[1] 0mm 2000mm 38 38 250ms 1
+	Emote field_party[2] 0mm 2000mm 38 38 250ms 1
+	Emote field_party[3] 0mm 2000mm 38 38 250ms 1
+	Sleep 500ms
+	Fork field_party[0] fork[1]:
+		CharTurnTo self 0deg 500deg/s
+	Fork field_party[1] fork[1]:
+		CharTurnTo self 0deg 500deg/s
+	Fork field_party[2] fork[1]:
+		CharTurnTo self 0deg 500deg/s
+	Fork field_party[3] fork[1]:
+		CharTurnTo self 0deg 500deg/s
+	ForkLoop char[0] fork[1]:
+		CharTurnToChar self char[13] 500deg/s
+	CamSetDistance 14200 600 9330 1500ms
+	ED7CamRotate 45deg 18deg 0deg 1500ms
+	CamPers 400 1500ms
+	CamZoom 25000 1500ms
+	Sleep 1500ms
+	CharFlagsUnset char[13] 0x0080
+	CharWalkToPos char[13] (11810, 0, 9710) 7000mm/s 0
+	Fork char[13] fork[1]:
+		CharWalkToPos self (13460, 0, 8990) 6000mm/s 0
+	CamSetDistance 14770 600 8480 500ms
+	ED7CamRotate 45deg 18deg 0deg 500ms
+	CamPers 400 500ms
+	CamZoom 25000 500ms
+	Sleep 500ms
+	ForkQuit char[0] fork[1]
+	CharTurnTo char[0] 270deg 0deg/s
+	TextTalk char[13] {
+		#5Pはぁ、はぁ、はぁ……{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#11Pあ……リットンさん。
+		だめですよ、病院内で大声だしちゃ。{wait}
+	}
+	TextWait
+	TextTalk char[13] {
+		#5Pはぁ、はぁ……
+		す……すみません……{wait}
+	}
+	TextWait
+	TextTalk name[3] {
+		#6P#0300Fああ、入院してた
+		いつぞやの研修医か。
+		元気だったかい？{wait}
+	}
+	TextWait
+	CharTurnToChar char[13] name[3] 0deg/s
+	TextTalk char[13] {
+		#5P……あ、こ、こんにちは。
+		その節はどうも……{wait}
+	}
+	TextWait
+	CharTurnToChar char[13] char[0] 0deg/s
+	TextTalk char[13] {
+		#5P……じゃなくて！
+		セラさん、ヨアヒム先生は！？{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#11Pええっと、すみません。
+		まだ戻ってないみたいで……{wait}
+	}
+	TextWait
+	TextTalk char[13] {
+		#5Pそ、そんなぁ……{wait}
+	}
+	TextWait
+	TextTalk char[13] {
+		#5Pうう……
+		あんな仕事量、研修医の僕に
+		どうしろってんだ……{wait}
+	}
+	TextWait
+	TextTalk char[13] {
+		#5P……ああ、ぼやいてる暇はない！
+		少しでも片付けないと……！{wait}
+	}
+	TextWait
+	ForkLoop char[0] fork[1]:
+		CharTurnToChar self char[13] 500deg/s
+	CharWalkToPos char[13] (11810, 0, 9710) 6000mm/s 0
+	CharWalkToPos char[13] (11940, 1230, 16600) 7000mm/s 0
+	CharFlagsSet char[13] 0x0080
+	Sleep 800ms
+	TextTalk name[0] {
+		#6P#0005Fい、今のは……？{wait}
+	}
+	TextWait
+	Sleep 200ms
+	Fork field_party[0] fork[1]:
+		CharTurnTo self 90deg 300deg/s
+	Fork field_party[1] fork[1]:
+		CharTurnTo self 90deg 300deg/s
+	Fork field_party[2] fork[1]:
+		CharTurnTo self 90deg 300deg/s
+	Fork field_party[3] fork[1]:
+		CharTurnTo self 90deg 300deg/s
+	Sleep 100ms
+	ForkQuit char[0] fork[1]
+	CharTurnTo char[0] 270deg 300deg/s
+	Sleep 200ms
+	TextTalk char[0] {
+		#11Pリットンさん、ヨアヒム先生に
+		よく仕事を押し付けられてるんです。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#11P今回先生が抜けているツケも
+		彼が死に物狂いでフォローしている
+		状態なんですよ……{wait}
+	}
+	TextWait
+	TextTalk name[1] {
+		#12P#0106Fた、大変そうですね……{wait}
+	}
+	TextWait
+	TextTalk name[3] {
+		#6P#0306Fんー、こりゃ放っておくわけには
+		いかないかもな。{wait}
+	} {
+		#0300Fいくらなんでもアイツが
+		かわいそうに思えてきたぜ。{wait}
+	}
+	TextWait
+	TextTalk name[2] {
+		#6P#0206F……わたしもです。
+		不憫と言ったほうが正しいですが……{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#6P#0006Fそうだな……{wait}
+	} {
+		#0000Fセラさん、ヨアヒム先生の
+		行きそうな場所に
+		どこか心当たりは……？{wait}
+	}
+	TextWait
+	Emote char[0] 0mm 2000mm 38 38 250ms 1
+	Sleep 500ms
+	TextTalk char[0] {
+		#11Pまぁ、引き受けて
+		いただけるんですね。
+		ありがとうございます！{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#11P最近、ヨアヒム先生は
+		『記念祭中に釣りの大会に出る』と
+		吹聴して回ってたそうです。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#11Pもしかしたら、今回の行き先に
+		関係あるかもしれません。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#11Pヨアヒム先生は
+		仕事中に抜け出したので
+		まだ白衣を着たままだと思います。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#11Pきっと遠目にも目立つはずですよ。{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#6P#0006F釣りの大会、か……
+		よっぽど釣りが好きなんだな。{wait}
+	} {
+		#0003F（だとすると、東通りのあの施設で
+		{}  なにか分かるかもしれないな。）{wait}
+	} {
+		#0000F……とにかく、引き受けました。
+		見つけたら連絡を入れるので、
+		待っていてもらえますか？{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#11P分かりました。
+		どうかよろしくお願いしますね。{wait}
+	}
+	TextWait
+	FadeOut 300ms 0x00000000 100
+	SoundPlay sound[80] 0 100 0
+	TextSetPos -1 -1 -1 -1
+	TextSetName ""
+	TextMessage null {
+		{color 2}クエスト【准教授の捜索願い】{color 0}を開始した！{wait}
+	}
+	TextWait
+	TextClose 0
+	FadeIn 300ms 0x00000000
+	TextSetPos -1 280 60 3
+	FadeOut 1000ms 0x00000000 255
+	FadeWait
+	CamSetDistance 14410 1000 6710 0ms
+	ED7CamRotate 45deg 28deg 0deg 0ms
+	CamPers 440 0ms
+	CamZoom 24000 0ms
+	CharSetPos field_party[0] (14410, 0, 6710) 90deg
+	CharSetPos field_party[1] (14410, 0, 6710) 90deg
+	CharSetPos field_party[2] (14410, 0, 6710) 90deg
+	CharSetPos field_party[3] (14410, 0, 6710) 90deg
+	_Char4B char[0] 255
+	_Char4B char[13] 255
+	CharFlagsUnset char[13] 0x0040
+	CharFlagsSet char[13] 0x0004
+	CharFlagsUnset char[2] 0x0080
+	CharFlags2Unset char[2] 0x8000
+	CharFlagsUnset char[30] 0x0080
+	CharFlags2Unset char[30] 0x8000
+	QuestTaskSet quest[22] 0
+	Sleep 500ms
+	EventEnd 5
+	Return
+
+fn[77]:
+	FadeOut 0ms 0x00000000 255
+	EventBegin 0
+	_Char4A char[0] 255
+	_Char4A char[9] 255
+	CamSetDistance 15690 500 7880 0ms
+	ED7CamRotate 51deg 20deg 0deg 0ms
+	CamPers 400 0ms
+	CamZoom 25880 0ms
+	CharSetPos name[0] (14410, 0, 6210) 0deg
+	CharSetPos name[1] (13420, 0, 4260) 0deg
+	CharSetPos name[3] (12160, 0, 4410) 0deg
+	CharSetPos name[2] (12810, 0, 6140) 0deg
+	CharSetPos char[0] (17210, 0, 7430) 266deg
+	CharSetPos char[9] (13650, 0, 7450) 90deg
+	CharFlagsSet char[9] 0x0040
+	CharFlagsUnset char[9] 0x0080
+	CharFlagsUnset char[9] 0x0004
+	CharFlagsSet char[2] 0x0080
+	CharFlags2Set char[2] 0x8000
+	CharFlagsSet char[30] 0x0080
+	CharFlags2Set char[30] 0x8000
+	Sleep 500ms
+	CamZoom 24880 2000ms
+	FadeIn 2000ms 0x00000000
+	FadeWait
+	CamWait 121
+	TextTalk char[0] {
+		#11Pまったく……今まで一体
+		何をなさってたんですか？{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#11P先生がいないせいで
+		どれだけ他の人に迷惑がかかったか……{wait}
+	}
+	TextWait
+	TextTalk char[9] {
+		#6P#2409Fははは、実はフィッシャー杯という
+		一大イベントに参加していてね。{wait}
+	} {
+		#2400F釣公師団に名を連ねる以上、
+		これを逃すわけにはいかないだろう？{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#11Pもう、いい加減に
+		マジメになってくださいよ……{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#11Pリットンさんは今も、
+		ヨアヒム先生のお仕事を
+		肩代わりしてるんですよ？{wait}
+	}
+	TextWait
+	TextTalk char[9] {
+		#6P#2405Fおぉ、リットン君が！{wait}
+	} {
+		#2400Fいやぁ、出来のいい教え子を持って
+		僕は幸せ者だねぇ。{wait}
+	} {
+		#2403F彼の作業に水を差すのは悪いし……
+		何なら、このまま
+		任せてみるのはどうだろう？{wait}
+	} {
+		#2409Fうんうん、それがいい。
+		きっと彼の成長にも繋がるし……{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#11P#4S#200Wお　#200W仕　#200W事　#200Wに
+		#200W戻　#200Wっ　#200Wて　#200Wく　#200Wだ　#200Wさ　#200Wい　#200W。{wait}
+	}
+	TextWait
+	TextTalk char[9] {
+		#6P#2406F……はい。{wait}
+	}
+	TextWait
+	Emote field_party[0] 0mm 2000mm 16 19 250ms 1
+	SoundPlay sound[23] 0 100 0
+	Emote field_party[1] 0mm 2000mm 16 19 250ms 1
+	SoundPlay sound[23] 0 100 0
+	Emote field_party[2] 0mm 2000mm 16 19 250ms 1
+	SoundPlay sound[23] 0 100 0
+	Emote field_party[3] 0mm 2000mm 16 19 250ms 1
+	SoundPlay sound[23] 0 100 0
+	Sleep 1200ms
+	TextTalk name[0] {
+		#12P#0006F（この人……いつも
+		{}  こんなカンジなのかな。）{wait}
+	}
+	TextWait
+	TextTalk name[2] {
+		#12P#0200F（准教授という地位なら
+		{}  かなり優秀なはずですけど……）{wait}
+	}
+	TextWait
+	TextTalk name[3] {
+		#12P#0309F（何とかと天才は紙一重ってやつか。）{wait}
+	}
+	TextWait
+	TextTalk name[1] {
+		#12P#0106F（ちょっと……聞こえるわよ。）{wait}
+	}
+	TextWait
+	CharTurnTo char[9] 180deg 300deg/s
+	Sleep 300ms
+	TextTalk char[9] {
+		#5P#2400F……それじゃあ、諸君。
+		僕はこれで失礼するよ。{wait}
+	} {
+		#2409Fまた機会があったら、
+		共に釣りをたのしもうじゃないか。{wait}
+	}
+	TextWait
+	ForkLoop field_party[0] fork[1]:
+		CharTurnToChar self char[9] 300deg/s
+	ForkLoop field_party[1] fork[1]:
+		CharTurnToChar self char[9] 300deg/s
+	ForkLoop field_party[2] fork[1]:
+		CharTurnToChar self char[9] 300deg/s
+	ForkLoop field_party[3] fork[1]:
+		CharTurnToChar self char[9] 300deg/s
+	ForkLoop char[0] fork[1]:
+		CharTurnToChar self char[9] 300deg/s
+	CharWalkToPos char[9] (11810, 0, 9710) 2000mm/s 0
+	CharWalkToPos char[9] (11940, 1230, 16600) 2000mm/s 0
+	CharFlagsSet char[9] 0x0080
+	Sleep 800ms
+	TextTalk char[0] {
+		#11P……また？{wait}
+	}
+	TextWait
+	ForkQuit field_party[0] fork[1]
+	ForkQuit field_party[1] fork[1]
+	ForkQuit field_party[2] fork[1]
+	ForkQuit field_party[3] fork[1]
+	Fork field_party[0] fork[1]:
+		CharTurnTo self 90deg 300deg/s
+	Fork field_party[1] fork[1]:
+		CharTurnTo self 90deg 300deg/s
+	Fork field_party[2] fork[1]:
+		CharTurnTo self 90deg 300deg/s
+	Fork field_party[3] fork[1]:
+		CharTurnTo self 90deg 300deg/s
+	Sleep 300ms
+	TextTalk name[0] {
+		#6P#0003Fえ、えーっと……
+		お気になさらないでください。{wait}
+	} {
+		#0000Fとにかく……
+		これで依頼は完了ということで
+		よろしいですか？{wait}
+	}
+	TextWait
+	ForkQuit char[0] fork[1]
+	CharTurnTo char[0] 270deg 300deg/s
+	Sleep 200ms
+	TextTalk char[0] {
+		#11Pあ、はい。
+		どうもありがとうございました。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#11P先生がこんなに早く
+		戻ってきたのは
+		皆さんのおかげです。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#11Pまたなにかあったら
+		病院にお越しくださいね。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#11P誠意を以って
+		対応させていただきますから。{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#6P#0000Fええ、よろしくお願いします。
+		……ではこれで。{wait}
+	}
+	TextWait
+	FadeOut 300ms 0x00000000 100
+	SoundPlay sound[9] 0 100 0
+	TextSetPos -1 -1 -1 -1
+	TextSetName ""
+	TextMessage null {
+		{color 2}クエスト【准教授の捜索願い】{color 0}を達成した！{wait}
+	}
+	TextWait
+	TextClose 0
+	FadeIn 300ms 0x00000000
+	TextSetPos -1 280 60 3
+	FadeOut 1000ms 0x00000000 255
+	FadeWait
+	CamSetDistance 14410 1000 6710 0ms
+	ED7CamRotate 45deg 28deg 0deg 0ms
+	CamPers 440 0ms
+	CamZoom 24000 0ms
+	CharSetPos field_party[0] (14410, 0, 6710) 90deg
+	CharSetPos field_party[1] (14410, 0, 6710) 90deg
+	CharSetPos field_party[2] (14410, 0, 6710) 90deg
+	CharSetPos field_party[3] (14410, 0, 6710) 90deg
+	_Char4B char[0] 255
+	_Char4B char[9] 255
+	CharFlagsUnset char[9] 0x0040
+	CharFlagsSet char[9] 0x0004
+	CharFlagsUnset char[2] 0x0080
+	CharFlags2Unset char[2] 0x8000
+	CharFlagsUnset char[30] 0x0080
+	CharFlags2Unset char[30] 0x8000
+	QuestFlagsSet quest[22] 0x10
+	QuestTaskSet quest[22] 6
+	FlagSet flag[0]
+	Sleep 500ms
+	EventEnd 5
+	Return
+
+fn[78]:
+	EventBegin 0
+	FadeOut 1000ms 0x00000000 255
+	FadeWait
+	CamSetDistance 55410 1000 -55440 0ms
+	ED7CamRotate 55deg 15deg 0deg 0ms
+	CamPers 440 0ms
+	CamZoom 18950 0ms
+	CharSetPos name[0] (55250, 0, -54750) 135deg
+	CharSetPos name[1] (54080, 0, -54680) 90deg
+	CharSetPos name[2] (54670, 0, -57660) 45deg
+	CharSetPos name[3] (53490, 0, -57740) 45deg
+	CharSetPos name[8] (52630, 0, -56430) 90deg
+	CharFlagsUnset field_party[4] 0x0080
+	CharFlags2Unset field_party[4] 0x8000
+	CharTurnTo char[11] 270deg 0deg/s
+	CharSetChipPattern char[11] 0
+	FadeIn 500ms 0x00000000
+	FadeWait
+	TextTalk char[11] {
+		#11Pふぁああ……{wait}
+	}
+	TextWait
+	TextTalk char[11] {
+		#11P昨日は徹夜で医療機器の
+		研究をしてたんですよ。{wait}
+	}
+	TextWait
+	TextTalk char[11] {
+		#11P携帯用のとっても便利なものを
+		設計してみたんですけど、
+		うまく行かなくって……{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#5P#0005F（この人……
+		{}  医療機器を扱ってるんだな。）{wait}
+	} {
+		#0003F（そうだ、シズクちゃんの
+		{}  プレゼントの材料……
+		{}  なにかいい物を持ってるかも。）{wait}
+	} {
+		#0000Fあの……すみません。
+		ちょっと相談があるんですが。{wait}
+	}
+	TextWait
+	TextTalk char[11] {
+		#11Pはい？　何でしょうか。{wait}
+	}
+	TextWait
+	TextMessage null {
+		{color 5}ロイドは、プレゼントの材料集めを
+		していることを説明した。{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	TextTalk name[0] {
+		#5P#0000F……そういうわけで、
+		何か必要のないものを
+		譲っていただけないかと。{wait}
+	}
+	TextWait
+	TextTalk char[11] {
+		#11Pあぁ、なるほどー。
+		シズクちゃんも可愛いことを
+		しますねぇ。{wait}
+	}
+	TextWait
+	TextTalk char[11] {
+		#11Pそうですね、だったら……
+		これなんかいいかもしれません。{wait}
+	}
+	TextWait
+	FadeOut 300ms 0x00000000 100
+	TextSetPos -1 -1 -1 -1
+	TextSetName ""
+	SoundPlay sound[17] 0 100 0
+	TextMessage null {
+		{item[834]}{color 0}を受け取った。{wait}
+	}
+	TextWait
+	TextClose 0
+	FadeIn 300ms 0x00000000
+	TextSetPos -1 280 60 3
+	_59
+	ItemAdd item[834] 1
+	TextTalk name[0] {
+		#5P#0005Fこれは……
+		宝石を嵌められる
+		ペンダントトップですね。{wait}
+	}
+	TextWait
+	TextTalk char[11] {
+		#11Pええ、そうなんです。{wait}
+	}
+	TextWait
+	TextTalk char[11] {
+		#11Pペンダント型携帯医療機器の
+		研究中に失敗した
+		副産物なんですけどね。{wait}
+	}
+	TextWait
+	TextTalk name[2] {
+		#12P#0205F携帯医療機器……
+		そんなものがあるんですか？{wait}
+	}
+	TextWait
+	TextTalk char[11] {
+		#11Pいえいえ、まだ試作の試作、
+		実用に耐えない代物ですよ～。{wait}
+	}
+	TextWait
+	TextTalk char[11] {
+		#11P治癒効果のある結晶回路を応用して、
+		自己治癒力を促進するっていう
+		構想なんですけど。{wait}
+	}
+	TextWait
+	TextTalk name[3] {
+		#12P#0305Fは～……
+		さすがウルスラ病院。
+		すげぇ事を研究してんな。{wait}
+	}
+	TextWait
+	TextTalk name[8] {
+		#6P#0500F警備隊に実戦配備されれば
+		かなり役立ちそうです。{wait}
+	}
+	TextWait
+	TextTalk name[1] {
+		#6P#0105Fでも、さっきは
+		失敗したとか言ってましたね。{wait}
+	}
+	TextWait
+	TextTalk char[11] {
+		#11Pええ、昨晩はそれの
+		試作型を作ってたんですけど……{wait}
+	}
+	TextWait
+	TextTalk char[11] {
+		#11Pどこで間違ったか、
+		完成した試作品を起動したら
+		爆発しちゃったんですよねぇ。{wait}
+	}
+	TextWait
+	Emote field_party[0] 0mm 2000mm 16 19 250ms 1
+	SoundPlay sound[23] 0 100 0
+	Emote field_party[1] 0mm 2000mm 16 19 250ms 1
+	SoundPlay sound[23] 0 100 0
+	Emote field_party[2] 0mm 2000mm 16 19 250ms 1
+	SoundPlay sound[23] 0 100 0
+	Emote field_party[3] 0mm 2000mm 16 19 250ms 1
+	SoundPlay sound[23] 0 100 0
+	Emote field_party[4] 0mm 2000mm 16 19 250ms 1
+	SoundPlay sound[23] 0 100 0
+	Sleep 1000ms
+	TextTalk name[0] {
+		#5P#0006Fあ、危ないなぁ……{wait}
+	}
+	TextWait
+	TextTalk char[11] {
+		#11Pでも、そのペンダントトップは
+		爆発の中心にあって
+		奇跡的に無傷で残った品なんですよ。{wait}
+	}
+	TextWait
+	TextTalk char[11] {
+		#11Pそんな運の強い品なら、
+		きっと贈り物の材料に最適です。{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#5P#0006F（医療機器を研究してる人にしては
+		{}  非科学的な発言だなぁ……）{wait}
+	} {
+		#0000F……でも、ありがとうございます。
+		遠慮なくいただきますね。{wait}
+	}
+	TextWait
+	TextTalk char[11] {
+		#11Pどうぞどうぞ～。{wait}
+	}
+	TextWait
+	if !QuestTaskGet quest[44] 4:
+		TextTalk name[0] {
+			#5P#0003F（これにシズクちゃんの
+			{}  持っている石をはめれば
+			{}  お守りになりそうだな。）{wait}
+		} {
+			#0000F（あとはなにかチェーンみたいな
+			{}  ものがあればペンダントに
+			{}  仕立てられそうだ。）{wait}
+		}
+		TextWait
+	QuestTaskSet quest[44] 2
+	if QuestTaskGet quest[44] 0 && QuestTaskGet quest[44] 1 && QuestTaskGet quest[44] 2 && QuestTaskGet quest[44] 4:
+		QuestTaskSet quest[44] 5
+		TextTalk name[0] {
+			#5P#0000F（プレゼントの材料になりそうな物も揃ったし
+			{}  包装用の箱とリボンも手に入ったな……）{wait}
+		} {
+			（よし、そろそろシズクちゃんの所に
+			{}  持っていってあげよう。）{wait}
+		}
+		TextWait
+	FadeOut 1000ms 0x00000000 255
+	FadeWait
+	CharTurnTo char[11] 90deg 0deg/s
+	CharSetPos field_party[0] (54500, 0, -55500) 90deg
+	CharSetPos field_party[1] (54500, 0, -55500) 90deg
+	CharSetPos field_party[2] (54500, 0, -55500) 90deg
+	CharSetPos field_party[3] (54500, 0, -55500) 90deg
+	CharFlagsSet field_party[4] 0x0080
+	CharFlags2Set field_party[4] 0x8000
+	Sleep 500ms
+	EventEnd 5
+	Return

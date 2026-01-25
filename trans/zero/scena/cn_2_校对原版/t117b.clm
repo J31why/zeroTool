@@ -1,0 +1,1331 @@
+calmare zero_k scena
+scena:
+	name "t117b" "t117b" "t117b"
+	town town[74]
+	bgm bgm[125]
+	flags 8192
+	item_use fn[0,255]
+	unk 255 0
+
+entry:
+	pos (0, 0, -1000)
+	unk1 0
+	cam_from (0, 0, 34000)
+	cam_pers 262
+	unk2 30
+	cam_deg 45deg
+	cam_limit 0deg 360deg
+	cam_at (0, 0, 0)
+	unk3 0
+	unk4 0
+	flags 0x0001
+	town town[74]
+	init fn[0,1]
+	reinit fn[0,2]
+
+chip[0] "chr/ch22000.itc"
+chip[1] "chr/ch33002.itc"
+chip[2] "chr/ch26902.itc"
+chip[3] "chr/ch33302.itc"
+chip[4] "chr/ch27802.itc"
+chip[5] null
+chip[6] null
+chip[7] null
+chip[8] null
+chip[9] null
+chip[10] null
+chip[11] null
+chip[12] null
+chip[13] null
+chip[14] null
+chip[15] null
+chip[16] null
+chip[17] null
+chip[18] null
+chip[19] null
+chip[20] null
+chip[21] null
+chip[22] null
+chip[23] null
+chip[24] null
+chip[25] null
+chip[26] null
+chip[27] null
+chip[28] "chr/ch31051.itc"
+chip[29] "chr/ch31151.itc"
+
+npc char[0]:
+	name "客人"
+	pos (-310, 0, -71709)
+	angle 180deg
+	flags 0x0181
+	unk2 0
+	chip chip[0]
+	init fn[0,0]
+	talk fn[0,3]
+	unk4 255
+
+npc char[1]:
+	name "客人"
+	pos (44860, 150, -13789)
+	angle 270deg
+	flags 0x01D5
+	unk2 0
+	chip chip[1]
+	init fn[255,255]
+	talk fn[0,4]
+	unk4 255
+
+npc char[2]:
+	name "客人"
+	pos (40840, 150, -13789)
+	angle 90deg
+	flags 0x01D5
+	unk2 0
+	chip chip[2]
+	init fn[255,255]
+	talk fn[0,5]
+	unk4 255
+
+npc char[3]:
+	name "艾維琳夫人"
+	pos (44860, 150, 26239)
+	angle 270deg
+	flags 0x01D5
+	unk2 0
+	chip chip[3]
+	init fn[255,255]
+	talk fn[0,6]
+	unk4 255
+
+npc char[4]:
+	name "詹姆斯"
+	pos (40840, 150, 26290)
+	angle 90deg
+	flags 0x01D5
+	unk2 0
+	chip chip[4]
+	init fn[255,255]
+	talk fn[0,7]
+	unk4 255
+
+npc char[5]:
+	name "嚮導"
+	pos (0, 0, 0)
+	angle 0deg
+	flags 0x01C5
+	unk2 0
+	chip chip[0]
+	init fn[255,255]
+	talk fn[255,255]
+	unk4 255
+
+npc char[6]:
+	name "黑手黨１"
+	pos (0, 0, 0)
+	angle 0deg
+	flags 0x01C5
+	unk2 0
+	chip chip[28]
+	init fn[255,255]
+	talk fn[255,255]
+	unk4 255
+
+npc char[7]:
+	name "黑手黨２"
+	pos (0, 0, 0)
+	angle 0deg
+	flags 0x01C5
+	unk2 0
+	chip chip[29]
+	init fn[255,255]
+	talk fn[255,255]
+	unk4 255
+
+// NB: the first five sepith sets are seemingly junk data.
+sepith[0] 100 1 2 3 70 89 99 0
+sepith[1] 100 5 1 5 1 5 1 0
+sepith[2] 100 5 1 5 1 5 1 0
+sepith[3] 100 5 0 5 0 5 0 0
+sepith[4] 100 5 0 5 0 5 0 0
+
+at_roll[0]: none 100
+at_roll[1]: none 100; hp10 5; hp50 1; ep10 5; ep50 1; cp10 5; cp50 1; unk1 5; unk2 5; unk6 1
+at_roll[2]: none 100; hp10 5; hp50 1; ep10 5; ep50 1; cp10 5; cp50 1; unk1 5; unk2 5; unk3 5; unk4 5; unk5 5; unk6 5
+at_roll[3]: none 100; hp10 5; ep10 5; cp10 5; unk1 5; unk2 5; unk6 2
+at_roll[4]: none 100; hp10 5; ep10 5; cp10 5; unk2 5; unk6 2
+
+placement[0]:
+	pos 7 9 180deg
+	pos 11 10 180deg
+	pos 10 13 180deg
+	pos 5 11 180deg
+	pos 12 12 180deg
+	pos 4 14 180deg
+	pos 14 14 180deg
+	pos 2 13 180deg
+
+placement[1]:
+	pos 8 8 180deg
+	pos 5 9 180deg
+	pos 11 10 180deg
+	pos 6 12 180deg
+	pos 10 12 180deg
+	pos 13 13 180deg
+	pos 4 14 180deg
+	pos 8 14 180deg
+
+placement[2]:
+	pos 7 8 180deg
+	pos 9 9 180deg
+	pos 6 10 180deg
+	pos 10 11 180deg
+	pos 6 12 180deg
+	pos 10 13 180deg
+	pos 7 14 180deg
+	pos 9 15 180deg
+
+placement[3]:
+	pos 8 8 180deg
+	pos 6 9 180deg
+	pos 10 10 180deg
+	pos 7 11 180deg
+	pos 10 12 180deg
+	pos 8 14 180deg
+	pos 10 14 180deg
+	pos 6 15 180deg
+
+placement[4]:
+	pos 7 4 0deg
+	pos 10 11 225deg
+	pos 4 7 90deg
+	pos 12 7 270deg
+	pos 4 11 135deg
+	pos 11 4 315deg
+	pos 7 12 180deg
+	pos 5 5 45deg
+
+placement[5]:
+	pos 6 10 180deg
+	pos 10 10 180deg
+	pos 0 0 180deg
+	pos 0 0 180deg
+	pos 0 0 180deg
+	pos 0 0 180deg
+	pos 0 0 180deg
+	pos 0 0 180deg
+
+battle[0]:
+	flags 10
+	level 27
+	unk1 6
+	vision_range 0
+	move_range 0
+	can_move 0
+	move_speed 0
+	unk2 0
+	battlefield "bt113b"
+	sepith null
+	setup 100:
+		enemies "ms31002.dat" "ms31102.dat" null null null null null null
+		placement placement[5] placement[4]
+		bgm bgm[509] bgm[0]
+		at_roll at_roll[1]
+
+fn[0]:
+	var[2] = random % 8
+	switch var[2]:
+		case 0:
+			ED7_A0 self 1450ms 0 251
+			break
+		case 1:
+			ED7_A0 self 1550ms 0 251
+			break
+		case 2:
+			ED7_A0 self 1600ms 0 251
+			break
+		case 3:
+			ED7_A0 self 1400ms 0 251
+			break
+		case 4:
+			ED7_A0 self 1650ms 0 251
+			break
+		case 5:
+			ED7_A0 self 1350ms 0 251
+			break
+		case 6:
+			ED7_A0 self 1500ms 0 251
+			break
+		default:
+			ED7_A0 self 1500ms 0 251
+			break
+	while 1:
+		ED7_A0 self 1500ms 0 251
+	Return
+
+fn[1]:
+	if flag[736]:
+		FlagUnset flag[736]
+		if flag[1353]:
+			Event fn[0,8]
+		elif flag[1354]:
+			Event fn[0,9]
+		elif flag[1355]:
+			Event fn[0,9]
+	if flag[1333]:
+	elif flag[1330]:
+	elif flag[1329]:
+		CharFlagsUnset char[3] 0x0080
+		CharFlagsUnset char[4] 0x0080
+	elif flag[1320]:
+		CharFlagsUnset char[0] 0x0080
+		CharFlagsUnset char[1] 0x0080
+		CharFlagsUnset char[2] 0x0080
+	Return
+
+fn[2]:
+	if flag[1333]:
+	if flag[1342]:
+	elif flag[1334]:
+		if system[0] == 107 | system[0] == 109 | system[0] == 113:
+			if random % 100 < 50:
+				Event fn[0,10]
+	Return
+
+fn[3]:
+	TextStart self
+	TextTalk self {
+		這次受到邀請的客人……
+		雖然沒有透露姓名，
+		但都是帝國與共和國的要人。{wait}
+	}
+	TextWait
+	TextTalk self {
+		那些政治家與貴族
+		真是擅長表裡不一
+		這一套啊。{wait}
+	}
+	TextWait
+	TextTalk self {
+		……當然我也不例外。
+		呵呵……{wait}
+	}
+	TextWait
+	TextEnd self
+	Return
+
+fn[4]:
+	TextStart self
+	if !flag[0]:
+		TextTalk self {
+			這個拍賣會是與各國要人
+			締結關係的
+			絕好機會。{wait}
+		}
+		TextWait
+		TextTalk self {
+			呵呵……女兒啊，
+			順便也找個
+			夫婿怎麼樣？{wait}
+		}
+		TextWait
+		TextTalk char[2] {
+			呵呵……父親可真是的，
+			那簡直像是政治婚姻嘛。{wait}
+		}
+		TextWait
+		TextTalk char[2] {
+			父親以上門女婿的身份
+			入贅到母親家，
+			其實也是這麼回事吧？{wait}
+		}
+		TextWait
+		TextTalk self {
+			哇哈哈哈，
+			真是說不過你啊。{wait}
+		}
+		TextWait
+		FlagSet flag[0]
+	else:
+		TextTalk self {
+			呵呵……
+			從實際上說，也沒有比婚姻
+			更加可靠的聯盟了嘛。{wait}
+		}
+		TextWait
+		TextTalk self {
+			要是有機會的話，最好能找個……雖然我是這麼想，
+			但她終究已經到了有自己見解的年齡了啊。
+			哇哈哈哈。{wait}
+		}
+		TextWait
+	TextEnd self
+	Return
+
+fn[5]:
+	TextStart self
+	TextTalk self {
+		呵呵……父親可真是的，
+		就會開玩笑。{wait}
+	}
+	TextWait
+	TextEnd self
+	Return
+
+fn[6]:
+	field_party[0].5 = self.4
+	self.5 = self.4
+	TextStart self
+	CharFlagsUnset self 0x0010
+	CharTurnToChar self field_party[0] 0deg/s
+	self.4 = (self.4 + 360) % 360
+	self.4 = self.4 + 360 - self.5
+	self.5 = self.4 / 180
+	if self.4 <= 45 | self.4 >= 315 && self.4 <= 405 | self.4 >= 675:
+	elif self.5 < 1:
+		self.8 = 2
+	elif self.5 > 2:
+		self.8 = 1
+	else:
+		self.8 = self.5
+	self.4 = field_party[0].5
+	field_party[0].5 = 0
+	self.5 = 0
+	CharFlagsSet self 0x0010
+	if !flag[1]:
+		TextTalk self {
+			和丈夫的緣分已盡，也該分手了……
+			就在我如此想的時候，
+			瓦奇卻這樣對我說──{wait}
+		}
+		TextWait
+		TextTalk self {
+			『你之所以不能原諒你的丈夫，
+			正是因為你仍然真心愛著他。』……{wait}
+		}
+		TextWait
+		TextTalk self {
+			我竟然忘記了最重要的事呢，
+			要感謝瓦奇才行……{wait}
+		}
+		TextWait
+		TextTalk self {
+			我先生也在反省了，
+			我想，這次就原諒他吧。{wait}
+		}
+		TextWait
+		FlagSet flag[1530]
+		FlagSet flag[1]
+	else:
+		CharSetChipPattern char[3] 0
+		TextTalk self {
+			我非常感謝瓦奇，
+			結果是他讓我們夫婦
+			破鏡重圓了。{wait}
+		}
+		TextWait
+		TextTalk self {
+			……好了，親愛的，我們走吧。
+			競拍差不多也快開始了。{wait}
+		}
+		TextWait
+	CharSetChipPattern self 0
+	TextEnd self
+	Return
+
+fn[7]:
+	field_party[0].5 = self.4
+	self.5 = self.4
+	TextStart self
+	CharFlagsUnset self 0x0010
+	CharTurnToChar self field_party[0] 0deg/s
+	self.4 = (self.4 + 360) % 360
+	self.4 = self.4 + 360 - self.5
+	self.5 = self.4 / 180
+	if self.4 <= 45 | self.4 >= 315 && self.4 <= 405 | self.4 >= 675:
+	elif self.5 < 1:
+		self.8 = 2
+	elif self.5 > 2:
+		self.8 = 1
+	else:
+		self.8 = self.5
+	self.4 = field_party[0].5
+	field_party[0].5 = 0
+	self.5 = 0
+	CharFlagsSet self 0x0010
+	if !flag[2]:
+		TextTalk self {
+			我還是第一次見到
+			艾維琳那麼生氣的樣子呢。
+			……說實話，好可怕啊。{wait}
+		}
+		TextWait
+		TextTalk self {
+			平時她都很溫柔安分，
+			所以我才敢大膽地
+			花心出軌……{wait}
+		}
+		TextWait
+		TextTalk self {
+			原來她的性格這麼剛烈啊。
+			我都不知道呢……{wait}
+		}
+		TextWait
+		FlagSet flag[1530]
+		FlagSet flag[2]
+	else:
+		TextTalk self {
+			無論如何，能和艾維琳
+			和解，真是太好了。{wait}
+		}
+		TextWait
+		TextTalk self {
+			……我以後再也不會花心了。{wait}
+		}
+		TextWait
+	CharSetChipPattern self 0
+	TextEnd self
+	Return
+
+fn[8]:
+	EventBegin 0
+	FadeOut 0ms 0x00000000 255
+	CamSetDistance 47070 2000 -52070 0ms
+	ED7CamRotate 48deg 18deg 0deg 0ms
+	CamPers 500 0ms
+	CamZoom 18250 0ms
+	CharSetPos name[0] (46200, 0, -52600) 90deg
+	CharSetPos name[1] (46200, 0, -51400) 90deg
+	CharSetPos name[55] (48700, 0, -52000) 270deg
+	FadeIn 1000ms 0x00000000
+	CamSetDistance 47070 1200 -52070 3000ms
+	CamWait 1
+	FadeWait
+	TextTalk name[55] {
+		#13501172V#2904F#11P呵呵，原來如此，
+		還有這樣的內情啊。{wait}
+	} {
+		#13501173V#2902F你們還真大膽呢。{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#13501174V#5106F#6P……嗯，是啊。{wait}
+	} {
+		#13501175V#5108F其實除了旁觀之外也做不了什麼，
+		所以也許只是為了自我滿足而已吧。{wait}
+	}
+	TextWait
+	TextTalk name[55] {
+		#13501176V#2902F#11P呵呵，不過我很欣賞啊。{wait}
+	} {
+		#13501177V#2909F身為艾莉的同事，
+		要是連這點膽識都沒有，
+		可就太不合格了呢。{wait}
+	}
+	TextWait
+	Emote name[1] 0mm 2000mm 40 43 100ms 3
+	Sleep 500ms
+	TextTalk name[1] {
+		#13501178V#5313F#6P真、真是的，你在說什麼啊。{wait}
+	} {
+		#13501179V#5301F……話說回來，
+		貝爾，你怎麼會在這裡？{wait}
+	} {
+		#13501180V聽你剛才說的那些話，
+		你好像也是第一次來啊……{wait}
+	}
+	TextWait
+	TextTalk name[55] {
+		#13501181V#2902F#11P哈爾特曼議長
+		每年都很熱心地邀請我們。{wait}
+	} {
+		#13501182V#2903F只是，那個人
+		不是和一些可疑的傢伙有所來往嗎？{wait}
+	} {
+		#13501183V所以父親一直以種種
+		理由加以拒絕……{wait}
+	} {
+		#13501184V#2901F不過我卻
+		不能完全置之不理。{wait}
+	}
+	TextWait
+	TextTalk name[1] {
+		#13501185V#5306F#6P原來如此……
+		確實可以理解。{wait}
+	}
+	TextWait
+	Emote name[0] 0mm 2000mm 0 1 250ms 2
+	SoundPlay sound[29] 0 100 0
+	Sleep 1000ms
+	TextTalk name[0] {
+		#13501186V#5105F#6P有什麼內情嗎？{wait}
+	}
+	TextWait
+	CharTurnToChar name[1] name[0] 500deg/s
+	Sleep 300ms
+	TextTalk name[1] {
+		#13501187V#5300F#5P之前也說過的，
+		叔叔把ＩＢＣ的好幾項事業
+		都交給貝爾來打理。{wait}
+	} {
+		#13501188V這個米修拉姆的開發計畫
+		似乎也是由她來管理的。{wait}
+	}
+	TextWait
+	Emote name[0] 0mm 2000mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Sleep 1000ms
+	TextTalk name[0] {
+		#13501189V#5111F#6P哎……！？{wait}
+	}
+	TextWait
+	TextTalk name[55] {
+		#13501190V#2902F#11P呵呵，話雖如此，
+		但其實也只是參與了飯店
+		和主題樂園的運營而已。{wait}
+	} {
+		#13501191V#2906F只是，由於這層關係，
+		實在沒辦法每次都拒絕
+		一直住在此地的議長的邀請。{wait}
+	} {
+		#13501192V#2900F所以今年
+		就決定出席了。{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#13501193V#5101F#6P原、原來如此……{wait}
+	}
+	TextWait
+	CharTurnTo name[1] 90deg 400deg/s
+	Sleep 300ms
+	TextTalk name[1] {
+		#13501194V#5311F#6P………………………………{wait}
+	}
+	TextWait
+	Emote name[55] 0mm 2000mm 38 38 250ms 1
+	Sleep 1000ms
+	TextTalk name[55] {
+		#13501195V#2905F#11P哎呀，艾莉？{wait}
+	} {
+		#13501196V你好像是
+		有什麼話想說吧？{wait}
+	}
+	TextWait
+	TextTalk name[1] {
+		#13501197V#5303F#6P……嗯，算是吧。{wait}
+	} {
+		#13501198V#5300F貝爾是那種，對於自己不喜歡的事情
+		就絕對不會去做的類型吧？{wait}
+	} {
+		#13501199V可是，你竟然會特意來到這種自己不感興趣
+		的地方。雖說存在著某些內情……{wait}
+	} {
+		#13501200V但是不是還有其它目的？{wait}
+	}
+	TextWait
+	TextTalk name[55] {
+		#13501201V#2904F#11P呵呵……不愧是艾莉。{wait}
+	} {
+		#13501202V#2902F──其實，在這次的拍賣品裡，
+		似乎有件很有意思的東西。{wait}
+	} {
+		#13501203V我對那個很感興趣，
+		所以才決定出席的。{wait}
+	}
+	TextWait
+	Emote name[0] 0mm 2000mm 38 38 250ms 1
+	Emote name[1] 0mm 2000mm 38 38 250ms 1
+	Sleep 1000ms
+	TextTalk name[0] {
+		#13501204V#5105F#6P那是……{wait}
+	}
+	TextWait
+	TextTalk name[1] {
+		#13501205V#5301F#6P是什麼樣的展品呢？{wait}
+	}
+	TextWait
+	TextTalk name[55] {
+		#13501206V#2904F#11P是羅贊貝爾克工房製造的
+		初期古典人偶……{wait}
+	} {
+		#13501207V#2902F據宣傳說，在愛好者之間，
+		那可是能標到天價的夢幻作品。{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#13501208V#5105F#6P古典人偶……
+		是那個人偶工房製造的吧。{wait}
+	}
+	TextWait
+	TextTalk name[1] {
+		#13501209V#5301F#6P……那也是
+		有隱情的作品嗎？{wait}
+	}
+	TextWait
+	TextTalk name[55] {
+		#13501210V#2904F#11P可能是贓物，也可能是什麼地方的資產家
+		因為某些見不得人的理由而賣出的……{wait}
+	} {
+		#13501211V#2902F詳情雖然還不清楚，
+		但據傳聞說，那是件非常精美的傑作。{wait}
+	} {
+		#13501212V作為一名收藏家，
+		是不能錯過的吧？{wait}
+	}
+	TextWait
+	TextTalk name[1] {
+		#13501213V#5306F#6P原來如此，你從以前開始
+		就對那裡製作的人偶很著迷呢。{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#13501214V#5101F#6P……順帶一問，那個人偶
+		大概值多少錢呢？{wait}
+	}
+	TextWait
+	TextTalk name[55] {
+		#13501215V#2905F#11P這個啊……{wait}
+	} {
+		#13501216V#2906F初期的作品好像比最近的作品
+		要大一圈，
+		幾乎沒在市場上出現過。{wait}
+	} {
+		#13501217V工匠似乎也
+		不打算再做那種尺寸的人偶了，
+		所以必然很珍貴……{wait}
+	} {
+		#13501218V#2900F以前在帝都舉行的拍賣會上，
+		聽說還有過以五百萬米拉
+		落槌的作品呢。{wait}
+	}
+	TextWait
+	Emote name[0] 0mm 2000mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Sleep 1000ms
+	TextTalk name[0] {
+		#13501219V#5111F#6P一、一件人偶值那麼多錢！？{wait}
+	}
+	TextWait
+	TextTalk name[1] {
+		#13501220V#5309F#6P嗯，因為是擁有眾多
+		熱切愛好者的藝術品嘛……{wait}
+	} {
+		#13501221V#5300F不過，看你的樣子，
+		好像是勢在必得了吧？{wait}
+	}
+	TextWait
+	TextTalk name[55] {
+		#13501222V#2904F#11P呵呵，不管來路如何，
+		人偶本身是無罪的。{wait}
+	} {
+		#13501223V#2902F當然了，如果那是贓物，
+		我也會採取相應措施的。{wait}
+	} {
+		#13501224V#2909F但在此之後，我還是打算和
+		之前的所有者交涉，將它弄到手。{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#13501225V#5106F#6P……無話可說了。{wait}
+	}
+	TextWait
+	TextTalk name[1] {
+		#13501226V#5306F#6P呼，真是比不過你啊。{wait}
+	}
+	TextWait
+	SoundPlay sound[811] 0 100 0
+	Sleep 500ms
+	Emote name[55] 0mm 2000mm 38 38 250ms 1
+	Sleep 1000ms
+	TextTalk name[55] {
+		#13501227V#2905F#11P哎呀……{wait}
+	}
+	TextWait
+	CharSetPos char[5] (38000, 0, -52000) 0deg
+	CamSetDistance 45720 1200 -52070 1500ms
+	Fork name[0] fork[1]:
+		CharTurnTo self 270deg 400deg/s
+	Sleep 50ms
+	Fork name[1] fork[1]:
+		CharTurnTo self 270deg 400deg/s
+	CamWait 1
+	TextTalkNamed char[5] "嚮導的聲音" {
+		#13501228V#2S打擾了，瑪利亞貝爾小姐。{wait}
+	}
+	TextWait
+	TextTalkNamed char[5] "嚮導的聲音" {
+		#13501229V#2S拍賣會快要開始了，
+		所以我前來通知您……{wait}
+	}
+	TextWait
+	TextTalk name[55] {
+		#13501230V#2904F#11P是嗎，謝謝。{wait}
+	} {
+		#13501231V#2900F我立刻就過去，
+		能幫我在後排
+		準備三個人的席位嗎？{wait}
+	}
+	TextWait
+	TextTalkNamed char[5] "嚮導的聲音" {
+		#13501232V#2S──遵命。
+		那麼，我這就去準備。{wait}
+	}
+	TextWait
+	CamSetDistance 47070 1200 -52070 1200ms
+	Fork name[0] fork[1]:
+		CharTurnTo self 90deg 400deg/s
+	Sleep 50ms
+	Fork name[1] fork[1]:
+		CharTurnTo self 90deg 400deg/s
+	CamWait 1
+	TextTalk name[1] {
+		#13501233V#5308F#6P那個，貝爾……{wait}
+	}
+	TextWait
+	TextTalk name[55] {
+		#13501234V#2902F#11P呵呵，不必擔心。{wait}
+	} {
+		#13501235V我打算等拍賣會結束之後
+		再去跟議長打招呼的。{wait}
+	}
+	TextWait
+	TextTalk name[1] {
+		#13501236V#5306F#6P嗯，這樣啊……{wait}
+	} {
+		#13501237V#5300F沒關係吧，羅伊德？{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#13501238V#5104F#6P嗯，機會難得，
+		就讓我們跟您一起出席吧。{wait}
+	} {
+		#13501239V#5100F瑪利亞貝爾小姐，
+		請多關照了。{wait}
+	}
+	TextWait
+	TextTalk name[55] {
+		#13501240V#2909F#11P嗯，彼此彼此。{wait}
+	}
+	TextWait
+	TextClose 0
+	FadeOut 1000ms 0x00000000 255
+	FadeWait
+	CharSetPos field_party[0] (44770, 0, -52070) 270deg
+	FlagSet flag[1329]
+	QuestTaskSet quest[71] 11
+	Sleep 500ms
+	EventEnd 5
+	Return
+
+fn[9]:
+	EventBegin 0
+	FadeOut 0ms 0x00000000 255
+	CamSetDistance 47070 2000 -52070 0ms
+	ED7CamRotate 48deg 18deg 0deg 0ms
+	CamPers 500 0ms
+	CamZoom 18250 0ms
+	CharSetPos name[0] (46200, 0, -52600) 90deg
+	CharSetPos party[1] (46200, 0, -51400) 90deg
+	CharSetPos name[55] (48700, 0, -52000) 270deg
+	FadeIn 1000ms 0x00000000
+	CamSetDistance 47070 1200 -52070 3000ms
+	CamWait 1
+	FadeWait
+	TextTalk name[55] {
+		#13501241V#2904F#11P呵呵，原來如此，
+		還有這樣的內情啊。{wait}
+	} {
+		#13501242V#2902F你們還真大膽呢。{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#13501243V#5106F#6P……嗯，是啊。{wait}
+	} {
+		#13501244V#5108F其實除了旁觀之外也做不了什麼，
+		所以也許只是為了自我滿足而已吧。{wait}
+	}
+	TextWait
+	TextTalk name[55] {
+		#13501245V#2902F#11P呵呵，不過我很欣賞啊。{wait}
+	} {
+		#13501246V#2909F身為艾莉的同事，
+		要是連這點膽識都沒有，
+		可就太不合格了呢。{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#13501247V#5112F#6P是、是這樣嗎……？{wait}
+	}
+	TextWait
+	if flag[1354]:
+		TextTalk name[2] {
+			#13501248V#5402F#6P看來您很重視
+			艾莉前輩呢。{wait}
+		}
+		TextWait
+	elif flag[1355]:
+		TextTalk name[3] {
+			#13501249V#5602F#6P哈哈，看來妳很重視
+			大小姐啊。{wait}
+		}
+		TextWait
+	TextTalk name[55] {
+		#13501250V#2904F#11P嗯，說我愛她
+		也不為過呢。{wait}
+	}
+	TextWait
+	Emote name[0] 0mm 2000mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Sleep 50ms
+	Emote party[1] 0mm 2000mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Sleep 1000ms
+	TextTalk name[0] {
+		#13501251V#5111F#6P咦咦！？{wait}
+	}
+	TextWait
+	TextTalk name[55] {
+		#13501252V#2902F#11P因為那孩子很可愛，對吧？{wait}
+	} {
+		#13501253V性格直率、意志堅強、
+		凜然不屈，
+		卻又沉穩高雅、不失溫柔。{wait}
+	} {
+		#13501254V#2909F是我引以為傲的朋友呢。{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#13501255V#5100F#6P的確……{wait}
+	} {
+		#13501256V#5104F她也是我們
+		引以為傲的同事呢。{wait}
+	}
+	TextWait
+	if flag[1354]:
+		TextTalk name[2] {
+			#13501257V#5404F#6P呵呵，不過這種話要是被她本人聽見了，
+			一定會滿臉通紅的。{wait}
+		}
+		TextWait
+	elif flag[1355]:
+		TextTalk name[3] {
+			#13501258V#5609F#6P哈哈，不過這話要是被她本人聽見了，
+			肯定會滿臉通紅的。{wait}
+		}
+		TextWait
+	TextTalk name[55] {
+		#13501259V#2906F#11P只是，沒能在這裡
+		見到艾莉，真有點可惜呢。{wait}
+	} {
+		#13501260V#2900F本來還想和她一起
+		鑒賞拍賣會的展品呢。{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#13501261V#5101F#6P話說回來……
+		貝爾小姐為什麼會在這裡？{wait}
+	} {
+		#13501262V聽您剛才說的那些話，
+		好像也是第一次來啊……{wait}
+	}
+	TextWait
+	TextTalk name[55] {
+		#13501263V#2902F#11P哈爾特曼議長
+		每年都很熱心地邀請我們。{wait}
+	} {
+		#13501264V#2903F只是，那個人
+		不是和一些可疑的傢伙有所來往嗎？{wait}
+	} {
+		#13501265V所以父親一直以種種
+		理由加以拒絕……{wait}
+	} {
+		#13501266V#2901F不過我卻
+		不能完全置之不理。{wait}
+	}
+	TextWait
+	if flag[1354]:
+		TextTalk name[2] {
+			#13501267V#5400F#6P……是有什麼內情嗎？{wait}
+		}
+		TextWait
+	elif flag[1355]:
+		TextTalk name[3] {
+			#13501268V#5605F#6P難道有什麼內情嗎？{wait}
+		}
+		TextWait
+	TextTalk name[55] {
+		#13501269V#2904F#11P因為米修拉姆的開發計畫
+		是由我負責的。{wait}
+	} {
+		#13501270V#2900F由於這層關係，
+		實在沒辦法每次都拒絕
+		一直住在此地的議長的邀請。{wait}
+	}
+	TextWait
+	Emote name[0] 0mm 2000mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Sleep 50ms
+	Emote party[1] 0mm 2000mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Sleep 1000ms
+	if flag[1354]:
+		TextTalk name[2] {
+			#13501271V#5401F#6P哎……！？{wait}
+		}
+		TextWait
+	elif flag[1355]:
+		TextTalk name[3] {
+			#13501272V#5607F#6P真的嗎！？{wait}
+		}
+		TextWait
+	TextTalk name[0] {
+		#13501273V#5111F#6P這、這麼說來……
+		好像確實曾聽說過您負責了
+		ＩＢＣ的幾項事業……{wait}
+	}
+	TextWait
+	TextTalk name[55] {
+		#13501274V#2904F#11P呵呵，話雖如此，
+		但其實也只是參與了飯店
+		和主題樂園的運營而已。{wait}
+	} {
+		#13501275V#2902F──而且，今年的拍賣會
+		似乎有件很有意思的拍賣品。{wait}
+	} {
+		#13501276V我對那個感興趣，
+		所以才決定出席的。{wait}
+	}
+	TextWait
+	Emote name[0] 0mm 2000mm 38 38 250ms 1
+	Emote party[1] 0mm 2000mm 38 38 250ms 1
+	Sleep 1000ms
+	TextTalk name[0] {
+		#13501277V#5101F#6P那是……{wait}
+	}
+	TextWait
+	if flag[1354]:
+		TextTalk name[2] {
+			#13501278V#5401F#6P是什麼樣的展品呢……？{wait}
+		}
+		TextWait
+	elif flag[1355]:
+		TextTalk name[3] {
+			#13501279V#5602F#6P……是什麼展品啊？{wait}
+		}
+		TextWait
+	TextTalk name[55] {
+		#13501280V#2904F#11P是羅贊貝爾克工房製造的
+		初期古典人偶……{wait}
+	} {
+		#13501281V#2902F據宣傳說，在愛好者之間，
+		那可是能標到天價的夢幻作品。{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#13501282V#5105F#6P古典人偶……
+		是那個人偶工房製造的吧。{wait}
+	} {
+		#13501283V#5101F……那也是
+		有隱情的作品嗎？{wait}
+	}
+	TextWait
+	TextTalk name[55] {
+		#13501284V#2904F#11P可能是贓物，也可能是什麼地方的資產家
+		因為某些見不得人的理由而賣出的……{wait}
+	} {
+		#13501285V詳情雖然還不清楚，
+		但據傳聞說，那是件非常精美的傑作。{wait}
+	} {
+		#13501286V#2902F作為一名收藏家，
+		是不能錯過的吧？{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#13501287V#5112F#6P原、原來如此……{wait}
+	}
+	TextWait
+	if flag[1354]:
+		TextTalk name[2] {
+			#13501288V#5400F#6P順便一問，這種人偶……
+			大約值多少錢呢？{wait}
+		}
+		TextWait
+	elif flag[1355]:
+		TextTalk name[3] {
+			#13501289V#5609F#6P順帶問一下，這種人偶
+			大概值多少錢啊？{wait}
+		}
+		TextWait
+	TextTalk name[55] {
+		#13501290V#2905F#11P這個啊……{wait}
+	} {
+		#13501291V#2906F初期的作品好像比最近的作品
+		要大一圈，
+		幾乎沒在市場上出現過。{wait}
+	} {
+		#13501292V工匠似乎也
+		不打算再做那種尺寸的人偶了，
+		所以必然很珍貴……{wait}
+	} {
+		#13501293V#2900F以前在帝都舉行的拍賣會上，
+		聽說還有過以五百萬米拉
+		落槌的作品呢。{wait}
+	}
+	TextWait
+	Emote name[0] 0mm 2000mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Sleep 50ms
+	Emote party[1] 0mm 2000mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Sleep 1000ms
+	TextTalk name[0] {
+		#13501294V#5111F#6P一、一件人偶值那麼多錢！？{wait}
+	}
+	TextWait
+	if flag[1354]:
+		TextTalk name[2] {
+			#13501295V#5406F#6P這個價格應該都可以買一台主流的
+			導力演算器了呢……{wait}
+		} {
+			#13501296V#5400F莫非您打算
+			拍下那個人偶嗎……？{wait}
+		}
+		TextWait
+	elif flag[1355]:
+		TextTalk name[3] {
+			#13501297V#5606F#6P這個價格都可以
+			買下一輛舊式戰車了啊……{wait}
+		} {
+			#13501298V#5605F莫非妳打算
+			拍下那個人偶嗎？{wait}
+		}
+		TextWait
+	TextTalk name[55] {
+		#13501299V#2904F#11P呵呵，不管來路如何，
+		人偶本身是無罪的。{wait}
+	} {
+		#13501300V#2902F當然了，如果那是贓物，
+		我也會採取相應措施的。{wait}
+	} {
+		#13501301V#2909F但在此之後，我還是打算和
+		之前的所有者交涉，將它弄到手。{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#13501302V#5106F#6P……無話可說了。{wait}
+	}
+	TextWait
+	if flag[1354]:
+		TextTalk name[2] {
+			#13501303V#5406F#6P真是太有錢了……{wait}
+		}
+		TextWait
+	elif flag[1355]:
+		TextTalk name[3] {
+			#13501304V#5606F#6P真是太闊綽了……{wait}
+		}
+		TextWait
+	SoundPlay sound[811] 0 100 0
+	Sleep 500ms
+	TextTalk name[55] {
+		#13501305V#2905F#11P哎呀……{wait}
+	}
+	TextWait
+	CharSetPos char[5] (38000, 0, -52000) 0deg
+	CamSetDistance 45720 1200 -52070 1200ms
+	Fork name[0] fork[1]:
+		CharTurnTo self 270deg 400deg/s
+	Sleep 50ms
+	Fork party[1] fork[1]:
+		CharTurnTo self 270deg 400deg/s
+	CamWait 1
+	TextTalkNamed char[5] "嚮導的聲音" {
+		#13501306V#2S打擾了，瑪利亞貝爾小姐。{wait}
+	}
+	TextWait
+	TextTalkNamed char[5] "嚮導的聲音" {
+		#13501307V#2S拍賣會快要開始了，
+		所以我前來通知您……{wait}
+	}
+	TextWait
+	TextTalk name[55] {
+		#13501308V#2909F#11P是嗎，謝謝。{wait}
+	} {
+		#13501309V#2900F我立刻就過去，
+		能幫我在後排
+		準備三個人的席位嗎？{wait}
+	}
+	TextWait
+	TextTalkNamed char[5] "嚮導的聲音" {
+		#13501310V#2S──遵命。
+		那麼，我這就去準備。{wait}
+	}
+	TextWait
+	CamSetDistance 47070 1200 -52070 1200ms
+	Fork name[0] fork[1]:
+		CharTurnTo self 90deg 400deg/s
+	Sleep 50ms
+	Fork party[1] fork[1]:
+		CharTurnTo self 90deg 400deg/s
+	CamWait 1
+	TextTalk name[0] {
+		#13501311V#5108F#6P那個，瑪利亞貝爾小姐……{wait}
+	}
+	TextWait
+	TextTalk name[55] {
+		#13501312V#2902F#11P呵呵，不必擔心。{wait}
+	} {
+		#13501313V我打算等拍賣會結束之後
+		再去跟議長打招呼的。{wait}
+	}
+	TextWait
+	if flag[1354]:
+		TextTalk name[2] {
+			#13501314V#5402F#6P嗯，那樣的話，
+			應該就沒有問題了……{wait}
+		}
+		TextWait
+	elif flag[1355]:
+		TextTalk name[3] {
+			#13501315V#5600F#6P嗯，那樣的話，
+			應該就沒問題了啊。{wait}
+		}
+		TextWait
+	TextTalk name[0] {
+		#13501316V#5103F#6P……我明白了。
+		機會難得，
+		就讓我們跟您一起出席吧。{wait}
+	} {
+		#13501317V#5100F瑪利亞貝爾小姐，
+		請多關照了。{wait}
+	}
+	TextWait
+	TextTalk name[55] {
+		#13501318V#2909F#11P嗯，彼此彼此。{wait}
+	}
+	TextWait
+	TextClose 0
+	FadeOut 1000ms 0x00000000 255
+	FadeWait
+	CharSetPos field_party[0] (44770, 0, -52070) 270deg
+	FlagSet flag[1329]
+	QuestTaskSet quest[71] 11
+	Sleep 500ms
+	EventEnd 5
+	Return
+
+fn[10]:
+	EventBegin 0
+	FadeOut 0ms 0x00000000 255
+	var[4] = system[0]
+	system[0] = 100
+	ED7LoadChip "chr/ch00050.itc" chip[30]
+	if PartyPosition name[1] > -1:
+		ED7LoadChip "chr/ch00150.itc" chip[31]
+	elif PartyPosition name[2] > -1:
+		ED7LoadChip "chr/ch00250.itc" chip[31]
+	else:
+		ED7LoadChip "chr/ch00350.itc" chip[31]
+	ED7LoadChip "chr/ch00450.itc" chip[32]
+	CharSetChipBase name[0] chip[30]
+	CharSetChipBase party[1] chip[31]
+	CharSetChipBase name[4] chip[32]
+	CharSetChipPattern name[0] 0
+	CharSetChipPattern party[1] 0
+	CharSetChipPattern name[4] 0
+	CharFlagsUnset name[50] 0x0080
+	CharFlags2Unset name[50] 0x8000
+	CharSetChipPattern char[6] 0
+	CharSetChipPattern char[7] 0
+	CharFlagsSet char[6] 0x8000
+	CharFlagsSet char[7] 0x8000
+	CharFlagsUnset char[6] 0x0080
+	CharFlags2Unset char[6] 0x8000
+	CharFlagsUnset char[7] 0x0080
+	CharFlags2Unset char[7] 0x8000
+	if var[4] == 107:
+		CamSetDistance 0 1200 -11000 0ms
+		ED7CamRotate 45deg 30deg 0deg 0ms
+		CamPers 420 0ms
+		CamZoom 22000 0ms
+		CharSetPos name[0] (0, 0, -11000) 0deg
+		CharSetPos party[1] (-750, 0, -12500) 0deg
+		CharSetPos name[4] (750, 0, -12250) 0deg
+		CharSetPos name[50] (0, 0, -14000) 0deg
+		CharSetPos char[6] (0, 0, -5000) 180deg
+		CharSetPos char[7] (-750, 0, -4250) 180deg
+	elif var[4] == 109:
+		CamSetDistance 0 1200 -19000 0ms
+		ED7CamRotate 45deg 30deg 0deg 0ms
+		CamPers 420 0ms
+		CamZoom 22000 0ms
+		CharSetPos name[0] (0, 0, -19000) 0deg
+		CharSetPos party[1] (-750, 0, -20500) 0deg
+		CharSetPos name[4] (750, 0, -20250) 0deg
+		CharSetPos name[50] (0, 0, -22000) 0deg
+		CharSetPos char[6] (0, 0, -13000) 180deg
+		CharSetPos char[7] (-750, 0, -12250) 180deg
+	else:
+		CamSetDistance 0 1200 -22000 0ms
+		ED7CamRotate 45deg 30deg 0deg 0ms
+		CamPers 420 0ms
+		CamZoom 22000 0ms
+		CharSetPos name[0] (0, 0, -22000) 0deg
+		CharSetPos party[1] (-750, 0, -23500) 0deg
+		CharSetPos name[4] (750, 0, -23250) 0deg
+		CharSetPos name[50] (0, 0, -25000) 0deg
+		CharSetPos char[6] (0, 0, -16000) 180deg
+		CharSetPos char[7] (-750, 0, -15250) 180deg
+	Fork char[6] fork[1]:
+		_Char90 char[6] 0 0 -4500 5000 0
+	Sleep 50ms
+	Fork char[7] fork[1]:
+		_Char90 char[7] 0 0 -4500 5000 0
+	FadeIn 500ms 0x00000000
+	FadeWait
+	ForkWait char[6] fork[1]
+	ED7Battle battle[0] null 0 0 15 null
+	FadeOut 0ms 0x00000000 255
+	EventBegin 0
+	CharSetChipBase name[0] chip[255]
+	CharSetChipBase party[1] chip[255]
+	CharSetChipBase name[4] chip[255]
+	CharSetChipPattern name[0] 0
+	CharSetChipPattern party[1] 0
+	CharSetChipPattern name[4] 0
+	CharFlagsSet name[50] 0x0080
+	CharFlags2Set name[50] 0x8000
+	ForkQuit char[6] fork[1]
+	ForkQuit char[7] fork[1]
+	CharFlagsSet char[6] 0x0080
+	CharFlags2Set char[6] 0x8000
+	CharFlagsSet char[7] 0x0080
+	CharFlags2Set char[7] 0x8000
+	if var[4] == 107:
+		CamSetDistance 0 1200 -11000 0ms
+		ED7CamRotate 45deg 30deg 0deg 0ms
+		CamPers 420 0ms
+		CamZoom 25000 0ms
+		CharSetPos name[0] (0, 0, -11000) 0deg
+		CharSetPos party[1] (0, 0, -11000) 0deg
+		CharSetPos name[4] (0, 0, -11000) 0deg
+	elif var[4] == 109:
+		CamSetDistance 0 1200 -19000 0ms
+		ED7CamRotate 45deg 30deg 0deg 0ms
+		CamPers 420 0ms
+		CamZoom 25000 0ms
+		CharSetPos name[0] (0, 0, -19000) 0deg
+		CharSetPos party[1] (0, 0, -19000) 0deg
+		CharSetPos name[4] (0, 0, -19000) 0deg
+	else:
+		CamSetDistance 0 1200 -23250 0ms
+		ED7CamRotate 45deg 30deg 0deg 0ms
+		CamPers 420 0ms
+		CamZoom 25000 0ms
+		CharSetPos name[0] (0, 0, -23250) 0deg
+		CharSetPos party[1] (0, 0, -23250) 0deg
+		CharSetPos name[4] (0, 0, -23250) 0deg
+	FadeIn 500ms 0x00000000
+	FadeWait
+	EventEnd 5
+	Return

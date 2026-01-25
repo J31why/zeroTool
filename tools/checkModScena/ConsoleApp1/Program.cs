@@ -15,196 +15,13 @@ internal partial class Program
 
     private static Regex dialogReg = dialogRegex();
     private static Regex tagReg = tagRegex();
-    public static void a(byte[] data)
-    {
-        using var ms = new MemoryStream(data);
-        using var br = new BinaryReader(ms);
-        using var outMs = new MemoryStream();
-        using var bw = new BinaryWriter(outMs);
-        var chunkSize = 8;
-        var len = data.Length / chunkSize;
-        var maxlen = 0;
-        var last = 0;
-        for (int i = 0; i < chunkSize; i++)
-        {
-            var buffer = br.ReadBytes(len);
-            Compress(buffer, bw, 8);
-            var nowLen = bw.BaseStream.Length - last;
-            maxlen = Math.Max(maxlen, (int)nowLen);
-            last = (int)bw.BaseStream.Length;
-        }
-        File.WriteAllBytes("chrimg00.itp.lzss1", outMs.ToArray());
-    }
-    static void Compress(byte[] input, BinaryWriter bw, int mode = 8)
-    {
-        int startPos = (int)bw.BaseStream.Position;
-        // 占位符：csize, usize, mode
-        bw.Write(0);
-        bw.Write(input.Length);
-        bw.Write(mode);
+    private static string currentFile = "";
 
-        int cursor = 0;
-        int maxOp = (1 << mode) - 1;       // op 的最大值
-        int maxLookback = (1 << (16 - mode)) - 1; // num 的最大值
-
-        while (cursor < input.Length)
-        {
-            int bestMatchLen = 0;
-            int bestMatchDist = 0;
-
-            // 在滑动窗口内寻找最长匹配 (LZ77 逻辑)
-            // 注意：根据解压逻辑，op > 0 时最后会多读一个 byte，所以匹配长度限制在 maxOp
-            int searchStart = Math.Max(0, cursor - maxLookback - 1);
-            for (int j = searchStart; j < cursor; j++)
-            {
-                int matchLen = 0;
-                while (matchLen < maxOp &&
-                       cursor + matchLen < input.Length - 1 && // 留一个字节给随后的 ReadByte
-                       input[j + matchLen] == input[cursor + matchLen])
-                {
-                    matchLen++;
-                }
-
-                if (matchLen >= bestMatchLen)
-                {
-                    bestMatchLen = matchLen;
-                    bestMatchDist = cursor - j - 1;
-                }
-            }
-
-            if (bestMatchLen > 0)
-            {
-                // 写入 字典引用 模式 (op > 0)
-                ushort control = (ushort)((bestMatchDist << mode) | (bestMatchLen & maxOp));
-                bw.Write(control);
-                cursor += bestMatchLen;
-
-                // 写入随后的那一个字节 (outData.Add(br.ReadByte()))
-                bw.Write(input[cursor]);
-                cursor++;
-            }
-            else
-            {
-                // 写入 原始数据 模式 (op == 0)
-                // 这里简单处理，每次只写1个字节的原始数据
-                ushort control = (ushort)(1 << mode); // num = 1, op = 0
-                bw.Write(control);
-                bw.Write(input[cursor]);
-                cursor++;
-            }
-        }
-
-        // 回填 csize (总长度 - 4)
-        int endPos = (int)bw.BaseStream.Position;
-        int csize = endPos - startPos;
-        bw.BaseStream.Seek(startPos, SeekOrigin.Begin);
-        bw.Write(csize);
-        bw.BaseStream.Seek(endPos, SeekOrigin.Begin);
-    }
-    static void Decompress(BinaryReader br, List<byte> outData)
-    {
-        int csize = br.ReadInt32();
-        int usize = br.ReadInt32();
-        int mode = br.ReadInt32(); // 这里通常是 4, 5 或 6, 但现在是8
-
-        int startPos = outData.Count;
-
-        if (mode == 0)
-        {
-            outData.AddRange(br.ReadBytes(csize - 4));
-        }
-        else
-        {
-            int endPos = startPos + usize;
-            while (outData.Count < endPos)
-            {
-                ushort x = br.ReadUInt16();
-                int op = x & ((1 << mode) - 1); 
-                int num = x >> mode;
-
-                if (op == 0)
-                {
-                    outData.AddRange(br.ReadBytes(num));
-                }
-                else
-                {
-                    for (int i = 0; i < op; i++)
-                    {
-                        // 字典回溯
-                        outData.Add(outData[outData.Count - num - 1]);
-                    }
-                    outData.Add(br.ReadByte());
-                }
-            }
-        }
-    }
-    static void SaveDds(string path, byte[] data, int w, int h)
-    {
-        using (BinaryWriter bw = new BinaryWriter(File.Create(path)))
-        {
-            bw.Write(0x20534444); // Magic
-            bw.Write(124); bw.Write(0x1 | 0x2 | 0x4 | 0x1000 | 0x20000);
-            bw.Write(h); bw.Write(w); bw.Write(0); bw.Write(0); bw.Write(1);
-            for (int i = 0; i < 11; i++) bw.Write(0);
-            bw.Write(32); bw.Write(0x4); bw.Write(0x30315844); // "DX10"
-            for (int i = 0; i < 5; i++) bw.Write(0);
-            bw.Write(0x1000); bw.Write(0); bw.Write(0); bw.Write(0); bw.Write(0);
-
-            // DX10 扩展头
-            bw.Write(98); // DXGI_FORMAT_BC7_UNORM
-            bw.Write(3); bw.Write(0); bw.Write(1); bw.Write(0);
-
-            bw.Write(data);
-        }
-    }
     static void Main(string[] args)
     {
-        MatchMorePortrait_Scena_ao();
+        MatchMorePortrait_Scena_zero();
         return;
-        #region MyRegion
-        string inputPath = "chrimg00.itp";
-        string outputPath = "chrimg00.dds";
-        if (!File.Exists(inputPath)) return;
-
-        using (BinaryReader br = new BinaryReader(File.OpenRead(inputPath)))
-        {
-            // 1. 验证魔数
-            if (br.ReadUInt32() != 0xFF505449) throw new Exception("不是有效的 ITP 文件");
-
-            // 2. 寻找 IDAT 块 (简单定位，实际应遍历 Chunk)
-            br.BaseStream.Seek(0x68, SeekOrigin.Begin);
-            if (new string(br.ReadChars(4)) != "IDAT") throw new Exception("未找到 IDAT 块");
-
-            int idatChunkSize = br.ReadInt32();
-            Console.WriteLine(br.ReadInt32()); // 8
-            Console.WriteLine(br.ReadInt16()); // 0
-            Console.WriteLine(br.ReadInt16()); // mip index
-
-            // 3. 这里的 0x80000001 是 Minor 10 的标志
-            if (br.ReadUInt32() != 0x80000001) throw new Exception("不支持的压缩模式");
-
-            int nChunks = br.ReadInt32();
-            int totalCSize = br.ReadInt32();
-            int largestCSize = br.ReadInt32();
-            int totalUSize = br.ReadInt32(); // 这个应该是 (W*H)
-
-            List<byte> decompressedData = new List<byte>();
-
-            for (int i = 0; i < nChunks; i++)
-            {
-                //lzss.Decompress(decompressedData);
-                Decompress(br, decompressedData);
-                //0x27e5-0x8c
-            }
-            //0x8c 0x7d011
-            // 5. 保存为 DDS
-            //File.WriteAllBytes(outputPath, decompressedData.ToArray());
-            a(decompressedData.ToArray());
-
-            //SaveDds(outputPath, decompressedData.ToArray(), 1024, 512);
-            Console.WriteLine("提取完成: " + outputPath);
-        }
-        #endregion
+       
 
     }
     private static void Match_scena()
@@ -214,29 +31,29 @@ internal partial class Program
             (name ").*?(?=")|(?<=ED7MenuAdd menu\[\d\] ").*?(?=")|(?<=\t").*(?=" \/\/ \d)|(?<= {\n)[\s\S]+?(?=\n\t+})|(?<=TextSetName ").*?(?=")|(?<=ScMenuSetTitle \d+ \d+ \d+ ").*?(?=")|(?<=TextTalkNamed .*?").*?(?=")|(?<=CharSetName .*? ").*?(?=")
             """);
 
-        var cnDir = @"C:\Users\Jelly\RiderProjects\zDiffer\zDiffer\bin\Debug\net9.0\out";
-        var jpDir = @"F:\源码\C#\ed7zeroTool\trans\ao\scena\jp";
+        var cnDir = @"F:\源码\C#\ed7zeroTool\trans\zero\scena\cn_2_校对原版";
+        var jpDir = @"F:\源码\C#\ed7zeroTool\trans\zero\scena\jp";
         var count = 0;
         var cnFiles = Directory.GetFiles(cnDir);
-        var kanaReg = new Regex("[[\u3040-\u309F\u30A0-\u30FF]]");
+        var kanaReg = new Regex("[\u3040-\u309F\u30A0-\u30FA\u30FC-\u30FF]");
         foreach (var cnFile in cnFiles)
         {
             var fileName = Path.GetFileName(cnFile);
-            //var jpFile = Path.Combine(jpDir, fileName);
+            var jpFile = Path.Combine(jpDir, fileName);
             var cnFileContent = File.ReadAllText(cnFile);
             if (kanaReg.IsMatch(cnFileContent))
             {
-                Console.WriteLine(fileName);
+                Console.WriteLine($"日文: {fileName}");
             }
-            //var jpFileContent = File.ReadAllText(jpFile);
-            //var cnContent = replaceReg.Replace(cnFileContent.Replace("\r",""), "");
-            //var jpContent = replaceReg.Replace(jpFileContent, "");
+            var jpFileContent = File.ReadAllText(jpFile);
+            var cnContent = replaceReg.Replace(cnFileContent.Replace("\r",""), "");
+            var jpContent = replaceReg.Replace(jpFileContent, "");
         
-            //if(cnContent.GetHashCode()!= jpContent.GetHashCode())
-            //{
-            //    Console.WriteLine(fileName);
-            //    count++;
-            //}
+            if(cnContent.GetHashCode()!= jpContent.GetHashCode())
+            {
+                Console.WriteLine($"有差异: {fileName}");
+                count++;
+            }
         }
         Console.WriteLine(count);
 
@@ -267,12 +84,61 @@ internal partial class Program
         }
     }
 
-    private static string currentFile = "";
+    private static void MatchMorePortrait_Scena_zero()
+    {
+        var jpDir = @"F:\源码\C#\ed7zeroTool\trans\zero\scena\jp_更多头像";
+        var cnDir = @"F:\源码\C#\ed7zeroTool\trans\zero\scena\cn_2_校对原版";
+        var outDir = @"F:\源码\C#\ed7zeroTool\trans\zero\scena\cn_3_校对更多头像";
+        var jpFiles = Directory.GetFiles(jpDir);
+
+        foreach (var jpFile in jpFiles)
+        {
+            var fileName = Path.GetFileName(jpFile);
+            currentFile = fileName;
+            var cnFile = Path.Combine(cnDir, fileName);
+            if (!File.Exists(cnFile))
+                continue;
+            var jp_Content = File.ReadAllText(jpFile).Replace("\r", "");
+            var cn_Content = File.ReadAllText(cnFile).Replace("\r", "");
+            var jp_texts = dialogReg.Matches(jp_Content).Select(x => x.Value).ToList();
+            var cn_texts = dialogReg.Matches(cn_Content).Select(x => x.Value).ToList();
+            if (fileName == "c1030.clm")
+            {
+                cn_texts.Insert(868, "\t\t\t#11P對了，這個就\n\t\t\t作為對各位的謝禮吧。{wait}");
+                cn_texts.Insert(869, "\t\t\t#11P謝謝你們，\n\t\t\t這樣一來，晚上就沒問題了！{wait}");
+                cn_texts.Insert(872, "\t\t\t#11P對了，這個就\n\t\t\t作為對各位的謝禮吧。{wait}");
+                cn_texts.Insert(873, "\t\t\t#11P謝謝你們，\n\t\t\t這樣一來，晚上就沒問題了！{wait}");
+            }
+            else if (fileName == "c1440.clm")
+            {
+                cn_texts.Insert(168, "\t\t\t你是軍人吧？{wait}");
+            }
+
+                if (jp_texts.Count != cn_texts.Count)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine($"Mismatch in number of matches for file: {fileName}");
+                Console.ForegroundColor = ConsoleColor.Gray;
+                continue;
+            }
+            for (int i = 0; i < jp_texts.Count; i++)
+            {
+                var jp_text = jp_texts[i];
+                var cn_text = cn_texts[i];
+                var fixedText = fixText(jp_text, cn_text);
+                jp_Content = ReplaceFirst(jp_Content, jp_text, fixedText);
+            }
+            jp_Content = replaceOther_zero(cn_Content, jp_Content);
+            File.WriteAllText(Path.Combine(outDir, fileName), jp_Content.Replace("\r", ""));
+        }
+    }
+
+
     private static void MatchMorePortrait_Scena_ao()
     {
-        var jpDir = @"F:\源码\C#\ed7zeroTool\trans\ao\scena\MorePortrait_jp";
+        var jpDir = @"F:\源码\C#\ed7zeroTool\trans\ao\scena\jp_更多头像";
         var cnDir = @"F:\源码\C#\ed7zeroTool\trans\ao\scena\cn_2_校对原版";
-        var outDir = @"F:\源码\C#\ed7zeroTool\trans\ao\scena\cn_3_校对更多肖像";
+        var outDir = @"F:\源码\C#\ed7zeroTool\trans\ao\scena\cn_3_校对更多头像";
         var jpFiles = Directory.GetFiles(jpDir);
        
         foreach (var jpFile in jpFiles)
@@ -326,9 +192,131 @@ internal partial class Program
           
         }
     }
+    private static string replaceOther_zero(string cn_Content, string jp_Content)
+    {
+        //name 
+        var reg = NameRegex();
+        var cn_texts = reg.Matches(cn_Content).Select(x => x.Value).ToList();
+        var jp_texts = reg.Matches(jp_Content).Select(x => x.Value).ToList();
+        if (cn_texts.Count != jp_texts.Count)
+            throw new Exception();
+        for (int i = 0; i < cn_texts.Count; i++)
+            jp_Content = ReplaceFirst(jp_Content, jp_texts[i], cn_texts[i]);
+        //menu
+        reg = MenuRegex();
+        cn_texts = reg.Matches(cn_Content).Select(x => x.Value).ToList();
+        jp_texts = reg.Matches(jp_Content).Select(x => x.Value).ToList();
+        if (cn_texts.Count != jp_texts.Count)
+            throw new Exception();
+        for (int i = 0; i < cn_texts.Count; i++)
+            jp_Content = ReplaceFirst(jp_Content, jp_texts[i], cn_texts[i]);
+        //TextSetName
+        reg = TextSetNameRegex();
+        cn_texts = reg.Matches(cn_Content).Select(x => x.Value).ToList();
+        jp_texts = reg.Matches(jp_Content).Select(x => x.Value).ToList();
+        switch (currentFile)
+        {
+            case "c0140.clm":
+                cn_texts.Add("TextSetName \"溫蒂\"");
+                cn_texts.Add("TextSetName \"溫蒂\"");
+                cn_texts.Add("TextSetName \"溫蒂\"");
+                break;
+            case "c0210.clm":
+                cn_texts.Add("TextSetName \"奥斯卡\"");
+                cn_texts.Add("TextSetName \"奥斯卡\"");
+                cn_texts.Add("TextSetName \"奥斯卡\"");
+                cn_texts.Add("TextSetName \"貝奈特\"");
+                break;
+            case "c0240.clm":
+                cn_texts.Add("TextSetName \"少年\"");
+                break;
+            case "c1010.clm":
+                cn_texts.Insert(0, "TextSetName \"遊擊士斯克特\"");
+                cn_texts.Insert(1, "TextSetName \"遊擊士溫蔡爾\"");
+                cn_texts.Insert(2, "TextSetName \"遊擊士林\"");
+                cn_texts.Insert(3, "TextSetName \"遊擊士艾歐莉雅\"");
+                cn_texts.Insert(4, "TextSetName \"接待員蜜雪兒\"");
+                cn_texts.Insert(5, "TextSetName \"接待員蜜雪兒\"");
+                cn_texts.Add("TextSetName \"接待員蜜雪兒\"");
+                break;
+            case "c1150.clm":
+                cn_texts.Insert(0, "TextSetName \"皮埃爾副局長\"");
+                break;
+            case "c1160.clm":
+                cn_texts.Insert(0, "TextSetName \"皮埃爾副局長\"");
+                cn_texts.Insert(2, "TextSetName \"皮埃爾副局長\"");
+                break;
+            case "c1410.clm":
+                cn_texts.Insert(0, "TextSetName \"高大的光頭男子\"");
+                cn_texts.Insert(1, "TextSetName \"阿巴斯\"");
+                break;
+            case "t2020.clm":
+                cn_texts.Add("TextSetName \"米蕾優准尉\"");
+                break;
+        }
+        if (cn_texts.Count != jp_texts.Count)
+            throw new Exception();
+        for (int i = 0; i < cn_texts.Count; i++)
+            jp_Content = ReplaceFirst(jp_Content, jp_texts[i], cn_texts[i]);
 
+        //ED7MenuAdd
+        reg = ED7MenuAddRegex();
+        cn_texts = reg.Matches(cn_Content).Select(x => x.Value).ToList();
+        jp_texts = reg.Matches(jp_Content).Select(x => x.Value).ToList();
+        if (cn_texts.Count != jp_texts.Count)
+            throw new Exception();
+        for (int i = 0; i < cn_texts.Count; i++)
+            jp_Content = ReplaceFirst(jp_Content, jp_texts[i], cn_texts[i]);
+        //ScMenuSetTitle
+        reg = ScMenuSetTitleRegex();
+        cn_texts = reg.Matches(cn_Content).Select(x => x.Value).ToList();
+        jp_texts = reg.Matches(jp_Content).Select(x => x.Value).ToList();
+        if (cn_texts.Count != jp_texts.Count)
+            throw new Exception();
+        for (int i = 0; i < cn_texts.Count; i++)
+            jp_Content = ReplaceFirst(jp_Content, jp_texts[i], cn_texts[i]);
+        //CharSetName
+        reg = CharSetNameRegex();
+        cn_texts = reg.Matches(cn_Content).Select(x => x.Value).ToList();
+        jp_texts = reg.Matches(jp_Content).Select(x => x.Value).ToList();
+        if (cn_texts.Count != jp_texts.Count)
+            throw new Exception();
+        for (int i = 0; i < cn_texts.Count; i++)
+            jp_Content = ReplaceFirst(jp_Content, jp_texts[i], cn_texts[i]);
 
+        //TextTalkNamed
+        reg = TextTalkNamedRegex();
+        cn_texts = reg.Matches(cn_Content).Select(x => x.Value).ToList();
+        jp_texts = reg.Matches(jp_Content).Select(x => x.Value).ToList();
 
+        switch (currentFile)
+        {
+            case "c020c.clm":
+                cn_texts.RemoveAt(cn_texts.Count - 1);
+                cn_texts.RemoveAt(3);
+                break;
+            case "c0240.clm":
+                cn_texts.RemoveAt(0);
+                cn_texts.RemoveAt(0);
+                for (int i = 0; i < 11; i++)
+                    cn_texts.RemoveAt(cn_texts.Count - 1);
+                break;
+            case "c1400.clm":
+                cn_texts.RemoveAt(19);
+                break;
+            case "c1410.clm":
+                cn_texts.RemoveAt(19);
+                cn_texts.RemoveAt(19);
+                break;
+        }
+
+        if (cn_texts.Count != jp_texts.Count)
+            throw new Exception();
+        for (int i = 0; i < cn_texts.Count; i++)
+            jp_Content = ReplaceFirst(jp_Content, jp_texts[i], cn_texts[i]);
+
+        return jp_Content;
+    }
     private static string replaceOther_ao(string cn_Content, string jp_Content)
     {
         //name 

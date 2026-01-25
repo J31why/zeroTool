@@ -1,0 +1,2597 @@
+calmare zero_k scena
+scena:
+	name "c1430" "c1430" "c1430"
+	town town[50]
+	bgm bgm[101]
+	flags 8192
+	item_use fn[0,255]
+	unk 255 0
+
+entry:
+	pos (0, 0, -1000)
+	unk1 0
+	cam_from (0, 2500, 34000)
+	cam_pers 262
+	unk2 30
+	cam_deg 45deg
+	cam_limit 0deg 360deg
+	cam_at (0, 0, 0)
+	unk3 0
+	unk4 0
+	flags 0x0001
+	town town[50]
+	init fn[0,1]
+	reinit fn[0,2]
+
+chip[0] "chr/ch26400.itc"
+chip[1] "chr/ch27200.itc"
+chip[2] "chr/ch27300.itc"
+chip[3] "chr/ch29300.itc"
+
+npc char[0]:
+	name "ギヨーム親方"
+	pos (5619, 0, 5329)
+	angle 270deg
+	flags 0x0105
+	unk2 0
+	chip chip[0]
+	init fn[0,0]
+	talk fn[0,4]
+	unk4 255
+
+npc char[1]:
+	name "遊撃士スコット"
+	pos (550, 0, 4179)
+	angle 90deg
+	flags 0x0185
+	unk2 0
+	chip chip[1]
+	init fn[0,0]
+	talk fn[0,8]
+	unk4 255
+
+npc char[2]:
+	name "遊撃士ヴェンツェル"
+	pos (709, 0, 5539)
+	angle 135deg
+	flags 0x0185
+	unk2 0
+	chip chip[2]
+	init fn[0,0]
+	talk fn[0,9]
+	unk4 255
+
+npc char[3]:
+	name "ロバーツ主任"
+	pos (-51279, 0, 15350)
+	angle 270deg
+	flags 0x0185
+	unk2 0
+	chip chip[3]
+	init fn[0,0]
+	talk fn[0,10]
+	unk4 255
+
+look_point[0]:
+	pos (4150, 0, 4740)
+	radius 1000
+	bubble_pos (5620, 1500, 5330)
+	unk1 126
+	unk2 0
+	function fn[0,3]
+	unk3 0
+	unk4 0
+
+sepith[0] 0 0 0 0 0 0 0 0
+
+fn[0]:
+	var[3] = random % 8
+	switch var[3]:
+		case 0:
+			ED7_A0 self 1450ms 0 251
+			break
+		case 1:
+			ED7_A0 self 1550ms 0 251
+			break
+		case 2:
+			ED7_A0 self 1600ms 0 251
+			break
+		case 3:
+			ED7_A0 self 1400ms 0 251
+			break
+		case 4:
+			ED7_A0 self 1650ms 0 251
+			break
+		case 5:
+			ED7_A0 self 1350ms 0 251
+			break
+		case 6:
+			ED7_A0 self 1500ms 0 251
+			break
+		default:
+			ED7_A0 self 1500ms 0 251
+			break
+	while 1:
+		ED7_A0 self 1500ms 0 251
+	Return
+
+fn[1]:
+	if flag[1566]:
+		if QuestFlagsGet quest[49] 0x10:
+			CharSetPos char[0] (15240, 1000, 7610) 90deg
+		elif QuestTaskGet quest[49] 0:
+			CharFlagsUnset char[3] 0x0080
+			CharSetPos char[0] (15240, 1000, 7610) 90deg
+			CharSetPos char[3] (5620, 0, 5330) 270deg
+		else:
+			CharFlagsUnset char[3] 0x0080
+			CharSetPos char[0] (1040, 0, 7000) 270deg
+			CharSetPos char[3] (-490, 0, 7000) 90deg
+			CharFlagsSet char[3] 0x0010
+	elif flag[1554]:
+	elif flag[1536]:
+		CharFlagsUnset char[1] 0x0080
+		CharFlagsUnset char[2] 0x0080
+	elif flag[1342]:
+	elif flag[1307]:
+		CharSetPos char[0] (15240, 1000, 7610) 90deg
+	elif flag[1362]:
+	elif flag[1292]:
+	elif flag[1282]:
+	elif flag[1280]:
+	elif flag[1055]:
+	elif flag[1040]:
+	elif flag[1031]:
+		CharSetPos char[0] (15240, 1000, 7610) 90deg
+	elif flag[1024]:
+	elif flag[801]:
+		if flag[869]:
+			CharSetPos char[0] (14820, 1000, 8970) 180deg
+			CharFlagsUnset char[3] 0x0080
+			CharSetPos char[3] (14820, 1000, 7170) 0deg
+	elif flag[777]:
+	elif flag[768]:
+	elif flag[533]:
+		CharSetPos char[0] (15240, 1000, 7610) 90deg
+	elif flag[526]:
+		CharSetPos char[0] (15240, 1000, 7610) 90deg
+	Return
+
+fn[2]:
+	if system[4] == 3:
+		EntranceSetDisabled entrance[0] 0
+		EntranceSetDisabled entrance[1] 1
+	else:
+		EntranceSetDisabled entrance[0] 1
+		EntranceSetDisabled entrance[1] 0
+	ObjFlagsSet object[0] 0x0004
+	if QuestTaskGet quest[49] 0 && !QuestFlagsGet quest[49] 0x10:
+		ObjFlagsUnset object[0] 0x0004
+	if flag[1566]:
+		if QuestFlagsGet quest[49] 0x10:
+			LookPointFlagsSet look_point[0] 0x0001
+		elif QuestTaskGet quest[49] 0:
+		else:
+			LookPointFlagsSet look_point[0] 0x0001
+	elif flag[1554]:
+	elif flag[1536]:
+	elif flag[1342]:
+	elif flag[1307]:
+		LookPointFlagsSet look_point[0] 0x0001
+	elif flag[1362]:
+	elif flag[1292]:
+	elif flag[1282]:
+	elif flag[1280]:
+	elif flag[1055]:
+	elif flag[1040]:
+	elif flag[1031]:
+		LookPointFlagsSet look_point[0] 0x0001
+	elif flag[1024]:
+	elif flag[801]:
+		if flag[869]:
+			LookPointFlagsSet look_point[0] 0x0001
+	elif flag[777]:
+	elif flag[768]:
+	elif flag[533]:
+		LookPointFlagsSet look_point[0] 0x0001
+	elif flag[526]:
+		LookPointFlagsSet look_point[0] 0x0001
+	Return
+
+fn[3]:
+	if !QuestFlagsGet quest[49] 0x10 && QuestTaskGet quest[49] 0:
+		Call fn[0,10]
+		Return
+	Call fn[0,4]
+	Return
+
+fn[4]:
+	if QuestFlagsGet quest[49] 0x02 && !QuestTaskGet quest[49] 0 && !QuestFlagsGet quest[49] 0x40:
+		Call fn[0,11]
+		Return
+	TextStart char[0]
+	if !flag[628] && flag[1280]:
+		TextTalk char[0] {
+			よう、お前ぇらか。
+			……何か改造するかよ？{wait}
+		}
+		TextWait
+		Call fn[0,7]
+		FlagSet flag[628]
+	elif !flag[628] && flag[768]:
+		TextTalk char[0] {
+			おう、いらっしゃい。
+			今日は何にしやしょうかい？{wait}
+		}
+		TextWait
+		if flag[595]:
+			TextTalk char[0] {
+				……ってお前ぇらかい。
+				確か警察の『特務支援課』の。{wait}
+			}
+			TextWait
+		else:
+			TextTalk char[0] {
+				……ってお前ぇらかい。
+				確かクロスベルタイムズに
+				載ってた警察の。{wait}
+			}
+			TextWait
+		TextTalk char[0] {
+			まあいいや、
+			何か注文してってくれや。{wait}
+		}
+		TextWait
+		TextTalk char[0] {
+			俺んとこは導力製品の修理が
+			メインだが、武器の強化改造なんかも
+			請け負ってるぜい！{wait}
+		}
+		TextWait
+		TextTalk name[0] {
+			#0005F強化改造、ですか……？{wait}
+		}
+		TextWait
+		TextTalk char[0] {
+			おう、色んな『素材』を使って
+			武器の構造を強化したりするワケだ。{wait}
+		}
+		TextWait
+		TextTalk char[0] {
+			こんなナリだが
+			俺は昔エプスタイン財団で
+			材料工学を専門にしてた事があってな。{wait}
+		}
+		TextWait
+		TextTalk char[0] {
+			腕は信用してもらって構わねえぜ？{wait}
+		}
+		TextWait
+		TextTalk name[2] {
+			#0200F財団の人でしたか……
+			それはちょっと凄そうです。{wait}
+		}
+		TextWait
+		TextTalk name[3] {
+			#0300Fああ、他にはねえ強力な武器が
+			手に入りそうだよな。{wait}
+		} {
+			材料があれば
+			頼んでみたい所だぜ。{wait}
+		}
+		TextWait
+		Call fn[0,7]
+		FlagSet flag[628]
+	elif !flag[595] && !flag[768]:
+		Call fn[0,6]
+		TextEnd char[0]
+		Return
+	if QuestTaskGet quest[49] 0 && !QuestFlagsGet quest[49] 0x10 && !QuestFlagsGet quest[49] 0x40 && ItemHas item[919] 0 > 0:
+		if !flag[3]:
+			TextTalk char[0] {
+				おう、『Ｔマテリアル』を
+				手に入れてきたみたいだな。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				魔導杖をアップデートすんなら
+				そう言ってくれ。
+				大体の準備はできてるからよ。{wait}
+			}
+			TextWait
+		FlagSet flag[3]
+		var[0] = 99
+		while var[0] == 99:
+			FadeOut 300ms 0x00000000 100
+			Menu menu[0] -1 -1 1
+				"話をする" // 0
+				"改造を頼む" // 1
+				"アップデートを頼む" // 2
+				"やめる" // 3
+			MenuWait var[0]
+			if var[0] != 1:
+				MenuClose menu[0]
+				FadeIn 300ms 0x00000000
+				FadeWait
+			if var[0] == 1:
+				if flag[1792]:
+					ShopOpen shop[174]
+				elif flag[1536]:
+					ShopOpen shop[173]
+				elif flag[1280]:
+					ShopOpen shop[172]
+				elif flag[1024]:
+					ShopOpen shop[171]
+				else:
+					ShopOpen shop[170]
+				var[0] = 99
+			elif var[0] == 2:
+				TextTalk char[0] {
+					魔導杖をアップデートすると
+					手持ちの材料を使うことになるが……
+					今やっちまうかよ？{wait}
+				}
+				TextWait
+				Menu menu[1] -1 -1 1
+					"【頼む】" // 0
+					"【やめておく】" // 1
+				MenuWait var[1]
+				MenuClose menu[1]
+				if var[1] == 0:
+					TextTalk name[0] {
+						#0000Fええ、お願いします。{wait}
+					}
+					TextWait
+					TextTalk char[0] {
+						うっし、なら始めるとするか。{wait}
+					}
+					TextWait
+					CharTurnToChar char[0] char[3] 500deg/s
+					Sleep 300ms
+					TextTalk char[0] {
+						ロバーツ、
+						そっちの準備はいいかよ！？{wait}
+					}
+					TextWait
+					TextTalk char[3] {
+						おっ、材料が手に入ったようだね。{wait}
+					}
+					TextWait
+					TextTalk char[3] {
+						今そっちに行くよ！{wait}
+					}
+					TextWait
+					_59
+					Call fn[0,12]
+					Return
+				TextTalk char[0] {
+					そうかい、またアップデートを
+					したくなったら言ってくれ。{wait}
+				}
+				TextWait
+				TextTalk char[0] {
+					準備だけは整えておくからよ。{wait}
+				}
+				TextWait
+				var[0] = 99
+			elif var[0] != 0:
+			elif var[0] == 0:
+				var[0] = 99
+				Call fn[0,5]
+	elif flag[768]:
+		var[0] = 99
+		while var[0] == 99:
+			FadeOut 300ms 0x00000000 100
+			Menu menu[0] -1 -1 1
+				"話をする" // 0
+				"改造を頼む" // 1
+				"やめる" // 2
+			MenuWait var[0]
+			if var[0] != 1:
+				MenuClose menu[0]
+				FadeIn 300ms 0x00000000
+				FadeWait
+			if var[0] == 1:
+				if flag[1792]:
+					ShopOpen shop[174]
+				elif flag[1536]:
+					ShopOpen shop[173]
+				elif flag[1280]:
+					ShopOpen shop[172]
+				elif flag[1024]:
+					ShopOpen shop[171]
+				else:
+					ShopOpen shop[170]
+				var[0] = 99
+			elif var[0] != 0:
+			elif var[0] == 0:
+				var[0] = 99
+				Call fn[0,5]
+	else:
+		Call fn[0,5]
+	TextEnd char[0]
+	Return
+
+fn[5]:
+	if QuestTaskGet quest[49] 0 && !QuestFlagsGet quest[49] 0x10 && !QuestFlagsGet quest[49] 0x10:
+		TextTalk char[0] {
+			必要な材料は『Ｔマテリアル』っつー
+			特別な素材が１個だ。{wait}
+		}
+		TextWait
+		TextTalk char[0] {
+			俺たちは準備を進めておくからよ。
+			素材が揃ったら声を掛けてくんな！{wait}
+		}
+		TextWait
+	elif flag[4]:
+		TextTalk char[0] {
+			今回の改造、
+			俺は大した事はしてねえんだ。
+			設計図どおり作っただけだからよ。{wait}
+		}
+		TextWait
+		TextTalk char[0] {
+			へへっ、気にせずお前ぇらで
+			活用してやってくんな！{wait}
+		}
+		TextWait
+		TextTalk name[2] {
+			#0200Fええ、早速試してみようかと。{wait}
+		}
+		TextWait
+		TextTalk name[0] {
+			#0000F本当にありがとうございました。{wait}
+		}
+		TextWait
+	elif flag[1792]:
+		if QuestFlagsGet quest[49] 0x10:
+			if flag[0]:
+				TextTalk char[0] {
+					参ったな、すっかり忘れてたぜ。{wait}
+				}
+				TextWait
+				TextTalk char[0] {
+					警備員の兄ちゃん、
+					関係者だって言ったら
+					通してくれんのかねぇ。{wait}
+				}
+				TextWait
+			else:
+				TextTalk char[0] {
+					おっと、夕方か……{wait}
+				}
+				TextWait
+				TextTalk char[0] {
+					今日は財団支部に
+					顔を出そうと思ってたんだが。
+					すっかり忘れちまってたぜ。{wait}
+				}
+				TextWait
+				TextTalk name[2] {
+					#0205Fエプスタイン財団の支部にですか？{wait}
+				}
+				TextWait
+				TextTalk char[0] {
+					おう、向こうでロバーツの奴と
+					語り合おうかと思ってな。{wait}
+				}
+				TextWait
+				TextTalk char[0] {
+					いやだが参ったな。
+					支部はＩＢＣビルにあるから……{wait}
+				}
+				TextWait
+				TextTalk char[0] {
+					今の時間、閉まっちまってるかも
+					しれねえなぁ。{wait}
+				}
+				TextWait
+				FlagSet flag[1900]
+				FlagSet flag[0]
+		else:
+			TextTalk char[0] {
+				よ、よう、お前ぇらか。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				……なんか改造するかよ？{wait}
+			}
+			TextWait
+	elif flag[1566]:
+		if QuestFlagsGet quest[49] 0x10:
+			TextTalk char[0] {
+				今朝は街の様子が
+				どっかおかしかった気がすんなぁ。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				うーむ、徹夜明けだった
+				せいかもしんねえが。{wait}
+			}
+			TextWait
+		else:
+			TextTalk char[0] {
+				よ、よう、お前ぇらか。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				……なんか改造するかよ？{wait}
+			}
+			TextWait
+	elif flag[1554]:
+		if flag[0]:
+			TextTalk char[0] {
+				俺はもう歳だ、
+				生き方は変えられねえや。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				ま、ここで死ぬまで
+				修理屋をやらせてもらうぜ。{wait}
+			}
+			TextWait
+		else:
+			TextTalk char[0] {
+				昨日久々に
+				ウェンディの奴に会ったぜ。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				仕事にも慣れたって言ってやがった。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				へっ……若いってのはいいねぇ。
+				何にでも柔軟になれらぁ。{wait}
+			}
+			TextWait
+			FlagSet flag[0]
+	elif flag[1536]:
+		if flag[1650]:
+			TextTalk char[0] {
+				エプスタイン財団のロバーツは
+				向こうに居た頃の仕事仲間なのよ。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				当時のエプスタイン財団には
+				導力技術を学びに
+				各国から若いのが集まっててよ。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				俺やロバーツみてえのが
+				その一員だったってぇわけよ。{wait}
+			}
+			TextWait
+		else:
+			TextTalk char[0] {
+				改造武器のアイデアに
+				煮詰まってたんだが……{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				ロバーツの奴に相談してな。
+				まずは納得の行く設計図が出来たぜ。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				まだまだ改良の余地はあるが、
+				ラインナップにも挙げておいたぜ。
+				良かったら試してみてくれや。{wait}
+			}
+			TextWait
+			FlagSet flag[1650]
+	elif flag[1342]:
+		if flag[0]:
+			TextTalk char[0] {
+				何か困った事があれば
+				遠慮なく声をかけてくれや。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				俺にできる事なら
+				何でもしてやっからよ。{wait}
+			}
+			TextWait
+		else:
+			TextTalk char[0] {
+				特務支援課の
+				お出ましとは光栄だねえ。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				活躍の噂は聞いたぜ？
+				ヤバイ事になってた
+				らしいじゃねえか。{wait}
+			}
+			TextWait
+			TextTalk name[0] {
+				#0003Fはは……そうなんですよね。
+				ようやく一段落したんですが。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				何か困った事があれば
+				俺に声をかけな。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				へへっ、匿ってやるくらいの事は
+				できっからなぁ。{wait}
+			}
+			TextWait
+			FlagSet flag[0]
+	elif flag[1307]:
+		if flag[0]:
+			TextTalk char[0] {
+				凝り性なのはいけねえなぁ……
+				つい高みを目指しちまうぜ。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				……ま、それが楽しいんだがよ。{wait}
+			}
+			TextWait
+		else:
+			TextTalk char[0] {
+				新しい改造武器の
+				設計図を引いてる所だぜ。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				うーむ、ああでもねえ、
+				こうでもねえ……{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				俺ぁつい最高傑作を
+				作ろうとしちまうからな。
+				中々思うように纏まらねえのよ。{wait}
+			}
+			TextWait
+			FlagSet flag[0]
+	elif flag[1362]:
+		TextTalk char[0] {
+			どっかに出掛けんなら気を付けな！
+			外はすげえ人出らしいぜ。{wait}
+		}
+		TextWait
+		TextTalk char[0] {
+			ま、パレードの後は
+			毎年混雑しまくるからなぁ。{wait}
+		}
+		TextWait
+	elif flag[1292]:
+		if !flag[0]:
+			TextTalk char[0] {
+				今日は導力おもちゃの修理が
+				１件にぃ……っと。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				記念祭の間も
+				ちらほら仕事が入っててな、
+				これで意外と忙しいのよ。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				試したいマテリアルの
+				強度テストなんかも溜まってるしなぁ。{wait}
+			}
+			TextWait
+			FlagSet flag[0]
+		else:
+			TextTalk char[0] {
+				記念祭の間も休業の予定はねえぜ。
+				遠慮なく来てくれや。{wait}
+			}
+			TextWait
+	elif flag[1282]:
+		if flag[0]:
+			TextTalk char[0] {
+				導力ネットっていやあ
+				飛行船と並んで導力技術の粋だ。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				俺もちっとは興味あるんだが、
+				旧市街じゃなぁ……{wait}
+			}
+			TextWait
+		else:
+			TextTalk char[0] {
+				この旧市街で、どんなに
+				頑張っても手に入らねえもの……{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				そりゃあ導力ネットだな。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				なにせ旧市街だ。
+				ケーブルが敷設されてねえんだよ。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				俺もちっとは
+				興味あるんだがなぁ……{wait}
+			}
+			TextWait
+			FlagSet flag[0]
+	elif flag[1280]:
+		if flag[1412]:
+			TextTalk char[0] {
+				おりゃあ、お前ぇらみてえな
+				威勢のいい連中が大好きだ。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				これからも職務に励んでくれよ！
+				活躍、期待してるいぜぃ！{wait}
+			}
+			TextWait
+		else:
+			TextTalk char[0] {
+				ハッピー・アニバーサリー＆
+				ハッピー・クロスベール！{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				いよう、市長暗殺を
+				食い止めた英雄たち！{wait}
+			}
+			TextWait
+			TextTalk name[0] {
+				#0006F……すごくハズい
+				言い方なんですけど。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				俺はハズい言い方が大好きだ。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				これからも職務に励んでくれよ！
+				活躍、期待してるいぜぃ！{wait}
+			}
+			TextWait
+			TextTalk name[3] {
+				#0300Fういーっす。{wait}
+			}
+			TextWait
+			TextTalk name[1] {
+				#0100Fまあ、好意はありがたく
+				受け取っておくものよね。{wait}
+			}
+			TextWait
+			FlagSet flag[1412]
+	elif flag[1055]:
+		TextTalk char[0] {
+			改造に使う『Ｕマテリアル』は
+			魔獣が落とす事があるらしいな。{wait}
+		}
+		TextWait
+		TextTalk char[0] {
+			それ以外にも、思わぬ所から
+			入手できる事もあるらしいが……{wait}
+		}
+		TextWait
+		TextTalk char[0] {
+			まあ、見慣れねえ素材が手に入ったら
+			大切に持ってるといいぜ。
+			何かの改造に使えるかもしれねえ。{wait}
+		}
+		TextWait
+	elif flag[1040]:
+		if flag[0]:
+			TextTalk char[0] {
+				クロスベルには
+				導力鉄道も飛行船も通ってっから
+				錯覚に陥んのかもしれねえな。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				ったく、こんなに恵まれてるのは
+				クロスベルだけなんだぜ？{wait}
+			}
+			TextWait
+		else:
+			TextTalk char[0] {
+				クロスベル人は
+				新しい導力製品を買って
+				古いものは捨てちまうらしい。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				やれやれ贅沢な話だぜ。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				世界には導力化が進んでねえ
+				地域もたくさんあるってのによ。{wait}
+			}
+			TextWait
+			FlagSet flag[0]
+	elif flag[1031]:
+		if flag[0]:
+			TextTalk char[0] {
+				いま新しい改造武器の
+				試作品を作ってんだよ。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				完成を楽しみにしててくれや。
+				そのうち見せてやっからよ！{wait}
+			}
+			TextWait
+		else:
+			TextTalk char[0] {
+				いま新しい改造武器の
+				試作品を仕上げてんだよ。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				へっへ、こいつはすげえぜ？
+				この俺がイチから設計図を引いた
+				オリジナル武器だあ！{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				……いやな、色々手がけてるうちに
+				自分でも作りたくなっちまったわけよ。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				まだ試作品だが……
+				完成を楽しみにしててくれや。
+				お前ぇらにも見せてやっからよ！{wait}
+			}
+			TextWait
+			FlagSet flag[0]
+	elif flag[1024]:
+		if flag[0]:
+			TextTalk char[0] {
+				ウェンディの奴は元気にしてっかねえ。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				手が空いてんなら
+				うちに来てほしいくらいなんだが。
+				……ま、そうはいかねえか。{wait}
+			}
+			TextWait
+		else:
+			TextTalk char[0] {
+				ウェンディの奴は元気にしてるかい？{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				あいつは俺が工房に勤めてた頃の
+				弟子でな、中々腕のいい奴だ。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				オーバルストアに嫌気が差したら
+				うちに来て手伝ってくんねえかねぇ。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				近頃、修理の依頼と
+				改造に懲りだしちまって……
+				手が足りねえんだよ。{wait}
+			}
+			TextWait
+			FlagSet flag[0]
+	elif flag[801]:
+		if flag[869]:
+			TextTalk char[0] {
+				ロバーツとは
+				財団に居た頃からの親友なのよ。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				にしても、こいつは
+				２０年前から変わんねえなぁ。{wait}
+			}
+			TextWait
+		else:
+			TextTalk char[0] {
+				おう、朝からお出掛けかい？{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				どこに行くんだか知らねえが
+				バッチリ準備だけはしときなよ！{wait}
+			}
+			TextWait
+	elif flag[777]:
+		TextTalk char[0] {
+			今日は修理の依頼が
+			３件も入っちまってな。{wait}
+		}
+		TextWait
+		TextTalk char[0] {
+			チィ、まったく手が足りねえや。
+			助手みてえなのがいりゃいいんだが。{wait}
+		}
+		TextWait
+	elif flag[768]:
+		if flag[860]:
+			TextTalk char[0] {
+				俺ぁ昔から
+				導力製品いじりが好きでねえ。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				最近は修理屋の他に
+				武器の強化改造なんかも手がけてるぜ。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				へへっ、お前ぇらも
+				利用して行ってくれや。
+				これでも腕利きのつもりだしよ。{wait}
+			}
+			TextWait
+		else:
+			TextTalk char[0] {
+				そういやお前ぇら、
+				なんだかご活躍だったみてえだな。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				あのクロスベルタイムズに載ってた
+				『警察』ってのは
+				お前ぇらの事だろ？{wait}
+			}
+			TextWait
+			if flag[629]:
+				TextTalk char[0] {
+					へへ、さすがは
+					ウェンディの幼馴染だ。
+					頼りにならぁな。{wait}
+				}
+				TextWait
+				TextTalk name[0] {
+					#0000Fはは、どうも……{wait}
+				}
+				TextWait
+			else:
+				TextTalk char[0] {
+					へへ、お陰で表が静かになった。
+					礼を言わせてもらうぜ。{wait}
+				}
+				TextWait
+			FlagSet flag[860]
+	elif flag[533]:
+		if flag[0]:
+			TextTalk char[0] {
+				お前ぇらも
+				また今度寄ってくれや。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				今日はパーツを切らしちまってるが、
+				いつもは修理なんかを
+				請け負ってるからよ。{wait}
+			}
+			TextWait
+		else:
+			TextTalk char[0] {
+				旧市街暮らしも意外と悪くねえぜ。
+				ジャンクパーツも結構手に入るしな。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				うっし、これから早速
+				パーツの発掘に向かうとするか。{wait}
+			}
+			TextWait
+			FlagSet flag[0]
+	elif !flag[0]:
+		TextTalk char[0] {
+			俺は元々市街の
+			工房に勤めてたんだぜ？{wait}
+		}
+		TextWait
+		TextTalk char[0] {
+			だが去年、オーバルストアとかいう
+			意味の判んねえ店に変わっちまってな。{wait}
+		}
+		TextWait
+		TextTalk char[0] {
+			てやんでぃってなわけで、
+			自分の工房を持つ事にしたわけよ。{wait}
+		}
+		TextWait
+		if flag[616] && !flag[629]:
+			Emote name[0] 0mm 2000mm 38 38 250ms 1
+			Sleep 1000ms
+			TextTalk name[0] {
+				#0005Fあれ、それじゃあ
+				ウェンディの言ってた
+				師匠ってのは……{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				ん……？
+				ウェンディの奴を知ってるのか？{wait}
+			}
+			TextWait
+			Emote char[0] 0mm 2000mm 34 36 250ms 1
+			SoundPlay sound[28] 0 100 0
+			Sleep 1000ms
+			TextTalk char[0] {
+				そうか、お前ぇ
+				ウェンディの言ってた幼馴染だな？
+				……警察の方の！{wait}
+			}
+			TextWait
+			TextTalk name[0] {
+				#0000Fははは……
+				色々聞かれてたみたいですね。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				おうよ、ウェンディは前の工房時代
+				俺の弟子だったのよ。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				へへ、その分だと
+				元気にしてるみてえだな。{wait}
+			}
+			TextWait
+			FlagSet flag[629]
+		FlagSet flag[0]
+	else:
+		TextTalk char[0] {
+			お前ぇらも
+			また何かあったら寄ってくれや。{wait}
+		}
+		TextWait
+		TextTalk char[0] {
+			今日はパーツを切らしちまってるが、
+			いつもは修理なんかを
+			請け負ってるからよ。{wait}
+		}
+		TextWait
+	Return
+
+fn[6]:
+	EventBegin 0
+	CrossFade 500ms
+	CamSetDistance 14750 2250 7600 0ms
+	ED7CamRotate 45deg 26deg 0deg 0ms
+	CamPers 440 0ms
+	CamZoom 19000 0ms
+	CharSetPos name[0] (13750, 1000, 7200) 90deg
+	CharSetPos name[1] (13650, 1000, 8000) 90deg
+	CharSetPos name[2] (12500, 1000, 7200) 90deg
+	CharSetPos name[3] (12400, 1000, 8000) 90deg
+	CharTurnTo char[0] 270deg 0deg/s
+	CharSetChipPattern char[0] 0
+	FadeWait
+	TextTalk char[0] {
+		おう、お客さんか。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		すいやせんねえ、
+		今日はパーツを切らしちまっててよ。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		仕事の依頼なら
+		また今度にしてくれねえか。{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#0005Fえっと……
+		ここは工房店ですか？{wait}
+	}
+	TextWait
+	TextTalk name[2] {
+		#0203F（カチャカチャ……）{wait}
+	} {
+		#0200Fデータベースには
+		載っていませんね……
+		営業許可もないようですが……{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		はっはっは、確かに
+		届けは出してねえな。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		ここは俺の個人的な工房で
+		正式な店ってわけじゃねえんだ。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		ただ、時々ぶっ壊れた導力製品の
+		修理なんかも請け負ってるのさ。{wait}
+	}
+	TextWait
+	TextTalk name[2] {
+		#0200F修理屋、というわけですか。{wait}
+	}
+	TextWait
+	TextTalk name[3] {
+		#0300Fはー、さすがクロスベルだ。
+		色んな店があるねえ。{wait}
+	}
+	TextWait
+	TextTalk name[1] {
+		#0103Fでも……やっぱり営業許可は
+		貰った方がいいと思うけど。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		はは、違いねえ。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		まあ今日は店じまいしてるが、
+		また何かあったら立ち寄ってくれや。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		導力灯が切れた程度なら
+		格安で直してやるぜい！{wait}
+	}
+	TextWait
+	CharSetPos field_party[0] (13750, 1000, 7600) 90deg
+	FlagSet flag[595]
+	EventEnd 5
+	Return
+
+fn[7]:
+	FadeOut 300ms 0x00000000 100
+	SoundPlay sound[828] 0 100 0
+	TextMessage null {
+		{color 5}※ギヨーム親方に話しかけて『改造を頼む』を選択すると、
+		{}  改造可能な商品が一覧表示されます。
+		{}  必要な素材を持っていれば、改造を行えます。{color 0}{wait}
+	}
+	TextWait
+	TextMessage null {
+		{color 5}※改造によってできた武器・防具は
+		{}  武器商会などでは入手出来ない強力なもので、
+		{}  特に武器には特殊な効果がついていることがあります。{color 0}{wait}
+	}
+	TextWait
+	TextMessage null {
+		{color 5}※改造に必要な『素材』は、
+		{}  主に魔獣が落とすことがあります。{color 0}{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	FadeIn 300ms 0x00000000
+	Return
+
+fn[8]:
+	TextStart self
+	if flag[1536]:
+		if !flag[1]:
+			TextTalk self {
+				#08400F……うん、新品同様だ。
+				さすがこの店は腕がいいね。{wait}
+			}
+			TextWait
+			TextTalk name[0] {
+				#0000Fスコットさんは
+				この店の常連なんですか？{wait}
+			}
+			TextWait
+			TextTalk name[1] {
+				#0100Fい、一応この店って
+				違法営業みたいなんですけど……{wait}
+			}
+			TextWait
+			TextTalk self {
+				#08402Fはは、固いこと言うなよ。
+				君たちも来てるじゃないか。{wait}
+			} {
+				#08404Fいいものは活用してかないと
+				とてもクロスベルで遊撃士なんて
+				やってらんないよ。{wait}
+			}
+			TextWait
+			FlagSet flag[1]
+		else:
+			TextTalk self {
+				#08400F今日は修理に出してたライフルを
+				受け取りに来たんだ。{wait}
+			} {
+				#08400Fどうも最近、強い魔獣が
+				増えてきたみたいだからな。
+				装備は万全にしとかないと。{wait}
+			}
+			TextWait
+	TextEnd self
+	Return
+
+fn[9]:
+	TextStart self
+	if flag[1536]:
+		TextTalk self {
+			#08503Fふむ……
+			俺も今度、エニグマが壊れたら
+			ここに持ってくるとするか……{wait}
+		}
+		TextWait
+	TextEnd self
+	Return
+
+fn[10]:
+	if QuestFlagsGet quest[49] 0x02 && !QuestTaskGet quest[49] 0 && !QuestFlagsGet quest[49] 0x40:
+		Call fn[0,11]
+		Return
+	TextStart char[3]
+	if QuestTaskGet quest[49] 0 && !QuestFlagsGet quest[49] 0x10 && !QuestFlagsGet quest[49] 0x40:
+		if !flag[2]:
+			TextTalk char[3] {
+				僕は追加プログラムの
+				準備を進めておくよ。{wait}
+			}
+			TextWait
+			TextTalk char[3] {
+				大規模なアップデートになるからね。
+				コンポーネントの解凍だけで
+				結構時間かかっちゃうんだよねー。{wait}
+			}
+			TextWait
+			TextTalk name[2] {
+				#0200F主任、カウンターに居ると
+				お店の人に見えて
+				紛らわしいです。{wait}
+			}
+			TextWait
+			Emote char[3] 0mm 2000mm 40 43 100ms 3
+			CharTurnToChar char[3] name[2] 500deg/s
+			Sleep 500ms
+			TextTalk char[3] {
+				ご、ごめんよティオ君！
+				だってこの店、暗いんだもの！{wait}
+			}
+			TextWait
+			TextTalk name[1] {
+				#0106F（ティオちゃん……あまり
+				{}  主任さんをいじめないようにね？）{wait}
+			}
+			TextWait
+			TextTalk name[2] {
+				#0203F（すみません、つい……）{wait}
+			}
+			TextWait
+			FlagSet flag[2]
+		else:
+			TextTalk char[3] {
+				追加プログラムの準備は
+				こっちでやっておくからね。
+				心配は要らないよ。{wait}
+			}
+			TextWait
+			TextTalk char[3] {
+				素材が手に入ったら
+				ギヨームに声を掛けてくれ。{wait}
+			}
+			TextWait
+			TextTalk char[3] {
+				改造の準備を
+				しているはずだからね。{wait}
+			}
+			TextWait
+	elif flag[1566]:
+		TextTalk char[3] {
+			うふふ、準備はバッチリだよ。{wait}
+		}
+		TextWait
+		TextTalk char[3] {
+			必要なツールは
+			一通り持ってきてるしね！{wait}
+		}
+		TextWait
+	elif flag[2]:
+		TextTalk char[3] {
+			ギヨームとは古い友人でね。
+			時々連絡を取り合っているんだ。{wait}
+		}
+		TextWait
+		TextTalk char[3] {
+			ハハハ、彼が修理屋を始めたなんて
+			知らなかったなぁ～。{wait}
+		}
+		TextWait
+	else:
+		TextTalk char[3] {
+			やあティオ君、
+			アナライザーの調子はどう？{wait}
+		}
+		TextWait
+		TextTalk char[3] {
+			よかったら調整してあげようか……{wait}
+		}
+		TextWait
+		TextTalk name[2] {
+			#0200F結構です。
+			自分でやった方が早いので。{wait}
+		}
+		TextWait
+		TextTalk char[3] {
+			がーん……
+			そ、そうだよね……{wait}
+		}
+		TextWait
+		FlagSet flag[2]
+	TextEnd char[3]
+	Return
+
+fn[11]:
+	EventBegin 0
+	_Char4A char[0] 255
+	_Char4A char[3] 255
+	FadeOut 1000ms 0x00000000 255
+	FadeWait
+	CamSetDistance 510 1000 6090 0ms
+	ED7CamRotate 42deg 23deg 0deg 0ms
+	CamPers 320 0ms
+	CamZoom 28680 0ms
+	CharSetPos name[0] (380, 0, 4670) 0deg
+	CharSetPos name[1] (-230, 0, 3500) 0deg
+	CharSetPos name[2] (-830, 0, 4330) 0deg
+	CharSetPos name[3] (1200, 0, 4160) 0deg
+	if PartyPosition name[9] > -1:
+		CharFlagsUnset field_party[4] 0x0080
+		CharFlags2Unset field_party[4] 0x8000
+		CharSetPos name[9] (780, 0, 2600) 0deg
+	CharSetPos char[0] (1000, 0, 7430) 270deg
+	CharSetPos char[3] (-400, 0, 7430) 90deg
+	FadeIn 1000ms 0x00000000
+	FadeWait
+	CharTurnTo char[0] 180deg 500deg/s
+	CharTurnTo char[3] 180deg 500deg/s
+	Sleep 300ms
+	TextTalk char[0] {
+		#11Pおう来たか。
+		特務支援課の面々！{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#12P#0000Fどうも、支援要請を
+		伺って参りました。{wait}
+	}
+	TextWait
+	TextTalk name[3] {
+		#12P#0300Fちゃーす、修理屋のオッサン。
+		いつも世話になってるぜ。{wait}
+	} {
+		#0305Fつーか、えっと……{wait}
+	}
+	TextWait
+	CharTurnTo name[3] 315deg 500deg/s
+	CharTurnTo name[0] 315deg 500deg/s
+	Sleep 700ms
+	Emote char[3] 0mm 2000mm 38 39 250ms 2
+	Sleep 1200ms
+	Fork char[3] fork[1]:
+		CharWalkToPos self (-870, 0, 5820) 2000mm/s 0
+	TextTalk char[3] {
+		#5Pやあティオ君、久し振りだねぇ～！{wait}
+	}
+	TextWait
+	TextTalk char[3] {
+		#5P最近調子はどう？
+		風邪なんて引いてないかい？{wait}
+	}
+	TextWait
+	TextTalk name[2] {
+		#6P#0205F主任、ここに来ていたんですか。{wait}
+	} {
+		#0211Fというか
+		そう久しくもない訳ですが……{wait}
+	}
+	TextWait
+	TextTalk name[1] {
+		#12P#0109Fあはは……
+		（ティオちゃんは主任さんと
+		{}  ちょっと微妙な関係なのよね。）{wait}
+	}
+	TextWait
+	ForkWait char[3] fork[1]
+	if PartyPosition name[9] > -1:
+		TextTalk name[9] {
+			#12P#0603Fエプスタイン財団のロバーツ氏……
+			それに元財団技師のギヨーム氏か。{wait}
+		} {
+			#0600Fフム、話は大体読めた。{wait}
+		}
+		TextWait
+		Sleep 200ms
+		Emote name[0] 0mm 2000mm 38 38 250ms 1
+		Emote name[1] 0mm 2000mm 38 38 250ms 1
+		Emote name[2] 0mm 2000mm 38 38 250ms 1
+		Emote name[3] 0mm 2000mm 38 38 250ms 1
+		Sleep 500ms
+		Fork name[0] fork[1]:
+			CharTurnToChar self name[9] 300deg/s
+		Fork name[1] fork[1]:
+			CharTurnToChar self name[9] 300deg/s
+		Fork name[2] fork[1]:
+			CharTurnToChar self name[9] 300deg/s
+		Fork name[3] fork[1]:
+			CharTurnToChar self name[9] 300deg/s
+		Sleep 300ms
+		TextTalk name[0] {
+			#11P#0005Fえ……？{wait}
+		}
+		TextWait
+		TextTalk name[9] {
+			#12P#0600F私は外で待っている。
+			お前たちは用事を済ませてから来い。{wait}
+		}
+		TextWait
+		CharWalkToPos name[9] (300, 0, -1400) 2000mm/s 0
+		CharWalkToPos name[9] (300, 0, -3210) 2000mm/s 0
+		TextTalk char[3] {
+			#5Pあれはティオ君の上司の人かい？
+			随分と切れ者みたいだけど……{wait}
+		}
+		TextWait
+		TextTalk name[2] {
+			#6P#0203Fはあ、ダドリーさんと言って
+			捜査一課の方です。
+			今は少々事情がありまして。{wait}
+		}
+		TextWait
+		Fork name[0] fork[1]:
+			CharTurnTo self 0deg 300deg/s
+		Fork name[1] fork[1]:
+			CharTurnTo self 0deg 300deg/s
+		Fork name[2] fork[1]:
+			CharTurnTo self 0deg 300deg/s
+		Fork name[3] fork[1]:
+			CharTurnTo self 0deg 300deg/s
+		Sleep 500ms
+		TextTalk name[1] {
+			#12P#0105Fそれで……お２人は
+			お話中だったみたいですけど、
+			もしかしてお邪魔だったでしょうか。{wait}
+		} {
+			#0100F私たちなら出直してきても
+			構いませんけど……{wait}
+		}
+		TextWait
+	else:
+		CharTurnTo name[0] 0deg 500deg/s
+		CharTurnTo name[3] 0deg 500deg/s
+		Sleep 300ms
+		TextTalk name[1] {
+			#12P#0105Fお話中だったみたいですけど
+			もしかしてお邪魔だったでしょうか。{wait}
+		} {
+			#0100F私たちなら出直してきても
+			構いませんけど……{wait}
+		}
+		TextWait
+	TextTalk char[0] {
+		#11Pいやいや、それには及ばねえ。
+		実は今回の依頼はロバーツの奴が
+		言い出したことでなぁ……{wait}
+	}
+	TextWait
+	Emote name[0] 0mm 2000mm 38 38 250ms 1
+	Emote name[1] 0mm 2000mm 38 38 250ms 1
+	Emote name[2] 0mm 2000mm 38 38 250ms 1
+	Emote name[3] 0mm 2000mm 38 38 250ms 1
+	Emote char[3] 0mm 2000mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	CharTurnToChar char[3] char[0] 500deg/s
+	Sleep 500ms
+	CharWalkToPos char[3] (-210, 0, 6430) 5000mm/s 0
+	TextTalk char[3] {
+		#5Pわああ、ギヨーム！？
+		それは黙っててくれと……{wait}
+	}
+	TextWait
+	TextTalk name[2] {
+		#6P#0211Fじ～～～……{wait}
+	}
+	TextWait
+	Emote char[3] 0mm 2000mm 40 43 100ms 3
+	CharTurnToChar char[3] name[2] 500deg/s
+	Sleep 300ms
+	TextTalk char[3] {
+		#5Pち、違うんだよ？
+		別にやましい事が
+		あるわけじゃなくて……{wait}
+	}
+	TextWait
+	TextTalk char[3] {
+		#5Pその、これには
+		深い事情があってね！{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#12P#0005F深い事情……ですか。{wait}
+	} {
+		#0001Fご依頼に関係のある事みたいですね。
+		話していただけますか？{wait}
+	}
+	TextWait
+	TextTalk char[3] {
+		#5Pそ、そうだね、お話ししよう。{wait}
+	}
+	TextWait
+	TextTalk char[3] {
+		#5P実は財団がらみの話なんだが。{wait}
+	}
+	TextWait
+	Emote name[0] 0mm 2000mm 0 1 250ms 2
+	SoundPlay sound[29] 0 100 0
+	Emote name[1] 0mm 2000mm 0 1 250ms 2
+	SoundPlay sound[29] 0 100 0
+	Emote name[2] 0mm 2000mm 0 1 250ms 2
+	SoundPlay sound[29] 0 100 0
+	Emote name[3] 0mm 2000mm 0 1 250ms 2
+	SoundPlay sound[29] 0 100 0
+	Sleep 1200ms
+	TextTalk char[3] {
+		#5Pティオ君がクロスベルで
+		魔導杖の実戦データ収集をしていた事は
+		知っていると思う。{wait}
+	}
+	TextWait
+	TextTalk char[3] {
+		#5Pティオ君が提出してくれている
+		使用記録を参考に
+		魔導杖は改良を重ねていてね。{wait}
+	}
+	TextWait
+	TextTalk char[3] {
+		#5Pこのたび、ついに
+		魔導杖の新機能解放に
+		メドが立ったらしいんだよ。{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#12P#0005F新機能の解放……
+		って、どういうことですか？{wait}
+	}
+	TextWait
+	TextTalk name[3] {
+		#12P#0305Fティオすけに
+		新しい便利機能でも付くのかよ！？{wait}
+	}
+	TextWait
+	CharTurnToChar name[2] name[3] 500deg/s
+	Sleep 200ms
+	TextTalk name[2] {
+		#6P#0203Fランディさん、別にわたしには
+		便利機能なんて付いていませんが……{wait}
+	}
+	TextWait
+	Fork name[3] fork[1]:
+		CharTurnToChar self name[2] 400deg/s
+	Fork name[0] fork[1]:
+		CharTurnToChar self name[2] 400deg/s
+	Fork name[1] fork[1]:
+		CharTurnToChar self name[2] 400deg/s
+	Sleep 400ms
+	TextTalk name[2] {
+		#6P#0200F魔導杖にはまだいくつか
+		開封されていない機能があります。{wait}
+	} {
+		#0203F安定して発動させるプログラムが
+		無いためですが……{wait}
+	} {
+		#0200Fそのプログラム完成の
+		見込みがたった、
+		ということだと思います。{wait}
+	}
+	TextWait
+	TextTalk name[1] {
+		#12P#0105F一体どういった機能なのかしら。{wait}
+	}
+	TextWait
+	TextTalk char[3] {
+		#5Pそうだね、一言で言うと
+		新しい戦技#4Rクラフト#に関するものだ。{wait}
+	}
+	TextWait
+	Fork name[0] fork[1]:
+		CharTurnTo self 0deg 500deg/s
+	Fork name[2] fork[1]:
+		CharTurnTo self 0deg 500deg/s
+	Fork name[3] fork[1]:
+		CharTurnTo self 315deg 500deg/s
+	Fork name[1] fork[1]:
+		CharTurnTo self 0deg 500deg/s
+	Sleep 300ms
+	TextTalk char[3] {
+		#5P新プログラムの適用によって
+		高出力の技が使えるようになるんだよ。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#11Pま、俺も資料を見せてもらったが
+		かなり強力らしくてなぁ。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#11P今のままじゃ、
+		危なくて発動できねえ。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#11Pハンドグリップの改良なんかが
+		必要になりそうなんだ。{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#12P#0003Fな、なんだか凄そうですね……{wait}
+	} {
+		#0005Fそれをティオが
+		使えるようになるんですか？{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#11Pいや、そこで一つ
+		トラブルがあってな。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#11P財団側で用意した
+		追加プログラムとアタッチパーツの
+		到着が遅れてんだよ。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#11P向こう側の手違いとかで、
+		一週間くらい掛かっちまうそうだ。{wait}
+	}
+	TextWait
+	TextTalk char[3] {
+		#5P依頼というのはその事なんだよね。{wait}
+	}
+	TextWait
+	TextTalk char[3] {
+		#5Pこのままじゃ
+		ティオ君も困っちゃうだろうし……{wait}
+	}
+	TextWait
+	TextTalk char[3] {
+		#5P僕たちで何とかしてあげよう
+		という事になったわけさ！{wait}
+	}
+	TextWait
+	TextTalk name[3] {
+		#12P#0300Fああ、それで依頼が
+		『新機能の開発』だったわけッスか。{wait}
+	}
+	TextWait
+	TextTalk name[1] {
+		#12P#0100Fようやく納得がいきました。{wait}
+	}
+	TextWait
+	TextTalk name[2] {
+		#6P#0203F……別に一週間くらい
+		遅れて困る事はないですが……{wait}
+	} {
+		#0200F確かに、早く見てみたい気もします。
+		わたしが一時期手がけていた
+		プログラムでもあるので。{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#12P#0000Fそうだな……
+		ティオが戦力アップしてくれれば
+		探索も楽になりそうだし。{wait}
+	} {
+		#0005Fでも主任さん、財団からの発送が
+		遅れているのでは仕方ないのでは？
+		他に方法でもあるんですか？{wait}
+	}
+	TextWait
+	Emote char[3] 0mm 2000mm 8 9 250ms 2
+	SoundPlay sound[27] 0 100 0
+	Sleep 1200ms
+	Emote char[3] 300mm 1600mm 54 57 250ms 0
+	TextTalk char[3] {
+		#5Pふふ、よくぞ聞いてくれたね。
+		それがあるんだよ！{wait}
+	}
+	TextWait
+	EmoteStop char[3]
+	TextTalk char[3] {
+		#5P実は、追加プログラムの方は
+		事前に受け取っていた資料を元に
+		こちらで再現する事ができたんだ。{wait}
+	}
+	TextWait
+	TextTalk char[3] {
+		#5P後は魔導杖の
+		アタッチパーツだけど……{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#11Pそこで俺の出番ってわけだ。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#11P修理や改造ならお手のモンだぜ。
+		資料は受け取ったから、
+		材料さえありゃあすぐに作ってやるぜ。{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#12P#0000Fなるほど……素材さえあれば
+		何とかなるってことですね。{wait}
+	}
+	TextWait
+	Fork name[0] fork[1]:
+		CharTurnToChar self name[1] 400deg/s
+	Fork name[3] fork[1]:
+		CharTurnToChar self name[2] 400deg/s
+	Fork name[1] fork[1]:
+		CharTurnToChar self name[0] 400deg/s
+	Fork name[2] fork[1]:
+		CharTurnToChar self name[0] 400deg/s
+	Sleep 500ms
+	TextTalk name[0] {
+		#11P#0000Fみんな、ここは一つ
+		ティオのために協力しようか。{wait}
+	}
+	TextWait
+	TextTalk name[1] {
+		#12P#0100Fええ、私もそれがいいと思う。{wait}
+	}
+	TextWait
+	TextTalk name[3] {
+		#12P#0300F異議なしだぜ。{wait}
+	}
+	TextWait
+	TextTalk name[2] {
+		#6P#0205Fいいんですか……？
+		捜査の方に
+		遅れが出るかもしれませんが……{wait}
+	}
+	TextWait
+	TextTalk name[3] {
+		#12P#0309Fはは、材料を探してくるだけだろ？
+		大したことねえって。{wait}
+	}
+	TextWait
+	TextTalk name[1] {
+		#12P#0100Fそうそう、ロイドも言っていたけど
+		戦力がアップすれば
+		探索も楽になるはずだし。{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#11P#0000Fああ、やらない手はないと思うよ。{wait}
+	} {
+		……ティオ、どうかな？{wait}
+	}
+	TextWait
+	TextTalk name[2] {
+		#6P#0203F判りました、では
+		よろしくお願いします。{wait}
+	}
+	TextWait
+	TextTalk name[3] {
+		#12P#0300Fよし、決まりだな！{wait}
+	}
+	TextWait
+	Fork name[0] fork[1]:
+		CharTurnTo self 0deg 400deg/s
+	Fork name[1] fork[1]:
+		CharTurnTo self 0deg 400deg/s
+	Fork name[2] fork[1]:
+		CharTurnTo self 45deg 400deg/s
+	Fork name[3] fork[1]:
+		CharTurnTo self 0deg 400deg/s
+	Sleep 300ms
+	TextTalk name[2] {
+		#6P#0200F親方さん、必要な材料は
+		具体的にはどのようなものが？{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#11Pああ、『Ｔマテリアル』っつー
+		特別な素材なんだが……{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#11Pこいつはクロスベルじゃ
+		手に入りにくいかもしれねえな。{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#12P#0003Fそうですか……
+		まあ何とか探してみます。{wait}
+	}
+	TextWait
+	TextTalk char[3] {
+		#5Pああ、必要なのは１個だけだし
+		どうにかお願いするよ。{wait}
+	}
+	TextWait
+	TextTalk char[3] {
+		#5P材料が揃ったら
+		ギヨームに声を掛けてくれ。{wait}
+	}
+	TextWait
+	TextTalk char[3] {
+		#5P僕たちは改造の準備を
+		進めておくからね！{wait}
+	}
+	TextWait
+	TextTalk name[2] {
+		#6P#0200Fよろしくお願いします。{wait}
+	}
+	TextWait
+	TextTalk name[1] {
+		#12P#0100Fそれじゃあ行きましょうか。{wait}
+	}
+	TextWait
+	TextTalk name[3] {
+		#12P#0300Fおう、張り切っていこうぜ！{wait}
+	}
+	TextWait
+	_59
+	FadeOut 300ms 0x00000000 100
+	SoundPlay sound[80] 0 100 0
+	TextSetPos -1 -1 -1 -1
+	TextSetName ""
+	TextMessage null {
+		{color 2}クエスト【魔導杖の新機能開発】{color 0}を開始した！{wait}
+	}
+	TextWait
+	TextClose 0
+	FadeIn 300ms 0x00000000
+	TextSetPos -1 280 60 3
+	FadeOut 1000ms 0x00000000 255
+	FadeWait
+	CamSetDistance 115090 1500 58830 0ms
+	ED7CamRotate 315deg 26deg 0deg 0ms
+	CamPers 400 0ms
+	CamZoom 25000 0ms
+	CharSetPos field_party[0] (-200, 0, 3820) 0deg
+	CharSetPos char[0] (15240, 1000, 7610) 90deg
+	CharSetPos char[3] (5620, 0, 5330) 270deg
+	CharFlagsUnset char[3] 0x0010
+	if PartyPosition name[9] > -1:
+		CharFlagsSet field_party[4] 0x0080
+		CharFlags2Set field_party[4] 0x8000
+	LookPointFlagsUnset look_point[0] 0x0001
+	ObjFlagsUnset object[0] 0x0004
+	_Char4B char[0] 255
+	_Char4B char[3] 255
+	QuestTaskSet quest[49] 0
+	FlagSet flag[628]
+	Sleep 500ms
+	EventEnd 5
+	Return
+
+fn[12]:
+	FadeOut 1000ms 0x00000000 255
+	FadeWait
+	TextEnd char[0]
+	EventBegin 0
+	_Char4A char[0] 255
+	_Char4A char[3] 255
+	CamSetDistance 13800 2300 7800 0ms
+	ED7CamRotate 61deg 26deg 0deg 0ms
+	CamPers 340 0ms
+	CamZoom 24880 0ms
+	CharSetPos name[0] (12800, 1000, 7200) 90deg
+	CharSetPos name[1] (12800, 1000, 8100) 90deg
+	CharSetPos name[2] (12800, 1000, 9000) 90deg
+	CharSetPos name[3] (12800, 1000, 6300) 45deg
+	if PartyPosition name[9] > -1:
+		CharFlagsUnset field_party[4] 0x0080
+		CharFlags2Unset field_party[4] 0x8000
+		CharSetPos name[9] (12110, 1000, 9870) 90deg
+	CharSetPos char[0] (15200, 1000, 8900) 225deg
+	CharSetPos char[3] (15240, 1000, 7610) 270deg
+	LookPointFlagsSet look_point[0] 0x0001
+	ObjFlagsSet object[0] 0x0004
+	FadeIn 1000ms 0x00000000
+	FadeWait
+	TextTalk char[0] {
+		#5P材料は確認したぜ。
+		こっちは問題なしだ。{wait}
+	}
+	TextWait
+	if PartyPosition name[9] > -1:
+		TextTalk name[9] {
+			#6P#0604F武器の改造ですか……
+			これは珍しい物が見れそうですな。{wait}
+		}
+		TextWait
+		Emote name[3] 0mm 2000mm 38 38 250ms 1
+		Sleep 500ms
+		ForkLoop name[3] fork[1]:
+			CharTurnToChar self name[9] 400deg/s
+		Sleep 50ms
+		ForkLoop name[0] fork[1]:
+			CharTurnToChar self name[9] 400deg/s
+		ForkLoop name[1] fork[1]:
+			CharTurnToChar self name[9] 400deg/s
+		ForkLoop name[2] fork[1]:
+			CharTurnToChar self name[9] 400deg/s
+		ForkLoop char[3] fork[1]:
+			CharTurnToChar self name[9] 400deg/s
+		ForkLoop char[0] fork[1]:
+			CharTurnToChar self name[9] 400deg/s
+		Sleep 400ms
+		TextTalk name[3] {
+			#12P#0300Fお、ダドリーのオッサンも
+			やっぱ興味あんのかよ？{wait}
+		}
+		TextWait
+		CharTurnToChar name[9] name[3] 500deg/s
+		Sleep 300ms
+		TextTalk name[9] {
+			#6P#0601F……馬鹿者、皮肉だ！
+			この忙しい時に何を悠長な事を、
+			と言っている！{wait}
+		}
+		TextWait
+		Emote name[0] 0mm 2000mm 16 19 250ms 1
+		SoundPlay sound[23] 0 100 0
+		Emote name[2] 0mm 2000mm 16 19 250ms 1
+		SoundPlay sound[23] 0 100 0
+		Emote name[1] 0mm 2000mm 16 19 250ms 1
+		SoundPlay sound[23] 0 100 0
+		Emote name[3] 0mm 2000mm 16 19 250ms 1
+		SoundPlay sound[23] 0 100 0
+		Sleep 1000ms
+		TextTalk name[1] {
+			#12P#0103Fす、すみません。
+			そうですよね。{wait}
+		}
+		TextWait
+		TextTalk name[2] {
+			#6P#0200F気付かなくて
+			申し訳ないです。{wait}
+		}
+		TextWait
+		CharTurnTo name[9] 90deg 500deg/s
+		Sleep 500ms
+		TextTalk name[9] {
+			#6P#0603Fフン……
+			だが、お前達にはお前達の
+			事情があることは理解している。{wait}
+		} {
+			#0601F……私は席を外してる。
+			なるべく早く片付けて
+			捜査に戻れよ！？{wait}
+		}
+		TextWait
+		TextTalk name[0] {
+			#12P#0005Fは、はい、分かりました。{wait}
+		}
+		TextWait
+		CharWalkToPos name[9] (7200, 0, 9870) 2000mm/s 0
+		Sleep 500ms
+		TextTalk char[3] {
+			#11Pあれが捜査一課の人かぁ……{wait}
+		}
+		TextWait
+		ForkQuit name[0] fork[1]
+		ForkQuit name[1] fork[1]
+		ForkQuit name[2] fork[1]
+		ForkQuit name[3] fork[1]
+		ForkQuit char[3] fork[1]
+		ForkQuit char[0] fork[1]
+		Fork name[0] fork[1]:
+			CharTurnTo self 90deg 400deg/s
+		Fork name[3] fork[1]:
+			CharTurnTo self 45deg 400deg/s
+		Fork name[1] fork[1]:
+			CharTurnTo self 90deg 400deg/s
+		Fork name[2] fork[1]:
+			CharTurnTo self 90deg 400deg/s
+		CharTurnTo char[0] 225deg 400deg/s
+		Sleep 400ms
+		TextTalk char[3] {
+			#11Pティオ君、やっぱり止めておくかい？
+			今は忙しいみたいだし。{wait}
+		}
+		TextWait
+		TextTalk name[2] {
+			#6P#0203Fいえ、気にしないで下さい。
+			ダドリーさんは
+			いつもあんな感じなので。{wait}
+		}
+		TextWait
+		TextTalk name[1] {
+			#6P#0100F了解はしてくれたみたいですし。
+			今は早く改造してしまった方が
+			いいと思います。{wait}
+		}
+		TextWait
+		TextTalk char[0] {
+			#5Pみてえだな。
+			ちゃちゃっと始めちまうか。{wait}
+		}
+		TextWait
+		TextTalk char[3] {
+			#11Pよし、ここは一つ全速力で
+			仕上げさせてもらおうか。{wait}
+		}
+		TextWait
+		Emote char[3] 0mm 2000mm 8 9 250ms 2
+		SoundPlay sound[27] 0 100 0
+		Sleep 1500ms
+		TextTalk char[3] {
+			#11Pそう考えると
+			俄然やる気が出てきたよ。{wait}
+		}
+		TextWait
+		TextTalk char[3] {
+			#11Pうふふ、楽しみだね～。
+			新しい魔導杖を颯爽と構える
+			ティオ君が目に浮かぶようだな～。{wait}
+		}
+		TextWait
+	else:
+		TextTalk char[3] {
+			#11Pよし、準備は万全だね。{wait}
+		}
+		TextWait
+		Emote char[3] 0mm 2000mm 8 9 250ms 2
+		SoundPlay sound[27] 0 100 0
+		Sleep 1500ms
+		TextTalk char[3] {
+			#11Pうふふ、楽しみだね～。
+			新しい魔導杖を颯爽と構える
+			ティオ君が目に浮かぶようだよ～。{wait}
+		}
+		TextWait
+	TextTalk name[2] {
+		#6P#0211F……主任。{wait}
+	} {
+		魔導杖がバグって
+		使い物にならなくなったら
+		恨みますよ？{wait}
+	}
+	TextWait
+	Sleep 200ms
+	Emote char[3] 0mm 2000mm 16 19 250ms 1
+	SoundPlay sound[23] 0 100 0
+	Sleep 1000ms
+	CharTurnTo char[3] 180deg 500deg/s
+	Sleep 300ms
+	TextTalk char[3] {
+		#11Pそ、そんな……
+		ティオ君に一生嫌われちゃう……{wait}
+	}
+	TextWait
+	TextTalk char[3] {
+		#11Pうわーん……！
+		僕は、僕は何て酷い事を……！{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#12P#0006F主任さん、まだ何も
+		起きてませんよ。{wait}
+	}
+	TextWait
+	CharTurnToChar char[0] char[3] 500deg/s
+	Sleep 300ms
+	TextTalk char[0] {
+		#5Pロバーツよう、正気に戻れ。{wait}
+	}
+	TextWait
+	Emote char[3] 0mm 2000mm 38 38 250ms 1
+	Sleep 500ms
+	TextTalk char[3] {
+		#11Pハッ……！？{wait}
+	}
+	TextWait
+	CharTurnTo char[3] 270deg 400deg/s
+	CharTurnTo char[0] 225deg 500deg/s
+	Sleep 300ms
+	TextTalk char[3] {
+		#11Pす、すまない。
+		早速始めるとしよう。{wait}
+	}
+	TextWait
+	TextTalk char[3] {
+		#11P支援課のみんなは
+		少しの間待っていてくれるかな。{wait}
+	}
+	TextWait
+	TextTalk name[1] {
+		#6P#0100Fええ、それでは
+		見学させていただきますね。{wait}
+	}
+	TextWait
+	FadeOut 2000ms 0x00000000 255
+	FadeWait
+	Sleep 800ms
+	TextSetName ""
+	TextMessage null {
+		{color 5}ロイド達はそのまま
+		３０分ほどの時間を過ごした。{wait}
+	}
+	TextWait
+	TextMessage null {
+		{color 5}詳しくは判らないが、
+		魔導杖の改造は
+		手際よく進められているようだった。{wait}
+	}
+	TextWait
+	TextMessage null {
+		{color 5}そして──{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	CharSetPos name[2] (250, 0, 6400) 255deg
+	CharSetPos char[0] (-820, 0, 8210) 166deg
+	CharSetPos char[3] (1100, 0, 8510) 211deg
+	CharSetPos name[0] (-2090, 0, 2600) 31deg
+	CharSetPos name[1] (-880, 0, 2190) 346deg
+	CharSetPos name[3] (-2730, 0, 3880) 31deg
+	if PartyPosition name[9] > -1:
+		CharSetPos name[9] (230, 0, -1850) 38deg
+		CharFlagsSet name[9] 0x0080
+	CamSetDistance -520 1600 5910 0ms
+	ED7CamRotate 50deg 23deg 0deg 0ms
+	CamPers 440 0ms
+	CamZoom 16770 0ms
+	ED7LoadChip "chr/ch00250.itc" chip[30]
+	ED7LoadChip "chr/ch00257.itc" chip[31]
+	ED7LoadChip "chr/ch0025a.itc" chip[32]
+	EffLoad eff[0] "battle\\cr002403.eff"
+	EffLoad eff[1] "battle\\cr002401.eff"
+	CharSetChipBase name[2] chip[30]
+	ForkFunc name[2] fork[0] fn[0,13]
+	FadeIn 2000ms 0x00000000
+	FadeWait
+	Sleep 3000ms
+	ForkQuit name[2] fork[0]
+	CharSetChipBase name[2] chip[31]
+	ED7_A0 name[2] 1500ms 0 2
+	Sleep 300ms
+	ED7_A0 name[2] 1500ms 2 3
+	SoundPlay sound[279] 0 100 0
+	CharSetChipPattern name[2] 4
+	Sleep 300ms
+	EffPlay eff[0] eff_instance[255] name[2] 192 (200, 700, 0) 0 0 0 1000 1000 1000 null (0, 0, 0) 0ms
+	SoundPlay sound[363] 0 100 0
+	Sleep 200ms
+	EffPlay eff[0] eff_instance[255] name[2] 192 (200, 700, 0) 0 0 0 1000 1000 1000 null (0, 0, 0) 0ms
+	SoundPlay sound[274] 0 100 0
+	Sleep 100ms
+	CrossFade 300ms
+	CharSetChipBase name[2] chip[32]
+	CharSetChipPattern name[2] 0
+	FadeWait
+	Sleep 2500ms
+	EffPlay eff[1] eff_instance[255] name[2] 192 (200, 550, 850) 0 0 0 800 800 800 null (0, 0, 0) 0ms
+	SoundPlay sound[280] 0 90 0
+	SoundPlay sound[323] 0 90 0
+	Sleep 4500ms
+	Emote name[2] 0mm 2000mm 24 27 250ms 0
+	Sleep 1000ms
+	EmoteStop name[2]
+	Sleep 1000ms
+	CrossFade 300ms
+	CharSetChipBase name[2] chip[30]
+	CharSetChipPattern name[2] 0
+	ForkFunc name[2] fork[0] fn[0,13]
+	FadeWait
+	Sleep 1000ms
+	TextTalk char[0] {
+		#5Pどうだい、具合の方は。
+		調整はこんなトコだと思うんだが。{wait}
+	}
+	TextWait
+	TextTalk name[2] {
+		#12P#0203Fそうですね……{wait}
+	} {
+		#0200F基本プログラムが書き換わったので
+		やや違和感がありますが、
+		悪くない感じです。{wait}
+	}
+	TextWait
+	TextTalk char[3] {
+		#11Pきっと重心制御だね。
+		ティオ君ならすぐに慣れると思うよ。{wait}
+	}
+	TextWait
+	TextTalk char[3] {
+		#11P他の魔導杖に持ち替えるときは
+		エイオンシステムを使って
+		プログラムをコピーして使ってくれ。{wait}
+	}
+	TextWait
+	TextTalk char[3] {
+		#11P脱着式のアタッチパーツも
+		付けるのを忘れないようにね。{wait}
+	}
+	TextWait
+	TextTalk name[2] {
+		#12P#0200F了解です。{wait}
+	}
+	TextWait
+	CamSetDistance -630 1000 5470 2200ms
+	ED7CamRotate 67deg 26deg 0deg 2200ms
+	CamZoom 20230 2200ms
+	CamWait 121
+	TextTalk name[3] {
+		#6P#0305Fおいロイド……
+		なんか上手く行ったみたいだぞ？{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#12P#0005Fはぁ……魔導杖があんな風に
+		パカッと開くとは知らなかったな……{wait}
+	}
+	TextWait
+	TextTalk name[1] {
+		#12P#0100F見た目以上に
+		色んな機能が入ってるのねぇ……{wait}
+	}
+	TextWait
+	Emote name[1] 0mm 2000mm 38 38 250ms 1
+	Sleep 500ms
+	TextTalk name[1] {
+		#12P#0105F……ってそうだ。
+		ティオちゃん、どんな具合なの？{wait}
+	} {
+		#0100F新しいクラフトというのは
+		上手く行ったのかしら？{wait}
+	}
+	TextWait
+	CrossFade 300ms
+	ForkQuit name[2] fork[0]
+	CharSetChipBase name[2] chip[255]
+	FadeWait
+	Sleep 300ms
+	Fork name[2] fork[1]:
+		CharWalkToPos self (-990, 0, 4810) 1000mm/s 0
+	Sleep 300ms
+	Fork char[0] fork[1]:
+		CharWalkToPos self (-1390, 0, 6630) 1000mm/s 0
+	Fork char[3] fork[1]:
+		CharWalkToPos self (250, 0, 6400) 1000mm/s 0
+	Sleep 2000ms
+	CharTurnTo char[0] 180deg 500deg/s
+	TextTalk name[2] {
+		#11P#0200Fええ、改造は一通り終了しました。
+		性能も期待通りの値を
+		発揮しているようです。{wait}
+	} {
+		#0203F絶対零度の反エネルギー弾を打ち出す
+		『アブソリュート・ゼロ』──{wait}
+	} {
+		#0200F乱発は出来ませんが
+		重要な戦闘では
+		役に立ってくれそうです。{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#12P#0000Fそうか……それは心強いな。{wait}
+	}
+	TextWait
+	TextTalk name[3] {
+		#6P#0300Fはは、聞くからに凄そうな技だしな。
+		実戦が楽しみだぜ。{wait}
+	}
+	TextWait
+	TextTalk name[1] {
+		#12P#0100Fそうね、今回はこちらが
+		お世話になってしまったわね。{wait}
+	}
+	TextWait
+	TextTalk name[2] {
+		#11P#0200Fですね。{wait}
+	}
+	TextWait
+	Fork name[2] fork[1]:
+		CharTurnTo self 0deg 400deg/s
+	Fork name[0] fork[1]:
+		CharTurnTo self 0deg 400deg/s
+	Sleep 300ms
+	TextTalk name[2] {
+		#11P#0200F主任、親方さん、
+		どうもありがとうございました。{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#12P#0000Fお世話になりました。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#5Pへへっ、大した事はしてねえぜ。
+		気にしねえでくれ。{wait}
+	}
+	TextWait
+	TextTalk char[3] {
+		#11Pああ、お礼なんていいんだよ。
+		こちらから言い出したことなんだ。{wait}
+	}
+	TextWait
+	TextTalk char[3] {
+		#11Pそれに……無事に
+		改造ができて本当に良かったよ～。{wait}
+	}
+	TextWait
+	TextTalk char[3] {
+		#11P初めは断られるかと覚悟してたけど……
+		うんうん、やっぱりギヨームの名前で
+		要請を出したのが良かったのかな～。{wait}
+	}
+	TextWait
+	Emote name[0] 0mm 2000mm 16 19 250ms 1
+	SoundPlay sound[23] 0 100 0
+	Sleep 12ms
+	Emote name[1] 0mm 2000mm 16 19 250ms 1
+	SoundPlay sound[23] 0 100 0
+	Emote name[2] 0mm 2000mm 16 19 250ms 1
+	SoundPlay sound[23] 0 100 0
+	Sleep 14ms
+	Emote name[3] 0mm 2000mm 16 19 250ms 1
+	SoundPlay sound[23] 0 100 0
+	Sleep 1200ms
+	CharTurnToChar name[2] char[3] 500deg/s
+	CharTurnToChar name[0] char[3] 500deg/s
+	Sleep 200ms
+	TextTalk name[2] {
+		#6P#0211F……じとー…………{wait}
+	}
+	TextWait
+	Emote char[3] 0mm 2000mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Sleep 1000ms
+	TextTalk char[3] {
+		#11Pいや、何でもないんだ。
+		何でもないよ？{wait}
+	}
+	TextWait
+	CharTurnTo char[3] 90deg 500deg/s
+	Sleep 200ms
+	TextTalk char[3] {
+		#11Pおおっとぉ、もうこんな時間だ……
+		僕はこれで失礼しないとね！{wait}
+	}
+	TextWait
+	CharTurnTo char[3] 225deg 500deg/s
+	Sleep 200ms
+	TextTalk char[3] {
+		#11Pティオ君、魔導杖は実戦で役立ててね？
+		じゃ、じゃあね～！{wait}
+	}
+	TextWait
+	ForkLoop name[0] fork[1]:
+		CharTurnToChar self char[3] 300deg/s
+	ForkLoop name[1] fork[1]:
+		CharTurnToChar self char[3] 300deg/s
+	ForkLoop name[3] fork[1]:
+		CharTurnToChar self char[3] 300deg/s
+	ForkLoop name[2] fork[1]:
+		CharTurnToChar self char[3] 300deg/s
+	ForkLoop char[0] fork[1]:
+		CharTurnToChar self char[3] 300deg/s
+	Fork char[3] fork[1]:
+		CharWalkToPos self (1200, 0, 1500) 6000mm/s 0
+	ForkWait char[3] fork[1]
+	Fork char[3] fork[1]:
+		CharWalkToPos self (0, 0, 1500) 6000mm/s 0
+	ForkWait char[3] fork[1]
+	Fork char[3] fork[1]:
+		CharWalkToPos self (0, 0, -2000) 6000mm/s 0
+	SoundPlay sound[105] 0 100 0
+	Fork char[3] fork[2]:
+		CharColor self 0xFFFFFFFF 500ms
+	ForkWait char[3] fork[1]
+	CharFlagsSet char[3] 0x0080
+	Sleep 1100ms
+	TextTalk name[2] {
+		#6P#0206Fふう……
+		悪い人間ではないのですが。{wait}
+	}
+	TextWait
+	ForkQuit name[0] fork[1]
+	ForkQuit name[2] fork[1]
+	ForkQuit name[1] fork[1]
+	ForkQuit name[3] fork[1]
+	ForkQuit char[0] fork[1]
+	TextTalk name[0] {
+		#12P#0000Fまあ、ティオの事を
+		真剣に心配してくれてるのは
+		判るんだけどな。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#5Pあいつの過保護癖も
+		治んねえなぁ……{wait}
+	}
+	TextWait
+	if PartyPosition name[9] > -1:
+		CharFlagsUnset name[9] 0x0080
+		TextTalkNamed name[9] "男の声" {
+			#3P終わったようですな。{wait}
+		}
+		TextWait
+		Emote name[0] 0mm 2000mm 38 38 250ms 1
+		Emote name[1] 0mm 2000mm 38 38 250ms 1
+		Emote name[2] 0mm 2000mm 38 38 250ms 1
+		Emote name[3] 0mm 2000mm 38 38 250ms 1
+		Emote char[0] 0mm 2000mm 38 38 250ms 1
+		Sleep 500ms
+		CamSetDistance -380 1000 4920 3000ms
+		ED7CamRotate 14deg 20deg 0deg 3000ms
+		ForkLoop name[0] fork[1]:
+			CharTurnToChar self name[9] 300deg/s
+		ForkLoop name[1] fork[1]:
+			CharTurnToChar self name[9] 300deg/s
+		ForkLoop name[3] fork[1]:
+			CharTurnToChar self name[9] 300deg/s
+		ForkLoop name[2] fork[1]:
+			CharTurnToChar self name[9] 300deg/s
+		ForkLoop char[0] fork[1]:
+			CharTurnToChar self name[9] 300deg/s
+		CharWalkToPos name[9] (730, 0, 2370) 2000mm/s 0
+		CharTurnTo name[9] 315deg 500deg/s
+		Sleep 200ms
+		CamWait 121
+		TextTalk name[9] {
+			#12P#0600Fお前たち、魔導杖の
+			改造とやらは成功したのか？{wait}
+		}
+		TextWait
+		TextTalk name[2] {
+			#11P#0200Fええ、もちろんです。{wait}
+		}
+		TextWait
+		TextTalk name[0] {
+			#6P#0000Fお時間を取ってしまって
+			申し訳ありませんでした。{wait}
+		}
+		TextWait
+		TextTalk name[9] {
+			#12P#0603Fフン、全くだ。
+			この緊急を要するタイミングで
+			武器の手入れとは……{wait}
+		} {
+			#0601Fまあいい、終わったのなら
+			探索に戻るぞ。{wait}
+		} {
+			あちらをこれ以上
+			放置しておくわけにはいかん。{wait}
+		}
+		TextWait
+		TextTalk name[0] {
+			#6P#0000F分かりました、
+			すぐに行きましょう。{wait}
+		}
+		TextWait
+		ForkQuit name[0] fork[1]
+		ForkQuit name[2] fork[1]
+		ForkQuit name[1] fork[1]
+		ForkQuit name[3] fork[1]
+		ForkQuit char[0] fork[1]
+		Fork name[0] fork[1]:
+			CharTurnTo self 0deg 400deg/s
+		Fork name[1] fork[1]:
+			CharTurnTo self 0deg 400deg/s
+		Fork name[2] fork[1]:
+			CharTurnTo self 0deg 400deg/s
+		Fork name[3] fork[1]:
+			CharTurnTo self 0deg 400deg/s
+		Sleep 400ms
+		TextTalk name[0] {
+			#12P#0000Fそれでは親方さん、
+			これにて失礼します。{wait}
+		}
+		TextWait
+		TextTalk name[1] {
+			#12P#0100Fお世話になりました。
+			また何かあれば
+			よろしくお願いしますね。{wait}
+		}
+		TextWait
+		TextTalk char[0] {
+			#5Pおう、何だか知ねえが
+			しっかりやんなよ！{wait}
+		}
+		TextWait
+		TextTalk char[0] {
+			#5Pダドリーさんだっけか？
+			あんたも気が向いたら
+			訪ねに来てくれや！{wait}
+		}
+		TextWait
+		TextTalk name[9] {
+			#12P#0604Fフ……まあ
+			考えておきましょう。{wait}
+		} {
+			#0600Fそれではまたの機会に。{wait}
+		}
+		TextWait
+	else:
+		TextTalk char[0] {
+			#5Pまあいいさ、これでしばらくは
+			大人しくなんだろうしな。{wait}
+		}
+		TextWait
+		Sleep 200ms
+		Fork name[0] fork[1]:
+			CharTurnTo self 0deg 500deg/s
+		Fork name[1] fork[1]:
+			CharTurnTo self 0deg 500deg/s
+		Fork name[2] fork[1]:
+			CharTurnTo self 0deg 500deg/s
+		Fork name[3] fork[1]:
+			CharTurnTo self 0deg 500deg/s
+		Sleep 300ms
+		TextTalk char[0] {
+			#5Pんじゃ、俺はそろそろ
+			仕事に戻るぜ。{wait}
+		}
+		TextWait
+		TextTalk char[0] {
+			#5Pその魔導杖、
+			活用してやってくれよ！{wait}
+		}
+		TextWait
+		TextTalk name[2] {
+			#12P#0200Fええ、もちろんです。{wait}
+		}
+		TextWait
+		TextTalk name[1] {
+			#12P#0100Fまた何かあれば
+			よろしくお願いしますね。{wait}
+		}
+		TextWait
+	PartyAddCraft name[2] magic[174]
+	ItemRemove item[919] 1
+	system[102] = system[102] + 5
+	FadeOut 300ms 0x00000000 100
+	SoundPlay sound[9] 0 100 0
+	TextSetPos -1 -1 -1 -1
+	TextSetName ""
+	TextMessage null {
+		{color 2}クエスト【魔導杖の新機能開発】{color 0}を達成した！{wait}
+	}
+	TextWait
+	TextClose 0
+	FadeIn 300ms 0x00000000
+	TextSetPos -1 280 60 3
+	FadeOut 1000ms 0x00000000 255
+	FadeWait
+	CharSetPos field_party[0] (0, 0, 4190) 180deg
+	CharSetPos char[0] (15240, 1000, 7610) 90deg
+	_Char4B char[0] 255
+	CharSetChipBase name[2] chip[255]
+	NextFrame
+	UnloadChip chip[30]
+	UnloadChip chip[31]
+	UnloadChip chip[32]
+	if PartyPosition name[9] > -1:
+		CharFlagsSet field_party[4] 0x0080
+		CharFlags2Set field_party[4] 0x8000
+	QuestFlagsSet quest[49] 0x10
+	QuestTaskSet quest[49] 1
+	FlagSet flag[4]
+	Sleep 500ms
+	EventEnd 5
+	Return
+
+fn[13]:
+	while 1:
+		ED7_A0 name[2] 1200ms 0 4
+	Return

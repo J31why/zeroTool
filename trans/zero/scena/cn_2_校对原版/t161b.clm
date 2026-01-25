@@ -1,0 +1,284 @@
+calmare zero_k scena
+scena:
+	name "t161b" "t161b" "t161b"
+	town town[84]
+	bgm bgm[123]
+	flags 8192
+	item_use fn[0,255]
+	unk 255 0
+
+entry:
+	pos (0, 0, -1000)
+	unk1 0
+	cam_from (0, 0, 34000)
+	cam_pers 262
+	unk2 30
+	cam_deg 45deg
+	cam_limit 0deg 360deg
+	cam_at (0, 0, 0)
+	unk3 0
+	unk4 0
+	flags 0x0001
+	town town[84]
+	init fn[0,0]
+	reinit fn[0,1]
+
+fn[0]:
+	Event fn[0,2]
+	Return
+
+fn[1]:
+	if !flag[1820]:
+		ED7_76_0 object[255] "on_add" 1
+	Return
+
+fn[2]:
+	if !flag[1820]:
+		Call fn[0,3]
+	else:
+		EventBegin 1
+		FadeOut 0ms 0x00000000 255
+		CamSetDistance 0 1000 0 0ms
+		ED7CamRotate 45deg 30deg 0deg 0ms
+		CamPers 400 0ms
+		CamZoom 24000 0ms
+		CharSetPos field_party[0] (1500, 50, 0) 90deg
+		if system[11] != 255:
+			CharSetPos field_party[1] (300, 50, 800) 90deg
+		if system[12] != 255:
+			CharSetPos field_party[2] (300, 50, -800) 90deg
+		if system[13] != 255:
+			CharSetPos field_party[3] (-900, 50, 800) 90deg
+		if system[14] != 255:
+			CharSetPos field_party[4] (-2100, 0, -800) 90deg
+		if system[15] != 255:
+			CharSetPos field_party[5] (-2100, 0, 800) 90deg
+		CharSetPos field_party[4] (-900, 50, -800) 90deg
+		CharFlagsUnset field_party[4] 0x0080
+		CharFlags2Unset field_party[4] 0x8000
+		FadeIn 500ms 0x00000000
+		FadeWait
+	var[0] = 0
+	if system[0] == 103:
+		ED7MenuNew menu[0]
+		ED7MenuAdd menu[0] "★【 ４Ｆ 】"
+		ED7MenuAdd menu[0] "　【 ３Ｆ 】"
+		ED7MenuAdd menu[0] "　【 ２Ｆ 】"
+		ED7MenuAdd menu[0] "　【 １Ｆ 】"
+		ED7MenuAdd menu[0] "　【離開】"
+		ED7MenuSetDisabled menu[0] 1
+		ED7MenuSetDisabled menu[0] 2
+		ED7MenuShow menu[0] 10 10 0
+		var[2] = 0
+	elif system[0] == 102:
+		ED7MenuNew menu[0]
+		ED7MenuAdd menu[0] "　【 ４Ｆ 】"
+		ED7MenuAdd menu[0] "★【 ３Ｆ 】"
+		ED7MenuAdd menu[0] "　【 ２Ｆ 】"
+		ED7MenuAdd menu[0] "　【 １Ｆ 】"
+		ED7MenuAdd menu[0] "　【離開】"
+		ED7MenuSetDisabled menu[0] 1
+		ED7MenuSetDisabled menu[0] 2
+		ED7MenuShow menu[0] 10 10 0
+		var[2] = 1
+	elif system[0] == 101:
+		ED7MenuNew menu[0]
+		ED7MenuAdd menu[0] "　【 ４Ｆ 】"
+		ED7MenuAdd menu[0] "　【 ３Ｆ 】"
+		ED7MenuAdd menu[0] "★【 ２Ｆ 】"
+		ED7MenuAdd menu[0] "　【 １Ｆ 】"
+		ED7MenuAdd menu[0] "　【離開】"
+		ED7MenuSetDisabled menu[0] 1
+		ED7MenuSetDisabled menu[0] 2
+		ED7MenuShow menu[0] 10 10 0
+		var[2] = 2
+	elif system[0] == 100:
+		ED7MenuNew menu[0]
+		ED7MenuAdd menu[0] "　【 ４Ｆ 】"
+		ED7MenuAdd menu[0] "　【 ３Ｆ 】"
+		ED7MenuAdd menu[0] "　【 ２Ｆ 】"
+		ED7MenuAdd menu[0] "★【 １Ｆ 】"
+		ED7MenuAdd menu[0] "　【離開】"
+		ED7MenuSetDisabled menu[0] 1
+		ED7MenuSetDisabled menu[0] 2
+		ED7MenuShow menu[0] 10 10 0
+		var[2] = 3
+	MenuWait var[0]
+	MenuClose menu[0]
+	TextClose 0
+	if var[0] == 4:
+		FadeOut 500ms 0x00000000 255
+		FadeWait
+	elif var[2] < var[0]:
+		FadeOut 2000ms 0x00000000 255
+		SoundPlay sound[159] 0 100 0
+		CamSetDistance 0 16000 0 2000ms
+		FadeWait
+		CamWait 1
+		Sleep 800ms
+	elif var[2] > var[0]:
+		FadeOut 2000ms 0x00000000 255
+		SoundPlay sound[159] 0 100 0
+		CamSetDistance 0 -14000 0 2000ms
+		FadeWait
+		CamWait 1
+		Sleep 800ms
+	else:
+		FadeOut 500ms 0x00000000 255
+		FadeWait
+	if var[0] == 4:
+		switch var[2]:
+			case 0:
+				EventEnd 5
+				NewScene "scena/t165b.bin" 117 0 0
+				Hcf
+				break
+			case 1:
+				EventEnd 5
+				NewScene "scena/t164b.bin" 117 0 0
+				Hcf
+				break
+			case 2:
+				EventEnd 5
+				NewScene "scena/t163b.bin" 110 0 0
+				Hcf
+				break
+			case 3:
+				EventEnd 5
+				NewScene "scena/t162b.bin" 117 0 0
+				Hcf
+				break
+	else:
+		switch var[0]:
+			case 0:
+				FlagSet flag[761]
+				Sleep 500ms
+				EventEnd 5
+				NewScene "scena/t165b.bin" 117 0 0
+				Hcf
+				break
+			case 1:
+				FlagSet flag[761]
+				Sleep 500ms
+				EventEnd 5
+				NewScene "scena/t164b.bin" 117 0 0
+				Hcf
+				break
+			case 2:
+				FlagSet flag[761]
+				Sleep 500ms
+				EventEnd 5
+				NewScene "scena/t163b.bin" 110 0 0
+				Hcf
+				break
+			case 3:
+				FlagSet flag[761]
+				Sleep 500ms
+				EventEnd 5
+				NewScene "scena/t162b.bin" 117 0 0
+				Hcf
+				break
+	Return
+
+fn[3]:
+	EventBegin 0
+	FadeOut 0ms 0x00000000 255
+	CamSetDistance 0 1000 0 0ms
+	ED7CamRotate 45deg 30deg 0deg 0ms
+	CamPers 400 0ms
+	CamZoom 24000 0ms
+	CharSetPos field_party[0] (1500, 50, 0) 90deg
+	if system[11] != 255:
+		CharSetPos field_party[1] (300, 50, 800) 90deg
+	if system[12] != 255:
+		CharSetPos field_party[2] (300, 50, -800) 90deg
+	if system[13] != 255:
+		CharSetPos field_party[3] (-900, 50, 800) 90deg
+	if system[14] != 255:
+		CharSetPos field_party[4] (-2100, 0, -800) 90deg
+	if system[15] != 255:
+		CharSetPos field_party[5] (-2100, 0, 800) 90deg
+	CharSetPos field_party[4] (-900, 50, -800) 90deg
+	CharFlagsUnset field_party[4] 0x0080
+	CharFlags2Unset field_party[4] 0x8000
+	FadeIn 500ms 0x00000000
+	FadeWait
+	TextSetName ""
+	TextMessage null {
+		{color 5}按下升降機的按鈕
+		卻毫無反應。{color 0}{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	if !flag[1819]:
+		if !flag[1847]:
+			TextTalk name[0] {
+				#15100798V#0005F#6P難道已經壞了嗎？{wait}
+			}
+			TextWait
+			TextTalk name[2] {
+				#15100799V#0203F#6P不，好像出於某種原因
+				而被鎖定了。{wait}
+			} {
+				#15100800V#0200F看來，想啟動它的話，
+				必須要使用認證卡片。{wait}
+			}
+			TextWait
+			FlagSet flag[1847]
+		else:
+			TextSetName ""
+			TextMessage null {
+				{color 5}升降機好像被鎖定了。{color 0}{wait}
+			}
+			TextWait
+			TextClose 0
+			_59
+	else:
+		TextSetName ""
+		TextMessage null {
+			{color 5}升降機好像被鎖定了。{color 0}{wait}
+		}
+		TextWait
+		TextClose 0
+		_59
+		if !flag[0]:
+			TextTalk name[0] {
+				#15100801V#0000F#6P（好……
+				　就來使用剛才那張卡吧。）{wait}
+			}
+			TextWait
+			FlagSet flag[0]
+		FadeOut 300ms 0x00000000 100
+		FadeWait
+		Menu menu[0] -1 -1 0
+			"使用認證卡片" // 0
+			"不使用" // 1
+		MenuWait var[0]
+		MenuClose menu[0]
+		FadeIn 300ms 0x00000000
+		FadeWait
+		switch var[0]:
+			case 0:
+				CrossFade 250ms
+				ED7_76_1 object[255] "on_add" 1
+				SoundPlay sound[72] 0 100 0
+				FadeWait
+				FlagSet flag[1820]
+				break
+			case 1:
+				FadeOut 1000ms 0x00000000 255
+				FadeWait
+				EventEnd 5
+				FlagSet flag[736]
+				NewScene "scena/t162b.bin" 0 0 0
+				Hcf
+				break
+	if !flag[1820]:
+		FadeOut 1000ms 0x00000000 255
+		FadeWait
+		EventEnd 5
+		FlagSet flag[736]
+		NewScene "scena/t162b.bin" 0 0 0
+		Hcf
+	Return

@@ -1,0 +1,4987 @@
+calmare zero_k scena
+scena:
+	name "c0240" "c0240" "c0240"
+	town town[15]
+	bgm bgm[100]
+	flags 8192
+	item_use fn[0,255]
+	unk 255 0
+
+entry:
+	pos (0, 0, -1000)
+	unk1 0
+	cam_from (0, 2500, 34000)
+	cam_pers 262
+	unk2 30
+	cam_deg 45deg
+	cam_limit 0deg 360deg
+	cam_at (0, 0, 0)
+	unk3 0
+	unk4 0
+	flags 0x0001
+	town town[15]
+	init fn[0,6]
+	reinit fn[0,7]
+
+chip[0] "chr/ch25600.itc"
+chip[1] "chr/ch21800.itc"
+chip[2] "chr/ch21802.itc"
+chip[3] "chr/ch21600.itc"
+chip[4] "chr/ch21602.itc"
+chip[5] "chr/ch20100.itc"
+chip[6] "chr/ch20102.itc"
+chip[7] "chr/ch20300.itc"
+chip[8] "chr/ch27600.itc"
+chip[9] "chr/ch27800.itc"
+chip[10] "apl/ch50386.itc"
+chip[11] "chr/ch05200.itc"
+chip[12] "chr/ch10000.itc"
+chip[13] "chr/ch05102.itc"
+
+npc char[0]:
+	name "サミィ"
+	pos (9060, 10000, 18000)
+	angle 45deg
+	flags 0x0101
+	unk2 0
+	chip chip[0]
+	init fn[0,0]
+	talk fn[0,8]
+	unk4 255
+
+npc char[1]:
+	name "キンドール"
+	pos (3170, 1049, 60459)
+	angle 90deg
+	flags 0x0181
+	unk2 0
+	chip chip[1]
+	init fn[0,0]
+	talk fn[0,9]
+	unk4 255
+
+npc char[2]:
+	name "キンドール"
+	pos (-2009, 1149, 60479)
+	angle 270deg
+	flags 0x0155
+	unk2 0
+	chip chip[2]
+	init fn[255,255]
+	talk fn[0,10]
+	unk4 255
+
+npc char[3]:
+	name "ブリジッタ"
+	pos (8470, 1019, 62380)
+	angle 0deg
+	flags 0x0101
+	unk2 0
+	chip chip[7]
+	init fn[0,0]
+	talk fn[0,11]
+	unk4 255
+
+npc char[4]:
+	name "ルーヴィック老人"
+	pos (-45650, 1019, 60169)
+	angle 180deg
+	flags 0x0101
+	unk2 0
+	chip chip[3]
+	init fn[0,3]
+	talk fn[0,12]
+	unk4 255
+
+npc char[5]:
+	name "ルーヴィック老人"
+	pos (-48700, 1200, 60400)
+	angle 270deg
+	flags 0x01D5
+	unk2 0
+	chip chip[4]
+	init fn[255,255]
+	talk fn[0,13]
+	unk4 255
+
+npc char[6]:
+	name "オリガ夫人"
+	pos (-39810, 1029, 62639)
+	angle 0deg
+	flags 0x0181
+	unk2 0
+	chip chip[5]
+	init fn[0,0]
+	talk fn[0,15]
+	unk4 255
+
+npc char[7]:
+	name "オリガ夫人"
+	pos (7030, 150, 6969)
+	angle 180deg
+	flags 0x0155
+	unk2 0
+	chip chip[6]
+	init fn[255,255]
+	talk fn[0,16]
+	unk4 255
+
+npc char[8]:
+	name "捜査官"
+	pos (1539, 10000, 19700)
+	angle 180deg
+	flags 0x0181
+	unk2 0
+	chip chip[8]
+	init fn[0,0]
+	talk fn[0,17]
+	unk4 255
+
+npc char[9]:
+	name "捜査官"
+	pos (50069, 1049, 62479)
+	angle 0deg
+	flags 0x0191
+	unk2 0
+	chip chip[9]
+	init fn[0,0]
+	talk fn[0,18]
+	unk4 255
+
+npc char[10]:
+	name "イリア"
+	pos (59099, 1549, 53029)
+	angle 90deg
+	flags 0x01D5
+	unk2 0
+	chip chip[10]
+	init fn[255,255]
+	talk fn[0,19]
+	unk4 255
+
+npc char[11]:
+	name "イリア"
+	pos (59099, 1549, 53029)
+	angle 90deg
+	flags 0x01F7
+	unk2 0
+	chip chip[10]
+	init fn[255,255]
+	talk fn[255,255]
+	unk4 255
+
+npc char[12]:
+	name "リーシャ"
+	pos (58290, 1029, 62500)
+	angle 0deg
+	flags 0x0185
+	unk2 0
+	chip chip[11]
+	init fn[0,0]
+	talk fn[0,20]
+	unk4 255
+
+npc char[13]:
+	name "シュリ"
+	pos (51930, 1049, 60970)
+	angle 135deg
+	flags 0x0185
+	unk2 0
+	chip chip[12]
+	init fn[0,0]
+	talk fn[0,21]
+	unk4 255
+
+trigger[0]:
+	pos (49800.0, 51150.0, 30.0)
+	radius 9000.0
+	transform
+		0.33333334 -0.0 0.0 -16.6
+		-0.0 0.5 -0.0 -25.575
+		0.0 -0.0 0.20000002 -0.0060000005
+		0.0 0.0 0.0 1.0
+		// translate (49.799995, 51.149998, 0.03)
+		// rotate (1.0, 0.0, 0.0) 0.0deg
+		// scale (2.9999998, 2.0, 4.999999)
+	unk1 0
+	unk2 0
+	function fn[0,24]
+	unk3 0
+	unk4 0
+	unk5 0
+	unk6 0
+
+look_point[0]:
+	pos (0, 10000, 20600)
+	radius 1000
+	bubble_pos (0, 11000, 20600)
+	unk1 124
+	unk2 0
+	function fn[0,33]
+	unk3 0
+	unk4 0
+
+look_point[1]:
+	pos (50350, 1050, 60430)
+	radius 2000
+	bubble_pos (50350, 2000, 60430)
+	unk1 124
+	unk2 0
+	function fn[0,34]
+	unk3 0
+	unk4 0
+
+look_point[2]:
+	pos (58690, 1000, 52860)
+	radius 3000
+	bubble_pos (58690, 2000, 52860)
+	unk1 124
+	unk2 0
+	function fn[0,35]
+	unk3 0
+	unk4 0
+
+sepith[0] 0 0 0 0 0 0 0 0
+
+fn[0]:
+	var[2] = random % 8
+	switch var[2]:
+		case 0:
+			ED7_A0 self 1450ms 0 251
+			break
+		case 1:
+			ED7_A0 self 1550ms 0 251
+			break
+		case 2:
+			ED7_A0 self 1600ms 0 251
+			break
+		case 3:
+			ED7_A0 self 1400ms 0 251
+			break
+		case 4:
+			ED7_A0 self 1650ms 0 251
+			break
+		case 5:
+			ED7_A0 self 1350ms 0 251
+			break
+		case 6:
+			ED7_A0 self 1500ms 0 251
+			break
+		default:
+			ED7_A0 self 1500ms 0 251
+			break
+	while 1:
+		ED7_A0 self 1500ms 0 251
+	Return
+
+fn[1]:
+	while 1:
+		CharIdle self (-1960, null, 10820) (2150, null, 12570) 1000mm/s
+		Sleep 300ms
+	Return
+
+fn[2]:
+	while 1:
+		CharIdle self (2130, null, 61470) (4150, null, 59440) 1000mm/s
+		Sleep 300ms
+	Return
+
+fn[3]:
+	while 1:
+		CharIdle self (-46010, null, 58560) (-42710, null, 61560) 1000mm/s
+		Sleep 300ms
+	Return
+
+fn[4]:
+	while 1:
+		CharIdle self (-39830, null, 51770) (-38770, null, 54150) 1000mm/s
+		Sleep 300ms
+	Return
+
+fn[5]:
+	while 1:
+		CharIdle self (57080, null, 55340) (60390, null, 58020) 1000mm/s
+		Sleep 300ms
+	Return
+
+fn[6]:
+	if flag[1792]:
+		CharFlagsSet char[4] 0x0080
+	elif flag[1566]:
+	elif flag[1554]:
+		CharFlagsSet char[3] 0x0080
+	elif flag[1536]:
+		CharSetPos char[3] (11480, 1000, 54590) 0deg
+	elif flag[1342]:
+		CharFlagsUnset char[11] 0x0080
+		CharFlagsUnset char[10] 0x0080
+		CharSetPos char[10] (59490, 700, 52910) 315deg
+		CharColor char[10] 0x00FFFFFF 0ms
+	elif flag[1307]:
+		CharFlagsSet char[0] 0x0080
+		CharFlagsSet char[4] 0x0080
+		CharFlagsSet char[7] 0x0080
+	elif flag[1362]:
+		CharSetPos char[1] (-990, 5000, 14750) 90deg
+		CharFlagsUnset char[1] 0x0080
+		CharFlagsSet char[2] 0x0080
+		CharSetPos char[3] (400, 5000, 14750) 270deg
+		CharFlagsSet char[4] 0x0080
+		CharFlagsSet char[7] 0x0080
+	elif flag[1292]:
+		CharFlagsUnset char[1] 0x0080
+		CharFlagsSet char[2] 0x0080
+		CharSetPos char[3] (4720, 1000, 60520) 270deg
+		CharFlagsSet char[4] 0x0080
+		CharFlagsSet char[7] 0x0080
+	elif flag[1282]:
+		CharFlagsSet char[4] 0x0080
+		CharFlagsSet char[7] 0x0080
+		if QuestTaskGet quest[29] 1:
+			CharSetPos char[0] (1420, 5000, 17800) 45deg
+		if QuestTaskGet quest[29] 3 && !QuestFlagsGet quest[29] 0x10 && !QuestFlagsGet quest[29] 0x40:
+			CharFlagsUnset char[4] 0x0080
+			CharFlagsUnset char[6] 0x0080
+			CharSetPos char[4] (-46140, 1030, 59110) 0deg
+			CharSetPos char[6] (-45740, 1030, 60980) 180deg
+			ForkFunc char[4] fork[0] fn[0,0]
+			if !QuestTaskGet quest[29] 7:
+				CharFlagsSet char[4] 0x0010
+				CharFlagsSet char[6] 0x0010
+		if QuestFlagsGet quest[29] 0x10:
+			CharFlagsUnset char[10] 0x0080
+			CharFlagsUnset char[12] 0x0080
+			CharFlagsUnset char[13] 0x0080
+			CharSetPos char[10] (52530, 1050, 60070) 270deg
+			CharSetChipBase char[10] chip[13]
+			CharSetChipPattern char[10] 0
+	elif flag[1280]:
+		CharFlagsSet char[4] 0x0080
+		CharFlagsSet char[7] 0x0080
+	elif flag[1055]:
+		CharSetPos char[0] (-210, 5000, 12250) 180deg
+		ForkFunc char[0] fork[0] fn[0,1]
+		CharFlagsSet char[3] 0x0080
+		CharFlagsSet char[4] 0x0080
+		CharFlagsUnset char[5] 0x0080
+		CharSetPos char[7] (-49990, 1200, 61760) 180deg
+		CharFlagsUnset char[8] 0x0080
+		CharFlagsUnset char[9] 0x0080
+	elif flag[1040]:
+		CharSetPos char[0] (-210, 5000, 12250) 180deg
+		ForkFunc char[0] fork[0] fn[0,1]
+		CharFlagsUnset char[8] 0x0080
+		CharFlagsUnset char[9] 0x0080
+		CharSetPos char[9] (58830, 1000, 56350) 180deg
+		ForkFunc char[9] fork[0] fn[0,5]
+	elif flag[1031]:
+		CharSetPos char[4] (-39220, 1000, 52790) 90deg
+		ForkFunc char[4] fork[0] fn[0,4]
+	elif flag[1024]:
+	elif flag[801]:
+		CharSetPos char[3] (3570, 1000, 60560) 269deg
+		ForkFunc char[3] fork[0] fn[0,2]
+		CharFlagsSet char[2] 0x0080
+	elif flag[777]:
+		CharFlagsSet char[3] 0x0080
+	elif flag[768]:
+		CharSetPos char[4] (-49940, 1050, 63990) 0deg
+		ForkFunc char[4] fork[0] fn[0,0]
+		CharFlagsUnset char[6] 0x0080
+		CharFlagsSet char[7] 0x0080
+	elif flag[533]:
+	elif flag[526]:
+	if flag[736]:
+		FlagUnset flag[736]
+		Event fn[0,22]
+	elif flag[737]:
+		FlagUnset flag[737]
+		FlagSet flag[11]
+		Event fn[0,29]
+	Return
+
+fn[7]:
+	if flag[11]:
+		system[1] = 0
+		FlagUnset flag[11]
+	char[10].51 = 1000
+	if !flag[1536] && flag[1342]:
+		char[10].51 = 1500
+		Emote char[10] 0mm 2000mm 28 33 250ms 0
+	ObjFlagsUnset object[2] 0x0010
+	LookPointFlagsUnset look_point[0] 0x0001
+	if flag[1554]:
+	elif flag[1536]:
+	elif flag[1342]:
+		ObjFlagsSet object[2] 0x0010
+		LookPointFlagsSet look_point[0] 0x0001
+	elif flag[1292]:
+	elif flag[1282]:
+		if QuestTaskGet quest[29] 3:
+			ObjFlagsSet object[2] 0x0010
+			LookPointFlagsSet look_point[0] 0x0001
+	elif flag[1280]:
+	elif flag[1055]:
+		ObjFlagsSet object[2] 0x0010
+		LookPointFlagsSet look_point[0] 0x0001
+	elif flag[1040]:
+		ObjFlagsSet object[2] 0x0010
+		LookPointFlagsSet look_point[0] 0x0001
+	ED7_76_0 object[255] "huku_nugippa" 1
+	ED7_76_0 object[255] "model5" 1
+	ED7_76_0 object[255] "bed_event" 1
+	if flag[1536]:
+	elif flag[1342]:
+		ED7_76_1 object[255] "bed_event" 1
+		ED7_76_1 object[255] "huku_nugippa" 1
+		ED7_76_0 object[255] "bed_normal" 1
+	elif flag[1292]:
+	elif flag[1282]:
+		if !QuestFlagsGet quest[29] 0x10:
+			ED7_76_1 object[255] "huku_nugippa" 1
+			ED7_76_1 object[255] "model5" 1
+	LookPointFlagsSet look_point[1] 0x0001
+	LookPointFlagsSet look_point[2] 0x0001
+	if QuestTaskGet quest[29] 1 && !QuestFlagsGet quest[29] 0x10 && !QuestFlagsGet quest[29] 0x40:
+		LookPointFlagsUnset look_point[1] 0x0001
+		LookPointFlagsUnset look_point[2] 0x0001
+	TriggerFlagsSet trigger[0] 0x0080
+	if QuestTaskGet quest[29] 9 && !QuestFlagsGet quest[29] 0x10 && !QuestFlagsGet quest[29] 0x40:
+		TriggerFlagsUnset trigger[0] 0x0080
+	if QuestTaskGet quest[29] 1 && !QuestFlagsGet quest[29] 0x10 && !QuestFlagsGet quest[29] 0x40:
+		EntranceSetFunc entrance[8] fn[0,36]
+	if system[4] == 3:
+		EntranceSetDisabled entrance[0] 0
+		EntranceSetDisabled entrance[8] 1
+		EntranceSetDisabled entrance[7] 0
+		EntranceSetDisabled entrance[9] 1
+	else:
+		EntranceSetDisabled entrance[0] 1
+		EntranceSetDisabled entrance[8] 0
+		EntranceSetDisabled entrance[7] 1
+		EntranceSetDisabled entrance[9] 0
+	if flag[1037] && !flag[1038]:
+		MapColor 0x00C8D2FF 0ms
+	elif flag[1792]:
+		MapColor 0x00C8D2FF 0ms
+	else:
+	Return
+
+fn[8]:
+	TextStart self
+	if QuestTaskGet quest[29] 3 && !QuestFlagsGet quest[29] 0x10 && !QuestFlagsGet quest[29] 0x40:
+		if !QuestTaskGet quest[29] 4:
+			if !flag[10]:
+				TextTalk name[0] {
+					#0001F（よし、聞き込みをしてみよう。）{wait}
+				} {
+					#0000Fすみません、
+					少しよろしいですか？{wait}
+				}
+				TextWait
+			FlagSet flag[10]
+			FadeOut 300ms 0x00000000 100
+			TextSetName ""
+			TextMessage null {
+				{color 5}ロイド達はストーカーについて
+				心当たりを尋ねてみた。{wait}
+			}
+			TextWait
+			TextClose 0
+			FadeIn 300ms 0x00000000
+			_59
+			TextTalk self {
+				……例のストーカーの話ね。
+				雇われ管理人として
+				私も警戒しているわ。{wait}
+			}
+			TextWait
+			TextTalk name[1] {
+				#0100Fストーカーを実際に
+				見かけた事はありますか？{wait}
+			}
+			TextWait
+			TextTalk self {
+				私はここに
+				毎日顔を出しているけど、
+				実はほとんど無いわね。{wait}
+			}
+			TextWait
+			TextTalk self {
+				でも先日、ちらっとだけ見たわ。{wait}
+			}
+			TextWait
+			TextTalk self {
+				帽子を深くかぶった少年だったけど
+				すぐに消えてしまったから
+				詳しい事は判らないわね。{wait}
+			}
+			TextWait
+			TextTalk name[2] {
+				#0200F他に思い出せる特徴などは？{wait}
+			}
+			TextWait
+			TextTalk self {
+				そうね……{wait}
+			}
+			TextWait
+			TextTalk self {
+				あえて言えば、
+				特に特徴が無いのが特徴ね。{wait}
+			}
+			TextWait
+			Emote field_party[0] 0mm 2000mm 0 1 250ms 2
+			SoundPlay sound[29] 0 100 0
+			Emote field_party[1] 0mm 2000mm 0 1 250ms 2
+			SoundPlay sound[29] 0 100 0
+			Emote field_party[2] 0mm 2000mm 0 1 250ms 2
+			SoundPlay sound[29] 0 100 0
+			Emote field_party[3] 0mm 2000mm 0 1 250ms 2
+			SoundPlay sound[29] 0 100 0
+			Sleep 1000ms
+			TextTalk self {
+				地味な格好だったのかしら。
+				さっぱり記憶に無いわ。{wait}
+			}
+			TextWait
+			TextTalk name[3] {
+				#0303Fふむ、そう来るか……{wait}
+			}
+			TextWait
+			TextTalk name[0] {
+				#0000Fでもリーシャから聞いた情報に
+				間違いはなさそうだな……{wait}
+			}
+			TextWait
+			QuestTaskSet quest[29] 4
+			if QuestTaskGet quest[29] 4 && QuestTaskGet quest[29] 5 && QuestTaskGet quest[29] 6 && QuestTaskGet quest[29] 7 && QuestTaskGet quest[29] 8:
+				TextTalk name[0] {
+					#0000Fよし、下調べはこんな所だな。{wait}
+				} {
+					一旦イリアさんの部屋に戻って
+					整理してみよう。{wait}
+				}
+				TextWait
+				TextTalk name[3] {
+					#0300F了解、そろそろ作戦を考えるか！{wait}
+				}
+				TextWait
+				TriggerFlagsUnset trigger[0] 0x0080
+				QuestTaskSet quest[29] 9
+		else:
+			TextTalk self {
+				私が見たのは
+				帽子を深くかぶった少年ね。
+				人相までは判らなかったわ。{wait}
+			}
+			TextWait
+			TextTalk self {
+				あとは、結構
+				地味な格好だったと思うわ。{wait}
+			}
+			TextWait
+			TextTalk self {
+				特に記憶に残っていないもの。{wait}
+			}
+			TextWait
+	elif flag[1792]:
+		if !flag[0]:
+			TextTalk self {
+				さー、仕事仕事……{wait}
+			}
+			TextWait
+			TextTalk self {
+				これもお給料を溜めて
+				イリア様の舞台を見るため……{wait}
+			}
+			TextWait
+			TextTalk self {
+				来月辺りのチケットが
+				確保できるといいわね～。{wait}
+			}
+			TextWait
+			FlagSet flag[0]
+		else:
+			TextTalk self {
+				ゴミの分別も排水溝の掃除も、
+				すべてはイリア様にお会いするため……{wait}
+			}
+			TextWait
+			TextTalk self {
+				さー、もう少し頑張りますか。{wait}
+			}
+			TextWait
+	elif flag[1566]:
+		if !flag[0]:
+			TextTalk self {
+				３階の人、この前
+				ようやく後姿を拝めたわ。{wait}
+			}
+			TextWait
+			TextTalk self {
+				出かけていく所だったから
+				よく見えなかったけど……{wait}
+			}
+			TextWait
+			TextTalk self {
+				ま、どこにでもいそうな
+				普通の人だったわね。{wait}
+			}
+			TextWait
+			TextTalk self {
+				金髪は綺麗だったけど。{wait}
+			}
+			TextWait
+			FlagSet flag[0]
+		else:
+			TextTalk self {
+				ま、ファッションを嗜む女性なら
+				あのくらい決めてて普通よね。{wait}
+			}
+			TextWait
+			TextTalk self {
+				うん、後姿からして
+				意外と普通っぽい人だったわ。{wait}
+			}
+			TextWait
+	elif flag[1554]:
+		if !flag[0]:
+			TextTalk self {
+				さ、仕事仕事……{wait}
+			}
+			TextWait
+			TextTalk self {
+				またお給料を貯めて
+				アルカンシェルを見に行くのよ。{wait}
+			}
+			TextWait
+			TextTalk self {
+				そのために
+				わき目も振らず仕事に励むの！{wait}
+			}
+			TextWait
+			FlagSet flag[0]
+		else:
+			TextTalk self {
+				これも全てイリア様に会うため……{wait}
+			}
+			TextWait
+			TextTalk self {
+				今日も仕事、仕事よ！{wait}
+			}
+			TextWait
+	elif flag[1536]:
+		if !flag[0]:
+			TextTalk self {
+				３階の人、最近部屋に
+				子供を泊めているみたいね。{wait}
+			}
+			TextWait
+			TextTalk self {
+				３階の人には会った事が無いけど、
+				その子は時々見かけるわ。{wait}
+			}
+			TextWait
+			TextTalk self {
+				帽子を被った１３、４歳くらいの
+				ちょっと美形な子なのよね。{wait}
+			}
+			TextWait
+			Emote self 0mm 2000mm 38 38 250ms 1
+			Sleep 500ms
+			TextTalk self {
+				…………あら？
+				そういえばあの子、前にどこかで
+				見たような気がするけど……{wait}
+			}
+			TextWait
+			FlagSet flag[0]
+		else:
+			TextTalk self {
+				ん～、あの子どこかで
+				見た事がある気が……{wait}
+			}
+			TextWait
+			TextTalk self {
+				……ま、いいわ。
+				管理人が詮索するのも
+				ヤボってものよね。{wait}
+			}
+			TextWait
+	elif flag[1342]:
+		if !flag[0]:
+			TextTalk self {
+				くぅ～……っ！！{wait}
+			}
+			TextWait
+			TextTalk self {
+				イリア様、素晴らしかったわ！{wait}
+			}
+			TextWait
+			TextTalk self {
+				それに……あの競演の
+				《月の姫》役の子も凄かったわね。{wait}
+			}
+			TextWait
+			TextTalk self {
+				新人アーティストって聞いてるけど
+				一気にファンになっちゃったわ！{wait}
+			}
+			TextWait
+			FlagSet flag[0]
+		else:
+			TextTalk self {
+				それにしても……イリア様って
+				どこに住んでらっしゃるのかしら。{wait}
+			}
+			TextWait
+			TextTalk self {
+				住所さえ判明すれば
+				私は地の果てまで追っかけをするわよ。{wait}
+			}
+			TextWait
+			if QuestFlagsGet quest[29] 0x10 | flag[1531]:
+				Emote field_party[0] 0mm 2000mm 16 19 250ms 1
+				SoundPlay sound[23] 0 100 0
+				Emote field_party[1] 0mm 2000mm 16 19 250ms 1
+				SoundPlay sound[23] 0 100 0
+				Sleep 1000ms
+				TextTalk name[0] {
+					#0005F（イリアさんのこと、
+					{}  気付いてないんだ……）{wait}
+				}
+				TextWait
+	elif flag[1307]:
+	elif flag[1362]:
+		if !flag[0]:
+			TextTalk self {
+				最近のパレードって
+				導力車が走るのねえ。{wait}
+			}
+			TextWait
+			TextTalk self {
+				世の中ハイカラになったものだわ。{wait}
+			}
+			TextWait
+			FlagSet flag[0]
+		else:
+			TextTalk self {
+				私の小さい頃はパレードって言えば
+				山車#4Rだ し#だったのにね。{wait}
+			}
+			TextWait
+			TextTalk self {
+				……何だか
+				歳を感じてムカつくわね。{wait}
+			}
+			TextWait
+	elif flag[1292]:
+		if !flag[0]:
+			TextTalk self {
+				今日は住人の皆さんも
+				ほとんど出払ってるみたいねえ……{wait}
+			}
+			TextWait
+			TextTalk self {
+				まあいいわ、その方が好都合よ。{wait}
+			}
+			TextWait
+			TextTalk self {
+				うっかり新作公演の
+				感想でも聞いちゃったら事だもの。{wait}
+			}
+			TextWait
+			FlagSet flag[0]
+		else:
+			TextTalk self {
+				私、明日は
+				アルカンシェルの新作を見に行くの。{wait}
+			}
+			TextWait
+			TextTalk self {
+				それまでネタバレは絶対禁止よ。
+				まっさらな状態で楽しみたいの！{wait}
+			}
+			TextWait
+	elif flag[1282]:
+		if !flag[0]:
+			TextTalk self {
+				人が浮かれていようが、
+				私は管理人としての仕事を全うするわ。{wait}
+			}
+			TextWait
+			TextTalk self {
+				最終日はお休みを取って
+				アルカンシェルの公演を
+				見に行くんだもの。{wait}
+			}
+			TextWait
+			FlagSet flag[0]
+		else:
+			TextTalk self {
+				さっさっ、掃除掃除……
+				これも最終日までの辛抱ね。{wait}
+			}
+			TextWait
+	elif flag[1280]:
+		if !flag[0]:
+			TextTalk self {
+				いよいよアルカンシェルの
+				新作が公開されたわね……{wait}
+			}
+			TextWait
+			TextTalk self {
+				私のゲットしたチケット、
+				記念祭の最終日なの。{wait}
+			}
+			TextWait
+			TextTalk self {
+				だからそれまで
+				誰とも口を利かないわ。{wait}
+			}
+			TextWait
+			TextTalk self {
+				だってお話の筋書きを
+				聞いちゃったら魅力半減だもの。{wait}
+			}
+			TextWait
+			FlagSet flag[0]
+		else:
+			Emote self 0mm 2000mm 2 7 80ms 1
+			SoundPlay sound[28] 0 100 0
+			Sleep 1000ms
+			TextTalk self {
+				おっと、それ以上話しかけないで！
+				ネタバレ厳禁よっ！{wait}
+			}
+			TextWait
+	elif flag[1055]:
+		if !flag[0]:
+			TextTalk self {
+				ドキドキ、ドキドキ……
+				ああ、今から胸が高鳴るわ……{wait}
+			}
+			TextWait
+			TextTalk self {
+				もうすぐ記念祭……
+				そしてイリア様の輝かしいお姿……！{wait}
+			}
+			TextWait
+			TextTalk self {
+				今年も舞台で会えますわね、
+				イリア様……㈱㈱㈱{wait}
+			}
+			TextWait
+			TextTalk self {
+				…………あら、何か用かしら？
+				用事なら、この雇われ管理人サミィに
+				言ってちょうだい。{wait}
+			}
+			TextWait
+			FlagSet flag[0]
+		else:
+			TextTalk self {
+				それにしても、３階に来ている人たち
+				まだ居座ってるのかしら。{wait}
+			}
+			TextWait
+			TextTalk self {
+				３階を借りている人なら今日も留守よ。
+				私も会った事がないくらい
+				お留守ばっかりなんだから。{wait}
+			}
+			TextWait
+	elif flag[1040]:
+		if !flag[0]:
+			TextTalk self {
+				３階の部屋に
+				朝からお客さんが来ているの。{wait}
+			}
+			TextWait
+			TextTalk self {
+				……でも、何だか変な感じよ。
+				エラソーな雰囲気で、管理人の私も
+				部屋に近づけさせないの。{wait}
+			}
+			TextWait
+			TextTalk self {
+				あれってもしかして
+				警察の人じゃないかしら。{wait}
+			}
+			TextWait
+			FlagSet flag[0]
+		else:
+			TextTalk self {
+				……実は私、前から
+				３階の人って怪しいんじゃないかと
+				思ってたのよね。{wait}
+			}
+			TextWait
+			TextTalk self {
+				だって日中はいつも留守で、
+				一度も顔を見たことないんだもの。{wait}
+			}
+			TextWait
+	elif flag[1031]:
+		if !flag[0]:
+			TextTalk self {
+				３階の人、今日も留守なのよねぇ。{wait}
+			}
+			TextWait
+			TextTalk self {
+				まあいいか……
+				明日は掃除に入らせてもらう日だし。{wait}
+			}
+			TextWait
+			TextTalk self {
+				３階の人には、月に一度
+				部屋を掃除するように頼まれているのよ。
+				高級アパートならではのサービスね。{wait}
+			}
+			TextWait
+			FlagSet flag[0]
+		else:
+			TextTalk self {
+				３階の人に関して
+				私が知っている事は少ないわ……{wait}
+			}
+			TextWait
+			TextTalk self {
+				とりあえず、
+				若い女の人であることは確かね。{wait}
+			}
+			TextWait
+			TextTalk self {
+				だっていつも
+				下着出しっぱなしなんだもの。{wait}
+			}
+			TextWait
+	elif flag[1024]:
+		if !flag[0]:
+			TextTalk self {
+				アルカンシェルのチケット、
+				何とか来月分をゲットしたわ。{wait}
+			}
+			TextWait
+			TextTalk self {
+				Ｂ席だけどね！{wait}
+			}
+			TextWait
+			TextTalk self {
+				んもうすっごい
+				取り合いだったんだから～。{wait}
+			}
+			TextWait
+			FlagSet flag[0]
+		else:
+			TextTalk self {
+				でもこれでイリア様に会えるわ～。
+				うふふ、今から待ちきれないかも～！{wait}
+			}
+			TextWait
+	elif flag[801]:
+		TextTalk self {
+			３階の人、今日も
+			朝早くから出かけたみたいね。{wait}
+		}
+		TextWait
+		TextTalk self {
+			ホントに何者なのかしら～。{wait}
+		}
+		TextWait
+	elif flag[777]:
+		if !flag[0]:
+			TextTalk self {
+				私はゴミ出しにはうるさいの。
+				ちゃんと分別して出さなくちゃね。{wait}
+			}
+			TextWait
+			TextTalk self {
+				でも……市の回収って適当みたい。{wait}
+			}
+			TextWait
+			TextTalk self {
+				時々分別したゴミを
+				一緒にして持っていっちゃうのよ。
+				あったま来ちゃうわ！{wait}
+			}
+			TextWait
+			FlagSet flag[0]
+		else:
+			TextTalk self {
+				私はゴミ出しにはうるさいの。{wait}
+			}
+			TextWait
+			TextTalk self {
+				あなた達もちゃんと分別しなさいよ？{wait}
+			}
+			TextWait
+	elif flag[768]:
+		if !flag[0]:
+			TextTalk self {
+				ねぇねぇ、聞いた？{wait}
+			}
+			TextWait
+			TextTalk self {
+				もうすぐアルカンシェルの
+				新作公演チケットが発売されるそうよ。{wait}
+			}
+			TextWait
+			TextTalk self {
+				待ちに待ったイリア様の勇姿……㈱
+				うーん、絶対手に入れなくっちゃ！{wait}
+			}
+			TextWait
+			FlagSet flag[0]
+		else:
+			TextTalk self {
+				もうすぐアルカンシェルの
+				新作公演チケットが発売されるの。{wait}
+			}
+			TextWait
+			TextTalk self {
+				イリアに会うためなら
+				徹夜して並んででも買うわよ～！{wait}
+			}
+			TextWait
+	elif flag[533]:
+		if !flag[0]:
+			TextTalk self {
+				３階の人はいつもお出かけ中なの。{wait}
+			}
+			TextWait
+			TextTalk self {
+				朝早くに出勤して
+				夜遅くに帰ってくるみたいで……
+				私も一度も見かけた事がないわ。{wait}
+			}
+			TextWait
+			TextTalk self {
+				ちゃんと毎月の
+				ミラの振込みはあるんだけどね。{wait}
+			}
+			TextWait
+			FlagSet flag[0]
+		else:
+			TextTalk self {
+				３階の人はいつもお出かけ中なのよ。
+				私も一度も見かけた事がないわ。{wait}
+			}
+			TextWait
+	elif flag[526]:
+		TextTalk self {
+			あらこんにちは。
+			雇われ管理人のサミィよ。{wait}
+		}
+		TextWait
+		TextTalk self {
+			どなたかにご用？
+			ルーヴィックさんなら１階、
+			キンドールさんなら２階のお部屋よ。{wait}
+		}
+		TextWait
+	TextEnd self
+	Return
+
+fn[9]:
+	TextStart self
+	if flag[1792]:
+	elif flag[1566]:
+	elif flag[1554]:
+	elif flag[1536]:
+	elif flag[1342]:
+	elif flag[1307]:
+	elif flag[1362]:
+		TextTalk self {
+			……なかなか見事だった。{wait}
+		}
+		TextWait
+		TextTalk self {
+			今年のパレードは
+			賞賛されてしかるべきだろう。{wait}
+		}
+		TextWait
+	elif flag[1292]:
+		TextTalk self {
+			手持ちの仕事が片付いたのでね、
+			妻とパレードを見に行くのだ。{wait}
+		}
+		TextWait
+		TextTalk self {
+			クロスベルのための祭りだ。
+			私達も少しは楽しまないとな。{wait}
+		}
+		TextWait
+	TextEnd self
+	Return
+
+fn[10]:
+	field_party[0].5 = self.4
+	self.5 = self.4
+	TextStart self
+	CharFlagsUnset self 0x0010
+	CharTurnToChar self field_party[0] 0deg/s
+	self.4 = (self.4 + 360) % 360
+	self.4 = self.4 + 360 - self.5
+	self.5 = self.4 / 180
+	if self.4 <= 45 | self.4 >= 315 && self.4 <= 405 | self.4 >= 675:
+	elif self.5 < 1:
+		self.8 = 2
+	elif self.5 > 2:
+		self.8 = 1
+	else:
+		self.8 = self.5
+	self.4 = field_party[0].5
+	field_party[0].5 = 0
+	self.5 = 0
+	CharFlagsSet self 0x0010
+	if QuestTaskGet quest[29] 3 && !QuestFlagsGet quest[29] 0x10 && !QuestFlagsGet quest[29] 0x40:
+		if !QuestTaskGet quest[29] 5:
+			if !flag[10]:
+				TextTalk name[0] {
+					#0001F（よし、聞き込みをしてみよう。）{wait}
+				} {
+					#0000Fすみません、
+					少しよろしいですか？{wait}
+				}
+				TextWait
+			FlagSet flag[10]
+			FadeOut 300ms 0x00000000 100
+			TextSetName ""
+			TextMessage null {
+				{color 5}ロイド達はストーカーについて
+				心当たりを尋ねてみた。{wait}
+			}
+			TextWait
+			TextClose 0
+			FadeIn 300ms 0x00000000
+			_59
+			TextTalk self {
+				ストーカーか……
+				そういった噂も聞いている。{wait}
+			}
+			TextWait
+			TextTalk self {
+				私は普段は家にいるから
+				姿を見た事はないが、
+				妙な物音を聞いた事があるな。{wait}
+			}
+			TextWait
+			TextTalk self {
+				上の階から
+				ゴソゴソと音がするのだよ。{wait}
+			}
+			TextWait
+			TextTalk self {
+				たしか日中は
+				３階の人は留守なはずなんだが。{wait}
+			}
+			TextWait
+			TextTalk name[0] {
+				#0000Fそれはいつ頃からですか？{wait}
+			}
+			TextWait
+			TextTalk self {
+				記念祭に入ってすぐくらいだよ。{wait}
+			}
+			TextWait
+			TextTalk self {
+				ここ２、３日、といった所だな。{wait}
+			}
+			TextWait
+			TextTalk name[1] {
+				#0108F（イリアさんの部屋に入って
+				{}  何をしていたのかしら。）{wait}
+			}
+			TextWait
+			TextTalk name[0] {
+				#0001F（……そうだな。
+				{}  部屋に荒らされた形跡は
+				{}  無かったと思うけど……）{wait}
+			}
+			TextWait
+			QuestTaskSet quest[29] 5
+			if QuestTaskGet quest[29] 4 && QuestTaskGet quest[29] 5 && QuestTaskGet quest[29] 6 && QuestTaskGet quest[29] 7 && QuestTaskGet quest[29] 8:
+				TextTalk name[0] {
+					#0000Fよし、下調べはこんな所だな。{wait}
+				} {
+					一旦イリアさんの部屋に戻って
+					整理してみよう。{wait}
+				}
+				TextWait
+				TextTalk name[3] {
+					#0300F了解、そろそろ作戦を考えるか！{wait}
+				}
+				TextWait
+				TriggerFlagsUnset trigger[0] 0x0080
+				QuestTaskSet quest[29] 9
+		else:
+			TextTalk self {
+				上の階から妙な物音がするんだ。
+				ここ２、３日のことだよ。{wait}
+			}
+			TextWait
+			TextTalk self {
+				てっきり上の階の人が
+				記念祭で在宅しているのかと
+				思っていたんだが。{wait}
+			}
+			TextWait
+			TextTalk self {
+				もしや……あれが
+				ストーカーだったのかな。{wait}
+			}
+			TextWait
+	elif flag[1792]:
+		if !flag[1]:
+			TextTalk self {
+				……クロスベルの議員どもめ……{wait}
+			}
+			TextWait
+			TextTalk self {
+				けしからん、まったく許せないな！{wait}
+			}
+			TextWait
+			FlagSet flag[1]
+		else:
+			TextTalk self {
+				無能な議員など、
+				全員首にしてしまえばいいのだ！{wait}
+			}
+			TextWait
+	elif flag[1566]:
+		if !flag[1]:
+			TextTalk self {
+				くそっ、凝り過ぎたデザインだと……？{wait}
+			}
+			TextWait
+			TextTalk self {
+				この芸術性が
+				何故分からないんだっ……！{wait}
+			}
+			TextWait
+			FlagSet flag[1]
+		else:
+			TextTalk self {
+				帝国派議員どもめ……！{wait}
+			}
+			TextWait
+	elif flag[1554]:
+		if !flag[1]:
+			TextTalk self {
+				新しい市庁舎ビルの建設は
+				目下予算が凍結されているのだ。{wait}
+			}
+			TextWait
+			TextTalk self {
+				……工事の発注をめぐって
+				議員たちがもめていてな……{wait}
+			}
+			TextWait
+			TextTalk self {
+				本年度こそ
+				再開できればいいんだが……{wait}
+			}
+			TextWait
+			FlagSet flag[1]
+		else:
+			TextTalk self {
+				あのビルには私にも
+				拘りがあるのだ。{wait}
+			}
+			TextWait
+			TextTalk self {
+				あの件の予算審議は今日の予定……
+				こちらまで緊張するな……{wait}
+			}
+			TextWait
+	elif flag[1536]:
+		CharSetChipPattern self 0
+		if !flag[1]:
+			TextTalk self {
+				この建物の完成を
+				市長選までに、か……{wait}
+			}
+			TextWait
+			TextTalk self {
+				最近のクライアントは
+				随分と無茶を言ってくれるな……{wait}
+			}
+			TextWait
+			FlagSet flag[1]
+		else:
+			TextTalk self {
+				確かに４ヵ月後の市長選は
+				落成式典に絶好のタイミングだが……{wait}
+			}
+			TextWait
+			TextTalk self {
+				さすがに無理だな。
+				文句を言ってやらねば……{wait}
+			}
+			TextWait
+	elif flag[1342]:
+		if !flag[1]:
+			TextTalk self {
+				記念祭からこちら
+				仕事が続々と舞い込んでいるのだ……{wait}
+			}
+			TextWait
+			TextTalk self {
+				私の設計したビルを
+				使ってくれるのは嬉しいが、
+				これでは忙しくて敵わないな……{wait}
+			}
+			TextWait
+			FlagSet flag[1]
+		else:
+			TextTalk self {
+				私は絶対に妥協などしない。{wait}
+			}
+			TextWait
+			TextTalk self {
+				悪いが……これ以上の
+				順番待ちは断らせてもらうぞ。{wait}
+			}
+			TextWait
+	elif flag[1307]:
+		if !flag[1]:
+			TextTalk self {
+				おっと、邪魔を
+				しないでくれたまえよ。{wait}
+			}
+			TextWait
+			TextTalk self {
+				今日は残りの仕事を
+				片付けてしまうつもりなんだ。{wait}
+			}
+			TextWait
+			TextTalk self {
+				……手早く済ませれば
+				夕方には時間が作れそうなのでな。{wait}
+			}
+			TextWait
+			FlagSet flag[1]
+		else:
+			TextTalk self {
+				……仕事を片付けて、夕方からは
+				妻に付き合うとしようか。{wait}
+			}
+			TextWait
+	elif flag[1294]:
+		TextTalk self {
+			おや、何か用事かね？{wait}
+		}
+		TextWait
+		TextTalk self {
+			生憎設計の仕事が残っていてね、
+			あまり構っている余裕が無いんだが。{wait}
+		}
+		TextWait
+	elif flag[1362]:
+	elif flag[1292]:
+	elif flag[1282]:
+		TextTalk self {
+			まだ仕事が残っているんだ。{wait}
+		}
+		TextWait
+		TextTalk self {
+			……妻には悪いが、
+			今は手が離せないのだよ。{wait}
+		}
+		TextWait
+	elif flag[1280]:
+		TextTalk self {
+			ううむ、表が騒がしいな……{wait}
+		}
+		TextWait
+		TextTalk self {
+			これでは仕事に集中できないぞ。{wait}
+		}
+		TextWait
+	elif flag[1055]:
+		TextTalk self {
+			よし、あと一息で
+			このビルの設計も完成だ……{wait}
+		}
+		TextWait
+		TextTalk self {
+			一日でも早くクライアントに
+			お見せしなくてはな。{wait}
+		}
+		TextWait
+	elif flag[1040]:
+		TextTalk self {
+			私の父も祖父も
+			有名な建築家だったのだ。{wait}
+		}
+		TextWait
+		TextTalk self {
+			クロスベル市庁舎は
+			私の祖父の設計だよ。{wait}
+		}
+		TextWait
+		TextTalk self {
+			そういえばあの建物も
+			もう築６０年になるんだな……
+			感慨深いものがあるよ。{wait}
+		}
+		TextWait
+	elif flag[1031]:
+		if !flag[1]:
+			TextTalk self {
+				マフィア・ルバーチェの連中は
+				地上げもやっていると聞く……{wait}
+			}
+			TextWait
+			TextTalk self {
+				地上げとは、住民を強引に立ち退かせて
+				建設用地を違法に確保する行為だ。{wait}
+			}
+			TextWait
+			TextTalk self {
+				まったくタチの悪い連中だよ。{wait}
+			}
+			TextWait
+			FlagSet flag[1]
+		else:
+			TextTalk self {
+				ルバーチェの連中は
+				地上げもやっていると聞く。{wait}
+			}
+			TextWait
+			TextTalk self {
+				警察も何とか
+				取り締まれないものかな。{wait}
+			}
+			TextWait
+	elif flag[1024]:
+		if !flag[1]:
+			TextTalk self {
+				来月に向けて、クロスベル中のビル建設が
+				急ピッチで進められているのだ。{wait}
+			}
+			TextWait
+			TextTalk self {
+				なにせ来月は７０周年の創立記念祭……
+				各国からも大いに注目が集まるときだ。{wait}
+			}
+			TextWait
+			TextTalk self {
+				ビルのオーナーとしても
+				最高のアピールタイミングだからな。{wait}
+			}
+			TextWait
+			FlagSet flag[1]
+		else:
+			TextTalk self {
+				来月には多くのビルが
+				落成式典を迎えるだろう。{wait}
+			}
+			TextWait
+			TextTalk self {
+				まさに繁栄ここに
+				極まれりといった感だな。{wait}
+			}
+			TextWait
+	elif flag[801]:
+	elif flag[777]:
+		if !flag[1]:
+			TextTalk self {
+				ミシュラムにテーマパークが
+				開園したのは知っているだろう？{wait}
+			}
+			TextWait
+			TextTalk self {
+				あのテーマパーク本体は
+				ＩＢＣ事業部が手がけていてね。{wait}
+			}
+			TextWait
+			TextTalk self {
+				最新の建築技術なども
+				取り入れているらしい……
+				私も一度見てみたい所だな。{wait}
+			}
+			TextWait
+			FlagSet flag[1]
+		else:
+			TextTalk self {
+				私もいくつかホテルを設計したのだが、
+				まだテーマパークには行った事がない。{wait}
+			}
+			TextWait
+			TextTalk self {
+				うむ……一度彼らの
+				仕事振りを見てみたい所だな。{wait}
+			}
+			TextWait
+	elif flag[768]:
+		TextTalk self {
+			ふう、設計に取り組んでいたら
+			徹夜になってしまったよ。{wait}
+		}
+		TextWait
+		TextTalk self {
+			しかしこれなら先方も満足するだろう。
+			ふふ、明日の説明会が楽しみだよ。{wait}
+		}
+		TextWait
+	elif flag[533]:
+		CharSetChipPattern self 0
+		if !flag[1]:
+			TextTalk self {
+				しかし……あの連中には困った物だ。
+				私が引いた設計図を
+				ことごとく無視しおって……{wait}
+			}
+			TextWait
+			TextTalk self {
+				だいたい新市庁舎ビルのデザインを
+				発注したのはそちらではないか！{wait}
+			}
+			TextWait
+			TextTalk self {
+				抗議してやる……
+				勝手にデザインを改変するなど
+				……私は絶対に認めないぞ！{wait}
+			}
+			TextWait
+			FlagSet flag[1]
+		else:
+			TextTalk self {
+				くそっ、これのどこが
+				改善案だというのだ。{wait}
+			}
+			TextWait
+			TextTalk self {
+				くだらない、全くくだらないっ！{wait}
+			}
+			TextWait
+	elif flag[526]:
+		if !flag[1]:
+			TextTalk self {
+				建設中の新市庁舎ビルは
+				地上４０階建てという超高層建造物だ。{wait}
+			}
+			TextWait
+			TextTalk self {
+				これまでにない斬新なアイデアを
+				いくつも盛り込んだ、
+				まさに時代の最先端を行く建物だな。{wait}
+			}
+			TextWait
+			TextTalk self {
+				私は外観やオフィススペースの
+				デザインを手がけたのだよ。
+				ふふ、完成が待ち遠しいな。{wait}
+			}
+			TextWait
+			FlagSet flag[1]
+		else:
+			TextTalk self {
+				新市庁舎ビルは地上４０階建ての
+				超高層建造物なのだ。{wait}
+			}
+			TextWait
+			TextTalk self {
+				あのデザインは中々の大仕事だった……
+				私も完成する日が楽しみだよ。{wait}
+			}
+			TextWait
+	CharSetChipPattern self 0
+	TextEnd self
+	Return
+
+fn[11]:
+	TextStart self
+	if QuestTaskGet quest[29] 3 && !QuestFlagsGet quest[29] 0x10 && !QuestFlagsGet quest[29] 0x40:
+		if !QuestTaskGet quest[29] 6:
+			if !flag[10]:
+				TextTalk name[0] {
+					#0001F（よし、聞き込みをしてみよう。）{wait}
+				} {
+					#0000Fすみません、
+					少しよろしいですか？{wait}
+				}
+				TextWait
+			FlagSet flag[10]
+			FadeOut 300ms 0x00000000 100
+			TextSetName ""
+			TextMessage null {
+				{color 5}ロイド達はストーカーについて
+				心当たりを尋ねてみた。{wait}
+			}
+			TextWait
+			TextClose 0
+			FadeIn 300ms 0x00000000
+			_59
+			TextTalk self {
+				ストーカーですか？
+				怖いですね……{wait}
+			}
+			TextWait
+			TextTalk self {
+				でも私は見かけた事はありません。
+				よくお買い物なんかには
+				出かけるのですが……{wait}
+			}
+			TextWait
+			TextTalk name[2] {
+				#0200Fお買い物……
+				時間帯はお昼前や夕方ですか？{wait}
+			}
+			TextWait
+			TextTalk self {
+				ええ、そうですね。
+				大体いつも決まった時間です。{wait}
+			}
+			TextWait
+			TextTalk name[1] {
+				#0105F（丁度人通りの多い時間帯ね。）{wait}
+			}
+			TextWait
+			TextTalk name[0] {
+				#0001F（ああ、その頃には
+				{}  現れないらしい……）{wait}
+			} {
+				（用心深いやつみたいだな。）{wait}
+			}
+			TextWait
+			QuestTaskSet quest[29] 6
+			if QuestTaskGet quest[29] 4 && QuestTaskGet quest[29] 5 && QuestTaskGet quest[29] 6 && QuestTaskGet quest[29] 7 && QuestTaskGet quest[29] 8:
+				TextTalk name[0] {
+					#0000Fよし、下調べはこんな所だな。{wait}
+				} {
+					一旦イリアさんの部屋に戻って
+					整理してみよう。{wait}
+				}
+				TextWait
+				TextTalk name[3] {
+					#0300F了解、そろそろ作戦を考えるか！{wait}
+				}
+				TextWait
+				TriggerFlagsUnset trigger[0] 0x0080
+				QuestTaskSet quest[29] 9
+		else:
+			TextTalk self {
+				ストーカーなんて怖いですね。{wait}
+			}
+			TextWait
+			TextTalk self {
+				私がお買い物にいく時間には
+				見た事はないですけど……{wait}
+			}
+			TextWait
+	elif flag[1792]:
+		TextTalk self {
+			今日は紅茶を淹れてあげましょう。{wait}
+		}
+		TextWait
+		TextTalk self {
+			少しは落ち着いて
+			くれるかもしれませんし。{wait}
+		}
+		TextWait
+	elif flag[1566]:
+		if !flag[2]:
+			TextTalk self {
+				新しい市庁舎ビルの予算は
+				結局再開されなかったみたいです。{wait}
+			}
+			TextWait
+			TextTalk self {
+				議員の質疑応答で
+				費用が無駄にかかりすぎると
+				取りざたされてしまって……{wait}
+			}
+			TextWait
+			TextTalk self {
+				主人は怒り心頭です。{wait}
+			}
+			TextWait
+			FlagSet flag[2]
+		else:
+			TextTalk self {
+				困りましたね……
+				主人は仕事に妥協しない人なので……{wait}
+			}
+			TextWait
+	elif flag[1554]:
+	elif flag[1536]:
+		TextTalk self {
+			最近お仕事が
+			沢山舞い込んでいるんです。{wait}
+		}
+		TextWait
+		TextTalk self {
+			書類の整理も大変です。{wait}
+		}
+		TextWait
+	elif flag[1342]:
+		if !flag[2]:
+			TextTalk self {
+				主人は最近仕事が
+				とても忙しいらしいんです。{wait}
+			}
+			TextWait
+			TextTalk self {
+				……会話が減ってしまったので
+				少し寂しいですね。{wait}
+			}
+			TextWait
+			FlagSet flag[2]
+		else:
+			TextTalk self {
+				あっと、こんな事じゃいけませんね。{wait}
+			}
+			TextWait
+			TextTalk self {
+				主人の仕事がはかどるように
+				熱い紅茶でも淹れてあげましょうか。{wait}
+			}
+			TextWait
+	elif flag[1307]:
+		TextTalk self {
+			今夜のお料理はとびきりの
+			ご馳走にするつもりなんです。{wait}
+		}
+		TextWait
+		TextTalk self {
+			ふふ、張り切って
+			支度をしないといけませんね。{wait}
+		}
+		TextWait
+	elif flag[1294]:
+		if !flag[2]:
+			TextTalk self {
+				小さな男の子……ですか？{wait}
+			}
+			TextWait
+			TextTalk self {
+				さあ、心当たりはありませんね……{wait}
+			}
+			TextWait
+			FlagSet flag[2]
+		else:
+			TextTalk self {
+				私たちもパレードは
+				見ていましたけれど……{wait}
+			}
+			TextWait
+			TextTalk self {
+				ごめんなさい、今ひとつ
+				心当たりはないみたいです。{wait}
+			}
+			TextWait
+	elif flag[1362]:
+		TextTalk self {
+			ふふ、今年のパレードは
+			とっても楽しかったです。{wait}
+		}
+		TextWait
+		TextTalk self {
+			いい思い出ができました。{wait}
+		}
+		TextWait
+	elif flag[1292]:
+		_Char4A char[1] 255
+		CharTurnToChar char[3] char[1] 0deg/s
+		TextTalk char[1] {
+			コホン、それでは行こうか。{wait}
+		}
+		TextWait
+		TextTalk char[1] {
+			パレードを見逃しては
+			取引先との話題にも事欠くからな。{wait}
+		}
+		TextWait
+		TextTalk self {
+			ふふ……
+			ええ、行きましょうか。{wait}
+		}
+		TextWait
+		_Char4B char[1] 255
+	elif flag[1282]:
+		TextTalk self {
+			主人は仕事人間なの。{wait}
+		}
+		TextWait
+		TextTalk self {
+			私は構わないですけど、
+			たまには息抜きして欲しいですね。{wait}
+		}
+		TextWait
+	elif flag[1280]:
+		TextTalk self {
+			あら、いらっしゃい。
+			こちらキンドール設計事務所です。{wait}
+		}
+		TextWait
+		TextTalk self {
+			今日も営業していますよ。{wait}
+		}
+		TextWait
+	elif flag[1055]:
+	elif flag[1040]:
+		if !flag[2]:
+			TextTalk self {
+				ＩＢＣグループの建設会社は
+				うちのお馴染みさんなんです。{wait}
+			}
+			TextWait
+			TextTalk self {
+				現場主任さんは
+				何度も遊びに来てくださって、
+				主人とは親友の仲なんですよ。{wait}
+			}
+			TextWait
+			TextTalk self {
+				でもお酒の付き合いも
+				多いですから、体が心配ですね。{wait}
+			}
+			TextWait
+			FlagSet flag[2]
+		else:
+			TextTalk self {
+				建設会社の方とは
+				お酒の付き合いが多いんです。{wait}
+			}
+			TextWait
+			TextTalk self {
+				体には気をつけて欲しいですね。{wait}
+			}
+			TextWait
+	elif flag[1031]:
+		TextTalk self {
+			今日は主人の好物、
+			ビーフシチューの予定なんです。{wait}
+		}
+		TextWait
+		TextTalk self {
+			ふふ、下ごしらえを
+			しておかなくちゃ。{wait}
+		}
+		TextWait
+	elif flag[1024]:
+		TextTalk self {
+			アルカンシェルのイリアさんって
+			とても人気だそうですね。{wait}
+		}
+		TextWait
+		TextTalk self {
+			サミィさんが
+			いつもお話しているから
+			すっかり覚えてしまいました。{wait}
+		}
+		TextWait
+	elif flag[801]:
+		if !flag[2]:
+			TextTalk self {
+				主人が居ない間に
+				掃除をしておかないといけません。{wait}
+			}
+			TextWait
+			TextTalk self {
+				主人は……今ごろ
+				中央広場のレストランで
+				打ち合わせをしている頃かしら。{wait}
+			}
+			TextWait
+			TextTalk self {
+				ふふ……気難しい上に
+				忙しい人なんです。{wait}
+			}
+			TextWait
+			FlagSet flag[2]
+		else:
+			TextTalk self {
+				さて、鬼の居ない間に
+				掃除をしておかなくっちゃ。{wait}
+			}
+			TextWait
+	elif flag[777]:
+	elif flag[768]:
+		if !flag[2]:
+			TextTalk self {
+				あの人ったらまた徹夜したんですね。
+				新しいビルの設計になると
+				いつもこうなんだから……{wait}
+			}
+			TextWait
+			TextTalk self {
+				ふふ、困った人。
+				仕方がないので熱い紅茶でも
+				淹れてあげましょう。{wait}
+			}
+			TextWait
+			FlagSet flag[2]
+		else:
+			TextTalk self {
+				主人は大の紅茶好きなの。
+				徹夜明けにはいつもねだるんですよ。{wait}
+			}
+			TextWait
+	elif flag[533]:
+		if !flag[2]:
+			TextTalk self {
+				主人は集中すると
+				周りの事が見えなくなります。{wait}
+			}
+			TextWait
+			TextTalk self {
+				ですから突然大声を
+				上げる事もありますけど……
+				どうか気を悪くなさらないでね。{wait}
+			}
+			TextWait
+			FlagSet flag[2]
+		else:
+			TextTalk self {
+				主人は集中すると
+				周りの事が見えなくなるの。
+				どうか気を悪くなさらないでね。{wait}
+			}
+			TextWait
+	elif flag[526]:
+		if !flag[2]:
+			Emote self 0mm 2000mm 38 38 250ms 1
+			Sleep 1000ms
+			TextTalk self {
+				あ……すみません。
+				お料理をしていたもので。{wait}
+			}
+			TextWait
+			TextTalk self {
+				こちらキンドール設計事務所です。
+				ご依頼でしたら
+				主人に仰ってくださいね。{wait}
+			}
+			TextWait
+			TextTalk self {
+				丁度手が空いているみたいですし。{wait}
+			}
+			TextWait
+			FlagSet flag[2]
+		else:
+			TextTalk self {
+				こちらキンドール設計事務所です。
+				ご依頼でしたら
+				主人に仰ってくださいね。{wait}
+			}
+			TextWait
+	TextEnd self
+	Return
+
+fn[12]:
+	TextStart self
+	if QuestTaskGet quest[29] 3 && !QuestFlagsGet quest[29] 0x10 && !QuestFlagsGet quest[29] 0x40:
+		if !QuestTaskGet quest[29] 7:
+			_Char4A char[4] 255
+			_Char4A char[6] 255
+			TextTalk char[4] {
+				やれやれ、昼くらい
+				外食にしたいものじゃが。{wait}
+			}
+			TextWait
+			TextTalk char[6] {
+				朝に作り置きしてしまったのだから
+				仕方ないでしょう。{wait}
+			}
+			TextWait
+			TextTalk char[6] {
+				グダグダ言わないでくださいな。{wait}
+			}
+			TextWait
+			TextTalk name[0] {
+				#0003F（何だか険悪なムードだ……）{wait}
+			} {
+				#0000Fす、すみません。
+				少しよろしいですか？{wait}
+			}
+			TextWait
+			Emote char[4] 0mm 2000mm 38 38 250ms 1
+			Emote char[6] 0mm 2000mm 38 38 250ms 1
+			Sleep 500ms
+			CharTurnToChar char[4] field_party[0] 400deg/s
+			CharTurnToChar char[6] field_party[0] 400deg/s
+			Sleep 300ms
+			FadeOut 300ms 0x00000000 100
+			TextSetName ""
+			TextMessage null {
+				{color 5}ロイド達はストーカーについて
+				心当たりを尋ねてみた。{wait}
+			}
+			TextWait
+			TextClose 0
+			FadeIn 300ms 0x00000000
+			_59
+			TextTalk char[4] {
+				ほう、ストーカー？{wait}
+			}
+			TextWait
+			TextTalk char[4] {
+				ほほほ、それは怖いな。
+				警察に相談せねばな。{wait}
+			}
+			TextWait
+			TextTalk char[6] {
+				遊撃士の方がいいんじゃないかしら？
+				警察は腰が重いもの。{wait}
+			}
+			TextWait
+			TextTalk name[0] {
+				#0000Fえ、ええと……
+				お心当たりはないんですね？{wait}
+			}
+			TextWait
+			TextTalk char[6] {
+				ええ、そうねぇ……{wait}
+			}
+			TextWait
+			TextTalk char[6] {
+				私はよく玄関のソファーで
+				寛いでいるけれど。{wait}
+			}
+			TextWait
+			TextTalk char[6] {
+				怪しい人間なんて
+				見かけた事はないわね。
+				何かの気のせいじゃないかしら。{wait}
+			}
+			TextWait
+			if !QuestTaskGet quest[29] 8:
+				Emote field_party[0] 0mm 2000mm 2 7 80ms 1
+				SoundPlay sound[28] 0 100 0
+				Emote field_party[1] 0mm 2000mm 2 7 80ms 1
+				SoundPlay sound[28] 0 100 0
+				Emote field_party[2] 0mm 2000mm 2 7 80ms 1
+				SoundPlay sound[28] 0 100 0
+				Emote field_party[3] 0mm 2000mm 2 7 80ms 1
+				SoundPlay sound[28] 0 100 0
+				Sleep 1200ms
+				TextTalk name[3] {
+					#0305F……………………！？{wait}
+				}
+				TextWait
+				TextTalk name[0] {
+					#0003F（玄関から入ってくるのを
+					{}  見たことがない……）{wait}
+				} {
+					（一体どういうことだろう。）{wait}
+				}
+				TextWait
+			else:
+				Emote field_party[0] 0mm 2000mm 38 38 250ms 1
+				Emote field_party[1] 0mm 2000mm 38 38 250ms 1
+				Emote field_party[2] 0mm 2000mm 38 38 250ms 1
+				Emote field_party[3] 0mm 2000mm 38 38 250ms 1
+				Sleep 500ms
+				TextTalk name[3] {
+					#0305F……そうきたか………！{wait}
+				}
+				TextWait
+				TextTalk name[1] {
+					#0103F（玄関から入ってくるのを
+					{}  見たことがない……）{wait}
+				} {
+					（やっぱりあのルートを
+					{}  使っているのかしら。）{wait}
+				}
+				TextWait
+				TextTalk name[2] {
+					#0200F（裏口のルートですね。
+					{}  可能性は高そうです。）{wait}
+				}
+				TextWait
+				TextTalk name[0] {
+					#0001F（……作戦を立てるときの
+					{}  要になりそうだな。）{wait}
+				}
+				TextWait
+				FlagSet flag[1516]
+			QuestTaskSet quest[29] 7
+			if QuestTaskGet quest[29] 4 && QuestTaskGet quest[29] 5 && QuestTaskGet quest[29] 6 && QuestTaskGet quest[29] 7 && QuestTaskGet quest[29] 8:
+				TextTalk name[0] {
+					#0000Fよし、下調べはこんな所だな。{wait}
+				} {
+					一旦イリアさんの部屋に戻って
+					整理してみよう。{wait}
+				}
+				TextWait
+				TextTalk name[3] {
+					#0300F了解、そろそろ作戦を考えるか！{wait}
+				}
+				TextWait
+				TriggerFlagsUnset trigger[0] 0x0080
+				QuestTaskSet quest[29] 9
+			_Char4B char[4] 255
+			_Char4B char[6] 255
+			CharFlagsUnset char[4] 0x0010
+			CharFlagsUnset char[6] 0x0010
+		else:
+			TextTalk self {
+				ほほ、ストーカーとは怖いのう。{wait}
+			}
+			TextWait
+			TextTalk self {
+				早く警察に相談せんとな。{wait}
+			}
+			TextWait
+			TextTalk name[0] {
+				#0001F（この人はまるで
+				{}  心当たりが無いみたいだ……）{wait}
+			}
+			TextWait
+	elif flag[1792]:
+	elif flag[1566]:
+		if !flag[3]:
+			TextTalk self {
+				裏通りにあるアンティークショップで
+				よい品を見つけたんじゃよ。{wait}
+			}
+			TextWait
+			TextTalk self {
+				確かそろそろ結婚記念日だったはず。{wait}
+			}
+			TextWait
+			TextTalk self {
+				ほほほ、婆さんの
+				ご機嫌も取れたかのう。{wait}
+			}
+			TextWait
+			FlagSet flag[3]
+		else:
+			TextTalk self {
+				家内はあの通りの性格じゃから
+				機嫌をとるのも大変なんじゃよ。{wait}
+			}
+			TextWait
+	elif flag[1554]:
+		if !flag[3]:
+			TextTalk self {
+				こうして静かに暮らしていけるのも
+				わしが現役時代に働いたお陰。{wait}
+			}
+			TextWait
+			TextTalk self {
+				リッチな議員年金の
+				お陰なんじゃよ。{wait}
+			}
+			TextWait
+			TextTalk self {
+				しかし婆さんは頭が固い。
+				アレを買おうとしても
+				うんとは言わんじゃろうなぁ……{wait}
+			}
+			TextWait
+			FlagSet flag[3]
+		else:
+			TextTalk self {
+				ふうむ、困ったのう。
+				婆さんはあの通り頑固じゃし……{wait}
+			}
+			TextWait
+	elif flag[1536]:
+		if !flag[3]:
+			TextTalk self {
+				家内が内装をいじるのは
+				やめろと言うんじゃよ。{wait}
+			}
+			TextWait
+			TextTalk self {
+				お前が面倒がるから
+				代わりにわしが
+				やっとるんじゃあないか……{wait}
+			}
+			TextWait
+			TextTalk self {
+				本当に自分勝手な奴じゃよ。{wait}
+			}
+			TextWait
+			FlagSet flag[3]
+		else:
+			TextTalk self {
+				フン、家内はズボラな上に
+				自分勝手な奴じゃよ。{wait}
+			}
+			TextWait
+	elif flag[1342]:
+		if !flag[3]:
+			CharTurnToChar self name[82] 0deg/s
+			TextTalk self {
+				おや、可愛らしい女の子じゃないか。{wait}
+			}
+			TextWait
+			TextTalk self {
+				西通りに越してきたのかね？
+				まあゆっくりしていきたまえ。{wait}
+			}
+			TextWait
+			FlagSet flag[3]
+		else:
+			TextTalk self {
+				また少し内装を
+				模様替えしたんじゃよ。{wait}
+			}
+			TextWait
+			TextTalk self {
+				うむ、記念祭明けにふさわしい
+				明るい色でまとまったのう。{wait}
+			}
+			TextWait
+	elif flag[1307]:
+	elif flag[1362]:
+	elif flag[1292]:
+	elif flag[1282]:
+	elif flag[1280]:
+	elif flag[1055]:
+	elif flag[1040]:
+		TextTalk self {
+			さて、部屋も片付いたし……
+			お茶でも淹れるとするかのう。{wait}
+		}
+		TextWait
+		TextTalk self {
+			家内は趣味にふけってばかりじゃ。
+			わしが気を利かせるしか
+			ないんじゃよ。{wait}
+		}
+		TextWait
+	elif flag[1031]:
+		TextTalk self {
+			クローゼットの掃除をしておったら
+			物が落ちてきてなぁ……{wait}
+		}
+		TextWait
+		TextTalk self {
+			やれやれ、後片付けが大変じゃよ。{wait}
+		}
+		TextWait
+	elif flag[1024]:
+		if !flag[3]:
+			TextTalk self {
+				記念祭が近いと
+				楽しくなってくるのう……{wait}
+			}
+			TextWait
+			TextTalk self {
+				わしもじっとはしておれんわい。
+				カーペットの張替えでも
+				してしまおうかのう。{wait}
+			}
+			TextWait
+			FlagSet flag[3]
+		else:
+			TextTalk self {
+				やはり記念祭は
+				良い気分で迎えたい。{wait}
+			}
+			TextWait
+			TextTalk self {
+				部屋を掃除するのも
+				悪くはなかろうて。{wait}
+			}
+			TextWait
+	elif flag[801]:
+		if !flag[3]:
+			TextTalk self {
+				調度品の配置を見直した時に、
+				コンロのサビに気づいてのう。{wait}
+			}
+			TextWait
+			TextTalk self {
+				元の寸法に合わせて
+				コンロを買い換えたんじゃよ。{wait}
+			}
+			TextWait
+			TextTalk self {
+				ちょうどよい大きさのものが
+				あってよかったわい。{wait}
+			}
+			TextWait
+			FlagSet flag[3]
+		else:
+			TextTalk self {
+				ちなみに……店員の説明では
+				新型で火力倍増だそうじゃよ。{wait}
+			}
+			TextWait
+			TextTalk self {
+				気になるヨゴレもなくなったし
+				ほほほ、よかったわい。{wait}
+			}
+			TextWait
+	elif flag[777]:
+		if !flag[3]:
+			TextTalk self {
+				テーブルが部屋の
+				真ん中からずれておったんじゃ。{wait}
+			}
+			TextWait
+			TextTalk self {
+				いかんいかん……
+				きちんと寸法を
+				計りなおさんとな。{wait}
+			}
+			TextWait
+			FlagSet flag[3]
+		else:
+			TextTalk self {
+				テーブルの位置が気になったのでな。
+				少し移動させておるんじゃよ。{wait}
+			}
+			TextWait
+	elif flag[768]:
+		if !flag[3]:
+			TextTalk self {
+				おお、今朝はよく晴れたか。{wait}
+			}
+			TextWait
+			TextTalk self {
+				次の自治州議会も
+				これくらい爽やかな議論を
+				見せてくれるとよいがのう。{wait}
+			}
+			TextWait
+			FlagSet flag[3]
+		else:
+			TextTalk self {
+				さて、植木に水でもやるかのう。{wait}
+			}
+			TextWait
+			TextTalk self {
+				家内はその辺りが
+				ズボラじゃからのう。{wait}
+			}
+			TextWait
+	elif flag[533]:
+		if !flag[3]:
+			TextTalk self {
+				家内は朝から晩まで
+				趣味の手芸をしておってな。
+				ちっとも家事をせんのじゃよ。{wait}
+			}
+			TextWait
+			TextTalk self {
+				やれやれ、妻ともあろう者が
+				嘆かわしいのう……{wait}
+			}
+			TextWait
+			FlagSet flag[3]
+		else:
+			TextTalk self {
+				家内は趣味ばかり
+				しておるんじゃよ。{wait}
+			}
+			TextWait
+			TextTalk self {
+				昔から我が侭なやつじゃて。{wait}
+			}
+			TextWait
+	elif flag[526]:
+		if !flag[3]:
+			TextTalk self {
+				ふむふむ、気分転換に
+				高級家具に新調してみたんじゃよ。{wait}
+			}
+			TextWait
+			TextTalk self {
+				レイアウトはこんな所かのう。{wait}
+			}
+			TextWait
+			FlagSet flag[3]
+		else:
+			TextTalk self {
+				ウチは内装を
+				替えてみた所なんじゃよ。{wait}
+			}
+			TextWait
+			TextTalk self {
+				茶でも飲んでいくかの？
+				ほほほ……{wait}
+			}
+			TextWait
+	TextEnd self
+	Return
+
+fn[13]:
+	field_party[0].5 = self.4
+	self.5 = self.4
+	TextStart self
+	CharFlagsUnset self 0x0010
+	CharTurnToChar self field_party[0] 0deg/s
+	self.4 = (self.4 + 360) % 360
+	self.4 = self.4 + 360 - self.5
+	self.5 = self.4 / 180
+	if self.4 <= 45 | self.4 >= 315 && self.4 <= 405 | self.4 >= 675:
+	elif self.5 < 1:
+		self.8 = 2
+	elif self.5 > 2:
+		self.8 = 1
+	else:
+		self.8 = self.5
+	self.4 = field_party[0].5
+	field_party[0].5 = 0
+	self.5 = 0
+	CharFlagsSet self 0x0010
+	if flag[1055]:
+		if !flag[3]:
+			Call fn[0,14]
+		else:
+			TextTalk self {
+				こうして裕福な暮らしが
+				送れているのも、
+				全てわしの年金のおかげ……{wait}
+			}
+			TextWait
+			TextTalk self {
+				婆さんや、それを
+				忘れてはおるまいな……？{wait}
+			}
+			TextWait
+	CharSetChipPattern self 0
+	TextEnd self
+	Return
+
+fn[14]:
+	CharSetChipPattern char[5] 0
+	CharSetChipPattern char[7] 0
+	TextTalk char[7] {
+		……アナタ、紅茶の
+		淹れ方は知っていて？{wait}
+	}
+	TextWait
+	TextTalk char[5] {
+		湯に茶葉を浸すのじゃろう？
+		この通り、できとるじゃないか。{wait}
+	}
+	TextWait
+	TextTalk char[7] {
+		マズイわ。
+		飲めたものじゃないわね。{wait}
+	}
+	TextWait
+	TextTalk char[5] {
+		…………………………………{wait}
+	}
+	TextWait
+	FlagSet flag[3]
+	FlagSet flag[4]
+	Return
+
+fn[15]:
+	TextStart self
+	if QuestTaskGet quest[29] 3 && !QuestFlagsGet quest[29] 0x10 && !QuestFlagsGet quest[29] 0x40:
+		if !QuestTaskGet quest[29] 7:
+			Call fn[0,12]
+			Return
+		TextTalk self {
+			私はよく玄関のソファーで
+			寛いでいるのよ。{wait}
+		}
+		TextWait
+		TextTalk self {
+			でも怪しい人間なんて
+			見かけた事はないわ。
+			何かの気のせいじゃないかしら。{wait}
+		}
+		TextWait
+		if QuestTaskGet quest[29] 8 && !flag[1516]:
+			TextTalk name[3] {
+				#0303F（……なるほど、そうきたか。）{wait}
+			}
+			TextWait
+			TextTalk name[1] {
+				#0100F（玄関から入ってくるのを
+				{}  見たことがない……）{wait}
+			} {
+				（やっぱりあのルートを
+				{}  使っているのかしら。）{wait}
+			}
+			TextWait
+			TextTalk name[2] {
+				#0200F（裏口のルートですね。
+				{}  可能性は高そうです。）{wait}
+			}
+			TextWait
+			TextTalk name[0] {
+				#0001F（……作戦を立てるときの
+				{}  要になりそうだな。）{wait}
+			}
+			TextWait
+			FlagSet flag[1516]
+	elif flag[768]:
+		if !flag[4]:
+			TextTalk self {
+				主人は５年ほど前まで
+				議員をやっていたのよ。{wait}
+			}
+			TextWait
+			TextTalk self {
+				他の議員達の応酬を
+				ぼーっと聞いているだけの
+				日和見議員ですけどね。{wait}
+			}
+			TextWait
+			TextTalk self {
+				まあ……年金を
+				たっぷり入れる所だけは
+				褒めてあげてもいいわね。{wait}
+			}
+			TextWait
+			FlagSet flag[4]
+		else:
+			TextTalk self {
+				主人も議員の端くれ。
+				年金だけは大したものなのよ。{wait}
+			}
+			TextWait
+			TextTalk self {
+				それだけは褒めてあげてもいいわね。{wait}
+			}
+			TextWait
+	elif flag[533]:
+	elif flag[526]:
+	TextEnd self
+	Return
+
+fn[16]:
+	field_party[0].5 = self.4
+	self.5 = self.4
+	TextStart self
+	CharFlagsUnset self 0x0010
+	CharTurnToChar self field_party[0] 0deg/s
+	self.4 = (self.4 + 360) % 360
+	self.4 = self.4 + 360 - self.5
+	self.5 = self.4 / 180
+	if self.4 <= 45 | self.4 >= 315 && self.4 <= 405 | self.4 >= 675:
+	elif self.5 < 1:
+		self.8 = 2
+	elif self.5 > 2:
+		self.8 = 1
+	else:
+		self.8 = self.5
+	self.4 = field_party[0].5
+	field_party[0].5 = 0
+	self.5 = 0
+	CharFlagsSet self 0x0010
+	if flag[1792]:
+		if !flag[4]:
+			TextTalk self {
+				主人が導力車を
+				買ったらしいのよ……{wait}
+			}
+			TextWait
+			TextTalk self {
+				また私に無断で……！{wait}
+			}
+			TextWait
+			TextTalk self {
+				本当に自分勝手な人ね。
+				あきれて声も出ないわ……！{wait}
+			}
+			TextWait
+			FlagSet flag[4]
+		else:
+			TextTalk self {
+				主人の浪費癖には
+				呆れて声も出ないわ……！{wait}
+			}
+			TextWait
+	elif flag[1566]:
+		if !flag[4]:
+			TextTalk self {
+				主人が結婚記念日に
+				ペンダントを贈ってくれたの。{wait}
+			}
+			TextWait
+			TextTalk self {
+				…………………………………{wait}
+			}
+			TextWait
+			TextTalk self {
+				まあ、あの人にも
+				良い所はあるのよね。{wait}
+			}
+			TextWait
+			TextTalk self {
+				一応私が認めた男なんですから。{wait}
+			}
+			TextWait
+			FlagSet flag[4]
+		else:
+			TextTalk self {
+				昔はあれで
+				中々の好青年だったのよ。{wait}
+			}
+			TextWait
+			TextTalk self {
+				ふふ、その面影も
+				少しは残っているようね。{wait}
+			}
+			TextWait
+	elif flag[1554]:
+		if !flag[4]:
+			TextTalk self {
+				主人が何か大きな買い物を
+				企んでいるらしいのよ。{wait}
+			}
+			TextWait
+			TextTalk self {
+				まったく……
+				今度はシャンデリアでも
+				買ってくるつもりかしら。{wait}
+			}
+			TextWait
+			FlagSet flag[4]
+		else:
+			TextTalk self {
+				あの人の下らない
+				リフォーム癖には困ったものだわ。{wait}
+			}
+			TextWait
+	elif flag[1536]:
+		if !flag[4]:
+			TextTalk self {
+				自治州議会が
+				また長引いているそうね。{wait}
+			}
+			TextWait
+			TextTalk self {
+				……主人が現役の頃から
+				何も変わっていないわねぇ。{wait}
+			}
+			TextWait
+			TextTalk self {
+				周りに迷惑ばかり掛けて、
+				自分勝手な議論ばかりなんだから。{wait}
+			}
+			TextWait
+			FlagSet flag[4]
+		else:
+			TextTalk self {
+				主人のあの性格も
+				きっと議員生活が長かったせいね。{wait}
+			}
+			TextWait
+	elif flag[1342]:
+		if !flag[4]:
+			TextTalk self {
+				クロスベルの上流階級には
+				手芸をたしなむ方が多かったのよ。{wait}
+			}
+			TextWait
+			TextTalk self {
+				マクダエル市長の奥様も
+				手芸がとてもお上手だったのだから。{wait}
+			}
+			TextWait
+			TextTalk self {
+				私がこの趣味をはじめたのも
+				あの方の影響かしらね。{wait}
+			}
+			TextWait
+			FlagSet flag[4]
+		else:
+			TextTalk self {
+				マクダエル市長の奥様は
+				手芸がとてもお上手だったのよ。{wait}
+			}
+			TextWait
+			TextTalk self {
+				大分前にお亡くなりに
+				なってしまったけれどね。{wait}
+			}
+			TextWait
+	elif flag[1307]:
+	elif flag[1362]:
+	elif flag[1292]:
+	elif flag[1282]:
+	elif flag[1280]:
+	elif flag[1055]:
+		if !flag[4]:
+			Call fn[0,14]
+		else:
+			TextTalk self {
+				紅茶の淹れ方も
+				ろくに知らないのね。{wait}
+			}
+			TextWait
+			TextTalk self {
+				家事ができないくせに
+				よくやるものだわ。{wait}
+			}
+			TextWait
+	elif flag[1040]:
+		if !flag[4]:
+			TextTalk self {
+				今朝から男の人たちが
+				訪ねてきているみたいなのよ。{wait}
+			}
+			TextWait
+			TextTalk self {
+				無言のまま３階に
+				上がって行ったけれど……{wait}
+			}
+			TextWait
+			TextTalk self {
+				只者ではない雰囲気だったわ。
+				一体何の御用かしら。{wait}
+			}
+			TextWait
+			FlagSet flag[4]
+		else:
+			TextTalk self {
+				あの男の人たち、
+				アパートに遊びに来たという
+				雰囲気じゃなかったわね。{wait}
+			}
+			TextWait
+			TextTalk self {
+				一体何者なのかしら。{wait}
+			}
+			TextWait
+	elif flag[1031]:
+		if !flag[4]:
+			TextTalk self {
+				主人たらまた
+				余計なことをして……{wait}
+			}
+			TextWait
+			TextTalk self {
+				掃除ならサミィさんに
+				任せておけばいいでしょうに。{wait}
+			}
+			TextWait
+			TextTalk self {
+				フン、慣れない事を
+				するからそうなるのよ。{wait}
+			}
+			TextWait
+			FlagSet flag[4]
+		else:
+			TextTalk self {
+				あの人の余計な行動癖には
+				呆れてしまうわ。{wait}
+			}
+			TextWait
+	elif flag[1024]:
+		if !flag[4]:
+			TextTalk self {
+				私はね、毎年記念祭にあわせて
+				コースターを作っているのよ。{wait}
+			}
+			TextWait
+			TextTalk self {
+				これでかれこれ２０年ね。{wait}
+			}
+			TextWait
+			TextTalk self {
+				ここまで続けると
+				感慨深いものだわ。{wait}
+			}
+			TextWait
+			FlagSet flag[4]
+		else:
+			TextTalk self {
+				クロスベルも
+				今年で７０周年ね。{wait}
+			}
+			TextWait
+			TextTalk self {
+				毎年歳を重ねて……
+				感慨深いものね。{wait}
+			}
+			TextWait
+	elif flag[801]:
+		TextTalk self {
+			主人はオーバルストアで
+			新しい導力コンロを買ってきたのよ。{wait}
+		}
+		TextWait
+		TextTalk self {
+			また私に内緒で散財して……{wait}
+		}
+		TextWait
+		TextTalk self {
+			他にやる事がないのかしらね。{wait}
+		}
+		TextWait
+	elif flag[777]:
+		if !flag[4]:
+			TextTalk self {
+				やれやれ……
+				また主人の悪いくせが始まったわ。{wait}
+			}
+			TextWait
+			TextTalk self {
+				これじゃ食事の
+				支度もできないわね。{wait}
+			}
+			TextWait
+			FlagSet flag[4]
+		else:
+			TextTalk self {
+				ふう、今日も外食で
+				済ませちゃおうかしら。{wait}
+			}
+			TextWait
+	elif flag[768]:
+	elif flag[533]:
+		if !flag[4]:
+			TextTalk self {
+				ここのアパートは
+				管理人さんに家事を頼める
+				サービスがあるのよ。{wait}
+			}
+			TextWait
+			TextTalk self {
+				ウチもお掃除やクリーニングは
+				サミィさんにお願いしているわ。{wait}
+			}
+			TextWait
+			TextTalk self {
+				おかげでたっぷり
+				趣味の時間が取れるのよね。{wait}
+			}
+			TextWait
+			FlagSet flag[4]
+		else:
+			TextTalk self {
+				最近ではお買い物も
+				配達サービスがあるし……
+				本当に暮らしが楽になったわ。{wait}
+			}
+			TextWait
+	elif flag[526]:
+		if !flag[4]:
+			TextTalk self {
+				主人はまた内装の
+				模様替えを始めたのよ。{wait}
+			}
+			TextWait
+			TextTalk self {
+				そのたびに私を
+				部屋の外に追い出すのよね……{wait}
+			}
+			TextWait
+			TextTalk self {
+				まったく、おちおち
+				手芸も楽しめないじゃない。{wait}
+			}
+			TextWait
+			FlagSet flag[4]
+		else:
+			TextTalk self {
+				主人は退職してから
+				暇で仕方ないらしいのよ。{wait}
+			}
+			TextWait
+			TextTalk self {
+				ミラの掛かる趣味で
+				困ったものだわ。{wait}
+			}
+			TextWait
+	CharSetChipPattern self 0
+	TextEnd self
+	Return
+
+fn[17]:
+	TextStart self
+	if !flag[1145]:
+		TextTalk self {
+			フム、ダドリーの
+			言っていた連中か…………{wait}
+		}
+		TextWait
+		TextTalk self {
+			……警護の邪魔になる。
+			早々に立ち去るがいい。{wait}
+		}
+		TextWait
+		Emote field_party[0] 0mm 2000mm 38 38 250ms 1
+		Emote field_party[1] 0mm 2000mm 38 38 250ms 1
+		Emote field_party[2] 0mm 2000mm 38 38 250ms 1
+		Emote field_party[3] 0mm 2000mm 38 38 250ms 1
+		Sleep 1000ms
+		TextTalk name[0] {
+			#0005Fえ……？{wait}
+		}
+		TextWait
+		TextTalk self {
+			……ここは
+			イリア・プラティエの自宅だ。{wait}
+		}
+		TextWait
+		TextTalk self {
+			彼女の身辺警護は
+			我々一課に任せてもらおう。{wait}
+		}
+		TextWait
+		TextTalk name[3] {
+			#0305F（捜査一課……
+			{}  早速動いてやがんのか。）{wait}
+		}
+		TextWait
+		TextTalk name[0] {
+			#0003F（さ、流石だな……）{wait}
+		}
+		TextWait
+		FlagSet flag[1145]
+	elif flag[1280]:
+	elif flag[1055]:
+		TextTalk self {
+			……イリア・プラティエの
+			身辺警護は我々一課が担う。{wait}
+		}
+		TextWait
+		TextTalk self {
+			特務支援課、
+			余計な邪魔立てはするな。{wait}
+		}
+		TextWait
+	elif flag[1040]:
+		TextTalk self {
+			……脅迫状の文面からするに、
+			イリア・プラティエが狙われるのは
+			舞台上である可能性が高い。{wait}
+		}
+		TextWait
+		TextTalk self {
+			だが、それ以外が安全とは言えん。
+			一課はあくまで
+			完璧な警護を行う予定だ。{wait}
+		}
+		TextWait
+	TextEnd self
+	Return
+
+fn[18]:
+	TextStart self
+	if flag[1280]:
+	elif flag[1055]:
+		TextTalk self {
+			フム、屋外から……
+			狙撃される可能性もあるな。{wait}
+		}
+		TextWait
+		TextTalk self {
+			イリア嬢が戻る前に
+			周辺を洗っておくとしよう。{wait}
+		}
+		TextWait
+	elif flag[1040]:
+		if !flag[5]:
+			TextTalk self {
+				盗聴器の類はナシ……{wait}
+			}
+			TextWait
+			TextTalk self {
+				取りあえずは
+				クリーンな部屋だな。{wait}
+			}
+			TextWait
+			FlagSet flag[5]
+		else:
+			CharTurnToChar self field_party[0] 0deg/s
+			TextTalk self {
+				……特務支援課、だな？{wait}
+			}
+			TextWait
+			TextTalk self {
+				フン、イリア嬢の身辺警護なら
+				我々捜査一課に任せたまえよ。{wait}
+			}
+			TextWait
+	TextEnd self
+	Return
+
+fn[19]:
+	TextStart char[10]
+	if flag[1342]:
+		EmoteStop char[10]
+		if flag[6]:
+			TextTalk char[10] {
+				ぐかーっ……ぐかーっ……{wait}
+			} {
+				ンンッ……ン～……！{wait}
+			}
+			TextWait
+			TextTalk name[82] {
+				#1110Fキレイなお姉さんだけど
+				すごいイビキー！{wait}
+			}
+			TextWait
+			TextTalk name[0] {
+				#0006F（微妙に色っぽくて困るな……）{wait}
+			}
+			TextWait
+			if PartyPosition name[3] > -1:
+				TextTalk name[3] {
+					#0309F（やっぱ今日は超ラッキーだぜ……！）{wait}
+				}
+				TextWait
+		else:
+			TextTalk char[10] {
+				ぐかーっ……ぐかーっ……{wait}
+			}
+			TextWait
+			Emote field_party[0] 0mm 2000mm 16 19 250ms 1
+			SoundPlay sound[23] 0 100 0
+			Emote field_party[1] 0mm 2000mm 16 19 250ms 1
+			SoundPlay sound[23] 0 100 0
+			Sleep 1000ms
+			Emote name[82] 0mm 1700mm 38 39 250ms 2
+			Sleep 1000ms
+			EmoteStop name[82]
+			TextTalk name[82] {
+				#1110Fわー。
+				すごいイビキだねー！{wait}
+			}
+			TextWait
+			if QuestFlagsGet quest[29] 0x10:
+				TextTalk name[0] {
+					#0006Fしかも相変わらず
+					部屋が散らかってるし……{wait}
+				}
+				TextWait
+			else:
+				TextTalk name[0] {
+					#0006Fしかもこの部屋、
+					すごく散らかってるし……{wait}
+				}
+				TextWait
+			if PartyPosition name[1] > -1:
+				TextTalk name[1] {
+					#0100F公演の時の張り詰めた
+					雰囲気とは天地の差よね……{wait}
+				}
+				TextWait
+			elif PartyPosition name[2] > -1:
+				TextTalk name[2] {
+					#0200F相変わらず微妙に
+					オジサン臭い人ですね。{wait}
+				}
+				TextWait
+			elif PartyPosition name[3] > -1:
+				TextTalk name[3] {
+					#0304Fフ……それでこそ
+					天下無敵のイリア・プラティエだぜ。{wait}
+				} {
+					#0309Fそしてまさか寝顔まで
+					拝めるとは、今日は超ラッキー！{wait}
+				}
+				TextWait
+				Emote name[0] 0mm 2000mm 16 19 250ms 1
+				SoundPlay sound[23] 0 100 0
+				Sleep 1000ms
+				TextTalk name[82] {
+					#1111F？？？{wait}
+				}
+				TextWait
+				TextTalk name[0] {
+					#0003Fいや、キーアは判らなくてもいいよ。{wait}
+				}
+				TextWait
+			FlagSet flag[1531]
+			FlagSet flag[6]
+		Emote char[10] 0mm 2000mm 28 33 250ms 0
+	else:
+		_Char4A char[13] 255
+		if !flag[6]:
+			TextTalk char[10] {
+				#1700Fうっし、シュリ。
+				まずは稽古の
+				しきたりから始めるわよ？{wait}
+			} {
+				#1709F朝５時前に
+				あたしを起こすこと！{wait}
+			} {
+				#1705Fあ……ベッドないし一緒に寝る？{wait}
+			}
+			TextWait
+			TextTalk char[13] {
+				#04207Fいらん！！{wait}
+			}
+			TextWait
+			FlagSet flag[6]
+		else:
+			TextTalk char[13] {
+				#04201Fそれより舞台の話、してくれ。
+				あの新しい劇の話……{wait}
+			}
+			TextWait
+			TextTalk char[10] {
+				#1702Fああ、舞台の話ね？
+				オッケー、話したげる！{wait}
+			}
+			TextWait
+			Emote char[13] 0mm 2000mm 40 43 100ms 3
+			TextTalk char[13] {
+				#04205F………………！（コクコク）{wait}
+			}
+			TextWait
+		_Char4B char[13] 255
+	TextEnd char[10]
+	Return
+
+fn[20]:
+	TextStart self
+	if !flag[1476]:
+		TextTalk char[12] {
+			#1802F皆さん、今回は色々と
+			ご迷惑を掛けてしまって……{wait}
+		} {
+			#1809Fでもありがとうございました。
+			丸く収まって本当に良かったです。{wait}
+		}
+		TextWait
+		TextTalk name[1] {
+			#0109Fこんな展開になるなんて
+			私たちも予想してなかったけどね。{wait}
+		}
+		TextWait
+		TextTalk char[12] {
+			#1804Fはい……{wait}
+		} {
+			#1810F……あの子の気持ち、
+			少し分かるんです。{wait}
+		} {
+			私もイリアさんに会うまでは
+			道を見失っていたから……{wait}
+		}
+		TextWait
+		TextTalk name[0] {
+			#0005Fリーシャ……？{wait}
+		}
+		TextWait
+		TextTalk char[12] {
+			#1804Fあ、いえ……
+			なんでもありません。{wait}
+		} {
+			#1802Fシュリちゃんはイリアさんと
+			暮らす事になるみたいです。
+			また会いに来てあげてくださいね。{wait}
+		}
+		TextWait
+		FlagSet flag[1476]
+	else:
+		TextTalk char[12] {
+			#1808Fシュリちゃんも
+			色々とあったみたいですから、
+			すぐには馴染めないかもしれません。{wait}
+		} {
+			#1802Fでも私も協力しますから……
+			きっと大丈夫です。{wait}
+		}
+		TextWait
+		if !flag[7]:
+			TextTalk name[0] {
+				#0000Fそうか……
+				それじゃ２人の事は
+				よろしく頼むよ、リーシャ。{wait}
+			}
+			TextWait
+			Emote char[12] 0mm 2000mm 38 38 250ms 1
+			Sleep 500ms
+			TextTalk char[12] {
+				#1809Fはい、もちろんです！{wait}
+			}
+			TextWait
+		FlagSet flag[7]
+	TextEnd self
+	Return
+
+fn[21]:
+	TextStart self
+	if !QuestTaskGet quest[29] 12:
+		TextTalk name[0] {
+			#0002Fどうやら
+			上手くやってるみたいだな。{wait}
+		}
+		TextWait
+		TextTalk self {
+			#04212Fフン、べつに……{wait}
+		} {
+			#04200Fただ色々話してるだけだ。
+			舞台の話はキラキラしてて
+			……聞いてて面白いから。{wait}
+		}
+		TextWait
+		TextTalk name[1] {
+			#0100F（やっぱり舞台に
+			{}  興味あるみたいね。）{wait}
+		}
+		TextWait
+		TextTalk name[3] {
+			#0304F（結構女の子っぽい所も
+			{}  あるじゃねえか。）{wait}
+		}
+		TextWait
+		TextTalk name[2] {
+			#0202F（ですね。）{wait}
+		}
+		TextWait
+		TextTalk self {
+			#04203Fあ、それと……{wait}
+		}
+		TextWait
+		CharTurnToChar char[13] name[0] 500deg/s
+		TextTalk self {
+			#04201Fロイドだっけ？
+			お前ぜってー覚えとけよ。{wait}
+		} {
+			#04207Fオレは恨みは
+			ぜってー忘れないからな！{wait}
+		}
+		TextWait
+		TextTalk name[0] {
+			#0012Fう……あの事か。
+			（もう忘れて欲しいんだが……）{wait}
+		}
+		TextWait
+		QuestTaskSet quest[29] 12
+	else:
+		TextTalk self {
+			#04200Fイリア……さんは、
+			話はすごく面白いんだ。
+			聞いててワクワクする……{wait}
+		} {
+			#04206F……普段はすげー
+			だらしない人だけどな。{wait}
+		}
+		TextWait
+	TextEnd self
+	Return
+
+fn[22]:
+	EventBegin 0
+	SoundPlay sound[103] 0 100 0
+	CamSetDistance -170 1280 390 0ms
+	ED7CamRotate 45deg 21deg 0deg 0ms
+	CamPers 400 0ms
+	CamZoom 22000 0ms
+	CharSetPos name[0] (-600, 0, 150) 0deg
+	CharSetPos name[1] (600, 0, 150) 0deg
+	CharSetPos name[2] (-600, 0, -1500) 0deg
+	CharSetPos name[3] (600, 0, -1500) 0deg
+	Fork field_party[0] fork[1]:
+		_94 0 self 0deg 2000 1200mm/s 0
+	Fork field_party[1] fork[1]:
+		_94 0 self 0deg 2000 1200mm/s 0
+	Fork field_party[2] fork[1]:
+		_94 0 self 0deg 2000 1200mm/s 0
+	Fork field_party[3] fork[1]:
+		_94 0 self 0deg 2000 1200mm/s 0
+	CamSetDistance 50 1280 1520 2000ms
+	FadeIn 1000ms 0x00000000
+	FadeWait
+	Sleep 2000ms
+	TextTalk name[0] {
+		#5P#0005F《ヴィラ・レザン》の
+		最上階、と……{wait}
+	}
+	TextWait
+	_59
+	CamSetDistance 1520 11280 18040 3000ms
+	ED7CamRotate 45deg 16deg 0deg 3000ms
+	Sleep 3200ms
+	TextTalk name[0] {
+		#0000Fあそこが
+		イリアさんの部屋だな。{wait}
+	}
+	TextWait
+	_59
+	CrossFade 500ms
+	CamSetDistance 50 1280 1520 0ms
+	ED7CamRotate 45deg 21deg 0deg 0ms
+	CamPers 400 0ms
+	CamZoom 22000 0ms
+	FadeWait
+	TextTalk name[2] {
+		#6P#0200Fまずは部屋の中を
+		確かめてみましょうか。{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#5P#0000Fああ、行ってみよう。{wait}
+	}
+	TextWait
+	_59
+	CharSetPos field_party[0] (10, 30, 990) 0deg
+	QuestTaskSet quest[29] 2
+	Sc_C4Set 4096
+	EventEnd 5
+	Return
+
+fn[23]:
+	EventBegin 0
+	CrossFade 500ms
+	CamSetDistance -270 11270 18770 0ms
+	ED7CamRotate 45deg 22deg 0deg 0ms
+	CamPers 440 0ms
+	CamZoom 20500 0ms
+	CharSetPos name[0] (-800, 10000, 19000) 0deg
+	CharSetPos name[1] (200, 10000, 19000) 0deg
+	CharSetPos name[2] (-800, 10000, 17700) 0deg
+	CharSetPos name[3] (200, 10000, 17700) 0deg
+	FadeWait
+	SoundPlay sound[810] 0 100 0
+	Sleep 300ms
+	TextSetName ""
+	TextMessage null {
+		{color 5}扉には鍵がかかっている。{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	TextTalk name[0] {
+		#5P#0000Fよし、鍵は、と……{wait}
+	}
+	TextWait
+	CharWalkToPos name[0] (-140, 10030, 20150) 1000mm/s 0
+	CharTurnTo name[0] 0deg 500deg/s
+	Sleep 400ms
+	Emote name[0] 0mm 2000mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Sleep 600ms
+	TextTalk name[3] {
+		#12P#0305Fロイド、どうかしたのか？{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#11P#0005Fあ、ああ……{wait}
+	}
+	TextWait
+	_59
+	Emote name[0] 0mm 2000mm 24 27 250ms 1
+	Sleep 1300ms
+	TextTalk name[0] {
+		#11P#0001Fピッキングの跡だ。{wait}
+	}
+	TextWait
+	Emote name[3] 0mm 2000mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Sleep 12ms
+	Emote name[1] 0mm 2000mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Sleep 15ms
+	Emote name[2] 0mm 2000mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Sleep 1000ms
+	TextTalk name[0] {
+		#11P#0003F鍵穴の僅かな傷……
+		相当腕のいい奴が開けているな。{wait}
+	}
+	TextWait
+	TextTalk name[2] {
+		#6P#0200F部屋に入ってるのは
+		間違いなさそうですね。{wait}
+	}
+	TextWait
+	TextTalk name[1] {
+		#12P#0101Fやっぱり……
+		早く捕まえないと駄目ね。{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#5P#0001Fああ、でないと
+		ストーカー本人のためにも
+		ならない……{wait}
+	}
+	TextWait
+	Sleep 200ms
+	SoundPlay sound[809] 0 100 0
+	Sleep 500ms
+	ObjFlagsUnset object[2] 0x0010
+	ED7ObjPlay object[2] 0 10 0 0
+	SoundPlay sound[103] 0 100 0
+	ObjWait object[2]
+	CharTurnTo name[0] 180deg 400deg/s
+	Sleep 300ms
+	TextTalk name[0] {
+		#5P#0001Fみんな、気合を入れて
+		捜査を進めよう！{wait}
+	}
+	TextWait
+	TextTalk name[3] {
+		#12P#0300Fおうよ！{wait}
+	}
+	TextWait
+	FadeOut 1000ms 0x00000000 255
+	FadeWait
+	ObjFlagsSet object[2] 0x0010
+	LookPointFlagsSet look_point[0] 0x0001
+	CamSetDistance 49380 1280 51150 0ms
+	ED7CamRotate 45deg 28deg 0deg 0ms
+	CamPers 560 0ms
+	CamZoom 14880 0ms
+	CharSetPos name[0] (49100, 0, 50000) 0deg
+	CharSetPos name[1] (50200, 0, 50000) 0deg
+	CharSetPos name[2] (49100, 0, 49000) 0deg
+	CharSetPos name[3] (50200, 0, 49000) 0deg
+	Fork field_party[0] fork[1]:
+		_94 0 self 0deg 2000 1200mm/s 0
+	Fork field_party[1] fork[1]:
+		_94 0 self 0deg 2000 1200mm/s 0
+	Fork field_party[2] fork[1]:
+		_94 0 self 0deg 2000 1200mm/s 0
+	Fork field_party[3] fork[1]:
+		_94 0 self 0deg 2000 1200mm/s 0
+	FadeIn 1000ms 0x00000000
+	FadeWait
+	Sleep 2000ms
+	TextTalk name[3] {
+		#12P#0300F高級アパートの最上階、
+		さすがにいい部屋だなぁ。{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#5P#0000Fああ、こんな広い部屋に
+		一人暮らしなんて
+		さすがイリアさんだ……{wait}
+	}
+	TextWait
+	Emote name[0] 0mm 2000mm 38 38 250ms 1
+	Sleep 500ms
+	TextTalk name[0] {
+		#5P#0005Fあれ、でもなんだか
+		ちょっと散らかってる？{wait}
+	}
+	TextWait
+	CamSetDistance 50860 1280 60190 2200ms
+	Sleep 2600ms
+	CrossFade 500ms
+	CamSetDistance 59700 1280 53950 0ms
+	ED7CamRotate 53deg 26deg 0deg 0ms
+	CamSetDistance 59740 1280 53790 2600ms
+	ED7CamRotate 37deg 26deg 0deg 2600ms
+	Sleep 3000ms
+	TextTalk name[2] {
+		#0200Fワイングラスに
+		脱ぎ捨てた服……{wait}
+	} {
+		#0203Fこれはストーカーではなく
+		ご本人の所業かと。{wait}
+	}
+	TextWait
+	TextTalk name[1] {
+		#0100Fそういえばイリアさんは
+		女傑な所があるし……
+		むしろイメージ通りかもしれないわね。{wait}
+	}
+	TextWait
+	TextTalk name[3] {
+		#0306Fま、ファンとしちゃ
+		ビミョーな所だなぁ……{wait}
+	}
+	TextWait
+	CrossFade 500ms
+	CamSetDistance 50120 1280 51750 0ms
+	ED7CamRotate 41deg 26deg 0deg 0ms
+	CamPers 400 0ms
+	CamZoom 21500 0ms
+	CharTurnTo field_party[0] 90deg 0deg/s
+	CharTurnTo field_party[1] 90deg 0deg/s
+	CharTurnTo field_party[2] 90deg 0deg/s
+	CharTurnTo field_party[3] 90deg 0deg/s
+	FadeWait
+	Sleep 300ms
+	Fork name[0] fork[1]:
+		CharTurnToChar self name[3] 500deg/s
+	Fork name[3] fork[1]:
+		CharTurnToChar self name[0] 500deg/s
+	Fork name[1] fork[1]:
+		CharTurnToChar self name[2] 500deg/s
+	Fork name[2] fork[1]:
+		CharTurnToChar self name[1] 500deg/s
+	Sleep 300ms
+	TextTalk name[0] {
+		#5P#0001Fともかくまずは
+		犯人について調べてみよう。{wait}
+	} {
+		#0003F今回は犯人を捕まえて
+		イリアさんの元に突き出すのが
+		目的だけど……{wait}
+	} {
+		#0001F下調べは慎重にした方が
+		いいと思う。{wait}
+	}
+	TextWait
+	Emote name[3] 0mm 2000mm 0 1 250ms 2
+	SoundPlay sound[29] 0 100 0
+	Emote name[2] 0mm 2000mm 0 1 250ms 2
+	SoundPlay sound[29] 0 100 0
+	Sleep 1400ms
+	TextTalk name[1] {
+		#11P#0103F今回みたいなストーカー事件は
+		あいまいな目撃情報しか残らないわ。{wait}
+	} {
+		#0100F現場を取り押さえないと
+		シラを切られてしまうでしょう？{wait}
+	}
+	TextWait
+	TextTalk name[3] {
+		#12P#0306Fなるほどな、
+		ちょいと面倒だぜ。{wait}
+	}
+	TextWait
+	TextTalk name[2] {
+		#6P#0200F確実に捕らえるには
+		犯人像や行動パターン、侵入経路は
+		調べておきたい所ですね。{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#5P#0000Fああ、アパートの人たちに
+		一通り聞き込みしてみよう。{wait}
+	}
+	TextWait
+	TextTalk name[3] {
+		#12P#0300Fついでにアパートの
+		構造把握もやっておかねえとな。{wait}
+	} {
+		聞き込みをしながら
+		一通り回ってみようぜ。{wait}
+	}
+	TextWait
+	FadeOut 1000ms 0x00000000 255
+	FadeWait
+	CharSetPos field_party[0] (49850, 30, 51640) 0deg
+	CharFlagsUnset char[4] 0x0080
+	CharFlagsUnset char[6] 0x0080
+	CharSetPos char[4] (-46140, 1030, 59110) 0deg
+	CharSetPos char[6] (-45740, 1030, 60980) 180deg
+	ForkFunc char[4] fork[0] fn[0,0]
+	CharFlagsSet char[4] 0x0010
+	CharFlagsSet char[6] 0x0010
+	QuestTaskSet quest[29] 3
+	Sleep 500ms
+	EventEnd 5
+	Return
+
+fn[24]:
+	EventBegin 0
+	FadeOut 0ms 0x00000000 255
+	CamSetDistance 49570 1280 52340 0ms
+	ED7CamRotate 44deg 25deg 0deg 0ms
+	CamPers 420 0ms
+	CamZoom 21470 0ms
+	CharSetPos name[0] (48900, 0, 53200) 135deg
+	CharSetPos name[1] (50400, 0, 53200) 225deg
+	CharSetPos name[2] (48900, 0, 51800) 45deg
+	CharSetPos name[3] (50400, 0, 51800) 315deg
+	Sleep 500ms
+	FadeIn 2000ms 0x00000000
+	FadeWait
+	TextTalk name[0] {
+		#5P#0003F犯人像、侵入ルート……
+		大体見えてきたかな。{wait}
+	}
+	TextWait
+	TextTalk name[2] {
+		#6P#0200Fそうですね。{wait}
+	} {
+		犯人は帽子を被った少年で、
+		かなり慎重に行動しているようです。{wait}
+	}
+	TextWait
+	TextTalk name[1] {
+		#11P#0101F最近はこの部屋にも
+		複数回入っているみたいね。{wait}
+	} {
+		#0103F……イリアさんから聞いた限りでは
+		盗られた物はなさそうだったけど……{wait}
+	}
+	TextWait
+	TextTalk name[3] {
+		#12P#0306Fまあ意味もなく侵入してくんのが
+		ストーカーなんじゃねえか？{wait}
+	} {
+		#0301Fあと分かってる情報は……
+		侵入経路は恐らく
+		アパートの裏口って所か。{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#5P#0003Fよし、以上の情報を元に
+		待ち伏せしてみよう。{wait}
+	} {
+		#0000Fみんな、耳を貸してくれるか？{wait}
+	}
+	TextWait
+	Fork name[2] fork[1]:
+		CharTurnToChar self name[0] 500deg/s
+	Sleep 10ms
+	Fork name[1] fork[1]:
+		CharTurnToChar self name[0] 500deg/s
+	Sleep 300ms
+	TextTalk name[2] {
+		#12P#0205Fロイドさん、また何か
+		考えがあるみたいですね？{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#0000F相手は少年とはいえ
+		油断ならない相手みたいだ。{wait}
+	} {
+		確実に捕まえられるよう、
+		段取りをとろうと思ってさ。{wait}
+	}
+	TextWait
+	FadeOut 2000ms 0x00000000 255
+	FadeWait
+	BgmStop 4000ms
+	BgmWait
+	system[76] = 0
+	Call fn[0,25]
+	Return
+
+fn[25]:
+	EventBegin 0
+	VisShow vis[0] 234 0 490 256 0 0 512 512 0 0 512 512 0x00FFFFFF 1 "bu14000.itp"
+	CamSetDistance -9520 1270 4050 0ms
+	ED7CamRotate 45deg 13deg 0deg 0ms
+	CamPers 320 0ms
+	CamZoom 22920 0ms
+	CharSetPos char[0] (10310, 10000, 17660) 45deg
+	CharFlagsSet char[0] 0x8000
+	CharFlagsSet char[13] 0x8000
+	char[13].40 = 13
+	ED7LoadChip "chr/ch10100.itc" chip[30]
+	CharSetChipBase char[13] chip[30]
+	CharSetChipPattern char[13] 0
+	_Char4A char[13] 255
+	CharFlagsSet name[1] 0x0080
+	CharFlagsSet name[2] 0x0080
+	CharFlagsSet name[3] 0x0080
+	CharFlagsSet char[13] 0x0080
+	CharColor name[0] 0x00FFFFFF 0ms
+	BgmPlay bgm[302] 0
+	system[76] = 302
+	CamZoom 25420 3000ms
+	FadeIn 2000ms 0x00000000
+	FadeWait
+	Sleep 1300ms
+	CamSetDistance 9410 11270 15790 6000ms
+	ED7CamRotate 45deg 18deg 0deg 6000ms
+	CamPers 320 6000ms
+	CamZoom 28920 6000ms
+	Sleep 6800ms
+	_Char4A char[0] 255
+	TextTalk char[0] {
+		#5Pさてと、廊下の掃除は
+		こんな所かしらね。{wait}
+	}
+	TextWait
+	Emote char[0] 0mm 2000mm 38 38 250ms 1
+	Sleep 500ms
+	CharTurnTo char[0] 225deg 500deg/s
+	Sleep 300ms
+	TextTalk char[0] {
+		#5Pいけない、明日はパレードだから
+		ゴミ出しの時間が
+		変更になってるんだったわ。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#5Pキンドールさんのお宅に
+		一言言っておかなくちゃ。{wait}
+	}
+	TextWait
+	ForkFunc char[0] fork[1] fn[0,26]
+	Sleep 4500ms
+	CamSetDistance -5680 1250 6550 4200ms
+	ED7CamRotate 45deg 22deg 0deg 4200ms
+	CamPers 320 4200ms
+	CamZoom 31420 4200ms
+	CharSetPos char[13] (-5900, 30, 6280) 180deg
+	CharFlagsUnset char[13] 0x0080
+	CharFlagsUnset char[13] 0x0004
+	CamWait 1
+	Sleep 300ms
+	VisSet vis[0] 3 0xFFFFFFFF 500ms 0 0
+	VisSet vis[0] 0 -10000 0 500ms 0
+	VisWait vis[0] 3
+	VisWait vis[0] 0
+	TextSetPos -1 280 35 3
+	Sleep 300ms
+	TextSetName "少年"
+	TextMessage null {
+		………………………………{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	TextSetPos -1 280 60 3
+	VisSet vis[0] 3 0x00FFFFFF 500ms 0 0
+	VisSet vis[0] 0 0 0 500ms 0
+	VisWait vis[0] 3
+	VisWait vis[0] 0
+	CharWalkToPos char[13] (-7610, 30, 4530) 1900mm/s 1
+	CharWalkToPos char[13] (-9430, 20, 4530) 1900mm/s 1
+	Fork char[13] fork[1]:
+		CharWalkToPos self (-9430, 1150, 6880) 1900mm/s 0
+	FadeOut 1000ms 0x00000000 255
+	FadeWait
+	CamSetDistance -270 11270 18770 0ms
+	ED7CamRotate 45deg 22deg 0deg 0ms
+	CamPers 440 0ms
+	CamZoom 20500 0ms
+	CharSetPos char[13] (2800, 10000, 18580) 270deg
+	Fork char[13] fork[1]:
+		CharWalkToPos self (-250, 10000, 18580) 1700mm/s 0
+	FadeIn 1000ms 0x00000000
+	FadeWait
+	Sleep 700ms
+	ForkQuit char[13] fork[1]
+	CharWalkToPos char[13] (-250, 10020, 19710) 1700mm/s 0
+	Sleep 300ms
+	TextTalkNamed char[13] "少年" {
+		#14000F#5P………………………………{wait}
+	}
+	TextWait
+	TextSetName ""
+	TextMessage null {
+		{color 5}少年は針金を取り出し、
+		素早く鍵穴へ差し込んだ。{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	SoundPlay sound[833] 0 100 0
+	Sleep 1000ms
+	SoundPlay sound[809] 0 100 0
+	Sleep 500ms
+	ObjFlagsUnset object[2] 0x0010
+	ED7ObjPlay object[2] 0 10 0 0
+	SoundPlay sound[103] 0 100 0
+	Sleep 200ms
+	TextTalkNamed char[13] "少年" {
+		#14002F#5Pフン……ちょろいもんだ。{wait}
+	}
+	TextWait
+	CharWalkToPos char[13] (-250, 10000, 22830) 1500mm/s 0
+	FadeOut 1000ms 0x00000000 255
+	FadeWait
+	ObjFlagsSet object[2] 0x0010
+	CamSetDistance 50000 1280 51630 0ms
+	ED7CamRotate 45deg 24deg 0deg 0ms
+	CamPers 440 0ms
+	CamZoom 21000 0ms
+	CharSetPos char[13] (50000, 30, 51630) 0deg
+	CharSetPos name[1] (56790, 1000, 55420) 0deg
+	CharSetPos name[2] (57110, 1000, 54440) 0deg
+	CharSetPos name[3] (49770, 0, 50440) 0deg
+	CharSetPos name[0] (56790, 1000, 55420) 0deg
+	FadeIn 1000ms 0x00000000
+	FadeWait
+	TextTalkNamed char[13] "少年" {
+		#14004F#5Pさてと、今日こそは……{wait}
+	}
+	TextWait
+	CharTurnTo char[13] 90deg 500deg/s
+	Sleep 400ms
+	CharTurnTo char[13] 0deg 500deg/s
+	Sleep 200ms
+	TextTalkNamed char[13] "少年" {
+		#14011F#5Pって、相変わらず
+		汚ったねえ散らかしようだな……{wait}
+	}
+	TextWait
+	CamSetDistance 51840 1280 59480 3000ms
+	CharWalkToPos char[13] (50000, 1050, 57300) 1800mm/s 0
+	TextTalkNamed char[13] "少年" {
+		#14006F#5Pあーあ、また
+		こんなに飲みやがって。{wait}
+	} {
+		#14006F#5P……こう汚いと
+		盗る気失せるんだよな。
+		ったく……{wait}
+	}
+	TextWait
+	CamSetDistance 55300 1280 61530 3000ms
+	CharWalkToPos char[13] (53730, 1030, 57300) 1600mm/s 0
+	CharWalkToPos char[13] (54180, 1030, 60610) 1600mm/s 0
+	CharTurnTo char[13] 270deg 500deg/s
+	TextTalkNamed char[13] "少年" {
+		#14001F#5Pさてと……何を盗んでやるか。{wait}
+	}
+	TextWait
+	Emote char[13] 0mm 2000mm 24 27 250ms 1
+	Sleep 1300ms
+	TextTalkNamed char[13] "少年" {
+		#14003F#5Pいや、こんなモンじゃねえ。
+		もっとあいつが慌てそうな……{wait}
+	}
+	TextWait
+	CamSetDistance 56080 1280 62450 1000ms
+	CharWalkToPos char[13] (54710, 1030, 61820) 1600mm/s 0
+	TextTalkNamed char[13] "少年" {
+		#14003F#5Pへっ、いっそのこと
+		金庫でも破って……{wait}
+	}
+	TextWait
+	CharFlagsUnset name[1] 0x0080
+	CharFlagsUnset name[2] 0x0080
+	CharFlagsUnset name[3] 0x0080
+	TextTalkNamed name[0] "声" {
+		#1P#4S──そこまでよ！{wait}
+	}
+	TextWait
+	Emote char[13] 0mm 2000mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	CharJump char[13] 0 0 0 800 12000mm/s
+	Sleep 500ms
+	CharTurnToChar char[13] name[1] 500deg/s
+	CamSetDistance 55910 2280 60270 1200ms
+	ED7CamRotate 68deg 24deg 0deg 1200ms
+	CamPers 440 1200ms
+	CamZoom 21000 1200ms
+	Fork name[1] fork[1]:
+		CharWalkToPos self (56540, 1030, 58700) 4000mm/s 0
+	Fork name[2] fork[1]:
+		CharWalkToPos self (55760, 1000, 57400) 4000mm/s 0
+	TextTalkNamed char[13] "少年" {
+		#14011F#5Pなっ……！？{wait}
+	}
+	TextWait
+	ForkWait name[1] fork[1]
+	TextTalk name[1] {
+		#0105Fストーカーって言うから
+		どんな子かと思ったけど……{wait}
+	}
+	TextWait
+	TextTalk name[2] {
+		#0200Fまあ犯罪には違いありません。
+		大人しくしてもらいましょう。{wait}
+	}
+	TextWait
+	TextTalkNamed char[13] "少年" {
+		#14011F#5Pま、待ち伏せ……
+		くそっ、しくじった……！！{wait}
+	}
+	TextWait
+	TextTalkNamed name[3] "青年の声" {
+		おっと、逃げられねえぜ？{wait}
+	}
+	TextWait
+	CharTurnTo char[13] 225deg 500deg/s
+	CamSetDistance 51490 880 55350 1500ms
+	ED7CamRotate 47deg 24deg 0deg 1500ms
+	CamPers 440 1500ms
+	CamZoom 21000 1500ms
+	CharWalkToPos name[3] (49860, 30, 52710) 1800mm/s 0
+	TextTalk name[3] {
+		#0300F#12Pこっちは行き止まりだ。
+		諦めて降参しろや。{wait}
+	}
+	TextWait
+	_59
+	CrossFade 500ms
+	CamSetDistance 55210 1280 61550 0ms
+	ED7CamRotate 47deg 24deg 0deg 0ms
+	CamPers 440 0ms
+	CamZoom 23500 0ms
+	FadeWait
+	BgmStop 3000ms
+	TextTalkNamed char[13] "少年" {
+		#14007F#5Pくっ……捕まるものか！{wait}
+	} {
+		#14003F#5Pお前らなんか……{wait}
+	} {
+		#14007F#5Pお前らみたいな連中は
+		大嫌いなんだよ！！{wait}
+	}
+	TextWait
+	BgmWait
+	Sleep 10ms
+	BgmPlay bgm[401] 0
+	system[76] = 401
+	CamSetDistance 49830 1950 54370 3000ms
+	ED7CamRotate 50deg 19deg 0deg 3000ms
+	CamZoom 24490 3000ms
+	Fork name[1] fork[1]:
+		CharTurnTo name[1] 270deg 500deg/s
+	Fork name[2] fork[1]:
+		CharTurnTo name[2] 270deg 500deg/s
+	CharWalkToPos char[13] (52040, 1030, 62670) 6000mm/s 1
+	CharWalkToPos char[13] (51770, 1000, 58240) 6000mm/s 1
+	Sc_7D_0 char[13] 50 300
+	Sleep 100ms
+	CharFlagsSet char[13] 0x0004
+	_Char96 char[13] (51820, 2300, 55770) 1400 5000
+	SoundPlay sound[804] 0 100 0
+	Sleep 200ms
+	_Char96 char[13] (51890, 0, 51340) 100 5000
+	CharFlagsSet char[13] 0x0004
+	SoundPlay sound[814] 0 100 0
+	CharWalkToPos char[13] (49910, 30, 51420) 7000mm/s 0
+	Fork char[13] fork[1]:
+		CharColor self 0x00FFFFFF 500ms
+	Emote name[3] 0mm 2000mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	CharWalkToPos char[13] (49740, 0, 46610) 7000mm/s 0
+	TextTalk name[3] {
+		#12P#0305Fな……！？{wait}
+	}
+	TextWait
+	CharTurnToChar name[3] char[13] 500deg/s
+	Sleep 400ms
+	ForkFunc name[1] fork[1] fn[0,27]
+	ForkFunc name[2] fork[1] fn[0,28]
+	TextTalk name[3] {
+		#6P#0301Fヤロォ……
+		いい動きすんじゃねーか。{wait}
+	}
+	TextWait
+	Sc_7D_1 char[13] 0 0
+	TextTalk name[2] {
+		#11P#0201Fランディさん……！{wait}
+	}
+	TextWait
+	TextTalk name[1] {
+		#5P#0101Fランディ、追うわよ！{wait}
+	}
+	TextWait
+	CharTurnToChar name[3] name[1] 500deg/s
+	Sleep 200ms
+	TextTalk name[3] {
+		#0307F#12Pおうよ！{wait}
+	}
+	TextWait
+	CharTurnTo name[3] 180deg 0deg/s
+	CharTurnTo name[1] 180deg 0deg/s
+	CharTurnTo name[2] 180deg 0deg/s
+	Fork name[3] fork[1]:
+		_94 0 self 0deg 5000 5000mm/s 0
+	Fork name[1] fork[1]:
+		_94 0 self 0deg 5000 5000mm/s 0
+	Fork name[2] fork[1]:
+		_94 0 self 0deg 5000 5000mm/s 0
+	FadeOut 1000ms 0x00000000 255
+	FadeWait
+	CamSetDistance -270 11270 18770 0ms
+	ED7CamRotate 45deg 22deg 0deg 0ms
+	CamPers 440 0ms
+	CamZoom 20500 0ms
+	CharSetPos char[13] (-200, 10000, 22910) 0deg
+	CharColor char[13] 0xFFFFFFFF 0ms
+	ObjFlagsUnset object[2] 0x0010
+	ObjFrame object[2] 10
+	Fork char[13] fork[1]:
+		CharWalkToPos self (-200, 10000, 18300) 7000mm/s 1
+	Shake 200 100 3000 300ms
+	SoundPlay sound[103] 0 100 0
+	SoundPlay sound[121] 0 100 0
+	SoundPlay sound[818] 0 80 0
+	FadeIn 250ms 0x00000000
+	FadeWait
+	ForkWait char[13] fork[1]
+	CharWalkToPos char[13] (7690, 10000, 18300) 7000mm/s 0
+	Fork char[13] fork[1]:
+		CharWalkToPos self (9100, 10030, 15930) 7000mm/s 0
+	CrossFade 300ms
+	CamSetDistance -3140 1250 4150 0ms
+	CamSetDistance -60 1250 1780 1000ms
+	ForkQuit char[13] fork[1]
+	CharSetPos char[13] (-3510, 30, 3820) 135deg
+	CharWalkToPos char[13] (-310, 0, 620) 7000mm/s 0
+	CharTurnTo char[13] 180deg 500deg/s
+	Sleep 400ms
+	SoundPlay sound[103] 0 100 0
+	SoundPlay sound[121] 0 100 0
+	FadeOut 300ms 0x00000000 100
+	TextSetName ""
+	TextMessage null {
+		{color 5}少年は扉を開け放した。{wait}
+	}
+	TextWait
+	TextClose 0
+	FadeIn 300ms 0x00000000
+	_59
+	TextTalkNamed char[13] "少年" {
+		#14002F#11Pへっ、マヌケども。
+		こっちでも探してろ……！{wait}
+	}
+	TextWait
+	CharWalkToPos char[13] (-5860, 0, 6840) 7000mm/s 0
+	CharWalkToPos char[13] (-5860, 200, 12240) 7000mm/s 0
+	FadeOut 1000ms 0x00000000 255
+	FadeWait
+	FlagSet flag[738]
+	NewScene "scena/c020c.bin" 0 0 0
+	Hcf
+	Return
+
+fn[26]:
+	CharWalkToPos char[0] (9010, 10020, 15730) 2100mm/s 0
+	CharWalkToPos char[0] (8610, 7500, 10850) 2100mm/s 0
+	CharWalkToPos char[0] (1970, 5000, 10850) 2300mm/s 0
+	CharWalkToPos char[0] (-2860, 5000, 17000) 2300mm/s 0
+	CharFlagsSet char[0] 0x0080
+	Return
+
+fn[27]:
+	CharWalkToPos name[1] (49750, 1050, 57720) 5000mm/s 0
+	CharTurnTo name[1] 180deg 500deg/s
+	Return
+
+fn[28]:
+	CharWalkToPos name[2] (50510, 1000, 56870) 5000mm/s 0
+	CharTurnTo name[2] 180deg 500deg/s
+	Return
+
+fn[29]:
+	EventBegin 0
+	FadeOut 0ms 0x00000000 255
+	ED7LoadChip "chr/ch10100.itc" chip[30]
+	ED7LoadChip "chr/ch05100.itc" chip[31]
+	CamSetDistance 48420 2250 52020 0ms
+	ED7CamRotate 43deg 12deg 0deg 0ms
+	CamPers 540 0ms
+	CamZoom 16100 0ms
+	CamSetDistance 48360 2250 51810 0ms
+	ED7CamRotate 43deg 12deg 0deg 0ms
+	CamPers 540 0ms
+	CamZoom 16100 0ms
+	CharSetChipBase char[13] chip[30]
+	CharSetChipPattern char[13] 0
+	CharSetChipBase char[10] chip[31]
+	CharSetChipPattern char[10] 0
+	CharSetPos name[0] (49320, 0, 50740) 0deg
+	CharSetPos name[1] (52190, 0, 53090) 270deg
+	CharSetPos name[3] (52150, 0, 51670) 270deg
+	CharSetPos name[2] (50770, 0, 50780) 0deg
+	CharSetPos char[10] (49730, 1000, 55910) 180deg
+	CharSetPos char[12] (50950, 1000, 55970) 225deg
+	CharSetPos char[13] (49800, 30, 52560) 0deg
+	CharFlagsUnset char[10] 0x0080
+	CharFlagsUnset char[12] 0x0080
+	CharFlagsUnset char[13] 0x0080
+	CharFlagsUnset char[10] 0x0004
+	_Char4A char[10] 255
+	_Char4A char[12] 255
+	_Char4A char[13] 255
+	TextSetName ""
+	TextMessage null {
+		{color 5}ロイド達はイリアに連絡を入れ
+		犯人逮捕の報を告げた。{wait}
+	}
+	TextWait
+	TextMessage null {
+		{color 5}少年はなおも暴れたが、
+		やがて観念し大人しくなったのだった。{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	BgmPlay bgm[111] 0
+	CamZoom 15100 2000ms
+	FadeIn 2000ms 0x00000000
+	FadeWait
+	CamWait 16
+	Sleep 300ms
+	TextTalk char[10] {
+		#5P#1705Fへえ……それで君が
+		ストーカーだったわけか。{wait}
+	} {
+		#1700F思ってたより小柄な子だけど……
+		クロスベルの出身じゃ無さそうね？{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#12P#0006Fええ、どうも辺境の
+		スラム出身者らしくて。{wait}
+	} {
+		#0001Fただ、事情はおろか
+		名前も喋らないんですよね。{wait}
+	}
+	TextWait
+	TextTalk char[10] {
+		#5P#1703Fふむ、そっかそっか。{wait}
+	} {
+		#1700F……キミ、どうして
+		あたしに付きまとってたの？{wait}
+	} {
+		何か欲しいものでもあったわけ？{wait}
+	}
+	TextWait
+	CharTurnTo char[13] 315deg 400deg/s
+	Sleep 300ms
+	TextTalkNamed char[13] "少年" {
+		#14001F#6Pフン、別に……{wait}
+	} {
+		#14008F#6Pただ嫌がらせしてやろうと
+		思っただけだ。{wait}
+	}
+	TextWait
+	Emote char[10] 0mm 2000mm 38 38 250ms 1
+	Sleep 3ms
+	Emote char[12] 0mm 2000mm 38 38 250ms 1
+	Emote field_party[0] 0mm 2000mm 38 38 250ms 1
+	Sleep 5ms
+	Emote field_party[1] 0mm 2000mm 38 38 250ms 1
+	Emote field_party[2] 0mm 2000mm 38 38 250ms 1
+	Sleep 4ms
+	Emote field_party[3] 0mm 2000mm 38 38 250ms 1
+	Sleep 1000ms
+	TextTalk char[12] {
+		#1805F#11P嫌がらせ……？{wait}
+	}
+	TextWait
+	BgmStop 4000ms
+	CharTurnTo char[13] 0deg 500deg/s
+	Sleep 300ms
+	TextTalkNamed char[13] "少年" {
+		#14008F#6Pお前らなんかに何が判る……{wait}
+	} {
+		#14001F#6Pこんないい所に住んで
+		毎日うまいもん食って……{wait}
+	}
+	TextWait
+	Sleep 200ms
+	Shake 150 0 3000 800ms
+	TextTalkNamed char[13] "少年" {
+		#14007F#6P#4S#Nそんな連中に
+		ゴミ溜めみたいな街で生きてきた
+		オレの何が判るってんだよッ！！{wait}
+	}
+	TextWait
+	Sleep 200ms
+	TextTalk name[0] {
+		#12P#0005F…………………………！？{wait}
+	}
+	TextWait
+	TextTalk name[1] {
+		#0108F…………………………{wait}
+	}
+	TextWait
+	BgmWait
+	CharTurnTo char[13] 315deg 400deg/s
+	BgmPlay bgm[5] 0
+	Sleep 300ms
+	TextTalkNamed char[13] "少年" {
+		#14003F#6P……クロスベルに来てから
+		ずっと見てた。{wait}
+	} {
+		#14001F#6Pここの連中は金持ちばっかで
+		毎晩大金使って遊んでやがる。{wait}
+	} {
+		#14007F#6Pハッ、好きにしろってんだ。
+		オレはそんな連中、嫌いだからよ。{wait}
+	} {
+		#14003F#6P……でも、そいつらが最高の娯楽は
+		アルカンシェルだって言うから……
+		一度だけ忍び込んでやったんだ。{wait}
+	}
+	TextWait
+	TextTalk char[10] {
+		#1705F#5P………え……………？{wait}
+	}
+	TextWait
+	TextTalk name[2] {
+		#11P#0200Fアルカンシェルの……
+		イリアさんの舞台を
+		見たのですか……？{wait}
+	}
+	TextWait
+	CharTurnTo char[13] 0deg 500deg/s
+	Sleep 200ms
+	TextTalkNamed char[13] "少年" {
+		#14001F#6P何の心配もなく
+		のらくら暮らしてやがる連中は嫌いだ。{wait}
+	} {
+		#14007F#6Pでも、あんたは……
+		#4Sもっと大嫌いだ！！{wait}
+	} {
+		#14001F#6Pあんな綺麗な舞台に立って、
+		すごい世界を演じて……{wait}
+	} {
+		#14003F#6P絶対届かない場所にいて、
+		あんなに輝いてるんだ。{wait}
+	} {
+		#14008F#6Pオレには死ぬまで掛かったって
+		絶対届かない……{wait}
+	}
+	TextWait
+	Emote char[13] 0mm 2000mm 24 27 250ms 1
+	Sleep 1500ms
+	TextTalkNamed char[13] "少年" {
+		#14007F#6Pオレが死ぬまで働いたって
+		チケット一枚分も稼げねえ。{wait}
+	}
+	TextWait
+	Sleep 200ms
+	Shake 150 100 3000 800ms
+	TextTalkNamed char[13] "少年" {
+		#14007F#6P#4S#N──そうだろ！？
+		オレには死ぬまで掛かったって
+		絶対届かないんだ！！{wait}
+	}
+	TextWait
+	Sleep 300ms
+	Emote field_party[0] 0mm 2000mm 24 27 400ms 0
+	Emote field_party[1] 0mm 2000mm 24 27 400ms 0
+	Emote field_party[2] 0mm 2000mm 24 27 400ms 0
+	Emote field_party[3] 0mm 2000mm 24 27 400ms 0
+	Emote char[10] 0mm 2000mm 24 27 400ms 0
+	Emote char[12] 0mm 2000mm 24 27 400ms 0
+	Sleep 3200ms
+	EmoteStop field_party[0]
+	EmoteStop field_party[1]
+	EmoteStop field_party[2]
+	EmoteStop field_party[3]
+	EmoteStop char[10]
+	EmoteStop char[12]
+	Sleep 500ms
+	TextTalk name[3] {
+		#11P#0303F………………………………
+		そういう事だったか……{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#12P#0008Fクロスベルに来て……
+		イリアさんの舞台を見て……{wait}
+	} {
+		#0006F確かにショックだったかも
+		しれないな。{wait}
+	}
+	TextWait
+	TextTalk char[12] {
+		#1803F#11P……そう、ですね……{wait}
+	} {
+		#1808F確かにクロスベルには
+		そういった面があります。{wait}
+	} {
+		#1801F大都市の持つ闇の面……
+		時に人を惨めにするような力が……{wait}
+	}
+	TextWait
+	TextTalk char[10] {
+		#1703F#5P………………………………{wait}
+	} {
+		#1700Fま、いずれにせよ
+		ケジメは付けてもらわないとね。{wait}
+	}
+	TextWait
+	Emote field_party[0] 0mm 2000mm 38 38 250ms 1
+	Emote field_party[1] 0mm 2000mm 38 38 250ms 1
+	Emote field_party[2] 0mm 2000mm 38 38 250ms 1
+	Emote field_party[3] 0mm 2000mm 38 38 250ms 1
+	Emote char[12] 0mm 2000mm 38 38 250ms 1
+	Emote char[13] 0mm 2000mm 38 38 250ms 1
+	Sleep 1000ms
+	ForkLoop field_party[0] fork[1]:
+		CharTurnToChar self char[10] 500deg/s
+	ForkLoop field_party[1] fork[1]:
+		CharTurnToChar self char[10] 500deg/s
+	ForkLoop field_party[2] fork[1]:
+		CharTurnToChar self char[10] 500deg/s
+	ForkLoop field_party[3] fork[1]:
+		CharTurnToChar self char[10] 500deg/s
+	ForkLoop char[12] fork[1]:
+		CharTurnToChar self char[10] 500deg/s
+	CamSetDistance 48800 2250 51320 2000ms
+	Fork char[10] fork[1]:
+		CharWalkToPos self (49730, 0, 54230) 1000mm/s 0
+	TextTalk name[1] {
+		#11P#0105Fイリアさん……？{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#12P#0011Fあの、何を……{wait}
+	}
+	TextWait
+	ForkWait char[10] fork[1]
+	TextTalk char[10] {
+		#5P#1701Fあたしはイリア・プラティエ。
+		……あんた、名前は何ていうの？{wait}
+	}
+	TextWait
+	TextTalkNamed char[13] "少年" {
+		#14012F#6P……………………………
+		……シュリだ。{wait}
+	}
+	TextWait
+	TextTalk char[10] {
+		#5P#1703Fシュリね、了解。{wait}
+	} {
+		#1701Fシュリ、あんたはしばらく
+		劇団で下働きしなさい。{wait}
+	} {
+		その分じゃミラで償うって
+		わけにも行かないでしょ。
+		しっかり働いてもらうわよ？{wait}
+	}
+	TextWait
+	Emote char[13] 0mm 2000mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Sleep 12ms
+	Emote char[12] 0mm 2000mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Emote field_party[0] 0mm 2000mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Sleep 18ms
+	Emote field_party[1] 0mm 2000mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Emote field_party[2] 0mm 2000mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Sleep 12ms
+	Emote field_party[3] 0mm 2000mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Sleep 1000ms
+	TextTalk char[13] {
+		#14005F#6P……………な…………{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#12P#0005Fイ、イリアさん、それは……？{wait}
+	}
+	TextWait
+	CharTurnTo char[10] 135deg 400deg/s
+	Sleep 200ms
+	TextTalk char[10] {
+		#5P#1706Fごめんねー、せっかく
+		捕まえてもらったのに。{wait}
+	} {
+		#1700Fあたしがしばらく
+		預からせてもらうわ。{wait}
+	}
+	TextWait
+	TextTalk name[3] {
+		#11P#0302F無罪放免、ってワケっすか。{wait}
+	}
+	TextWait
+	TextTalk name[2] {
+		#11P#0202Fやれやれですね。
+		……まあイリアさんが
+		そう仰るなら。{wait}
+	}
+	TextWait
+	TextTalk char[10] {
+		#5P#1704Fフフン、それとね。{wait}
+	}
+	TextWait
+	CharTurnTo char[10] 180deg 400deg/s
+	CharWalkToPos char[10] (49900, 0, 53370) 1000mm/s 0
+	Sleep 200ms
+	ForkQuit field_party[0] fork[1]
+	ForkQuit field_party[1] fork[1]
+	ForkQuit field_party[2] fork[1]
+	ForkQuit field_party[3] fork[1]
+	ForkQuit char[12] fork[1]
+	SoundPlay sound[819] 0 100 0
+	CharShake char[13] 0 15 200 3000ms
+	Sleep 300ms
+	FadeOut 300ms 0x00000000 100
+	TextSetName ""
+	TextMessage null {
+		{color 5}イリアは少年の肩を叩いた。{wait}
+	}
+	TextWait
+	TextClose 0
+	FadeIn 300ms 0x00000000
+	_59
+	ForkFunc char[13] fork[1] fn[0,30]
+	TextTalk char[13] {
+		#14015F#6Pちょ……なにすんだよ！？{wait}
+	}
+	TextWait
+	TextTalk char[10] {
+		#5P#1709Fうん、やっぱ思ったとおりね。{wait}
+	} {
+		#1700Fもうちょい筋肉が
+		欲しいとこだけど……{wait}
+	}
+	TextWait
+	ForkQuit char[13] fork[1]
+	if char[13].4 == 0:
+		CharTurnTo char[13] 270deg 400deg/s
+	Sleep 400ms
+	CharTurnTo char[13] 0deg 500deg/s
+	Sleep 200ms
+	TextTalk char[10] {
+		#5P#1702Fシュリ、あんたは
+		中々素質がありそうだわ。{wait}
+	} {
+		#1709F鍛えれば、あたしやリーシャとも並ぶ
+		アーティストになれるかもよ？{wait}
+	}
+	TextWait
+	_59
+	Emote char[13] 0mm 2000mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Sleep 1000ms
+	TextTalk char[13] {
+		#14005F#6Pえ……{wait}
+	}
+	TextWait
+	Shake 150 0 3000 300ms
+	TextTalk char[13] {
+		#14011F#6P#4Sえええっ……！？{wait}
+	} {
+		#14011F#6Pな、なんでオレが……！？{wait}
+	}
+	TextWait
+	TextTalk name[1] {
+		#11P#0102Fそういえば……
+		かなり身軽な子だったわね。{wait}
+	}
+	TextWait
+	TextTalk name[3] {
+		#11P#0300Fああ、あのフットワークは
+		ちょいと驚いた。{wait}
+	} {
+		#0304F……なるほど、そっち方面の
+		素質があったのか。{wait}
+	}
+	TextWait
+	TextTalk char[10] {
+		#5P#1702Fま、そういうことだから
+		ウチに来てもらうわよ。{wait}
+	} {
+		#1709Fあんたに選択権はなーい！{wait}
+	}
+	TextWait
+	Emote char[13] 0mm 2000mm 40 43 100ms 0
+	TextTalk char[13] {
+		#14011F#6Pオ、オレ……
+		……でもそんな…………{wait}
+	}
+	TextWait
+	_59
+	Sleep 700ms
+	EmoteStop char[13]
+	ForkFunc char[10] fork[2] fn[0,31]
+	Sleep 700ms
+	ForkFunc char[13] fork[2] fn[0,31]
+	Sleep 500ms
+	TextTalk char[12] {
+		#1809F#5Pふふ……
+		イリアさんらしいです。{wait}
+	} {
+		#1810F……私の時も
+		まったく同じで、強引でしたから。{wait}
+	}
+	TextWait
+	_59
+	Fork name[1] fork[1]:
+		CharTurnTo self 0deg 350deg/s
+	Sleep 20ms
+	Fork name[2] fork[1]:
+		CharTurnTo self 0deg 350deg/s
+	Sleep 400ms
+	TextTalk name[0] {
+		#12P#0002Fそ、そうだったのか。{wait}
+	} {
+		#0004Fでもまあ、イリアさんのお陰で
+		丸く収まったみたいだな。{wait}
+	}
+	TextWait
+	TextTalk name[2] {
+		#11P#0202Fそうですね。{wait}
+	}
+	TextWait
+	Fork name[1] fork[1]:
+		CharTurnTo self 270deg 350deg/s
+	Sleep 20ms
+	Fork name[2] fork[1]:
+		CharTurnTo self 270deg 350deg/s
+	Sleep 800ms
+	ForkQuit char[10] fork[2]
+	ForkQuit char[13] fork[2]
+	EmoteStop char[10]
+	EmoteStop char[13]
+	TextTalk char[10] {
+		#1709F#5Pビシッ！　文句言うな～！{wait}
+	}
+	TextWait
+	TextTalk char[13] {
+		#14007F#6Pオ、オレはまだ
+		うんって言ったわけじゃねえぞ！？{wait}
+	}
+	TextWait
+	Emote char[13] 0mm 1900mm 44 47 150ms 1
+	SoundPlay sound[25] 0 100 0
+	Sleep 200ms
+	ForkFunc char[10] fork[2] fn[0,31]
+	Sleep 600ms
+	FadeOut 2000ms 0x00000000 255
+	FadeWait
+	BgmStop 4000ms
+	ForkQuit char[10] fork[2]
+	EmoteStop char[10]
+	CamSetDistance -950 11250 18010 0ms
+	ED7CamRotate 45deg 25deg 0deg 0ms
+	CamPers 440 0ms
+	CamZoom 22750 0ms
+	CharSetPos name[0] (-660, 10000, 17460) 0deg
+	CharSetPos name[1] (390, 10000, 17460) 0deg
+	CharSetPos name[2] (-660, 10000, 16030) 0deg
+	CharSetPos name[3] (390, 10000, 16030) 0deg
+	CharSetPos char[10] (-730, 10030, 19740) 180deg
+	CharSetPos char[12] (530, 10020, 19600) 180deg
+	CharSetPos char[13] (-280, 10020, 19200) 180deg
+	CharFlagsSet name[2] 0x0004
+	BgmWait
+	Sleep 10ms
+	BgmPlay bgm[106] 0
+	system[1] = 106
+	FadeIn 1000ms 0x00000000
+	FadeWait
+	TextTalk char[10] {
+		#5P#1705Fもう帰っちゃうの？
+		お茶くらい飲んでいけばいいのに。{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#0004F#6Pいえ、まだ仕事も
+		抱えていますし。{wait}
+	} {
+		#0005Fあ、そうだ。
+		鍵をお返ししておきますね。{wait}
+	}
+	TextWait
+	CharWalkToPos name[0] (-640, 10000, 18640) 1200mm/s 0
+	FadeOut 300ms 0x00000000 100
+	TextSetPos -1 -1 -1 -1
+	TextSetName ""
+	SoundPlay sound[17] 0 100 0
+	TextMessage null {
+		{item[839]}{color 0}を返した。{wait}
+	}
+	TextWait
+	TextClose 0
+	FadeIn 300ms 0x00000000
+	TextSetPos -1 280 60 3
+	_59
+	ItemRemove item[839] 1
+	CharWalkToPos2 name[0] (-660, 10000, 17660) 1200mm/s 0
+	TextTalk char[10] {
+		#5P#1704Fうん、確かに。{wait}
+	} {
+		#1700F世話になったわね、弟君。
+		帰り道も気をつけてね～。{wait}
+	}
+	TextWait
+	TextTalk char[12] {
+		#11P#1809F私からもお礼を言わせてください。
+		皆さん、ありがとうございました。{wait}
+	}
+	TextWait
+	TextTalk name[3] {
+		#12P#0309Fおう、またな
+		リーシャちゃん！{wait}
+	}
+	TextWait
+	TextTalk name[1] {
+		#12P#0102Fイリアさん、リーシャさん。
+		シュリ君の事はお任せしますね。{wait}
+	}
+	TextWait
+	TextTalk name[2] {
+		#12P#0204F事件が解決したとはいえ
+		戸締りには気を付けてください。{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#0014F#6Pはは……また何かあれば
+		支援課の方へどうぞ。{wait}
+	}
+	TextWait
+	ForkWait name[0] fork[1]
+	Sleep 200ms
+	ForkLoop char[10] fork[1]:
+		CharTurnToChar self name[0] 300deg/s
+	ForkLoop char[12] fork[1]:
+		CharTurnToChar self name[0] 300deg/s
+	CharWalkToPos name[0] (-600, 10000, 18360) 1000mm/s 0
+	CharTurnTo name[0] 45deg 400deg/s
+	CharTurnTo char[13] 225deg 400deg/s
+	Sleep 300ms
+	TextTalk name[0] {
+		#0000F#6P……じゃあな。{wait}
+	} {
+		#0002Fもうこんな事はするなよ？
+		男だったら受けた恩は返さないとな。{wait}
+	}
+	TextWait
+	Emote char[13] 0mm 2000mm 24 27 250ms 0
+	CamSetDistance 930 11250 17540 2800ms
+	ForkLoop char[13] fork[1]:
+		CharTurnToChar self name[0] 300deg/s
+	Fork name[3] fork[1]:
+		_94 0 self 90deg 2600 700mm/s 0
+	Fork name[1] fork[1]:
+		_94 0 self 90deg 2600 700mm/s 0
+	Fork name[2] fork[1]:
+		_94 0 self 90deg 2600 700mm/s 0
+	Fork name[0] fork[1]:
+		CharWalkToPos self (1870, 10000, 17460) 700mm/s 0
+	ForkWait name[0] fork[1]
+	ForkWait name[1] fork[1]
+	ForkWait name[3] fork[1]
+	ForkWait name[2] fork[1]
+	EmoteStop char[13]
+	TextTalk char[13] {
+		#14001F#5P……やっぱりお前……
+		気に入らない奴。{wait}
+	}
+	TextWait
+	Sleep 200ms
+	ForkQuit name[0] fork[1]
+	ForkQuit name[1] fork[1]
+	ForkQuit name[2] fork[1]
+	ForkQuit name[3] fork[1]
+	ForkQuit char[10] fork[1]
+	ForkQuit char[12] fork[1]
+	ForkQuit char[13] fork[1]
+	Fork field_party[0] fork[1]:
+		CharTurnToChar self char[13] 400deg/s
+	Sleep 12ms
+	Fork field_party[1] fork[1]:
+		CharTurnToChar self char[13] 400deg/s
+	Fork field_party[2] fork[1]:
+		CharTurnToChar self char[13] 400deg/s
+	Sleep 10ms
+	Fork field_party[3] fork[1]:
+		CharTurnToChar self char[13] 400deg/s
+	Sleep 300ms
+	TextTalk name[0] {
+		#11P#0005Fへ……{wait}
+	}
+	TextWait
+	CamSetDistance 930 11050 18160 2000ms
+	ED7CamRotate 349deg 25deg 0deg 2000ms
+	Sleep 500ms
+	CharWalkToPos char[13] (460, 10000, 18630) 3000mm/s 0
+	CamWait 121
+	Sleep 100ms
+	CrossFade 250ms
+	CharSetChipBase char[13] chip[12]
+	CharSetChipPattern char[13] 0
+	SoundPlay sound[804] 0 100 0
+	FadeWait
+	Sleep 300ms
+	Shake 200 0 3000 300ms
+	TextTalk char[13] {
+		#04207F#5P#4S……オレは女だ！！{wait}
+	}
+	TextWait
+	Sleep 300ms
+	Shake 300 0 3000 500ms
+	TextTalk char[13] {
+		#04207F#5P#4Sいつまで
+		バカにするつもりだ！！{wait}
+	}
+	TextWait
+	Emote name[0] 0mm 2000mm 24 27 250ms 0
+	Emote name[3] 0mm 2000mm 24 27 250ms 0
+	Emote name[1] 0mm 2000mm 24 27 250ms 0
+	Sleep 1000ms
+	EmoteStop name[0]
+	EmoteStop name[3]
+	EmoteStop name[1]
+	Sleep 300ms
+	Shake 200 0 2000 300ms
+	TextTalk name[0] {
+		#6P#0011Fって、#4Sえええええええ……！？{wait}
+	}
+	TextWait
+	TextTalk name[3] {
+		#12P#0305Fそうなのかよ……！？{wait}
+	} {
+		#0301Fむ、そういや可愛い顔を
+		してやがるが……{wait}
+	}
+	TextWait
+	CharTurnToChar name[2] name[3] 500deg/s
+	Sleep 200ms
+	TextTalk name[2] {
+		#6P#0205Fあれ、ランディさんは
+		今ごろ気付いたんですか？{wait}
+	}
+	TextWait
+	CharTurnToChar char[12] name[3] 500deg/s
+	TextTalk char[12] {
+		#5P#1809Fシュリちゃんは
+		どこから見ても
+		女の子だと思いますけど。{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#6P#0011F…………………………{wait}
+	} {
+		#0012Fその、君を捕まえる時に
+		思いっきり、その……{wait}
+	}
+	TextWait
+	Emote name[1] 0mm 2000mm 38 38 250ms 1
+	Emote name[2] 0mm 2000mm 38 38 250ms 1
+	Emote name[3] 0mm 2000mm 38 38 250ms 1
+	Emote char[10] 0mm 2000mm 38 38 250ms 1
+	Emote char[12] 0mm 2000mm 38 38 250ms 1
+	Sleep 800ms
+	Fork name[2] fork[1]:
+		CharTurnToChar self name[0] 500deg/s
+	Fork name[1] fork[1]:
+		CharTurnToChar self name[0] 500deg/s
+	Fork char[12] fork[1]:
+		CharTurnToChar self name[0] 500deg/s
+	TextTalk name[3] {
+		#12P#0307Fロイド、お前……{wait}
+	}
+	TextWait
+	Emote char[13] 0mm 2000mm 40 43 100ms 0
+	CharTurnTo char[13] 225deg 400deg/s
+	Sleep 300ms
+	TextTalk char[13] {
+		#04215F#11Pだ、だから離せって言ったんだ。
+		このバカ……！{wait}
+	}
+	TextWait
+	CharTurnToChar name[0] name[3] 500deg/s
+	Sleep 500ms
+	Fork name[0] fork[1]:
+		CharTurnToChar self char[10] 500deg/s
+	EmoteStop char[13]
+	TextTalk name[0] {
+		#6P#0011Fいやだって、どう考えても
+		男の感触っていうか……！{wait}
+	}
+	TextWait
+	TextTalk name[1] {
+		#11P#0111Fふうん……
+		感触まで覚えてるんだ。{wait}
+	}
+	TextWait
+	TextTalk name[2] {
+		#6P#0211Fロイドさん、問題発言ですね。{wait}
+	}
+	TextWait
+	CharTurnToChar name[0] name[1] 500deg/s
+	Sleep 300ms
+	Fork name[0] fork[1]:
+		CharTurnToChar self name[2] 500deg/s
+	TextTalk name[0] {
+		#5P#0012Fわああ、そういう意味じゃなくて……！{wait}
+	}
+	TextWait
+	TextTalk char[10] {
+		#5P#1709Fあはは、お触りくらいなら
+		ギリオーケーでしょ！{wait}
+	}
+	TextWait
+	TextTalk char[12] {
+		#5P#1806Fロイドさん……{wait}
+	}
+	TextWait
+	Emote name[0] 0mm 2000mm 40 43 100ms 0
+	ForkFunc name[0] fork[1] fn[0,32]
+	TextTalk name[0] {
+		#6P#0011Fち、違うから！
+		そんなつもりじゃないから……！！{wait}
+	}
+	TextWait
+	CamZoom 21750 2000ms
+	FadeOut 2000ms 0x00000000 255
+	FadeWait
+	SoundPlay sound[9] 0 100 0
+	TextSetPos -1 -1 -1 -1
+	TextSetName ""
+	TextMessage null {
+		{color 2}クエスト【ストーカーの捜査依頼！！】{color 0}を達成した！{wait}
+	}
+	TextWait
+	TextClose 0
+	TextSetPos -1 280 60 3
+	EmoteStop name[0]
+	ForkQuit name[0] fork[1]
+	CharSetPos field_party[0] (-280, 10020, 19290) 180deg
+	CharFlagsUnset name[2] 0x0004
+	CharSetPos char[10] (52530, 1050, 60070) 270deg
+	CharSetPos char[12] (58290, 1030, 62500) 0deg
+	CharSetPos char[13] (51930, 1050, 60970) 135deg
+	CharSetChipBase char[10] chip[13]
+	CharSetChipPattern char[10] 0
+	_Char4B char[10] 255
+	_Char4B char[12] 255
+	_Char4B char[13] 255
+	CharFlagsSet char[4] 0x0080
+	CharFlags2Set char[4] 0x8000
+	CharFlagsSet char[6] 0x0080
+	CharFlags2Set char[6] 0x8000
+	ED7_76_0 object[255] "huku_nugippa" 1
+	ED7_76_0 object[255] "model5" 1
+	EntranceSetFunc entrance[8] fn[255,65535]
+	LookPointFlagsSet look_point[1] 0x0001
+	LookPointFlagsSet look_point[2] 0x0001
+	QuestFlagsSet quest[29] 0x10
+	QuestTaskSet quest[29] 10
+	Sc_C4Unset 4096
+	Sleep 500ms
+	EventEnd 5
+	Return
+
+fn[30]:
+	while 1:
+		CharTurnTo self 270deg 400deg/s
+		CharTurnTo self 180deg 400deg/s
+		CharTurnTo self 90deg 400deg/s
+		CharTurnTo self 0deg 400deg/s
+	Return
+
+fn[31]:
+	while 1:
+		Emote self 0mm 2000mm 38 39 250ms 2
+		Sleep 1500ms
+	Return
+
+fn[32]:
+	while 1:
+		CharTurnToChar self char[10] 500deg/s
+		Sleep 500ms
+		CharTurnToChar self name[1] 500deg/s
+		Sleep 500ms
+		CharTurnToChar self name[2] 500deg/s
+		Sleep 800ms
+	Return
+
+fn[33]:
+	if QuestTaskGet quest[29] 2 && !QuestTaskGet quest[29] 3 && !QuestFlagsGet quest[29] 0x40:
+		Call fn[0,23]
+	else:
+		TextStart null
+		SoundPlay sound[810] 0 100 0
+		TextMessage null {
+			{color 5}鍵が掛かっているようだ。{color 0}{wait}
+		}
+		TextWait
+		TextClose 0
+		_59
+		TextEnd null
+	Return
+
+fn[34]:
+	TextStart null
+	if !flag[8]:
+		FadeOut 300ms 0x00000000 100
+		TextSetName ""
+		TextMessage null {
+			{color 5}ワイングラスやボトルが
+			乱雑に並べられている。{wait}
+		}
+		TextWait
+		TextMessage null {
+			{color 5}ボトルはほとんど残っていない……{wait}
+		}
+		TextWait
+		TextClose 0
+		FadeIn 300ms 0x00000000
+		_59
+		Emote field_party[0] 0mm 2000mm 16 19 250ms 1
+		SoundPlay sound[23] 0 100 0
+		Emote field_party[1] 0mm 2000mm 16 19 250ms 1
+		SoundPlay sound[23] 0 100 0
+		Emote field_party[2] 0mm 2000mm 16 19 250ms 1
+		SoundPlay sound[23] 0 100 0
+		Emote field_party[3] 0mm 2000mm 16 19 250ms 1
+		SoundPlay sound[23] 0 100 0
+		Sleep 1000ms
+		TextTalk name[0] {
+			#0012F昨晩は酒盛りでも
+			してたのかな。{wait}
+		}
+		TextWait
+		TextTalk name[3] {
+			#0300Fいや、イリア・プラティエは
+			かなりの酒豪らしいぜ。{wait}
+		} {
+			日常的にこのくらい
+			飲んでるんじゃねえか？{wait}
+		}
+		TextWait
+		TextTalk name[0] {
+			#0005Fうっ、そうなのか……{wait}
+		}
+		TextWait
+		FlagSet flag[8]
+	else:
+		FadeOut 300ms 0x00000000 100
+		TextSetName ""
+		TextMessage null {
+			{color 5}ワイングラスやボトルが
+			乱雑に並べられている。{wait}
+		}
+		TextWait
+		TextMessage null {
+			{color 5}ボトルはほとんど残っていない。{wait}
+		}
+		TextWait
+		TextClose 0
+		FadeIn 300ms 0x00000000
+		_59
+	TextEnd null
+	Return
+
+fn[35]:
+	TextStart null
+	if !flag[9]:
+		FadeOut 300ms 0x00000000 100
+		TextSetName ""
+		TextMessage null {
+			{color 5}ベッドの上には
+			洋服が散らばっている……{wait}
+		}
+		TextWait
+		TextClose 0
+		FadeIn 300ms 0x00000000
+		_59
+		TextTalk name[1] {
+			#0106Fこれ、ブランド物なのに……{wait}
+		}
+		TextWait
+		TextTalk name[2] {
+			#0200F乱雑です。{wait}
+		}
+		TextWait
+		TextTalk name[3] {
+			#0303F朝にクローゼットから
+			引き出したママって感じだな。{wait}
+		}
+		TextWait
+		TextTalk name[0] {
+			#0000F出勤時間の光景が
+			目に浮かぶようだなぁ。{wait}
+		}
+		TextWait
+		FlagSet flag[9]
+	else:
+		FadeOut 300ms 0x00000000 100
+		TextSetName ""
+		TextMessage null {
+			{color 5}ベッドの上には
+			洋服が散らばっている。{wait}
+		}
+		TextWait
+		TextClose 0
+		FadeIn 300ms 0x00000000
+		_59
+	TextEnd null
+	Return
+
+fn[36]:
+	EventBegin 1
+	TextTalk name[0] {
+		#0000F今はストーカーの捜査に
+		専念しよう。{wait}
+	} {
+		イリアさんから鍵まで
+		預かってしまってるしな。{wait}
+	}
+	TextWait
+	Sleep 50ms
+	CharSetPos field_party[0] (-160, 30, 1350) 0deg
+	EventEnd 4
+	Return

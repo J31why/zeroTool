@@ -1,0 +1,1589 @@
+calmare zero_k scena
+scena:
+	name "t052b" "t052b" "t052b"
+	town town[63]
+	bgm bgm[513]
+	flags 8192
+	item_use fn[0,255]
+	unk 255 0
+
+entry:
+	pos (0, 0, -1000)
+	unk1 0
+	cam_from (0, 0, 34000)
+	cam_pers 262
+	unk2 30
+	cam_deg 45deg
+	cam_limit 0deg 360deg
+	cam_at (0, 0, 0)
+	unk3 0
+	unk4 0
+	flags 0x0001
+	town town[63]
+	init fn[0,2]
+	reinit fn[0,3]
+
+chip[0] "chr/ch23500.itc"
+chip[1] "chr/ch25700.itc"
+chip[2] "chr/ch23602.itc"
+chip[3] "chr/ch26202.itc"
+chip[4] "chr/ch33300.itc"
+chip[5] "chr/ch34500.itc"
+chip[6] "chr/ch30702.itc"
+chip[7] null
+chip[8] null
+chip[9] null
+chip[10] null
+chip[11] null
+chip[12] null
+chip[13] null
+chip[14] null
+chip[15] null
+chip[16] null
+chip[17] null
+chip[18] null
+chip[19] null
+chip[20] null
+chip[21] null
+chip[22] null
+chip[23] null
+chip[24] null
+chip[25] null
+chip[26] null
+chip[27] null
+chip[28] null
+chip[29] null
+
+npc char[0]:
+	name "諾瑪"
+	pos (3700, 0, 4289)
+	angle 180deg
+	flags 0x0105
+	unk2 0
+	chip chip[0]
+	init fn[0,0]
+	talk fn[0,5]
+	unk4 255
+
+npc char[1]:
+	name "琉卡"
+	pos (-4880, -750, -860)
+	angle 270deg
+	flags 0x0105
+	unk2 0
+	chip chip[1]
+	init fn[0,0]
+	talk fn[0,6]
+	unk4 255
+
+npc char[2]:
+	name "卡洛斯"
+	pos (-6130, -600, 4219)
+	angle 270deg
+	flags 0x01D5
+	unk2 0
+	chip chip[2]
+	init fn[255,255]
+	talk fn[0,7]
+	unk4 255
+
+npc char[3]:
+	name "礦工瑪爾羅"
+	pos (-9359, -600, -1110)
+	angle 180deg
+	flags 0x01D5
+	unk2 0
+	chip chip[3]
+	init fn[255,255]
+	talk fn[0,8]
+	unk4 255
+
+npc char[4]:
+	name "礦工岡茲"
+	pos (-8659, -600, -4480)
+	angle 0deg
+	flags 0x01D5
+	unk2 0
+	chip chip[6]
+	init fn[255,255]
+	talk fn[0,9]
+	unk4 255
+
+npc char[5]:
+	name "弗裡吉亞"
+	pos (204009, 0, 560)
+	angle 270deg
+	flags 0x0185
+	unk2 0
+	chip chip[4]
+	init fn[0,1]
+	talk fn[0,10]
+	unk4 255
+
+npc char[6]:
+	name "萊緹娜"
+	pos (199529, 0, 3160)
+	angle 225deg
+	flags 0x0185
+	unk2 0
+	chip chip[5]
+	init fn[0,0]
+	talk fn[0,11]
+	unk4 255
+
+look_point[0]:
+	pos (3700, 0, 2920)
+	radius 1000
+	bubble_pos (3700, 1500, 4290)
+	unk1 126
+	unk2 0
+	function fn[0,4]
+	unk3 0
+	unk4 0
+
+look_point[1]:
+	pos (102600, 2000, 1500)
+	radius 2000
+	bubble_pos (102600, 3200, 1500)
+	unk1 124
+	unk2 0
+	function fn[0,12]
+	unk3 0
+	unk4 0
+
+fn[0]:
+	var[2] = random % 8
+	switch var[2]:
+		case 0:
+			ED7_A0 self 1450ms 0 251
+			break
+		case 1:
+			ED7_A0 self 1550ms 0 251
+			break
+		case 2:
+			ED7_A0 self 1600ms 0 251
+			break
+		case 3:
+			ED7_A0 self 1400ms 0 251
+			break
+		case 4:
+			ED7_A0 self 1650ms 0 251
+			break
+		case 5:
+			ED7_A0 self 1350ms 0 251
+			break
+		case 6:
+			ED7_A0 self 1500ms 0 251
+			break
+		default:
+			ED7_A0 self 1500ms 0 251
+			break
+	while 1:
+		ED7_A0 self 1500ms 0 251
+	Return
+
+fn[1]:
+	while 1:
+		CharIdle self (202360, null, -230) (205240, null, 990) 1000mm/s
+		Sleep 300ms
+	Return
+
+fn[2]:
+	if flag[1566]:
+	elif flag[1554]:
+	elif flag[1547]:
+	elif flag[1544]:
+	elif flag[1536]:
+	elif flag[1307]:
+	elif flag[1292]:
+	elif flag[1282]:
+	elif flag[1280]:
+	elif flag[1040]:
+	elif flag[1024]:
+	elif flag[813]:
+		CharFlagsUnset char[2] 0x0080
+		CharFlagsUnset char[3] 0x0080
+		CharFlagsUnset char[4] 0x0080
+		CharFlagsUnset char[5] 0x0080
+		CharFlagsUnset char[6] 0x0080
+	elif flag[812]:
+	elif flag[801]:
+	if flag[736]:
+		FlagUnset flag[736]
+		Event fn[0,13]
+	Return
+
+fn[3]:
+	LookPointFlagsSet look_point[1] 0x0001
+	if flag[813] && !flag[1024]:
+		LookPointFlagsUnset look_point[1] 0x0001
+	Return
+
+fn[4]:
+	Call fn[0,5]
+	Return
+
+fn[5]:
+	TextStart char[0]
+	var[0] = 99
+	while var[0] == 99:
+		FadeOut 300ms 0x00000000 100
+		Menu menu[0] -1 -1 1
+			"對話" // 0
+			"購物" // 1
+			"休息" // 2
+			"放棄" // 3
+		MenuWait var[0]
+		if var[0] < 1 | var[0] > 2:
+			MenuClose menu[0]
+			FadeIn 300ms 0x00000000
+			FadeWait
+		if var[0] == 1:
+			ShopOpen shop[82]
+			var[0] = 99
+		elif var[0] == 2:
+			ShopOpen shop[80]
+			var[0] = 99
+		elif var[0] != 0:
+		elif var[0] == 0:
+			var[0] = 99
+			if !flag[0]:
+				TextTalk char[0] {
+					呵呵，那個房間怎麼樣。
+					很寬敞，很不錯吧？{wait}
+				}
+				TextWait
+				TextTalk char[0] {
+					很少有像你們這樣的
+					年輕人會在我們這裡
+					留宿呢。{wait}
+				}
+				TextWait
+				TextTalk char[0] {
+					……哦，要出門嗎？{wait}
+				}
+				TextWait
+				TextTalk char[0] {
+					最近鎮上有些不太平，
+					所以最好早點回來哦。{wait}
+				}
+				TextWait
+				FlagSet flag[0]
+			else:
+				TextTalk char[0] {
+					酒館平時會來很多礦工，
+					都吵得人頭痛。
+					但今天的客人比較少呢。{wait}
+				}
+				TextWait
+				TextTalk char[0] {
+					哎呀哎呀，真是被連累得好慘。
+					但馬庫斯剛剛受了傷，
+					也沒辦法……{wait}
+				}
+				TextWait
+				TextTalk char[0] {
+					狼型魔獸什麼的我不管，
+					只希望別再惹出麻煩了。{wait}
+				}
+				TextWait
+	TextEnd char[0]
+	Return
+
+fn[6]:
+	TextStart self
+	if !flag[1]:
+		TextTalk self {
+			……哎呀哎呀，
+			每天都飲酒作樂，
+			還真是不吸取教訓啊。{wait}
+		}
+		TextWait
+		TextTalk self {
+			既然工作結束了，
+			就該早點回家啊。{wait}
+		}
+		TextWait
+		FlagSet flag[1]
+	else:
+		TextTalk self {
+			話說回來，岡茲的
+			酒品總是那麼差呢……{wait}
+		}
+		TextWait
+	TextEnd self
+	Return
+
+fn[7]:
+	field_party[0].5 = self.4
+	self.5 = self.4
+	TextStart self
+	CharFlagsUnset self 0x0010
+	CharTurnToChar self field_party[0] 0deg/s
+	self.4 = (self.4 + 360) % 360
+	self.4 = self.4 + 360 - self.5
+	self.5 = self.4 / 180
+	if self.4 <= 45 | self.4 >= 315 && self.4 <= 405 | self.4 >= 675:
+	elif self.5 < 1:
+		self.8 = 2
+	elif self.5 > 2:
+		self.8 = 1
+	else:
+		self.8 = self.5
+	self.4 = field_party[0].5
+	field_party[0].5 = 0
+	self.5 = 0
+	CharFlagsSet self 0x0010
+	if !flag[2]:
+		TextTalk self {
+			嗯……
+			酒果然是好東西啊。{wait}
+		}
+		TextWait
+		TextTalk self {
+			一天的疲勞
+			仿佛都煙消雲散了。{wait}
+		}
+		TextWait
+		TextTalk self {
+			不過喝太多
+			也不是好事。{wait}
+		}
+		TextWait
+		FlagSet flag[2]
+	else:
+		TextTalk self {
+			他們礦工平時似乎
+			也累積了不少鬱憤呢。{wait}
+		}
+		TextWait
+		TextTalk self {
+			喝點美酒，
+			才能成為明天的活力嘛。{wait}
+		}
+		TextWait
+	CharSetChipPattern self 0
+	TextEnd self
+	Return
+
+fn[8]:
+	TextStart self
+	if !flag[3]:
+		TextTalk char[3] {
+			（一飲而盡）……{wait}
+		}
+		TextWait
+		TextTalk char[3] {
+			……呼～！
+			收工後喝杯酒真是格外爽啊！{wait}
+		}
+		TextWait
+		TextTalk char[3] {
+			哦，但要注意
+			別喝太多才行。{wait}
+		}
+		TextWait
+		TextTalk char[3] {
+			岡茲那傢伙，
+			只要喝一點就會爛醉如泥了。{wait}
+		}
+		TextWait
+		FlagSet flag[3]
+	else:
+		TextTalk char[3] {
+			岡茲那傢伙，
+			只要喝一點就會爛醉如泥了。{wait}
+		}
+		TextWait
+		TextTalk char[3] {
+			要是連我都喝醉的話，
+			就沒人送這小子回家了……
+			哎，真是吃力不討好啊。{wait}
+		}
+		TextWait
+	TextEnd self
+	Return
+
+fn[9]:
+	TextStart self
+	if !flag[4]:
+		TextTalk char[4] {
+			我啊……
+			要在賭場大賺一筆……{wait}
+		}
+		TextWait
+		TextTalk char[4] {
+			讓今後的人生變得輕鬆愉快……{wait}
+		}
+		TextWait
+		TextTalk char[4] {
+			嗝……
+			……喂，你在聽嗎，瑪爾羅？{wait}
+		}
+		TextWait
+		TextTalk char[3] {
+			在聽在聽。{wait}
+		}
+		TextWait
+		TextTalk char[3] {
+			真是的，同樣的話要說多少遍啊。{wait}
+		}
+		TextWait
+		FlagSet flag[4]
+	else:
+		TextTalk char[4] {
+			嗝……{wait}
+		}
+		TextWait
+		TextTalk char[4] {
+			我啊……
+			這星期一定要在賭場大賺一筆……{wait}
+		}
+		TextWait
+		TextTalk char[3] {
+			……唉，回去之前，
+			必須讓你醒醒酒才行啊。{wait}
+		}
+		TextWait
+	TextEnd self
+	Return
+
+fn[10]:
+	TextStart self
+	if !flag[6]:
+		TextTalk self {
+			對面的房間
+			是你們在住吧。{wait}
+		}
+		TextWait
+		TextTalk self {
+			我也想住大房間，
+			但是老闆娘和我說
+			兩個人不能住四人間。{wait}
+		}
+		TextWait
+		TextTalk self {
+			那個老闆娘，還真是頗有膽量哦。
+			好久都沒有人敢
+			不順著我的意了。{wait}
+		}
+		TextWait
+		FlagSet flag[6]
+	else:
+		TextTalk self {
+			算了，反正我們就兩個人……
+			暫時忍耐一下，湊和住這個房間吧。{wait}
+		}
+		TextWait
+		TextTalk self {
+			話說回來，明天還得
+			跟鎮長交涉才行呢。{wait}
+		}
+		TextWait
+		TextTalk self {
+			七耀石的結晶……
+			明天一定要弄到手！{wait}
+		}
+		TextWait
+	TextEnd self
+	Return
+
+fn[11]:
+	TextStart self
+	if !flag[7]:
+		TextTalk self {
+			啊……要把餐具
+			還給店裡才行。{wait}
+		}
+		TextWait
+		TextTalk self {
+			呼……
+			就因為小姐耍脾氣，
+			要在房間裡用餐……{wait}
+		}
+		TextWait
+		FlagSet flag[7]
+	else:
+		TextTalk self {
+			把餐點拿到房間裡
+			是沒問題……
+			但真擔心送回去的時候會摔倒啊。{wait}
+		}
+		TextWait
+	TextEnd self
+	Return
+
+fn[12]:
+	if flag[813] && !flag[1024]:
+		EventBegin 2
+		FadeOut 300ms 0x00000000 100
+		FadeWait
+		Menu menu[0] -1 -1 0
+			"【等待到深夜】" // 0
+			"【還有其它事】" // 1
+		MenuWait var[0]
+		MenuClose menu[0]
+		FadeIn 300ms 0x00000000
+		FadeWait
+		switch var[0]:
+			case 0:
+				TextTalk name[0] {
+					#11200775V#0003F那麼，就暫時留在這裡，
+					一直等待到深夜吧。{wait}
+				} {
+					#11200776V#0001F還要決定好魔獸出現時的
+					作戰計畫和人員配置。{wait}
+				}
+				TextWait
+				TextTalk name[2] {
+					#11200777V#0201F光是擊退魔獸
+					還不行吧……？{wait}
+				}
+				TextWait
+				TextTalk name[1] {
+					#11200778V#0103F嗯，還必須要制伏
+					操縱魔獸的黑手黨們。{wait}
+				}
+				TextWait
+				TextTalk name[3] {
+					#11200779V#0302F嘿，似乎是個
+					難度相當高的任務啊。{wait}
+				}
+				TextWait
+				FadeOut 1000ms 0x00000000 255
+				FadeWait
+				Minigame 24 0 0 0 0 0 0 0 0
+				LookPointFlagsSet look_point[2] 0x0001
+				FlagSet flag[736]
+				NewScene "scena/t050b.bin" 0 0 0
+				Hcf
+				break
+			case 1:
+				TextTalk name[3] {
+					#11200780V#0300F那麼，準備就緒之後
+					再回到這裡來吧。{wait}
+				}
+				TextWait
+				FadeOut 300ms 0x00000000 100
+				TextSetPos -1 -1 -1 -1
+				TextSetName ""
+				TextMessage null {
+					{color 5}若想要直接等待到深夜，
+					請在桌上顯示！符號的狀態
+					按下按鈕。{color 0}{wait}
+				}
+				TextWait
+				TextClose 0
+				FadeIn 300ms 0x00000000
+				TextSetPos -1 280 60 3
+				_59
+				break
+		EventEnd 3
+	Return
+
+fn[13]:
+	EventBegin 0
+	FadeOut 0ms 0x00000000 255
+	ED7LoadChip "chr/ch00002.itc" chip[30]
+	ED7LoadChip "chr/ch00102.itc" chip[31]
+	ED7LoadChip "chr/ch00202.itc" chip[32]
+	ED7LoadChip "chr/ch00302.itc" chip[33]
+	ED7LoadChip "apl/ch50111.itc" chip[34]
+	CamSetDistance 102070 4500 1190 0ms
+	ED7CamRotate 58deg 19deg 0deg 0ms
+	CamPers 260 0ms
+	CamZoom 32299 0ms
+	CharSetChipBase name[0] chip[30]
+	CharSetChipPattern name[0] 0
+	CharSetChipBase name[1] chip[31]
+	CharSetChipPattern name[1] 0
+	CharSetChipBase name[2] chip[32]
+	CharSetChipPattern name[2] 0
+	CharSetChipBase name[3] chip[33]
+	CharSetChipPattern name[3] 0
+	CharFlagsSet name[0] 0x0004
+	CharFlagsSet name[1] 0x0004
+	CharFlagsSet name[2] 0x0004
+	CharFlagsSet name[3] 0x0004
+	CharSetPos name[0] (102700, 2200, 3100) 180deg
+	CharSetPos name[1] (102500, 2200, -300) 0deg
+	CharSetPos name[2] (101200, 2200, 1700) 90deg
+	CharSetPos name[3] (104400, 2200, 1300) 270deg
+	VisShow vis[0] 0 8 480 264 0 0 512 256 0 0 480 256 0x00FFFFFF 1 "c_vis021.itp"
+	VisShow vis[1] 0 8 480 264 0 0 512 256 0 0 480 256 0x00FFFFFF 1 "c_vis022.itp"
+	FadeIn 1000ms 0x00000000
+	CamSetDistance 102370 3300 1380 4000ms
+	CamWait 1
+	FadeWait
+	TextTalk name[0] {
+		#11200623V#0003F#5P──好了，
+		開始整理情況吧。{wait}
+	} {
+		#11200624V#0001F關於這次一連串的魔獸災害……
+		在警備隊最初的調查報告中，
+		存在數個不明之處。{wait}
+	} {
+		#11200625V經過我們的調查，已經查清了
+		其中幾處……{wait}
+	} {
+		#11200626V#0003F但是，某個應該早就能釐清的資訊，
+		我們目前卻還是一無所知。{wait}
+	}
+	TextWait
+	TextTalk name[1] {
+		#11200627V#0105F#12P早就能釐清的資訊……？{wait}
+	}
+	TextWait
+	TextTalk name[3] {
+		#11200628V#0305F#11P那是什麼？{wait}
+	}
+	TextWait
+	FadeOut 300ms 0x00000000 100
+	FadeWait
+	TextSetPos -1 30 -1 -1
+	TextSetName ""
+	TextMessage null {
+		{color 5}{0x06}{0x18}#1K早就能釐清的資訊是？{color 0}{wait}
+	}
+	Menu menu[0] -1 -1 0
+		"【魔獸的真面目】" // 0
+		"【魔獸的住處】" // 1
+		"【魔獸的目的】" // 2
+	MenuWait var[0]
+	MenuClose menu[0]
+	TextClose 0
+	FadeIn 300ms 0x00000000
+	FadeWait
+	switch var[0]:
+		case 0:
+			QuestBonusBp quest[63] 1
+			global[6] += 1
+			TextTalk name[0] {
+				#11200629V#0006F#5P魔獸的真面目……
+				雖然想這麼說。{wait}
+			} {
+				#11200630V#0008F但對方如此神出鬼沒，
+				也很難查明其真面目吧。{wait}
+			}
+			TextWait
+			TextTalk name[2] {
+				#11200631V#0206F#6P嗯，要是知道的話，
+				也就不用這麼辛苦了……{wait}
+			}
+			TextWait
+			TextTalk name[0] {
+				#11200632V#0003F#5P……是啊。
+				勉強要說的話……{wait}
+			} {
+				#11200633V#0001F我想，應該是魔獸的目的吧。{wait}
+			}
+			TextWait
+			break
+		case 1:
+			QuestBonusBp quest[63] 1
+			global[6] += 1
+			TextTalk name[0] {
+				#11200634V#0006F#5P魔獸的住處……
+				雖然想這麼說。{wait}
+			} {
+				#11200635V#0008F可是警備隊去搜山都沒有找到，
+				我們就更不可能找到了。{wait}
+			}
+			TextWait
+			TextTalk name[2] {
+				#11200636V#0206F#6P嗯，憑我們的人數，
+				也無法進行大規模的搜山……{wait}
+			}
+			TextWait
+			TextTalk name[0] {
+				#11200637V#0003F#5P……是啊。
+				勉強要說的話……{wait}
+			} {
+				#11200638V#0001F我想，應該是魔獸的目的吧。{wait}
+			}
+			TextWait
+			break
+		case 2:
+			QuestBonusBp quest[63] 3
+			global[6] += 3
+			TextTalk name[0] {
+				#11200639V#0003F#5P沒錯，在一連串的調查中，
+				早就能釐清的資訊……{wait}
+			} {
+				#11200640V#0001F我想，應該就是魔獸的目的。{wait}
+			}
+			TextWait
+			break
+	TextTalk name[3] {
+		#11200641V#0303F#11P如此說來……{wait}
+	} {
+		#11200642V#0301F從醫院的受災情況看來，
+		它們似乎也不像是因為饑餓
+		才襲擊各地的啊。{wait}
+	}
+	TextWait
+	TextTalk name[1] {
+		#11200643V#0108F#12P如阿爾摩利卡村的村長所說，
+		也有可能是傳說中的『神狼』
+		在警告人類……{wait}
+	} {
+		#11200644V#0101F但是，實際上襲擊各地的
+		很可能是黑色的狼群呢。{wait}
+	}
+	TextWait
+	TextTalk name[2] {
+		#11200645V#0203F#6P是的……我也這樣想。{wait}
+	} {
+		#11200646V#0201F這樣一來，的確就
+		無法理解其目的了呢。{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#11200647V#0003F#5P嗯……{wait}
+	} {
+		#11200648V#0001F然而，如果現在就判斷為只是黑色狼群的
+		一時心血來潮，也還為時過早。{wait}
+	} {
+		#11200649V從醫院的事件也可以看得出來，
+		它們選擇了非常巧妙的路線，
+		從院區的屋頂上入侵。{wait}
+	} {
+		#11200650V#0003F而且沒有對受害者進行
+		過大的傷害，就直接離去了……{wait}
+	}
+	TextWait
+	TextTalk name[1] {
+		#11200651V#0103F#12P的確……{wait}
+	} {
+		#11200652V#0101F如果只是一時的心血來潮，
+		計畫得未免也太周密了呢。{wait}
+	}
+	TextWait
+	TextTalk name[3] {
+		#11200653V#0303F#11P本應一目了然的『目的』，
+		卻讓人完全摸不著頭腦……{wait}
+	} {
+		#11200654V#0300F也就是說，
+		這其中有什麼含義吧？{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#11200655V#0000F#5P正是如此。{wait}
+	} {
+		#11200656V#0003F這種情況下，
+		人往往會被一個『框架』
+		限制住。{wait}
+	} {
+		#11200657V黑色狼群對各地發動了襲擊……{wait}
+	} {
+		#11200658V#0001F為了看清它們那個符合邏輯的目的，
+		我們應該思考另一個『框架』。{wait}
+	}
+	TextWait
+	TextTalk name[2] {
+		#11200659V#0208F#6P另一個『框架』嗎……{wait}
+	}
+	TextWait
+	Sleep 100ms
+	CharSetChipPattern name[0] 2
+	Sleep 300ms
+	TextTalk name[0] {
+		#11200660V#0000F#5P不用思考得太複雜。{wait}
+	} {
+		#11200661V#0004F大體來說，所謂的犯罪事件
+		無非也就包括『犯人』、『目的』、
+		『手段』和『結果』這幾個要素……{wait}
+	} {
+		#11200662V#0000F不妨假設我們之前對其中幾項
+		要素的推測出現了偏差，如何？{wait}
+	}
+	TextWait
+	TextTalk name[2] {
+		#11200663V#0205F#6P哎……{wait}
+	}
+	TextWait
+	TextTalk name[1] {
+		#11200664V#0101F#12P等、等一下，
+		我來簡單總結一下試試。{wait}
+	}
+	TextWait
+	Sleep 300ms
+	FadeOut 300ms 0x00000000 100
+	TextSetPos -1 -1 -1 -1
+	TextSetName ""
+	TextMessage null {
+		{color 2}犯人＝黑色狼群
+		目的＝？
+		手段＝狼的身體能力
+		結果＝各地的受災{color 0}{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	TextSetPos -1 280 60 3
+	FadeIn 300ms 0x00000000
+	Sleep 100ms
+	CharSetChipPattern name[0] 0
+	Sleep 200ms
+	TextTalk name[0] {
+		#11200665V#0000F#5P嗯，就是這樣吧。{wait}
+	}
+	TextWait
+	TextTalk name[3] {
+		#11200666V#0301F#11P然後呢……
+		這有什麼偏差？{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#11200667V#0001F#5P嗯……
+		換個思路怎麼樣？{wait}
+	}
+	TextWait
+	var[3] = 0
+	FlagUnset flag[5]
+	while !flag[5]:
+		FlagSet flag[5]
+		FadeOut 300ms 0x00000000 100
+		FadeWait
+		TextSetPos -1 30 -1 -1
+		TextSetName ""
+		TextMessage null {
+			{color 5}{0x06}{0x18}#1K相當於『犯人』的是？{color 0}{wait}
+		}
+		Menu menu[0] -1 -1 0
+			"黑色狼群" // 0
+			"？" // 1
+			"狼的身體能力" // 2
+			"各地的受災" // 3
+		MenuWait var[0]
+		MenuClose menu[0]
+		TextClose 0
+		_59
+		if var[0] != 1:
+			FlagUnset flag[5]
+		TextSetPos -1 30 -1 -1
+		TextSetName ""
+		TextMessage null {
+			{color 5}{0x06}{0x18}#1K相當於『目的』的是？{color 0}{wait}
+		}
+		Menu menu[0] -1 -1 0
+			"黑色狼群" // 0
+			"？" // 1
+			"狼的身體能力" // 2
+			"各地的受災" // 3
+		MenuWait var[0]
+		MenuClose menu[0]
+		TextClose 0
+		_59
+		if var[0] != 2:
+			FlagUnset flag[5]
+		TextSetPos -1 30 -1 -1
+		TextSetName ""
+		TextMessage null {
+			{color 5}{0x06}{0x18}#1K相當於『手段』的是？{color 0}{wait}
+		}
+		Menu menu[0] -1 -1 0
+			"黑色狼群" // 0
+			"？" // 1
+			"狼的身體能力" // 2
+			"各地的受災" // 3
+		MenuWait var[0]
+		MenuClose menu[0]
+		TextClose 0
+		_59
+		if var[0] != 0:
+			FlagUnset flag[5]
+		TextSetPos -1 30 -1 -1
+		TextSetName ""
+		TextMessage null {
+			{color 5}{0x06}{0x18}#1K相當於『結果』的是？{color 0}{wait}
+		}
+		Menu menu[0] -1 -1 0
+			"黑色狼群" // 0
+			"？" // 1
+			"狼的身體能力" // 2
+			"各地的受災" // 3
+		MenuWait var[0]
+		MenuClose menu[0]
+		TextClose 0
+		_59
+		if var[0] != 3:
+			FlagUnset flag[5]
+		FadeIn 300ms 0x00000000
+		FadeWait
+		if !flag[5]:
+			if var[3] > 3:
+				Emote name[0] 0mm 1700mm 14 15 250ms 2
+				SoundPlay sound[23] 0 100 0
+				Sleep 1200ms
+				TextTalk name[0] {
+					#11200670V#0006F#5P（嗯……
+					　果然說不通。）{wait}
+				}
+				TextWait
+				Emote name[0] 0mm 1700mm 34 36 250ms 1
+				SoundPlay sound[28] 0 100 0
+				Sleep 1300ms
+				TextTalk name[0] {
+					#11200671V#0005F#5P（莫非是這樣……？）{wait}
+				}
+				TextWait
+				FlagSet flag[5]
+			else:
+				TextTalk name[0] {
+					#11200668V#0003F#5P（不……
+					　這樣說不通。）{wait}
+				} {
+					#11200669V#0001F（再重新選擇一次看看吧。）{wait}
+				}
+				TextWait
+				var[3] = var[3] + 1
+		else:
+			switch var[3]:
+				case 0:
+					QuestBonusBp quest[63] 2
+					global[6] += 2
+					TextTalk name[0] {
+						#11200672V#0000F#5P（不錯……就是這樣。）{wait}
+					}
+					TextWait
+					break
+				default:
+					QuestBonusBp quest[63] 1
+					global[6] += 1
+					TextTalk name[0] {
+						#11200673V#0003F#5P（……大概就是這樣吧。）{wait}
+					}
+					TextWait
+					break
+	FadeOut 300ms 0x00000000 100
+	TextSetPos -1 -1 -1 -1
+	TextSetName ""
+	TextMessage null {
+		{color 2}犯人＝？
+		目的＝狼的身體能力
+		手段＝黑色狼群
+		結果＝各地的受災{color 0}{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	TextSetPos -1 280 60 3
+	FadeIn 300ms 0x00000000
+	Emote name[1] 0mm 1700mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Sleep 50ms
+	Emote name[2] 0mm 1700mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Sleep 50ms
+	Emote name[3] 0mm 1700mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Sleep 1000ms
+	TextTalk name[1] {
+		#11200674V#0105F#12P這是……！{wait}
+	}
+	TextWait
+	TextTalk name[2] {
+		#11200675V#0201F#6P假如情況真是如此……{wait}
+	} {
+		#11200676V犯人另有其人，黑色狼群是手段，
+		而目的則是它們的身體能力……{wait}
+	}
+	TextWait
+	TextTalk name[3] {
+		#11200677V#0305F#11P喂喂……
+		視角完全改變了啊！{wait}
+	} {
+		#11200678V#0301F這麼說，在狼群的背後，
+		很可能有人類在操縱嗎？{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#11200679V#0003F#5P如果可以操縱魔獸的話，
+		這樣想反而更自然吧。{wait}
+	} {
+		#11200680V#0008F關鍵問題是，帶領大量狼型魔獸
+		以及控制牠們的方法……{wait}
+	} {
+		#11200681V#0000F其中，關於控制它們的方法，
+		我想可以從某個人物的證言中推測出來。{wait}
+	}
+	TextWait
+	TextTalk name[1] {
+		#11200682V#0101F#12P某個人物的證言……？{wait}
+	}
+	TextWait
+	Emote name[3] 0mm 1700mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Sleep 1000ms
+	TextTalk name[3] {
+		#11200683V#0300F#11P……原來如此，是那句話吧？{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#11200684V#0004F#5P蘭迪果然注意到了啊。{wait}
+	} {
+		#11200685V#0000F嗯，那位證人就是……{wait}
+	}
+	TextWait
+	FadeOut 300ms 0x00000000 100
+	FadeWait
+	TextSetPos -1 30 -1 -1
+	TextSetName ""
+	TextMessage null {
+		{color 5}{0x06}{0x18}#1K證人的名字是？{color 0}{wait}
+	}
+	Menu menu[0] -1 -1 0
+		"【哈羅德・海瓦茲】" // 0
+		"【實習醫生利頓】" // 1
+		"【滴・馬克萊因】" // 2
+		"【諾艾兒・希卡】" // 3
+	MenuWait var[0]
+	MenuClose menu[0]
+	TextClose 0
+	FadeIn 300ms 0x00000000
+	FadeWait
+	switch var[0]:
+		case 0:
+			TextTalk name[3] {
+				#11200686V#0303F#11P不對……搞錯了吧？{wait}
+			} {
+				#11200687V#0301F是那個眼睛失明，
+				叫小滴的孩子才對吧？{wait}
+			}
+			TextWait
+			TextTalk name[0] {
+				#11200688V#0011F#5P啊……沒錯。{wait}
+			} {
+				#11200689V#0006F為我們提供具體證言的
+				就是那個孩子。{wait}
+			}
+			TextWait
+			break
+		case 1:
+			TextTalk name[3] {
+				#11200686V#0303F#11P不對……搞錯了吧？{wait}
+			} {
+				#11200687V#0301F是那個眼睛失明，
+				叫小滴的孩子才對吧？{wait}
+			}
+			TextWait
+			TextTalk name[0] {
+				#11200688V#0011F#5P啊……沒錯。{wait}
+			} {
+				#11200689V#0006F為我們提供具體證言的
+				就是那個孩子。{wait}
+			}
+			TextWait
+			break
+		case 2:
+			QuestBonusBp quest[63] 1
+			global[6] += 1
+			TextTalk name[0] {
+				#11200690V#0003F#5P滴・馬克萊因……{wait}
+			} {
+				#11200691V#0001F那個遊擊士亞里歐斯的
+				女兒的證言。{wait}
+			}
+			TextWait
+			break
+		case 3:
+			TextTalk name[3] {
+				#11200686V#0303F#11P不對……搞錯了吧？{wait}
+			} {
+				#11200687V#0301F是那個眼睛失明，
+				叫小滴的孩子才對吧？{wait}
+			}
+			TextWait
+			TextTalk name[0] {
+				#11200688V#0011F#5P啊……沒錯。{wait}
+			} {
+				#11200689V#0006F為我們提供具體證言的
+				就是那個孩子。{wait}
+			}
+			TextWait
+			break
+	TextTalk name[2] {
+		#11200692V#0205F#6P小滴的證言……{wait}
+	}
+	TextWait
+	VisSet vis[0] 3 0xFFFFFFFF 500ms 0 0
+	VisWait vis[0] 3
+	Sleep 500ms
+	TextSetPos 40 120 -1 -1
+	TextSetName "小滴的證言"
+	TextMessage null {
+		{color 12}#11200693V那個，我有點擔心，
+		就打開了那邊的窗子
+		仔細聽了聽……{wait}
+	} {
+		#11200694V但是沒有再聽到慘叫聲，
+		反而聽到了『呼呼呼』
+		這樣的喘氣聲……{wait}
+	} {
+		#11200695V過了一會，又聽到『咚咚』聲，
+		好像是什麼東西在蹦跳的聲音……{color 0}{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	Sleep 500ms
+	TextSetPos 190 140 -1 -1
+	TextSetName "小滴的證言"
+	TextMessage null {
+		{color 12}#11200696V還、還有……{wait}
+	} {
+		#11200697V那個……在剛才說的
+		那些聲音之間……{wait}
+	} {
+		#11200698V好像……
+		還聽到了『嘰──』的一聲
+		很刺耳的聲音。{color 0}{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	VisSet vis[0] 3 0x00FFFFFF 500ms 0 0
+	VisWait vis[0] 3
+	VisShow vis[0] 0 8 480 264 0 0 512 256 0 0 480 256 0x00FFFFFF 1 "c_vis023.itp"
+	TextTalk name[1] {
+		{color 0}#11200699V#0105F#12P難、難道說……
+		就是用那種聲音來操縱魔獸的？{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#11200700V#0001F#5P嗯，很有可能。{wait}
+	}
+	TextWait
+	TextTalk name[2] {
+		#11200701V#0203F#6P……狼和狗這樣的動物，
+		似乎可以聽到一些頻率特別，
+		人耳聽不到的聲音。{wait}
+	} {
+		#11200702V#0201F好像在很久以前就有
+		利用這種原理製作而成的特殊笛子……{wait}
+	}
+	TextWait
+	TextTalk name[3] {
+		#11200703V#0304F#11P就是所謂的『犬笛』吧。{wait}
+	} {
+		#11200704V#0300F直到現在，使用犬笛來操縱
+		軍犬的技術也尚有流傳。{wait}
+	} {
+		#11200705V#0306F不過，相比正規軍來說，
+		還是獵兵們用得比較多。{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#11200706V#0005F#5P是這樣嗎……{wait}
+	}
+	TextWait
+	TextTalk name[1] {
+		#11200707V#0108F#12P……原來如此，
+		事件的輪廓似乎清晰了不少呢。{wait}
+	} {
+		#11200708V#0101F這樣一來，還需要
+		攜帶魔獸移動的手段吧。{wait}
+	}
+	TextWait
+	Emote name[1] 0mm 1700mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Sleep 1000ms
+	TextTalk name[1] {
+		#11200709V#0105F#12P莫非是……{wait}
+	}
+	TextWait
+	TextSetPos -1 280 60 3
+	if flag[795]:
+		QuestBonusBp quest[63] 2
+		global[6] += 2
+		QuestTaskSet quest[64] 11
+		TextTalk name[0] {
+			#11200710V#0004F#5P嗯，大概正如艾莉所想。{wait}
+		} {
+			#11200711V#0000F關於這一點，
+			我想是可以證明的。{wait}
+		}
+		TextWait
+		Sleep 100ms
+		CharSetChipPattern name[0] 2
+		Sleep 300ms
+		TextTalk name[0] {
+			#11200712V#0000F#5P──緹歐，ＥＮＩＧＭＡ的
+			通訊功能在這個鎮上也能使用嗎？{wait}
+		}
+		TextWait
+		Sleep 100ms
+		CharSetChipPattern name[2] 1
+		Sleep 200ms
+		TextTalk name[2] {
+			#11200713V#0205F#6P嗯，只要在自治州之內，
+			應該勉強可以通話……{wait}
+		}
+		TextWait
+		TextTalk name[3] {
+			#11200714V#0305F#11P怎麼，你要聯絡哪裡嗎？{wait}
+		}
+		TextWait
+		Sleep 100ms
+		CharSetChipPattern name[0] 0
+		Sleep 300ms
+		TextTalk name[0] {
+			#11200715V#0000F#5P嗯……是醫科大學的接待處。{wait}
+		}
+		TextWait
+		FadeOut 1000ms 0x00000000 255
+		FadeWait
+		CharSetChipPattern name[0] 0
+		CharSetChipPattern name[2] 0
+		CharSetChipPattern name[3] 0
+		CharFlagsSet name[1] 0x0002
+		CharFlagsSet name[1] 0x0010
+		CharSetChipBase name[1] chip[34]
+		CharSetChipPattern name[1] 0
+		CharSetPos name[1] (101060, 2000, -560) 180deg
+		CharSetChipPattern name[0] 0
+		CharSetChipPattern name[2] 2
+		CharSetChipPattern name[3] 1
+		Sleep 1000ms
+		CamSetDistance 102370 4500 1380 0ms
+		CamSetDistance 102370 3300 1380 3000ms
+		FadeIn 1000ms 0x00000000
+		FadeWait
+		CamWait 1
+		TextTalk name[1] {
+			#11200716V#0101F#5P是……嗯……{wait}
+		} {
+			#11200717V#0105F！！{wait}
+		} {
+			#11200718V#0103F是這樣嗎……
+			嗯，非常感謝。{wait}
+		}
+		TextWait
+		Sleep 300ms
+		CrossFade 250ms
+		CharSetChipBase name[1] chip[255]
+		CharSetChipPattern name[1] 0
+		CharFlagsUnset name[1] 0x0002
+		CharFlagsUnset name[1] 0x0010
+		SoundPlay sound[807] 0 100 0
+		FadeWait
+		Sleep 300ms
+		TextTalk name[0] {
+			#11200719V#0001F#5P怎麼樣？{wait}
+		}
+		TextWait
+		CharTurnToChar name[1] name[0] 500deg/s
+		Sleep 300ms
+		TextTalk name[1] {
+			#11200720V#0106F#11P……正如你所料。{wait}
+		} {
+			#11200721V#0101F魔獸在屋頂出現的那天夜裡，
+			『魯巴徹商會』的搬運車
+			似乎正巧停在停車場呢。{wait}
+		} {
+			#11200722V好像是去高價兜售
+			醫療設備的。{wait}
+		}
+		TextWait
+		TextTalk name[3] {
+			#11200723V#0306F#5P這時機未免也太巧了吧。{wait}
+		}
+		TextWait
+		Sleep 100ms
+		CharSetChipPattern name[3] 0
+		Sleep 300ms
+		TextTalk name[3] {
+			#11200724V#0301F#11P可是，羅伊德……
+			你怎麼知道他們的搬運車
+			停在停車場呢？{wait}
+		}
+		TextWait
+		Sleep 100ms
+		CharSetChipPattern name[2] 0
+		Sleep 200ms
+		TextTalk name[2] {
+			#11200725V#0205F#6P也有可能是在深夜把車
+			開到醫院前，直接發動襲擊的吧？{wait}
+		}
+		TextWait
+		TextTalk name[0] {
+			#11200726V#0003F#5P不，如果是那樣的話，
+			小滴應該會先聽到車子的聲音。{wait}
+		}
+		TextWait
+		VisSet vis[1] 3 0xFFFFFFFF 500ms 0 0
+		VisWait vis[1] 3
+		Sleep 500ms
+		TextMessage name[0] {
+			#11200727V#0000F而且，我們一開始
+			還以為魔獸們
+			是從草叢那邊進去的……{wait}
+		} {
+			#11200728V但那邊的木箱上
+			並沒有留下魔獸的足跡。{wait}
+		} {
+			#11200729V#0003F反之，朝向停車場的
+			欄杆上卻有擦痕。{wait}
+		} {
+			#11200730V#0001F因此，我覺得從那邊
+			侵入的可能性比較高吧。{wait}
+		}
+		TextWait
+		TextClose 0
+		_59
+		TextMessage name[1] {
+			#11200731V#0106F原來如此……{wait}
+		} {
+			#11200732V#0101F停車場方向的高度比較高，
+			本以為沒法從那邊入侵呢……{wait}
+		}
+		TextWait
+		TextClose 0
+		_59
+		VisSet vis[0] 3 0xFFFFFFFF 500ms 0 0
+		VisWait vis[0] 3
+		VisSet vis[1] 3 0x00FFFFFF 0ms 0 0
+		Sleep 500ms
+		TextMessage name[3] {
+			#11200733V#0300F不過，如果讓它們從搬運車的車頂上出發，
+			應該就很容易侵入了吧？{wait}
+		}
+		TextWait
+		TextClose 0
+		_59
+		TextMessage name[2] {
+			#11200734V#0206F……準備得還真周到啊。{wait}
+		}
+		TextWait
+		TextClose 0
+		_59
+		CharSetChipBase name[1] chip[31]
+		CharSetChipPattern name[1] 0
+		CharSetPos name[1] (102500, 2200, -300) 0deg
+		CharSetChipPattern name[0] 0
+		CharSetChipPattern name[2] 0
+		CharSetChipPattern name[3] 0
+		VisSet vis[0] 3 0x00FFFFFF 500ms 0 0
+		VisWait vis[0] 3
+	else:
+		QuestTaskSet quest[64] 12
+		TextTalk name[0] {
+			#11200735V#0003F#5P嗯……
+			剛才我們看到的那輛黑色搬運車。{wait}
+		} {
+			#11200736V#0001F雖然還不能斷定，
+			但感覺完全符合吧？{wait}
+		}
+		TextWait
+	Emote name[2] 0mm 1700mm 24 27 250ms 0
+	Emote name[3] 0mm 1700mm 24 27 250ms 0
+	Emote name[1] 0mm 1700mm 24 27 250ms 0
+	Sleep 1500ms
+	EmoteStop name[2]
+	EmoteStop name[3]
+	EmoteStop name[1]
+	TextTalk name[2] {
+		#11200737V#0203F#6P……各種線索都連結在一起了呢。{wait}
+	}
+	TextWait
+	TextTalk name[1] {
+		#11200738V#0108F#12P嗯，黑手黨的目的是
+		壟斷七耀石的採購權……{wait}
+	} {
+		#11200739V#0101F不對，那也只是次要目的而已吧？{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#11200740V#0006F#5P嗯，應該沒錯。{wait}
+	} {
+		#11200741V#0008F黑手黨現在最傾注心力的事情，
+		是獲得壓倒對抗組織『黑月』的
+		戰鬥力。{wait}
+	} {
+		#11200742V#0001F如果是出於這個原因而
+		打算將狼群作為戰鬥力的話……{wait}
+	}
+	TextWait
+	TextTalk name[3] {
+		#11200743V#0303F#11P不聽指揮，只會發狂的魔獸
+		是完全不能當作戰鬥力的……{wait}
+	} {
+		#11200744V想確定是否能夠完全操控它們，
+		就需要進行實際測試……{wait}
+	} {
+		#11200745V#0301F這就是各地發生
+		災害的真相嗎！？{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#11200746V#0003F#5P嗯……不會錯的。{wait}
+	} {
+		#11200747V#0001F再說，警備隊剛一撤退，
+		黑手黨的手下就馬上來拜訪，
+		這本身就極其不自然吧。{wait}
+	} {
+		#11200748V下達撤退命令的警備隊司令
+		似乎與某個很強勢的議員存在一定聯繫……{wait}
+	} {
+		#11200749V魯巴徹八成是透過
+		那個議員進行事先周旋的吧？{wait}
+	}
+	TextWait
+	TextTalk name[1] {
+		#11200750V#0106F#12P多半……就是這樣吧。{wait}
+	} {
+		#11200751V#0108F……雖然我早知道他們很腐敗，
+		但真沒想到已經到了如此地步……{wait}
+	}
+	TextWait
+	Emote name[1] 0mm 1700mm 24 27 250ms 0
+	Sleep 1500ms
+	EmoteStop name[65278]
+	TextTalk name[1] {
+		#11200752V#0101F#12P……那麼……
+		你覺得他們還會繼續嗎？{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#11200753V#0006F#5P從魔獸的實戰測試這層意義上來說，
+		行動已經足夠了吧。{wait}
+	} {
+		#11200754V而且，反過來看的話，既然授意
+		讓警備隊撤退，或許也正能說明他們
+		不打算再讓騷亂繼續擴大了。{wait}
+	} {
+		#11200755V#0001F只是……
+		看樣子，實施此次行動的人
+		似乎產生了多餘的野心。{wait}
+	}
+	TextWait
+	TextTalk name[2] {
+		#11200756V#0201F#6P就是壟斷七耀石的採購權吧……{wait}
+	} {
+		#11200757V這麼說……
+		你覺得他們最後還會再行動一次？{wait}
+	}
+	TextWait
+	TextTalk name[3] {
+		#11200758V#0301F#11P從那些傢伙的態度看來，
+		這種可能性似乎很高啊。{wait}
+	}
+	TextWait
+	TextTalk name[1] {
+		#11200759V#0101F#12P如果真要襲擊的話，會在什麼時候？{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#11200760V#0003F#5P這個嘛……{wait}
+	} {
+		#11200761V#0008F……等到明天，鎮長可能
+		就會去找遊擊士協會商量了。{wait}
+	} {
+		#11200762V#0001F如果要進行最後的威脅，
+		時間除了今晚以外，應該不作他想。{wait}
+	}
+	TextWait
+	Sleep 150ms
+	Emote name[0] 0mm 1700mm 24 27 250ms 0
+	Emote name[2] 0mm 1700mm 24 27 250ms 0
+	Emote name[3] 0mm 1700mm 24 27 250ms 0
+	Emote name[1] 0mm 1700mm 24 27 250ms 0
+	Sleep 2000ms
+	EmoteStop name[0]
+	EmoteStop name[2]
+	EmoteStop name[3]
+	EmoteStop name[1]
+	TextTalk name[3] {
+		#11200763V#0300F#11P──好，那我們就來大幹一場吧。{wait}
+	}
+	TextWait
+	TextTalk name[2] {
+		#11200764V#0201F#6P目標是擊退黑色狼群，
+		並逮捕那些黑手黨，對吧？{wait}
+	}
+	TextWait
+	TextTalk name[1] {
+		#11200765V#0103F#12P嗯……
+		絕對不能袖手旁觀呢。{wait}
+	} {
+		#11200766V#0101F不過，我們還是先和警備隊
+		那邊聯絡一下比較好吧？{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#11200767V#0006F#5P……不。
+		警備隊一旦展開行動，那些黑手黨
+		恐怕會從議員那邊察覺到。{wait}
+	} {
+		#11200768V#0001F就靠我們自己來想辦法解決吧。{wait}
+	}
+	TextWait
+	TextTalk name[1] {
+		#11200769V#0103F#12P……明白了。{wait}
+	} {
+		#11200770V#0101F魔獸要是出現的話，
+		大概會在深夜之後吧？{wait}
+	}
+	TextWait
+	TextTalk name[2] {
+		#11200771V#0203F#6P是的……至今為止的事件
+		也都是在深夜發生的。{wait}
+	} {
+		#11200772V#0200F現在還有時間……
+		先去做些準備吧？{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#11200773V#0000F#5P是啊……
+		如果裝備還有所不足，
+		就去補充一下吧。{wait}
+	} {
+		#11200774V準備好以後，
+		就在這個房間裡等待到深夜吧。{wait}
+	}
+	TextWait
+	CamZoom 32800 1000ms
+	FadeOut 1000ms 0x00000000 255
+	FadeWait
+	BgmStop 2000ms
+	BgmWait
+	Sleep 500ms
+	SoundPlay sound[828] 0 100 0
+	TextSetPos -1 -1 -1 -1
+	TextSetName ""
+	TextMessage null {
+		{color 5}若想要直接等待到深夜，
+		請在桌上顯示！符號的狀態
+		按下按鈕。{color 0}{wait}
+	}
+	TextWait
+	TextClose 0
+	TextSetPos -1 280 60 3
+	_59
+	CharFlagsUnset name[0] 0x0004
+	CharSetChipBase name[0] chip[255]
+	CharSetChipPattern name[0] 0
+	CharFlagsUnset name[1] 0x0004
+	CharSetChipBase name[1] chip[255]
+	CharSetChipPattern name[1] 0
+	CharFlagsUnset name[2] 0x0004
+	CharSetChipBase name[2] chip[255]
+	CharSetChipPattern name[2] 0
+	CharFlagsUnset name[3] 0x0004
+	CharSetChipBase name[3] chip[255]
+	CharSetChipPattern name[3] 0
+	NextFrame
+	VisHide vis[255] 0
+	UnloadChip chip[30]
+	UnloadChip chip[31]
+	UnloadChip chip[32]
+	UnloadChip chip[33]
+	UnloadChip chip[34]
+	CharSetPos field_party[0] (101300, 2000, 3700) 180deg
+	LookPointFlagsUnset look_point[1] 0x0001
+	FlagSet flag[813]
+	system[76] = 0
+	BgmPlay bgm[513] 0
+	EventEnd 5
+	Return

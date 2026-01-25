@@ -45,7 +45,7 @@ public partial class AsCodec
         { 0x0F, JumpToTarget.As(s, s) },
         { 0x10, JumpBack.As(s, s) },
         { 0x11, Move.As(b, b, i, i, i, i, b) },
-        { 0x12, AddEff.As(s, str) },
+        { 0x12, AddEff.As(codec =>codec.IsAo ?[b,str]:[s,str]) },
         { 0x13, ReleaseEff.As(codec =>codec.IsAo ?[b]:[s]) },
         { 0x14, WaitEff.As(codec =>codec.IsAo ?[b]:[s]) },
         { 0x15, WaitEff2.As(b, b) },

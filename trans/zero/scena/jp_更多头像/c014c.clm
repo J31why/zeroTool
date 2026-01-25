@@ -1,0 +1,1369 @@
+calmare zero_k scena
+scena:
+	name "c014c" "c014c" "c014c"
+	town town[6]
+	bgm bgm[100]
+	flags 8192
+	item_use fn[0,255]
+	unk 255 0
+
+entry:
+	pos (0, 0, -1000)
+	unk1 0
+	cam_from (0, 0, 34000)
+	cam_pers 262
+	unk2 30
+	cam_deg 45deg
+	cam_limit 0deg 360deg
+	cam_at (0, 0, 0)
+	unk3 0
+	unk4 0
+	flags 0x0001
+	town town[6]
+	init fn[0,2]
+	reinit fn[0,3]
+
+chip[0] "chr/ch26100.itc"
+chip[1] "chr/ch27800.itc"
+chip[2] "chr/ch25700.itc"
+chip[3] "chr/ch21000.itc"
+chip[4] "chr/ch20800.itc"
+chip[5] "chr/ch21900.itc"
+chip[6] "chr/ch24400.itc"
+chip[7] "chr/ch33200.itc"
+
+npc char[0]:
+	name "チャコ"
+	pos (9270, 0, 2650)
+	angle 270deg
+	flags 0x0105
+	unk2 0
+	chip chip[2]
+	init fn[0,0]
+	talk fn[0,6]
+	unk4 255
+
+npc char[1]:
+	name "ウェンディ"
+	pos (9329, 0, -1350)
+	angle 270deg
+	flags 0x0105
+	unk2 0
+	chip chip[0]
+	init fn[0,0]
+	talk fn[0,8]
+	unk4 255
+
+npc char[2]:
+	name "フェルナンド"
+	pos (-1519, 0, 14659)
+	angle 180deg
+	flags 0x0105
+	unk2 0
+	chip chip[1]
+	init fn[0,0]
+	talk fn[0,10]
+	unk4 255
+
+npc char[3]:
+	name "ミゼット"
+	pos (-4480, 0, 7440)
+	angle 0deg
+	flags 0x0105
+	unk2 0
+	chip chip[5]
+	init fn[0,0]
+	talk fn[0,11]
+	unk4 255
+
+npc char[4]:
+	name "バジリオ"
+	pos (2299, 0, 6420)
+	angle 90deg
+	flags 0x0105
+	unk2 0
+	chip chip[3]
+	init fn[0,0]
+	talk fn[0,12]
+	unk4 255
+
+npc char[5]:
+	name "観光客"
+	pos (11119, 4000, 8699)
+	angle 90deg
+	flags 0x0105
+	unk2 0
+	chip chip[6]
+	init fn[0,0]
+	talk fn[0,14]
+	unk4 255
+
+npc char[6]:
+	name "観光客"
+	pos (-3309, 0, 790)
+	angle 90deg
+	flags 0x0105
+	unk2 0
+	chip chip[7]
+	init fn[0,0]
+	talk fn[0,15]
+	unk4 255
+
+look_point[0]:
+	pos (8130, 0, 3080)
+	radius 1000
+	bubble_pos (9270, 1500, 3140)
+	unk1 126
+	unk2 0
+	function fn[0,4]
+	unk3 0
+	unk4 0
+
+look_point[1]:
+	pos (8310, 0, -1360)
+	radius 1000
+	bubble_pos (9330, 1500, -1350)
+	unk1 126
+	unk2 0
+	function fn[0,7]
+	unk3 0
+	unk4 0
+
+sepith[0] 0 0 0 0 0 0 0 0
+
+fn[0]:
+	var[2] = random % 8
+	switch var[2]:
+		case 0:
+			ED7_A0 self 1450ms 0 251
+			break
+		case 1:
+			ED7_A0 self 1550ms 0 251
+			break
+		case 2:
+			ED7_A0 self 1600ms 0 251
+			break
+		case 3:
+			ED7_A0 self 1400ms 0 251
+			break
+		case 4:
+			ED7_A0 self 1650ms 0 251
+			break
+		case 5:
+			ED7_A0 self 1350ms 0 251
+			break
+		case 6:
+			ED7_A0 self 1500ms 0 251
+			break
+		default:
+			ED7_A0 self 1500ms 0 251
+			break
+	while 1:
+		ED7_A0 self 1500ms 0 251
+	Return
+
+fn[1]:
+	while 1:
+		CharWalkToPos self (-4480, 0, 9380) 2000mm/s 0
+		CharWalkToPos self (-1380, 0, 11120) 2000mm/s 0
+		CharWalkToPos self (5230, 0, 9480) 2000mm/s 0
+		CharWalkToPos self (5230, 0, 9480) 2000mm/s 0
+		CharWalkToPos self (5230, 0, 6900) 2000mm/s 0
+		CharTurnTo self 270deg 400deg/s
+		Sleep 1300ms
+		CharTurnTo self 180deg 400deg/s
+		Sleep 100ms
+		CharWalkToPos self (5230, 0, 1000) 2000mm/s 0
+		CharWalkToPos self (3800, 0, 930) 2000mm/s 0
+		CharTurnTo self 180deg 400deg/s
+		Sleep 2000ms
+		CharTurnTo self 270deg 400deg/s
+		Sleep 100ms
+		CharWalkToPos self (-1350, 0, 930) 2000mm/s 0
+		CharWalkToPos self (-1310, 0, -1230) 2000mm/s 0
+		CharTurnTo self 90deg 400deg/s
+		Sleep 2000ms
+		CharTurnTo self 0deg 400deg/s
+		Sleep 100ms
+		CharWalkToPos self (-1310, 0, 2990) 2000mm/s 0
+		CharWalkToPos self (-4480, 0, 4640) 2000mm/s 0
+		CharWalkToPos self (-4480, 0, 7440) 2000mm/s 0
+		CharTurnTo self 90deg 400deg/s
+		Sleep 1800ms
+		CharTurnTo self 0deg 400deg/s
+		Sleep 100ms
+	Return
+
+fn[2]:
+	ForkFunc char[3] fork[0] fn[0,1]
+	if flag[1307]:
+		CharSetPos char[4] (11460, 4000, 8870) 90deg
+		CharSetPos char[5] (10670, 4000, 15920) 0deg
+		CharSetPos char[6] (1050, 0, 3500) 90deg
+	elif flag[1362]:
+		CharSetPos char[6] (1680, 0, 12640) 0deg
+	elif flag[1292]:
+		CharSetPos char[5] (11460, 4000, -1040) 90deg
+		CharSetPos char[6] (40, 0, 4670) 315deg
+	elif flag[1286]:
+		CharSetPos char[5] (9090, 4000, 3890) 180deg
+		CharSetPos char[6] (3670, 0, -2980) 0deg
+	elif flag[1282]:
+		CharSetPos char[5] (11040, 4000, 7060) 225deg
+		CharSetPos char[6] (310, 0, -2980) 0deg
+	Return
+
+fn[3]:
+	Return
+
+fn[4]:
+	if flag[768] && !(flag[1925] && flag[1926] && flag[1927] && flag[1928]):
+		TextStart char[0]
+		if !flag[908]:
+			TextTalk char[0] {
+				#08202Fあ、ウェンディ先輩の
+				お友達の人たちですよね～。{wait}
+			} {
+				#08200F知ってます～？
+				最近、戦術オーブメントの
+				カバー交換サービスを始めたんですぅ。{wait}
+			} {
+				#08210Fオシャレなデザインを
+				いくつも揃えてるですよ～。
+				ぜひ見ていって欲しいですぅ～。{wait}
+			}
+			TextWait
+			FlagSet flag[908]
+		var[0] = 99
+		while var[0] == 99:
+			FadeOut 300ms 0x00000000 100
+			Menu menu[0] -1 -1 1
+				"話をする" // 0
+				"カバーの交換をする" // 1
+				"やめる" // 2
+			MenuWait var[0]
+			if var[0] != 1:
+				MenuClose menu[0]
+				FadeIn 300ms 0x00000000
+				FadeWait
+			if var[0] == 0:
+				Call fn[0,6]
+				var[0] = 99
+			elif var[0] == 1:
+				MenuClose menu[0]
+				Call fn[0,5]
+				var[0] = 99
+		TextEnd char[0]
+	else:
+		TextStart char[0]
+		Call fn[0,6]
+		TextEnd char[0]
+	Return
+
+fn[5]:
+	var[0] = 99
+	while var[0] == 99:
+		ED7MenuNew menu[0]
+		if flag[1925]:
+			ED7MenuAdd menu[0] "ブルーシェリフ　　　　購入済み"
+			ED7MenuSetDisabled menu[0] 0
+		else:
+			ED7MenuAdd menu[0] "ブルーシェリフ　　　　1000ミラ"
+		if flag[1926]:
+			ED7MenuAdd menu[0] "ピースグリーン　　　　購入済み"
+			ED7MenuSetDisabled menu[0] 1
+		else:
+			ED7MenuAdd menu[0] "ピースグリーン　　　　1000ミラ"
+		if flag[1927]:
+			ED7MenuAdd menu[0] "ブラックキャット　　　購入済み"
+			ED7MenuSetDisabled menu[0] 2
+		else:
+			ED7MenuAdd menu[0] "ブラックキャット　　　1000ミラ"
+		if flag[1928]:
+			ED7MenuAdd menu[0] "デンジャーオレンジ　　購入済み"
+			ED7MenuSetDisabled menu[0] 3
+		else:
+			ED7MenuAdd menu[0] "デンジャーオレンジ　　1000ミラ"
+		ED7MenuAdd menu[0] "やめる"
+		TextMessage char[0] {
+			#08200F{0x18}どれに交換しますか～？{wait}
+		}
+		ED7MenuShow menu[0] 65535 65535 1
+		MenuWait var[0]
+		MenuClose menu[0]
+		Sleep 200ms
+		TextClose 0
+		_59
+		if var[0] == 4 | var[0] < 0:
+			Sleep 1ms
+			Return
+		if var[0] == 0:
+			VisShow vis[0] 112 8 368 264 0 0 256 256 0 0 256 256 0x00FFFFFF 1 "c_vis172.itp"
+		elif var[0] == 1:
+			VisShow vis[0] 112 8 368 264 0 0 256 256 0 0 256 256 0x00FFFFFF 1 "c_vis173.itp"
+		elif var[0] == 2:
+			VisShow vis[0] 112 8 368 264 0 0 256 256 0 0 256 256 0x00FFFFFF 1 "c_vis174.itp"
+		elif var[0] == 3:
+			VisShow vis[0] 112 8 368 264 0 0 256 256 0 0 256 256 0x00FFFFFF 1 "c_vis175.itp"
+		VisSet vis[0] 3 0xFFFFFFFF 500ms 0 0
+		VisSet vis[0] 0 0 -10000 500ms 0
+		VisWait vis[0] 3
+		VisWait vis[0] 0
+		if var[0] == 0:
+			TextMessage null {
+				{color 5}このカバーはロイド専用です。
+				購入するとキャンプメニューの［ＯＲＢＭＥＮＴ］で表示される
+				戦術オーブメントのカバーが変わります。{color 0}{wait}
+			}
+			TextWait
+		elif var[0] == 1:
+			TextMessage null {
+				{color 5}このカバーはエリィ専用です。
+				購入するとキャンプメニューの［ＯＲＢＭＥＮＴ］で表示される
+				戦術オーブメントのカバーが変わります。{color 0}{wait}
+			}
+			TextWait
+		elif var[0] == 2:
+			TextMessage null {
+				{color 5}このカバーはティオ専用です。
+				購入するとキャンプメニューの［ＯＲＢＭＥＮＴ］で表示される
+				戦術オーブメントのカバーが変わります。{color 0}{wait}
+			}
+			TextWait
+		elif var[0] == 3:
+			TextMessage null {
+				{color 5}このカバーはランディ専用です。
+				購入するとキャンプメニューの［ＯＲＢＭＥＮＴ］で表示される
+				戦術オーブメントのカバーが変わります。{color 0}{wait}
+			}
+			TextWait
+		TextMessage char[0] {
+			#08200Fはい、これでいいですか～？{wait}
+		}
+		TextWait
+		_59
+		var[3] = 99
+		Menu menu[0] -1 -1 1
+			"【交換を頼む】" // 0
+			"【やめておく】" // 1
+		MenuWait var[3]
+		MenuClose menu[0]
+		VisSet vis[0] 3 0x00FFFFFF 500ms 0 0
+		VisSet vis[0] 0 0 0 500ms 0
+		VisWait vis[0] 3
+		VisWait vis[0] 0
+		FadeIn 300ms 0x00000000
+		FadeWait
+		if var[3] == 0:
+			if system[18] < 1000:
+				TextTalk char[0] {
+					#08219Fあれ～、ミラが足りないみたいですよ？
+					それじゃ交換はできないですぅ。{wait}
+				}
+				TextWait
+			else:
+				TextTalk char[0] {
+					#08209F了解ですぅ。
+					ちょっと待っててくださいですぅ～㈱{wait}
+				}
+				TextWait
+				FadeOut 1000ms 0x00000000 255
+				FadeWait
+				SoundPlay sound[71] 0 100 0
+				Sleep 800ms
+				FadeIn 1000ms 0x00000000
+				FadeWait
+				TextTalk char[0] {
+					#08200Fはい、お待たせですぅ。{wait}
+				}
+				TextWait
+				TextSetName ""
+				SoundPlay sound[17] 0 100 0
+				if var[0] == 0:
+					TextMessage null {
+						{color 5}ロイドのオーブメントのカバーを交換した。{color 0}{wait}
+					}
+					TextWait
+					FlagSet flag[1925]
+				elif var[0] == 1:
+					TextMessage null {
+						{color 5}エリィのオーブメントのカバーを交換した。{color 0}{wait}
+					}
+					TextWait
+					FlagSet flag[1926]
+				elif var[0] == 2:
+					TextMessage null {
+						{color 5}ティオのオーブメントのカバーを交換した。{color 0}{wait}
+					}
+					TextWait
+					FlagSet flag[1927]
+				elif var[0] == 3:
+					TextMessage null {
+						{color 5}ランディのオーブメントのカバーを交換した。{color 0}{wait}
+					}
+					TextWait
+					FlagSet flag[1928]
+				TextClose 0
+				_59
+				if flag[646] && flag[647] && flag[648] && flag[649] && flag[650] && flag[651] && flag[652] && flag[653] && flag[1925] && flag[1926] && flag[1927] && flag[1928]:
+					ED7_DE 22
+				TextTalk char[0] {
+					#08209Fふふ、またのご利用を
+					お待ちしてま～す。{wait}
+				}
+				TextWait
+				_59
+				system[18] -= 1000
+			var[0] = 99
+		else:
+			var[0] = 99
+		VisHide vis[255] 0
+		FadeOut 300ms 0x00000000 100
+	Return
+
+fn[6]:
+	if flag[1307]:
+		if !flag[0]:
+			TextTalk char[0] {
+				#08209F今年も記念祭は
+				大きな事件もなく終わりそうで、
+				よかったですねぇ。{wait}
+			} {
+				#08200Fやっぱり平和が一番ですよ。{wait}
+			}
+			TextWait
+			TextTalk name[0] {
+				#0003F（う～ん、かなり色々と
+				{}  起こっていたけど……）{wait}
+			} {
+				#0000F（まぁ、警察と市民の
+				{}  温度差ってやつかな。）{wait}
+			}
+			TextWait
+			FlagSet flag[0]
+		else:
+			TextTalk char[0] {
+				#08200F記念祭は何事もなく終わりそうで
+				よかったですねぇ。{wait}
+			}
+			TextWait
+	elif flag[1362]:
+		if !flag[0]:
+			TextTalk char[0] {
+				#08209Fパレードの写真、
+				いっぱい撮っちゃいましたぁ。{wait}
+			} {
+				#08204F……展示用のカメラで。
+				あとでこっそり現像しなきゃですぅ。{wait}
+			}
+			TextWait
+			FlagSet flag[0]
+		else:
+			TextTalk char[0] {
+				#08202F展示用のいいカメラで
+				パレードの写真を撮りました。{wait}
+			} {
+				#08211F店長には内緒ですよぉ？{wait}
+			}
+			TextWait
+	elif flag[1292]:
+		TextTalk char[0] {
+			#08200F店頭には性能比較用の
+			デモ製品を置いてるんですよぉ。{wait}
+		} {
+			#08209F実際に使い心地を確かめてから
+			買ってみてはどうですかぁ？{wait}
+		}
+		TextWait
+	elif flag[1286]:
+		TextTalk char[0] {
+			#08200F明日はパレードですねぇ。{wait}
+		} {
+			#08202F記念撮影用にオーバルカメラ、
+			どうですかぁ？{wait}
+		} {
+			#08209F以前に比べれば、
+			結構お求め安い価格になってますよ。{wait}
+		}
+		TextWait
+	elif flag[1282]:
+		TextTalk char[0] {
+			#08219F友達は今日からミシュラムに
+			行くそうなんですよぉ。{wait}
+		} {
+			#08206Fあ～ん、私も仕事がなかったら
+			行きたかったですぅ。{wait}
+		}
+		TextWait
+	elif flag[1280]:
+		TextTalk char[0] {
+			#08202Fいやぁ、外は凄い人出ですねー。{wait}
+		} {
+			#08210Fまぁ、オーバルストアの中は
+			いつもと余り
+			変わらないんですけどねぇ。{wait}
+		}
+		TextWait
+	Return
+
+fn[7]:
+	Call fn[0,8]
+	Return
+
+fn[8]:
+	TextStart char[1]
+	var[0] = 99
+	while var[0] == 99:
+		FadeOut 300ms 0x00000000 100
+		Menu menu[0] -1 -1 1
+			"話をする" // 0
+			"改造・合成する" // 1
+			"質問をする" // 2
+			"やめる" // 3
+		MenuWait var[0]
+		if var[0] != 1:
+			MenuClose menu[0]
+			FadeIn 300ms 0x00000000
+			FadeWait
+		if var[0] == 1:
+			if flag[1024] && !flag[1739]:
+				MenuClose menu[0]
+				FadeIn 300ms 0x00000000
+				FadeWait
+				TextTalk char[1] {
+					#08105Fそうだ、ロイドたちって
+					『上位クオーツ』を持ってたりしない？{wait}
+				}
+				TextWait
+				TextTalk name[0] {
+					#0005F『上位クオーツ』……？{wait}
+				}
+				TextWait
+				TextTalk char[1] {
+					#08100Fうんうん、強力すぎて普通のスロットには
+					セットできないクオーツなの。{wait}
+				} {
+					#08100Fセットするためには
+					スロット自体の強化が必要になるわ。{wait}
+				}
+				TextWait
+				if !flag[1536]:
+					TextTalk char[1] {
+						#08114F上位クオーツ自体は
+						うちでもまだ扱ってないんだけど……{wait}
+					} {
+						#08102Fスロットの強化は請け負ってるから、
+						必要があったら声を掛けてね。{wait}
+					}
+					TextWait
+				else:
+					TextTalk char[1] {
+						#08102Fうちでもスロットの強化と
+						上位クオーツの取り扱いを始めたから、
+						必要があったら声を掛けてね。{wait}
+					}
+					TextWait
+				_59
+				SoundPlay sound[828] 0 100 0
+				FadeOut 300ms 0x00000000 100
+				TextMessage null {
+					{color 5}※スロットの強化が行えるようになりました。{wait}
+				}
+				TextWait
+				TextMessage null {
+					{color 5}※［ＳＬＯＴ］を選んで
+					{}  開封済みのスロットを選択すると
+					{}  スロットレベルを強化する事ができます。{wait}
+				}
+				TextWait
+				TextMessage null {
+					{color 5}※上位クオーツのセットが可能になるほか、
+					{}  最大ＥＰもこれまで以上に
+					{}  引き上げる事ができます。{color 0}{wait}
+				}
+				TextWait
+				TextClose 0
+				_59
+				FlagSet flag[1739]
+				Sc_C4Unset 128
+			if flag[1792]:
+				ShopOpen shop[15]
+			elif flag[1536]:
+				ShopOpen shop[14]
+			elif flag[1280]:
+				ShopOpen shop[13]
+			elif flag[1024]:
+				ShopOpen shop[12]
+			elif flag[768]:
+				ShopOpen shop[11]
+			else:
+				ShopOpen shop[10]
+			var[0] = 99
+		elif var[0] == 2:
+			var[0] = 99
+			Call fn[0,9]
+		elif var[0] != 0:
+		elif var[0] == 0:
+			var[0] = 99
+			if flag[1307]:
+				if !flag[1]:
+					TextTalk char[1] {
+						#08102Fロイド達って今日も捜査なの？
+						警察官は大変ねえ。{wait}
+					} {
+						#08109Fね、こっちに戻ってから全然だし……
+						今度オスカーと３人で遊びましょ。{wait}
+					}
+					TextWait
+					TextTalk name[0] {
+						#0000Fああ、そうだな。
+						時間ができたらだけど……{wait}
+					}
+					TextWait
+					TextTalk char[1] {
+						#08114Fあは、それはこっちのセリフでも
+						あるんだけどね。{wait}
+					}
+					TextWait
+					FlagSet flag[1]
+				else:
+					TextTalk char[1] {
+						#08109Fみんな忙しいけど……
+						ま、時間が出来たら
+						今度オスカーと３人で遊びましょ。{wait}
+					}
+					TextWait
+			elif flag[1300]:
+				TextTalk char[1] {
+					#08100F迷子の男の子、まだ捜してるの？{wait}
+				} {
+					#08109F私にできる事があったら言ってね。
+					導力車くらいなら
+					店から発進させるから！{wait}
+				}
+				TextWait
+				TextTalk name[0] {
+					#0006Fウェンディなら
+					本当にやりそうで怖いな……{wait}
+				} {
+					#0000F手がかりも揃ってきたし
+					こっちは大丈夫だ。
+					気持ちだけ受け取っておくよ。{wait}
+				}
+				TextWait
+			elif flag[1294]:
+				if !flag[1377]:
+					TextTalk name[0] {
+						#0001Fウェンディ、ちょっといいかな。{wait}
+					} {
+						この子を見かけていたら
+						教えて欲しいんだけど……{wait}
+					}
+					TextWait
+					TextTalk char[1] {
+						#08105Fえ？　なになに？{wait}
+					}
+					TextWait
+					TextMessage null {
+						{color 5}ロイドはコリンの写真を見せ
+						心当たりが無いか尋ねてみた。{color 0}{wait}
+					}
+					TextWait
+					TextClose 0
+					_59
+					TextTalk char[1] {
+						#08101Fふ～ん、５歳くらいの子かぁ。
+						ウチのパンセよりちょっと年下ね。{wait}
+					} {
+						#08119Fでもゴメン、私パレードは
+						見なかったから判らないかも。{wait}
+					}
+					TextWait
+					TextTalk name[0] {
+						#0005F店にも来てないみたいだな？{wait}
+					}
+					TextWait
+					TextTalk char[1] {
+						#08100Fうん、それだけは
+						はっきり言えるわね。{wait}
+					} {
+						#08110F私、そこの導力ドアが開く回数を
+						カウントしてるもの。{wait}
+					}
+					TextWait
+					TextTalk name[0] {
+						#0006Fそ、そうか……
+						（それは確実そうだな。）{wait}
+					} {
+						#0000Fサンキュー、助かったよ。{wait}
+					}
+					TextWait
+					FlagSet flag[1377]
+					global[2] = global[2] + 1
+					Call fn[0,13]
+				elif !flag[1]:
+					TextTalk char[1] {
+						#08106F表は凄かったらしいし、
+						あれで迷子になっちゃうと心配ね。{wait}
+					} {
+						#08105Fツァイト……だっけ。
+						あの例の警察犬を使ってみたら？{wait}
+					}
+					TextWait
+					TextTalk name[0] {
+						#0000Fああ、そっちは
+						ティオに頼んでいる所だ。{wait}
+					} {
+						#0008Fただ人ごみが凄いから
+						時間は掛かるだろうな……{wait}
+					}
+					TextWait
+					TextTalk char[1] {
+						#08100F粘り強く聞き込みを
+						してくしかなさそうね。{wait}
+					} {
+						#08110F……頑張って、ロイド！{wait}
+					}
+					TextWait
+					FlagSet flag[1]
+				else:
+					TextTalk char[1] {
+						#08100Fやっぱり最後は
+						地道な聞き込みってことね。{wait}
+					} {
+						#08110F……頑張って、ロイド！{wait}
+					}
+					TextWait
+			elif flag[1362]:
+				TextTalk char[1] {
+					#08103Fパレードに使われてた導力車、
+					どんな部品を使ってるのかなー……{wait}
+				} {
+					#08106Fなんて考えてたら
+					いつの間にか終わっちゃってたわ。{wait}
+				} {
+					#08114Fあはは、職業病ってやつかしら。{wait}
+				}
+				TextWait
+			elif flag[1292]:
+				TextTalk char[1] {
+					#08100F新型のクオーツより
+					安くなった旧式クオーツが
+					売れたりするのよ。{wait}
+				} {
+					#08104Fまだまだ普及してない地域も多いし、
+					旧式の方が構造が単純だものね。{wait}
+				} {
+					#08110Fんま、完全に移行しても
+					一旦セピスにまで砕いちゃえば
+					再利用できるのはいいことよね。{wait}
+				}
+				TextWait
+			elif flag[1286]:
+				TextTalk char[1] {
+					#08106Fアルカンシェルの公演、
+					スキあらば見に行こうと思ったけど……
+					今年はやっぱり難しいなあ。{wait}
+				} {
+					#08103Fやっぱオーバルストアになってから
+					お客さんがふえたもんね。{wait}
+				} {
+					#08114Fありがたいことだけど、
+					もっと気楽に導力器を
+					いじってたいなー。{wait}
+				}
+				TextWait
+			elif flag[1282]:
+				if !flag[1]:
+					TextTalk char[1] {
+						#08107F仕事中に客がナンパしてきてね。{wait}
+					} {
+						#08107Fお客さんも多いのに
+						空気を読まないもんだから、
+						思わずブン殴りそうになったわ。{wait}
+					}
+					TextWait
+					TextTalk name[0] {
+						#0006Fもう大人なんだし
+						ほどほどにしとけよ……{wait}
+					}
+					TextWait
+					FlagSet flag[1]
+				else:
+					TextTalk char[1] {
+						#08101Fま、殴りはしなかったけど
+						客が詰まってたから
+						早々にお帰りいただいたわ。{wait}
+					} {
+						#08106F全く、忙しいときくらい
+						空気を読んで欲しいわね。{wait}
+					}
+					TextWait
+			elif flag[1280]:
+				TextTalk char[1] {
+					#08103Fすっごい人ごみね。
+					興味本位で見に来てくれる
+					お客さんの多いこと。{wait}
+				} {
+					#08110F私も日が落ちたらちょっと
+					歩いてみよっかな。{wait}
+				}
+				TextWait
+	TextEnd char[1]
+	Return
+
+fn[9]:
+	TextTalk char[1] {
+		#08100Fオッケー。
+		何について聞きたいの？{wait}
+	}
+	TextWait
+	var[3] = 0
+	while var[3] != 255:
+		FadeOut 300ms 0x00000000 100
+		Menu menu[1] -1 -1 1
+			"戦術オーブメントについて" // 0
+			"クオーツについて" // 1
+			"スロットについて" // 2
+			"導力魔法（アーツ）について" // 3
+			"やめる" // 4
+		MenuWait var[3]
+		MenuClose menu[1]
+		FadeIn 300ms 0x00000000
+		_59
+		switch var[3]:
+			case 0:
+				TextTalk char[1] {
+					#08100F《戦術オーブメント》っていうのは、
+					個人の戦闘用に特化した
+					小型の携帯導力器のことよ。{wait}
+				} {
+					#08102F使用者の能力を強化してくれるほか
+					導力魔法#8Rア  ー  ツ#の使用もサポートしてくれるの。{wait}
+				} {
+					#08110F一般的には、たんに『オーブメント』って
+					呼ばれたりするわね。{wait}
+				} {
+					#08100Fロイド達が使ってるのは、
+					その中でも最新型の
+					『エニグマ』っていうタイプよ。{wait}
+				} {
+					#08104Fオーブメントは個人に合わせて
+					完璧に調整されてるから、
+					持ち主によって構造が異なるわよ。{wait}
+				} {
+					#08100F属性限定のスロットがあったり、
+					スロットを結ぶ線#2Rライン#の形が違ったりするわ。
+					一度みんなで見比べてみるといいかもね。{wait}
+				}
+				TextWait
+				break
+			case 1:
+				TextTalk char[1] {
+					#08100Fクオーツは、セピスを精錬して作られる
+					オーブメント用の『結晶回路』のことね。{wait}
+				} {
+					#08102F必要なセピスさえ持ってきてくれれば
+					ウチで合成ができるわよ。{wait}
+				} {
+					#08100Fクオーツによって色々な効果があるし、
+					属性値が一定以上になると
+					導力魔法#8Rア  ー  ツ#が使えるようになるの。{wait}
+				} {
+					#08110Fセピスが溜まったら色々試してみてね。{wait}
+				}
+				TextWait
+				break
+			case 2:
+				TextTalk char[1] {
+					#08100Fオーブメントのスロットは
+					初めはほとんどが未開封の状態なの。{wait}
+				} {
+					#08104Fクオーツをセットするには
+					まずはスロットを開封する必要があるわね。{wait}
+				} {
+					#08102Fスロットを開封すれば、
+					クオーツも沢山セットできるようになるし
+					最大ＥＰの値も上昇するわ。{wait}
+				} {
+					#08110F開封にはセピスが必要だけど
+					かなり便利になるはずよ。
+					積極的に開けていくといいと思うわ。{wait}
+				}
+				TextWait
+				break
+			case 3:
+				TextTalk char[1] {
+					#08100F戦術オーブメントを使って発動する魔法が
+					いわゆる導力魔法#8Rオーバルアーツ#ね。{wait}
+				} {
+					#08110F単純に『アーツ』って呼ばれる事が多いわ。{wait}
+				} {
+					#08104Fオーブメントに内蔵されている機構と
+					クオーツが使用者と共鳴連鎖することで
+					魔法現象を展開するんだけど……{wait}
+				} {
+					#08111Fま、細かいことはいいかな。{wait}
+				} {
+					#08100Fアーツは、セットしたクオーツの
+					『ラインごとの属性値の合計』によって
+					発動できる種類が決まってくるの。{wait}
+				} {
+					#08105Fちょっと難しいけど……
+					そうね、例えば。{wait}
+				} {
+					#08104Fラインが繋がっているスロットに
+					クオーツをセットしていって、
+					地属性の合計値が２以上になると……{wait}
+				} {
+					#08110F『クエイク』ってアーツが
+					使えるようになるわ。{wait}
+				} {
+					#08102Fクオーツをセットするほど、
+					たくさんのアーツが
+					使えるようになるってわけね。{wait}
+				} {
+					#08109F他のアーツの組み合わせは
+					アーツリストに載ってるはずよ。
+					参考にしてね。{wait}
+				}
+				TextWait
+				break
+			default:
+				var[3] = 255
+				break
+	var[3] = 0
+	Return
+
+fn[10]:
+	TextStart self
+	if flag[1307]:
+		TextTalk self {
+			#14600F先程、帝国の観光客に
+			導力車を購入して頂きました。{wait}
+		} {
+			#14600Fパレードでの優雅な走りを見て
+			欲しくなったのだとか。
+			いや、パレードさまさまですねぇ。{wait}
+		}
+		TextWait
+	elif flag[1362]:
+		TextTalk self {
+			#14601F……よく考えると、
+			私は無意識にウェンディの知識を
+			頼っていた気がします。{wait}
+		} {
+			#14601F私も導力器の勉強を
+			しっかりはじめた方が
+			いいのかもしれませんねぇ……{wait}
+		}
+		TextWait
+	elif flag[1292]:
+		TextTalk self {
+			#14601F感光クオーツが壊れたので
+			ウェンディのもとに修理に来るという
+			観光客を何度か見かけるのです。{wait}
+		} {
+			#14600Fううむ……買い替えさせたほうが
+			利益になると思いましたが
+			あの方法ならリピーターがつきますねぇ……{wait}
+		}
+		TextWait
+	elif flag[1286]:
+		TextTalk self {
+			#14601Fううむ、もっと外の観光客を
+			呼び込む手段があれば……{wait}
+		}
+		TextWait
+	elif flag[1282]:
+		TextTalk self {
+			#14607Fウェンディめ……
+			よりにもよってお客様に
+			手を上げようとするとは。{wait}
+		} {
+			#14601F聞けば、前の工房の時も
+			何度か同じようなことがあった
+			そうではないですか。{wait}
+		} {
+			#14601Fまったく、師匠とやらは彼女に
+			どんな教育をしていたのやら……{wait}
+		}
+		TextWait
+	elif flag[1280]:
+		TextTalk self {
+			#14601Fオーバルカメラはぽつぽつと
+			売れているようなのですが、
+			全体的な売り上げはまだまだですねぇ。{wait}
+		} {
+			#14601F外の出店に客をとられているのか……
+			もっと賑やかに打ち出すべきでした。{wait}
+		}
+		TextWait
+	TextEnd self
+	Return
+
+fn[11]:
+	TextStart self
+	if flag[1307]:
+		TextTalk self {
+			今日は最終日かぁ……{wait}
+		}
+		TextWait
+		TextTalk self {
+			今年はあまり外を回らずに
+			ここにばっかり来てたわね。{wait}
+		}
+		TextWait
+		TextTalk self {
+			まあおばさんにとっては
+			ここで商品を眺めるのが
+			一番刺激的で楽しいって事かしら。{wait}
+		}
+		TextWait
+	elif flag[1362]:
+		TextTalk self {
+			パレードの様子、
+			ばっちりカメラに収めたわよ～。{wait}
+		}
+		TextWait
+		TextTalk self {
+			さすがは新製品のカメラね、
+			使いやすくって最高よ～！{wait}
+		}
+		TextWait
+	elif flag[1292]:
+		TextTalk self {
+			そういえば２階のコーナーは
+			あまり覗いたことないのよね。{wait}
+		}
+		TextWait
+		TextTalk self {
+			最先端の製品が展示されているそうだし……
+			一度じっくり見てみようかしら。{wait}
+		}
+		TextWait
+	elif flag[1286]:
+		TextTalk self {
+			パシャッ、パシャッ……！{wait}
+		}
+		TextWait
+		TextTalk self {
+			せっかく来たのだし、賑わう
+			店内の写真をとっておきましょ。{wait}
+		}
+		TextWait
+		TextTalk self {
+			オシャレな新製品も写せるし
+			一石二鳥よね～。{wait}
+		}
+		TextWait
+	elif flag[1282]:
+		TextTalk self {
+			おばさん、
+			人ごみってダメなのよ～……{wait}
+		}
+		TextWait
+		TextTalk self {
+			その点、この店は
+			空調も効いてるから快適よぉ。{wait}
+		}
+		TextWait
+		TextTalk self {
+			思わず入り浸っちゃうわ～。{wait}
+		}
+		TextWait
+	elif flag[1280]:
+		TextTalk self {
+			オーバルカメラが安くなっていたから
+			思い切って買ってしまったわ。{wait}
+		}
+		TextWait
+		TextTalk self {
+			うふふ、夢だったのよね～
+			カメラを扱うの。{wait}
+		}
+		TextWait
+		TextTalk self {
+			これで記念祭も
+			バッチリ楽しむわよ～！{wait}
+		}
+		TextWait
+	TextEnd self
+	Return
+
+fn[12]:
+	TextStart self
+	if flag[1307]:
+		TextTalk self {
+			チャコ……
+			記念祭に休みもとらずに
+			よくがんばっていたなぁ。{wait}
+		}
+		TextWait
+		TextTalk self {
+			よし、今度お父さんが
+			ミシュラムにでも連れてってあげよう。{wait}
+		}
+		TextWait
+	elif flag[1362]:
+		TextTalk self {
+			パレードが来たとき、チャコが
+			急いで店外に飛び出ていったんだ。{wait}
+		}
+		TextWait
+		TextTalk self {
+			め……目が合ってしまった気がしたけど
+			気づかれなかったかな……{wait}
+		}
+		TextWait
+	elif flag[1292]:
+		TextTalk self {
+			ううん、迷っている間に
+			パレードの時間が近づいてしまったな。{wait}
+		}
+		TextWait
+		TextTalk self {
+			練習もしないで
+			いい写真を撮るのは難しいと聞く。
+			今回の購入は見送るか……{wait}
+		}
+		TextWait
+	elif flag[1286]:
+		TextTalk self {
+			うーん、さっきから見ていたが、
+			チャコの先輩はなかなか面倒見が
+			よさそうな娘さんじゃないか。{wait}
+		}
+		TextWait
+		TextTalk self {
+			あれならチャコのことを
+			安心して任せられそうだな。{wait}
+		}
+		TextWait
+	elif flag[1282]:
+		if !flag[4]:
+			TextTalk self {
+				さ、さっきはビックリしたな……{wait}
+			}
+			TextWait
+			TextTalk self {
+				チャコの隣のカウンターの娘が
+				しつこそうな観光客を
+				スパナで殴ろうとしたんだよ。{wait}
+			}
+			TextWait
+			TextTalk self {
+				あ、あんな凶暴そうな先輩の下で
+				チャコは大丈夫なんだろうか……？{wait}
+			}
+			TextWait
+			FlagSet flag[4]
+		else:
+			TextTalk self {
+				あんな凶暴そうな先輩の下で
+				チャコは大丈夫なんだろうか……？{wait}
+			}
+			TextWait
+	elif flag[1280]:
+		TextTalk self {
+			ふむふむ……
+			結局どのカメラにしようかな。{wait}
+		}
+		TextWait
+		TextTalk self {
+			どうせなら長く使えるものが
+			望ましいんだが……{wait}
+		}
+		TextWait
+	TextEnd self
+	Return
+
+fn[13]:
+	if global[2] == 7:
+		TextTalk name[95] {
+			#3300F（中央広場の聞き込みは
+			{}  こんな所かしら？）{wait}
+		}
+		TextWait
+		TextTalk name[0] {
+			#0000F（ああ、十分だと思う。）{wait}
+		} {
+			（次は駅前通りで
+			{}  聞き込みをしてみよう。）{wait}
+		}
+		TextWait
+		global[2] = 0
+		FlagSet flag[1485]
+		QuestTaskSet quest[70] 7
+	Return
+
+fn[14]:
+	TextStart self
+	if flag[1307]:
+		if flag[5]:
+			TextTalk self {
+				俺、昔から導力製品と
+				相性悪いんだよな……{wait}
+			}
+			TextWait
+		else:
+			TextTalk self {
+				昨日買った導力腕時計が
+				嵌めたとたんに壊れちまったんだ。{wait}
+			}
+			TextWait
+			TextTalk self {
+				……今、修理カウンターで
+				直してもらってるんだよ。{wait}
+			}
+			TextWait
+			TextTalk self {
+				トホホ、俺ってやっぱ
+				導力オンチなのかな。{wait}
+			}
+			TextWait
+			FlagSet flag[5]
+	elif flag[1362]:
+		if flag[5]:
+			TextTalk self {
+				店員のねーちゃん、
+				『愛でて行くといいですよ』とか
+				良く分からん事を言うんだよな。{wait}
+			}
+			TextWait
+			TextTalk self {
+				ハキハキしてて
+				俺の好みなのに……{wait}
+			}
+			TextWait
+		else:
+			TextTalk self {
+				さっき店員のねーちゃんが
+				導力製品の解説をしてくれたんだ。{wait}
+			}
+			TextWait
+			TextTalk self {
+				……でもあのねーちゃん、
+				『愛でて行くといいですよ』とか
+				良く分からん事を言うんだよな。{wait}
+			}
+			TextWait
+			TextTalk self {
+				……可愛いのにな………{wait}
+			}
+			TextWait
+			FlagSet flag[5]
+	elif flag[1292]:
+		TextTalk self {
+			うーむ、これは……
+			明るい導力灯って書いてあるな。{wait}
+		}
+		TextWait
+		TextTalk self {
+			しかも豊富なカラーバリエーション！？
+			土産に１つ買って帰りたいぜ。{wait}
+		}
+		TextWait
+	elif flag[1286]:
+		TextTalk self {
+			こ、こいつは最新型の
+			戦術オーブメントらしいぞ。{wait}
+		}
+		TextWait
+		TextTalk self {
+			さ、触ったら壊れねえかな！？{wait}
+		}
+		TextWait
+	elif flag[1282]:
+		TextTalk self {
+			あれ……？
+			下の方が騒がしかったみたいだけど。{wait}
+		}
+		TextWait
+		TextTalk self {
+			何かあったのかな。{wait}
+		}
+		TextWait
+	elif flag[1280]:
+		TextTalk self {
+			スッゲーっ……！
+			なんじゃこりゃー！{wait}
+		}
+		TextWait
+		TextTalk self {
+			導力オンチの俺には
+			さっぱり分かんねー物ばっかだ！{wait}
+		}
+		TextWait
+	TextEnd self
+	Return
+
+fn[15]:
+	TextStart self
+	if flag[1307]:
+		TextTalk self {
+			クロスベルに来た記念に
+			導力ライト付きペンダントっていうのを
+			買うことにしたわ。{wait}
+		}
+		TextWait
+		TextTalk self {
+			たくさん珍しい物があるけど
+			どれも高いんだもん。{wait}
+		}
+		TextWait
+	elif flag[1362]:
+		TextTalk self {
+			夢中でこのお店を見てたら
+			パレードを見逃しちゃったのよっ！{wait}
+		}
+		TextWait
+		TextTalk self {
+			……仕方ないわ……
+			代わりに導力車を拝んでいきましょ。{wait}
+		}
+		TextWait
+	elif flag[1292]:
+		TextTalk self {
+			『保温力バツグン！
+			{}  最新の高出力結晶回路搭載！』{wait}
+		}
+		TextWait
+		TextTalk self {
+			……ど、どれがいいのかしら。
+			仕様書って、難しくて
+			読んでも分かんないよのね。{wait}
+		}
+		TextWait
+	elif flag[1286]:
+		TextTalk self {
+			強力冷凍装置つき……{wait}
+		}
+		TextWait
+		TextTalk self {
+			うむむ……買って帰りたいけど
+			とても持ち運べないわね……{wait}
+		}
+		TextWait
+	elif flag[1282]:
+		TextTalk self {
+			自動首フリ機能……？{wait}
+		}
+		TextWait
+		TextTalk self {
+			ううっ、さすがはクロスベル。
+			何でも最新型ばっかなのね。{wait}
+		}
+		TextWait
+	elif flag[1280]:
+		TextTalk self {
+			ここが噂のオーバルストアね！{wait}
+		}
+		TextWait
+		TextTalk self {
+			よぉし、お祭りのついでに
+			見て回るわよっ！{wait}
+		}
+		TextWait
+	TextEnd self
+	Return

@@ -1,0 +1,1369 @@
+calmare zero_k scena
+scena:
+	name "c014c" "c014c" "c014c"
+	town town[6]
+	bgm bgm[100]
+	flags 8192
+	item_use fn[0,255]
+	unk 255 0
+
+entry:
+	pos (0, 0, -1000)
+	unk1 0
+	cam_from (0, 0, 34000)
+	cam_pers 262
+	unk2 30
+	cam_deg 45deg
+	cam_limit 0deg 360deg
+	cam_at (0, 0, 0)
+	unk3 0
+	unk4 0
+	flags 0x0001
+	town town[6]
+	init fn[0,2]
+	reinit fn[0,3]
+
+chip[0] "chr/ch26100.itc"
+chip[1] "chr/ch27800.itc"
+chip[2] "chr/ch25700.itc"
+chip[3] "chr/ch21000.itc"
+chip[4] "chr/ch20800.itc"
+chip[5] "chr/ch21900.itc"
+chip[6] "chr/ch24400.itc"
+chip[7] "chr/ch33200.itc"
+
+npc char[0]:
+	name "恰可"
+	pos (9270, 0, 2650)
+	angle 270deg
+	flags 0x0105
+	unk2 0
+	chip chip[2]
+	init fn[0,0]
+	talk fn[0,6]
+	unk4 255
+
+npc char[1]:
+	name "溫蒂"
+	pos (9329, 0, -1350)
+	angle 270deg
+	flags 0x0105
+	unk2 0
+	chip chip[0]
+	init fn[0,0]
+	talk fn[0,8]
+	unk4 255
+
+npc char[2]:
+	name "費南特"
+	pos (-1519, 0, 14659)
+	angle 180deg
+	flags 0x0105
+	unk2 0
+	chip chip[1]
+	init fn[0,0]
+	talk fn[0,10]
+	unk4 255
+
+npc char[3]:
+	name "蜜潔特"
+	pos (-4480, 0, 7440)
+	angle 0deg
+	flags 0x0105
+	unk2 0
+	chip chip[5]
+	init fn[0,0]
+	talk fn[0,11]
+	unk4 255
+
+npc char[4]:
+	name "巴吉利奧"
+	pos (2299, 0, 6420)
+	angle 90deg
+	flags 0x0105
+	unk2 0
+	chip chip[3]
+	init fn[0,0]
+	talk fn[0,12]
+	unk4 255
+
+npc char[5]:
+	name "遊客"
+	pos (11119, 4000, 8699)
+	angle 90deg
+	flags 0x0105
+	unk2 0
+	chip chip[6]
+	init fn[0,0]
+	talk fn[0,14]
+	unk4 255
+
+npc char[6]:
+	name "遊客"
+	pos (-3309, 0, 790)
+	angle 90deg
+	flags 0x0105
+	unk2 0
+	chip chip[7]
+	init fn[0,0]
+	talk fn[0,15]
+	unk4 255
+
+look_point[0]:
+	pos (8130, 0, 3080)
+	radius 1000
+	bubble_pos (9270, 1500, 3140)
+	unk1 126
+	unk2 0
+	function fn[0,4]
+	unk3 0
+	unk4 0
+
+look_point[1]:
+	pos (8310, 0, -1360)
+	radius 1000
+	bubble_pos (9330, 1500, -1350)
+	unk1 126
+	unk2 0
+	function fn[0,7]
+	unk3 0
+	unk4 0
+
+sepith[0] 0 0 0 0 0 0 0 0
+
+fn[0]:
+	var[2] = random % 8
+	switch var[2]:
+		case 0:
+			ED7_A0 self 1450ms 0 251
+			break
+		case 1:
+			ED7_A0 self 1550ms 0 251
+			break
+		case 2:
+			ED7_A0 self 1600ms 0 251
+			break
+		case 3:
+			ED7_A0 self 1400ms 0 251
+			break
+		case 4:
+			ED7_A0 self 1650ms 0 251
+			break
+		case 5:
+			ED7_A0 self 1350ms 0 251
+			break
+		case 6:
+			ED7_A0 self 1500ms 0 251
+			break
+		default:
+			ED7_A0 self 1500ms 0 251
+			break
+	while 1:
+		ED7_A0 self 1500ms 0 251
+	Return
+
+fn[1]:
+	while 1:
+		CharWalkToPos self (-4480, 0, 9380) 2000mm/s 0
+		CharWalkToPos self (-1380, 0, 11120) 2000mm/s 0
+		CharWalkToPos self (5230, 0, 9480) 2000mm/s 0
+		CharWalkToPos self (5230, 0, 9480) 2000mm/s 0
+		CharWalkToPos self (5230, 0, 6900) 2000mm/s 0
+		CharTurnTo self 270deg 400deg/s
+		Sleep 1300ms
+		CharTurnTo self 180deg 400deg/s
+		Sleep 100ms
+		CharWalkToPos self (5230, 0, 1000) 2000mm/s 0
+		CharWalkToPos self (3800, 0, 930) 2000mm/s 0
+		CharTurnTo self 180deg 400deg/s
+		Sleep 2000ms
+		CharTurnTo self 270deg 400deg/s
+		Sleep 100ms
+		CharWalkToPos self (-1350, 0, 930) 2000mm/s 0
+		CharWalkToPos self (-1310, 0, -1230) 2000mm/s 0
+		CharTurnTo self 90deg 400deg/s
+		Sleep 2000ms
+		CharTurnTo self 0deg 400deg/s
+		Sleep 100ms
+		CharWalkToPos self (-1310, 0, 2990) 2000mm/s 0
+		CharWalkToPos self (-4480, 0, 4640) 2000mm/s 0
+		CharWalkToPos self (-4480, 0, 7440) 2000mm/s 0
+		CharTurnTo self 90deg 400deg/s
+		Sleep 1800ms
+		CharTurnTo self 0deg 400deg/s
+		Sleep 100ms
+	Return
+
+fn[2]:
+	ForkFunc char[3] fork[0] fn[0,1]
+	if flag[1307]:
+		CharSetPos char[4] (11460, 4000, 8870) 90deg
+		CharSetPos char[5] (10670, 4000, 15920) 0deg
+		CharSetPos char[6] (1050, 0, 3500) 90deg
+	elif flag[1362]:
+		CharSetPos char[6] (1680, 0, 12640) 0deg
+	elif flag[1292]:
+		CharSetPos char[5] (11460, 4000, -1040) 90deg
+		CharSetPos char[6] (40, 0, 4670) 315deg
+	elif flag[1286]:
+		CharSetPos char[5] (9090, 4000, 3890) 180deg
+		CharSetPos char[6] (3670, 0, -2980) 0deg
+	elif flag[1282]:
+		CharSetPos char[5] (11040, 4000, 7060) 225deg
+		CharSetPos char[6] (310, 0, -2980) 0deg
+	Return
+
+fn[3]:
+	Return
+
+fn[4]:
+	if flag[768] && !(flag[1925] && flag[1926] && flag[1927] && flag[1928]):
+		TextStart char[0]
+		if !flag[908]:
+			TextTalk char[0] {
+				#08202F啊，你們就是
+				溫蒂前輩的朋友吧～{wait}
+			} {
+				#08200F你們知道嗎～？
+				我們最近新推出了更換
+				戰術導力器機殼的服務哦。{wait}
+			} {
+				#08210F有各種時尚漂亮的款式
+				可供選擇～
+				請一定要看一看～{wait}
+			}
+			TextWait
+			FlagSet flag[908]
+		var[0] = 99
+		while var[0] == 99:
+			FadeOut 300ms 0x00000000 100
+			Menu menu[0] -1 -1 1
+				"對話" // 0
+				"更換機殼" // 1
+				"放棄" // 2
+			MenuWait var[0]
+			if var[0] != 1:
+				MenuClose menu[0]
+				FadeIn 300ms 0x00000000
+				FadeWait
+			if var[0] == 0:
+				Call fn[0,6]
+				var[0] = 99
+			elif var[0] == 1:
+				MenuClose menu[0]
+				Call fn[0,5]
+				var[0] = 99
+		TextEnd char[0]
+	else:
+		TextStart char[0]
+		Call fn[0,6]
+		TextEnd char[0]
+	Return
+
+fn[5]:
+	var[0] = 99
+	while var[0] == 99:
+		ED7MenuNew menu[0]
+		if flag[1925]:
+			ED7MenuAdd menu[0] "藍色警官　　　　已購買"
+			ED7MenuSetDisabled menu[0] 0
+		else:
+			ED7MenuAdd menu[0] "藍色警官　　　　1000米拉"
+		if flag[1926]:
+			ED7MenuAdd menu[0] "和平綠　　　　　已購買"
+			ED7MenuSetDisabled menu[0] 1
+		else:
+			ED7MenuAdd menu[0] "和平綠　　　　　1000米拉"
+		if flag[1927]:
+			ED7MenuAdd menu[0] "黑貓　　　　　　已購買"
+			ED7MenuSetDisabled menu[0] 2
+		else:
+			ED7MenuAdd menu[0] "黑貓　　　　　　1000米拉"
+		if flag[1928]:
+			ED7MenuAdd menu[0] "危險橙　　　　　已購買"
+			ED7MenuSetDisabled menu[0] 3
+		else:
+			ED7MenuAdd menu[0] "危險橙　　　　　1000米拉"
+		ED7MenuAdd menu[0] "放棄"
+		TextMessage char[0] {
+			#08200F{0x18}要更換為哪一個～？{wait}
+		}
+		ED7MenuShow menu[0] 65535 65535 1
+		MenuWait var[0]
+		MenuClose menu[0]
+		Sleep 200ms
+		TextClose 0
+		_59
+		if var[0] == 4 | var[0] < 0:
+			Sleep 1ms
+			Return
+		if var[0] == 0:
+			VisShow vis[0] 112 8 368 264 0 0 256 256 0 0 256 256 0x00FFFFFF 1 "c_vis172.itp"
+		elif var[0] == 1:
+			VisShow vis[0] 112 8 368 264 0 0 256 256 0 0 256 256 0x00FFFFFF 1 "c_vis173.itp"
+		elif var[0] == 2:
+			VisShow vis[0] 112 8 368 264 0 0 256 256 0 0 256 256 0x00FFFFFF 1 "c_vis174.itp"
+		elif var[0] == 3:
+			VisShow vis[0] 112 8 368 264 0 0 256 256 0 0 256 256 0x00FFFFFF 1 "c_vis175.itp"
+		VisSet vis[0] 3 0xFFFFFFFF 500ms 0 0
+		VisSet vis[0] 0 0 -10000 500ms 0
+		VisWait vis[0] 3
+		VisWait vis[0] 0
+		if var[0] == 0:
+			TextMessage null {
+				{color 5}這是羅伊德專用的機殼。
+				購買後，顯示在營地選單［ＯＲＢＭＥＮＴ］的
+				戰術導力器的機殼將會改變。{color 0}{wait}
+			}
+			TextWait
+		elif var[0] == 1:
+			TextMessage null {
+				{color 5}這是艾莉專用的機殼。
+				購買後，顯示在營地選單［ＯＲＢＭＥＮＴ］的
+				戰術導力器的機殼將會改變。{color 0}{wait}
+			}
+			TextWait
+		elif var[0] == 2:
+			TextMessage null {
+				{color 5}這是緹歐專用的機殼。
+				購買後，顯示在營地選單［ＯＲＢＭＥＮＴ］的
+				戰術導力器的機殼將會改變。{color 0}{wait}
+			}
+			TextWait
+		elif var[0] == 3:
+			TextMessage null {
+				{color 5}這是蘭迪專用的機殼。
+				購買後，顯示在營地選單［ＯＲＢＭＥＮＴ］的
+				戰術導力器的機殼將會改變。{color 0}{wait}
+			}
+			TextWait
+		TextMessage char[0] {
+			#08200F好的，確定要更換為這種款式嗎～？{wait}
+		}
+		TextWait
+		_59
+		var[3] = 99
+		Menu menu[0] -1 -1 1
+			"【確定更換】" // 0
+			"【還是算了】" // 1
+		MenuWait var[3]
+		MenuClose menu[0]
+		VisSet vis[0] 3 0x00FFFFFF 500ms 0 0
+		VisSet vis[0] 0 0 0 500ms 0
+		VisWait vis[0] 3
+		VisWait vis[0] 0
+		FadeIn 300ms 0x00000000
+		FadeWait
+		if var[3] == 0:
+			if system[18] < 1000:
+				TextTalk char[0] {
+					#08219F咦～您的米拉好像不夠呢。
+					這樣是沒辦法更換的哦。{wait}
+				}
+				TextWait
+			else:
+				TextTalk char[0] {
+					#08209F明白啦。
+					請稍等一下哦～㈱{wait}
+				}
+				TextWait
+				FadeOut 1000ms 0x00000000 255
+				FadeWait
+				SoundPlay sound[71] 0 100 0
+				Sleep 800ms
+				FadeIn 1000ms 0x00000000
+				FadeWait
+				TextTalk char[0] {
+					#08200F好了，讓您久等啦。{wait}
+				}
+				TextWait
+				TextSetName ""
+				SoundPlay sound[17] 0 100 0
+				if var[0] == 0:
+					TextMessage null {
+						{color 5}更換了羅伊德的導力器機殼。{color 0}{wait}
+					}
+					TextWait
+					FlagSet flag[1925]
+				elif var[0] == 1:
+					TextMessage null {
+						{color 5}更換了艾莉的導力器機殼。{color 0}{wait}
+					}
+					TextWait
+					FlagSet flag[1926]
+				elif var[0] == 2:
+					TextMessage null {
+						{color 5}更換了緹歐的導力器機殼。{color 0}{wait}
+					}
+					TextWait
+					FlagSet flag[1927]
+				elif var[0] == 3:
+					TextMessage null {
+						{color 5}更換了蘭迪的導力器機殼。{color 0}{wait}
+					}
+					TextWait
+					FlagSet flag[1928]
+				TextClose 0
+				_59
+				if flag[646] && flag[647] && flag[648] && flag[649] && flag[650] && flag[651] && flag[652] && flag[653] && flag[1925] && flag[1926] && flag[1927] && flag[1928]:
+					ED7_DE 22
+				TextTalk char[0] {
+					#08209F呵呵，期待您的
+					下次光臨～{wait}
+				}
+				TextWait
+				_59
+				system[18] -= 1000
+			var[0] = 99
+		else:
+			var[0] = 99
+		VisHide vis[255] 0
+		FadeOut 300ms 0x00000000 100
+	Return
+
+fn[6]:
+	if flag[1307]:
+		if !flag[0]:
+			TextTalk char[0] {
+				#08209F今年的紀念慶典也沒出什麼大事，
+				應該可以平平安安地結束，
+				真是太好了。{wait}
+			} {
+				#08200F和平果然比什麼都重要啊。{wait}
+			}
+			TextWait
+			TextTalk name[0] {
+				#0003F（嗯～其實發生了
+				　不少事呢……）{wait}
+			} {
+				#0000F（也罷，這就是所謂的
+				　員警與市民的不同視角吧。）{wait}
+			}
+			TextWait
+			FlagSet flag[0]
+		else:
+			TextTalk char[0] {
+				#08200F紀念慶典似乎能夠平安結束，
+				真是太好了。{wait}
+			}
+			TextWait
+	elif flag[1362]:
+		if !flag[0]:
+			TextTalk char[0] {
+				#08209F我拍了好多
+				遊行時的照片呢。{wait}
+			} {
+				#08204F……用的是展品相機。
+				待會要偷偷地顯像才行。{wait}
+			}
+			TextWait
+			FlagSet flag[0]
+		else:
+			TextTalk char[0] {
+				#08202F我用高級展品相機
+				拍了些遊行的照片。{wait}
+			} {
+				#08211F可不要告訴店長哦。{wait}
+			}
+			TextWait
+	elif flag[1292]:
+		TextTalk char[0] {
+			#08200F店頭放著一些用來
+			比較性能的樣品呢。{wait}
+		} {
+			#08209F先來實際確認一下
+			使用的感覺，然後再選購吧？{wait}
+		}
+		TextWait
+	elif flag[1286]:
+		TextTalk char[0] {
+			#08200F明天有遊行呢。{wait}
+		} {
+			#08202F要不要買個相機，
+			拍些紀念照片呢？{wait}
+		} {
+			#08209F和以前相比，
+			價格已經實惠了很多哦。{wait}
+		}
+		TextWait
+	elif flag[1282]:
+		TextTalk char[0] {
+			#08219F朋友今天要去
+			米修拉姆。{wait}
+		} {
+			#08206F啊～要不是有工作，
+			我也很想去啊。{wait}
+		}
+		TextWait
+	elif flag[1280]:
+		TextTalk char[0] {
+			#08202F哎呀，外面真是好多人啊～{wait}
+		} {
+			#08210F不過，導力商店裡
+			倒是同平時
+			沒有多大的變化呢。{wait}
+		}
+		TextWait
+	Return
+
+fn[7]:
+	Call fn[0,8]
+	Return
+
+fn[8]:
+	TextStart char[1]
+	var[0] = 99
+	while var[0] == 99:
+		FadeOut 300ms 0x00000000 100
+		Menu menu[0] -1 -1 1
+			"對話" // 0
+			"改造・合成" // 1
+			"詢問" // 2
+			"放棄" // 3
+		MenuWait var[0]
+		if var[0] != 1:
+			MenuClose menu[0]
+			FadeIn 300ms 0x00000000
+			FadeWait
+		if var[0] == 1:
+			if flag[1024] && !flag[1739]:
+				MenuClose menu[0]
+				FadeIn 300ms 0x00000000
+				FadeWait
+				TextTalk char[1] {
+					#08105F對了，羅伊德，你們
+					有沒有『高級結晶迴路』？{wait}
+				}
+				TextWait
+				TextTalk name[0] {
+					#0005F『高級結晶迴路』……？{wait}
+				}
+				TextWait
+				TextTalk char[1] {
+					#08100F嗯嗯，就是威力過於強大，
+					不能鑲嵌在普通插槽裡的結晶迴路。{wait}
+				} {
+					#08100F為了鑲嵌這些結晶迴路，
+					就需要強化插槽本身。{wait}
+				}
+				TextWait
+				if !flag[1536]:
+					TextTalk char[1] {
+						#08114F我們這裡沒有
+						高級結晶迴路……{wait}
+					} {
+						#08102F不過，強化插槽倒是可以的。
+						如果有需要的話，就跟我說哦。{wait}
+					}
+					TextWait
+				else:
+					TextTalk char[1] {
+						#08102F我們店也開始提供插槽的強化和
+						高級結晶迴路的合成服務了，
+						有需要的時候就請和我說吧。{wait}
+					}
+					TextWait
+				_59
+				SoundPlay sound[828] 0 100 0
+				FadeOut 300ms 0x00000000 100
+				TextMessage null {
+					{color 5}※可以強化插槽了。{wait}
+				}
+				TextWait
+				TextMessage null {
+					{color 5}※開啟［ＳＬＯＴ］後
+					　選擇已解鎖插槽，
+					　便可進行插槽等級的強化。{wait}
+				}
+				TextWait
+				TextMessage null {
+					{color 5}※強化之後，
+					　不僅可以鑲嵌高級結晶迴路，
+					　最大ＥＰ值也會得到進一步提升。{color 0}{wait}
+				}
+				TextWait
+				TextClose 0
+				_59
+				FlagSet flag[1739]
+				Sc_C4Unset 128
+			if flag[1792]:
+				ShopOpen shop[15]
+			elif flag[1536]:
+				ShopOpen shop[14]
+			elif flag[1280]:
+				ShopOpen shop[13]
+			elif flag[1024]:
+				ShopOpen shop[12]
+			elif flag[768]:
+				ShopOpen shop[11]
+			else:
+				ShopOpen shop[10]
+			var[0] = 99
+		elif var[0] == 2:
+			var[0] = 99
+			Call fn[0,9]
+		elif var[0] != 0:
+		elif var[0] == 0:
+			var[0] = 99
+			if flag[1307]:
+				if !flag[1]:
+					TextTalk char[1] {
+						#08102F羅伊德，你們今天也有調查工作？
+						警官可真夠辛苦啊。{wait}
+					} {
+						#08109F對了，你回來以後，我們都沒有聚過……
+						下次叫上奧斯卡，三個人一起去玩吧。{wait}
+					}
+					TextWait
+					TextTalk name[0] {
+						#0000F嗯，說得也是啊。
+						要是有時間的話……{wait}
+					}
+					TextWait
+					TextTalk char[1] {
+						#08114F啊哈，我也正想
+						這麼說呢。{wait}
+					}
+					TextWait
+					FlagSet flag[1]
+				else:
+					TextTalk char[1] {
+						#08109F大家平時都很忙……
+						不過，要是有時間的話，
+						下次就叫上奧斯卡，三個人一起去玩吧。{wait}
+					}
+					TextWait
+			elif flag[1300]:
+				TextTalk char[1] {
+					#08100F還在找走失的小男孩嗎？{wait}
+				} {
+					#08109F要是有什麼我能幫上忙的事情，請儘管說哦。
+					像導力車什麼的，
+					我可以從店裡直接開出去啦！{wait}
+				}
+				TextWait
+				TextTalk name[0] {
+					#0006F這種事……溫蒂好像真能幹得出來，
+					有點可怕啊……{wait}
+				} {
+					#0000F線索都已經收集到了，
+					沒問題的。
+					你的好意，我就心領啦。{wait}
+				}
+				TextWait
+			elif flag[1294]:
+				if !flag[1377]:
+					TextTalk name[0] {
+						#0001F溫蒂，打擾一下好嗎？{wait}
+					} {
+						想問問妳有沒有
+						見過這孩子……{wait}
+					}
+					TextWait
+					TextTalk char[1] {
+						#08105F哎？什麼什麼？{wait}
+					}
+					TextWait
+					TextMessage null {
+						{color 5}羅伊德出示了柯林的照片，
+						並詢問對方是否有什麼線索。{color 0}{wait}
+					}
+					TextWait
+					TextClose 0
+					_59
+					TextTalk char[1] {
+						#08101F嗯～五歲左右的孩子啊。
+						比我們家的潘莎稍微小一點呢。{wait}
+					} {
+						#08119F不過，真抱歉，我沒有去看遊行，
+						所以不知道呢。{wait}
+					}
+					TextWait
+					TextTalk name[0] {
+						#0005F如此說來，他也沒來過店裡吧？{wait}
+					}
+					TextWait
+					TextTalk char[1] {
+						#08100F嗯，這點我倒是
+						可以肯定呢。{wait}
+					} {
+						#08110F因為我可是一直在數著那個
+						導力門的打開次數的。{wait}
+					}
+					TextWait
+					TextTalk name[0] {
+						#0006F是、是嗎……
+						（看來是不會有錯了。）{wait}
+					} {
+						#0000F謝啦，幫大忙了。{wait}
+					}
+					TextWait
+					FlagSet flag[1377]
+					global[2] = global[2] + 1
+					Call fn[0,13]
+				elif !flag[1]:
+					TextTalk char[1] {
+						#08106F外面好像人多得不得了，
+						在這種情況下走散了，可真是令人擔心啊。{wait}
+					} {
+						#08105F對了……是叫賽特吧。
+						讓那條警犬幫忙找如何？{wait}
+					}
+					TextWait
+					TextTalk name[0] {
+						#0000F嗯，已經把牠
+						託付給緹歐了。{wait}
+					} {
+						#0008F只是人實在太多，
+						所以可能會很花時間……{wait}
+					}
+					TextWait
+					TextTalk char[1] {
+						#08100F現在也只好耐心
+						探聽情報了啊。{wait}
+					} {
+						#08110F……加油哦，羅伊德！{wait}
+					}
+					TextWait
+					FlagSet flag[1]
+				else:
+					TextTalk char[1] {
+						#08100F最後還是只能
+						踏踏實實地探聽情報呢。{wait}
+					} {
+						#08110F……加油哦，羅伊德！{wait}
+					}
+					TextWait
+			elif flag[1362]:
+				TextTalk char[1] {
+					#08103F遊行時使用的導力車，
+					用的到底是什麼樣的零件呢……{wait}
+				} {
+					#08106F我這樣胡思亂想著，
+					不知不覺間遊行就結束了。{wait}
+				} {
+					#08114F啊哈哈，這就是所謂的職業病吧。{wait}
+				}
+				TextWait
+			elif flag[1292]:
+				TextTalk char[1] {
+					#08100F與新型的結晶迴路相比，
+					便宜的舊式結晶迴路
+					更加好賣呢。{wait}
+				} {
+					#08104F導力器在許多地域還沒有完全普及，
+					還是舊式的結構比較簡單嘛。{wait}
+				} {
+					#08110F不過，就算已經加工過了，
+					只要再分解成耀晶石，
+					也能重新再利用，這點真是很好呢。{wait}
+				}
+				TextWait
+			elif flag[1286]:
+				TextTalk char[1] {
+					#08106F彩虹劇團的公演……
+					要是有空的話，真想去看看……
+					不過今年似乎是很困難啊。{wait}
+				} {
+					#08103F這裡改裝成導力商店以後，
+					客人確實是增加了不少呢。{wait}
+				} {
+					#08114F雖然這是好事，
+					不過我真想更加輕鬆地
+					擺弄導力器啊～{wait}
+				}
+				TextWait
+			elif flag[1282]:
+				if !flag[1]:
+					TextTalk char[1] {
+						#08107F有個客人在我工作時來搭訕。{wait}
+					} {
+						#08107F當時明明還有很多客人，
+						真是不懂挑選場合，
+						我差點就一扳手砸過去了。{wait}
+					}
+					TextWait
+					TextTalk name[0] {
+						#0006F你都已經是大人了，
+						要適可而止哦……{wait}
+					}
+					TextWait
+					FlagSet flag[1]
+				else:
+					TextTalk char[1] {
+						#08101F嗯，打倒是沒打，
+						不過因為客人越聚越多，
+						就趕快把他給打發走了。{wait}
+					} {
+						#08106F真是的，當時都已經那麼忙了，
+						搭訕也該看看場合吧。{wait}
+					}
+					TextWait
+			elif flag[1280]:
+				TextTalk char[1] {
+					#08103F真是好多人哦，
+					不少客人都是出於興趣
+					來看看的。{wait}
+				} {
+					#08110F等到太陽下山之後，
+					我也出去走走吧。{wait}
+				}
+				TextWait
+	TextEnd char[1]
+	Return
+
+fn[9]:
+	TextTalk char[1] {
+		#08100FＯＫ。
+		想問哪方面的問題呢？{wait}
+	}
+	TextWait
+	var[3] = 0
+	while var[3] != 255:
+		FadeOut 300ms 0x00000000 100
+		Menu menu[1] -1 -1 1
+			"關於戰術導力器" // 0
+			"關於結晶迴路" // 1
+			"關於插槽" // 2
+			"關於導力魔法" // 3
+			"放棄" // 4
+		MenuWait var[3]
+		MenuClose menu[1]
+		FadeIn 300ms 0x00000000
+		_59
+		switch var[3]:
+			case 0:
+				TextTalk char[1] {
+					#08100F所謂的『戰術導力器』，
+					就是一種專門用於個人戰鬥的
+					可攜式小型導力器。{wait}
+				} {
+					#08102F不僅能強化使用者的能力，
+					還可以用來發動導力魔法。{wait}
+				} {
+					#08110F一般情況下，我們就把它
+					簡稱為『導力器』啦。{wait}
+				} {
+					#08100F你們所使用的，
+					就是其中的最新型號──
+					名為『ＥＮＩＧＭＡ』的導力器。{wait}
+				} {
+					#08104F為了配合每個人的具體情況與使用習慣，
+					我們會對導力器進行完美的微調，
+					所以其構造會因人而異。{wait}
+				} {
+					#08100F像限定屬性的插槽啦，連接插槽的
+					結晶孔形狀啦，都會有所不同。
+					各位可以自行比較一下每個人的導力器。{wait}
+				}
+				TextWait
+				break
+			case 1:
+				TextTalk char[1] {
+					#08100F所謂結晶迴路，就是將耀晶石進行精煉後
+					所製造出的，戰術導力器專用的『結晶迴路』。{wait}
+				} {
+					#08102F如果攜帶有足夠數量的耀晶石，
+					就可以在我們這裡進行合成。{wait}
+				} {
+					#08100F每種結晶迴路都有各自的特性效果，
+					同一條結晶孔上的結晶迴路屬性值達到一定數值後，
+					就可以使用特定的導力魔法了。{wait}
+				} {
+					#08110F如果你們賺夠了耀晶石，可以進行多種嘗試呢。{wait}
+				}
+				TextWait
+				break
+			case 2:
+				TextTalk char[1] {
+					#08100F導力器的插槽，
+					在最初時幾乎都是未解鎖的狀態。{wait}
+				} {
+					#08104F所以如果想要鑲嵌結晶迴路，
+					首先需要解鎖插槽。{wait}
+				} {
+					#08102F多解鎖一些插槽，
+					不僅可以鑲嵌更多的結晶迴路，
+					同時也能提升最大ＥＰ值。{wait}
+				} {
+					#08110F解鎖雖然需要使用耀晶石，
+					但後續會非常便利。
+					所以建議多加利用哦。{wait}
+				}
+				TextWait
+				break
+			case 3:
+				TextTalk char[1] {
+					#08100F利用戰術導力器發動的魔法
+					統稱為導力魔法。{wait}
+				} {
+					#08110F在多數情況下，我們習慣將它簡稱為『魔法』。{wait}
+				} {
+					#08104F其實，魔法是由安置在導力器內部的機械裝置
+					和結晶迴路與使用者產生連鎖共鳴，
+					從而引發的現象……{wait}
+				} {
+					#08111F算了，這種細節知識不說也罷。{wait}
+				} {
+					#08100F而可發動的魔法，是由
+					『每條結晶孔上所鑲嵌的結晶迴路屬性總值』
+					所決定的。{wait}
+				} {
+					#08105F這個稍微有些複雜，怎麼說好呢……
+					對了，舉個例子吧。{wait}
+				} {
+					#08104F在處於同一條結晶孔上的
+					插槽中鑲嵌結晶迴路，
+					如果地屬性的總值超過了２……{wait}
+				} {
+					#08110F就可以使用『地震波』
+					這個魔法了。{wait}
+				} {
+					#08102F鑲嵌的結晶迴路數越多，
+					可使用的魔法種類
+					也就越多。{wait}
+				} {
+					#08109F至於發動其它魔法所需的屬性值，
+					應該都記錄在魔法清單中了。
+					請隨時參考吧。{wait}
+				}
+				TextWait
+				break
+			default:
+				var[3] = 255
+				break
+	var[3] = 0
+	Return
+
+fn[10]:
+	TextStart self
+	if flag[1307]:
+		TextTalk self {
+			#14600F剛才，有位帝國的遊客
+			購買了一輛導力車。{wait}
+		} {
+			#14600F說是看到了在遊行時優雅行駛的
+			導力車之後，就突然很想要了。
+			哎呀，真是多虧了遊行活動呢。{wait}
+		}
+		TextWait
+	elif flag[1362]:
+		TextTalk self {
+			#14601F……仔細一想的話，
+			在無意識之中，我好像
+			一直都在依賴溫蒂的知識。{wait}
+		} {
+			#14601F或許我也應該開始
+			認真學習一些
+			導力器方面的知識了……{wait}
+		}
+		TextWait
+	elif flag[1292]:
+		TextTalk self {
+			#14601F我有好幾次都看到
+			遊客來找溫蒂修理
+			壞掉的感光結晶迴路。{wait}
+		} {
+			#14600F唔唔……雖然讓他們買新的
+			能賺更多錢，
+			不過，還是用那種方法容易吸引到回頭客呢……{wait}
+		}
+		TextWait
+	elif flag[1286]:
+		TextTalk self {
+			#14601F唔唔，真希望有什麼手段能把
+			外面的遊客吸引進來呢……{wait}
+		}
+		TextWait
+	elif flag[1282]:
+		TextTalk self {
+			#14607F溫蒂那傢伙……
+			居然差點就對客人
+			大打出手。{wait}
+		} {
+			#14601F聽說她以前在工房的時候
+			也發生過好幾次
+			類似的事情呢。{wait}
+		} {
+			#14601F真是的，那個師傅
+			到底是怎麼教育她的啊……{wait}
+		}
+		TextWait
+	elif flag[1280]:
+		TextTalk self {
+			#14601F雖然時不時就能賣掉
+			一兩台導力相機，
+			但整體的銷售額還遠遠不夠呢。{wait}
+		} {
+			#14601F客人們都被外面的露天店吸引了嗎……
+			看來我們也應該加強宣傳力度啊。{wait}
+		}
+		TextWait
+	TextEnd self
+	Return
+
+fn[11]:
+	TextStart self
+	if flag[1307]:
+		TextTalk self {
+			今天就是最終日了嗎……{wait}
+		}
+		TextWait
+		TextTalk self {
+			今年沒怎麼到外面逛，
+			一直都在這裡泡著呢。{wait}
+		}
+		TextWait
+		TextTalk self {
+			對阿姨我來說，
+			欣賞這裡的商品，
+			就是最刺激最有趣的事情了呢。{wait}
+		}
+		TextWait
+	elif flag[1362]:
+		TextTalk self {
+			遊行時的景象
+			全都拍進相機了呢～{wait}
+		}
+		TextWait
+		TextTalk self {
+			不愧是新型號的相機，
+			使用方便，真是太棒了～！{wait}
+		}
+		TextWait
+	elif flag[1292]:
+		TextTalk self {
+			說起來，好像一直沒怎麼去
+			二樓的櫃檯看過呢。{wait}
+		}
+		TextWait
+		TextTalk self {
+			聽說那裡展示著最先進的產品……
+			還是好好地欣賞一下吧。{wait}
+		}
+		TextWait
+	elif flag[1286]:
+		TextTalk self {
+			（啪嚓）……！{wait}
+		}
+		TextWait
+		TextTalk self {
+			難得來一次，也給熱鬧的
+			店內拍幾張照片吧。{wait}
+		}
+		TextWait
+		TextTalk self {
+			還能拍到時髦的新產品，
+			真是一舉兩得呢～{wait}
+		}
+		TextWait
+	elif flag[1282]:
+		TextTalk self {
+			阿姨我最怕
+			人多擁擠的地方了……{wait}
+		}
+		TextWait
+		TextTalk self {
+			從這點來看，這家店裡的空調
+			效果很好，真是很舒服呢。{wait}
+		}
+		TextWait
+		TextTalk self {
+			一進來就待著不想出去了～{wait}
+		}
+		TextWait
+	elif flag[1280]:
+		TextTalk self {
+			導力相機降價了，
+			於是就狠狠心買下來了。{wait}
+		}
+		TextWait
+		TextTalk self {
+			呵呵，能使用導力相機
+			是我的夢想呢。{wait}
+		}
+		TextWait
+		TextTalk self {
+			這樣一來，在紀念慶典
+			就可以玩得更加開心了～！{wait}
+		}
+		TextWait
+	TextEnd self
+	Return
+
+fn[12]:
+	TextStart self
+	if flag[1307]:
+		TextTalk self {
+			恰可……
+			紀念慶典都沒有請假，
+			工作真的很努力啊。{wait}
+		}
+		TextWait
+		TextTalk self {
+			好，爸爸下次就
+			帶你去米修拉姆吧。{wait}
+		}
+		TextWait
+	elif flag[1362]:
+		TextTalk self {
+			遊行隊伍過來的時候，恰可
+			急忙飛奔到店外去了。{wait}
+		}
+		TextWait
+		TextTalk self {
+			感……感覺視線都對上了，
+			不過，她好像並沒發現我呢……{wait}
+		}
+		TextWait
+	elif flag[1292]:
+		TextTalk self {
+			嗯，在我猶豫的這段期間，
+			遊行開始的時間越來越近了呢。{wait}
+		}
+		TextWait
+		TextTalk self {
+			聽說，如果不練習的話
+			很難拍到好照片。
+			這次還是先不買了……{wait}
+		}
+		TextWait
+	elif flag[1286]:
+		TextTalk self {
+			嗯～剛才我就一直在觀察，
+			恰可的前輩似乎是個
+			很會照顧人的女孩呢。{wait}
+		}
+		TextWait
+		TextTalk self {
+			這樣的話，應該可以放心
+			把恰可交給她了。{wait}
+		}
+		TextWait
+	elif flag[1282]:
+		if !flag[4]:
+			TextTalk self {
+				剛、剛才真是嚇了我一跳啊……{wait}
+			}
+			TextWait
+			TextTalk self {
+				恰可旁邊櫃檯的那個女孩
+				差點就拿扳手打那個
+				看上去很難纏的遊客了。{wait}
+			}
+			TextWait
+			TextTalk self {
+				在、在那麼兇狠暴力的前輩手下工作，
+				恰可她不要緊嗎……？{wait}
+			}
+			TextWait
+			FlagSet flag[4]
+		else:
+			TextTalk self {
+				在那麼兇狠暴力的前輩手下工作，
+				恰可她不要緊嗎……？{wait}
+			}
+			TextWait
+	elif flag[1280]:
+		TextTalk self {
+			唔唔……
+			最後到底該買哪個相機呢……{wait}
+		}
+		TextWait
+		TextTalk self {
+			最好能買個
+			經久耐用的……{wait}
+		}
+		TextWait
+	TextEnd self
+	Return
+
+fn[13]:
+	if global[2] == 7:
+		TextTalk name[95] {
+			#3300F（中央廣場的探聽
+			　就到此為止了吧？）{wait}
+		}
+		TextWait
+		TextTalk name[0] {
+			#0000F（嗯，應該足夠了。）{wait}
+		} {
+			（接下來，就去站前大道
+			　問問看吧。）{wait}
+		}
+		TextWait
+		global[2] = 0
+		FlagSet flag[1485]
+		QuestTaskSet quest[70] 7
+	Return
+
+fn[14]:
+	TextStart self
+	if flag[1307]:
+		if flag[5]:
+			TextTalk self {
+				我從以前開始，就一直跟
+				導力製品合不來呢……{wait}
+			}
+			TextWait
+		else:
+			TextTalk self {
+				昨天買的導力手錶，
+				剛一戴上就壞了。{wait}
+			}
+			TextWait
+			TextTalk self {
+				……現在正讓修理櫃檯的
+				店員幫忙修理呢。{wait}
+			}
+			TextWait
+			TextTalk self {
+				唉唉，我果然是個
+				導力白癡啊。{wait}
+			}
+			TextWait
+			FlagSet flag[5]
+	elif flag[1362]:
+		if flag[5]:
+			TextTalk self {
+				店員小姐說什麼
+				『只要好好愛護它就可以了』，
+				我實在是搞不懂啦。{wait}
+			}
+			TextWait
+			TextTalk self {
+				雖然她性格爽快，
+				是我喜歡的類型……{wait}
+			}
+			TextWait
+		else:
+			TextTalk self {
+				店員小姐剛才
+				為我做了導力製品的解說。{wait}
+			}
+			TextWait
+			TextTalk self {
+				……可是，那位小姐說什麼
+				『只要好好愛護它就可以了』，
+				我實在是搞不懂啦。{wait}
+			}
+			TextWait
+			TextTalk self {
+				……雖然她很可愛………{wait}
+			}
+			TextWait
+			FlagSet flag[5]
+	elif flag[1292]:
+		TextTalk self {
+			唔～這個……
+			包裝上寫著是高亮度的導力燈呢。{wait}
+		}
+		TextWait
+		TextTalk self {
+			而且還有多種顏色可以選擇！？
+			真想買一個當特產呢。{wait}
+		}
+		TextWait
+	elif flag[1286]:
+		TextTalk self {
+			這、這個好像是
+			最新型的戰術導力器呢。{wait}
+		}
+		TextWait
+		TextTalk self {
+			碰、碰一下的話不會壞掉吧！？{wait}
+		}
+		TextWait
+	elif flag[1282]:
+		TextTalk self {
+			咦……？
+			樓下好像很吵鬧。{wait}
+		}
+		TextWait
+		TextTalk self {
+			出什麼事了嗎？{wait}
+		}
+		TextWait
+	elif flag[1280]:
+		TextTalk self {
+			好厲害……！
+			這是什麼啊～！{wait}
+		}
+		TextWait
+		TextTalk self {
+			全是我這個導力白癡
+			完全摸不著頭腦的東西啊！{wait}
+		}
+		TextWait
+	TextEnd self
+	Return
+
+fn[15]:
+	TextStart self
+	if flag[1307]:
+		TextTalk self {
+			作為來克洛斯貝爾的紀念，
+			我買了帶有導力照明燈的
+			掛墜。{wait}
+		}
+		TextWait
+		TextTalk self {
+			雖然還有很多稀奇的東西，
+			不過別的都很貴嘛。{wait}
+		}
+		TextWait
+	elif flag[1362]:
+		TextTalk self {
+			在這個店裡逛得入迷了，
+			竟然錯過了遊行啊！{wait}
+		}
+		TextWait
+		TextTalk self {
+			……沒辦法了……
+			作為代替，就看看導力車吧。{wait}
+		}
+		TextWait
+	elif flag[1292]:
+		TextTalk self {
+			『保溫能力超群！
+			　搭載最新的高功率結晶迴路！』{wait}
+		}
+		TextWait
+		TextTalk self {
+			……買、買哪個好呢？
+			說明書好複雜，
+			看了也不懂啊。{wait}
+		}
+		TextWait
+	elif flag[1286]:
+		TextTalk self {
+			附帶強力冷凍裝置……{wait}
+		}
+		TextWait
+		TextTalk self {
+			唔唔……雖然很想買回去，
+			可是實在帶不走呢……{wait}
+		}
+		TextWait
+	elif flag[1282]:
+		TextTalk self {
+			自動搖頭功能……？{wait}
+		}
+		TextWait
+		TextTalk self {
+			哦哦，不愧是克洛斯貝爾。
+			什麼都是最新型呢。{wait}
+		}
+		TextWait
+	elif flag[1280]:
+		TextTalk self {
+			這就是傳說中的導力商店啊！{wait}
+		}
+		TextWait
+		TextTalk self {
+			好，趁著這次慶典，
+			好好逛個夠吧！{wait}
+		}
+		TextWait
+	TextEnd self
+	Return

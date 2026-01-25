@@ -1,0 +1,1490 @@
+calmare zero_k scena
+scena:
+	name "r3060" "r3060" "r3060"
+	town town[101]
+	bgm bgm[203]
+	flags 0
+	item_use fn[0,255]
+	unk 255 0
+
+entry:
+	pos (0, 0, -1000)
+	unk1 0
+	cam_from (0, 2500, 34000)
+	cam_pers 262
+	unk2 30
+	cam_deg 45deg
+	cam_limit 0deg 360deg
+	cam_at (-62000, -2000, 40000)
+	unk3 0
+	unk4 0
+	flags 0x0001
+	town town[101]
+	init fn[0,3]
+	reinit fn[0,4]
+
+chip[0] "chr/ch27200.itc"
+chip[1] "apl/ch50156.itc"
+chip[2] "chr/ch00000.itc"
+chip[3] "chr/ch00000.itc"
+chip[4] "chr/ch00000.itc"
+chip[5] "chr/ch00000.itc"
+chip[6] "chr/ch00000.itc"
+chip[7] "chr/ch00000.itc"
+chip[8] "chr/ch00000.itc"
+chip[9] "chr/ch00000.itc"
+chip[10] "chr/ch00000.itc"
+chip[11] "chr/ch00000.itc"
+chip[12] "chr/ch00000.itc"
+chip[13] "chr/ch00000.itc"
+chip[14] "chr/ch00000.itc"
+chip[15] "chr/ch00000.itc"
+chip[16] "monster/ch66850.itc"
+chip[17] "monster/ch66851.itc"
+chip[18] "monster/ch63550.itc"
+chip[19] "monster/ch63550.itc"
+chip[20] "monster/ch63450.itc"
+chip[21] "monster/ch63450.itc"
+chip[22] "monster/ch69550.itc"
+chip[23] "monster/ch69550.itc"
+
+npc char[0]:
+	name "リヴィングトーテム"
+	pos (-33919, -1399, 2369)
+	angle 0deg
+	flags 0x01E4
+	unk2 0
+	chip chip[18]
+	init fn[0,0]
+	talk fn[255,255]
+	unk4 255
+
+npc char[1]:
+	name "MapThread"
+	pos (0, 0, 0)
+	angle 0deg
+	flags 0x01C8
+	unk2 0
+	chip chip[0]
+	init fn[255,255]
+	talk fn[255,255]
+	unk4 255
+
+npc char[2]:
+	name "遊撃士スコット"
+	pos (-23600, 6000, 21239)
+	angle 225deg
+	flags 0x0185
+	unk2 0
+	chip chip[0]
+	init fn[0,2]
+	talk fn[0,8]
+	unk4 255
+
+npc char[3]:
+	name "観光客"
+	pos (-24590, 6000, 20239)
+	angle 135deg
+	flags 0x01B7
+	unk2 0
+	chip chip[1]
+	init fn[255,255]
+	talk fn[0,9]
+	unk4 255
+
+monster char[4]:
+	pos (-48580, -2000, 33400)
+	angle 0
+	flags 0x0101
+	battle battle[0]
+	flag flag[0]
+	chip chip[22]
+	unk2 65535
+	stand_anim anim[6]
+	walk_anim anim[7]
+
+monster char[5]:
+	pos (-61000, -2000, 11790)
+	angle 0
+	flags 0x0101
+	battle battle[1]
+	flag flag[0]
+	chip chip[20]
+	unk2 65535
+	stand_anim anim[4]
+	walk_anim anim[5]
+
+monster char[6]:
+	pos (-9170, 6000, -11260)
+	angle 0
+	flags 0x0101
+	battle battle[2]
+	flag flag[0]
+	chip chip[16]
+	unk2 65535
+	stand_anim anim[0]
+	walk_anim anim[1]
+
+monster char[7]:
+	pos (990, 6000, -1770)
+	angle 0
+	flags 0x0101
+	battle battle[3]
+	flag flag[0]
+	chip chip[18]
+	unk2 65535
+	stand_anim anim[2]
+	walk_anim anim[3]
+
+monster char[8]:
+	pos (12630, 6000, -29610)
+	angle 0
+	flags 0x0101
+	battle battle[1]
+	flag flag[0]
+	chip chip[20]
+	unk2 65535
+	stand_anim anim[4]
+	walk_anim anim[5]
+
+monster char[9]:
+	pos (24750, 6000, -32600)
+	angle 0
+	flags 0x0101
+	battle battle[0]
+	flag flag[0]
+	chip chip[22]
+	unk2 65535
+	stand_anim anim[6]
+	walk_anim anim[7]
+
+monster char[10]:
+	pos (46240, 6000, -12720)
+	angle 0
+	flags 0x0101
+	battle battle[2]
+	flag flag[0]
+	chip chip[16]
+	unk2 65535
+	stand_anim anim[0]
+	walk_anim anim[1]
+
+monster char[11]:
+	pos (-11670, 6000, 20490)
+	angle 0
+	flags 0x0101
+	battle battle[1]
+	flag flag[0]
+	chip chip[20]
+	unk2 65535
+	stand_anim anim[4]
+	walk_anim anim[5]
+
+monster char[12]:
+	pos (25610, 14000, 11790)
+	angle 0
+	flags 0x0101
+	battle battle[3]
+	flag flag[0]
+	chip chip[18]
+	unk2 65535
+	stand_anim anim[2]
+	walk_anim anim[3]
+
+monster char[13]:
+	pos (51790, 14000, 19370)
+	angle 0
+	flags 0x0101
+	battle battle[0]
+	flag flag[0]
+	chip chip[22]
+	unk2 65535
+	stand_anim anim[6]
+	walk_anim anim[7]
+
+trigger[0]:
+	pos (-28500.0, 10440.0, 5000.0)
+	radius 225000.0
+	transform
+		0.33333334 -0.0 0.0 9.5
+		-0.0 0.1 -0.0 -1.044
+		0.0 -0.0 0.14285715 -0.71428573
+		0.0 0.0 0.0 1.0
+		// translate (-28.499998, 10.44, 4.9999995)
+		// rotate (1.0, 0.0, 0.0) 0.0deg
+		// scale (2.9999998, 9.999999, 6.9999995)
+	unk1 0
+	unk2 0
+	function fn[0,11]
+	unk3 0
+	unk4 0
+	unk5 0
+	unk6 0
+
+trigger[1]:
+	pos (79000.0, 13750.0, 17000.0)
+	radius 1156000.0
+	transform
+		0.25 -0.0 0.0 -19.75
+		-0.0 0.058823533 -0.0 -0.8088236
+		0.0 -0.0 0.14285715 -2.4285715
+		0.0 0.0 0.0 1.0
+		// translate (78.99999, 13.749999, 16.999998)
+		// rotate (1.0, 0.0, 0.0) 0.0deg
+		// scale (3.9999998, 16.999998, 6.999999)
+	unk1 0
+	unk2 0
+	function fn[0,10]
+	unk3 0
+	unk4 0
+	unk5 0
+	unk6 0
+
+look_point[0]:
+	pos (68000, 14100, 21000)
+	radius 1200
+	bubble_pos (68000, 15100, 21000)
+	unk1 124
+	unk2 0
+	function fn[0,5]
+	unk3 0
+	unk4 0
+
+look_point[1]:
+	pos (-33920, -1900, 2370)
+	radius 1200
+	bubble_pos (-33920, -900, 2370)
+	unk1 124
+	unk2 0
+	function fn[0,6]
+	unk3 0
+	unk4 0
+
+look_point[2]:
+	pos (50000, 6100, -10000)
+	radius 1200
+	bubble_pos (50000, 7100, -10000)
+	unk1 124
+	unk2 0
+	function fn[0,7]
+	unk3 0
+	unk4 0
+
+look_point[3]:
+	pos (80450, 18000, 13990)
+	radius 1200
+	bubble_pos (80450, 19000, 13990)
+	unk1 124
+	unk2 0
+	function fn[0,12]
+	unk3 0
+	unk4 0
+
+label[0]:
+	name "アルモリカ古道方面"
+	pos (-84000.0, 0.0, 48000.0)
+	unk1 0
+	unk2 0
+
+anim[0] 1000ms 0 1 2 3 4 3 2 1
+anim[1] 1500ms 0 1 2 1 0 3 4 3
+anim[2] 1000ms 0 1 2 3 4 3 2 1
+anim[3] 1500ms 0 1 2 3 4 3 2 1
+anim[4] 1000ms 0 1 2 1 0 3 4 3
+anim[5] 1500ms 0 1 2 1 0 3 4 3
+anim[6] 1000ms 0 1 2 3 4
+anim[7] 1500ms 0 1 2 3 4
+
+sepith[0] 0 0 0 0 0 0 0 0
+sepith[1] 8 16 0 10 5 3 0 0
+sepith[2] 0 0 6 17 6 6 6 0
+sepith[3] 7 7 7 7 7 7 7 0
+sepith[4] 10 6 2 0 8 8 8 0
+
+at_roll[0]: none 100; hp10 5; hp50 1; ep10 5; ep50 1; cp10 5; cp50 1; unk1 5; unk2 5; unk6 1
+
+placement[0]:
+	pos 8 8 180deg
+	pos 5 9 180deg
+	pos 11 10 180deg
+	pos 6 12 180deg
+	pos 10 12 180deg
+	pos 13 13 180deg
+	pos 4 14 180deg
+	pos 8 14 180deg
+
+placement[1]:
+	pos 7 4 0deg
+	pos 10 11 225deg
+	pos 4 7 90deg
+	pos 12 7 270deg
+	pos 4 11 135deg
+	pos 11 4 315deg
+	pos 7 12 180deg
+	pos 5 5 45deg
+
+placement[2]:
+	pos 7 9 180deg
+	pos 11 10 180deg
+	pos 10 13 180deg
+	pos 5 11 180deg
+	pos 12 12 180deg
+	pos 4 14 180deg
+	pos 14 14 180deg
+	pos 2 13 180deg
+
+battle[0]:
+	flags 0
+	level 25
+	unk1 6
+	vision_range 60
+	move_range 8
+	can_move 1
+	move_speed 20
+	unk2 0
+	battlefield "br3000"
+	sepith sepith[1]
+	setup 30:
+		enemies "ms69500.dat" null null null null null null null
+		placement placement[0] placement[1]
+		bgm bgm[400] bgm[403]
+		at_roll at_roll[0]
+	setup 40:
+		enemies "ms69500.dat" "ms69500.dat" null null null null null null
+		placement placement[2] placement[1]
+		bgm bgm[400] bgm[403]
+		at_roll at_roll[0]
+	setup 20:
+		enemies "ms69500.dat" "ms63400.dat" "ms69500.dat" null null null null null
+		placement placement[0] placement[1]
+		bgm bgm[400] bgm[403]
+		at_roll at_roll[0]
+	setup 10:
+		enemies "ms69500.dat" "ms64100.dat" "ms64100.dat" "ms64100.dat" null null null null
+		placement placement[2] placement[1]
+		bgm bgm[400] bgm[403]
+		at_roll at_roll[0]
+
+battle[1]:
+	flags 0
+	level 25
+	unk1 6
+	vision_range 60
+	move_range 8
+	can_move 1
+	move_speed 40
+	unk2 0
+	battlefield "br3000"
+	sepith sepith[2]
+	setup 30:
+		enemies "ms63400.dat" null null null null null null null
+		placement placement[0] placement[1]
+		bgm bgm[400] bgm[403]
+		at_roll at_roll[0]
+	setup 40:
+		enemies "ms63400.dat" "ms63400.dat" null null null null null null
+		placement placement[2] placement[1]
+		bgm bgm[400] bgm[403]
+		at_roll at_roll[0]
+	setup 20:
+		enemies "ms63400.dat" "ms63400.dat" "ms63400.dat" null null null null null
+		placement placement[0] placement[1]
+		bgm bgm[400] bgm[403]
+		at_roll at_roll[0]
+	setup 10:
+		enemies "ms63400.dat" "ms63400.dat" "ms63400.dat" "ms63400.dat" null null null null
+		placement placement[2] placement[1]
+		bgm bgm[400] bgm[403]
+		at_roll at_roll[0]
+
+battle[2]:
+	flags 0
+	level 25
+	unk1 6
+	vision_range 60
+	move_range 8
+	can_move 1
+	move_speed 40
+	unk2 0
+	battlefield "br3000"
+	sepith sepith[3]
+	setup 30:
+		enemies "ms66800.dat" null null null null null null null
+		placement placement[0] placement[1]
+		bgm bgm[400] bgm[403]
+		at_roll at_roll[0]
+	setup 40:
+		enemies "ms66800.dat" "ms66800.dat" null null null null null null
+		placement placement[2] placement[1]
+		bgm bgm[400] bgm[403]
+		at_roll at_roll[0]
+	setup 20:
+		enemies "ms66800.dat" "ms69500.dat" "ms66800.dat" null null null null null
+		placement placement[0] placement[1]
+		bgm bgm[400] bgm[403]
+		at_roll at_roll[0]
+	setup 10:
+		enemies "ms66800.dat" "ms69500.dat" "ms66800.dat" "ms69500.dat" null null null null
+		placement placement[2] placement[1]
+		bgm bgm[400] bgm[403]
+		at_roll at_roll[0]
+
+battle[3]:
+	flags 0
+	level 25
+	unk1 6
+	vision_range 60
+	move_range 8
+	can_move 1
+	move_speed 10
+	unk2 0
+	battlefield "br3000"
+	sepith sepith[4]
+	setup 30:
+		enemies "ms63500.dat" null null null null null null null
+		placement placement[0] placement[1]
+		bgm bgm[400] bgm[403]
+		at_roll at_roll[0]
+	setup 40:
+		enemies "ms63500.dat" "ms63500.dat" null null null null null null
+		placement placement[2] placement[1]
+		bgm bgm[400] bgm[403]
+		at_roll at_roll[0]
+	setup 20:
+		enemies "ms63500.dat" "ms63400.dat" "ms63500.dat" null null null null null
+		placement placement[0] placement[1]
+		bgm bgm[400] bgm[403]
+		at_roll at_roll[0]
+	setup 10:
+		enemies "ms63500.dat" "ms63500.dat" "ms63400.dat" "ms63500.dat" null null null null
+		placement placement[2] placement[1]
+		bgm bgm[400] bgm[403]
+		at_roll at_roll[0]
+
+battle[4]:
+	flags 0
+	level 25
+	unk1 6
+	vision_range 60
+	move_range 0
+	can_move 1
+	move_speed 0
+	unk2 0
+	battlefield "br3000"
+	sepith null
+	setup 100:
+		enemies "ms63500.dat" "ms63500.dat" "ms63400.dat" "ms63500.dat" "ms63500.dat" "ms63400.dat" null null
+		placement placement[2] placement[1]
+		bgm bgm[401] bgm[403]
+		at_roll at_roll[0]
+
+fn[0]:
+	while 1:
+		ED7CharAnimation self 1000ms 0 1 2 3 4 3 2 1
+	Return
+
+fn[1]:
+	if flag[1489]:
+		if 1:
+			MapColor 0x00B4B4B4 0ms
+			EffPlay eff[0] eff_instance[0] null 0 (0, 0, 0) 0 0 0 1000 1000 1000 null (0, 0, 0) 1000ms
+			SoundPlay sound[131] 1 100 0
+			Sleep 1000ms
+			MapColor 0x00FFFFFF 3000ms
+			EffStop eff_instance[0] 2
+			SoundStop sound[131]
+			FlagUnset flag[1489]
+		else:
+	Return
+
+fn[2]:
+	var[2] = random % 8
+	switch var[2]:
+		case 0:
+			ED7_A0 self 1450ms 0 251
+			break
+		case 1:
+			ED7_A0 self 1550ms 0 251
+			break
+		case 2:
+			ED7_A0 self 1600ms 0 251
+			break
+		case 3:
+			ED7_A0 self 1400ms 0 251
+			break
+		case 4:
+			ED7_A0 self 1650ms 0 251
+			break
+		case 5:
+			ED7_A0 self 1350ms 0 251
+			break
+		case 6:
+			ED7_A0 self 1500ms 0 251
+			break
+		default:
+			ED7_A0 self 1500ms 0 251
+			break
+	while 1:
+		ED7_A0 self 1500ms 0 251
+	Return
+
+fn[3]:
+	if QuestFlagsGet quest[31] 0x10:
+	elif QuestTaskGet quest[31] 1:
+		CharFlagsUnset char[2] 0x0080
+		CharFlagsUnset char[3] 0x0080
+		CharFlagsSet char[11] 0x0080
+	Return
+
+fn[4]:
+	char[6].12 = 128
+	char[6].20 = 230
+	char[6].13 = 128
+	char[6].21 = 230
+	char[6].14 = 128
+	char[6].22 = 230
+	char[6].15 = 128
+	char[6].23 = 230
+	char[6].16 = 128
+	char[6].24 = 230
+	char[6].17 = 128
+	char[6].25 = 230
+	char[6].18 = 128
+	char[6].26 = 230
+	char[6].19 = 128
+	char[6].27 = 230
+	char[10].12 = 128
+	char[10].20 = 230
+	char[10].13 = 128
+	char[10].21 = 230
+	char[10].14 = 128
+	char[10].22 = 230
+	char[10].15 = 128
+	char[10].23 = 230
+	char[10].16 = 128
+	char[10].24 = 230
+	char[10].17 = 128
+	char[10].25 = 230
+	char[10].18 = 128
+	char[10].26 = 230
+	char[10].19 = 128
+	char[10].27 = 230
+	char[4].12 = 128
+	char[4].20 = 186
+	char[4].13 = 128
+	char[4].21 = 186
+	char[4].14 = 128
+	char[4].22 = 186
+	char[4].15 = 128
+	char[4].23 = 186
+	char[4].16 = 128
+	char[4].24 = 186
+	char[4].17 = 128
+	char[4].25 = 186
+	char[4].18 = 128
+	char[4].26 = 186
+	char[4].19 = 128
+	char[4].27 = 186
+	char[9].12 = 128
+	char[9].20 = 186
+	char[9].13 = 128
+	char[9].21 = 186
+	char[9].14 = 128
+	char[9].22 = 186
+	char[9].15 = 128
+	char[9].23 = 186
+	char[9].16 = 128
+	char[9].24 = 186
+	char[9].17 = 128
+	char[9].25 = 186
+	char[9].18 = 128
+	char[9].26 = 186
+	char[9].19 = 128
+	char[9].27 = 186
+	char[13].12 = 128
+	char[13].20 = 186
+	char[13].13 = 128
+	char[13].21 = 186
+	char[13].14 = 128
+	char[13].22 = 186
+	char[13].15 = 128
+	char[13].23 = 186
+	char[13].16 = 128
+	char[13].24 = 186
+	char[13].17 = 128
+	char[13].25 = 186
+	char[13].18 = 128
+	char[13].26 = 186
+	char[13].19 = 128
+	char[13].27 = 186
+	char[6].51 = 1500
+	char[10].51 = 1500
+	char[6].7 = 2500
+	char[10].7 = 2500
+	if !flag[2101]:
+		ObjFrame object[0] 0
+	else:
+		ObjFrame object[0] 30
+	if !flag[2102]:
+		ObjFrame object[1] 0
+	else:
+		ObjFrame object[1] 30
+	if !flag[2103]:
+		ObjFrame object[2] 0
+	else:
+		ObjFrame object[2] 30
+	EffLoad eff[0] "map/mpr3000.eff"
+	ForkFunc char[1] fork[0] fn[0,1]
+	LookPointFlagsSet look_point[3] 0x0001
+	TriggerFlagsSet trigger[1] 0x0080
+	if !QuestTaskGet quest[31] 3 && !flag[1468]:
+		TriggerFlagsUnset trigger[1] 0x0080
+	TriggerFlagsSet trigger[0] 0x0080
+	if QuestFlagsGet quest[31] 0x10:
+	elif QuestTaskGet quest[31] 2:
+	elif QuestTaskGet quest[31] 1:
+		TriggerFlagsUnset trigger[0] 0x0080
+	if flag[1342]:
+	elif flag[1280]:
+		if QuestFlagsGet quest[24] 0x10:
+		elif QuestTaskGet quest[24] 10:
+		elif QuestTaskGet quest[24] 1:
+			LookPointFlagsUnset look_point[3] 0x0001
+	Return
+
+fn[5]:
+	ED7_F2 1
+	SystemFlagsSet 0x08000000
+	if !flag[2101]:
+		SoundPlay sound[14] 0 100 0
+		ED7ObjPlay object[0] 0 30 0 0
+		Sleep 500ms
+		if ItemAdd item[501] 1:
+			FadeOut 300ms 0x00000000 100
+			SoundPlay sound[17] 0 100 0
+			TextSetPos -1 -1 -1 -1
+			TextSetName ""
+			TextMessage name[742] {
+				{item[501]}{color 0}を手に入れた。{wait}
+			}
+			TextWait
+			TextClose 0
+			TextSetPos -1 280 60 3
+			FadeIn 300ms 0x00000000
+			FlagSet flag[2101]
+			ED7_DE 6
+		else:
+			FadeOut 300ms 0x00000000 100
+			TextSetName ""
+			TextMessage name[742] {
+				宝箱には{item[501]}{color 0}が入っている。
+				持ち物が一杯なので、{item[501]}{color 0}をあきらめた。{wait}
+			}
+			TextWait
+			TextClose 0
+			FadeIn 300ms 0x00000000
+			SoundPlay sound[15] 0 100 0
+			ED7ObjPlay object[0] 30 0 0 0
+	else:
+		FadeOut 300ms 0x00000000 100
+		TextSetPos -1 -1 -1 -1
+		TextSetName ""
+		TextMessage name[742] {
+			{0x06}{color 5}宝箱には何も入っていない。{color 0}{wait}
+		}
+		TextWait
+		TextClose 0
+		FadeIn 300ms 0x00000000
+	Sleep 30ms
+	TextEnd null
+	SystemFlagsUnset 0x08000000
+	Return
+
+fn[6]:
+	SystemFlagsSet 0x08000000
+	if !flag[2102]:
+		SoundPlay sound[14] 0 100 0
+		ED7ObjPlay object[1] 0 30 0 0
+		Sleep 500ms
+		if !flag[940]:
+			CharColor char[0] 0x00FFFFFF 0ms
+			CharTurnToChar char[0] field_party[0] 0deg/s
+			_Char91 char[0] 0 1000 0 0 0
+			Fork char[0] fork[1]:
+				_Char91 self 0 -1000 0 1000 0
+			Fork char[0] fork[2]:
+				CharColor self 0xFFFFFFFF 1000ms
+			CharFlagsUnset char[0] 0x0080
+			CharFlagsSet char[0] 0x8000
+			TextMessage name[742] {
+				{color 5}魔獣が現れた！{color 0}{wait}
+			}
+			TextWait
+			TextClose 0
+			ForkWait char[0] fork[1]
+			ED7Battle battle[4] null 0 0 0 null
+			CharFlagsSet char[0] 0x0080
+			CharFlagsUnset char[0] 0x8000
+			switch system[3]:
+				case 0:
+					FlagSet flag[940]
+					ObjFrame object[1] 30
+					Sleep 500ms
+					break
+				case 2:
+					ObjFrame object[1] 0
+					TextEnd null
+					SystemFlagsUnset 0x08000000
+					Return
+				case 1:
+					ReturnToTitle 0
+					Return
+		if ItemAdd item[149] 1:
+			FadeOut 300ms 0x00000000 100
+			SoundPlay sound[17] 0 100 0
+			TextSetPos -1 -1 -1 -1
+			TextMessage name[742] {
+				{item[149]}{color 0}を手に入れた。{wait}
+			}
+			TextWait
+			TextClose 0
+			TextSetPos -1 280 60 3
+			FadeIn 300ms 0x00000000
+			FlagSet flag[2102]
+			ED7_DE 6
+		else:
+			FadeOut 300ms 0x00000000 100
+			TextMessage name[742] {
+				宝箱には{item[149]}{color 0}が入っている。
+				持ち物が一杯なので、{item[149]}{color 0}をあきらめた。{wait}
+			}
+			TextWait
+			TextClose 0
+			FadeIn 300ms 0x00000000
+			SoundPlay sound[15] 0 100 0
+			ED7ObjPlay object[1] 30 0 0 0
+	else:
+		FadeOut 300ms 0x00000000 100
+		TextSetPos -1 -1 -1 -1
+		TextSetName ""
+		TextMessage name[742] {
+			{0x06}{color 5}宝箱には何も入っていない。{color 0}{wait}
+		}
+		TextWait
+		TextClose 0
+		FadeIn 300ms 0x00000000
+	Sleep 30ms
+	TextEnd null
+	SystemFlagsUnset 0x08000000
+	Return
+
+fn[7]:
+	ED7_F2 1
+	SystemFlagsSet 0x08000000
+	if !flag[2103]:
+		SoundPlay sound[14] 0 100 0
+		ED7ObjPlay object[2] 0 30 0 0
+		Sleep 500ms
+		if ItemAdd item[85] 1:
+			FadeOut 300ms 0x00000000 100
+			SoundPlay sound[17] 0 100 0
+			TextSetPos -1 -1 -1 -1
+			TextSetName ""
+			TextMessage name[742] {
+				{item[85]}{color 0}を手に入れた。{wait}
+			}
+			TextWait
+			TextClose 0
+			TextSetPos -1 280 60 3
+			FadeIn 300ms 0x00000000
+			FlagSet flag[2103]
+			ED7_DE 6
+		else:
+			FadeOut 300ms 0x00000000 100
+			TextSetName ""
+			TextMessage name[742] {
+				宝箱には{item[85]}{color 0}が入っている。
+				持ち物が一杯なので、{item[85]}{color 0}をあきらめた。{wait}
+			}
+			TextWait
+			TextClose 0
+			FadeIn 300ms 0x00000000
+			SoundPlay sound[15] 0 100 0
+			ED7ObjPlay object[2] 30 0 0 0
+	else:
+		FadeOut 300ms 0x00000000 100
+		TextSetPos -1 -1 -1 -1
+		TextSetName ""
+		TextMessage name[742] {
+			{0x06}{color 5}宝箱には何も入っていない。{color 0}{wait}
+		}
+		TextWait
+		TextClose 0
+		FadeIn 300ms 0x00000000
+	Sleep 30ms
+	TextEnd null
+	SystemFlagsUnset 0x08000000
+	Return
+
+fn[8]:
+	TextStart self
+	TextTalk char[2] {
+		#08400F俺はもう少し、この女性を
+		介抱しているつもりだ。{wait}
+	} {
+		#08400F先に奥のほうを捜索してくれ。
+		あとで必ず追いつくからさ。{wait}
+	}
+	TextWait
+	TextEnd self
+	Return
+
+fn[9]:
+	TextStart self
+	TextTalk self {
+		うぅ……{wait}
+	}
+	TextWait
+	TextEnd self
+	Return
+
+fn[10]:
+	EventBegin 0
+	CrossFade 500ms
+	ED7_E0 2
+	SystemFlagsSet 0x08000000
+	CamSetDistance 76250 21000 17830 0ms
+	ED7CamRotate 78deg 8deg 0deg 0ms
+	CamPers 510 0ms
+	CamZoom 21000 0ms
+	CharSetPos name[0] (80450, 18000, 13220) 45deg
+	CharSetPos name[1] (80450, 18000, 12220) 45deg
+	CharSetPos name[2] (80450, 18000, 14220) 45deg
+	CharSetPos name[3] (80450, 18000, 15220) 45deg
+	CamZoom 20000 2000ms
+	FadeWait
+	CamWait 121
+	TextTalk name[0] {
+		#12P#N#0005Fあの遺跡は……？
+		随分大きなものみたいだけど。{wait}
+	}
+	TextWait
+	_59
+	TextTalk name[1] {
+		#12P#N#0103Fたしか……
+		《太陽の砦》と呼ばれる遺跡よ。{wait}
+	} {
+		#0101F詳しい謂れは分かっていないけど……
+		５００年以上前の遺跡らしいわ。{wait}
+	}
+	TextWait
+	_59
+	TextTalk name[3] {
+		#12P#N#0305Fさすがに《砦》ってだけあって
+		堅牢な作りをしてやがるな。{wait}
+	} {
+		#0303F中世の戦にでも使われてたんだろう。{wait}
+	}
+	TextWait
+	_59
+	TextTalk name[2] {
+		#12P#N#0205F………………………………{wait}
+	}
+	TextWait
+	_59
+	Emote name[0] 0mm 2000mm 38 38 250ms 1
+	Sleep 500ms
+	CharTurnToChar name[0] name[2] 500deg/s
+	TextTalk name[0] {
+		#12P#0005F#N……ティオ？{wait}
+	}
+	TextWait
+	_59
+	Fork name[1] fork[1]:
+		CharTurnToChar name[1] name[2] 500deg/s
+	Sleep 50ms
+	Fork name[3] fork[1]:
+		CharTurnToChar name[3] name[2] 500deg/s
+	ForkWait name[1] fork[1]
+	ForkWait name[3] fork[1]
+	TextTalk name[2] {
+		#12P#0208F#Nいえ……何でもありません。{wait}
+	} {
+		#0200Fただちょっと、あの遺跡の方から
+		妙なものを感じたんですが……{wait}
+	}
+	TextWait
+	_59
+	Emote name[0] 0mm 2000mm 0 1 250ms 2
+	SoundPlay sound[29] 0 100 0
+	Emote name[1] 0mm 2000mm 0 1 250ms 2
+	SoundPlay sound[29] 0 100 0
+	Emote name[3] 0mm 2000mm 0 1 250ms 2
+	SoundPlay sound[29] 0 100 0
+	Fork name[0] fork[1]:
+		CharTurnTo name[0] 45deg 500deg/s
+	Fork name[1] fork[1]:
+		CharTurnTo name[1] 45deg 500deg/s
+	Fork name[3] fork[1]:
+		CharTurnTo name[3] 45deg 500deg/s
+	Sleep 1000ms
+	TextTalk name[0] {
+		#12P#0005F#N妙なもの……？{wait}
+	}
+	TextWait
+	_59
+	TextTalk name[3] {
+		#12P#0305F#Nふむ……
+		ただの古い砦跡っぽいが……{wait}
+	}
+	TextWait
+	_59
+	TextTalk name[2] {
+		#12P#0206F#N……いえ、すみません。
+		きっと気のせいでしょう。{wait}
+	} {
+		#0201Fそれよりも、
+		あんなところに観光客が
+		入っていたら捜索が困難です。{wait}
+	} {
+		急いだ方がいいでしょう。{wait}
+	}
+	TextWait
+	_59
+	TextTalk name[0] {
+		#12P#0001F#N……ああ、そうだな。{wait}
+	}
+	TextWait
+	_59
+	CharSetPos field_party[0] (80450, 18000, 14340) 45deg
+	TriggerFlagsSet trigger[1] 0x0080
+	if QuestFlagsGet quest[24] 0x10:
+	elif QuestTaskGet quest[24] 10:
+	elif QuestTaskGet quest[24] 1:
+		LookPointFlagsUnset look_point[3] 0x0001
+	FlagSet flag[1468]
+	SystemFlagsUnset 0x08000000
+	ED7_37
+	EventEnd 5
+	Return
+
+fn[11]:
+	EventBegin 0
+	CrossFade 500ms
+	ED7_E0 2
+	SystemFlagsSet 0x08000000
+	_Char4A char[2] 255
+	CamSetDistance -28620 6600 10120 0ms
+	ED7CamRotate 98deg 20deg 0deg 0ms
+	CamPers 510 0ms
+	CamZoom 18600 0ms
+	CharSetPos name[0] (-29550, 6000, 10270) 45deg
+	CharSetPos name[1] (-31360, 5320, 9380) 45deg
+	CharSetPos name[2] (-30590, 5700, 11140) 45deg
+	CharSetPos name[3] (-32430, 4780, 10350) 45deg
+	FadeWait
+	Emote name[0] 0mm 2000mm 38 38 250ms 1
+	Emote name[1] 0mm 2000mm 38 38 250ms 1
+	Emote name[2] 0mm 2000mm 38 38 250ms 1
+	Emote name[3] 0mm 2000mm 38 38 250ms 1
+	Sleep 1000ms
+	TextTalk name[0] {
+		#11P#0005Fあれは……{wait}
+	}
+	TextWait
+	_59
+	CrossFade 500ms
+	CamSetDistance -25410 6600 17600 0ms
+	ED7CamRotate 98deg 32deg 0deg 0ms
+	CamPers 510 0ms
+	CamZoom 19860 0ms
+	CamSetDistance -24440 6600 19080 3000ms
+	FadeWait
+	CharSetPos name[0] (-28140, 6000, 11070) 45deg
+	CharSetPos name[1] (-29740, 6000, 10070) 45deg
+	CharSetPos name[2] (-27950, 6000, 9070) 45deg
+	CharSetPos name[3] (-29560, 6000, 8070) 45deg
+	Fork name[0] fork[1]:
+		CharWalkToPos name[0] (-25140, 6000, 18180) 3000mm/s 0
+	Sleep 50ms
+	Fork name[1] fork[1]:
+		CharWalkToPos name[1] (-26740, 6000, 17790) 3000mm/s 0
+	Sleep 50ms
+	Fork name[2] fork[1]:
+		CharWalkToPos name[2] (-24950, 6000, 16860) 3000mm/s 0
+	Sleep 50ms
+	Fork name[3] fork[1]:
+		CharWalkToPos name[3] (-26560, 6000, 16460) 3000mm/s 0
+	ForkWait name[0] fork[1]
+	CharTurnToChar name[0] char[2] 0deg/s
+	ForkWait name[1] fork[1]
+	CharTurnToChar name[1] char[2] 0deg/s
+	ForkWait name[2] fork[1]
+	CharTurnToChar name[2] char[2] 0deg/s
+	ForkWait name[3] fork[1]
+	CharTurnToChar name[3] char[2] 0deg/s
+	CamWait 121
+	TextTalk name[0] {
+		#12P#0001Fスコットさん！{wait}
+	}
+	TextWait
+	CharTurnToChar char[2] name[0] 750deg/s
+	TextTalk char[2] {
+		#08405F#5P……君たちか。
+		結構早かったな。{wait}
+	}
+	TextWait
+	TextTalk name[3] {
+		#12P#0304F俺らもこれで
+		結構場数をふんでるんでね。{wait}
+	} {
+		#0301Fンなことより、
+		そっちの彼女はもしかして……？{wait}
+	}
+	TextWait
+	CharTurnToChar char[2] char[3] 500deg/s
+	TextTalk char[2] {
+		#08403F#5P持ち物を調べたら
+		共和国で発行された
+		パスポートを持っていた。{wait}
+	} {
+		#08401F#5Pどうやら、観光客の
+		片割れらしいな。{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#12P#0005F……大丈夫、なんですか？{wait}
+	}
+	TextWait
+	TextTalk char[2] {
+		#08403F#5P大丈夫、魔獣に襲われた
+		ショックで気絶しただけだ。{wait}
+	} {
+		#08400F#5P魔獣の方は俺が仕留めたから
+		カスリ傷すらないだろう。{wait}
+	}
+	TextWait
+	TextTalk name[1] {
+		#12P#0106Fほっ、そうですか……
+		一安心ですね。{wait}
+	}
+	TextWait
+	TextTalk name[2] {
+		#11P#0200F観光客はカップルとのことでしたが……
+		もう１人は見えませんね。{wait}
+	} {
+		もっと奥のほうに
+		入り込んでしまったのかも……{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#12P#0008Fそうだな……
+		早く見つけ出してやらないと。{wait}
+	}
+	TextWait
+	TextTalk name[3] {
+		#12P#0306Fったく、レディを置いて
+		一人で行っちまうとは
+		エスコートがなってねぇな。{wait}
+	}
+	TextWait
+	TextTalk name[1] {
+		#12P#0106Fまあ、魔獣から逃げてたなら
+		仕方がないと思うけど……{wait}
+	}
+	TextWait
+	TextTalk char[2] {
+		#08403F#5P俺はこの女性の安全を
+		確保してから先に進む。{wait}
+	} {
+		#08400F#5P君たちは先に奥の方を
+		捜索していてくれ。{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#12P#0000F分かりました、よろしくお願いします。{wait}
+	}
+	TextWait
+	_59
+	CharSetPos field_party[0] (-25140, 6000, 18180) 45deg
+	TriggerFlagsSet trigger[0] 0x0080
+	QuestTaskSet quest[31] 2
+	_Char4B char[2] 255
+	SystemFlagsUnset 0x08000000
+	ED7_37
+	EventEnd 5
+	Return
+
+fn[12]:
+	if QuestFlagsGet quest[31] 0x10:
+		EventBegin 0
+		FadeOut 0ms 0xFFFFFFFF 0
+		FadeOut 500ms 0x00000000 255
+		FadeWait
+		FadeIn 0ms 0xFFFFFFFF
+		ED7_E0 2
+		SystemFlagsSet 0x08000000
+		ED7LoadChip "apl/ch50387.itc" chip[50]
+		EffLoad eff[0] "event\\eva02_00.eff"
+		CamSetDistance 90290 21000 26800 0ms
+		ED7CamRotate 78deg 8deg 0deg 0ms
+		CamPers 510 0ms
+		CamZoom 20000 0ms
+		CharSetPos name[0] (80450, 18000, 13220) 45deg
+		CharSetPos name[1] (80450, 18000, 15220) 45deg
+		CharSetPos name[2] (80450, 18000, 14220) 45deg
+		CharSetPos name[3] (80450, 18000, 12220) 45deg
+		CamSetDistance 76180 20400 17600 8000ms
+		ED7CamRotate 81deg 9deg 0deg 8000ms
+		FadeIn 1000ms 0x00000000
+		FadeWait
+		CamWait 121
+		if flag[1468]:
+			TextTalk name[1] {
+				#6P#0100Fあの建物は……《太陽の砦》ね。{wait}
+			} {
+				この前は緊急性の高い要請だったから
+				じっくり見なかったけど……{wait}
+			}
+			TextWait
+			Fork name[0] fork[1]:
+				CharTurnToChar self name[2] 500deg/s
+			ForkWait name[0] fork[1]
+			TextTalk name[0] {
+				#12P#0005Fそういえばティオ……
+				あの建物に妙な感じがするとか
+				言ってたっけ。{wait}
+			}
+			TextWait
+			Fork name[2] fork[1]:
+				CharTurnToChar self name[0] 500deg/s
+			Emote name[3] 0mm 2000mm 38 38 250ms 1
+			Emote name[1] 0mm 2000mm 38 38 250ms 1
+			Sleep 1000ms
+			Fork name[1] fork[1]:
+				CharTurnToChar name[1] name[2] 500deg/s
+			Sleep 50ms
+			Fork name[3] fork[1]:
+				CharTurnToChar name[3] name[2] 500deg/s
+			ForkWait name[1] fork[1]
+			ForkWait name[3] fork[1]
+			TextTalk name[3] {
+				#12P#0305Fそういやぁ、そんなこと言ってたな。{wait}
+			}
+			TextWait
+			TextTalk name[1] {
+				#6P#0105F今はどうなの、ティオちゃん？{wait}
+			}
+			TextWait
+			TextTalk name[2] {
+				#6P#0203F……いえ、今は大丈夫です。
+				単に慣れただけかもしれませんが。{wait}
+			} {
+				#0200Fそれより、グレイスさんに
+				依頼されている写真……
+				ここなら撮れそうじゃないですか？{wait}
+			}
+			TextWait
+			TextTalk name[0] {
+				#12P#0000Fあ、ああ、そうだな。{wait}
+			}
+			TextWait
+			CharTurnTo name[2] 45deg 500deg/s
+		else:
+			TextTalk name[0] {
+				#12P#0005Fあの遺跡は……？
+				随分大きなものみたいだけど。{wait}
+			}
+			TextWait
+			TextTalk name[1] {
+				#6P#0103Fたしか……
+				《太陽の砦》と呼ばれる遺跡よ。{wait}
+			} {
+				#0101F詳しい謂れは分かっていないけど……
+				５００年以上前の遺跡らしいわ。{wait}
+			}
+			TextWait
+			TextTalk name[3] {
+				#12P#0305Fさすがに《砦》ってだけあって
+				堅牢な作りをしてやがるな。{wait}
+			} {
+				#0303F中世の戦にでも使われてたんだろう。{wait}
+			}
+			TextWait
+			TextTalk name[2] {
+				#6P#0205F………………………………{wait}
+			}
+			TextWait
+			Emote name[0] 0mm 2000mm 38 38 250ms 1
+			Sleep 500ms
+			CharTurnToChar name[0] name[2] 500deg/s
+			TextTalk name[0] {
+				#12P#0005F……ティオ？{wait}
+			}
+			TextWait
+			Fork name[1] fork[1]:
+				CharTurnToChar name[1] name[2] 500deg/s
+			Sleep 50ms
+			Fork name[3] fork[1]:
+				CharTurnToChar name[3] name[2] 500deg/s
+			ForkWait name[1] fork[1]
+			ForkWait name[3] fork[1]
+			TextTalk name[2] {
+				#6P#0208Fいえ……何でもありません。{wait}
+			} {
+				#0200Fただちょっと、あの遺跡の方から
+				妙なものを感じたんですが……{wait}
+			}
+			TextWait
+			Emote name[0] 0mm 2000mm 0 1 250ms 2
+			SoundPlay sound[29] 0 100 0
+			Emote name[1] 0mm 2000mm 0 1 250ms 2
+			SoundPlay sound[29] 0 100 0
+			Emote name[3] 0mm 2000mm 0 1 250ms 2
+			SoundPlay sound[29] 0 100 0
+			Fork name[0] fork[1]:
+				CharTurnTo name[0] 45deg 500deg/s
+			Fork name[1] fork[1]:
+				CharTurnTo name[1] 45deg 500deg/s
+			Fork name[3] fork[1]:
+				CharTurnTo name[3] 45deg 500deg/s
+			Sleep 1000ms
+			TextTalk name[0] {
+				#12P#0005F妙なもの……？{wait}
+			}
+			TextWait
+			TextTalk name[3] {
+				#12P#0305Fふむ……
+				ただの古い砦跡っぽいが……{wait}
+			}
+			TextWait
+			TextTalk name[2] {
+				#6P#0206F……いえ、すみません。
+				きっと気のせいでしょう。{wait}
+			} {
+				#0200Fそれより、グレイスさんに
+				依頼されている写真……
+				ここなら撮れそうじゃないですか？{wait}
+			}
+			TextWait
+			TextTalk name[0] {
+				#12P#0000Fあ、ああ、そうだな。{wait}
+			}
+			TextWait
+		if !QuestTaskGet quest[24] 2 && !QuestTaskGet quest[24] 3 && !QuestTaskGet quest[24] 4 && !QuestTaskGet quest[24] 5 && !QuestTaskGet quest[24] 6 && !QuestTaskGet quest[24] 7 && !QuestTaskGet quest[24] 8 && !QuestTaskGet quest[24] 9 && !QuestTaskGet quest[24] 10:
+			CharTurnToChar name[0] name[1] 500deg/s
+			TextTalk name[0] {
+				#12P#0000Fそれじゃあエリィ、
+				撮影をお願いできるかな。{wait}
+			}
+			TextWait
+			CharTurnToChar name[1] name[0] 500deg/s
+			TextTalk name[1] {
+				#6P#0108Fえ、ええ。
+				ちょっと自信はないけど……{wait}
+			}
+			TextWait
+			CharTurnToChar name[3] name[1] 500deg/s
+			TextTalk name[3] {
+				#12P#0300Fいやいや、大丈夫だろ。{wait}
+			} {
+				ちょっとレンズを覗いて
+				パチリと撮っちまえば
+				終わりじゃねぇか。{wait}
+			}
+			TextWait
+			CharTurnToChar name[1] name[3] 500deg/s
+			TextTalk name[1] {
+				#6P#0103Fあのねぇ……
+				いい写真を撮るのは
+				そんな簡単なことじゃないのよ。{wait}
+			} {
+				#0100Fフレームの中に
+				対象物をどう収めるか、
+				構成を練らなきゃいけないし……{wait}
+			} {
+				天気や風の影響で
+				写真の印象もガラリと変わってしまう。{wait}
+			} {
+				ある一瞬を逃したら
+				二度と撮れないことだって
+				あるんだから。{wait}
+			}
+			TextWait
+			TextTalk name[2] {
+				#6P#0203F素人とプロの写真を見比べると
+				一目で違いが分かりますからね。{wait}
+			} {
+				#0200F粗雑な人には、その繊細さが
+				理解できないかも知れませんが。{wait}
+			}
+			TextWait
+			CharTurnToChar name[3] name[2] 500deg/s
+			TextTalk name[3] {
+				#12P#0306Fぐっ……
+				誰のことを言ってんだ、誰の。{wait}
+			}
+			TextWait
+			TextTalk name[0] {
+				#12P#0000Fま、まぁまぁ。
+				ここはエリィに任せてみよう。{wait}
+			}
+			TextWait
+			TextTalk name[1] {
+				#6P#0100Fそれじゃあ……
+				やってみるわね。{wait}
+			}
+			TextWait
+			_59
+			CharTurnTo name[1] 45deg 500deg/s
+			CharTurnTo name[0] 45deg 500deg/s
+			CharTurnTo name[2] 45deg 500deg/s
+			CharTurnTo name[3] 45deg 500deg/s
+			CrossFade 1000ms
+			CharSetChipBase name[1] chip[50]
+			CharSetChipPattern name[1] 0
+			FadeWait
+			SoundPlay sound[817] 0 100 0
+			EffPlay eff[0] eff_instance[255] name[1] 192 (0, 1200, 400) 0 0 0 1000 1000 1000 null (0, 0, 0) 0ms
+			Sleep 1000ms
+			SoundPlay sound[817] 0 100 0
+			EffPlay eff[0] eff_instance[255] name[1] 192 (0, 1200, 400) 0 0 0 1000 1000 1000 null (0, 0, 0) 0ms
+			Sleep 1000ms
+			SoundPlay sound[817] 0 100 0
+			EffPlay eff[0] eff_instance[255] name[1] 192 (0, 1200, 400) 0 0 0 1000 1000 1000 null (0, 0, 0) 0ms
+			Sleep 1000ms
+			TextTalk name[1] {
+				#6P#0103F……ふぅ。
+				念のため何枚か撮っておいたわ。{wait}
+			}
+			TextWait
+			TextTalk name[0] {
+				#12P#0000Fどうやら撮れたみたいだな。{wait}
+			} {
+				出来栄えはどんな感じだ？{wait}
+			}
+			TextWait
+			TextTalk name[1] {
+				#6P#0100F実際に現像してみないと
+				分からないけど……{wait}
+			} {
+				少なくとも、
+				悪い写真ではないとは思うわ。{wait}
+			}
+			TextWait
+			TextTalk name[2] {
+				#6P#0200Fエリィさんも
+				カンを取り戻せたようですね。{wait}
+			}
+			TextWait
+			TextTalk name[3] {
+				#12P#0300Fふーん……
+				俺にはさっぱりだな。{wait}
+			}
+			TextWait
+			TextTalk name[0] {
+				#12P#0000Fまたこういう場所を見つけたら
+				写真に収めていこう。{wait}
+			} {
+				それじゃ、行くとしようか。{wait}
+			}
+			TextWait
+		else:
+			CharTurnToChar name[0] name[1] 500deg/s
+			TextTalk name[0] {
+				#12P#0000Fそれじゃあ……
+				エリィ、撮影を頼むよ。{wait}
+			}
+			TextWait
+			TextTalk name[1] {
+				#6P#0100Fええ、分かったわ。{wait}
+			}
+			TextWait
+			_59
+			CharTurnTo name[1] 45deg 500deg/s
+			CharTurnTo name[0] 45deg 500deg/s
+			CharTurnTo name[2] 45deg 500deg/s
+			CharTurnTo name[3] 45deg 500deg/s
+			CrossFade 1000ms
+			CharSetChipBase name[1] chip[50]
+			CharSetChipPattern name[1] 0
+			FadeWait
+			SoundPlay sound[817] 0 100 0
+			EffPlay eff[0] eff_instance[255] name[1] 192 (0, 1200, 400) 0 0 0 1000 1000 1000 null (0, 0, 0) 0ms
+			Sleep 1000ms
+			SoundPlay sound[817] 0 100 0
+			EffPlay eff[0] eff_instance[255] name[1] 192 (0, 1200, 400) 0 0 0 1000 1000 1000 null (0, 0, 0) 0ms
+			Sleep 1000ms
+			SoundPlay sound[817] 0 100 0
+			EffPlay eff[0] eff_instance[255] name[1] 192 (0, 1200, 400) 0 0 0 1000 1000 1000 null (0, 0, 0) 0ms
+			Sleep 1000ms
+			TextTalk name[1] {
+				#6P#0103F……ふぅ。
+				こんなところかしら。{wait}
+			}
+			TextWait
+			var[3] = 0
+			if QuestTaskGet quest[24] 2:
+				var[3] += 1
+			if QuestTaskGet quest[24] 3:
+				var[3] += 1
+			if QuestTaskGet quest[24] 4:
+				var[3] += 1
+			if QuestTaskGet quest[24] 5:
+				var[3] += 1
+			if QuestTaskGet quest[24] 6:
+				var[3] += 1
+			if QuestTaskGet quest[24] 7:
+				var[3] += 1
+			if QuestTaskGet quest[24] 8:
+				var[3] += 1
+			if QuestTaskGet quest[24] 9:
+				var[3] += 1
+			if QuestTaskGet quest[24] 10:
+				var[3] += 1
+			if var[3] == 4:
+				TextTalk name[0] {
+					#12P#0000Fご苦労さん。
+					無事に撮影出来たみたいだな。{wait}
+				} {
+					これでグレイスさんに提示された
+					５枚ってノルマは達成できた。
+					これでいつでも提出できそうだな。{wait}
+				}
+				TextWait
+			else:
+				TextTalk name[0] {
+					#12P#0000Fご苦労さん。
+					無事に撮影出来たみたいだな。{wait}
+				} {
+					それじゃ、行くとしようか。{wait}
+				}
+				TextWait
+		FadeOut 1000ms 0x00000000 255
+		FadeWait
+		CharSetPos field_party[0] (80450, 18000, 14340) 45deg
+		CharSetChipBase name[1] chip[255]
+		CharSetChipPattern name[1] 0
+		UnloadChip chip[50]
+		QuestTaskSet quest[24] 10
+		Sleep 500ms
+		SystemFlagsUnset 0x08000000
+		ED7_37
+		LookPointFlagsSet look_point[3] 0x0001
+		EventEnd 5
+	else:
+		TextStart null
+		CharTurnTo name[0] 45deg 0deg/s
+		TextTalk name[0] {
+			#0005F（グレイスさんに依頼された写真、
+			{}  ここなら撮れそうだけど……）{wait}
+		} {
+			#0003F（今はそんなことをしている
+			{}  場合じゃないな。）{wait}
+		} {
+			#0001F（一刻も早く観光客を
+			{}  保護してやらないと……）{wait}
+		}
+		TextWait
+		TextEnd null
+	Return

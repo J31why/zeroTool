@@ -1,0 +1,477 @@
+calmare zero_k scena
+scena:
+	name "r3110" "r3110" "r3110"
+	town town[102]
+	bgm bgm[203]
+	flags 0
+	item_use fn[0,255]
+	unk 255 0
+
+entry:
+	pos (0, 0, -1000)
+	unk1 0
+	cam_from (0, 2500, 34000)
+	cam_pers 262
+	unk2 30
+	cam_deg 45deg
+	cam_limit 0deg 360deg
+	cam_at (6000, 0, -61500)
+	unk3 0
+	unk4 0
+	flags 0x0001
+	town town[102]
+	init fn[0,0]
+	reinit fn[0,1]
+
+chip[0] null
+chip[1] null
+chip[2] null
+chip[3] null
+chip[4] null
+chip[5] null
+chip[6] null
+chip[7] null
+chip[8] null
+chip[9] null
+chip[10] null
+chip[11] null
+chip[12] null
+chip[13] null
+chip[14] null
+chip[15] null
+chip[16] "monster/ch69250.itc"
+chip[17] "monster/ch69250.itc"
+chip[18] "monster/ch71450.itc"
+chip[19] "monster/ch71450.itc"
+chip[20] "monster/ch77050.itc"
+chip[21] "monster/ch77051.itc"
+
+monster char[0]:
+	pos (6040, 0, -34790)
+	angle 0
+	flags 0x0101
+	battle battle[0]
+	flag flag[0]
+	chip chip[16]
+	unk2 65535
+	stand_anim anim[0]
+	walk_anim anim[1]
+
+monster char[1]:
+	pos (-6390, 0, -11530)
+	angle 0
+	flags 0x0101
+	battle battle[2]
+	flag flag[0]
+	chip chip[20]
+	unk2 65535
+	stand_anim anim[4]
+	walk_anim anim[5]
+
+monster char[2]:
+	pos (-6570, 0, 25080)
+	angle 0
+	flags 0x0101
+	battle battle[1]
+	flag flag[0]
+	chip chip[18]
+	unk2 65535
+	stand_anim anim[2]
+	walk_anim anim[3]
+
+monster char[3]:
+	pos (5920, 0, 980)
+	angle 0
+	flags 0x0101
+	battle battle[0]
+	flag flag[0]
+	chip chip[16]
+	unk2 65535
+	stand_anim anim[0]
+	walk_anim anim[1]
+
+look_point[0]:
+	pos (6000, 100, -10500)
+	radius 1200
+	bubble_pos (6000, 1100, -10500)
+	unk1 124
+	unk2 0
+	function fn[0,2]
+	unk3 0
+	unk4 0
+
+look_point[1]:
+	pos (-6000, 100, 28500)
+	radius 1200
+	bubble_pos (-6000, 1100, 28500)
+	unk1 124
+	unk2 0
+	function fn[0,3]
+	unk3 0
+	unk4 0
+
+look_point[2]:
+	pos (6000, 100, -22500)
+	radius 1200
+	bubble_pos (6000, 1100, -22500)
+	unk1 124
+	unk2 0
+	function fn[0,4]
+	unk3 0
+	unk4 0
+
+anim[0] 1500ms 0 1 2 3 4
+anim[1] 2000ms 0 1 2 3 4
+anim[2] 1500ms 0 1 2 1 0 3 4 3
+anim[3] 2000ms 0 1 2 1 0 3 4 3
+anim[4] 1000ms 0 1 2 3 4 5
+anim[5] 1500ms 0 1 2 3 4 5
+
+// NB: the first five sepith sets are seemingly junk data.
+sepith[0] 100 1 2 3 70 89 99 0
+sepith[1] 100 5 1 5 1 5 1 0
+sepith[2] 100 5 1 5 1 5 1 0
+sepith[3] 100 5 0 5 0 5 0 0
+sepith[4] 100 5 0 5 0 5 0 0
+
+sepith[5] 8 16 0 10 5 3 0 0
+sepith[6] 0 0 6 17 6 6 6 0
+sepith[7] 10 6 2 0 8 8 8 0
+sepith[8] 7 7 7 7 7 7 7 0
+sepith[9] 0 2 16 10 4 3 5 0
+sepith[10] 8 6 0 12 5 5 5 0
+sepith[11] 8 15 9 10 0 0 0 0
+sepith[12] 15 0 0 15 5 5 2 0
+
+at_roll[0]: none 100
+at_roll[1]: none 100; hp10 5; hp50 1; ep10 5; ep50 1; cp10 5; cp50 1; unk1 5; unk2 5; unk6 1
+at_roll[2]: none 100; hp10 5; hp50 1; ep10 5; ep50 1; cp10 5; cp50 1; unk1 5; unk2 5; unk3 5; unk4 5; unk5 5; unk6 5
+at_roll[3]: none 100; hp10 5; ep10 5; cp10 5; unk1 5; unk2 5; unk6 2
+at_roll[4]: none 100; hp10 5; ep10 5; cp10 5; unk2 5; unk6 2
+
+placement[0]:
+	pos 7 9 180deg
+	pos 11 10 180deg
+	pos 10 13 180deg
+	pos 5 11 180deg
+	pos 12 12 180deg
+	pos 4 14 180deg
+	pos 14 14 180deg
+	pos 2 13 180deg
+
+placement[1]:
+	pos 8 8 180deg
+	pos 5 9 180deg
+	pos 11 10 180deg
+	pos 6 12 180deg
+	pos 10 12 180deg
+	pos 13 13 180deg
+	pos 4 14 180deg
+	pos 8 14 180deg
+
+placement[2]:
+	pos 7 8 180deg
+	pos 9 9 180deg
+	pos 6 10 180deg
+	pos 10 11 180deg
+	pos 6 12 180deg
+	pos 10 13 180deg
+	pos 7 14 180deg
+	pos 9 15 180deg
+
+placement[3]:
+	pos 8 8 180deg
+	pos 6 9 180deg
+	pos 10 10 180deg
+	pos 7 11 180deg
+	pos 10 12 180deg
+	pos 8 14 180deg
+	pos 10 14 180deg
+	pos 6 15 180deg
+
+placement[4]:
+	pos 7 4 0deg
+	pos 10 11 225deg
+	pos 4 7 90deg
+	pos 12 7 270deg
+	pos 4 11 135deg
+	pos 11 4 315deg
+	pos 7 12 180deg
+	pos 5 5 45deg
+
+battle[0]:
+	flags 0
+	level 25
+	unk1 6
+	vision_range 60
+	move_range 6
+	can_move 1
+	move_speed 30
+	unk2 0
+	battlefield "br3100"
+	sepith sepith[9]
+	setup 50:
+		enemies "ms69200.dat" "ms69200.dat" "ms69200.dat" null null null null null
+		placement placement[1] placement[4]
+		bgm bgm[400] bgm[403]
+		at_roll at_roll[1]
+	setup 50:
+		enemies "ms69200.dat" "ms69200.dat" "ms69200.dat" "ms69200.dat" null null null null
+		placement placement[0] placement[4]
+		bgm bgm[400] bgm[403]
+		at_roll at_roll[1]
+
+battle[1]:
+	flags 0
+	level 25
+	unk1 6
+	vision_range 60
+	move_range 6
+	can_move 1
+	move_speed 30
+	unk2 0
+	battlefield "br3100"
+	sepith sepith[10]
+	setup 50:
+		enemies "ms71400.dat" "ms71400.dat" "ms71400.dat" null null null null null
+		placement placement[1] placement[4]
+		bgm bgm[400] bgm[403]
+		at_roll at_roll[1]
+	setup 50:
+		enemies "ms71400.dat" "ms71400.dat" "ms71400.dat" "ms71400.dat" null null null null
+		placement placement[0] placement[4]
+		bgm bgm[400] bgm[403]
+		at_roll at_roll[1]
+
+battle[2]:
+	flags 0
+	level 25
+	unk1 6
+	vision_range 60
+	move_range 6
+	can_move 1
+	move_speed 30
+	unk2 0
+	battlefield "br3100"
+	sepith sepith[11]
+	setup 50:
+		enemies "ms77000.dat" "ms71400.dat" "ms77000.dat" null null null null null
+		placement placement[1] placement[4]
+		bgm bgm[400] bgm[403]
+		at_roll at_roll[1]
+	setup 50:
+		enemies "ms77000.dat" "ms77000.dat" "ms71400.dat" "ms77000.dat" null null null null
+		placement placement[0] placement[4]
+		bgm bgm[400] bgm[403]
+		at_roll at_roll[1]
+
+fn[0]:
+	Return
+
+fn[1]:
+	char[0].12 = 128
+	char[0].20 = 189
+	char[0].13 = 128
+	char[0].21 = 189
+	char[0].14 = 128
+	char[0].22 = 189
+	char[0].15 = 128
+	char[0].23 = 189
+	char[0].16 = 128
+	char[0].24 = 189
+	char[0].17 = 128
+	char[0].25 = 189
+	char[0].18 = 128
+	char[0].26 = 189
+	char[0].19 = 128
+	char[0].27 = 189
+	char[3].12 = 128
+	char[3].20 = 189
+	char[3].13 = 128
+	char[3].21 = 189
+	char[3].14 = 128
+	char[3].22 = 189
+	char[3].15 = 128
+	char[3].23 = 189
+	char[3].16 = 128
+	char[3].24 = 189
+	char[3].17 = 128
+	char[3].25 = 189
+	char[3].18 = 128
+	char[3].26 = 189
+	char[3].19 = 128
+	char[3].27 = 189
+	char[1].12 = 128
+	char[1].20 = 209
+	char[1].13 = 128
+	char[1].21 = 209
+	char[1].14 = 128
+	char[1].22 = 209
+	char[1].15 = 128
+	char[1].23 = 209
+	char[1].16 = 128
+	char[1].24 = 209
+	char[1].17 = 128
+	char[1].25 = 209
+	char[1].18 = 128
+	char[1].26 = 209
+	char[1].19 = 128
+	char[1].27 = 209
+	if !flag[2113]:
+		ObjFrame object[0] 0
+	else:
+		ObjFrame object[0] 30
+	if !flag[2114]:
+		ObjFrame object[1] 0
+	else:
+		ObjFrame object[1] 30
+	if !flag[2115]:
+		ObjFrame object[2] 0
+	else:
+		ObjFrame object[2] 30
+	SoundPlay sound[127] 1 100 0
+	Return
+
+fn[2]:
+	ED7_F2 1
+	SystemFlagsSet 0x08000000
+	if !flag[2113]:
+		SoundPlay sound[14] 0 100 0
+		ED7ObjPlay object[0] 0 30 0 0
+		Sleep 500ms
+		if ItemAdd item[501] 1:
+			FadeOut 300ms 0x00000000 100
+			SoundPlay sound[17] 0 100 0
+			TextSetPos -1 -1 -1 -1
+			TextSetName ""
+			TextMessage name[742] {
+				{color 0}已取得{item[501]}{color 0}。{wait}
+			}
+			TextWait
+			TextClose 0
+			TextSetPos -1 280 60 3
+			FadeIn 300ms 0x00000000
+			FlagSet flag[2113]
+			ED7_DE 6
+		else:
+			FadeOut 300ms 0x00000000 100
+			TextSetName ""
+			TextMessage name[742] {
+				寶箱內裝著{item[501]}{color 0}。
+				但因持有物品已滿而放棄{item[501]}{color 0}。{wait}
+			}
+			TextWait
+			TextClose 0
+			FadeIn 300ms 0x00000000
+			SoundPlay sound[15] 0 100 0
+			ED7ObjPlay object[0] 30 0 0 0
+	else:
+		FadeOut 300ms 0x00000000 100
+		TextSetPos -1 -1 -1 -1
+		TextSetName ""
+		TextMessage name[742] {
+			{0x06}{color 5}寶箱內空無一物。{color 0}{wait}
+		}
+		TextWait
+		TextClose 0
+		FadeIn 300ms 0x00000000
+	Sleep 30ms
+	TextEnd null
+	SystemFlagsUnset 0x08000000
+	Return
+
+fn[3]:
+	ED7_F2 1
+	SystemFlagsSet 0x08000000
+	if !flag[2114]:
+		SoundPlay sound[14] 0 100 0
+		ED7ObjPlay object[1] 0 30 0 0
+		Sleep 500ms
+		if ItemAdd item[53] 1:
+			FadeOut 300ms 0x00000000 100
+			SoundPlay sound[17] 0 100 0
+			TextSetPos -1 -1 -1 -1
+			TextSetName ""
+			TextMessage name[742] {
+				{color 0}已取得{item[53]}{color 0}。{wait}
+			}
+			TextWait
+			TextClose 0
+			TextSetPos -1 280 60 3
+			FadeIn 300ms 0x00000000
+			FlagSet flag[2114]
+			ED7_DE 6
+		else:
+			FadeOut 300ms 0x00000000 100
+			TextSetName ""
+			TextMessage name[742] {
+				寶箱內裝著{item[53]}{color 0}。
+				但因持有物品已滿而放棄{item[53]}{color 0}。{wait}
+			}
+			TextWait
+			TextClose 0
+			FadeIn 300ms 0x00000000
+			SoundPlay sound[15] 0 100 0
+			ED7ObjPlay object[1] 30 0 0 0
+	else:
+		FadeOut 300ms 0x00000000 100
+		TextSetPos -1 -1 -1 -1
+		TextSetName ""
+		TextMessage name[742] {
+			{0x06}{color 5}寶箱內空無一物。{color 0}{wait}
+		}
+		TextWait
+		TextClose 0
+		FadeIn 300ms 0x00000000
+	Sleep 30ms
+	TextEnd null
+	SystemFlagsUnset 0x08000000
+	Return
+
+fn[4]:
+	ED7_F2 1
+	SystemFlagsSet 0x08000000
+	if !flag[2115]:
+		SoundPlay sound[14] 0 100 0
+		ED7ObjPlay object[2] 0 30 0 0
+		Sleep 500ms
+		if ItemAdd item[508] 1:
+			FadeOut 300ms 0x00000000 100
+			SoundPlay sound[17] 0 100 0
+			TextSetPos -1 -1 -1 -1
+			TextSetName ""
+			TextMessage name[742] {
+				{color 0}已取得{item[508]}{color 0}。{wait}
+			}
+			TextWait
+			TextClose 0
+			TextSetPos -1 280 60 3
+			FadeIn 300ms 0x00000000
+			FlagSet flag[2115]
+			ED7_DE 6
+		else:
+			FadeOut 300ms 0x00000000 100
+			TextSetName ""
+			TextMessage name[742] {
+				寶箱內裝著{item[508]}{color 0}。
+				但因持有物品已滿而放棄{item[508]}{color 0}。{wait}
+			}
+			TextWait
+			TextClose 0
+			FadeIn 300ms 0x00000000
+			SoundPlay sound[15] 0 100 0
+			ED7ObjPlay object[2] 30 0 0 0
+	else:
+		FadeOut 300ms 0x00000000 100
+		TextSetPos -1 -1 -1 -1
+		TextSetName ""
+		TextMessage name[742] {
+			{0x06}{color 5}寶箱內空無一物。{color 0}{wait}
+		}
+		TextWait
+		TextClose 0
+		FadeIn 300ms 0x00000000
+	Sleep 30ms
+	TextEnd null
+	SystemFlagsUnset 0x08000000
+	Return

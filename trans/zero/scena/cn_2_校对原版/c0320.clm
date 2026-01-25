@@ -1,0 +1,1529 @@
+calmare zero_k scena
+scena:
+	name "c0320" "c0320" "c0320"
+	town town[45]
+	bgm bgm[100]
+	flags 8192
+	item_use fn[0,255]
+	unk 255 0
+
+entry:
+	pos (0, 0, -1000)
+	unk1 0
+	cam_from (0, 0, 34000)
+	cam_pers 262
+	unk2 30
+	cam_deg 45deg
+	cam_limit 0deg 360deg
+	cam_at (0, 0, 0)
+	unk3 0
+	unk4 0
+	flags 0x0001
+	town town[45]
+	init fn[0,3]
+	reinit fn[0,4]
+
+chip[0] "chr/ch27702.itc"
+chip[1] "chr/ch27800.itc"
+chip[2] "chr/ch27802.itc"
+chip[3] "chr/ch33200.itc"
+chip[4] "chr/ch34500.itc"
+
+npc char[0]:
+	name "坎貝爾議員"
+	pos (0, 250, 46110)
+	angle 180deg
+	flags 0x01D5
+	unk2 0
+	chip chip[0]
+	init fn[255,255]
+	talk fn[0,5]
+	unk4 255
+
+npc char[1]:
+	name "共和國派議員"
+	pos (-2490, 0, 48869)
+	angle 45deg
+	flags 0x0185
+	unk2 0
+	chip chip[1]
+	init fn[0,1]
+	talk fn[0,6]
+	unk4 255
+
+npc char[2]:
+	name "共和國派議員"
+	pos (2299, 250, 43630)
+	angle 270deg
+	flags 0x0155
+	unk2 0
+	chip chip[2]
+	init fn[255,255]
+	talk fn[0,7]
+	unk4 255
+
+npc char[3]:
+	name "卡拉"
+	pos (43490, 59, 3440)
+	angle 135deg
+	flags 0x0185
+	unk2 0
+	chip chip[3]
+	init fn[0,2]
+	talk fn[0,8]
+	unk4 255
+
+npc char[4]:
+	name "瑪夏"
+	pos (-44409, 0, 10199)
+	angle 0deg
+	flags 0x0185
+	unk2 0
+	chip chip[4]
+	init fn[0,0]
+	talk fn[0,9]
+	unk4 255
+
+look_point[0]:
+	pos (45950, 60, 1790)
+	radius 1500
+	bubble_pos (46410, 1000, 1270)
+	unk1 124
+	unk2 0
+	function fn[0,13]
+	unk3 0
+	unk4 0
+
+fn[0]:
+	var[2] = random % 8
+	switch var[2]:
+		case 0:
+			ED7_A0 self 1450ms 0 251
+			break
+		case 1:
+			ED7_A0 self 1550ms 0 251
+			break
+		case 2:
+			ED7_A0 self 1600ms 0 251
+			break
+		case 3:
+			ED7_A0 self 1400ms 0 251
+			break
+		case 4:
+			ED7_A0 self 1650ms 0 251
+			break
+		case 5:
+			ED7_A0 self 1350ms 0 251
+			break
+		case 6:
+			ED7_A0 self 1500ms 0 251
+			break
+		default:
+			ED7_A0 self 1500ms 0 251
+			break
+	while 1:
+		ED7_A0 self 1500ms 0 251
+	Return
+
+fn[1]:
+	while 1:
+		CharIdle self (-2690, null, 49630) (-4100, null, 46250) 1000mm/s
+		Sleep 300ms
+	Return
+
+fn[2]:
+	while 1:
+		CharIdle self (44630, null, 3440) (41760, null, 1660) 1000mm/s
+		Sleep 300ms
+	Return
+
+fn[3]:
+	if flag[1792]:
+		if QuestTaskGet quest[45] 14:
+			CharFlagsUnset char[4] 0x0080
+	elif flag[1566]:
+		CharFlagsSet char[2] 0x0080
+		CharFlagsUnset char[1] 0x0080
+		CharFlagsUnset char[4] 0x0080
+	elif flag[1554]:
+		CharFlagsUnset char[0] 0x0080
+		CharSetChipPattern char[2] 2
+		if QuestFlagsGet quest[45] 0x10:
+			CharFlagsUnset char[4] 0x0080
+	if QuestTaskGet quest[45] 14:
+		CharFlagsUnset char[3] 0x0080
+	Return
+
+fn[4]:
+	char[0].51 = 1200
+	char[2].51 = 1200
+	LookPointFlagsSet look_point[0] 0x0001
+	if QuestTaskGet quest[45] 1 && !QuestFlagsGet quest[45] 0x10 && !QuestFlagsGet quest[45] 0x40:
+		LookPointFlagsUnset look_point[0] 0x0001
+	if system[4] == 3:
+		EntranceSetDisabled entrance[0] 0
+		EntranceSetDisabled entrance[7] 1
+	else:
+		EntranceSetDisabled entrance[0] 1
+		EntranceSetDisabled entrance[7] 0
+	if flag[1792]:
+		MapColor 0x00C8D2FF 0ms
+	else:
+	Return
+
+fn[5]:
+	if QuestTaskGet quest[45] 0 && !QuestTaskGet quest[45] 1 && !QuestFlagsGet quest[45] 0x10 && !QuestFlagsGet quest[45] 0x40:
+		Call fn[0,10]
+		Return
+	field_party[0].5 = self.4
+	self.5 = self.4
+	TextStart self
+	CharFlagsUnset self 0x0010
+	CharTurnToChar self field_party[0] 0deg/s
+	self.4 = (self.4 + 360) % 360
+	self.4 = self.4 + 360 - self.5
+	self.5 = self.4 / 180
+	if self.4 <= 45 | self.4 >= 315 && self.4 <= 405 | self.4 >= 675:
+	elif self.5 < 1:
+		self.8 = 2
+	elif self.5 > 2:
+		self.8 = 1
+	else:
+		self.8 = self.5
+	self.4 = field_party[0].5
+	field_party[0].5 = 0
+	self.5 = 0
+	CharFlagsSet self 0x0010
+	if QuestFlagsGet quest[45] 0x10:
+		if QuestTaskGet quest[45] 14:
+			TextTalk self {
+				……對於將小女帶回一事，
+				我姑且表示感謝。{wait}
+			}
+			TextWait
+			TextTalk self {
+				哼，僅此而已，
+				你們可以回去了。{wait}
+			}
+			TextWait
+		else:
+			TextTalk self {
+				哼……警察果然
+				不值得依靠。{wait}
+			}
+			TextWait
+			TextTalk self {
+				算了，只要知道她在哪裡，
+				再強行帶回即可。
+				怎樣都有辦法將她帶回來……{wait}
+			}
+			TextWait
+	elif !flag[0]:
+		TextTalk self {
+			今天由於議會政務和黑月事件，
+			從早晨開始就忙碌不堪……{wait}
+		}
+		TextWait
+		TextTalk self {
+			但剛過中午時因為有事
+			而回來了一趟。{wait}
+		}
+		TextWait
+		TextTalk self {
+			然而無論我怎麼叫，
+			女兒和女僕也沒有出來。{wait}
+		}
+		TextWait
+		TextTalk self {
+			在我覺得奇怪時，
+			就發現了女兒留下的字條。{wait}
+		}
+		TextWait
+		if !QuestTaskGet quest[45] 2:
+			TextTalk name[3] {
+				#0301F（這個議員似乎平時就很目中無人啊。）{wait}
+			}
+			TextWait
+			TextTalk name[0] {
+				#0006F（看樣子，
+				　他好像連女兒的去處
+				　也毫無頭緒。）{wait}
+			}
+			TextWait
+			QuestTaskSet quest[45] 2
+			if QuestTaskGet quest[45] 4 && QuestTaskGet quest[45] 3:
+				TextTalk name[2] {
+					#0200F（情報都搜集完了……
+					　先回到卡拉小姐的房間，
+					　再重新開始推理吧。）{wait}
+				}
+				TextWait
+				TextTalk name[0] {
+					#0000F（嗯，就這麼辦吧。）{wait}
+				}
+				TextWait
+		FlagSet flag[0]
+	else:
+		TextTalk self {
+			剛過中午時，我因為有事而回來之後，
+			就發現女兒和女僕都不見了。{wait}
+		}
+		TextWait
+		TextTalk self {
+			……小女的事就拜託各位了。
+			若這樣下去，這件事可能會被
+			帝國派當成攻擊材料。{wait}
+		}
+		TextWait
+		TextTalk name[1] {
+			#0108F（他難道都
+			　不擔心卡拉小姐嗎……）{wait}
+		}
+		TextWait
+	CharSetChipPattern self 0
+	TextEnd self
+	Return
+
+fn[6]:
+	TextStart self
+	if !flag[1]:
+		TextTalk self {
+			議員秘書的受賄嫌疑，
+			以及在那座議長宅邸所發生的神秘事件……{wait}
+		}
+		TextWait
+		TextTalk self {
+			唔，要用哪件事對帝國派進行攻擊
+			才是最有效的呢？{wait}
+		}
+		TextWait
+		TextTalk self {
+			預算會議也漸入佳境，
+			必須快點做出了結，然後
+			去協助坎貝爾議員呢。{wait}
+		}
+		TextWait
+		FlagSet flag[1]
+	else:
+		TextTalk self {
+			在坎貝爾議員
+			參加議會時，
+			我就在為了戰鬥而收集情報。{wait}
+		}
+		TextWait
+		TextTalk self {
+			因為議會打的就是情報戰啊。{wait}
+		}
+		TextWait
+	TextEnd self
+	Return
+
+fn[7]:
+	if QuestTaskGet quest[45] 0 && !QuestTaskGet quest[45] 1 && !QuestFlagsGet quest[45] 0x10 && !QuestFlagsGet quest[45] 0x40:
+		Call fn[0,10]
+		Return
+	if flag[1792]:
+		field_party[0].5 = self.4
+		self.5 = self.4
+		TextStart self
+		CharFlagsUnset self 0x0010
+		CharTurnToChar self field_party[0] 0deg/s
+		self.4 = (self.4 + 360) % 360
+		self.4 = self.4 + 360 - self.5
+		self.5 = self.4 / 180
+		if self.4 <= 45 | self.4 >= 315 && self.4 <= 405 | self.4 >= 675:
+		elif self.5 < 1:
+			self.8 = 2
+		elif self.5 > 2:
+			self.8 = 1
+		else:
+			self.8 = self.5
+		self.4 = field_party[0].5
+		field_party[0].5 = 0
+		self.5 = 0
+		CharFlagsSet self 0x0010
+		if !flag[1]:
+			TextTalk self {
+				就在不久之前，
+				自治州議會終於結束了。{wait}
+			}
+			TextWait
+			TextTalk self {
+				……嗯，
+				今年會期真是延長了很久啊。{wait}
+			}
+			TextWait
+			TextTalk self {
+				哈哈……
+				因為我們共和國派
+				就是堅持到底，不肯妥協。{wait}
+			}
+			TextWait
+			FlagSet flag[1]
+		elif QuestTaskGet quest[45] 14:
+			TextTalk self {
+				咳咳……話說回來，
+				小姐能回來，
+				真是太好了啊。{wait}
+			}
+			TextWait
+			TextTalk self {
+				因為，如果女僕不在的話，
+				就連茶都沒人給泡了啊。{wait}
+			}
+			TextWait
+		else:
+			TextTalk self {
+				話說回來……
+				茶還沒泡好嗎。{wait}
+			}
+			TextWait
+			TextTalk self {
+				這裡的女僕從剛才開始
+				就不見人影，
+				到底是在幹些什麼呢……？{wait}
+			}
+			TextWait
+		CharSetChipPattern self 0
+		TextEnd self
+	elif flag[1554]:
+		TextStart self
+		field_party[0].5 = self.4
+		self.5 = self.4
+		TextStart self
+		CharFlagsUnset self 0x0010
+		CharTurnToChar self field_party[0] 0deg/s
+		self.4 = (self.4 + 360) % 360
+		self.4 = self.4 + 360 - self.5
+		self.5 = self.4 / 180
+		if self.4 <= 45 | self.4 >= 315 && self.4 <= 405 | self.4 >= 675:
+		elif self.5 < 1:
+			self.8 = 2
+		elif self.5 > 2:
+			self.8 = 1
+		else:
+			self.8 = self.5
+		self.4 = field_party[0].5
+		field_party[0].5 = 0
+		self.5 = 0
+		CharFlagsSet self 0x0010
+		if QuestFlagsGet quest[45] 0x10:
+			if QuestTaskGet quest[45] 14:
+				if !flag[1]:
+					TextTalk self {
+						哎呀，真是太好了。
+						這樣一來，這件事就不會
+						被帝國派發現了吧。{wait}
+					}
+					TextWait
+					TextTalk self {
+						呵呵……這下可以安心
+						專注於制定議會上的對策了。{wait}
+					}
+					TextWait
+					FlagSet flag[1]
+				else:
+					TextTalk self {
+						話說回來，議員竟會方寸大亂，
+						這還真是少見啊……{wait}
+					}
+					TextWait
+					TextTalk self {
+						莫非真的是在擔心小姐嗎？
+						……才不可能吧，哈哈哈！{wait}
+					}
+					TextWait
+			elif !flag[1]:
+				TextTalk self {
+					哎？沒能將
+					小姐帶回來嗎？{wait}
+				}
+				TextWait
+				TextTalk self {
+					哎呀哎呀……
+					算了，只要不被帝國派發現，
+					怎樣都無所謂。{wait}
+				}
+				TextWait
+				TextTalk self {
+					我們可是在忙著應對黑月和
+					制定議會上的對策呢，
+					可以請你們回去了嗎？{wait}
+				}
+				TextWait
+				FlagSet flag[1]
+			else:
+				TextTalk self {
+					我們正忙著應對黑月和
+					制定議會上的對策，
+					請你們回去吧。{wait}
+				}
+				TextWait
+		elif !flag[1]:
+			TextTalk self {
+				議員是一個
+				很有講究的人。{wait}
+			}
+			TextWait
+			TextTalk self {
+				例如，早飯一定要
+				與家人一起吃，就是這樣。{wait}
+			}
+			TextWait
+			TextTalk self {
+				雖然也跟大小姐說過
+				要遵守這個規矩了，
+				但她似乎很不情願呢。{wait}
+			}
+			TextWait
+			Emote field_party[0] 0mm 2000mm 16 19 250ms 1
+			SoundPlay sound[23] 0 100 0
+			Emote field_party[1] 0mm 2000mm 16 19 250ms 1
+			SoundPlay sound[23] 0 100 0
+			Emote field_party[2] 0mm 2000mm 16 19 250ms 1
+			SoundPlay sound[23] 0 100 0
+			Emote field_party[3] 0mm 2000mm 16 19 250ms 1
+			SoundPlay sound[23] 0 100 0
+			Sleep 1000ms
+			if !QuestTaskGet quest[45] 3:
+				TextTalk name[2] {
+					#0203F……是這樣啊。{wait}
+				}
+				TextWait
+				TextTalk self {
+					兩人不和的原因
+					也許就出在那裡吧。{wait}
+				}
+				TextWait
+				TextTalk self {
+					……總之，小姐今天早上
+					至少是來吃了早餐的。{wait}
+				}
+				TextWait
+				TextTalk self {
+					因為我也
+					一起叨擾了，
+					肯定不會有錯。{wait}
+				}
+				TextWait
+				if QuestTaskGet quest[45] 4 && QuestTaskGet quest[45] 2:
+					TextTalk name[2] {
+						#0200F（情報都搜集完了……
+						　先回到卡拉小姐的房間，
+						　再重新開始推理吧。）{wait}
+					}
+					TextWait
+					TextTalk name[0] {
+						#0000F（嗯，就這麼辦吧。）{wait}
+					}
+					TextWait
+				QuestTaskSet quest[45] 3
+			FlagSet flag[1]
+		else:
+			TextTalk self {
+				總之我們這邊已經因為議會對策
+				和黑月事件而忙得不可開交了。{wait}
+			}
+			TextWait
+			TextTalk self {
+				你們在進行調查時，
+				一定要儘量隱秘，
+				給我注意不要讓帝國派發現了！{wait}
+			}
+			TextWait
+		CharSetChipPattern self 2
+		TextEnd self
+	Return
+
+fn[8]:
+	TextStart self
+	if flag[1792]:
+		if !flag[2]:
+			TextTalk self {
+				聽說預算會議已經結束了呢，
+				這樣的話，父親也能提早回來吧。{wait}
+			}
+			TextWait
+			TextTalk self {
+				……真沒辦法……
+				我就勉為其難地陪他共進晚餐吧。{wait}
+			}
+			TextWait
+			FlagSet flag[2]
+		else:
+			TextTalk self {
+				……這次可不是因為
+				他要求我這麼做，
+				只是我正好有心情而已。{wait}
+			}
+			TextWait
+			TextTalk self {
+				因為，我心裡也不是真的
+				討厭父親。{wait}
+			}
+			TextWait
+	elif flag[1566]:
+		if !flag[2]:
+			TextTalk self {
+				今天我準備和瑪夏
+				一起去購物。{wait}
+			}
+			TextWait
+			TextTalk self {
+				呵呵……父親他也
+				不再囉囉嗦嗦了，
+				感覺變得好自由呢。{wait}
+			}
+			TextWait
+			TextTalk self {
+				這都是多虧了各位。{wait}
+			}
+			TextWait
+			FlagSet flag[2]
+		else:
+			TextTalk self {
+				今天我準備和瑪夏
+				一起去購物。{wait}
+			}
+			TextWait
+			TextTalk self {
+				呵呵……父親他也
+				不再囉囉嗦嗦了，
+				感覺變得好自由呢。{wait}
+			}
+			TextWait
+	elif flag[1554]:
+		if !flag[2]:
+			TextTalk self {
+				果然還是自己家最好了。{wait}
+			}
+			TextWait
+			TextTalk self {
+				……艾莉小姐，還有各位，
+				今天真是受你們多方照顧了。{wait}
+			}
+			TextWait
+			TextTalk name[1] {
+				#0100F請不必在意。
+				比起那個……請你平時
+				多和令尊溝通溝通吧。{wait}
+			}
+			TextWait
+			TextTalk self {
+				嗯，放心吧，沒問題了，
+				因為我已經有了自信。{wait}
+			}
+			TextWait
+			FlagSet flag[2]
+		else:
+			TextTalk self {
+				……艾莉小姐，還有各位，
+				今天真是受你們多方照顧了。{wait}
+			}
+			TextWait
+			TextTalk self {
+				請再來玩哦。{wait}
+			}
+			TextWait
+	TextEnd self
+	Return
+
+fn[9]:
+	TextStart self
+	if flag[1792]:
+		TextTalk self {
+			今晚準備了
+			豪華的晚餐。{wait}
+		}
+		TextWait
+		TextTalk self {
+			呵呵……如果小姐和老爺
+			能高興就好了。{wait}
+		}
+		TextWait
+	elif flag[1566]:
+		if QuestTaskGet quest[45] 14:
+			TextTalk self {
+				小姐她，露出了
+				很燦爛的笑容呢。{wait}
+			}
+			TextWait
+			TextTalk self {
+				呵呵……我很期待今天
+				和小姐一起去購物。{wait}
+			}
+			TextWait
+		else:
+			TextTalk self {
+				……小姐她…………{wait}
+			}
+			TextWait
+			TextTalk self {
+				離家出走後就孤身一人……
+				不要緊嗎……{wait}
+			}
+			TextWait
+	elif flag[1554]:
+		if QuestTaskGet quest[45] 14:
+			if !flag[3]:
+				TextTalk self {
+					各位，我真的不知道
+					該如何感謝你們才好……{wait}
+				}
+				TextWait
+				TextTalk self {
+					果然還是應該找各位商量呀，
+					幸好當時沒有盲目服從小姐……{wait}
+				}
+				TextWait
+				TextTalk name[0] {
+					#0000F如果發生什麼的話，歡迎再來
+					找我們『特務支援課』商談。{wait}
+				}
+				TextWait
+				TextTalk self {
+					好、好的。
+					一定會的！{wait}
+				}
+				TextWait
+				FlagSet flag[3]
+			else:
+				TextTalk self {
+					各位，真的非常感謝。
+					我真慶幸自己拿出了勇氣。{wait}
+				}
+				TextWait
+		else:
+			TextTalk self {
+				今天將工作都
+				擱下了……{wait}
+			}
+			TextWait
+			TextTalk self {
+				……如果不快點準備，
+				就來不及做飯了……{wait}
+			}
+			TextWait
+	TextEnd self
+	Return
+
+fn[10]:
+	EventBegin 0
+	FadeOut 1000ms 0x00000000 255
+	FadeWait
+	CamSetDistance 440 1000 42830 0ms
+	ED7CamRotate 54deg 20deg 0deg 0ms
+	CamPers 390 0ms
+	CamZoom 22640 0ms
+	CharSetPos name[0] (500, 0, 40660) 0deg
+	CharSetPos name[1] (-500, 0, 40660) 0deg
+	CharSetPos name[2] (-500, 60, 39200) 0deg
+	CharSetPos name[3] (500, 60, 39200) 0deg
+	FadeIn 1000ms 0x00000000
+	FadeWait
+	TextTalk char[0] {
+		#5P可惡，竟然給我惹出這種麻煩……！{wait}
+	}
+	TextWait
+	TextTalk char[2] {
+		#11P但是議員，我們必須
+		快點制定對策……{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#12P#0000F那個，抱歉打擾了，
+		我們是因為支援請求前來拜訪的。{wait}
+	}
+	TextWait
+	Emote char[0] 0mm 2000mm 38 38 250ms 1
+	Emote char[2] 0mm 2000mm 38 38 250ms 1
+	Sleep 500ms
+	CharSetChipPattern char[2] 1
+	CrossFade 300ms
+	CharSetPos char[2] (1900, 60, 43630) 270deg
+	CharSetChipBase char[2] chip[1]
+	CharSetChipPattern char[2] 0
+	SoundPlay sound[820] 0 100 0
+	FadeWait
+	CharWalkToPos char[2] (2029, 60, 42410) 1000mm/s 0
+	CharTurnTo char[2] 225deg 400deg/s
+	TextTalk char[2] {
+		#5P是警察局的那個什麼什麼課吧？{wait}
+	}
+	TextWait
+	TextTalk char[2] {
+		#5P太好了，現在我們可是
+		束手無策了！{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#5P哎呀，等一下……{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#5P那邊那位不是麥克道爾
+		市長家的艾莉嗎，
+		為什麼你也會與他們同行呢！？{wait}
+	}
+	TextWait
+	TextTalk name[1] {
+		#12P#0103F久疏問候，議員。{wait}
+	} {
+		#0100F那個……我現在
+		正在警察體系工作，
+		今天是作為一名警官前來拜訪的。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#5P是、是這樣啊。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#5P唔唔，算了，市長是中立派，
+		應該沒什麼大問題吧……{wait}
+	}
+	TextWait
+	CharTurnToChar char[2] char[0] 400deg/s
+	Sleep 300ms
+	TextTalk char[2] {
+		#11P但是議員，帝國派的傢伙
+		都很卑鄙狡猾，
+		如果不小心被他們知道了……{wait}
+	}
+	TextWait
+	TextTalk name[3] {
+		#12P#0300F（……以大小姐的立場來說，
+		　很容易演變為政治問題呢。）{wait}
+	}
+	TextWait
+	TextTalk name[1] {
+		#12P#0106F（跟議員先生們說話
+		　還真累……）{wait}
+	} {
+		#0101F那個，議員先生，能請您
+		將可以透露的部分告訴我們嗎？{wait}
+	} {
+		而且您看上去似乎
+		也很困擾……{wait}
+	}
+	TextWait
+	TextTalk name[2] {
+		#12P#0200F支援請求的內容
+		好像是『重要人士的搜索委託』吧。{wait}
+	}
+	TextWait
+	CharTurnToChar char[2] name[0] 400deg/s
+	Sleep 300ms
+	TextTalk char[0] {
+		#5P是、是啊，
+		其實發生了一件棘手的事。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#5P……事到如今也沒辦法了，
+		我就將情況全部說明一下吧。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#5P但是有件事我先說在前面，
+		這是涉及到政治決定的重要案件。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#5P我們共和國派也
+		陷入了困難的局面……
+		所以絕對不可以將這件事洩露出去！{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#12P#0001F知道了，
+		我們保證不會洩露。{wait}
+	}
+	TextWait
+	TextTalk name[1] {
+		#12P#0100F我們發誓絕不會做
+		對您不利的事。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#5P好，那麼我就告訴你們吧。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#5P……實際上，我們共和派的
+		某個人物突然失蹤了。{wait}
+	}
+	TextWait
+	Emote field_party[0] 0mm 2000mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Emote field_party[1] 0mm 2000mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Emote field_party[2] 0mm 2000mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Emote field_party[3] 0mm 2000mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Sleep 1000ms
+	TextTalk name[2] {
+		#12P#0205F失蹤了……？{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#5P是我的女兒。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#5P她好像帶著女僕
+		離家出走了。{wait}
+	}
+	TextWait
+	Emote field_party[0] 0mm 2000mm 16 19 250ms 1
+	SoundPlay sound[23] 0 100 0
+	Emote field_party[1] 0mm 2000mm 16 19 250ms 1
+	SoundPlay sound[23] 0 100 0
+	Emote field_party[2] 0mm 2000mm 16 19 250ms 1
+	SoundPlay sound[23] 0 100 0
+	Emote field_party[3] 0mm 2000mm 16 19 250ms 1
+	SoundPlay sound[23] 0 100 0
+	Sleep 1200ms
+	TextTalk name[3] {
+		#12P#0306F（賣了這麼大的關子，
+		　結果只是女兒離家出走啊……）{wait}
+	}
+	TextWait
+	TextTalk name[1] {
+		#12P#0101F令千金……就是卡拉小姐吧？
+		我曾經與她一起
+		在主日學校上過課。{wait}
+	}
+	TextWait
+	TextTalk char[2] {
+		#5P哎呀，是嗎。
+		……議員他與小姐的關係
+		並不是很好。{wait}
+	}
+	TextWait
+	TextTalk char[2] {
+		#5P一直以來，
+		就爭執不斷呢。{wait}
+	}
+	TextWait
+	TextTalk char[2] {
+		#5P但是現在時機實在不好……{wait}
+	}
+	TextWait
+	TextTalk char[2] {
+		#5P我們的後盾黑月
+		似乎在今日凌晨遭到了襲擊。
+		我們這邊為了應付這件事，已經是精疲力盡了……{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#5P哼，這個蠢女兒。
+		現在這麼忙，我根本就
+		沒空管她。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#5P而且最近黑手黨之間的鬥爭
+		似乎也激烈化了……{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#5P跟女僕兩人四處遊蕩，
+		該有多大危險啊。{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#12P#0003F原來如此，您果然
+		是在擔心令千金的安危。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#5P……而且，這件事要是洩露出去的話，
+		帝國派的傢伙們就會
+		把它當成攻擊材料吧。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#5P議會還是混戰一片的局面，
+		這種時候更要避免這種醜聞。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#5P你們幾個，無論如何都要
+		將她秘密帶回。{wait}
+	}
+	TextWait
+	Emote field_party[0] 0mm 2000mm 16 19 250ms 1
+	SoundPlay sound[23] 0 100 0
+	Emote field_party[1] 0mm 2000mm 16 19 250ms 1
+	SoundPlay sound[23] 0 100 0
+	Emote field_party[2] 0mm 2000mm 16 19 250ms 1
+	SoundPlay sound[23] 0 100 0
+	Emote field_party[3] 0mm 2000mm 16 19 250ms 1
+	SoundPlay sound[23] 0 100 0
+	Sleep 1200ms
+	TextTalk name[2] {
+		#12P#0203F（結果在意的還是公眾影響啊……）{wait}
+	}
+	TextWait
+	TextTalk name[3] {
+		#12P#0306F（思考方式還真是有大人物的風格。）{wait}
+	}
+	TextWait
+	TextTalk name[1] {
+		#12P#0103F（雖然已經預料到了……）{wait}
+	}
+	TextWait
+	_59
+	Fork name[1] fork[1]:
+		CharTurnToChar self name[3] 400deg/s
+	Sleep 50ms
+	Fork name[0] fork[1]:
+		CharTurnToChar self name[2] 400deg/s
+	Fork name[3] fork[1]:
+		CharTurnToChar self name[1] 400deg/s
+	Fork name[2] fork[1]:
+		CharTurnToChar self name[0] 400deg/s
+	Sleep 400ms
+	TextTalk name[1] {
+		#6P#0101F這種情況確實很令人擔心……
+		而且我覺得卡拉小姐被
+		捲入什麼事件的可能性也不低。{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#12P#0003F是啊……{wait}
+	}
+	TextWait
+	Fork name[0] fork[1]:
+		CharTurnTo self 0deg 400deg/s
+	Fork name[1] fork[1]:
+		CharTurnTo self 0deg 400deg/s
+	Fork name[2] fork[1]:
+		CharTurnTo self 0deg 400deg/s
+	Fork name[3] fork[1]:
+		CharTurnTo self 0deg 400deg/s
+	Sleep 400ms
+	TextTalk name[0] {
+		#12P#0001F知道了，
+		就由我們來尋找令千金吧。{wait}
+	}
+	TextWait
+	TextTalk char[2] {
+		#5P哦哦，太好了！{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#5P儘快把她給我帶回來。{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#12P#0003F雖然我們沒法確保一定能做到那點……{wait}
+	} {
+		#0001F但我們會盡力查明
+		令千金的行蹤，
+		並保障她的安全的。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#5P哎，沒辦法。
+		只要找到她在哪，之後也就好辦了……{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#5P就給我按照那個方針去辦吧。{wait}
+	}
+	TextWait
+	TextTalk char[2] {
+		#5P小姐似乎在自己的房間裡
+		留了字條。{wait}
+	}
+	TextWait
+	TextTalk char[2] {
+		#5P如果要進行調查，
+		可以將那個當成線索。{wait}
+	}
+	TextWait
+	Fork field_party[0] fork[1]:
+		CharTurnToChar self char[2] 400deg/s
+	Fork field_party[1] fork[1]:
+		CharTurnToChar self char[2] 400deg/s
+	Fork field_party[2] fork[1]:
+		CharTurnToChar self char[2] 400deg/s
+	Fork field_party[3] fork[1]:
+		CharTurnToChar self char[2] 400deg/s
+	Sleep 300ms
+	TextTalk name[1] {
+		#12P#0101F知道了，
+		那就請允許我們前去查看一下吧。{wait}
+	}
+	TextWait
+	FadeOut 300ms 0x00000000 100
+	SoundPlay sound[80] 0 100 0
+	TextSetPos -1 -1 -1 -1
+	TextSetName ""
+	TextMessage null {
+		{color 2}任務【重要人士的搜索委託】{color 0}開始！{wait}
+	}
+	TextWait
+	TextClose 0
+	FadeIn 300ms 0x00000000
+	TextSetPos -1 280 60 3
+	FadeOut 1000ms 0x00000000 255
+	FadeWait
+	CharSetPos field_party[0] (30, 0, 40130) 180deg
+	CharSetPos char[2] (2300, 250, 43630) 270deg
+	CharSetChipBase char[2] chip[2]
+	CharSetChipPattern char[2] 2
+	QuestTaskSet quest[45] 1
+	Sleep 500ms
+	EventEnd 5
+	Return
+
+fn[11]:
+	EventBegin 0
+	CrossFade 800ms
+	CamSetDistance 44280 1560 2580 0ms
+	ED7CamRotate 56deg 25deg 0deg 0ms
+	CamPers 390 0ms
+	CamZoom 21530 0ms
+	CharSetPos name[0] (44280, 60, 2500) 135deg
+	CharSetPos name[1] (45340, 60, 3250) 135deg
+	CharSetPos name[2] (43820, 60, 3620) 135deg
+	CharSetPos name[3] (44820, 60, 4220) 135deg
+	FadeWait
+	TextTalk name[0] {
+		#12P#0005F似乎在筆記本上
+		寫了留言呢……{wait}
+	}
+	TextWait
+	CharWalkToPos name[1] (45710, 60, 2120) 1000mm/s 0
+	CharTurnTo name[1] 90deg 400deg/s
+	TextTalk name[1] {
+		#11P#0103F我看看……{wait}
+	} {
+		『我已經受夠了，
+		　父親您愛怎麼樣就怎麼樣吧。』{wait}
+	} {
+		『我也要按自己的想法行事！
+		　　卡拉』。{wait}
+	} {
+		『ＰＳ：女僕我也帶走了，
+		　您就為了沒法準備食物
+		　而苦惱吧！』{wait}
+	}
+	TextWait
+	Emote field_party[0] 0mm 2000mm 16 19 250ms 1
+	SoundPlay sound[23] 0 100 0
+	Emote field_party[1] 0mm 2000mm 16 19 250ms 1
+	SoundPlay sound[23] 0 100 0
+	Emote field_party[2] 0mm 2000mm 16 19 250ms 1
+	SoundPlay sound[23] 0 100 0
+	Emote field_party[3] 0mm 2000mm 16 19 250ms 1
+	SoundPlay sound[23] 0 100 0
+	Sleep 1200ms
+	TextTalk name[0] {
+		#12P#0006F該怎麼說呢……{wait}
+	}
+	TextWait
+	TextTalk name[3] {
+		#5P#0306F雖然父親是那樣，
+		但這個女兒也相當任性呢。{wait}
+	}
+	TextWait
+	CharTurnTo name[1] 315deg 400deg/s
+	CharTurnToChar name[0] name[1] 400deg/s
+	Sleep 300ms
+	TextTalk name[1] {
+		#11P#0108F坎貝爾議員是那種
+		為了工作不顧家庭的類型呢。{wait}
+	} {
+		說起來，卡拉小姐從以前開始
+		就一直在抱怨自己的父親……{wait}
+	} {
+		#0103F我想只要有一條導火線，
+		她離家出走也不奇怪。{wait}
+	}
+	TextWait
+	TextTalk name[2] {
+		#6P#0203F但是她似乎並沒有
+		寫明那條導火線呢。{wait}
+	} {
+		#0200F從留言上只能看出，
+		她是以自己的意志離家出走的。{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#12P#0000F是啊……
+		從內容上來看，可以知道這是……{wait}
+	}
+	TextWait
+	var[0] = 0
+	FadeOut 300ms 0x00000000 100
+	Menu menu[0] -1 -1 0
+		"【突發性的離家出走】" // 0
+		"【有計劃的離家出走】" // 1
+	MenuWait var[0]
+	FadeIn 300ms 0x00000000
+	MenuClose menu[0]
+	if var[0] == 0:
+		CharTurnToChar name[0] name[3] 400deg/s
+		CharTurnToChar name[3] name[0] 400deg/s
+		Sleep 300ms
+		TextTalk name[0] {
+			#12P#0003F應該是比較突然的離家出走吧。{wait}
+		} {
+			就像艾莉所說的那樣，
+			應該有條導火線的……{wait}
+		} {
+			#0001F然後她一生氣，
+			就奔出家門了吧。{wait}
+		}
+		TextWait
+		TextTalk name[2] {
+			#6P#0200F原來如此，就是那種感覺。{wait}
+		}
+		TextWait
+		TextTalk name[3] {
+			#5P#0300F如果早有計劃，
+			留言中應該會涉及更多
+			各式各樣的怨言吧。{wait}
+		}
+		TextWait
+		FlagSet flag[1681]
+	else:
+		TextTalk name[0] {
+			#12P#0003F是早有計劃的吧……{wait}
+		}
+		TextWait
+		CharTurnToChar name[3] name[0] 400deg/s
+		Sleep 300ms
+		TextTalk name[3] {
+			#5P#0305F如果早有計劃，留言中應該會
+			寫有更多各式各樣的抱怨吧？{wait}
+		}
+		TextWait
+		TextTalk name[2] {
+			#6P#0200F如果是那樣，為了傳達自己
+			想要反抗的意志，內容應該會
+			更加條理分明，字跡工整呢。{wait}
+		}
+		TextWait
+		CharTurnToChar name[0] name[3] 400deg/s
+		Sleep 300ms
+		TextTalk name[0] {
+			#12P#0006F是、是嗎……{wait}
+		} {
+			看這種潦草的字跡，也許
+			應該是突發性的離家出走吧……{wait}
+		}
+		TextWait
+	TextTalk name[1] {
+		#11P#0101F她是什麼時候
+		離家出走的呢？{wait}
+	} {
+		#0108F希望她
+		還沒走遠……{wait}
+	}
+	TextWait
+	if !QuestTaskGet quest[45] 2 | !QuestTaskGet quest[45] 3:
+		CharTurnToChar name[0] name[1] 400deg/s
+		Sleep 300ms
+		TextTalk name[0] {
+			#12P#0003F從字條的內容上
+			是看不出來的呢。{wait}
+		} {
+			#0001F先問一下議員
+			他們兩人吧。{wait}
+		}
+		TextWait
+		TextTalk name[3] {
+			#5P#0300F好，去確認一下吧。{wait}
+		}
+		TextWait
+		TextTalk name[2] {
+			#6P#0200F是啊，確認完畢之後
+			再回到這裡吧。{wait}
+		}
+		TextWait
+		CharSetPos field_party[0] (45270, 60, 2680) 152deg
+		QuestTaskSet quest[45] 4
+		EventEnd 5
+	else:
+		CharTurnToChar name[0] name[1] 400deg/s
+		Sleep 300ms
+		Call fn[0,12]
+		Return
+	Return
+
+fn[12]:
+	TextTalk name[0] {
+		#12P#0003F……我想想。
+		從剛才議員他們
+		所說的內容來看，時間應該是……{wait}
+	}
+	TextWait
+	var[0] = 0
+	var[3] = 0
+	FadeOut 300ms 0x00000000 100
+	Menu menu[0] -1 -1 0
+		"【昨天】" // 0
+		"【今天中午之前】" // 1
+		"【就在剛才】" // 2
+	MenuWait var[0]
+	FadeIn 300ms 0x00000000
+	MenuClose menu[0]
+	if var[0] == 1:
+		var[3] += 1
+		TextTalk name[1] {
+			#11P#0103F早餐時還在，
+			但過了中午之後就不在了……{wait}
+		} {
+			#0101F出走時間無疑就是
+			今天上午了。{wait}
+		}
+		TextWait
+	elif var[0] == 0:
+		TextTalk name[1] {
+			#11P#0105F咦，但據說她今天早上
+			還出來吃了早餐……{wait}
+		}
+		TextWait
+		TextTalk name[0] {
+			#12P#0006F弄錯了……
+			似乎是過了中午才注意到她不見了的，
+			那麼出走時間就應該是今天上午了。{wait}
+		}
+		TextWait
+	else:
+		TextTalk name[1] {
+			#11P#0105F咦，但議員他們好像在中午
+			就已經發現卡拉小姐不見了……{wait}
+		}
+		TextWait
+		TextTalk name[0] {
+			#12P#0006F弄錯了……
+			今天早餐時她似乎還在，
+			那麼出走時間就應該是今天上午了。{wait}
+		}
+		TextWait
+	TextTalk name[2] {
+		#6P#0200F似乎還追得上。{wait}
+	}
+	TextWait
+	TextTalk name[3] {
+		#5P#0301F問題是她去了哪裡。{wait}
+	} {
+		#0303F要從這位離家出走的小姐
+		的交友關係上推測一下嗎？{wait}
+	}
+	TextWait
+	CharTurnToChar name[0] name[3] 400deg/s
+	TextTalk name[0] {
+		#12P#0003F不，那就太浪費時間了。{wait}
+	} {
+		#0001F而且，從目前的狀況來看，
+		應該能夠十拿九穩地推測出
+		她最有可能會去的地方。{wait}
+	}
+	TextWait
+	Emote name[1] 0mm 2000mm 0 1 250ms 2
+	SoundPlay sound[29] 0 100 0
+	Emote name[3] 0mm 2000mm 0 1 250ms 2
+	SoundPlay sound[29] 0 100 0
+	Emote name[2] 0mm 2000mm 0 1 250ms 2
+	SoundPlay sound[29] 0 100 0
+	Sleep 1200ms
+	TextTalk name[0] {
+		#12P#0000F突發性的決定，
+		加上今天上午剛剛離開。{wait}
+	} {
+		她可能會去的地方是……{wait}
+	}
+	TextWait
+	var[0] = 0
+	FadeOut 300ms 0x00000000 100
+	Menu menu[0] -1 -1 0
+		"【大教堂】" // 0
+		"【市政廳】" // 1
+		"【ＩＢＣ】" // 2
+	MenuWait var[0]
+	FadeIn 300ms 0x00000000
+	MenuClose menu[0]
+	if var[0] == 2:
+		var[3] += 1
+		TextTalk name[0] {
+			#12P#0000F應該是ＩＢＣ吧。{wait}
+		}
+		TextWait
+		TextTalk name[3] {
+			#5P#0300F原來如此……是去
+			確保眼下離家出走的資金了啊。{wait}
+		} {
+			從某種意義上來說，
+			是離家出走的常見套路呢。{wait}
+		}
+		TextWait
+		TextTalk name[1] {
+			#11P#0100F而且如果是突發性的離家出走，
+			身上應該也不會有多少現金吧。
+			很有可能是去ＩＢＣ呢。{wait}
+		}
+		TextWait
+		TextTalk name[2] {
+			#6P#0200F那我們就去ＩＢＣ吧，
+			她也許還在那裡呢。{wait}
+		}
+		TextWait
+		TextTalk name[0] {
+			#12P#0000F是啊，儘量加快腳步吧！{wait}
+		}
+		TextWait
+	else:
+		if var[0] == 0:
+			TextTalk name[0] {
+				#12P#0000F是大教堂嗎？{wait}
+			} {
+				信仰堅定的人
+				是有可能會去那裡的吧。{wait}
+			}
+			TextWait
+			TextTalk name[1] {
+				#11P#0108F是啊……但我想卡拉小姐
+				對教會的信仰並不是很堅定。{wait}
+			}
+			TextWait
+		else:
+			TextTalk name[0] {
+				#12P#0000F是市政廳嗎？{wait}
+			} {
+				比如說，果斷去提交了
+				遷居申請之類的。{wait}
+			}
+			TextWait
+			TextTalk name[1] {
+				#11P#0108F是啊……但我懷疑突然奔出家門
+				的卡拉小姐會不會有那麼冷靜……{wait}
+			}
+			TextWait
+		Emote name[2] 0mm 2000mm 24 27 250ms 1
+		Sleep 1000ms
+		TextTalk name[2] {
+			#6P#0203F因為是突發性的離家出走，{wait}
+		} {
+			#0200F所以身上現金不多的
+			可能性也很高吧？{wait}
+		}
+		TextWait
+		Emote name[0] 0mm 2000mm 38 38 250ms 1
+		Emote name[3] 0mm 2000mm 38 38 250ms 1
+		Emote name[1] 0mm 2000mm 38 38 250ms 1
+		Sleep 500ms
+		Fork name[0] fork[1]:
+			CharTurnToChar self name[2] 400deg/s
+		Fork name[3] fork[1]:
+			CharTurnToChar self name[2] 400deg/s
+		Fork name[1] fork[1]:
+			CharTurnToChar self name[2] 400deg/s
+		Sleep 300ms
+		TextTalk name[0] {
+			#12P#0005F是嗎，是去ＩＢＣ
+			取離家出走的資金了吧……！{wait}
+		}
+		TextWait
+		TextTalk name[3] {
+			#5P#0303F這麼一想，
+			的確是離家出走的常見套路呢。{wait}
+		} {
+			#0300F好，就去一趟ＩＢＣ吧！{wait}
+		}
+		TextWait
+		TextTalk name[1] {
+			#11P#0100F嗯，儘量
+			加快腳步吧！{wait}
+		}
+		TextWait
+	if var[3] >= 2 && flag[1681]:
+		QuestBonusBp quest[45] 2
+	FadeOut 1000ms 0x00000000 255
+	FadeWait
+	CharSetPos field_party[0] (45270, 60, 2680) 152deg
+	QuestTaskSet quest[45] 5
+	Sleep 500ms
+	EventEnd 5
+	Return
+
+fn[13]:
+	if QuestTaskGet quest[45] 1 && !QuestTaskGet quest[45] 5 && !QuestFlagsGet quest[45] 0x40:
+		if QuestTaskGet quest[45] 4 && (!QuestTaskGet quest[45] 2 | !QuestTaskGet quest[45] 3):
+			TextStart null
+			FadeOut 300ms 0x00000000 100
+			TextSetPos -1 -1 -1 -1
+			TextSetName ""
+			TextMessage null {
+				{color 5}『我已經受夠了，
+				　父親您愛怎麼樣就怎麼樣吧。
+				　我也要按自己的想法行事！
+				　　　　　　　　　　卡拉　』{wait}
+			}
+			TextWait
+			TextMessage null {
+				{color 5}『ＰＳ：女僕我也帶走了，
+				　您就為了沒法準備食物
+				　而苦惱吧！』{wait}
+			}
+			TextWait
+			TextClose 0
+			FadeIn 300ms 0x00000000
+			TextSetPos -1 280 60 3
+			_59
+			TextEnd null
+		elif QuestTaskGet quest[45] 4:
+			EventBegin 0
+			CrossFade 800ms
+			CamSetDistance 44280 1560 2580 0ms
+			ED7CamRotate 56deg 25deg 0deg 0ms
+			CamPers 390 0ms
+			CamZoom 21530 0ms
+			CharSetPos name[0] (44280, 60, 2500) 0deg
+			CharSetPos name[1] (45340, 60, 3250) 270deg
+			CharSetPos name[2] (43820, 60, 3620) 90deg
+			CharSetPos name[3] (44820, 60, 4220) 180deg
+			FadeWait
+			TextTalk name[1] {
+				#11P#0108F卡拉小姐，
+				到底是什麼時候
+				離家出走的呢？{wait}
+			} {
+				#0103F希望她
+				還沒走遠……{wait}
+			}
+			TextWait
+			Call fn[0,12]
+		else:
+			Call fn[0,11]
+		Return
+	TextStart null
+	FadeOut 300ms 0x00000000 100
+	TextSetPos -1 -1 -1 -1
+	TextSetName ""
+	TextMessage null {
+		{color 5}『我已經受夠了，
+		　父親您愛怎麼樣就怎麼樣吧。
+		　我也要按自己的想法行事！
+		　　　　　　　　　　卡拉　』{wait}
+	}
+	TextWait
+	TextMessage null {
+		{color 5}『ＰＳ：女僕我也帶走了，
+		　您就為了沒法準備食物
+		　而苦惱吧！』{wait}
+	}
+	TextWait
+	TextClose 0
+	FadeIn 300ms 0x00000000
+	TextSetPos -1 280 60 3
+	_59
+	TextEnd null
+	Return

@@ -1,0 +1,902 @@
+calmare zero_k scena
+scena:
+	name "e3000" "e3000" "e3000"
+	town town[161]
+	bgm bgm[104]
+	flags 8192
+	item_use fn[0,255]
+	unk 255 0
+
+entry:
+	pos (0, 0, -1000)
+	unk1 0
+	cam_from (0, 0, 34000)
+	cam_pers 262
+	unk2 30
+	cam_deg 45deg
+	cam_limit 0deg 360deg
+	cam_at (0, 0, 0)
+	unk3 0
+	unk4 0
+	flags 0x0001
+	town town[161]
+	init fn[0,2]
+	reinit fn[0,3]
+
+chip[0] "chr/ch07400.itc"
+chip[1] "chr/ch20602.itc"
+chip[2] "chr/ch20202.itc"
+chip[3] "chr/ch20302.itc"
+chip[4] "chr/ch21600.itc"
+chip[5] "apl/ch50352.itc"
+chip[6] null
+chip[7] null
+chip[8] null
+chip[9] null
+chip[10] null
+chip[11] null
+chip[12] null
+chip[13] null
+chip[14] null
+chip[15] null
+chip[16] null
+chip[17] null
+chip[18] null
+chip[19] null
+chip[20] null
+chip[21] null
+chip[22] null
+chip[23] null
+chip[24] null
+chip[25] null
+chip[26] null
+chip[27] null
+chip[28] null
+chip[29] null
+
+npc char[0]:
+	name "雷克多"
+	pos (2950, 4099, -7750)
+	angle 180deg
+	flags 0x0101
+	unk2 0
+	chip chip[0]
+	init fn[0,0]
+	talk fn[0,5]
+	unk4 255
+
+npc char[1]:
+	name "男孩"
+	pos (-1169, 4250, 899)
+	angle 180deg
+	flags 0x0155
+	unk2 0
+	chip chip[1]
+	init fn[255,255]
+	talk fn[0,6]
+	unk4 255
+
+npc char[2]:
+	name "男性"
+	pos (1029, 4250, 899)
+	angle 180deg
+	flags 0x0155
+	unk2 0
+	chip chip[2]
+	init fn[255,255]
+	talk fn[0,7]
+	unk4 255
+
+npc char[3]:
+	name "女性"
+	pos (2210, 4250, 899)
+	angle 180deg
+	flags 0x0155
+	unk2 0
+	chip chip[3]
+	init fn[255,255]
+	talk fn[0,8]
+	unk4 255
+
+npc char[4]:
+	name "遊客"
+	pos (0, 4099, 12760)
+	angle 0deg
+	flags 0x0101
+	unk2 0
+	chip chip[4]
+	init fn[0,0]
+	talk fn[0,9]
+	unk4 255
+
+npc char[5]:
+	name "SE控制"
+	pos (0, 0, 0)
+	angle 0deg
+	flags 0x00C5
+	unk2 0
+	chip chip[0]
+	init fn[255,255]
+	talk fn[255,255]
+	unk4 255
+
+fn[0]:
+	var[0] = random % 100
+	if var[0] > 75:
+		Sleep 600ms
+	elif var[0] > 50:
+		Sleep 400ms
+	elif var[0] > 25:
+		Sleep 200ms
+	while 1:
+		CharSetChipPattern self 0
+		Sleep 100ms
+		CharSetChipPattern self 1
+		Sleep 100ms
+		CharSetChipPattern self 2
+		Sleep 100ms
+		CharSetChipPattern self 1
+		Sleep 100ms
+		CharSetChipPattern self 0
+		Sleep 100ms
+		CharSetChipPattern self 3
+		Sleep 100ms
+		CharSetChipPattern self 4
+		Sleep 100ms
+		CharSetChipPattern self 3
+		Sleep 100ms
+	Return
+
+fn[1]:
+	while 1:
+		ED7CharAnimation self 1000ms 0 1 2 3 4 5
+		Sleep 1ms
+	Return
+
+fn[2]:
+	if global[2] == 12 && !flag[1312]:
+		Event fn[0,14]
+	if flag[736]:
+		FlagUnset flag[736]
+		Event fn[0,10]
+	Return
+
+fn[3]:
+	if flag[1309] && !flag[1310]:
+		Call fn[0,4]
+	SoundPlay sound[479] 1 100 0
+	Return
+
+fn[4]:
+	CharSetChipBase char[0] chip[5]
+	CharSetChipPattern char[0] 0
+	ForkFunc char[0] fork[0] fn[0,1]
+	Return
+
+fn[5]:
+	if flag[1309] && !flag[1310]:
+		Call fn[0,11]
+	else:
+		TextStart char[0]
+		if !flag[0]:
+			TextTalk char[0] {
+				#3506F話說回來，那個老頭子
+				只和我說過代理出席
+				拍賣會這件事而已。{wait}
+			} {
+				#3500F要是知道有什麼
+				主題樂園，我肯定
+				一大早就會來克洛斯貝爾了～{wait}
+			}
+			TextWait
+			Emote field_party[0] 0mm 2000mm 16 19 250ms 1
+			SoundPlay sound[23] 0 100 0
+			Emote field_party[1] 0mm 2000mm 16 19 250ms 1
+			SoundPlay sound[23] 0 100 0
+			Emote field_party[2] 0mm 2000mm 16 19 250ms 1
+			SoundPlay sound[23] 0 100 0
+			Emote field_party[3] 0mm 2000mm 16 19 250ms 1
+			SoundPlay sound[23] 0 100 0
+			Sleep 1000ms
+			TextTalk name[0] {
+				#0012F骨子裡就是個遊手好閒的公子哥呢……{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				#3504F唔，這說法真是沒禮貌啊。
+				我只是忠於自己的欲望而已。{wait}
+			}
+			TextWait
+			FlagSet flag[0]
+		else:
+			TextTalk char[0] {
+				#3510F等到靠岸之後，
+				我馬上就去傳說中的
+				那個主題樂園看看。{wait}
+			}
+			TextWait
+		TextEnd char[0]
+	Return
+
+fn[6]:
+	field_party[0].5 = self.4
+	self.5 = self.4
+	TextStart self
+	CharFlagsUnset self 0x0010
+	CharTurnToChar self field_party[0] 0deg/s
+	self.4 = (self.4 + 360) % 360
+	self.4 = self.4 + 360 - self.5
+	self.5 = self.4 / 180
+	if self.4 <= 45 | self.4 >= 315 && self.4 <= 405 | self.4 >= 675:
+	elif self.5 < 1:
+		self.8 = 2
+	elif self.5 > 2:
+		self.8 = 1
+	else:
+		self.8 = self.5
+	self.4 = field_party[0].5
+	field_party[0].5 = 0
+	self.5 = 0
+	CharFlagsSet self 0x0010
+	if !flag[1]:
+		TextTalk self {
+			哇～哇～這就是水上巴士啊！
+			好快，好快～呀！{wait}
+		}
+		TextWait
+		FlagSet flag[1]
+		if !flag[1456]:
+			FlagSet flag[1456]
+			global[2] = global[2] + 1
+	else:
+		TextTalk self {
+			還要多久才能到達米修拉姆呢～？{wait}
+		}
+		TextWait
+	CharSetChipPattern self 0
+	TextEnd self
+	Return
+
+fn[7]:
+	field_party[0].5 = self.4
+	self.5 = self.4
+	TextStart self
+	CharFlagsUnset self 0x0010
+	CharTurnToChar self field_party[0] 0deg/s
+	self.4 = (self.4 + 360) % 360
+	self.4 = self.4 + 360 - self.5
+	self.5 = self.4 / 180
+	if self.4 <= 45 | self.4 >= 315 && self.4 <= 405 | self.4 >= 675:
+	elif self.5 < 1:
+		self.8 = 2
+	elif self.5 > 2:
+		self.8 = 1
+	else:
+		self.8 = self.5
+	self.4 = field_party[0].5
+	field_party[0].5 = 0
+	self.5 = 0
+	CharFlagsSet self 0x0010
+	if !flag[2]:
+		TextTalk self {
+			紀念慶典期間雖然很忙，
+			但總算是擠出了一些陪伴家人的時間啊。{wait}
+		}
+		TextWait
+		TextTalk self {
+			今天我們全家準備遊玩一天，
+			好好享受一下天倫之樂。{wait}
+		}
+		TextWait
+		FlagSet flag[2]
+		if !flag[1457]:
+			FlagSet flag[1457]
+			global[2] = global[2] + 1
+	else:
+		TextTalk self {
+			今天打算暫時忘記工作，
+			好好享受一下
+			和家人團聚的快樂。{wait}
+		}
+		TextWait
+	CharSetChipPattern self 0
+	TextEnd self
+	Return
+
+fn[8]:
+	field_party[0].5 = self.4
+	self.5 = self.4
+	TextStart self
+	CharFlagsUnset self 0x0010
+	CharTurnToChar self field_party[0] 0deg/s
+	self.4 = (self.4 + 360) % 360
+	self.4 = self.4 + 360 - self.5
+	self.5 = self.4 / 180
+	if self.4 <= 45 | self.4 >= 315 && self.4 <= 405 | self.4 >= 675:
+	elif self.5 < 1:
+		self.8 = 2
+	elif self.5 > 2:
+		self.8 = 1
+	else:
+		self.8 = self.5
+	self.4 = field_party[0].5
+	field_party[0].5 = 0
+	self.5 = 0
+	CharFlagsSet self 0x0010
+	TextTalk self {
+		老公能抽出時間來陪兒子，
+		我也很開心啊。{wait}
+	}
+	TextWait
+	TextTalk self {
+		希望能給這孩子
+		留下愉快的回憶。{wait}
+	}
+	TextWait
+	if !flag[1458]:
+		FlagSet flag[1458]
+		global[2] = global[2] + 1
+	CharSetChipPattern self 0
+	TextEnd self
+	Return
+
+fn[9]:
+	TextStart self
+	TextTalk self {
+		聽說米修拉姆有個
+		很高級的餐廳呢。{wait}
+	}
+	TextWait
+	TextTalk self {
+		不斷尋找、品嘗美食是我多年的興趣……
+		希望在克洛斯貝爾也能發現
+		一些美味的料理啊。{wait}
+	}
+	TextWait
+	if !flag[1459]:
+		FlagSet flag[1459]
+		global[2] = global[2] + 1
+	TextEnd self
+	Return
+
+fn[10]:
+	EventBegin 0
+	Sc_DA
+	FadeOut 0ms 0x00000000 255
+	CharFlagsUnset char[0] 0x0080
+	CharFlags2Unset char[0] 0x8000
+	CharFlagsSet char[0] 0x8000
+	Call fn[0,4]
+	CharFlagsUnset char[1] 0x0080
+	CharFlags2Unset char[1] 0x8000
+	CharFlagsUnset char[2] 0x0080
+	CharFlags2Unset char[2] 0x8000
+	CharFlagsUnset char[3] 0x0080
+	CharFlags2Unset char[3] 0x8000
+	CharFlagsUnset char[4] 0x0080
+	CharFlags2Unset char[4] 0x8000
+	CharFlagsSet char[1] 0x8000
+	CharFlagsSet char[2] 0x8000
+	CharFlagsSet char[3] 0x8000
+	CharFlagsSet char[4] 0x8000
+	if 1:
+		FadeIn 1000ms 0x00000000
+		CamSetDistance 80 2300 -22430 0ms
+		ED7CamRotate 11deg 18deg 0deg 0ms
+		CamPers 500 0ms
+		CamZoom 85880 0ms
+		CamSetDistance 570 2300 64420 18000ms
+		CamZoom 45950 13500ms
+		ED7CamRotate 11deg 16deg 0deg 13500ms
+		Sleep 12000ms
+		FadeWait
+	if 1:
+		CrossFade 2000ms
+		CamSetDistance 60 4500 -16129 0ms
+		ED7CamRotate 47deg 21deg 0deg 0ms
+		CamPers 500 0ms
+		CamZoom 25520 0ms
+		CamSetDistance 60 4500 20650 15000ms
+		Sleep 12000ms
+		FadeWait
+	if 1:
+		CrossFade 2000ms
+		CamSetDistance -5400 4500 -20850 0ms
+		ED7CamRotate 152deg 19deg 0deg 0ms
+		CamPers 500 0ms
+		CamZoom 29350 0ms
+		CamSetDistance -5400 4500 49430 15000ms
+		CamZoom 69180 9000ms
+		Sleep 12000ms
+		FadeWait
+	FadeOut 1000ms 0x00000000 255
+	FadeWait
+	AoEvo_D8
+	FlagSet flag[736]
+	NewScene "scena/e0510.bin" 0 0 0
+	Hcf
+	Return
+
+fn[11]:
+	EventBegin 2
+	FadeOut 1000ms 0x00000000 255
+	FadeWait
+	EventBegin 0
+	ED7LoadChip "apl/ch50351.itc" chip[30]
+	CamZoom 18440 0ms
+	CamSetDistance 2260 5800 -6790 0ms
+	ED7CamRotate 136deg 20deg 0deg 0ms
+	CamPers 500 0ms
+	CharSetPos name[0] (2350, 4100, -6500) 180deg
+	CharSetPos name[1] (3550, 4100, -6500) 180deg
+	CharSetPos name[2] (2350, 4100, -5500) 180deg
+	CharSetPos name[3] (3550, 4100, -5500) 180deg
+	CharSetPos char[0] (2950, 4100, -8150) 0deg
+	FadeIn 1000ms 0x00000000
+	BgmStop 3000ms
+	ForkFunc char[5] fork[0] fn[0,12]
+	CamZoom 16940 3000ms
+	CamWait 16
+	FadeWait
+	ForkQuit char[5] fork[0]
+	BgmWait
+	Sleep 10ms
+	BgmPlay bgm[525] 1
+	TextTalk char[0] {
+		#3509F#11P#65A#13500185V在前方等待著我們的，
+		是一座美麗的樂園～♪{wait}
+	} {
+		#65A來啊，讓我們手拉著手，
+		一同乘風破浪～♪{wait}
+	} {
+		#3510F#43A乘著白色小船，向著那座島嶼前進～♪{wait}
+	} {
+		#40A小麥色肌膚充滿魅力～♪{wait}
+	} {
+		#42A遮陽傘、椰樹，還有刨冰～♪{wait}
+	} {
+		#3504F#48A有你所在的地方，
+		就是我的樂園～♪{wait}
+	}
+	TextWait
+	ForkQuit char[0] fork[0]
+	ForkFunc char[5] fork[0] fn[0,13]
+	CrossFade 250ms
+	CharSetChipBase char[0] chip[30]
+	CharSetChipPattern char[0] 0
+	CharFlagsSet char[0] 0x0020
+	FadeWait
+	Sleep 300ms
+	Emote char[0] 0mm 2000mm 8 9 250ms 2
+	SoundPlay sound[27] 0 100 0
+	Sleep 1000ms
+	BgmStop 1000ms
+	ForkQuit char[5] fork[0]
+	Emote name[0] 0mm 2000mm 16 19 250ms 1
+	SoundPlay sound[23] 0 100 0
+	Emote name[1] 0mm 2000mm 16 19 250ms 1
+	SoundPlay sound[23] 0 100 0
+	Emote name[2] 0mm 2000mm 16 19 250ms 1
+	SoundPlay sound[23] 0 100 0
+	Emote name[3] 0mm 2000mm 16 19 250ms 1
+	SoundPlay sound[23] 0 100 0
+	Sleep 1000ms
+	EmoteStop char[0]
+	BgmWait
+	Sleep 10ms
+	BgmPlay bgm[104] 0
+	TextTalk name[0] {
+		#13500191V#0012F#6P總覺得……
+		他好像十分陶醉呢。{wait}
+	}
+	TextWait
+	TextTalk name[3] {
+		#13500192V#0306F#6P不過，演奏技術雖然意外地高明，
+		卻反而讓人覺得更☆不爽呢……{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#13500193V#3507F#11P噢，青春就是需要爆發啊。{wait}
+	} {
+		#13500194V#3509F在旅途中歌唱演奏，
+		可並不是某位皇子
+		獨有的專利哦。{wait}
+	}
+	TextWait
+	TextTalk name[2] {
+		#13500195V#0211F#6P完全不明白你在說什麼……{wait}
+	}
+	TextWait
+	TextTalk name[1] {
+		#13500196V#0100F#5P那個，雷克多先生
+		去米修拉姆有什麼事情呢？{wait}
+	} {
+		#13500197V看起來，你似乎並不是
+		為了主題樂園而來的……{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#13500198V#3503F#11P是啊～正如剛才所說，
+		我只是以代理人的身份而來的啊。{wait}
+	} {
+		#13500199V#3501F代替那個討厭的
+		狡猾大叔啦～{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#13500200V#0005F#6P狡猾大叔……？{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#13500201V#3501F#11P嗯～我想你們應該
+		聽說過他的名字吧？{wait}
+	} {
+		#13500202V一位名叫吉利亞斯・奧斯本
+		的狡猾大叔。{wait}
+	}
+	TextWait
+	Emote name[0] 0mm 2000mm 24 27 250ms 0
+	Emote name[1] 0mm 2000mm 24 27 250ms 0
+	Emote name[2] 0mm 2000mm 24 27 250ms 0
+	Emote name[3] 0mm 2000mm 24 27 250ms 0
+	Sleep 2000ms
+	EmoteStop name[0]
+	EmoteStop name[1]
+	EmoteStop name[2]
+	EmoteStop name[3]
+	Shake 100 0 3000 300ms
+	TextTalk name[0] {
+		#13500203V#0011F#6P#4S哎！？{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#13500204V#3505F#11P啊～果然知道啊。{wait}
+	} {
+		#13500205V#3506F那位大叔也就是外表看上去
+		還算風度翩翩啦。{wait}
+	} {
+		#13500206V總是精心修剪自己那把小鬍子，
+		莫非是想裝成一名與薔薇相配的
+		魅力美中年嗎～{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#13500207V#0001F#6P埃雷波尼亞帝國的宰相，
+		吉利亞斯・奧斯本……{wait}
+	}
+	TextWait
+	TextTalk name[2] {
+		#13500208V#0203F#6P……人稱『鐵血宰相』啊。{wait}
+	}
+	TextWait
+	TextTalk name[1] {
+		#13500209V#0101F#5P難、難道……
+		你是帝國政府方面的人嗎？{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#13500210V#3504F#11P呵，我不過只是個二等書記官而已。{wait}
+	} {
+		#13500211V#3500F克洛斯貝爾的領袖人物之中，
+		好像有個叫哈爾特曼的大叔吧？{wait}
+	} {
+		#13500212V那傢伙去年曾和吉利亞斯大叔進行過一次極其
+		機密的會談……雖說是機密，但這事早已經鬧得
+		眾所周知了……總之，兩人藉此建立了秘密聯繫。{wait}
+	} {
+		#13500213V因此他才會派我前來，
+		作為聯繫兩方的秘密管道。{wait}
+	} {
+		#13500214V#3506F哎呀～在政府部門工作可真夠累人的。{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#13500215V#0003F#6P是、是這樣啊……{wait}
+	} {
+		#13500216V#0005F不過，連這種事情都告訴我們，
+		真的不要緊嗎？{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#13500217V#3500F#11P哈，當然不要緊啊。{wait}
+	} {
+		#13500218V#3509F反正你們全部
+		都要葬身於此。{wait}
+	}
+	TextWait
+	BgmVolume 0 2000ms
+	Emote name[0] 0mm 2000mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Sleep 50ms
+	Emote name[1] 0mm 2000mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Sleep 50ms
+	Emote name[2] 0mm 2000mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Sleep 50ms
+	Emote name[3] 0mm 2000mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Sleep 1000ms
+	TextTalk name[0] {
+		#13500219V#0007F#6P什麼──{wait}
+	}
+	TextWait
+	TextTalk name[3] {
+		#13500220V#0301F#6P你這傢伙……{wait}
+	}
+	TextWait
+	CamSetDistance 2380 5800 -6400 1200ms
+	Fork name[2] fork[1]:
+		_94 1 self 180deg 500 1000mm/s 0
+	Sleep 50ms
+	Fork name[3] fork[1]:
+		_94 1 self 180deg 500 1000mm/s 0
+	Sleep 100ms
+	Fork name[0] fork[1]:
+		_94 1 self 180deg 500 1000mm/s 0
+	Sleep 50ms
+	Fork name[1] fork[1]:
+		_94 1 self 180deg 500 1000mm/s 0
+	ForkWait name[0] fork[1]
+	ForkWait name[1] fork[1]
+	ForkWait name[2] fork[1]
+	ForkWait name[3] fork[1]
+	CamWait 1
+	TextTalk char[0] {
+		#13500221V#3504F#11P你們覺得，在這輛水上巴士裡
+		一共埋伏著多少名
+		我的部下呢……？{wait}
+	} {
+		#13500222V#3500F恐怕你們數
+		都數不過來吧。{wait}
+	}
+	TextWait
+	TextTalk name[1] {
+		#13500223V#0101F#5P唔，你究竟有何目的……！{wait}
+	}
+	TextWait
+	TextTalk name[2] {
+		#13500224V#0208F#6P……是陷阱嗎？{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#13500225V#3504F#11P呵呵……{wait}
+	}
+	TextWait
+	Sleep 500ms
+	BgmVolume 100 3000ms
+	Shake 200 0 3000 500ms
+	TextTalk char[0] {
+		#13500226V#3509F#4S#11P哇哈哈哈哈哈哈哈哈！{wait}
+	} {
+		#13500227V#3504F呵呵……
+		哎呀～很不錯的反應哦。{wait}
+	} {
+		#13500228V#3502F竟然這麼容易就上當，
+		你們還真是夠純樸啊！{wait}
+	}
+	TextWait
+	Emote name[0] 0mm 2000mm 24 27 250ms 0
+	Emote name[1] 0mm 2000mm 24 27 250ms 0
+	Emote name[2] 0mm 2000mm 24 27 250ms 0
+	Emote name[3] 0mm 2000mm 24 27 250ms 0
+	Sleep 2000ms
+	EmoteStop name[0]
+	EmoteStop name[1]
+	EmoteStop name[2]
+	EmoteStop name[3]
+	TextTalk name[0] {
+		#13500229V#0011F#6P莫非……{wait}
+	}
+	TextWait
+	TextTalk name[3] {
+		#13500230V#0301F#6P……剛才那都是在演戲嗎？{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#13500231V#3509F#11P哎呀～該怎麼說呢～{wait}
+	} {
+		#13500232V我來克洛斯貝爾時，在列車上
+		讀的那本諜戰小說中有這樣的情節，
+		所以剛才就照搬照抄地說出來了。{wait}
+	} {
+		#13500233V不過，你們居然會有那麼精彩的反應，
+		這倒是真有點出乎本少爺的預料～{wait}
+	} {
+		#13500234V#3502F該不會是出於禮貌，
+		而在故意配合我吧？{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#13500235V#0012F#6P哎，那個，哈哈。{wait}
+	}
+	TextWait
+	TextTalk name[1] {
+		#13500236V#0106F#5P……你的演技實在是太逼真了，
+		我們不由自主就被牽著鼻子走。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#13500237V#3504F#11P哈哈，看你們的反應那麼強烈，
+		我甚至都以為你們是要潛入
+		『拍賣會』進行調查的警察呢……{wait}
+	} {
+		#13500238V#3500F不過，像這種典型的諜戰小說式情節，
+		再怎麼說，也不會輕易被我遇見吧～？{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#13500239V#0012F#6P呃……哈哈哈。
+		是啊，怎麼可能會有那種事嘛。{wait}
+	} {
+		#13500240V#0005F對了，那……{wait}
+	}
+	TextWait
+	TextTalk name[2] {
+		#13500241V#0201F#6P那麼，你也要出席
+		那個『拍賣會』嗎……？{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#13500242V#3504F#11P嗯，正是如此。{wait}
+	} {
+		#13500243V#3505F順便一說，剛才我自稱是鐵血宰相
+		的代理人，那也只是在開玩笑而已哦。{wait}
+	} {
+		#13500244V#3500F其實我只是某個
+		帝國貴族家庭的少爺。{wait}
+	} {
+		#13500245V這次是準備代替無暇分身的老爸
+		來出席那個『拍賣會』的。{wait}
+	}
+	TextWait
+	TextTalk name[1] {
+		#13500246V#0103F#5P……是這樣啊。{wait}
+	}
+	TextWait
+	TextTalk name[3] {
+		#13500247V#0300F#6P抱歉，說句實話，看你這身打扮，
+		實在是不像什麼帝國貴族的公子哥啊。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#13500248V#3505F#11P喂喂，你這傢伙真是失禮啊～{wait}
+	} {
+		#13500249V#3504F兩位小姐也就算了，
+		你們這兩個臭男人看起來
+		也不像是什麼有錢少爺吧～？{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#13500250V#0006F#6P嗚……{wait}
+	}
+	TextWait
+	TextTalk name[3] {
+		#13500251V#0309F#6P哈哈，說得倒沒錯。{wait}
+	}
+	TextWait
+	TextTalk name[1] {
+		#13500252V#0104F#5P……不過，
+		我們也是有邀請卡的。{wait}
+	} {
+		#13500253V#0100F或許還能在會場中
+		再次碰面呢。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#13500254V#3500F#11P……呵呵。{wait}
+	} {
+		#13500255V#3504F算了，你們也挺有趣的，
+		如果看到我的話，記得來打聲招呼哦。{wait}
+	} {
+		#13500256V總是和那些大叔打交道，
+		會把我煩死的。{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#13500257V#0003F#6P……明白了。{wait}
+	} {
+		#13500258V#0000F那麼，如果有機會，
+		今晚在會場再見吧。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#13500259V#3509F#11P噢，到時多指教啦～{wait}
+	}
+	TextWait
+	TextClose 0
+	CamZoom 17190 1000ms
+	FadeOut 1000ms 0x00000000 255
+	FadeWait
+	CharSetChipBase char[0] chip[0]
+	CharSetChipPattern char[0] 0
+	CharFlagsUnset char[0] 0x0020
+	NextFrame
+	UnloadChip chip[30]
+	CharSetPos field_party[0] (2780, 4100, -6430) 180deg
+	ForkFunc char[0] fork[0] fn[0,0]
+	CharSetPos char[0] (2950, 4100, -7750) 180deg
+	FlagSet flag[1310]
+	global[2] = global[2] + 1
+	Sleep 500ms
+	EventEnd 5
+	Return
+
+fn[12]:
+	SoundSetVolume sound[479] 90
+	Sleep 100ms
+	SoundSetVolume sound[479] 80
+	Sleep 100ms
+	SoundSetVolume sound[479] 70
+	Sleep 100ms
+	SoundSetVolume sound[479] 60
+	Sleep 100ms
+	SoundSetVolume sound[479] 50
+	Return
+
+fn[13]:
+	SoundSetVolume sound[479] 60
+	Sleep 100ms
+	SoundSetVolume sound[479] 70
+	Sleep 100ms
+	SoundSetVolume sound[479] 80
+	Sleep 100ms
+	SoundSetVolume sound[479] 90
+	Sleep 100ms
+	SoundSetVolume sound[479] 100
+	Return
+
+fn[14]:
+	EventBegin 0
+	FadeOut 0ms 0x00000000 255
+	global[2] = 0
+	FadeIn 1000ms 0x00000000
+	FadeWait
+	SoundPlay sound[801] 0 100 0
+	Sleep 500ms
+	TextSetPos -1 -1 -1 -1
+	TextSetName "女性的聲音"
+	TextMessage null {
+		{color 5}#13500315V──讓您久等了。{wait}
+	}
+	TextWait
+	TextMessage null {
+		{color 5}#13500316V本水上巴士即將
+		到達『米修拉姆』。{wait}
+	}
+	TextWait
+	TextMessage null {
+		{color 5}#13500317V請各位乘客不要遺落隨身物品，
+		注意安全，小心下船。{color 0}{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	TextSetPos -1 280 60 3
+	FadeOut 1000ms 0x00000000 255
+	FadeWait
+	BgmStop 4000ms
+	SoundSetVolume sound[479] 90
+	Sleep 100ms
+	SoundSetVolume sound[479] 80
+	Sleep 100ms
+	SoundSetVolume sound[479] 70
+	Sleep 100ms
+	SoundSetVolume sound[479] 60
+	Sleep 100ms
+	SoundSetVolume sound[479] 50
+	Sleep 100ms
+	SoundSetVolume sound[479] 40
+	Sleep 100ms
+	SoundSetVolume sound[479] 30
+	Sleep 100ms
+	SoundSetVolume sound[479] 20
+	Sleep 100ms
+	SoundSetVolume sound[479] 10
+	Sleep 100ms
+	SoundSetVolume sound[479] 0
+	BgmWait
+	FlagSet flag[736]
+	NewScene "scena/t1000.bin" 0 0 0
+	Hcf
+	Return

@@ -1,0 +1,814 @@
+calmare zero_k scena
+scena:
+	name "t113b" "t113b" "t113b"
+	town town[73]
+	bgm bgm[125]
+	flags 8192
+	item_use fn[0,255]
+	unk 255 0
+
+entry:
+	pos (0, 0, -1000)
+	unk1 0
+	cam_from (0, 0, 34000)
+	cam_pers 262
+	unk2 30
+	cam_deg 45deg
+	cam_limit 0deg 360deg
+	cam_at (0, 0, 0)
+	unk3 0
+	unk4 0
+	flags 0x0001
+	town town[73]
+	init fn[0,4]
+	reinit fn[0,5]
+
+chip[0] "apl/ch50353.itc"
+chip[1] "chr/ch27800.itc"
+chip[2] "chr/ch33300.itc"
+chip[3] "chr/ch26800.itc"
+chip[4] "chr/ch25600.itc"
+chip[5] "chr/ch25900.itc"
+chip[6] "chr/ch25700.itc"
+chip[7] null
+chip[8] null
+chip[9] null
+chip[10] null
+chip[11] null
+chip[12] null
+chip[13] null
+chip[14] null
+chip[15] null
+chip[16] null
+chip[17] null
+chip[18] null
+chip[19] null
+chip[20] null
+chip[21] null
+chip[22] null
+chip[23] null
+chip[24] null
+chip[25] null
+chip[26] null
+chip[27] null
+chip[28] null
+chip[29] null
+
+npc char[0]:
+	name "瓦奇"
+	pos (-150, 100, -1149)
+	angle 180deg
+	flags 0x01D5
+	unk2 0
+	chip chip[0]
+	init fn[255,255]
+	talk fn[0,6]
+	unk4 255
+
+npc char[1]:
+	name "詹姆斯"
+	pos (5349, 0, -3500)
+	angle 315deg
+	flags 0x0181
+	unk2 0
+	chip chip[1]
+	init fn[0,0]
+	talk fn[0,7]
+	unk4 255
+
+npc char[2]:
+	name "艾維琳夫人"
+	pos (4000, 0, -2150)
+	angle 135deg
+	flags 0x0181
+	unk2 0
+	chip chip[2]
+	init fn[0,0]
+	talk fn[0,8]
+	unk4 255
+
+npc char[3]:
+	name "妮姬妲"
+	pos (4500, 0, -3500)
+	angle 180deg
+	flags 0x0181
+	unk2 0
+	chip chip[3]
+	init fn[0,0]
+	talk fn[255,255]
+	unk4 255
+
+npc char[4]:
+	name "帕梅拉"
+	pos (5599, 0, -12590)
+	angle 0deg
+	flags 0x0101
+	unk2 0
+	chip chip[4]
+	init fn[0,0]
+	talk fn[0,10]
+	unk4 255
+
+npc char[5]:
+	name "管家芬特"
+	pos (3859, 0, -13729)
+	angle 0deg
+	flags 0x0101
+	unk2 0
+	chip chip[5]
+	init fn[0,0]
+	talk fn[0,11]
+	unk4 255
+
+npc char[6]:
+	name "管家克裡斯托夫"
+	pos (-3150, 0, 3569)
+	angle 90deg
+	flags 0x0181
+	unk2 0
+	chip chip[5]
+	init fn[0,0]
+	talk fn[0,12]
+	unk4 255
+
+npc char[7]:
+	name "朱蒂"
+	pos (-2099, 0, 3569)
+	angle 270deg
+	flags 0x0181
+	unk2 0
+	chip chip[6]
+	init fn[0,0]
+	talk fn[0,13]
+	unk4 255
+
+fn[0]:
+	var[2] = random % 8
+	switch var[2]:
+		case 0:
+			ED7_A0 self 1450ms 0 251
+			break
+		case 1:
+			ED7_A0 self 1550ms 0 251
+			break
+		case 2:
+			ED7_A0 self 1600ms 0 251
+			break
+		case 3:
+			ED7_A0 self 1400ms 0 251
+			break
+		case 4:
+			ED7_A0 self 1650ms 0 251
+			break
+		case 5:
+			ED7_A0 self 1350ms 0 251
+			break
+		case 6:
+			ED7_A0 self 1500ms 0 251
+			break
+		default:
+			ED7_A0 self 1500ms 0 251
+			break
+	while 1:
+		ED7_A0 self 1500ms 0 251
+	Return
+
+fn[1]:
+	while 1:
+		CharWalkToPos self (3320, 0, -13010) 2000mm/s 0
+		CharTurnTo self 270deg 400deg/s
+		Sleep 1300ms
+		CharTurnTo self 0deg 400deg/s
+		Sleep 100ms
+		CharWalkToPos self (3320, 0, -6980) 2000mm/s 0
+		CharTurnTo self 270deg 400deg/s
+		Sleep 1300ms
+		CharTurnTo self 180deg 400deg/s
+		Sleep 100ms
+		CharWalkToPos self (3320, 0, -9020) 2000mm/s 0
+		CharTurnTo self 270deg 400deg/s
+		Sleep 1300ms
+		CharTurnTo self 180deg 400deg/s
+		Sleep 100ms
+		CharWalkToPos self (3320, 0, -16960) 2000mm/s 0
+		CharTurnTo self 270deg 400deg/s
+		Sleep 1300ms
+		CharTurnTo self 0deg 400deg/s
+		Sleep 100ms
+	Return
+
+fn[2]:
+	while 1:
+		CharIdle self (1950, null, -1250) (6630, null, -630) 1000mm/s
+		Sleep 300ms
+	Return
+
+fn[3]:
+	while 1:
+		CharWalkToPos self (-5090, 0, -19580) 2000mm/s 0
+		CharTurnTo self 270deg 400deg/s
+		Sleep 1300ms
+		CharTurnTo self 0deg 400deg/s
+		Sleep 100ms
+		CharWalkToPos self (-5090, 0, -1190) 2000mm/s 0
+		Sleep 1000ms
+		CharTurnTo self 180deg 400deg/s
+		Sleep 100ms
+	Return
+
+fn[4]:
+	if flag[1333]:
+		CharFlagsUnset char[4] 0x0080
+		CharSetPos char[4] (4670, 0, -1000) 0deg
+		ForkFunc char[4] fork[0] fn[0,2]
+		CharFlagsUnset char[5] 0x0080
+		CharSetPos char[5] (-5090, 0, -1190) 180deg
+		ForkFunc char[5] fork[0] fn[0,3]
+		CharFlagsUnset char[6] 0x0080
+		CharFlagsUnset char[7] 0x0080
+	elif flag[1330]:
+		CharFlagsUnset char[4] 0x0080
+		CharSetPos char[4] (3020, 0, -13010) 360deg
+		ForkFunc char[4] fork[0] fn[0,1]
+		CharFlagsUnset char[5] 0x0080
+		CharSetPos char[5] (-5090, 0, -1190) 180deg
+		ForkFunc char[5] fork[0] fn[0,3]
+	elif flag[1329]:
+		CharFlagsUnset char[4] 0x0080
+		CharSetPos char[4] (3020, 0, -13010) 360deg
+		ForkFunc char[4] fork[0] fn[0,1]
+		CharFlagsUnset char[5] 0x0080
+		CharSetPos char[5] (1660, 0, 4960) 180deg
+	elif flag[1320]:
+		CharFlagsUnset char[0] 0x0080
+		CharFlagsUnset char[1] 0x0080
+		CharFlagsUnset char[2] 0x0080
+		CharFlagsUnset char[4] 0x0080
+		CharFlagsUnset char[5] 0x0080
+		if !flag[1325]:
+			CharFlagsUnset char[3] 0x0080
+	if flag[1320] && !flag[1325]:
+		Event fn[0,14]
+	Return
+
+fn[5]:
+	if flag[1333]:
+	Return
+
+fn[6]:
+	field_party[0].5 = self.4
+	self.5 = self.4
+	TextStart self
+	CharFlagsUnset self 0x0010
+	CharTurnToChar self field_party[0] 0deg/s
+	self.4 = (self.4 + 360) % 360
+	self.4 = self.4 + 360 - self.5
+	self.5 = self.4 / 180
+	if self.4 <= 45 | self.4 >= 315 && self.4 <= 405 | self.4 >= 675:
+	elif self.5 < 1:
+		self.8 = 2
+	elif self.5 > 2:
+		self.8 = 1
+	else:
+		self.8 = self.5
+	self.4 = field_party[0].5
+	field_party[0].5 = 0
+	self.5 = 0
+	CharFlagsSet self 0x0010
+	if !flag[0]:
+		TextTalk char[0] {
+			#5702F呵呵……稍後再見。{wait}
+		} {
+			#5709F這場爭吵想必還會繼續吧，
+			我會暫時待在這裡。{wait}
+		}
+		TextWait
+		if flag[1353]:
+			TextTalk name[1] {
+				#5306F你……
+				剛才明明是你煽動起來的，
+				現在卻說得好像事不關己一樣……{wait}
+			}
+			TextWait
+		elif flag[1354]:
+			TextTalk name[2] {
+				#5411F……說得好像事不關己一樣呢。{wait}
+			}
+			TextWait
+		elif flag[1355]:
+			TextTalk name[3] {
+				#5602F你剛才還說要和人家尋求刺激，
+				現在卻像個沒事人一樣，
+				這種不負責任的話虧你說得出口啊……{wait}
+			}
+			TextWait
+		TextTalk name[0] {
+			#5106F好、好啦……瓦奇你也適可而止吧？{wait}
+		}
+		TextWait
+		FlagSet flag[0]
+	else:
+		TextTalk char[0] {
+			#5702F呵呵……稍後再見。{wait}
+		} {
+			等到他們兩個人吵完了，
+			我就會去會場。{wait}
+		}
+		TextWait
+	CharSetChipPattern self 0
+	TextEnd self
+	Return
+
+fn[7]:
+	TextStart self
+	if !flag[1]:
+		Call fn[0,9]
+	else:
+		CharTurnToChar char[1] char[2] 0deg/s
+		TextTalk char[1] {
+			事情就是這樣！
+			讓我道歉多少次都可以！{wait}
+		}
+		TextWait
+		TextTalk char[1] {
+			所以，艾維琳……
+			請原諒我吧！{wait}
+		}
+		TextWait
+	TextEnd self
+	Return
+
+fn[8]:
+	TextStart self
+	if !flag[1]:
+		Call fn[0,9]
+	else:
+		CharTurnToChar char[2] char[1] 0deg/s
+		TextTalk char[2] {
+			我再也不會理你了！
+			既然如此，我就和瓦奇……！{wait}
+		}
+		TextWait
+	TextEnd self
+	Return
+
+fn[9]:
+	_Char4A char[1] 255
+	_Char4A char[2] 255
+	CharTurnToChar char[1] char[2] 0deg/s
+	CharTurnToChar char[2] char[1] 0deg/s
+	TextTalk char[1] {
+		啊啊，艾維琳，等等！
+		是我不好……
+		請不要再說什麼回娘家了。{wait}
+	}
+	TextWait
+	TextTalk char[1] {
+		我和妮姬妲，那個……
+		是我一時昏了頭……{wait}
+	}
+	TextWait
+	TextTalk char[2] {
+		你還敢說這麼厚顏無恥的話……！{wait}
+	}
+	TextWait
+	TextTalk char[2] {
+		真是受夠了！
+		我一定會向婆婆大人
+		報告這次的事情！{wait}
+	}
+	TextWait
+	TextTalk char[1] {
+		怎、怎麼可以！
+		只有這件事，請妳饒了我吧……！{wait}
+	}
+	TextWait
+	_Char4B char[1] 255
+	_Char4B char[2] 255
+	FlagSet flag[1]
+	Return
+
+fn[10]:
+	TextStart self
+	if flag[1333]:
+		if !flag[2]:
+			TextTalk self {
+				哎呀，那個孩子是……？{wait}
+			}
+			TextWait
+			TextTalkNamed name[0] "琪雅" {
+				#5810F我叫琪雅！{wait}
+			}
+			TextWait
+			TextTalk self {
+				那、那個……？
+				（客人中也有這麼小的孩子嗎……）{wait}
+			}
+			TextWait
+			TextTalk name[0] {
+				#0001F對、對不起，我們還有急事！{wait}
+			}
+			TextWait
+			FlagSet flag[2]
+		else:
+			TextTalk self {
+				（客人中也有這麼小的孩子嗎……）{wait}
+			}
+			TextWait
+	elif flag[1330]:
+		TextTalk self {
+			啊啊，好忙……{wait}
+		}
+		TextWait
+	elif flag[1329]:
+		if !flag[2]:
+			TextTalk self {
+				呼……剛才那對吵架的夫妻
+				終於平靜下來了。{wait}
+			}
+			TextWait
+			TextTalk self {
+				我還在想，要是出現流血場面的話，
+				可該如何是好呢……{wait}
+			}
+			TextWait
+			FlagSet flag[2]
+		else:
+			TextTalk self {
+				總之，終於可以
+				開始打掃了。{wait}
+			}
+			TextWait
+			TextTalk self {
+				已經耽誤了不少時間，
+				趕快繼續吧。{wait}
+			}
+			TextWait
+	elif flag[1320]:
+		TextTalk self {
+			在這種地方吵架，害得我沒法
+			打掃，真是頭痛。{wait}
+		}
+		TextWait
+		TextTalk self {
+			而且，看現在的氣氛，
+			外人也很難介入勸架……{wait}
+		}
+		TextWait
+	TextEnd self
+	Return
+
+fn[11]:
+	TextStart self
+	if flag[1333]:
+		TextTalk self {
+			魯巴徹商會的人
+			突然交代說
+			不許離開這裡……{wait}
+		}
+		TextWait
+		TextTalk self {
+			害得我很緊張呢，
+			大概是發生了什麼事吧……{wait}
+		}
+		TextWait
+	elif flag[1330]:
+		TextTalk self {
+			必須在拍賣會結束前
+			把晚宴的準備工作
+			給做好才行。{wait}
+		}
+		TextWait
+		TextTalk self {
+			這邊的掃除也
+			必須要儘快做完……{wait}
+		}
+		TextWait
+	elif flag[1329]:
+		TextTalk self {
+			這裡是接待室……
+			為了款待貴賓而準備的場所。{wait}
+		}
+		TextWait
+		TextTalk self {
+			今天並不準備投入使用，
+			請您儘量不要進來。{wait}
+		}
+		TextWait
+	elif flag[1320]:
+		TextTalk self {
+			……在那二位安靜下來之前，
+			只有放棄打掃了。{wait}
+		}
+		TextWait
+	TextEnd self
+	Return
+
+fn[12]:
+	TextStart self
+	TextTalk self {
+		哎呀，這位客人……
+		到底發生什麼事了？{wait}
+	}
+	TextWait
+	TextEnd self
+	Return
+
+fn[13]:
+	TextStart self
+	TextTalk self {
+		屋裡好像
+		很熱鬧的樣子。{wait}
+	}
+	TextWait
+	TextTalk self {
+		發生什麼事了嗎？{wait}
+	}
+	TextWait
+	TextEnd self
+	Return
+
+fn[14]:
+	EventBegin 0
+	FadeOut 0ms 0x00000000 255
+	_Char4A char[0] 255
+	_Char4A char[1] 255
+	_Char4A char[2] 255
+	_Char4A char[3] 255
+	CharSetChipPattern char[0] 1
+	CharFlagsSet char[0] 0x0040
+	CharFlagsSet char[0] 0x0004
+	CharFlagsSet char[0] 0x0010
+	CharSetPos char[0] (-150, 100, -1150) 180deg
+	CharSetPos char[2] (3750, 0, -3000) 90deg
+	CharSetPos char[1] (5150, 0, -3600) 270deg
+	CharSetPos char[3] (5150, 0, -2400) 270deg
+	CharSetPos name[0] (-600, 0, 4900) 180deg
+	CharSetPos party[1] (600, 0, 4900) 180deg
+	CamSetDistance 0 1200 6000 0ms
+	ED7CamRotate 45deg 17deg 0deg 0ms
+	CamPers 500 0ms
+	CamZoom 18500 0ms
+	FadeIn 1000ms 0x00000000
+	FadeWait
+	TextTalkNamed char[1] "男性的聲音" {
+		#13500973V不、不是都說了嗎……
+		這只是個誤會啊！{wait}
+	}
+	TextWait
+	TextTalkNamed char[1] "男性的聲音" {
+		#13500974V我和這位女士
+		只是普通的工作關係……{wait}
+	}
+	TextWait
+	TextTalkNamed char[2] "女性的聲音" {
+		#13500975V不，我才不會被你哄騙！{wait}
+	}
+	TextWait
+	TextTalkNamed char[2] "女性的聲音" {
+		#13500976V我說你的樣子怎麼有些奇怪，
+		果然是和其他女人
+		勾搭在一起了……！{wait}
+	}
+	TextWait
+	CamSetDistance 2850 1200 -2450 3500ms
+	CamWait 1
+	Sleep 300ms
+	Emote char[0] 0mm 1700mm 38 38 250ms 1
+	Sleep 1000ms
+	CamSetDistance -550 1200 -1000 4000ms
+	CharSetChipPattern char[0] 0
+	Fork name[0] fork[1]:
+		CharWalkToPos self (-1700, 0, -1250) 2000mm/s 0
+	Sleep 150ms
+	CharSetChipPattern char[0] 2
+	Sleep 350ms
+	Fork party[1] fork[1]:
+		CharWalkToPos self (-1600, 0, 0) 2000mm/s 0
+	ForkWait name[0] fork[1]
+	Fork name[0] fork[1]:
+		CharTurnTo self 90deg 500deg/s
+	ForkWait party[1] fork[1]
+	Fork party[1] fork[1]:
+		CharTurnTo self 135deg 500deg/s
+	ForkWait name[0] fork[1]
+	ForkWait party[1] fork[1]
+	CamWait 1
+	TextTalk char[0] {
+		#13500977V#5702F#11P兩位，晚安啊。
+		能順利到達，真是萬幸啊。{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#13500978V#5104F#6P托你的福。{wait}
+	} {
+		#13500979V#5101F……說起來，
+		這麼吵鬧，到底發生什麼事了？{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#13500980V#5704F#11P呵呵……
+		如你們所見，氣氛險惡到了極點呢。{wait}
+	}
+	TextWait
+	CamSetDistance 4450 1200 -3000 2000ms
+	CharSetChipPattern char[0] 0
+	Sleep 150ms
+	CharSetChipPattern char[0] 1
+	CamWait 1
+	TextTalk char[1] {
+		#13500981V#11P──妳、妳還不是
+		和那種打扮古怪的
+		少年混在一起！{wait}
+	}
+	TextWait
+	TextTalk char[1] {
+		#13500982V#11P難、難、難道說，
+		你們是那種關係嗎……！？{wait}
+	}
+	TextWait
+	TextTalk char[2] {
+		#13500983V#5P這個男孩是在我困難的時候
+		出手相助的恩人！{wait}
+	}
+	TextWait
+	TextTalk char[2] {
+		#13500984V#5P我剛來克洛斯貝爾的時候毫無頭緒，
+		是他在我一籌莫展的時候幫助了我……{wait}
+	}
+	TextWait
+	TextTalk char[2] {
+		#13500985V#5P帶我來拍賣會場，
+		還耐心地陪伴我……{wait}
+	}
+	TextWait
+	TextTalk char[2] {
+		#13500986V#5P才不是你和這個女人
+		的那種曖昧關係！{wait}
+	}
+	TextWait
+	TextTalk char[1] {
+		#13500987V#11P唔……{wait}
+	}
+	TextWait
+	CamSetDistance 1600 1200 -2500 1200ms
+	CamWait 1
+	TextTalk char[0] {
+		#13500988V#5709F#6P呵呵，如果您想更進一步，
+		我也是不介意的哦。{wait}
+	} {
+		#13500989V#5702F──喂，這位夫人。{wait}
+	} {
+		#13500990V別再理會那個薄情的男人了，
+		去和我尋求一些刺激如何？{wait}
+	} {
+		#13500991V#5704F像夫人您這麼堅強又可愛的女性，
+		我可是一點也不討厭呢。{wait}
+	}
+	TextWait
+	CharTurnTo char[2] 270deg 500deg/s
+	Emote char[2] 0mm 2000mm 40 43 100ms 3
+	TextTalk char[2] {
+		#13500992V#11P瓦、瓦奇，那種事……{wait}
+	}
+	TextWait
+	Emote char[1] 0mm 2000mm 12 13 250ms 2
+	SoundPlay sound[23] 0 100 0
+	CharTurnTo char[1] 270deg 500deg/s
+	Sleep 1000ms
+	_Char91 char[1] -750 0 0 2000 0
+	TextTalk char[1] {
+		#13500993V#11P你、你這傢伙！{wait}
+	}
+	TextWait
+	TextTalk char[1] {
+		#13500994V#11P不要隨便引誘
+		別人的妻子啊！{wait}
+	}
+	TextWait
+	CharTurnToChar char[3] char[1] 500deg/s
+	TextTalk char[3] {
+		#13500995V#5P啊啊，真是的……
+		我實在是受夠了。{wait}
+	}
+	TextWait
+	TextTalk char[3] {
+		#13500996V#5P詹姆斯先生，
+		你要是想腳踩兩條船，
+		還需要多練練哦。{wait}
+	}
+	TextWait
+	ForkLoop char[1] fork[1]:
+		CharTurnToChar self char[3] 500deg/s
+	ForkLoop char[2] fork[1]:
+		CharTurnToChar self char[3] 500deg/s
+	CharTurnTo char[3] 315deg 500deg/s
+	TextTalk char[3] {
+		#13500997V#2P真是的，我要趕快去
+		找其他的客人了……{wait}
+	}
+	TextWait
+	CamSetDistance 950 1200 -1850 3000ms
+	ForkFunc char[3] fork[3] fn[0,15]
+	Sleep 500ms
+	TextTalk char[1] {
+		#13500998V#11P妮、妮姬妲……！{wait}
+	}
+	TextWait
+	ForkWait char[3] fork[3]
+	CharFlagsSet char[3] 0x0080
+	CharFlags2Set char[3] 0x8000
+	ForkQuit char[1] fork[1]
+	ForkQuit char[2] fork[1]
+	CamWait 1
+	Emote char[2] 0mm 2000mm 12 13 250ms 2
+	SoundPlay sound[23] 0 100 0
+	Sleep 1000ms
+	CharTurnToChar char[2] char[1] 500deg/s
+	TextTalk char[2] {
+		#13500999V#5P說、說什麼普通的工作關係，
+		果然都是騙我的啊！？{wait}
+	}
+	TextWait
+	TextTalk char[2] {
+		#13501000V#5P我、我已經徹底受夠了！{wait}
+	}
+	TextWait
+	TextTalk char[2] {
+		#13501001V#5P我現在就要
+		回娘家去了！{wait}
+	}
+	TextWait
+	CharTurnToChar char[1] char[2] 500deg/s
+	TextTalk char[1] {
+		#13501002V#11P艾維琳，妳怎麼可以……！{wait}
+	}
+	TextWait
+	Emote name[0] 0mm 2000mm 16 19 250ms 1
+	SoundPlay sound[23] 0 100 0
+	Emote party[1] 0mm 2000mm 16 19 250ms 1
+	SoundPlay sound[23] 0 100 0
+	Sleep 1000ms
+	if flag[1353]:
+		TextTalk name[1] {
+			#13501003V#5306F#6P看、看起來，
+			不太好去打擾他們啊……{wait}
+		}
+		TextWait
+	elif flag[1354]:
+		TextTalk name[2] {
+			#13501004V#5400F#6P原來如此……
+			夫妻吵架嗎。{wait}
+		}
+		TextWait
+	elif flag[1355]:
+		TextTalk name[3] {
+			#13501005V#5609F#6P哈，這就是所謂，
+			旁人休管他家事啊。{wait}
+		}
+		TextWait
+	TextTalk name[0] {
+		#13501006V#5112F#6P……那個，我們
+		先告辭了。{wait}
+	}
+	TextWait
+	CharSetChipPattern char[0] 0
+	Sleep 100ms
+	CharSetChipPattern char[0] 2
+	Sleep 200ms
+	TextTalk char[0] {
+		#13501007V#5704F#11P呵呵，也好。{wait}
+	} {
+		#13501008V#5702F──稍後見，
+		請盡情享受晚宴吧。{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	FadeOut 1000ms 0x00000000 255
+	FadeWait
+	CharSetPos field_party[0] (-2009, 0, -1560) 270deg
+	CharSetPos char[1] (5350, 0, -3500) 315deg
+	CharSetPos char[2] (4000, 0, -2150) 135deg
+	_Char4B char[1] 255
+	_Char4B char[2] 255
+	CharSetChipPattern char[0] 0
+	NextFrame
+	_Char4B char[0] 255
+	FlagSet flag[1325]
+	Sleep 500ms
+	EventEnd 5
+	Return
+
+fn[15]:
+	Fork char[3] fork[1]:
+		CharWalkToPos self (0, 0, 4600) 3000mm/s 0
+	ForkWait char[3] fork[1]
+	Fork char[3] fork[1]:
+		CharWalkToPos self (0, 0, 6750) 3000mm/s 0
+	Sleep 250ms
+	Fork char[3] fork[2]:
+		CharColor self 0x00FFFFFF 500ms
+	ForkWait char[3] fork[1]
+	ForkWait char[3] fork[2]
+	Return

@@ -1,0 +1,754 @@
+calmare zero_k scena
+scena:
+	name "c101c" "c101c" "c101c"
+	town town[19]
+	bgm bgm[100]
+	flags 8192
+	item_use fn[0,255]
+	unk 255 0
+
+entry:
+	pos (0, 0, -1000)
+	unk1 0
+	cam_from (0, 0, 34000)
+	cam_pers 262
+	unk2 30
+	cam_deg 45deg
+	cam_limit 0deg 360deg
+	cam_at (0, 0, 0)
+	unk3 0
+	unk4 0
+	flags 0x0001
+	town town[19]
+	init fn[0,1]
+	reinit fn[0,2]
+
+chip[0] "chr/ch09100.itc"
+chip[1] "chr/ch02400.itc"
+chip[2] "chr/ch27200.itc"
+chip[3] "chr/ch27300.itc"
+chip[4] "chr/ch32002.itc"
+chip[5] "chr/ch32102.itc"
+chip[6] "chr/ch00000.itc"
+chip[7] "chr/ch00000.itc"
+chip[8] "chr/ch00000.itc"
+chip[9] "chr/ch00000.itc"
+chip[10] "chr/ch00000.itc"
+chip[11] "chr/ch00000.itc"
+chip[12] "chr/ch00000.itc"
+chip[13] "chr/ch00000.itc"
+chip[14] "chr/ch00000.itc"
+chip[15] "chr/ch00000.itc"
+chip[16] "chr/ch00000.itc"
+chip[17] "chr/ch00000.itc"
+chip[18] "chr/ch00000.itc"
+chip[19] "chr/ch00000.itc"
+chip[20] "chr/ch00000.itc"
+chip[21] "chr/ch00000.itc"
+chip[22] "chr/ch00000.itc"
+chip[23] "chr/ch00000.itc"
+chip[24] "chr/ch00000.itc"
+chip[25] "chr/ch00000.itc"
+chip[26] "chr/ch00000.itc"
+chip[27] "chr/ch00000.itc"
+chip[28] "chr/ch00000.itc"
+chip[29] "chr/ch00000.itc"
+
+npc char[0]:
+	name "受付ミシェル"
+	pos (1000, 0, 12819)
+	angle 180deg
+	flags 0x0105
+	unk2 0
+	chip chip[0]
+	init fn[0,0]
+	talk fn[0,4]
+	unk4 255
+
+npc char[1]:
+	name "アリオス"
+	pos (970, 0, 10300)
+	angle 0deg
+	flags 0x0195
+	unk2 0
+	chip chip[1]
+	init fn[0,0]
+	talk fn[0,5]
+	unk4 255
+
+npc char[2]:
+	name "遊撃士スコット"
+	pos (-10729, 0, 51650)
+	angle 270deg
+	flags 0x0195
+	unk2 0
+	chip chip[2]
+	init fn[0,0]
+	talk fn[0,6]
+	unk4 255
+
+npc char[3]:
+	name "遊撃士ヴェンツェル"
+	pos (-12170, 0, 51490)
+	angle 90deg
+	flags 0x0195
+	unk2 0
+	chip chip[3]
+	init fn[0,0]
+	talk fn[0,7]
+	unk4 255
+
+npc char[4]:
+	name "遊撃士リン"
+	pos (-5929, 150, 43069)
+	angle 180deg
+	flags 0x01D5
+	unk2 0
+	chip chip[4]
+	init fn[255,255]
+	talk fn[0,8]
+	unk4 255
+
+npc char[5]:
+	name "遊撃士エオリア"
+	pos (-5869, 150, 40840)
+	angle 0deg
+	flags 0x01D5
+	unk2 0
+	chip chip[5]
+	init fn[255,255]
+	talk fn[0,9]
+	unk4 255
+
+look_point[0]:
+	pos (5500, 0, 6000)
+	radius 1200
+	bubble_pos (5500, 1500, 6000)
+	unk1 124
+	unk2 0
+	function fn[0,10]
+	unk3 0
+	unk4 0
+
+look_point[1]:
+	pos (8000, 0, 6000)
+	radius 1200
+	bubble_pos (8000, 1500, 6000)
+	unk1 124
+	unk2 0
+	function fn[0,11]
+	unk3 0
+	unk4 0
+
+look_point[2]:
+	pos (5500, 0, 2500)
+	radius 1200
+	bubble_pos (5500, 1500, 2500)
+	unk1 124
+	unk2 0
+	function fn[0,11]
+	unk3 0
+	unk4 0
+
+look_point[3]:
+	pos (8000, 0, 2500)
+	radius 1200
+	bubble_pos (8000, 1500, 2500)
+	unk1 124
+	unk2 0
+	function fn[0,11]
+	unk3 0
+	unk4 0
+
+look_point[4]:
+	pos (680, 0, 11370)
+	radius 1700
+	bubble_pos (1000, 1500, 12820)
+	unk1 126
+	unk2 0
+	function fn[0,3]
+	unk3 0
+	unk4 0
+
+fn[0]:
+	var[2] = random % 8
+	switch var[2]:
+		case 0:
+			ED7_A0 self 1450ms 0 251
+			break
+		case 1:
+			ED7_A0 self 1550ms 0 251
+			break
+		case 2:
+			ED7_A0 self 1600ms 0 251
+			break
+		case 3:
+			ED7_A0 self 1400ms 0 251
+			break
+		case 4:
+			ED7_A0 self 1650ms 0 251
+			break
+		case 5:
+			ED7_A0 self 1350ms 0 251
+			break
+		case 6:
+			ED7_A0 self 1500ms 0 251
+			break
+		default:
+			ED7_A0 self 1500ms 0 251
+			break
+	while 1:
+		ED7_A0 self 1500ms 0 251
+	Return
+
+fn[1]:
+	if flag[1307]:
+		CharFlagsUnset char[2] 0x0080
+		CharFlagsUnset char[3] 0x0080
+	elif flag[1362]:
+		CharFlagsUnset char[1] 0x0080
+		CharFlagsUnset char[4] 0x0080
+		CharFlagsUnset char[5] 0x0080
+		CharFlagsSet char[0] 0x0010
+	elif flag[1292]:
+	elif flag[1282]:
+	elif flag[1280]:
+	Return
+
+fn[2]:
+	Return
+
+fn[3]:
+	Call fn[0,4]
+	Return
+
+fn[4]:
+	TextStart char[0]
+	if flag[1307]:
+		if !flag[0]:
+			TextTalk char[0] {
+				#04000Fあら、坊やたちじゃない。
+				これからどこかにお出掛けかしら？{wait}
+			}
+			TextWait
+			TextTalk name[0] {
+				#0012Fえ、ええ、仕事がてら……{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				#04005Fそう……{wait}
+			} {
+				#04003F……まあいいわ。
+				警察内部の事情にまで
+				首を突っ込むつもりは無いし。{wait}
+			} {
+				#04000Fどこに行くか知らないけど
+				自分たちの責任で頑張りなさいな。{wait}
+			}
+			TextWait
+			TextTalk name[0] {
+				#0001F……はい。{wait}
+			}
+			TextWait
+			TextTalk name[2] {
+				#0203F（薄々感づかれてます……）{wait}
+			}
+			TextWait
+			TextTalk name[3] {
+				#0301F（ハン、さすがに鋭いな……）{wait}
+			}
+			TextWait
+			FlagSet flag[0]
+		else:
+			TextTalk char[0] {
+				#04003Fま、警察にも色々あるんでしょうけど
+				アタシが口を出すことじゃないわね。{wait}
+			} {
+				#04000Fせいぜい頑張りなさい。
+				ただし、自分たちの責任でね。{wait}
+			}
+			TextWait
+	elif flag[1362]:
+		if !flag[0]:
+			Call fn[0,5]
+		else:
+			TextTalk char[0] {
+				#04006Fやれやれ、本当はアリオスに
+				お休みをあげたかったんだけど。{wait}
+			} {
+				#04008F……シズクちゃん、
+				寂しがっていないかしら？{wait}
+			}
+			TextWait
+	elif flag[1292]:
+		if !flag[0]:
+			TextTalk char[0] {
+				#04004Fそろそろ市外に足を伸ばす
+				観光客も出てくる頃よ。{wait}
+			} {
+				#04000Fウチもウルスラ病院の方に
+				エステルちゃんたちを回したわ。{wait}
+			} {
+				#04000Fま、アナタたちも
+				せいぜい気をつけておきなさい。{wait}
+			}
+			TextWait
+			FlagSet flag[0]
+		else:
+			TextTalk char[0] {
+				#04001Fアリオスは手配魔獣の対処……{wait}
+			} {
+				#04003Fパレードへの対応は
+				リンたちに任せるとして……{wait}
+			} {
+				#04001F例の件はスコットに頼んで
+				ヴェンツェルは待機かしら……{wait}
+			} {
+				#04006Fああん、もう！
+				人手が倍は欲しいわねぇ。{wait}
+			}
+			TextWait
+	elif flag[1282]:
+		if !flag[1437]:
+			TextTalk char[0] {
+				#04000Fアナタたち、昨日は随分
+				活躍したみたいじゃない？{wait}
+			} {
+				#04009Fウチのエステルちゃんたちを
+				出し抜くなんて大金星だわ。{wait}
+			}
+			TextWait
+			TextTalk name[0] {
+				#0000Fはは……
+				それは俺たちも同感です。{wait}
+			}
+			TextWait
+			TextTalk name[3] {
+				#0306Fちょいと禁じ手を
+				使っちまったからなぁ。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				#04004Fま、その調子で成長して
+				こっちを楽にしてちょうだい。{wait}
+			} {
+				#04000Fそうそう……
+				アリオスが昨日の夜、
+				やっと出張から戻ってきたのよ。{wait}
+			} {
+				#04006F市庁舎からの要請が来てたから
+				早速、シンポジウムの
+				警備に回ってもらったわ。{wait}
+			}
+			TextWait
+			Emote name[0] 0mm 2000mm 38 38 250ms 1
+			Sleep 500ms
+			TextTalk name[0] {
+				#0005Fあれ、シンポジウムの警備は
+				警察が担当していたんじゃ……{wait}
+			}
+			TextWait
+			TextTalk name[2] {
+				#0200Fええ、それも捜査一課が
+				受け持っていたはずです。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				#04003Fま、共同警備ってわけね。{wait}
+			} {
+				#04000F外国のＶＩＰも参加するから
+				少しでも確実な可能性を
+				追求したんじゃないかしら？{wait}
+			}
+			TextWait
+			TextTalk name[0] {
+				#0000Fな、なるほど……{wait}
+			}
+			TextWait
+			TextTalk name[3] {
+				#0300Fそらま、《風の剣聖》がいたら
+				確実は確実だわな。{wait}
+			}
+			TextWait
+			TextTalk name[1] {
+				#0100F一応、そういう場合には
+				警察とギルドも協力するんですね。{wait}
+			}
+			TextWait
+			FlagSet flag[1437]
+		elif !flag[0]:
+			TextTalk char[0] {
+				#04005Fそういえば……
+				エステルちゃんたちの方は
+				野暮用があるとか言ってたわね。{wait}
+			} {
+				#04003F何でもちょっと辺鄙#4Rへんぴ#な所を
+				訪ねてみるらしいけど……{wait}
+			} {
+				#04012Fま、アリオスも戻ってきたし
+				少しは息抜きしてもらいましょう。{wait}
+			}
+			TextWait
+			FlagSet flag[0]
+		else:
+			TextTalk char[0] {
+				#04003Fアリオスは市庁舎、
+				エステルちゃんたちは私用……{wait}
+			} {
+				#04001FスコットたちはＩＢＣ、
+				リンたちは大聖堂ね……{wait}
+			} {
+				#04006F……ふう、メンバーの行動を
+				把握するものも楽じゃないわね。{wait}
+			}
+			TextWait
+	elif flag[1280]:
+		if !flag[0]:
+			TextTalk char[0] {
+				#04000Fあら坊やたち、ご苦労様。{wait}
+			} {
+				#04001F実は、本部の要請で出張してる
+				アリオスの帰国が遅れているのよ。{wait}
+			} {
+				#04008F結局、記念祭の初日には
+				間に合わなかったのよねぇ……{wait}
+			} {
+				#04001F本部の連中にはアタシから
+				苦情を言ってやらなくちゃ。{wait}
+			}
+			TextWait
+			FlagSet flag[0]
+		else:
+			TextTalk char[0] {
+				#04001F記念祭の間は
+				出張は基本的にキャンセル。
+				全メンバーで乗り切るのが通例よ。{wait}
+			} {
+				#04007Fまったく……よりによって
+				アリオスを独り占めするなんて
+				本部には文句言わなくっちゃ。{wait}
+			}
+			TextWait
+	TextEnd char[0]
+	Return
+
+fn[5]:
+	TextStart self
+	if flag[1362]:
+		if !flag[0]:
+			_Char4A char[0] 255
+			_Char4A char[1] 255
+			TextTalk char[0] {
+				#04000F戻ったばかりで悪いけど
+				ちょっと時間をもらえる？{wait}
+			} {
+				#04001Fさっきレミフェリア支部から
+				連絡があったんだけど……{wait}
+			}
+			TextWait
+			TextTalk char[1] {
+				#1403F例の件についてか……{wait}
+			} {
+				#1400F……分かった。
+				詳しい話を聞こう。{wait}
+			}
+			TextWait
+			_Char4B char[0] 255
+			_Char4B char[1] 255
+			CharFlagsUnset char[0] 0x0010
+			CharFlagsUnset char[1] 0x0010
+			FlagSet flag[0]
+		else:
+			TextTalk char[1] {
+				#1403F……先ほどの件は気にするな。{wait}
+			} {
+				#1400Fまだ仕事があるのだろう？
+				お前たちのペースで励むがいい。{wait}
+			}
+			TextWait
+	TextEnd self
+	Return
+
+fn[6]:
+	TextStart self
+	if flag[1307]:
+		if !flag[2]:
+			_Char4A char[2] 255
+			_Char4A char[3] 255
+			TextTalk char[2] {
+				#08409F今予定されている仕事をこなせば
+				来週の出張は行かなくていいと
+				ミシェルに言われたよ。{wait}
+			} {
+				#08405Fヴェンツェル、もしかしてお前……{wait}
+			}
+			TextWait
+			TextTalk char[3] {
+				#08504Fたまには１人で出張に行きたい……
+				俺はそう希望を出しただけだ。{wait}
+			} {
+				#08500F記念祭の忙しい時期も終わる。
+				……たまには婚約者と過ごすんだな。{wait}
+			}
+			TextWait
+			TextTalk char[2] {
+				#08404F……ありがとう、相棒。{wait}
+			}
+			TextWait
+			CharFlagsUnset char[2] 0x0010
+			CharFlagsUnset char[3] 0x0010
+			_Char4B char[2] 255
+			_Char4B char[3] 255
+			FlagSet flag[2]
+		else:
+			TextTalk self {
+				#08400F来週はヴェンツェルの言うように……
+				パールと過ごすとするかな。{wait}
+			} {
+				#08404F……彼女の予定も
+				確認しておかないとな。{wait}
+			} {
+				#08406F久しぶりに会うとなると
+				緊張するなぁ……{wait}
+			}
+			TextWait
+	TextEnd self
+	Return
+
+fn[7]:
+	TextStart self
+	if flag[1307]:
+		if !flag[2]:
+			Call fn[0,6]
+		else:
+			TextTalk self {
+				#08503Fスコットは仕事にかまけすぎて
+				婚約者とろくすっぽ会えていない。{wait}
+			} {
+				#08500Fたまにはこういう時間を
+				作ってやることも大事だろう。{wait}
+			}
+			TextWait
+	TextEnd self
+	Return
+
+fn[8]:
+	field_party[0].5 = self.4
+	self.5 = self.4
+	TextStart self
+	CharFlagsUnset self 0x0010
+	CharTurnToChar self field_party[0] 0deg/s
+	self.4 = (self.4 + 360) % 360
+	self.4 = self.4 + 360 - self.5
+	self.5 = self.4 / 180
+	if self.4 <= 45 | self.4 >= 315 && self.4 <= 405 | self.4 >= 675:
+	elif self.5 < 1:
+		self.8 = 2
+	elif self.5 > 2:
+		self.8 = 1
+	else:
+		self.8 = self.5
+	self.4 = field_party[0].5
+	field_party[0].5 = 0
+	self.5 = 0
+	CharFlagsSet self 0x0010
+	if flag[1362]:
+		if !flag[3]:
+			TextTalk self {
+				#08606Fようやくパレードの警備が
+				終わったよ。{wait}
+			} {
+				#08606Fあの人ごみの中にいるのは
+				流石に疲れたね。{wait}
+			}
+			TextWait
+			TextTalk name[3] {
+				#0300Fおお……お疲れ。{wait}
+			}
+			TextWait
+			TextTalk self {
+				#08609Fん、どうもどうも。
+				まぁ、ゆっくり体を休めるとするよ。{wait}
+			}
+			TextWait
+			FlagSet flag[3]
+		else:
+			TextTalk self {
+				#08605Fそういえば、人ごみの中に
+				見たことある顔がいたような……{wait}
+			} {
+				#08603Fううん、気のせいかな。
+				あの人がクロスベルに来るなんて
+				連絡はなかったし……{wait}
+			}
+			TextWait
+	CharSetChipPattern self 0
+	TextEnd self
+	Return
+
+fn[9]:
+	field_party[0].5 = self.4
+	self.5 = self.4
+	TextStart self
+	CharFlagsUnset self 0x0010
+	CharTurnToChar self field_party[0] 0deg/s
+	self.4 = (self.4 + 360) % 360
+	self.4 = self.4 + 360 - self.5
+	self.5 = self.4 / 180
+	if self.4 <= 45 | self.4 >= 315 && self.4 <= 405 | self.4 >= 675:
+	elif self.5 < 1:
+		self.8 = 2
+	elif self.5 > 2:
+		self.8 = 1
+	else:
+		self.8 = self.5
+	self.4 = field_party[0].5
+	field_party[0].5 = 0
+	self.5 = 0
+	CharFlagsSet self 0x0010
+	if flag[1362]:
+		if !flag[4]:
+			TextTalk self {
+				#08702F……あ、そこに居るのはティオちゃん！
+				やっぱり可愛い可愛い……！！{wait}
+			} {
+				#08709Fお姉さん、お仕事で疲れてるの。
+				癒してもらってもいいかなぁ？{wait}
+			}
+			TextWait
+			TextTalk name[2] {
+				#0211F……具体的な方法が分かりません。{wait}
+			}
+			TextWait
+			TextTalk self {
+				#08712Fぎゅ～っと抱っこさせて
+				もらえるだけでいいわ㈱{wait}
+			}
+			TextWait
+			TextTalk name[2] {
+				#0203Fお断りします。{wait}
+			}
+			TextWait
+			TextTalk self {
+				#08706Fきゃん。{wait}
+			}
+			TextWait
+			FlagSet flag[4]
+		else:
+			TextTalk self {
+				#08706Fはぁ、残念……
+				仕方ないから、食べ損ねたお昼の
+				買出しにでも行こうかしら。{wait}
+			} {
+				#08709F最近は《モルジュ》のハンバーガーが
+				お気に入りなのよね。{wait}
+			}
+			TextWait
+	CharSetChipPattern self 0
+	TextEnd self
+	Return
+
+fn[10]:
+	TextStart null
+	TextSetName ""
+	TextMessage null {
+		{color 5}遊撃士たちのシフト表が貼り付けられている。{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	FadeOut 300ms 0x00000000 100
+	TextSetPos -1 -1 -1 -1
+	if flag[1307]:
+		TextSetName ""
+		TextMessage null {
+			{0x06}　　　 　　　　　 　 行き先
+			━━━━━━━━━━━━━━━━━
+			{} 　アリオス　： レミフェリア公国
+			{} 　スコット　：　  《待機中》
+			{} ヴェンツェル：　  《待機中》
+			{} 　　リン　　：※休憩（龍老飯店）
+			{} 　エオリア　：※休憩（ベーカリー）
+			{} 　エステル　：　　  大聖堂
+			{} 　ヨシュア　：　　  大聖堂{wait}
+		}
+		TextWait
+		TextClose 0
+	elif flag[1362]:
+		TextSetName ""
+		TextMessage null {
+			{0x06}　　　　　　　　　  行き先　　
+			━━━━━━━━━━━━━━━━
+			{} 　アリオス　：　 《待機中》
+			{} 　スコット　：※休憩（龍老飯店
+			{} ヴェンツェル：※休憩（龍老飯店
+			{} 　　リン　　：　 《待機中》
+			{} 　エオリア　：　 《待機中》
+			{} 　エステル　：  ウルスラ病院
+			{} 　ヨシュア　：  ウルスラ病院{wait}
+		}
+		TextWait
+		TextClose 0
+	elif flag[1292]:
+		TextSetName ""
+		TextMessage null {
+			{0x06}　　　　　　　　　  行き先　　
+			━━━━━━━━━━━━━━━━
+			{} 　アリオス　：    市外巡回
+			{} 　スコット　：　  市外巡回
+			{} ヴェンツェル：　  武器商会
+			{} 　　リン　　：　   行政区
+			{} 　エオリア　：　   行政区
+			{} 　エステル　：  ウルスラ病院
+			{} 　ヨシュア　：  ウルスラ病院{wait}
+		}
+		TextWait
+		TextClose 0
+	elif flag[1282]:
+		TextSetName ""
+		TextMessage null {
+			{0x06}　　　　　　　　　   行き先　　　
+			━━━━━━━━━━━━━━━━
+			{} 　アリオス　：　　  市庁舎
+			{} 　スコット　：　　  ＩＢＣ
+			{} ヴェンツェル：　　  ＩＢＣ
+			{} 　　リン　　：　　  大聖堂
+			{} 　エオリア　：　　  大聖堂
+			{} 　エステル　：※私用（山道方面）
+			{} 　ヨシュア　：※私用（山道方面）{wait}
+		}
+		TextWait
+		TextClose 0
+	else:
+		TextSetName ""
+		TextMessage null {
+			{0x06}　　　　　　　　　　行き先　　
+			━━━━━━━━━━━━━━━━
+			{} 　アリオス　：　レマン総本部
+			{} 　スコット　：　タングラム門
+			{} ヴェンツェル：　タングラム門
+			{} 　　リン　　：　アルモリカ村
+			{} 　エオリア　：　アルモリカ村
+			{} 　エステル　：　　 行政区
+			{} 　ヨシュア　：　　 行政区{wait}
+		}
+		TextWait
+		TextClose 0
+	FadeIn 300ms 0x00000000
+	TextSetPos -1 280 60 3
+	_59
+	TextEnd null
+	Return
+
+fn[11]:
+	TextStart null
+	TextSetName ""
+	TextMessage null {
+		{color 5}遊撃士協会に対する依頼が
+		数多く張り出されている。{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	TextEnd null
+	Return
