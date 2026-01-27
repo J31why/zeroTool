@@ -2,12 +2,11 @@
 
 ## 【简介】
 本补丁为PC平台上NISA版《英雄传说 零之轨迹》通过HOOK技术提供了中文支持。  
-补丁中的绝大部分文本与图片资源移植自云豹版《零之轨迹：改》官方中文，并使用OpenCC对文本转简处理，虽然经过了处理，但由于文本量巨大，可能存在少量台湾用语，欢迎反馈，我会通过后续补丁进行调整。针对系统字符串及部分图片进行了手动翻译。  
+补丁中的绝大部分文本与图片资源移植自云豹版《零之轨迹：改》官方中文，并使用OpenCC对文本转简处理。  
 
 > 如在游戏中遇到任何BUG、文本错误或有相关建议，欢迎反馈。  
 
 ---
-
 ## 【QA】
 
 **Q：为什么不移植欢乐百世文本？**  
@@ -71,6 +70,7 @@ GitHub：[https://github.com/J31why/zeroTool](https://github.com/J31why/zeroTool
 ## 【特别鸣谢】
 - **Kyuuhachi**：提供了 scena 脚本、图片处理工具包 [Aureole](https://github.com/Kyuuhachi/Aureole)。
 - **Ouroboros**：提供了 [EDDecompiler](https://github.com/Ouroboros/EDDecompiler)。
+- **TwnKey**：提供了 [FalcomFontCreator](https://github.com/TwnKey/FalcomFontCreator)。
 - **shinkiseki**：制作并分享了[更多头像](https://github.com/shinkiseki)MOD。
 - **BYVoid & laisuk**：提供了 OpenCC 与 .NET 版本。
 - **fxsjy & anderscui**：提供了 结巴分词 与 .NET 版本。
@@ -90,5 +90,5 @@ GitHub：[https://github.com/J31why/zeroTool](https://github.com/J31why/zeroTool
 ---
 
 ## 【发布日志】
-**V1.0（2026/1/26）：**  
+**V1.0（2026/1/28）：**  
 首次发布。
