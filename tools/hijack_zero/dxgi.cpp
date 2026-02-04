@@ -8,7 +8,7 @@ bool isHook = false;
 bool consoleOpened = false;
 
 
-void OpenConsole() {
+static void OpenConsole() {
 
     AllocConsole();
     freopen_s((FILE**)stdout, "CONOUT$", "w", stdout);
@@ -20,14 +20,12 @@ void OpenConsole() {
     std::cout << "[INFO]ÁãÖ®¹ì¼£NISA°æ±¾GBK¶ÁÈ¡DLLÒÑÔØÈë" << std::endl;
 }
 
-void CloseConsole() {
+static void CloseConsole() {
     fclose(stdout);
     fclose(stderr);
     fclose(stdin);
     FreeConsole();
 }
-
-
 
 BOOL APIENTRY DllMain( HMODULE hModule,
                        DWORD  ul_reason_for_call,
@@ -38,21 +36,25 @@ BOOL APIENTRY DllMain( HMODULE hModule,
 	{
 	case DLL_PROCESS_ATTACH:
 		{
-			if (!NsInitDll())
-				return false;
-            std::string cmdLine = std::string(GetCommandLineA());
-            if (cmdLine.find("-debug") != std::string::npos) {
-                OpenConsole();
-                consoleOpened = true;
+#if HIJACK
+        if (!NsInitDll()) {
+            MessageBoxA(NULL, "NsInitDllÊ§°Ü", "´íÎó", 0);
+            return false;
+        }
+#endif // HIJACK
+        std::string cmdLine = std::string(GetCommandLineA());
+        if (cmdLine.find("-debug") != std::string::npos) {
+            OpenConsole();
+            consoleOpened = true;
+        }
+        if (cmdLine.find("-nohook") == std::string::npos) {
+            encoding::iconv_initialize();
+            hook::hook_install();
+            isHook = true;
+            if (!hook::isMatchSuccessful) {
+                MessageBoxA(NULL, "µØÖ·Æ¥ÅäÊ§°Ü£¬HookÊ§°Ü¡£", "´íÎó", 0);
             }
-            if (cmdLine.find("-nohook") == std::string::npos) {
-                encoding::iconv_initialize();
-                hook::hook_install();
-                isHook = true;
-                if (!hook::isHookSuccessful) {
-                    MessageBoxA(NULL, "µØÖ·Æ¥ÅäÊ§°Ü£¬HookÊ§°Ü¡£", "´íÎó", 0);
-                }
-            }
+        }
 		}
 	case DLL_THREAD_ATTACH:
         break;

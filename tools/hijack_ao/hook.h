@@ -11,7 +11,7 @@
 
 
 namespace hook {
-	extern bool isHookSuccessful;
+	extern bool isMatchSuccessful;
 
 	void hook_install();
 	void hook_uninstall();

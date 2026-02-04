@@ -1,4 +1,4 @@
-
+#ifdef HIJACK
 #pragma once
 
 #ifdef _DEBUG
@@ -11,3 +11,6 @@ extern "C"
 {
     bool __cdecl NsInitDll();
 }
+
+#endif // !HIJACK
+

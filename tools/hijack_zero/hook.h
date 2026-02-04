@@ -1,3 +1,4 @@
+
 #pragma once
 
 #include "MinHook.h"
@@ -42,6 +43,6 @@ namespace hook {
 	bool load_mess_string_cn();
 	std::unordered_map<std::string, std::string> build_mess_string_map(const char* data, const size_t len);
 	void search_all_addresses();
-	extern bool isHookSuccessful;
+	extern bool isMatchSuccessful;
 }
 

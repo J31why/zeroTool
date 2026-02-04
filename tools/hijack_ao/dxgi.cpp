@@ -36,8 +36,12 @@ BOOL APIENTRY DllMain(HMODULE hModule,
     {
     case DLL_PROCESS_ATTACH:
     {
-        if (!NsInitDll())
+#if HIJACK
+        if (!NsInitDll()) {
+            MessageBoxA(NULL, "NsInitDll ß∞‹", "¥ÌŒÛ", 0);
             return false;
+        }
+#endif // HIJACK
         std::string cmdLine = std::string(GetCommandLineA());
         if (cmdLine.find("-debug") != std::string::npos) {
             OpenConsole();
@@ -47,7 +51,7 @@ BOOL APIENTRY DllMain(HMODULE hModule,
             encoding::iconv_initialize();
             hook::hook_install();
             isHook = true;
-            if (!hook::isHookSuccessful) {
+            if (!hook::isMatchSuccessful) {
                 MessageBoxA(NULL, "µÿ÷∑∆•≈‰ ß∞‹£¨Hook ß∞‹°£", "¥ÌŒÛ", 0);
             }
         }

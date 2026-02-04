@@ -2,6 +2,56 @@
 using namespace std;
 
 
+DWORD old_protect;
+
+PatchInfo info ;
+
+void UnLockProtect(uintptr_t ptr) {
+    VirtualProtect((LPVOID)ptr, 0x100, PAGE_EXECUTE_READWRITE, &old_protect);
+}
+void LockProtect(uintptr_t ptr) {
+    VirtualProtect((LPVOID)ptr, 0x100, old_protect, &old_protect);
+    FlushInstructionCache(GetCurrentProcess(), (LPVOID)ptr, 0x100);
+    old_protect = 0;
+}
+
+void* BeginPatch(const uintptr_t ptr, size_t patchLength, size_t removeLength) {
+    UnLockProtect(ptr);
+    info.ori_addr = ptr;
+    size_t backupSize = (patchLength > removeLength) ? (patchLength - removeLength) : 0;
+    info.ret_addr = ptr + patchLength;
+    info.ori_data.resize(backupSize);
+    memcpy(info.ori_data.data(), (void*)(ptr + removeLength), backupSize);
+    memset((void*)ptr, 0x90, patchLength);
+    void* jmpAddr = malloc(0x100);
+    memset(jmpAddr, 0x0, 0x100);
+    DWORD old;
+    VirtualProtect(jmpAddr, 0x100, PAGE_EXECUTE_READWRITE, &old);
+    uint8_t* p = (uint8_t*)ptr;
+    p[0] = 0xFF;
+    p[1] = 0x25;
+    *(uint32_t*)(p + 2) = 0;
+    *(uintptr_t*)(p + 6) = (uintptr_t)jmpAddr;
+	return jmpAddr;
+}
+
+void WritePatchOriginalData(uint8_t*& patchedAddr) {
+    memcpy((PVOID)patchedAddr, info.ori_data.data(), info.ori_data.size());
+    patchedAddr += info.ori_data.size();
+}
+
+void EndPatch(const uint8_t* patchedAddr) {
+    uint8_t* p = const_cast<uint8_t*>(patchedAddr);
+    p[0] = 0xFF;
+    p[1] = 0x25;
+    *(uint32_t*)(p + 2) = 0;
+    *(uintptr_t*)(p + 6) = info.ret_addr;
+    LockProtect(info.ori_addr);
+    std::vector<uint8_t>().swap(info.ori_data);
+    info.ori_addr = 0;
+    info.ret_addr = 0;
+}
+
 vector<PatternByte> ParsePattern(const string& patternStr) {
     vector<PatternByte> pattern;
     string token;

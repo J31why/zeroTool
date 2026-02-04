@@ -6,6 +6,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <psapi.h> 
 
 using namespace std;
 
@@ -28,9 +29,8 @@ typedef Result* (__fastcall* cp932_encode_t)(
     );
 
 
-uintptr_t baseAddr = (uintptr_t)GetModuleHandleA("calmare.exe");
-uintptr_t cp932_decode_addr = 0x1fcdd0 + baseAddr;
-uintptr_t cp932_encode_addr = 0x7FF73577D170;
+uintptr_t cp932_decode_addr = 0x1fcdd0;
+uintptr_t cp932_encode_addr = 0x1fd170;
 
 cp932_decode_t ori_cp932_decode = nullptr;
 cp932_encode_t ori_cp932_encode = nullptr;
@@ -113,6 +113,13 @@ void hook() {
     hIconv_gbk2utf8 = iconv_open("UTF-8", "CP936");
     hIconv_utf82gbk = iconv_open("CP936", "UTF-8");
 
+    HMODULE hModule = GetModuleHandleA(NULL);
+    MODULEINFO moduleInfo = { 0 };
+    GetModuleInformation(GetCurrentProcess(), hModule, &moduleInfo, sizeof(MODULEINFO));
+    const uintptr_t moduleBase = reinterpret_cast<uintptr_t>(moduleInfo.lpBaseOfDll);
+	cp932_decode_addr += moduleBase;
+	cp932_encode_addr += moduleBase;
+
     MH_STATUS status = MH_Initialize();
     status = MH_CreateHook((LPVOID)cp932_decode_addr, &hooked_cp932_decode, reinterpret_cast<LPVOID*>(&ori_cp932_decode));
     if (status != MH_OK)
@@ -134,7 +141,11 @@ BOOL APIENTRY DllMain( HMODULE hModule,
     switch (ul_reason_for_call)
     {
     case DLL_PROCESS_ATTACH:
+    {
+        std::string cmdLine = std::string(GetCommandLineA());
         hook();
+        break;
+    }
     case DLL_THREAD_ATTACH:
     case DLL_THREAD_DETACH:
     case DLL_PROCESS_DETACH:

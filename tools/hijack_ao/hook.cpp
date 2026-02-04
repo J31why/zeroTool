@@ -14,7 +14,8 @@ namespace hook {
     string noteHelpKey_posMap_addr_pattern = "F3 0F 10 05 ?? ?? ?? 00 F3 0F 11 05 ?? ?? ?? 00 4c 8b c0 41";
     string loadNoteHelpKey_posMap_addr_pattern = "48 89 5C 24 ?? 48 89 4C 24 ?? 55 56 57 41 54 41 55 41 56 41 57 48 8D AC 24 ?? ?? FF FF 48 81 EC ?? ?? 00 00 48 8d 05 ?? ?? ?? 00";
     string WebMPlayerOpen_addr_pattern = "72 03 48 8B 16 48 8B CB FF 15";
-    string TextLengthScalefactor_addr_pattern = "F3 0F 59 D1 F3 41 0F 59 D0 F3 0F 58 C2 F3 41 0F 59 C0 ";
+    string TextWidthScalefactor_addr_pattern = "F3 0F 59 D1 F3 41 0F 59 D0 F3 0F 58 C2 F3 41 0F 59 C0";
+    string DialogBoxHeight_addr_pattern = "66 0F 6E C8 0F 5B C9 F3 0F 58 C8 F3 0F 2C C1 89 83 8C 01 00 00 48 8B 47 40";
 
     string main_sjis_byte_valid_addr_pattern = "80 ?? 7F 76";
     string ui_sjis_byte_valid_addr_pattern = "3C 3F 77";
@@ -35,7 +36,8 @@ namespace hook {
     uintptr_t noteHelpKey_posMap_addr = 0x14053a160;
     uintptr_t loadNoteHelpKey_posMap_addr = 0x1400beb80;
     uintptr_t WebMPlayerOpen_addr = 0x14041AEC0;
-    uintptr_t TextLengthScalefactor_addr = 0x14046b260;
+    uintptr_t TextWidthScalefactor_addr = 0x14046b260;
+    uintptr_t DialogBoxHeight_addr = 0x140232A58;
 
     uintptr_t main_sjis_byte_valid_addr[] = 
     { 
@@ -79,9 +81,9 @@ namespace hook {
     loadNoteHelpKey_posMap_t ori_loadNoteHelpKey_posMap = nullptr;
     WebMPlayerOpen_t ori_WebMPlayerOpen = nullptr;
 
-    bool isHookSuccessful = false;
+    bool isMatchSuccessful = false;
     int matchedAddrCount = 0;
-    int totalAddrCount = 29;
+    int totalAddrCount = 30;
 
     void search_all_addresses() {
         vector<uintptr_t> matchResults;
@@ -105,7 +107,6 @@ namespace hook {
 
         if (SearchModuleMemory(get_mess_string_key_addr_pattern, matchResults) && matchResults.size() == 1) {
             get_mess_string_key_addr = matchResults[0];
-            get_mess_string_key = reinterpret_cast<get_mess_string_key_t>(get_mess_string_key_addr);
             cout << "get_mess_string_key_addr : 0x" << hex << get_mess_string_key_addr << endl;
             matchedAddrCount++;
         }
@@ -156,16 +157,22 @@ namespace hook {
             WebMPlayerOpen_addr = matchResults[0] + 0xa;
             uint32_t* offset_ptr = reinterpret_cast<uint32_t*>(WebMPlayerOpen_addr);
             WebMPlayerOpen_addr += (uint64_t)*offset_ptr + 0x4;
-            WebMPlayerOpen_addr = *(uint64_t*)WebMPlayerOpen_addr;
+      
             cout << "WebMPlayerOpen_addr : 0x" << hex << WebMPlayerOpen_addr << endl;
             matchedAddrCount++;
         }
 
-        if (SearchModuleMemory(TextLengthScalefactor_addr_pattern, matchResults) && matchResults.size() == 1) {
-            TextLengthScalefactor_addr = matchResults[0] + 0x16;
-            uint32_t* offset_ptr = reinterpret_cast<uint32_t*>(TextLengthScalefactor_addr);
-            TextLengthScalefactor_addr += (uint64_t)*offset_ptr + 0x4;
-            cout << "TextLengthScalefactor_addr : 0x" << hex << TextLengthScalefactor_addr << endl;
+        if (SearchModuleMemory(TextWidthScalefactor_addr_pattern, matchResults) && matchResults.size() == 1) {
+            TextWidthScalefactor_addr = matchResults[0] + 0x16;
+            uint32_t* offset_ptr = reinterpret_cast<uint32_t*>(TextWidthScalefactor_addr);
+            TextWidthScalefactor_addr += (uint64_t)*offset_ptr + 0x4;
+            cout << "TextWidthScalefactor_addr : 0x" << hex << TextWidthScalefactor_addr << endl;
+            matchedAddrCount++;
+        }
+
+        if (SearchModuleMemory(DialogBoxHeight_addr_pattern, matchResults) && matchResults.size() == 1) {
+            DialogBoxHeight_addr = matchResults[0];
+            cout << "DialogBoxHeight_addr : 0x" << hex << DialogBoxHeight_addr << endl;
             matchedAddrCount++;
         }
 
@@ -226,17 +233,8 @@ namespace hook {
         }
     }
 
-    static DWORD old_protect;
-    static void fix_begin(uintptr_t ptr) {
-        VirtualProtect((LPVOID)ptr, 0x100, PAGE_EXECUTE_READWRITE, &old_protect);
-    }
-    static void fix_end(uintptr_t ptr) {
-        VirtualProtect((LPVOID)ptr, 0x100, old_protect, &old_protect);
-        old_protect = 0;
-    }
-
     void fix_main_sjis_byte_valid(uintptr_t ptr) {
-        fix_begin(ptr);
+        UnLockProtect(ptr);
         uint8_t* p = reinterpret_cast<uint8_t*>(ptr + 5);
         for (size_t i = 1; i < 0x10; i++)
         {
@@ -245,11 +243,11 @@ namespace hook {
             p++;
         }
         memset((PVOID)p, 0x90, 2);
-        fix_end(ptr);
+        LockProtect(ptr);
     }
 
     void fix_talk_sjis_byte_valid(uintptr_t ptr) {
-        fix_begin(ptr);
+        UnLockProtect(ptr);
         uint8_t* p = reinterpret_cast<uint8_t*>(ptr);
         for (size_t i = 1; i < 0x10; i++)
         {
@@ -262,24 +260,24 @@ namespace hook {
         *(p + 1) = 0x80;
         *(p + 2) = 0x73;
         *(p + 7) = 0xEB;
-        fix_end(ptr);
+        LockProtect(ptr);
     }
 
     void fix_menu_sjis_byte_valid(uintptr_t ptr) {
-        fix_begin(ptr);
+        UnLockProtect(ptr);
         memset((PVOID)(ptr+5), 0x90,2);
-        fix_end(ptr);
+        LockProtect(ptr);
     }
 
     void fix_escape_sjis_byte_valid(uintptr_t ptr) {
-        fix_begin(ptr);
+        UnLockProtect(ptr);
         uint8_t* p = reinterpret_cast<uint8_t*>(ptr);
         *(p + 7) = 0xeb;
-        fix_end(ptr);
+        LockProtect(ptr);
     }
 
     void fix_story_sjis_byte_valid(uintptr_t ptr) {
-        fix_begin(ptr);
+        UnLockProtect(ptr);
         int count = 0;
         uint8_t* p = reinterpret_cast<uint8_t*>(ptr);
         for (size_t i = 1; i < 0x20; i++)
@@ -292,28 +290,38 @@ namespace hook {
                 break;
             }
         }
-        fix_end(ptr);
+        LockProtect(ptr);
     }
 
     void fix_ui_sjis_byte_valid(uintptr_t ptr) {
-        fix_begin(ptr);
+        UnLockProtect(ptr);
         uint8_t* p = reinterpret_cast<uint8_t*>(ptr);
         *(p - 1) = 0;
         *(p + 1) = 0x7f;
-        fix_end(ptr);
+        LockProtect(ptr);
     }
 
     void fix_add_al_60_r15_sjis_byte_valid(uintptr_t ptr) {
-        fix_begin(ptr);
+        UnLockProtect(ptr);
         memset((PVOID)(ptr + 4), 0x90, 6);
-        fix_end(ptr);
+        LockProtect(ptr);
     }
 
     void fix_TextLengthScalefactor(uintptr_t ptr) {
-        fix_begin(ptr);
-        float* pScaleFactor = reinterpret_cast<float*>(TextLengthScalefactor_addr);
+        UnLockProtect(ptr);
+        float* pScaleFactor = reinterpret_cast<float*>(ptr);
         *pScaleFactor = 0.86f;
-        fix_end(ptr);
+        LockProtect(ptr);
+    }
+
+    void fix_DialogBoxHeight(uintptr_t ptr) {
+        uint8_t* jmpAddr = static_cast<uint8_t*>(BeginPatch(ptr, 0xf, 0));
+        WritePatchOriginalData(jmpAddr);
+        *(jmpAddr++) = 0x83;
+        *(jmpAddr++) = 0xc0;
+        *(jmpAddr++) = 0x03;
+        //add eax, 03
+        EndPatch(jmpAddr);
     }
 
     void hook_install() {
@@ -321,15 +329,20 @@ namespace hook {
         {
 
             cout << endl;
+#if HIJACK
             search_all_addresses();
             cout << "匹配到地址数量：" << dec << matchedAddrCount << "/" << totalAddrCount << hex << endl;
             if (matchedAddrCount == totalAddrCount) {
                 cout << endl << "[INFO]匹配成功" << endl << endl;
-                isHookSuccessful = true;
+                isMatchSuccessful = true;
             }
             else {
                 throw runtime_error("部分地址未匹配成功，停止hook以防止崩溃");
             }
+#else
+            cout << "[INFO]跳过地址匹配" << endl;
+            isMatchSuccessful = true;
+#endif // NOHIJACK
             cout << "==============================" << endl;
             MH_STATUS status = MH_Initialize();
             if (status != MH_OK) {
@@ -382,13 +395,17 @@ namespace hook {
             }
 
             cout << "[INFO]hook WebMPlayerOpen" << endl;
+            WebMPlayerOpen_addr = *(uint64_t*)WebMPlayerOpen_addr;
             status = MH_CreateHook((LPVOID)WebMPlayerOpen_addr, &hooked_WebMPlayerOpen, reinterpret_cast<LPVOID*>(&ori_WebMPlayerOpen));
             if (status != MH_OK) {
                 throw runtime_error("MinHook create WebMPlayerOpen hook failed!");
             }
 
             cout << "[INFO]fix text length scale factor" << endl;
-            fix_TextLengthScalefactor(TextLengthScalefactor_addr);
+            fix_TextLengthScalefactor(TextWidthScalefactor_addr);
+
+            cout << "[INFO]fix text height scale factor" << endl;
+            fix_DialogBoxHeight(DialogBoxHeight_addr);
 
             cout << "[INFO]fix main_sjis_byte_valid" << endl;
             for (size_t i = 0; i < size(main_sjis_byte_valid_addr); i++)
@@ -650,7 +667,7 @@ namespace hook {
             return false;
         unordered_map<string, string> mess_map = build_mess_string_map(pbuffer, fileSize);
         string FileName[2];
-
+        get_mess_string_key = reinterpret_cast<get_mess_string_key_t>(get_mess_string_key_addr);
         for (int32_t i = 1; i < 0xC08; i++)
         {
             auto key = get_mess_string_key(reinterpret_cast<__int64>(FileName), i);
@@ -777,25 +794,24 @@ namespace hook {
         return original_count;
     }
 
+    static const vector<pair<string, string>> patterns = {
+      {"data_pc/", "data_cn/pc/"},
+      {"data/", "data_cn/"},
+    };
+
     string redirect_dir(string file) {
-        vector<pair<string, string>> patterns = {
-          {"data/", "data_cn/"},
-          {"./data/", "./data_cn/"},
-          {".//data/", ".//data_cn/"},
-          {"data_pc/", "data_cn/pc/"},
-          {"./data_pc/", "./data_cn/pc/"},
-          {".//data_pc/", ".//data_cn/pc/"},
-        };
         for (size_t i = 0; i < patterns.size(); i++)
         {
-            if (file.compare(0, patterns[i].first.size(), patterns[i].first) == 0) {
-                string cnFile = patterns[i].second + file.substr(patterns[i].first.size());
+            size_t pos = file.find(patterns[i].first);
+            if (pos < 5) {
+                string cnFile = file;
+                cnFile.replace(pos, patterns[i].first.length(), patterns[i].second);
                 if (std::filesystem::exists(cnFile))
                 {
                     cout << "[INFO]重定向：" << cnFile << endl;
-                    file = cnFile;
-                    break;
+                    return cnFile;
                 }
+                break;
             }
         }
         return file;

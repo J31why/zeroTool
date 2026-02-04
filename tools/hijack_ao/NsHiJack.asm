@@ -3,7 +3,7 @@
 ; Caution: 
 ;   This project code is for testing purposes only! Please do not use it in any other way.
 ; Code By : Baymax Patch toOls 
-
+IFDEF HIJACK
 LoadLibraryA PROTO
 GetSystemDirectoryA PROTO
 GetProcAddress PROTO
@@ -340,6 +340,6 @@ Hijack64_SetAppCompatStringPointer endp
 Hijack64_UpdateHMDEmulationStatus proc
   jmp qword ptr [pfUpdateHMDEmulationStatus]
 Hijack64_UpdateHMDEmulationStatus endp
-
+ENDIF
 
 end
