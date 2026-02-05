@@ -1,0 +1,4072 @@
+calmare ao_k scena
+scena:
+	name "c0100" "c0100" "c0100_1"
+	town town[4]
+	bgm bgm[150]
+	flags 8192
+	item_use fn[0,255]
+	unk 255 0
+
+entry:
+	pos (0, 0, -1000)
+	unk1 0
+	cam_from (0, 2500, 24000)
+	cam_pers 500
+	unk2 30
+	cam_deg 45deg
+	cam_limit 0deg 360deg
+	cam_at (1100, 0, -3500)
+	unk3 0
+	unk4 0
+	flags 0x0001
+	town town[4]
+	init fn[0,7]
+	reinit fn[0,8]
+
+anim[0] 256ms
+
+sepith[0] 0 0 0 0 0 0 0 0
+
+fn[0]:
+	TextStart self
+	if flag[3385]:
+		TextTalk self {
+			やっとお外に出られたと思ったら……
+			あの空に浮かんでいる樹は一体なんなの？{wait}
+		}
+		TextWait
+		TextTalk self {
+			まさかどこかに落ちて来ないわよね？
+			……はてしなく不安だわ。{wait}
+		}
+		TextWait
+	elif flag[3371]:
+	elif flag[3089]:
+		if !flag[0]:
+			TextTalk self {
+				過去に起こった事故が、
+				２大国の“暗闘”によるものだった……{wait}
+			}
+			TextWait
+			TextTalk self {
+				それって、両国のスパイ同士が
+				お互いやり合った結果っていうこと？{wait}
+			}
+			TextWait
+			TextTalk self {
+				……正直深く考えたことなかったけど、
+				もしそれが本当なら許せないことよね。{wait}
+			}
+			TextWait
+			FlagSet flag[0]
+		else:
+			TextTalk self {
+				過去に起こった事故が、
+				２大国の“暗闘”によるものだった……{wait}
+			}
+			TextWait
+			TextTalk self {
+				……正直深く考えたことなかったけど、
+				もしそれが本当なら許せないことよね。{wait}
+			}
+			TextWait
+	elif flag[3074]:
+		if !flag[0]:
+			TextTalk self {
+				あの武装集団を雇ったのは
+				帝国政府だって噂だけど……{wait}
+			}
+			TextWait
+			TextTalk self {
+				そういう意味では、いつまた
+				襲ってくるか分からないのよね。{wait}
+			}
+			TextWait
+			TextTalk self {
+				そう思うと、ものすごく不安だわ……{wait}
+			}
+			TextWait
+			FlagSet flag[0]
+		else:
+			TextTalk self {
+				あの武装集団を雇ったのは
+				帝国政府だって噂だけど……{wait}
+			}
+			TextWait
+			TextTalk self {
+				いつまた襲ってくるかと思うと、
+				ものすごく不安だわ……{wait}
+			}
+			TextWait
+	elif flag[2861]:
+		TextTalk self {
+			マインツの人たち、きっと
+			今頃つらい思いをしてるわよね……{wait}
+		}
+		TextWait
+		TextTalk self {
+			武器を持った人たちが
+			突然乗り込んで来るだなんて、
+			想像するだけで怖いわ……{wait}
+		}
+		TextWait
+	elif flag[2848]:
+		TextTalk self {
+			今日はママにお使いを頼まれたの。{wait}
+		}
+		TextWait
+		TextTalk self {
+			……雨漏りしたから、
+			至急バケツを買って来てってね。{wait}
+		}
+		TextWait
+	elif flag[2837]:
+		TextTalk self {
+			あんなに救急車が出動するなんて……
+			結構大きな事故が起こったみたいね。{wait}
+		}
+		TextWait
+	elif flag[2832]:
+		TextTalk self {
+			私って本当に一人暮らししたいのかな？{wait}
+		}
+		TextWait
+		TextTalk self {
+			確かに憧れはあるけど、
+			何だかんだ家に１人だけって
+			随分寂しい気がするわね……{wait}
+		}
+		TextWait
+	elif flag[2816]:
+		if !flag[0]:
+			TextTalk self {
+				バイト、バイト……
+				無難な所ならウェイトレスとかかしら。{wait}
+			}
+			TextWait
+			TextTalk self {
+				けど、効率よく稼ぐなら
+				ホステスという選択肢も……{wait}
+			}
+			TextWait
+			TextTalk self {
+				……いやいやいや、
+				私ってば、一体何考えてるのかしら。{wait}
+			}
+			TextWait
+			TextTalk self {
+				いくら稼ぎがよくてもオジサンの
+				お酒の相手なんて絶対に無理だからっ。{wait}
+			}
+			TextWait
+			FlagSet flag[0]
+		else:
+			TextTalk self {
+				一人暮らししたいならバイトしなきゃね……
+				どういう仕事が私向きかしら？{wait}
+			}
+			TextWait
+	elif flag[2573]:
+		if !flag[0]:
+			TextTalk self {
+				一人暮らしをするなら、個人的に
+				西通り方面が一番良いと思うんだけど……{wait}
+			}
+			TextWait
+			TextTalk self {
+				家賃とか現実的な線を考えると、
+				結局、東通り方面に落ち着くのよね。{wait}
+			}
+			TextWait
+			TextTalk self {
+				旧市街は流石に破格だけど、
+				何より治安が心配だし……{wait}
+			}
+			TextWait
+			TextTalk self {
+				っていうか、自立するなら
+				その前にバイトでも探さなくちゃね。
+				……ふう。{wait}
+			}
+			TextWait
+			FlagSet flag[0]
+		else:
+			TextTalk self {
+				一人暮らしをするなら、個人的に
+				西通り方面が一番良いと思うんだけど……{wait}
+			}
+			TextWait
+			TextTalk self {
+				……っていうか、自立するなら
+				その前にバイトでも探さなくちゃね。{wait}
+			}
+			TextWait
+	elif flag[2568]:
+		TextTalk self {
+			あら、もうこんな時間なのね。{wait}
+		}
+		TextWait
+		TextTalk self {
+			早くお家に帰って
+			ママのお手伝いをしないと。{wait}
+		}
+		TextWait
+	elif flag[2564]:
+		TextTalk self {
+			首脳たちのクロスベル入りも
+			終わってみればあっという間ね。{wait}
+		}
+		TextWait
+		TextTalk self {
+			みんな車に乗ってたから
+			よく分からなかったけど……
+			ＶＩＰ感だけは伝わって来たわ。{wait}
+		}
+		TextWait
+	elif flag[2560]:
+		if !flag[0]:
+			TextTalk self {
+				明日から通商会議とだけあって、
+				流石にちょっと物々しい感じね。{wait}
+			}
+			TextWait
+			TextTalk self {
+				さっき、巡回している
+				警察官に呼び止められて、
+				人生初の職務質問をされちゃったわ。{wait}
+			}
+			TextWait
+			FlagSet flag[0]
+		else:
+			TextTalk self {
+				職務質問なんて初めてだったけど、
+				何ていうか失礼しちゃうわよね。{wait}
+			}
+			TextWait
+			TextTalk self {
+				誰だって家事手伝いだなんて
+				大きな声で言いたくないのに……
+				とんだ辱めだわ。{wait}
+			}
+			TextWait
+	elif flag[2369]:
+		TextTalk self {
+			私、雨だからって家の中で
+			じっとしているのは嫌いなの。{wait}
+		}
+		TextWait
+		TextTalk self {
+			お気に入りの傘を差して、
+			レッツ・お散歩ってね♪{wait}
+		}
+		TextWait
+	elif flag[2353]:
+		if flag[2437] && QuestFlagsGet quest[105] 0x10:
+			TextTalk self {
+				パトカーがいっぱい出てきて
+				びっくりしちゃったわ。{wait}
+			}
+			TextWait
+			TextTalk self {
+				でも、なんだか警察らしくて
+				カッコよかったかも。{wait}
+			}
+			TextWait
+		elif !flag[0]:
+			TextTalk self {
+				もう、うちのパパったらどうして
+				家の中を裸でうろうろするのかしら。{wait}
+			}
+			TextWait
+			TextTalk self {
+				年頃の娘に対する配慮に
+				欠けると言うか……もはや犯罪よね。{wait}
+			}
+			TextWait
+			TextTalk self {
+				あ～、一人暮らししたいな～。{wait}
+			}
+			TextWait
+			FlagSet flag[0]
+		else:
+			TextTalk self {
+				あ～、一人暮らししたいな～。{wait}
+			}
+			TextWait
+			TextTalk self {
+				う～ん、どこかに
+				いい物件はないものかしら。{wait}
+			}
+			TextWait
+	TextEnd self
+	Return
+
+fn[1]:
+	TextStart self
+	if flag[3385]:
+		if !flag[1]:
+			TextTalk self {
+				詳細はよく判らんが、
+				どうやらあの《神機》とかいう
+				兵器は失われてしまったようじゃな。{wait}
+			}
+			TextWait
+			TextTalk self {
+				方法の是非はともかく……
+				ディーター大統領は確かに
+				クロスベルを守る力を用意していた。{wait}
+			}
+			TextWait
+			TextTalk self {
+				結果、大きな混乱をもたらしたとはいえ、
+				わしは彼のことをとても責められんよ。{wait}
+			}
+			TextWait
+			FlagSet flag[1]
+		else:
+			TextTalk self {
+				方法の是非はともかく……
+				ディーター大統領は確かに
+				クロスベルを守る力を用意していた。{wait}
+			}
+			TextWait
+			TextTalk self {
+				結果、大きな混乱をもたらしたとはいえ、
+				わしは彼のことをとても責められんよ。{wait}
+			}
+			TextWait
+	elif flag[3371]:
+	elif flag[3089]:
+		if !flag[1]:
+			TextTalk self {
+				ふむ……資産凍結を宣言、か。{wait}
+			}
+			TextWait
+			TextTalk self {
+				まさかディーター市長がここまでの
+				強硬策に出るとは思わなんだが……{wait}
+			}
+			TextWait
+			TextTalk self {
+				だが彼の言う通り、我々が立ち上がるには
+				今以外に時宜はないのかもしれんな。{wait}
+			}
+			TextWait
+			FlagSet flag[1]
+		else:
+			TextTalk self {
+				まさかディーター市長がここまでの
+				強硬策に出るとは思わなんだが……{wait}
+			}
+			TextWait
+			TextTalk self {
+				だが確かに、我々が立ち上がるには
+				今以外に時宜はないのかもしれんな。{wait}
+			}
+			TextWait
+	elif flag[3074]:
+		if !flag[1]:
+			TextTalk self {
+				先日の襲撃事件……
+				あれは帝国の仕業に決まっとる。{wait}
+			}
+			TextWait
+			TextTalk self {
+				最近は猫を被っていたようじゃが、
+				元来、手段を選ばぬのが奴らの本性……{wait}
+			}
+			TextWait
+			TextTalk self {
+				回りくどく、卑劣な手段を用いて
+				あわよくば侵略を目論む……
+				それがエレボニアというものじゃからな！{wait}
+			}
+			TextWait
+			FlagSet flag[1]
+		else:
+			TextTalk self {
+				先日の襲撃事件……
+				あれは帝国の仕業に決まっとる。{wait}
+			}
+			TextWait
+			TextTalk self {
+				回りくどく、卑劣な手段を用いて
+				あわよくば侵略を目論む……
+				それがエレボニアというものじゃからな！{wait}
+			}
+			TextWait
+	elif flag[2861]:
+		TextTalk self {
+			此度の事件、もしや背後には帝国が……{wait}
+		}
+		TextWait
+		TextTalk self {
+			……ふむ、だとしたら
+			これまでと同じようにただ従うだけでは
+			クロスベルは守り切れんのかもな。{wait}
+		}
+		TextWait
+	elif flag[2848]:
+	elif flag[2837]:
+		if !flag[1]:
+			TextTalk self {
+				西の方で、何か
+				事故でもあったようじゃのう。{wait}
+			}
+			TextWait
+			TextTalk self {
+				くわばらくわばら……
+				空の女神#8Rエ イ ド ス#よ、どうか皆を護ってくだされ。{wait}
+			}
+			TextWait
+			FlagSet flag[1]
+		else:
+			TextTalk self {
+				くわばらくわばら……
+				空の女神#8Rエ イ ド ス#よ、どうか皆を護ってくだされ。{wait}
+			}
+			TextWait
+	elif flag[2832]:
+		if !flag[1]:
+			TextTalk self {
+				一概には言えんが、
+				どうやら若い世代の方が
+				独立に賛成という者が多いようじゃな。{wait}
+			}
+			TextWait
+			TextTalk self {
+				紛争を知らぬ世代、か……
+				事の深刻さが本当に分かって
+				おるのかどうか不安になるわい。{wait}
+			}
+			TextWait
+			FlagSet flag[1]
+		else:
+			TextTalk self {
+				紛争を知らぬ世代、か……
+				事の深刻さが本当に分かって
+				おるのかどうか不安になるわい。{wait}
+			}
+			TextWait
+	elif flag[2816]:
+		if !flag[1]:
+			TextTalk self {
+				ふむ、正直まさか
+				この歳になって独立という言葉を
+				耳にするとは思わんかったわい。{wait}
+			}
+			TextWait
+			TextTalk self {
+				独立、独立か……
+				確かに実現できれば夢のようじゃが、
+				果たしてうまく行くとも思えんのう……{wait}
+			}
+			TextWait
+			FlagSet flag[1]
+		else:
+			TextTalk self {
+				独立、独立か……
+				果たして叶う夢なのじゃろうか？{wait}
+			}
+			TextWait
+	elif flag[2573]:
+		if !flag[1]:
+			TextTalk self {
+				通商会議は傍聴などできんし、
+				導力通信で中継されるわけでもない。{wait}
+			}
+			TextWait
+			TextTalk self {
+				つまり、わしらはその結果を
+				市の広報と報道関係者を通して
+				知るわけじゃな。{wait}
+			}
+			TextWait
+			TextTalk self {
+				特に一般的なのは、言わずと知れた
+				クロスベルタイムズじゃ。{wait}
+			}
+			TextWait
+			TextTalk self {
+				記事の信頼性、安定性、スピード……{wait}
+			}
+			TextWait
+			TextTalk self {
+				どれを取っても、この地においては
+				クロスベルタイムズに勝る
+				情報源はなかなか存在せんのじゃよ。{wait}
+			}
+			TextWait
+			FlagSet flag[1]
+		else:
+			TextTalk self {
+				通商会議は傍聴などできんし、
+				導力通信で中継されるわけでもない。{wait}
+			}
+			TextWait
+			TextTalk self {
+				つまり、わしらはその結果を
+				市の広報と報道関係者を通して
+				知るわけじゃな。{wait}
+			}
+			TextWait
+	elif flag[2568]:
+		if !flag[1]:
+			TextTalk self {
+				おや、気付けばもうすっかり
+				日が暮れてしまっておるではないか。{wait}
+			}
+			TextWait
+			TextTalk self {
+				ほっほっ、これも通商会議の
+				空気にあてられたせいかのう。{wait}
+			}
+			TextWait
+			TextTalk self {
+				婆さんが心配せん内に早く帰らんとな。{wait}
+			}
+			TextWait
+			FlagSet flag[1]
+		else:
+			TextTalk self {
+				おや、気付けばもうすっかり
+				日が暮れてしまっておるではないか。{wait}
+			}
+			TextWait
+			TextTalk self {
+				婆さんが心配せん内に早く帰らんとな。{wait}
+			}
+			TextWait
+	elif flag[2564]:
+		if !flag[2568] && flag[3639] && !flag[3640]:
+			TextTalk self {
+				先ほど、そこのレストランに
+				東方風の女性が入っていったぞい。{wait}
+			}
+			TextWait
+			TextTalk self {
+				理知的な顔をした
+				美しい女性じゃったのう。{wait}
+			}
+			TextWait
+		elif !flag[1]:
+			TextTalk self {
+				ふむ、新市庁ビルが
+				ようやっとその姿を現したか。{wait}
+			}
+			TextWait
+			TextTalk self {
+				建築計画の発表から実に５年。
+				噂では完成まで最低でもあと１年は
+				かかると言われておったんじゃが……{wait}
+			}
+			TextWait
+			TextTalk self {
+				クロイス市長の就任直後にＩＢＣの
+				資本を投入することが決定してな。{wait}
+			}
+			TextWait
+			TextTalk self {
+				おかげで、くだらん利権争いに
+				影響されることなく急ピッチで工事が進み、
+				ついに先日完成に至ったというわけじゃ。{wait}
+			}
+			TextWait
+			TextTalk self {
+				ほっほっ、まっこと
+				クロイス市長さまさまじゃのう。{wait}
+			}
+			TextWait
+			FlagSet flag[1]
+		else:
+			TextTalk self {
+				建築計画の発表から実に５年。
+				噂では完成まで最低でもあと１年は
+				かかると言われておったんじゃが……{wait}
+			}
+			TextWait
+			TextTalk self {
+				ほっほっ、まっこと
+				クロイス市長さまさまじゃのう。{wait}
+			}
+			TextWait
+	elif flag[2560]:
+		if !flag[1]:
+			TextTalk self {
+				ふむ、明日からいよいよ
+				通商会議が始まるわけじゃな。{wait}
+			}
+			TextWait
+			TextTalk self {
+				提唱者のクロイス市長は
+				何と言っても、市長であると同時に
+				かのＩＢＣの総裁じゃ。{wait}
+			}
+			TextWait
+			TextTalk self {
+				会議ではそのリーダーシップを
+				存分に発揮してもらわんとのう。{wait}
+			}
+			TextWait
+			FlagSet flag[1]
+		else:
+			TextTalk self {
+				ふむ、明日からいよいよ
+				通商会議が始まるわけじゃな。{wait}
+			}
+			TextWait
+			TextTalk self {
+				クロイス市長には、
+				そのリーダーシップを存分に
+				発揮してもらわんとのう。{wait}
+			}
+			TextWait
+	elif flag[2369]:
+	elif flag[2353]:
+		if flag[2437] && QuestFlagsGet quest[105] 0x10:
+			TextTalk self {
+				ここからも、さっきの
+				逮捕劇が見えたよ。{wait}
+			}
+			TextWait
+			TextTalk self {
+				警察もなかなか
+				がんばっとるようじゃな。{wait}
+			}
+			TextWait
+		elif !flag[1]:
+			TextTalk self {
+				教団事件に絡んだ帝国・共和国派の
+				汚職議員が消え、裏社会からは
+				あのルバーチェ商会までもが消えた。{wait}
+			}
+			TextWait
+			TextTalk self {
+				じゃがそれでも、
+				未だ帝国派議員が議席数で
+				トップを行く現状は変わっておらん。{wait}
+			}
+			TextWait
+			TextTalk self {
+				法改正のスピードアップなど
+				健闘は伺えるが……クロイス市長には
+				もっともっと頑張ってもらわんとのう。{wait}
+			}
+			TextWait
+			FlagSet flag[1]
+		else:
+			TextTalk self {
+				……確か黒月じゃったか。{wait}
+			}
+			TextWait
+			TextTalk self {
+				ルバーチェがいなくなって、
+				ヤツラが幅を利かせ始めた
+				という噂もある。{wait}
+			}
+			TextWait
+			TextTalk self {
+				市民が安心して暮らせる法作り……
+				クロイス市長には、もっともっと
+				頑張ってもらわんとのう。{wait}
+			}
+			TextWait
+	TextEnd self
+	Return
+
+fn[2]:
+	TextStart self
+	if flag[3385]:
+		TextTalk self {
+			さてと、僕はこれから
+			オルキスタワーの方に戻るとするよ。{wait}
+		}
+		TextWait
+		TextTalk self {
+			市役所も混乱の最中だろうけど、
+			とにかく顔を出さないことには
+			始まらないからね。{wait}
+		}
+		TextWait
+	elif flag[3371]:
+	elif flag[3089]:
+	elif flag[3074]:
+		if !flag[3]:
+			TextTalk self {
+				はは、ミミは無邪気で可愛いなぁ。{wait}
+			}
+			TextWait
+			TextTalk self {
+				しかし、それにしても
+				武装集団はなぜクロスベルの鐘を
+				持ち去ったんだろうね。{wait}
+			}
+			TextWait
+			TextTalk self {
+				盗んだって、そんなに価値の
+				あるものとは思えないんだけど……{wait}
+			}
+			TextWait
+			FlagSet flag[3]
+		else:
+			TextTalk self {
+				それにしても、
+				武装集団はなぜクロスベルの鐘を
+				持ち去ったんだろうね。{wait}
+			}
+			TextWait
+			TextTalk self {
+				盗んだって、そんなに価値の
+				あるものとは思えないんだけど……{wait}
+			}
+			TextWait
+	elif flag[2861]:
+		TextTalk self {
+			マインツの人たち、心配だね……
+			ミミくらいの子たちもいるだろうに……{wait}
+		}
+		TextWait
+	elif flag[2848]:
+		TextTalk self {
+			ほらミミ、見てごらん。{wait}
+		}
+		TextWait
+		TextTalk self {
+			でんでん虫さんが、手すりの上を
+			行ったり来たりしているよ。{wait}
+		}
+		TextWait
+	elif flag[2837]:
+		TextTalk self {
+			当たり前のことだけど……
+			救急車、かなり急いでたね。{wait}
+		}
+		TextWait
+		TextTalk self {
+			ああいった緊急車両には
+			スピード制限がないとはいえ、
+			見ていると少しヒヤヒヤするよ。{wait}
+		}
+		TextWait
+	elif flag[2832]:
+		if !flag[3]:
+			TextTalk self {
+				う～ん、やはり導力車はいいよな～。{wait}
+			}
+			TextWait
+			TextTalk self {
+				だが、いかんせん
+				まだまだ相場が高すぎて
+				庶民には手を出せないんだよ。{wait}
+			}
+			TextWait
+			TextTalk self {
+				今の半分、はまだまだ難しいとしても
+				２割程度下がってくれるだけでも
+				かなり手が出しやすくなるんだけどね。{wait}
+			}
+			TextWait
+			FlagSet flag[3]
+		else:
+			TextTalk self {
+				う～ん、やはり導力車はいいよな～。{wait}
+			}
+			TextWait
+			TextTalk self {
+				今すぐにはとても無理だけど、
+				せめて僕が定年を迎える頃には
+				何としても手に入れたいなぁ。{wait}
+			}
+			TextWait
+	elif flag[2816]:
+		if !flag[3]:
+			TextTalk self {
+				最近、世間では
+				独立についての話にばかり
+				注目が行っているみたいだけど……{wait}
+			}
+			TextWait
+			TextTalk self {
+				つい先日、交通基本法の改正が
+				行われたことも忘れないで欲しいね。{wait}
+			}
+			TextWait
+			TextTalk self {
+				今度の法改正では、
+				これまでの罰金制度に加えて
+				『免許停止制度』が加わったんだ。{wait}
+			}
+			TextWait
+			TextTalk self {
+				これで少しでも導力車による
+				事故が減ってくれることを願ってるよ。{wait}
+			}
+			TextWait
+			FlagSet flag[3]
+		else:
+			TextTalk self {
+				今後は一定以上の違反を犯すと、
+				一定期間、運転免許が停止……
+				つまり運転ができなくなるんだ。{wait}
+			}
+			TextWait
+			TextTalk self {
+				これで少しでも導力車による
+				事故が減ってくれることを願ってるよ。{wait}
+			}
+			TextWait
+	elif flag[2573]:
+	elif flag[2568]:
+		TextTalk self {
+			さてと、待たせてしまって
+			すまなかったね。{wait}
+		}
+		TextWait
+		TextTalk self {
+			それじゃ、早速行くとしようか。{wait}
+		}
+		TextWait
+	elif flag[2564]:
+	elif flag[2560]:
+		TextTalk self {
+			市庁舎の完全移転に伴って、
+			しばらくの間オルキスタワーに
+			詰めることになったんだ。{wait}
+		}
+		TextWait
+		TextTalk self {
+			さてと、忙しくなりそうだぞ。{wait}
+		}
+		TextWait
+	elif flag[2369]:
+		if !flag[2416]:
+			TextTalk self {
+				昨日見かけたんだけど……
+				君たち、随分珍しい導力車に
+				乗っているみたいだね？{wait}
+			}
+			TextWait
+			TextTalk name[0] {
+				#00000Fはい、実は
+				ＺＣＦの新型導力車なんです。{wait}
+			}
+			TextWait
+			Emote self 0mm 2000mm 2 7 80ms 1
+			SoundPlay sound[28] 0 100 0
+			Sleep 50ms
+			TextTalk self {
+				なんだって、あのＺＣＦが導力車を！？{wait}
+			}
+			TextWait
+			TextTalk self {
+				ち、ちなみに、最高時速は分かるかい？{wait}
+			}
+			TextWait
+			TextTalk name[8] {
+				#10102Fええ、まだ試してはいないんですが、
+				１５００セルジュは固いみたいですね。{wait}
+			}
+			TextWait
+			TextTalk self {
+				な、なんと……！
+				あの型でそのスピードとは、
+				ＺＣＦもやってくれたね！{wait}
+			}
+			TextWait
+			TextTalk self {
+				う～ん、何ということだ。
+				これで導力車メーカーも
+				いよいよ３強時代に突入かぁ。{wait}
+			}
+			TextWait
+			TextTalk self {
+				ふむ、こうなると今後が
+				ますます楽しみになってしまうね！{wait}
+			}
+			TextWait
+			TextTalk name[8] {
+				#10109Fですよね～！{wait}
+			} {
+				これで競争がますます過熱して、
+				もっと凄い子たちがどんどん……{wait}
+			}
+			TextWait
+			Emote char[2] 0mm 2000mm 38 39 250ms 2
+			Emote name[8] 0mm 2000mm 38 39 250ms 2
+			Sleep 1200ms
+			TextTalk name[0] {
+				#00012Fず、随分と盛り上がってるな。{wait}
+			}
+			TextWait
+			TextTalk name[1] {
+				#00109Fふふ、ノエルさんも本当に好きよね。{wait}
+			}
+			TextWait
+			FlagSet flag[2416]
+		else:
+			TextTalk self {
+				まさか、あのＺＣＦが
+				導力車を開発してたとはね！{wait}
+			}
+			TextWait
+			TextTalk self {
+				ふむむ、これは今後とも
+				各社の動向に目が離せないよ！{wait}
+			}
+			TextWait
+	elif flag[2353]:
+		if flag[2437] && QuestFlagsGet quest[105] 0x10:
+			TextTalk self {
+				やはり交通法の整備は
+				早急にしてもらわないとね。{wait}
+			}
+			TextWait
+			TextTalk self {
+				ミミを１人で遊ばせるのが
+				怖くなってしまうよ。{wait}
+			}
+			TextWait
+		elif !flag[3]:
+			TextTalk self {
+				この前、物凄いスピードで
+				この中央広場を駆け抜ける
+				導力車を見かけたんだ。{wait}
+			}
+			TextWait
+			TextTalk self {
+				明らかに危険な速度だったから、
+				すぐに警察に通報したんだけど……{wait}
+			}
+			TextWait
+			TextTalk self {
+				ちゃんと捕まっただろうか。
+				……また現れないか心配だよ。{wait}
+			}
+			TextWait
+			FlagSet flag[3]
+		else:
+			TextTalk self {
+				とはいえ、現在の交通基本法では
+				たとえ危険運転で捕まっても
+				罰金だけで済んでしまうんだけどさ。{wait}
+			}
+			TextWait
+			TextTalk self {
+				ただ最近は、議会でも
+				罰則の強化に踏み出している所だから
+				今後に期待はしているけどね。{wait}
+			}
+			TextWait
+	TextEnd self
+	Return
+
+fn[3]:
+	TextStart self
+	if flag[3385]:
+		TextTalk self {
+			旦那が市役所に戻るというので
+			私たちも家の方に帰ろうと思います。{wait}
+		}
+		TextWait
+		TextTalk self {
+			この先も色々と不安ですが……
+			家族が一緒にいる限りは、
+			何でも乗り切れそうな気がしますね。{wait}
+		}
+		TextWait
+	elif flag[3371]:
+	elif flag[3089]:
+		TextTalk self {
+			仕方のないことですが……
+			この一週間で観光客の姿を
+			ほとんど見かけなくなりましたね。{wait}
+		}
+		TextWait
+		TextTalk self {
+			……クロスベルはこの先
+			どうなって行くんでしょうか……{wait}
+		}
+		TextWait
+	elif flag[3074]:
+		TextTalk self {
+			ガイドの仕事は当分お休みなので、
+			今は家族３人で過ごしているんです。{wait}
+		}
+		TextWait
+		TextTalk self {
+			先のことは色々と不安ですけど……
+			子供の笑顔には救われますね。{wait}
+		}
+		TextWait
+	elif flag[2861]:
+	elif flag[2848]:
+	elif flag[2837]:
+	elif flag[2832]:
+	elif flag[2816]:
+	elif flag[2573]:
+		if !flag[2]:
+			TextTalk self {
+				えー、コホン。{wait}
+			}
+			TextWait
+			TextTalk self {
+				皆様の右手後方に見えますのは、
+				《オーバルストア》でございます。{wait}
+			}
+			TextWait
+			TextTalk self {
+				その名も《ゲンテン》と言いまして、
+				大陸中の導力製品が集まる
+				お店として有名なんです。{wait}
+			}
+			TextWait
+			TextTalk self {
+				市民はもちろん、
+				観光客の皆さんにも人気のある
+				時代の最先端を行くお店なんですよ。{wait}
+			}
+			TextWait
+			FlagSet flag[2]
+		else:
+			TextTalk self {
+				えー、皆様の右手後方に見えますのは、
+				オーバルストア《ゲンテン》でございます。{wait}
+			}
+			TextWait
+			TextTalk self {
+				市民はもちろん、
+				観光客の皆さんにも人気のある
+				時代の最先端を行くお店なんですよ。{wait}
+			}
+			TextWait
+	elif flag[2568]:
+		TextTalk self {
+			ええ、早く行きましょう。
+			ミミも私もお腹ペコペコよ。{wait}
+		}
+		TextWait
+	elif flag[2564]:
+		if !flag[2642]:
+			Call fn[1,6]
+		elif !flag[2]:
+			TextTalk self {
+				えー、コホン。{wait}
+			}
+			TextWait
+			TextTalk self {
+				皆様の右手に見えますのは、
+				《クロスベルの鐘》でございます。{wait}
+			}
+			TextWait
+			TextTalk self {
+				その起源は古く５００年以上も前、
+				中世の時代に遡ると言われております。{wait}
+			}
+			TextWait
+			TextTalk self {
+				七耀暦１１８５年に発掘されて以来、
+				今ではすっかり街の象徴として
+				市民の間で親しまれているんですよ。{wait}
+			}
+			TextWait
+			FlagSet flag[2]
+		else:
+			TextTalk self {
+				えー、皆様の右手に見えますのは、
+				《クロスベルの鐘》でございます。{wait}
+			}
+			TextWait
+			TextTalk self {
+				その起源は古く５００年以上も前、
+				中世の時代に遡ると言われております。{wait}
+			}
+			TextWait
+	elif flag[2560]:
+	elif flag[2369]:
+	elif flag[2353]:
+	TextEnd self
+	Return
+
+fn[4]:
+	TextStart self
+	if flag[3385]:
+		if !flag[4]:
+			TextTalk self {
+				パパ、これからまた
+				お仕事に行くんだって～。{wait}
+			}
+			TextWait
+			TextTalk self {
+				そういえば、ロイド君たちも
+				ずっとお仕事中なんだよね？{wait}
+			}
+			TextWait
+			TextTalk self {
+				ミミ、みんなのこともずっと
+				応援してるからがんばってね！{wait}
+			}
+			TextWait
+			TextTalk name[0] {
+				#00000Fああ、ありがとう。{wait}
+			}
+			TextWait
+			FlagSet flag[4]
+		else:
+			TextTalk self {
+				パパもロイド君たちも
+				お仕事がんばってて偉いよね～。{wait}
+			}
+			TextWait
+			TextTalk self {
+				ミミも応援がんばるのっ。{wait}
+			}
+			TextWait
+	elif flag[3371]:
+	elif flag[3089]:
+		if !flag[4]:
+			TextTalk self {
+				あの画面付きの導力車、
+				かっこよかったねー。{wait}
+			}
+			TextWait
+			TextTalk self {
+				お父さんが喜びそうなの。{wait}
+			}
+			TextWait
+			FlagSet flag[4]
+		else:
+			TextTalk self {
+				お父さん、市役所の仕事が
+				忙しくなったんだって。{wait}
+			}
+			TextWait
+			TextTalk self {
+				逆にお母さんのいる
+				旅行会社は休業中なの。{wait}
+			}
+			TextWait
+	elif flag[3074]:
+		if !flag[4]:
+			TextTalk self {
+				えー、みな様の右手にみえますのは
+				クロスベルのかねでございま～すっ。{wait}
+			}
+			TextWait
+			TextTalk self {
+				ってアレレ？
+				かねがどこかに行っちゃったよ？{wait}
+			}
+			TextWait
+			FlagSet flag[4]
+		else:
+			TextTalk self {
+				クロスベルのかね、
+				どこに行っちゃったんだろうね？{wait}
+			}
+			TextWait
+	elif flag[2861]:
+		if !flag[4]:
+			TextTalk self {
+				なんか、今日は
+				むつかしい顔してる人が多いね。{wait}
+			}
+			TextWait
+			TextTalk self {
+				あ、ロイドくんたちも……
+				ダメだよ、元気出さなきゃっ。{wait}
+			}
+			TextWait
+			TextTalk name[0] {
+				#00000Fあ、うん、そうだね。{wait}
+			}
+			TextWait
+			TextTalk name[1] {
+				#00100Fありがとう、ミミちゃん。{wait}
+			}
+			TextWait
+			TextTalk self {
+				ううん。
+				どういたしまして、だよ。{wait}
+			}
+			TextWait
+			FlagSet flag[4]
+		else:
+			TextTalk self {
+				なんか、今日は
+				むつかしい顔してる人が多いね。{wait}
+			}
+			TextWait
+			TextTalk self {
+				みんな、太陽さんに笑われちゃうぞっ。{wait}
+			}
+			TextWait
+	elif flag[2848]:
+		TextTalk self {
+			わー、ほんとだっ。{wait}
+		}
+		TextWait
+		TextTalk self {
+			もしかして迷子さんなのかな？{wait}
+		}
+		TextWait
+	elif flag[2837]:
+		TextTalk self {
+			救急車が通ったらね、
+			みんな道をゆずらなくちゃ
+			いけないんだよ。{wait}
+		}
+		TextWait
+		TextTalk self {
+			それが交通ルールなのっ。{wait}
+		}
+		TextWait
+	elif flag[2832]:
+		if !flag[4]:
+			TextTalk self {
+				ぷっぷ～、ぷっぷ～。{wait}
+			}
+			TextWait
+			TextTalk self {
+				お父さん、また
+				車のこと考えてるみたいなの。{wait}
+			}
+			TextWait
+			TextTalk self {
+				ほんと好きだよね～。{wait}
+			}
+			TextWait
+			FlagSet flag[4]
+		else:
+			TextTalk self {
+				ぷっぷ～、ぷっぷ～。{wait}
+			}
+			TextWait
+			TextTalk self {
+				助手席はミミのものっ。{wait}
+			}
+			TextWait
+	elif flag[2816]:
+		if !flag[4]:
+			TextTalk self {
+				えー、みなさまの
+				右手にみえますのは……{wait}
+			}
+			TextWait
+			TextTalk self {
+				？？？{wait}
+			}
+			TextWait
+			TextTalk self {
+				あれ、右手は右手だよ？{wait}
+			}
+			TextWait
+			FlagSet flag[4]
+		else:
+			TextTalk self {
+				うーんと、お母さん
+				なんて言ってたんだっけ？{wait}
+			}
+			TextWait
+			TextTalk self {
+				右手にみえるのは……右手？{wait}
+			}
+			TextWait
+	elif flag[2573]:
+		TextTalk self {
+			ふむふむ、なるほどなるほどー。{wait}
+		}
+		TextWait
+		TextTalk self {
+			これはぜひ、何かお土産を
+			買って行くしかありませんなー。
+			パシャッ、パシャッ。{wait}
+		}
+		TextWait
+	elif flag[2568]:
+		TextTalk self {
+			外食、外食、今日は外食♪{wait}
+		}
+		TextWait
+		TextTalk self {
+			ミミ、東通りのお店の
+			『ちゅーか』が食べたいのっ。{wait}
+		}
+		TextWait
+	elif flag[2564]:
+		if !flag[2642]:
+			Call fn[1,6]
+		else:
+			TextTalk self {
+				ふむふむ、なるほどなるほどー。{wait}
+			}
+			TextWait
+			TextTalk self {
+				これはぜひとも写真に
+				収めないといけませんねー。
+				パシャッ、パシャッ。{wait}
+			}
+			TextWait
+	elif flag[2560]:
+		if QuestFlagsGet quest[115] 0x02 && !QuestFlagsGet quest[115] 0x10 && !QuestFlagsGet quest[115] 0x40 && flag[2722]:
+			if !flag[3814]:
+				CharTurnToChar char[3] name[161] 0deg/s
+				Sleep 300ms
+				TextTalk char[3] {
+					あ、ロイド君たちが
+					ミミのしらない子を連れてるー。{wait}
+				}
+				TextWait
+				TextTalk char[3] {
+					えへへ、その服かっこいいね。
+					とーほー風っていうんだっけー？{wait}
+				}
+				TextWait
+				Emote name[161] 0mm 1700mm 38 38 250ms 1
+				Sleep 1000ms
+				TextTalk name[161] {
+					ほう、この服の良さに気付くとは
+					お前なかなか見込みがあるな。{wait}
+				}
+				TextWait
+				TextTalk name[161] {
+					フフン、これは世界に一着しかない
+					オーダーメイドなんだぞ。{wait}
+				}
+				TextWait
+				TextTalk char[3] {
+					おーだーめいどー？{wait}
+				}
+				TextWait
+				TextTalk char[3] {
+					へえ、それって
+					メイドさんの服だったんだー。{wait}
+				}
+				TextWait
+				Emote name[161] 0mm 1700mm 16 19 250ms 1
+				SoundPlay sound[23] 0 100 0
+				Sleep 1000ms
+				TextTalk name[161] {
+					いや、そうじゃなくって……{wait}
+				}
+				TextWait
+				TextTalk name[0] {
+					#00002F（はは、この２人のやり取りも
+					{}  何だか新鮮で面白いな。）{wait}
+				}
+				TextWait
+				FlagSet flag[3814]
+			else:
+				CharTurnToChar char[3] name[161] 0deg/s
+				Sleep 300ms
+				TextTalk char[3] {
+					メイドさんかー。
+					あれれ、君って実は女の子？{wait}
+				}
+				TextWait
+				Emote name[161] 0mm 1700mm 16 19 250ms 1
+				SoundPlay sound[23] 0 100 0
+				Sleep 1000ms
+				TextTalk name[161] {
+					だから違うって……{wait}
+				}
+				TextWait
+		else:
+			TextTalk self {
+				お父さん、しばらくミミと
+				遊んでくれなくなっちゃうんだって。{wait}
+			}
+			TextWait
+			TextTalk self {
+				でも、お仕事だから我慢しないとねー。{wait}
+			}
+			TextWait
+	elif flag[2369]:
+		if !flag[2417]:
+			Call fn[1,5]
+		elif !flag[4]:
+			TextTalk self {
+				ぴっちぴっち、ぴっちぴっち♪{wait}
+			}
+			TextWait
+			TextTalk self {
+				今日は雨だね～、そんだけっ。{wait}
+			}
+			TextWait
+			FlagSet flag[4]
+		else:
+			TextTalk self {
+				ミミのお父さんは
+				導力車に目がないのっ。{wait}
+			}
+			TextWait
+			TextTalk self {
+				どんだけっ。{wait}
+			}
+			TextWait
+	elif flag[2353]:
+		if flag[2437] && QuestFlagsGet quest[105] 0x10:
+			TextTalk self {
+				車は、ルールを守って
+				乗りましょう。{wait}
+			}
+			TextWait
+			TextTalk self {
+				ミミでも知ってるよ～。{wait}
+			}
+			TextWait
+		elif !flag[2417]:
+			Call fn[1,5]
+		else:
+			TextTalk self {
+				ニュー・とくむしえんかのみんな。
+				お仕事がんばってね～。{wait}
+			}
+			TextWait
+	TextEnd self
+	Return
+
+fn[5]:
+	TextTalk char[3] {
+		あ、ロイドくんにエリィちゃん！
+		それに……{wait}
+	}
+	TextWait
+	Emote char[3] 0mm 1700mm 0 1 250ms 2
+	SoundPlay sound[29] 0 100 0
+	Sleep 1000ms
+	TextTalk char[3] {
+		あれぇ、ティオちゃんと
+		ランディくんは？{wait}
+	}
+	TextWait
+	TextTalk char[3] {
+		とくむしえんかは、
+		まだしばらくお休みなの？{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#00012Fいや、そういうわけじゃ
+		ないんだけど……{wait}
+	} {
+		#00000F２人はまだ
+		他にやるべき仕事があってね。{wait}
+	}
+	TextWait
+	TextTalk name[1] {
+		#00100Fええ、それとこの２人は
+		特務支援課の新しいメンバーなのよ。{wait}
+	}
+	TextWait
+	Emote char[3] 0mm 1700mm 38 38 250ms 1
+	Sleep 1000ms
+	TextTalk char[3] {
+		へえ、そうなんだー。{wait}
+	}
+	TextWait
+	TextTalk char[3] {
+		それじゃ、これからは
+		ニュー・とくむしえんかだね♪{wait}
+	}
+	TextWait
+	TextTalk name[4] {
+		#10302Fはは、なかなかどうして
+		的確なネーミングじゃないか。{wait}
+	}
+	TextWait
+	TextTalk name[8] {
+		#10109Fふふ、これからもよろしくね。{wait}
+	}
+	TextWait
+	TextTalk char[3] {
+		うん、よろしくー！{wait}
+	}
+	TextWait
+	FlagSet flag[2417]
+	Return
+
+fn[6]:
+	_Char4A char[3] 255
+	_Char4A char[7] 255
+	CharFlagsUnset char[7] 0x0010
+	CharTurnToChar char[3] field_party[0] 0deg/s
+	CharTurnToChar char[7] field_party[0] 0deg/s
+	TextTalk char[3] {
+		あっ、ロイドくんたちだ。{wait}
+	}
+	TextWait
+	TextTalk char[3] {
+		ミミのお母さんを紹介するね。
+		観光ガイドさんをしているの。{wait}
+	}
+	TextWait
+	TextTalk char[7] {
+		ふふ、はじめまして。{wait}
+	}
+	TextWait
+	TextTalk char[7] {
+		いつも娘のことを
+		構って下さっているみたいで
+		ありがとうございます。{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#00000Fいえ、そんな
+		大したことはしてませんが。{wait}
+	}
+	TextWait
+	TextTalk name[1] {
+		#00100Fそれにしても、観光ガイドを
+		されているなんて素敵ですね。{wait}
+	} {
+		今日もお仕事なんですか？{wait}
+	}
+	TextWait
+	TextTalk char[7] {
+		いえ、それが通商会議の間は
+		お休みをいただきまして。{wait}
+	}
+	TextWait
+	TextTalk char[7] {
+		なので、その間はこの子と
+		一緒に過ごすつもりなんです。{wait}
+	}
+	TextWait
+	TextTalk name[4] {
+		#10302Fふうん、なのに制服なんだね？{wait}
+	}
+	TextWait
+	TextTalk char[7] {
+		ええ、それが……{wait}
+	}
+	TextWait
+	TextTalk char[3] {
+		ミミがお願いして着てもらったんだよ。{wait}
+	}
+	TextWait
+	TextTalk char[3] {
+		これからガイドさんごっこするの。{wait}
+	}
+	TextWait
+	TextTalk name[3] {
+		#00302Fはは、なるほどな。
+		そいつは良かったじゃねえか。{wait}
+	}
+	TextWait
+	TextTalk char[3] {
+		うん、そうなのっ♪{wait}
+	}
+	TextWait
+	TextTalk char[3] {
+		ロイド君たちも
+		気を付けて行ってらっしゃーい。{wait}
+	}
+	TextWait
+	CharTurnTo char[7] 0deg 0deg/s
+	CharTurnTo char[3] 0deg 0deg/s
+	CharFlagsSet char[7] 0x0010
+	CharFlagsSet char[3] 0x0010
+	_Char4B char[3] 255
+	_Char4B char[7] 255
+	FlagSet flag[2642]
+	Return
+
+fn[7]:
+	TextStart self
+	if flag[3385]:
+		TextTalk self {
+			なにあの巨大な樹……
+			ありえなくない？{wait}
+		}
+		TextWait
+	elif flag[3371]:
+	elif flag[3089]:
+		TextTalk self {
+			アリオス様、超かっこよかったね～！{wait}
+		}
+		TextWait
+	elif flag[3074]:
+		TextTalk self {
+			今日は行政区の方で
+			チャリティイベントってのを
+			やってるみたいじゃん。{wait}
+		}
+		TextWait
+		TextTalk self {
+			ちょっと見に行ってみる？{wait}
+		}
+		TextWait
+	elif flag[2861]:
+		TextTalk self {
+			謎の武装集団だなんて怖すぎだよね。
+			ああいう連中に舐められないためにも
+			独立すべきだってパパは言うけど……{wait}
+		}
+		TextWait
+		TextTalk self {
+			住民投票かぁ、アタシたちも
+			１８だったら投票できたんだけどね。{wait}
+		}
+		TextWait
+	elif flag[2848]:
+	elif flag[2837]:
+		TextTalk self {
+			救急車、凄い勢いだったね。
+			……急いで事故らなきゃいいけど。{wait}
+		}
+		TextWait
+	elif flag[2832]:
+		TextTalk self {
+			えー、ダイエット止めちゃうの！？{wait}
+		}
+		TextWait
+		TextTalk self {
+			むむむ、妙に潔い顔をしてからに……
+			私はアンタみたいにはならないわよっ！{wait}
+		}
+		TextWait
+	elif flag[2816]:
+		TextTalk self {
+			…………………………………{wait}
+		}
+		TextWait
+		TextTalk self {
+			……何でもするなら、
+			運動するか、食事制限すれば？{wait}
+		}
+		TextWait
+	elif flag[2573]:
+		TextTalk self {
+			ねえねえ、アリオス様と
+			アルバート大公って、
+			何でも凄く仲が良いらしいわね。{wait}
+		}
+		TextWait
+		TextTalk self {
+			いいな～、できるものなら
+			アタシもお２人と仲良くした～い！{wait}
+		}
+		TextWait
+	elif flag[2568]:
+		if !flag[6]:
+			Call fn[1,8]
+			CharFlagsUnset char[4] 0x0010
+		else:
+			TextTalk self {
+				ふーん、なるほどね～。{wait}
+			}
+			TextWait
+			TextTalk self {
+				（……この調子だと
+				{}  全然やってないわね。）{wait}
+			}
+			TextWait
+	elif flag[2564]:
+		TextTalk self {
+			アルバート大公、見た！？
+			あのアゴ髭、素敵すぎじゃない？{wait}
+		}
+		TextWait
+		TextTalk self {
+			オズボーン宰相もカッコイイんだけど、
+			ちょっと近寄りがたいって言うかぁ。{wait}
+		}
+		TextWait
+		TextTalk self {
+			でも、２人ともイイ髭してるわよね～。{wait}
+		}
+		TextWait
+	elif flag[2560]:
+		TextTalk self {
+			アリオス様はもちろんだけど、
+			やっぱりディーター市長も素敵よね。{wait}
+		}
+		TextWait
+		TextTalk self {
+			ま、恋人にしたいってよりは
+			理想のパパって感じだけど。
+			私を養子にしてくれないかしら。{wait}
+		}
+		TextWait
+	elif flag[2369]:
+	elif flag[2353]:
+		if flag[2437] && QuestFlagsGet quest[105] 0x10:
+			TextTalk self {
+				……はい？　何か用？{wait}
+			}
+			TextWait
+			TextTalk self {
+				今ちょっと忙しいんだけど～。{wait}
+			}
+			TextWait
+		elif !flag[2436] && flag[2435]:
+			if !flag[6]:
+				TextTalk self {
+					さっき、赤毛の変なオトコに
+					ナンパされちゃったの。{wait}
+				}
+				TextWait
+				TextTalk self {
+					結構かっこよかったけど
+					タイプじゃないのよね～って言ったら、
+					『オレもだ、気にすんな☆』って……{wait}
+				}
+				TextWait
+				TextTalk self {
+					ム、ムカツク～！！{wait}
+				}
+				TextWait
+				FlagSet flag[6]
+			else:
+				TextTalk self {
+					フツー、自分からナンパしといて
+					『オレもタイプじゃない』なんて言う！？{wait}
+				}
+				TextWait
+				TextTalk self {
+					ム、ムカツク～！！{wait}
+				}
+				TextWait
+		else:
+			TextTalk self {
+				宿題～？
+				そんなのするわけないじゃん。{wait}
+			}
+			TextWait
+			TextTalk self {
+				そういえばさー、
+				アリオス様、また出張らしいよ？{wait}
+			}
+			TextWait
+	TextEnd self
+	Return
+
+fn[8]:
+	_Char4A char[4] 255
+	_Char4A char[5] 255
+	TextTalk char[4] {
+		そういえば、リナリーって
+		ジョギング続けてんの？{wait}
+	}
+	TextWait
+	TextTalk char[5] {
+		え、あ、うん……
+		まあ、それなりにはね。{wait}
+	}
+	TextWait
+	TextTalk char[5] {
+		無理してダイエットってのも
+		良くないって思ったから、
+		最近は気が向いたらだけど……{wait}
+	}
+	TextWait
+	TextTalk char[4] {
+		ふ～ん、そうなんだ。{wait}
+	}
+	TextWait
+	TextTalk char[4] {
+		（……この調子だと
+		{}  全然やってないわね。）{wait}
+	}
+	TextWait
+	_Char4B char[4] 255
+	_Char4B char[5] 255
+	FlagSet flag[6]
+	FlagSet flag[7]
+	Return
+
+fn[9]:
+	TextStart self
+	if flag[3385]:
+		TextTalk self {
+			うん、青白い光が
+			綺麗な気もするけど……
+			超不気味だね。{wait}
+		}
+		TextWait
+		TextTalk self {
+			これから何が起こるんだろう……{wait}
+		}
+		TextWait
+	elif flag[3371]:
+	elif flag[3089]:
+		TextTalk self {
+			うんうん、あの白い軍服姿も
+			物凄く似合ってたし。{wait}
+		}
+		TextWait
+		TextTalk self {
+			アリオスさんがいれば、
+			何が起きても大丈夫って思えるよね。{wait}
+		}
+		TextWait
+	elif flag[3074]:
+		TextTalk self {
+			そうだね、ああいうのって
+			参加することに意義があるらしいし。{wait}
+		}
+		TextWait
+		TextTalk self {
+			何なら他にも誰か誘って行こうよ。{wait}
+		}
+		TextWait
+	elif flag[2861]:
+		TextTalk self {
+			あたしたち、まだ１５歳だもんね。{wait}
+		}
+		TextWait
+		TextTalk self {
+			でも独立の是非なんてよく分からないし……
+			正直、投票できなくてほっとしたかも。{wait}
+		}
+		TextWait
+	elif flag[2848]:
+	elif flag[2837]:
+		TextTalk self {
+			もう、プルーナってば
+			そんな物騒なこと言っちゃダメだって。{wait}
+		}
+		TextWait
+	elif flag[2832]:
+		TextTalk self {
+			……私、決めた。{wait}
+		}
+		TextWait
+		TextTalk self {
+			ダイエットは諦めて、今の私を
+			好きでいてくれる男性を探すわ。{wait}
+		}
+		TextWait
+	elif flag[2816]:
+		TextTalk self {
+			はぁ～、運動も食事制限もない
+			ダイエット方法ってないのかしら。{wait}
+		}
+		TextWait
+		TextTalk self {
+			何でもするから誰か教えてよ～！{wait}
+		}
+		TextWait
+	elif flag[2573]:
+		TextTalk self {
+			そういえばアリオスさんって
+			レミフェリア公国から勲章を
+			授与されたことがあるのよね。{wait}
+		}
+		TextWait
+		TextTalk self {
+			お２人が仲良くなったのは、
+			それがきっかけだったのかしら？{wait}
+		}
+		TextWait
+	elif flag[2568]:
+		if !flag[7]:
+			Call fn[1,8]
+			CharFlagsUnset char[4] 0x0010
+		else:
+			TextTalk self {
+				き、気が向いたらって言っても
+				ちゃんと続けてはいるんだからね？{wait}
+			}
+			TextWait
+			TextTalk self {
+				えっと、それじゃあ、
+				今日は走って帰ろうかしら。{wait}
+			}
+			TextWait
+	elif flag[2564]:
+		if !flag[7]:
+			TextTalk self {
+				髭髭髭って……
+				ほんとプルーナも好きよね～。{wait}
+			}
+			TextWait
+			TextTalk self {
+				それより私は
+				オリヴァルト皇子の隣にいた
+				背の高い軍人さんがタイプかな。{wait}
+			}
+			TextWait
+			TextTalk self {
+				一度でいいから、ああいう体格の人に
+				お姫様抱っこをしてもらいたいわ。{wait}
+			}
+			TextWait
+			FlagSet flag[7]
+		else:
+			TextTalk self {
+				それより私は
+				オリヴァルト皇子の隣にいた
+				背の高い軍人さんがタイプかな。{wait}
+			}
+			TextWait
+			TextTalk self {
+				一度でいいから、ああいう体格の人に
+				お姫様抱っこをしてもらいたいわ。{wait}
+			}
+			TextWait
+	elif flag[2560]:
+		TextTalk self {
+			確かにディーター市長は
+			理想のパパかもね。{wait}
+		}
+		TextWait
+		TextTalk self {
+			とりあえず、うちのパパみたいに
+			オヤジ臭もしなさそうだし。{wait}
+		}
+		TextWait
+	elif flag[2369]:
+	elif flag[2353]:
+		if flag[2437] && QuestFlagsGet quest[105] 0x10:
+			TextTalk self {
+				危険運転？　知らな～い。{wait}
+			}
+			TextWait
+			TextTalk self {
+				あたしたちおしゃべりに
+				熱中してたもんね～。{wait}
+			}
+			TextWait
+		elif !flag[2436] && flag[2435]:
+			TextTalk self {
+				……あの赤毛のお兄さん、
+				なんかヘンな人だったね～。{wait}
+			}
+			TextWait
+			TextTalk self {
+				百貨店に入っていったけど、
+				何者だったんだろ。{wait}
+			}
+			TextWait
+		else:
+			TextTalk self {
+				あ～、そういえば今日って
+				夕方から日曜学校だったよね～。{wait}
+			}
+			TextWait
+			TextTalk self {
+				プルーナは前に出た宿題やった？{wait}
+			}
+			TextWait
+	TextEnd self
+	Return
+
+fn[10]:
+	TextStart self
+	if flag[3385]:
+		TextTalk self {
+			な、なんであんな
+			でっかい樹が宙に浮いてんだ？
+			物理的にありえねえし。{wait}
+		}
+		TextWait
+		TextTalk self {
+			ってか、俺はここで
+			風船を配ってていいのか……？{wait}
+		}
+		TextWait
+	elif flag[3371]:
+	elif flag[3089]:
+		TextTalk self {
+			クロスベル独立国か……
+			マジですげえことになって来たな。{wait}
+		}
+		TextWait
+		TextTalk self {
+			浮かれるような雰囲気でもないけど、
+			とりあえず建国記念ってことで
+			オリジナル風船でも作るとすっかな。{wait}
+		}
+		TextWait
+	elif flag[3074]:
+	elif flag[2861]:
+		TextTalk self {
+			武装集団だが何だか知らないけど、
+			全くとんでもない事をするよな。{wait}
+		}
+		TextWait
+		TextTalk self {
+			風船やるから今すぐどっか行けって
+			言ってやりたい気分だよ。{wait}
+		}
+		TextWait
+	elif flag[2848]:
+	elif flag[2837]:
+		TextTalk self {
+			風船はいかが～？
+			……何て言ってる空気じゃない感じだな。{wait}
+		}
+		TextWait
+		TextTalk self {
+			う～ん、事故って
+			一体何があったんだろうな。{wait}
+		}
+		TextWait
+	elif flag[2832]:
+		if !flag[5]:
+			TextTalk self {
+				風船はいかが～？{wait}
+			}
+			TextWait
+			TextTalk self {
+				大人の方も恥ずかしがらずに
+				ぜひどうぞ～。{wait}
+			}
+			TextWait
+			TextTalk self {
+				たまには難しいことを忘れて
+				童心に返ってみませんか～？{wait}
+			}
+			TextWait
+			FlagSet flag[5]
+		else:
+			TextTalk self {
+				大人の方も恥ずかしがらずに
+				ぜひどうぞ～。{wait}
+			}
+			TextWait
+			TextTalk self {
+				たまには
+				童心に返ってみませんか～？{wait}
+			}
+			TextWait
+	elif flag[2816]:
+		if !flag[5]:
+			TextTalk self {
+				この前、観光客の子供に
+				『風船はなぜ浮かぶの？』
+				って聞かれたんだ。{wait}
+			}
+			TextWait
+			TextTalk self {
+				そこで俺はすかさず
+				『夢が詰まってるからさ』
+				って答えたんだけど……{wait}
+			}
+			TextWait
+			TextTalk self {
+				最近の子供ってひどいもんだな。
+				言ったそばから鼻で笑うんだよ。{wait}
+			}
+			TextWait
+			FlagSet flag[5]
+		else:
+			TextTalk self {
+				もっと夢を持とうぜ、子供たち。{wait}
+			}
+			TextWait
+			TextTalk self {
+				空気より軽いガス？
+				いんや、風船には夢が詰まってるのさ。{wait}
+			}
+			TextWait
+	elif flag[2573]:
+		TextTalk self {
+			風船はいかが～？{wait}
+		}
+		TextWait
+		TextTalk self {
+			今なら通商会議参加国の紋章を
+			プリントした風船が手に入るよ～。{wait}
+		}
+		TextWait
+	elif flag[2568]:
+		TextTalk self {
+			さてと、今日もぼちぼち帰るかな。{wait}
+		}
+		TextWait
+		TextTalk self {
+			おかげ様で今日は人通りも多くて
+			一杯、風船を配ることができたよ。{wait}
+		}
+		TextWait
+	elif flag[2564]:
+		TextTalk self {
+			いや～、ここをリムジンが
+			通った時はさすがに緊張したな～。{wait}
+		}
+		TextWait
+		TextTalk self {
+			何ていうか、創立記念祭の時とは
+			また違った熱気があるよね。{wait}
+		}
+		TextWait
+	elif flag[2560]:
+		if QuestFlagsGet quest[115] 0x02 && !QuestFlagsGet quest[115] 0x10 && !QuestFlagsGet quest[115] 0x40 && flag[2722]:
+			if !flag[3817]:
+				CharTurnToChar char[6] name[161] 0deg/s
+				Sleep 300ms
+				TextTalk char[6] {
+					お、そこのお坊ちゃん。
+					風船はどうだい？
+					ふわふわ浮いて楽しいぞ～。{wait}
+				}
+				TextWait
+				TextTalk name[161] {
+					――いらん。
+					そんなの邪魔なだけだ。{wait}
+				}
+				TextWait
+				TextTalk char[6] {
+					よし、じゃあ何色が
+					――ってええ？
+					いま邪魔って言った？{wait}
+				}
+				TextWait
+				TextTalk name[0] {
+					#00000F（はは、どうやらシンは
+					{}  子供っぽいことが
+					{}  キライみたいだな。）{wait}
+				}
+				TextWait
+				CharFlagsUnset char[6] 0x0010
+				FlagSet flag[3817]
+			else:
+				TextTalk char[6] {
+					確かに風船に興味のない子も
+					結構いるけど……
+					ここまで否定されるとはなぁ。{wait}
+				}
+				TextWait
+				TextTalk char[6] {
+					流石にちょっとへこむよ。{wait}
+				}
+				TextWait
+		else:
+			TextTalk self {
+				風船はいかが～？{wait}
+			}
+			TextWait
+			TextTalk self {
+				赤、青、黄色に緑色。
+				色んな色が揃ってるよ～。{wait}
+			}
+			TextWait
+	elif flag[2369]:
+	elif flag[2353]:
+		if flag[2437] && QuestFlagsGet quest[105] 0x10:
+			TextTalk self {
+				さっきの車にビビって、
+				風船をいくつか飛ばしちまった！{wait}
+			}
+			TextWait
+			TextTalk self {
+				あー、もったいねー……
+				帰ってこーい……{wait}
+			}
+			TextWait
+		elif !flag[5]:
+			TextTalk self {
+				風船はいかが～？
+				クロスベル観光の
+				お供にぜひどうぞ～。{wait}
+			}
+			TextWait
+			TextTalk self {
+				楽しい気分になること
+				請け合いですよ～。{wait}
+			}
+			TextWait
+			FlagSet flag[5]
+		else:
+			TextTalk self {
+				風船は観光客以外の方にも
+				お配りしておりま～す。{wait}
+			}
+			TextWait
+			TextTalk self {
+				欲しい人はいつでも
+				声をかけて下さ～い。{wait}
+			}
+			TextWait
+	TextEnd self
+	Return
+
+fn[11]:
+	TextStart self
+	if flag[2562]:
+	elif QuestFlagsGet quest[115] 0x10:
+		if !flag[9]:
+			TextTalk char[9] {
+				#01203Fグルルル……{wait}
+			}
+			TextWait
+			TextTalk name[0] {
+				#00000Fはは、ここでこうしていると
+				まさに番犬って感じだな。{wait}
+			}
+			TextWait
+			TextTalk char[9] {
+				#01200Fグルル……ウォン。{wait}
+			}
+			TextWait
+			FlagSet flag[9]
+		else:
+			TextTalk char[9] {
+				#01200Fグルル……ウォン。{wait}
+			}
+			TextWait
+	elif QuestFlagsGet quest[115] 0x02:
+	elif flag[2560]:
+	elif !flag[2369] && flag[2353]:
+		if !flag[2511]:
+			Call fn[1,23]
+			Return
+		if !flag[9]:
+			TextTalk char[9] {
+				#01203Fグルルル…………{wait}
+			}
+			TextWait
+			if PartyPosition name[164] > -1:
+				TextTalk name[0] {
+					#00005Fん、どうかしたのか？{wait}
+				}
+				TextWait
+				TextTalk char[9] {
+					#01200F…………ウォン。{wait}
+				}
+				TextWait
+				TextTalk name[164] {
+					#01100F別に何でもないってー。{wait}
+				}
+				TextWait
+				TextTalk name[0] {
+					#00006Fそ、そっか。{wait}
+				} {
+					#00000Fまあ、今日も留守番を頼むな。{wait}
+				}
+				TextWait
+				TextTalk name[164] {
+					#01109Fツァイト、行ってくるねー！{wait}
+				}
+				TextWait
+				TextTalk char[9] {
+					#01200Fウォン。{wait}
+				}
+				TextWait
+			else:
+				TextTalk name[0] {
+					#00003F（まだ何か言いたげだなあ……
+					{}  ティオかキーアがいれば
+					{}  分かるんだけど。）{wait}
+				}
+				TextWait
+			FlagSet flag[9]
+		else:
+			TextTalk char[9] {
+				#01203Fグルルル…………{wait}
+			}
+			TextWait
+	else:
+	TextEnd self
+	Return
+
+fn[12]:
+	TextStart self
+	if flag[3385]:
+		if !flag[10]:
+			TextTalk self {
+				#15201F大変な事になったけど、
+				くじけちゃダメよ、ロイド君。{wait}
+			} {
+				#15204F今までいくつもの修羅場を
+				潜ってきた君たちなら、
+				この事件も絶対に解決に導けるわ。{wait}
+			} {
+				#15200F私が保証するから、
+				自信を持って行きなさい！{wait}
+			}
+			TextWait
+			TextTalk name[0] {
+				#00000Fはは……
+				ありがとうございます、ケイト先輩。{wait}
+			}
+			TextWait
+			FlagSet flag[10]
+		else:
+			TextTalk self {
+				#15204Fロイド君たちなら、
+				この事件も絶対に解決に導けるわ。{wait}
+			} {
+				#15200F自信を持って行きなさい！
+				私たち広域防犯課も頑張るから！{wait}
+			}
+			TextWait
+	elif flag[3371]:
+	elif flag[3089]:
+	elif flag[3074]:
+	elif flag[2861]:
+		if !flag[10]:
+			TextTalk self {
+				#15201Fマインツの占拠事件に
+				ショックを受けている市民は
+				当然多いみたいだけど……{wait}
+			} {
+				#15203Fどこか自分には関係ないって
+				思っている人も多い印象を受けるわね。{wait}
+			} {
+				#15201Fそれから事件を受けて
+				国家独立を肯定する声が
+				一気に高まった印象も受けるわ。{wait}
+			} {
+				#15200Fとにかく、私たちは
+				皆が必要以上に不安を感じたり、
+				騒ぎにならよう気を配らなきゃね。{wait}
+			}
+			TextWait
+			FlagSet flag[10]
+		else:
+			TextTalk self {
+				#15203Fどうやら市民の間には、
+				様々な思いが広がっている
+				みたいだけど……{wait}
+			} {
+				#15200Fとにかく、私たちは
+				皆が必要以上に不安を感じたり、
+				騒ぎにならよう気を配らなきゃね。{wait}
+			}
+			TextWait
+	elif flag[2848]:
+		TextTalk self {
+			#15213F横断鉄道が何とか今朝には
+			復旧したって聞いて
+			本当に一安心したわ。{wait}
+		} {
+			#15200F鉄道が使えない上に、
+			この雨だったらと考えると
+			色々大変だったと思うわよ。{wait}
+		}
+		TextWait
+	elif flag[2837]:
+		TextTalk self {
+			#15208F脱線事故だなんて……
+			また大変な事態になったわね。{wait}
+		} {
+			#15203Fとにかく、しばらくは導力車の
+			交通量も増えるだろうから。
+			気合いを入れて交通整理しなきゃ。{wait}
+		}
+		TextWait
+	elif flag[2832]:
+		if !flag[10]:
+			CharTurnTo self 180deg 0deg/s
+			TextTalk self {
+				#15200Fピッピー、ピッピーッ！{wait}
+			} {
+				#15200F導力車は徐行をお願いします。
+				街の安全にご協力下さいませー！{wait}
+			}
+			TextWait
+			CharTurnToChar self field_party[0] 500deg/s
+			Sleep 300ms
+			TextTalk self {
+				#15205Fこれも独立提唱の影響かしら……
+				最近は外国から来る導力車が
+				若干減っている気がするのよね。{wait}
+			} {
+				#15200Fま、だからと言って
+				事故への警戒は怠れないけどね。{wait}
+			}
+			TextWait
+			FlagSet flag[10]
+		else:
+			CharTurnTo self 180deg 0deg/s
+			TextTalk self {
+				#15200Fピッピー、ピッピーッ！{wait}
+			} {
+				#15200F導力車は徐行をお願いします。
+				街の安全にご協力下さいませー！{wait}
+			}
+			TextWait
+	elif flag[2816]:
+		if !flag[10]:
+			TextTalk self {
+				#15201F最近また、導力車の
+				交通ルールを守れない人が
+				増えてきているみたいなの。{wait}
+			} {
+				#15206F交通ルールと一口に言っても、
+				それ以前に重要なのは運転手の
+				モラルとマナーなワケだけど。{wait}
+			} {
+				#15208F誰もが日曜学校で教わったはずの
+				道徳が大人になって守れない……
+				これってすごく悲しいことよね。{wait}
+			} {
+				#15201Fあなたたちも、ハンドルを
+				握る時は常に周りの人間への
+				気配りを忘れないようにね。{wait}
+			}
+			TextWait
+			TextTalk name[8] {
+				#10100Fええ、もちろんです！{wait}
+			}
+			TextWait
+			TextTalk name[0] {
+				#00003F……しかと、心得ました。{wait}
+			}
+			TextWait
+			FlagSet flag[10]
+		else:
+			TextTalk self {
+				#15206F交通ルールと一口に言っても、
+				それ以前に重要なのは運転手の
+				モラルとマナーなワケだけど。{wait}
+			} {
+				#15208F誰もが日曜学校で教わったはずの
+				道徳が大人になって守れない……
+				これってすごく悲しいことよね。{wait}
+			}
+			TextWait
+	elif flag[2573]:
+		TextTalk self {
+			#15203Fテロリストが現れる
+			可能性が高いだなんて……
+			本当に気が抜けないわね。{wait}
+		} {
+			#15201F不審な人や物には、
+			最大限の注意を払わないと。{wait}
+		}
+		TextWait
+	elif flag[2564]:
+		TextTalk self {
+			#15206F首脳たちを乗せたリムジンを
+			誘導させてもらったんだけど……
+			流石にかなり緊張したわ。{wait}
+		} {
+			#15212F何ていうか、オーラって
+			車越しでも伝わるものなのね。{wait}
+		}
+		TextWait
+	elif flag[2560]:
+		TextTalk self {
+			#15200F今日から各所で巡回が
+			始まった関係で、違法駐車の数が
+			激減しているみたいね。{wait}
+		} {
+			#15210F普段からこうだといいんだけど……
+			ま、とりあえずはいいことだし
+			文句は言えないかな。{wait}
+		}
+		TextWait
+	elif flag[2369]:
+		if !flag[10]:
+			CharTurnTo self 180deg 0deg/s
+			TextTalk self {
+				#15200Fピッピー、ピッピーッ！
+				導力車は徐行してくださ～い。{wait}
+			}
+			TextWait
+			CharTurnToChar self field_party[0] 500deg/s
+			Sleep 300ms
+			TextTalk self {
+				#15203F雨の日は普段より
+				若干交通量が多くなるの。{wait}
+			} {
+				#15200F路面も滑りやすいし、
+				いつもより注意が必要よ。{wait}
+			}
+			TextWait
+			FlagSet flag[10]
+		else:
+			TextTalk self {
+				#15203F雨の日は普段より
+				若干、交通量が多くなるの。{wait}
+			} {
+				#15200F路面も滑りやすいし、
+				いつもより注意が必要よ。{wait}
+			}
+			TextWait
+	elif flag[2353]:
+	TextEnd self
+	Return
+
+fn[13]:
+	if flag[3074] && !flag[3089]:
+		if QuestFlagsGet quest[147] 0x02 && !QuestFlagsGet quest[147] 0x40 && !QuestFlagsGet quest[147] 0x10:
+			if !flag[3295]:
+				Call fn[0,104]
+			else:
+				TextStart self
+				TextTalk self {
+					#14503F黒い運搬車なら、少し前に
+					東通りのほうへ抜けて行ったぜ。{wait}
+				} {
+					#14500F追いかけるなら、お前たちも
+					導力車に乗っていった方が
+					いいんじゃないか？{wait}
+				}
+				TextWait
+				TextEnd self
+			Return
+		if !flag[3204]:
+			Call fn[1,26]
+			Return
+		TextStart self
+		TextTalk self {
+			#14507F猟兵の奴ら……
+			なんで『クロスベルの鐘』を
+			盗んだんだろうな？{wait}
+		} {
+			#14506F……まあ、俺が考えても
+			仕方ないんだけどさ。{wait}
+		}
+		TextWait
+		TextEnd self
+	Return
+
+fn[14]:
+	if flag[3074] && !flag[3089]:
+		if QuestFlagsGet quest[147] 0x02 && !QuestFlagsGet quest[147] 0x40 && !QuestFlagsGet quest[147] 0x10:
+			if !flag[3295]:
+				Call fn[0,104]
+			else:
+				TextStart self
+				TextTalk self {
+					先ほどの運搬車は間もなく、
+					タングラム門に着く頃かと。{wait}
+				}
+				TextWait
+				TextTalk self {
+					みなさんの健闘をお祈りします！{wait}
+				}
+				TextWait
+				TextEnd self
+			Return
+		if !flag[3204]:
+			Call fn[1,26]
+			Return
+		TextStart self
+		TextTalk self {
+			今の警備隊にとっては、
+			２大国との緊張状態が
+			なによりの懸案事項です。{wait}
+		}
+		TextWait
+		TextTalk self {
+			『鐘』の行方は捜索しますが、
+			パトロールのついで、程度の
+			優先順位にはなるでしょうね。{wait}
+		}
+		TextWait
+		TextEnd self
+	Return
+
+fn[15]:
+	TextStart self
+	if flag[2573]:
+		TextTalk self {
+			通商会議もいよいよ山場……
+			より集中力を高めていかないとな。{wait}
+		}
+		TextWait
+	elif flag[2564]:
+		TextTalk self {
+			とうとう首脳たちが
+			クロスベルにやって来たな。{wait}
+		}
+		TextWait
+		TextTalk self {
+			とりあえず除幕式は
+			何事もなくてほっとしたぞ。{wait}
+		}
+		TextWait
+	elif flag[2560]:
+		TextTalk self {
+			市内巡回は通商会議の
+			最終日まで続けられる予定だ。{wait}
+		}
+		TextWait
+		TextTalk self {
+			気合いを入れていかんとな。{wait}
+		}
+		TextWait
+	TextEnd self
+	Return
+
+fn[16]:
+	TextStart self
+	TextTalk self {
+		『国防軍』は“戦う”ための
+		力ではなく“守る”ための力です。{wait}
+	}
+	TextWait
+	TextTalk self {
+		我々は野蛮な
+		帝国・共和国軍とは違います。
+		ですから、どうかご安心下さい。{wait}
+	}
+	TextWait
+	TextEnd self
+	Return
+
+fn[17]:
+	TextStart self
+	TextTalk self {
+		街の象徴を奪うなんて……
+		一体何の嫌がらせなんだろうな。{wait}
+	}
+	TextWait
+	TextTalk self {
+		せっかくの名所が台無しだぜ。{wait}
+	}
+	TextWait
+	TextEnd self
+	Return
+
+fn[18]:
+	TextStart self
+	TextTalk self {
+		鐘がなくなったって話、
+		本当だったんだなぁ。{wait}
+	}
+	TextWait
+	TextTalk self {
+		武装集団か……
+		ほんと目的が謎だよな。{wait}
+	}
+	TextWait
+	TextEnd self
+	Return
+
+fn[19]:
+	TextStart self
+	if !flag[2761]:
+		TextTalk char[10] {
+			#01111F……………………………………{wait}
+		}
+		TextWait
+		TextTalk name[0] {
+			#00005F……キーア？
+			どうしたんだ、ぼーっとして。{wait}
+		}
+		TextWait
+		Emote char[10] 0mm 1700mm 38 38 250ms 1
+		Sleep 1000ms
+		CharTurnToChar char[10] field_party[0] 500deg/s
+		Sleep 300ms
+		TextTalk char[10] {
+			#01105Fあ……ううん、何でもないよ。{wait}
+		} {
+			#01109Fみんな、今日はお仕事頑張ってねー。{wait}
+		}
+		TextWait
+		TextTalk name[0] {
+			#00005F…………？{wait}
+		}
+		TextWait
+		CharFlagsUnset char[10] 0x0010
+		FlagSet flag[2761]
+		FlagSet flag[2702]
+	else:
+		TextTalk char[10] {
+			#01109Fみんな、今日はお仕事頑張ってねー。{wait}
+		}
+		TextWait
+	TextEnd self
+	Return
+
+fn[20]:
+	TextStart self
+	if !flag[2369] && flag[2353] && !flag[2511]:
+		Call fn[1,23]
+		Return
+	if !flag[2564] && flag[2560]:
+		if !flag[2763]:
+			TextTalk name[3] {
+				#00302Fようコッペ、元気か～？{wait}
+			}
+			TextWait
+			TextTalk char[8] {
+				にゃあ～～。{wait}
+			}
+			TextWait
+			TextTalk name[4] {
+				#10300Fなんだかお腹が空いてる
+				みたいだね。{wait}
+			}
+			TextWait
+			TextTalk name[8] {
+				#10109Fわ、あたし
+				エサをあげてみたいです！{wait}
+			}
+			TextWait
+			TextTalk name[1] {
+				#00100Fコッペは釣った魚か
+				『ねこまんま』だったら
+				喜んで食べるのよね。{wait}
+			}
+			TextWait
+			TextTalk name[0] {
+				#00004Fああ、今は持っていたかな……？{wait}
+			} {
+				#00000Fとにかく、忘れないように
+				毎朝エサをあげないとな。{wait}
+			}
+			TextWait
+			FlagSet flag[2763]
+			TextEnd self
+			Return
+	FlagUnset flag[11]
+	if flag[2560]:
+		Call fn[1,22]
+	if !flag[2512] && flag[11]:
+		TextTalk name[0] {
+			#00005F（そういえば……
+			{}  釣った魚があったっけ。）{wait}
+		} {
+			#00004F（コッペにあげても
+			{}  いいかもしれないな。）{wait}
+		}
+		TextWait
+		FlagSet flag[2512]
+	var[1] = 0
+	if flag[3385]:
+		if flag[2521]:
+			var[1] = 1
+	elif flag[3089]:
+		if flag[2520]:
+			var[1] = 1
+	elif flag[3074]:
+		if flag[2519]:
+			var[1] = 1
+	elif flag[2861]:
+		if flag[2518]:
+			var[1] = 1
+	elif flag[2832]:
+		if flag[2517]:
+			var[1] = 1
+	elif flag[2816]:
+		if flag[2516]:
+			var[1] = 1
+	elif flag[2573]:
+		if flag[2515]:
+			var[1] = 1
+	elif flag[2564]:
+		if flag[2514]:
+			var[1] = 1
+	elif flag[2560]:
+		if flag[2513]:
+			var[1] = 1
+	if flag[11] && var[1] == 0:
+		var[0] = 99
+		while var[0] == 99:
+			FadeOut 300ms 0x00000000 100
+			ED7MenuNew menu[1]
+			ED7MenuAdd menu[1] "話をする"
+			ED7MenuAdd menu[1] "エサをやる"
+			ED7MenuAdd menu[1] "やめる"
+			var[0] = 99
+			ED7MenuShow menu[1] 65535 65535 1
+			MenuWait var[0]
+			MenuClose menu[1]
+			_59
+			if var[0] != 1:
+				FadeIn 300ms 0x00000000
+				FadeWait
+			if var[0] == 1:
+				var[1] = 0
+				ED7MenuNew menu[1]
+				if ItemHas item[350] 0:
+					ED7MenuAdd menu[1] "ファイタ"
+					var[1] += 1
+				if ItemHas item[351] 0:
+					ED7MenuAdd menu[1] "スノーシュラブ"
+					var[1] += 1
+				if ItemHas item[352] 0:
+					ED7MenuAdd menu[1] "エーゼル"
+					var[1] += 1
+				if ItemHas item[353] 0:
+					ED7MenuAdd menu[1] "カサギン"
+					var[1] += 1
+				if ItemHas item[354] 0:
+					ED7MenuAdd menu[1] "アルモリカブナ"
+					var[1] += 1
+				if ItemHas item[355] 0:
+					ED7MenuAdd menu[1] "トタス"
+					var[1] += 1
+				if ItemHas item[356] 0:
+					ED7MenuAdd menu[1] "オロショ"
+					var[1] += 1
+				if ItemHas item[357] 0:
+					ED7MenuAdd menu[1] "ロック"
+					var[1] += 1
+				if ItemHas item[358] 0:
+					ED7MenuAdd menu[1] "レインボウ"
+					var[1] += 1
+				if ItemHas item[359] 0:
+					ED7MenuAdd menu[1] "ピラーニャ"
+					var[1] += 1
+				if ItemHas item[360] 0:
+					ED7MenuAdd menu[1] "カルプ"
+					var[1] += 1
+				if ItemHas item[361] 0:
+					ED7MenuAdd menu[1] "グラトンバス"
+					var[1] += 1
+				if ItemHas item[362] 0:
+					ED7MenuAdd menu[1] "トラード"
+					var[1] += 1
+				if ItemHas item[363] 0:
+					ED7MenuAdd menu[1] "グラディエタ"
+					var[1] += 1
+				if ItemHas item[364] 0:
+					ED7MenuAdd menu[1] "レイニー"
+					var[1] += 1
+				if ItemHas item[365] 0:
+					ED7MenuAdd menu[1] "サンショ"
+					var[1] += 1
+				if ItemHas item[366] 0:
+					ED7MenuAdd menu[1] "サモーナ"
+					var[1] += 1
+				if ItemHas item[367] 0:
+					ED7MenuAdd menu[1] "アローナ"
+					var[1] += 1
+				if ItemHas item[368] 0:
+					ED7MenuAdd menu[1] "イール"
+					var[1] += 1
+				if ItemHas item[369] 0:
+					ED7MenuAdd menu[1] "アダマンタス"
+					var[1] += 1
+				if ItemHas item[370] 0:
+					ED7MenuAdd menu[1] "クインシザー"
+					var[1] += 1
+				if ItemHas item[371] 0:
+					ED7MenuAdd menu[1] "パルルク"
+					var[1] += 1
+				if ItemHas item[372] 0:
+					ED7MenuAdd menu[1] "タイタン"
+					var[1] += 1
+				if ItemHas item[373] 0:
+					ED7MenuAdd menu[1] "ゴルドサモーナ"
+					var[1] += 1
+				if ItemHas item[374] 0:
+					ED7MenuAdd menu[1] "オオザンショ"
+					var[1] += 1
+				if ItemHas item[375] 0:
+					ED7MenuAdd menu[1] "ノーブルカルプ"
+					var[1] += 1
+				if ItemHas item[376] 0:
+					ED7MenuAdd menu[1] "エメロド"
+					var[1] += 1
+				if ItemHas item[377] 0:
+					ED7MenuAdd menu[1] "ティガロック"
+					var[1] += 1
+				if ItemHas item[378] 0:
+					ED7MenuAdd menu[1] "クリムゾンイータ"
+					var[1] += 1
+				if ItemHas item[379] 0:
+					ED7MenuAdd menu[1] "ブルドラゴン"
+					var[1] += 1
+				if ItemHas item[380] 0:
+					ED7MenuAdd menu[1] "ギガルーク"
+					var[1] += 1
+				if ItemHas item[473] 0:
+					ED7MenuAdd menu[1] "ねこまんま"
+					var[1] += 1
+				ED7MenuAdd menu[1] "やめる"
+				var[0] = 99
+				ED7MenuShow menu[1] 65535 65535 1
+				MenuWait var[0]
+				FadeIn 300ms 0x00000000
+				MenuClose menu[1]
+				TextClose 0
+				_59
+				if var[0] >= var[1] | var[0] < 0:
+				else:
+					TextEnd self
+					EventBegin 1
+					_Char4A char[8] 255
+					CrossFade 500ms
+					CharSetPos char[8] (-21980, 1300, -19300) 270deg
+					CharSetPos field_party[0] (-23900, 1300, -19070) 89deg
+					CharSetPos field_party[1] (-23540, 1300, -20210) 89deg
+					CharSetPos field_party[2] (-25020, 1300, -19860) 89deg
+					CharSetPos field_party[3] (-25130, 1300, -18930) 89deg
+					CharSetPos field_party[4] (-26200, 1300, -19870) 89deg
+					CharSetPos field_party[5] (-26790, 1300, -19180) 89deg
+					CamSetDistance -23130 3900 -19610 0ms
+					ED7CamRotate 45deg 14deg 0deg 0ms
+					CamPers 700 0ms
+					CamZoom 17000 0ms
+					FadeWait
+					TextTalk self {
+						にゃんにゃん……㈱{wait}
+					}
+					TextWait
+					ForkLoop field_party[0] fork[1]:
+						CharTurnToChar field_party[0] char[8] 0deg/s
+					ForkLoop field_party[1] fork[1]:
+						CharTurnToChar field_party[1] char[8] 0deg/s
+					ForkLoop field_party[2] fork[1]:
+						CharTurnToChar field_party[2] char[8] 0deg/s
+					ForkLoop field_party[3] fork[1]:
+						CharTurnToChar field_party[3] char[8] 0deg/s
+					ForkLoop field_party[4] fork[1]:
+						CharTurnToChar field_party[4] char[8] 0deg/s
+					ForkLoop field_party[5] fork[1]:
+						CharTurnToChar field_party[5] char[8] 0deg/s
+					CharFlagsSet char[8] 0x8000
+					CharTurnTo char[8] 0deg 500deg/s
+					Sleep 50ms
+					CharFlagsUnset char[8] 0x0001
+					SoundPlay sound[809] 0 80 0
+					Fork char[8] fork[1]:
+						_Char96 self (-22230, 1500, -15580) 1800 8000
+					ForkWait char[8] fork[1]
+					SoundPlay sound[809] 0 80 0
+					Fork char[8] fork[1]:
+						_Char96 self (-22580, 4300, -14690) 4400 5000
+					ForkWait char[8] fork[1]
+					SoundPlay sound[844] 0 80 0
+					Fork char[8] fork[1]:
+						_Char96 self (-22690, 1300, -8260) 1800 3000
+					ForkWait char[8] fork[1]
+					Sleep 2000ms
+					CharTurnTo char[8] 180deg 500deg/s
+					SoundPlay sound[809] 0 80 0
+					Fork char[8] fork[1]:
+						_Char96 self (-22580, 4300, -14690) 4500 4000
+					ForkWait char[8] fork[1]
+					SoundPlay sound[809] 0 80 0
+					Fork char[8] fork[1]:
+						_Char96 self (-22230, 1500, -15580) 1600 5000
+					ForkWait char[8] fork[1]
+					SoundPlay sound[844] 0 80 0
+					Fork char[8] fork[1]:
+						_Char96 self (-21980, 1300, -19300) 1500 6000
+					ForkWait char[8] fork[1]
+					CharFlagsSet char[8] 0x0001
+					CharTurnTo char[8] 270deg 500deg/s
+					CharFlagsUnset char[8] 0x8000
+					ForkQuit field_party[0] fork[1]
+					ForkQuit field_party[1] fork[1]
+					ForkQuit field_party[2] fork[1]
+					ForkQuit field_party[3] fork[1]
+					ForkQuit field_party[4] fork[1]
+					ForkQuit field_party[5] fork[1]
+					TextTalk self {
+						ふにゃ～……{wait}
+					}
+					TextWait
+					var[1] = 0
+					var[2] = 0
+					FadeOut 300ms 0x00000000 100
+					TextSetPos -1 -1 -1 -1
+					TextSetName ""
+					SoundPlay sound[17] 0 100 0
+					if ItemHas item[350] 0:
+						if var[0] == var[1]:
+							var[2] = 0
+							ItemRemove item[350] 1
+							TextMessage null {
+								{item[104]}{color 0}を受け取った。{wait}
+							}
+							ItemAdd item[104] 1
+						var[1] += 1
+					if ItemHas item[351] 0:
+						if var[0] == var[1]:
+							var[2] = 1
+							ItemRemove item[351] 1
+							TextMessage null {
+								{item[116]}{color 0}を受け取った。{wait}
+							}
+							ItemAdd item[116] 1
+						var[1] += 1
+					if ItemHas item[352] 0:
+						if var[0] == var[1]:
+							var[2] = 2
+							ItemRemove item[352] 1
+							TextMessage null {
+								{item[121]}{color 0}を受け取った。{wait}
+							}
+							ItemAdd item[121] 1
+						var[1] += 1
+					if ItemHas item[353] 0:
+						if var[0] == var[1]:
+							var[2] = 3
+							ItemRemove item[353] 1
+							TextMessage null {
+								{item[146]}{color 0}を受け取った。{wait}
+							}
+							ItemAdd item[146] 1
+						var[1] += 1
+					if ItemHas item[354] 0:
+						if var[0] == var[1]:
+							var[2] = 4
+							ItemRemove item[354] 1
+							TextMessage null {
+								{item[132]}{color 0}を受け取った。{wait}
+							}
+							ItemAdd item[132] 1
+						var[1] += 1
+					if ItemHas item[355] 0:
+						if var[0] == var[1]:
+							var[2] = 5
+							ItemRemove item[355] 1
+							TextMessage null {
+								{item[124]}{color 0}を受け取った。{wait}
+							}
+							ItemAdd item[124] 1
+						var[1] += 1
+					if ItemHas item[356] 0:
+						if var[0] == var[1]:
+							var[2] = 6
+							ItemRemove item[356] 1
+							TextMessage null {
+								{item[178]}{color 0}を受け取った。{wait}
+							}
+							ItemAdd item[178] 1
+						var[1] += 1
+					if ItemHas item[357] 0:
+						if var[0] == var[1]:
+							var[2] = 7
+							ItemRemove item[357] 1
+							TextMessage null {
+								{item[113]}{color 0}を受け取った。{wait}
+							}
+							ItemAdd item[113] 1
+						var[1] += 1
+					if ItemHas item[358] 0:
+						if var[0] == var[1]:
+							var[2] = 8
+							ItemRemove item[358] 1
+							TextMessage null {
+								{item[186]}{color 0}を受け取った。{wait}
+							}
+							ItemAdd item[186] 1
+						var[1] += 1
+					if ItemHas item[359] 0:
+						if var[0] == var[1]:
+							var[2] = 9
+							ItemRemove item[359] 1
+							TextMessage null {
+								{item[156]}{color 0}を受け取った。{wait}
+							}
+							ItemAdd item[156] 1
+						var[1] += 1
+					if ItemHas item[360] 0:
+						if var[0] == var[1]:
+							var[2] = 10
+							ItemRemove item[360] 1
+							TextMessage null {
+								{item[100]}{color 0}を受け取った。{wait}
+							}
+							ItemAdd item[100] 1
+						var[1] += 1
+					if ItemHas item[361] 0:
+						if var[0] == var[1]:
+							var[2] = 11
+							ItemRemove item[361] 1
+							TextMessage null {
+								{item[108]}{color 0}を受け取った。{wait}
+							}
+							ItemAdd item[108] 1
+						var[1] += 1
+					if ItemHas item[362] 0:
+						if var[0] == var[1]:
+							var[2] = 12
+							ItemRemove item[362] 1
+							TextMessage null {
+								{item[158]}{color 0}を受け取った。{wait}
+							}
+							ItemAdd item[158] 1
+						var[1] += 1
+					if ItemHas item[363] 0:
+						if var[0] == var[1]:
+							var[2] = 13
+							ItemRemove item[363] 1
+							TextMessage null {
+								{item[140]}{color 0}を受け取った。{wait}
+							}
+							ItemAdd item[140] 1
+						var[1] += 1
+					if ItemHas item[364] 0:
+						if var[0] == var[1]:
+							var[2] = 14
+							ItemRemove item[364] 1
+							TextMessage null {
+								{item[175]}{color 0}を受け取った。{wait}
+							}
+							ItemAdd item[175] 1
+						var[1] += 1
+					if ItemHas item[365] 0:
+						if var[0] == var[1]:
+							var[2] = 15
+							ItemRemove item[365] 1
+							TextMessage null {
+								{item[128]}{color 0}を受け取った。{wait}
+							}
+							ItemAdd item[128] 1
+						var[1] += 1
+					if ItemHas item[366] 0:
+						if var[0] == var[1]:
+							var[2] = 16
+							ItemRemove item[366] 1
+							TextMessage null {
+								{item[143]}{color 0}を受け取った。{wait}
+							}
+							ItemAdd item[143] 1
+						var[1] += 1
+					if ItemHas item[367] 0:
+						if var[0] == var[1]:
+							var[2] = 17
+							ItemRemove item[367] 1
+							TextMessage null {
+								{item[155]}{color 0}を受け取った。{wait}
+							}
+							ItemAdd item[155] 1
+						var[1] += 1
+					if ItemHas item[368] 0:
+						if var[0] == var[1]:
+							var[2] = 18
+							ItemRemove item[368] 1
+							TextMessage null {
+								{item[136]}{color 0}を受け取った。{wait}
+							}
+							ItemAdd item[136] 1
+						var[1] += 1
+					if ItemHas item[369] 0:
+						if var[0] == var[1]:
+							var[2] = 19
+							ItemRemove item[369] 1
+							TextMessage null {
+								{item[151]}{color 0}を受け取った。{wait}
+							}
+							ItemAdd item[151] 1
+						var[1] += 1
+					if ItemHas item[370] 0:
+						if var[0] == var[1]:
+							var[2] = 20
+							ItemRemove item[370] 1
+							TextMessage null {
+								{item[110]}{color 0}を受け取った。{wait}
+							}
+							ItemAdd item[110] 1
+						var[1] += 1
+					if ItemHas item[371] 0:
+						if var[0] == var[1]:
+							var[2] = 21
+							ItemRemove item[371] 1
+							TextMessage null {
+								{item[126]}{color 0}を受け取った。{wait}
+							}
+							ItemAdd item[126] 1
+						var[1] += 1
+					if ItemHas item[372] 0:
+						if var[0] == var[1]:
+							var[2] = 22
+							ItemRemove item[372] 1
+							TextMessage null {
+								{item[114]}{color 0}を受け取った。{wait}
+							}
+							ItemAdd item[114] 1
+						var[1] += 1
+					if ItemHas item[373] 0:
+						if var[0] == var[1]:
+							var[2] = 23
+							ItemRemove item[373] 1
+							TextMessage null {
+								{item[184]}{color 0}を受け取った。{wait}
+							}
+							ItemAdd item[184] 1
+						var[1] += 1
+					if ItemHas item[374] 0:
+						if var[0] == var[1]:
+							var[2] = 24
+							ItemRemove item[374] 1
+							TextMessage null {
+								{item[102]}{color 0}を受け取った。{wait}
+							}
+							ItemAdd item[102] 1
+						var[1] += 1
+					if ItemHas item[375] 0:
+						if var[0] == var[1]:
+							var[2] = 25
+							ItemRemove item[375] 1
+							TextMessage null {
+								{item[182]}{color 0}を受け取った。{wait}
+							}
+							ItemAdd item[182] 1
+						var[1] += 1
+					if ItemHas item[376] 0:
+						if var[0] == var[1]:
+							var[2] = 26
+							ItemRemove item[376] 1
+							TextMessage null {
+								{item[181]}{color 0}を受け取った。{wait}
+							}
+							ItemAdd item[181] 1
+						var[1] += 1
+					if ItemHas item[377] 0:
+						if var[0] == var[1]:
+							var[2] = 27
+							ItemRemove item[377] 1
+							TextMessage null {
+								{item[180]}{color 0}を受け取った。{wait}
+							}
+							ItemAdd item[180] 1
+						var[1] += 1
+					if ItemHas item[378] 0:
+						if var[0] == var[1]:
+							var[2] = 28
+							ItemRemove item[378] 1
+							TextMessage null {
+								{item[177]}{color 0}を受け取った。{wait}
+							}
+							ItemAdd item[177] 1
+						var[1] += 1
+					if ItemHas item[379] 0:
+						if var[0] == var[1]:
+							var[2] = 29
+							ItemRemove item[379] 1
+							TextMessage null {
+								{item[174]}{color 0}を受け取った。{wait}
+							}
+							ItemAdd item[174] 1
+						var[1] += 1
+					if ItemHas item[380] 0:
+						if var[0] == var[1]:
+							var[2] = 30
+							ItemRemove item[380] 1
+							TextMessage null {
+								{item[198]}{color 0}を受け取った。{wait}
+							}
+							ItemAdd item[198] 1
+						var[1] += 1
+					if ItemHas item[473] 0:
+						if var[0] == var[1]:
+							var[2] = 24
+							ItemRemove item[473] 1
+							TextMessage null {
+								{item[301]}{color 0}×３を受け取った。{wait}
+							}
+							ItemAdd item[301] 3
+						var[1] += 1
+					TextWait
+					TextClose 0
+					FadeIn 300ms 0x00000000
+					TextSetPos -1 280 60 3
+					_59
+					if flag[3385]:
+						FlagSet flag[2521]
+					elif flag[3089]:
+						FlagSet flag[2520]
+					elif flag[3074]:
+						FlagSet flag[2519]
+					elif flag[2861]:
+						FlagSet flag[2518]
+					elif flag[2832]:
+						FlagSet flag[2517]
+					elif flag[2816]:
+						FlagSet flag[2516]
+					elif flag[2573]:
+						FlagSet flag[2515]
+					elif flag[2564]:
+						FlagSet flag[2514]
+					elif flag[2560]:
+						FlagSet flag[2513]
+					var[1] = 0
+					if flag[2513]:
+						var[1] += 1
+					if flag[2514]:
+						var[1] += 1
+					if flag[2515]:
+						var[1] += 1
+					if flag[2516]:
+						var[1] += 1
+					if flag[2517]:
+						var[1] += 1
+					if flag[2518]:
+						var[1] += 1
+					if flag[2519]:
+						var[1] += 1
+					if flag[2520]:
+						var[1] += 1
+					if flag[2521]:
+						var[1] += 1
+					if var[1] == 9:
+						TextTalk self {
+							にゃんにゃんにゃ～ん……♪{wait}
+						}
+						TextWait
+						if !ItemHas item[238] 4:
+							TextSetPos -1 -1 -1 -1
+							FadeOut 300ms 0x00000000 100
+							SoundPlay sound[17] 0 100 0
+							TextSetName ""
+							TextMessage name[742] {
+								{item[238]}{color 0}を受け取った。{wait}
+							}
+							TextWait
+							TextClose 0
+							FadeIn 300ms 0x00000000
+							ItemAdd item[238] 1
+							TextSetPos -1 280 60 3
+						else:
+							TextSetPos -1 -1 -1 -1
+							FadeOut 300ms 0x00000000 100
+							SoundPlay sound[17] 0 100 0
+							TextSetName ""
+							TextMessage name[742] {
+								{item[107]}{color 0}を受け取った。{wait}
+							}
+							TextWait
+							TextClose 0
+							FadeIn 300ms 0x00000000
+							ItemAdd item[107] 1
+							TextSetPos -1 280 60 3
+					if system[10] == 0 | system[10] == 1:
+						TextTalk name[1] {
+							#00105Fあら……これをくれるの？{wait}
+						}
+						TextWait
+					elif system[10] == 2:
+						TextTalk name[2] {
+							#00205Fこれをくれるんですか？{wait}
+						}
+						TextWait
+					elif system[10] == 3:
+						TextTalk name[3] {
+							#00305Fこれをくれるってのか？{wait}
+						}
+						TextWait
+					elif system[10] == 8:
+						TextTalk name[8] {
+							#10105Fえっ、これをくれるの？{wait}
+						}
+						TextWait
+					elif system[10] == 4:
+						TextTalk name[4] {
+							#10305Fおや、これをくれるのかい？{wait}
+						}
+						TextWait
+					elif system[10] == 5:
+						TextTalk name[5] {
+							#10705Fえっと……
+							もらってもいいんですか？{wait}
+						}
+						TextWait
+					elif system[10] == 9:
+						TextTalk name[9] {
+							#00605Fこれをくれるのか？{wait}
+						}
+						TextWait
+					TextTalk name[0] {
+						#0000Fはは、サンキュー。
+						ありがたく使わせてもらうよ。{wait}
+					}
+					TextWait
+					_Char4B char[8] 255
+					EventEnd 4
+					Return
+				var[0] = 99
+			elif var[0] != 0:
+			elif var[0] == 0:
+				var[0] = 99
+				Call fn[1,21]
+	else:
+		Call fn[1,21]
+	TextEnd self
+	Return
+
+fn[21]:
+	if flag[3385]:
+		if !flag[8]:
+			TextTalk char[8] {
+				にゃお……？{wait}
+			}
+			TextWait
+			TextTalk name[2] {
+				#00203Fコッペ、もう少しの間
+				留守番をお願いします。{wait}
+			} {
+				#00200Fきっとキーアをここに
+				連れて帰ってきますから。{wait}
+			}
+			TextWait
+			TextTalk char[8] {
+				……にやぁおお～ん。{wait}
+			}
+			TextWait
+			FlagSet flag[8]
+		else:
+			TextTalk char[8] {
+				……にやぁおお～ん。{wait}
+			}
+			TextWait
+	elif flag[3371]:
+	elif flag[3089]:
+		TextTalk char[8] {
+			ふにやゃ～～ご……{wait}
+		}
+		TextWait
+	elif flag[3074]:
+		TextTalk char[8] {
+			ふみゃああ……{wait}
+		}
+		TextWait
+	elif flag[2861]:
+		TextTalk char[8] {
+			にゃおん……？{wait}
+		}
+		TextWait
+	elif flag[2848]:
+	elif flag[2837]:
+		TextTalk char[8] {
+			にやゃ～～ご……{wait}
+		}
+		TextWait
+	elif flag[2832]:
+		TextTalk char[8] {
+			ふみゃああ……{wait}
+		}
+		TextWait
+	elif flag[2816]:
+		TextTalk char[8] {
+			ふにやゃ～～ご。{wait}
+		}
+		TextWait
+	elif flag[2573]:
+		if !flag[8]:
+			TextTalk char[8] {
+				にゃーお。{wait}
+			}
+			TextWait
+			TextTalk name[2] {
+				#00202Fふふ……
+				お久しぶりです、コッペ。{wait}
+			} {
+				わたしも今日から
+				エサやりを再開しますね。{wait}
+			}
+			TextWait
+			TextTalk char[8] {
+				にやゃゃあ～㈱{wait}
+			}
+			TextWait
+			FlagSet flag[8]
+		else:
+			TextTalk char[8] {
+				にやゃゃあ～㈱{wait}
+			}
+			TextWait
+	elif flag[2568]:
+		if !flag[8]:
+			TextTalk char[8] {
+				にゃーご。{wait}
+			}
+			TextWait
+			TextTalk name[9] {
+				#00600F支援課で飼っている猫か。{wait}
+			} {
+				#00603F（なでなで……）
+				……お前も難儀な場所に
+				居ついたものだな。{wait}
+			}
+			TextWait
+			TextTalk char[8] {
+				にやぁ～～お……㈱{wait}
+			}
+			TextWait
+			TextTalk name[0] {
+				#00002F（ダドリーさん、
+				{}  意外と猫の扱いが上手いな……）{wait}
+			}
+			TextWait
+			FlagSet flag[8]
+		else:
+			TextTalk char[8] {
+				にゃおん……{wait}
+			}
+			TextWait
+	elif flag[2566]:
+		TextTalk char[8] {
+			にゃお？{wait}
+		}
+		TextWait
+	elif flag[2564]:
+		TextTalk char[8] {
+			ふみゃああ……{wait}
+		}
+		TextWait
+	elif flag[2560]:
+		TextTalk char[8] {
+			にゃあ～～。{wait}
+		}
+		TextWait
+	elif flag[2369]:
+	elif flag[2353]:
+		if !flag[2522]:
+			TextTalk name[0] {
+				#00005Fそうだ、コッペに
+				エサをやらなくちゃな。{wait}
+			}
+			TextWait
+			TextTalk char[8] {
+				にゃお？{wait}
+			}
+			TextWait
+			if PartyPosition name[164] > -1:
+				TextTalk name[164] {
+					#01100F今はおなかいっぱいだってー。{wait}
+				}
+				TextWait
+			else:
+				TextTalk name[4] {
+					#10300Fでも、今はけっこう
+					お腹いっぱいみたいだね。{wait}
+				}
+				TextWait
+			TextTalk name[1] {
+				#00100F課長が出かける前に
+				エサをあげていったみたいね。{wait}
+			}
+			TextWait
+			TextTalk name[8] {
+				#10106Fうう、ちょっと残念です。{wait}
+			}
+			TextWait
+			TextTalk name[0] {
+				#00000Fはは、まあ今度魚を手に入れたら
+				持ってきてあげようか。{wait}
+			}
+			TextWait
+			FlagSet flag[2522]
+		else:
+			TextTalk char[8] {
+				にゃにやゃゃあ～㈱{wait}
+			}
+			TextWait
+	Return
+
+fn[22]:
+	if ItemHas item[350] 0:
+		FlagSet flag[11]
+	if ItemHas item[351] 0:
+		FlagSet flag[11]
+	if ItemHas item[352] 0:
+		FlagSet flag[11]
+	if ItemHas item[353] 0:
+		FlagSet flag[11]
+	if ItemHas item[354] 0:
+		FlagSet flag[11]
+	if ItemHas item[355] 0:
+		FlagSet flag[11]
+	if ItemHas item[356] 0:
+		FlagSet flag[11]
+	if ItemHas item[357] 0:
+		FlagSet flag[11]
+	if ItemHas item[358] 0:
+		FlagSet flag[11]
+	if ItemHas item[359] 0:
+		FlagSet flag[11]
+	if ItemHas item[360] 0:
+		FlagSet flag[11]
+	if ItemHas item[361] 0:
+		FlagSet flag[11]
+	if ItemHas item[362] 0:
+		FlagSet flag[11]
+	if ItemHas item[363] 0:
+		FlagSet flag[11]
+	if ItemHas item[364] 0:
+		FlagSet flag[11]
+	if ItemHas item[365] 0:
+		FlagSet flag[11]
+	if ItemHas item[366] 0:
+		FlagSet flag[11]
+	if ItemHas item[367] 0:
+		FlagSet flag[11]
+	if ItemHas item[368] 0:
+		FlagSet flag[11]
+	if ItemHas item[369] 0:
+		FlagSet flag[11]
+	if ItemHas item[370] 0:
+		FlagSet flag[11]
+	if ItemHas item[371] 0:
+		FlagSet flag[11]
+	if ItemHas item[372] 0:
+		FlagSet flag[11]
+	if ItemHas item[373] 0:
+		FlagSet flag[11]
+	if ItemHas item[374] 0:
+		FlagSet flag[11]
+	if ItemHas item[375] 0:
+		FlagSet flag[11]
+	if ItemHas item[376] 0:
+		FlagSet flag[11]
+	if ItemHas item[377] 0:
+		FlagSet flag[11]
+	if ItemHas item[378] 0:
+		FlagSet flag[11]
+	if ItemHas item[379] 0:
+		FlagSet flag[11]
+	if ItemHas item[380] 0:
+		FlagSet flag[11]
+	if ItemHas item[473] 0:
+		FlagSet flag[11]
+	Return
+
+fn[23]:
+	EventBegin 0
+	CrossFade 500ms
+	_Char4A char[8] 255
+	_Char4A char[9] 255
+	CharTurnTo char[8] 270deg 0deg/s
+	CharSetPos name[0] (-25020, 1300, -19860) 90deg
+	CharSetPos name[1] (-25130, 1300, -18930) 90deg
+	CharSetPos name[8] (-26200, 1300, -19870) 90deg
+	CharSetPos name[4] (-26790, 1300, -19180) 90deg
+	if PartyPosition name[164] > -1:
+		CharSetPos name[164] (-24820, 1300, -16830) 133deg
+	CamSetDistance -24880 3000 -20830 0ms
+	ED7CamRotate 43deg 20deg 0deg 0ms
+	CamPers 700 0ms
+	CamZoom 10510 0ms
+	FadeWait
+	TextTalk char[9] {
+		#01200Fグルルルル……{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#6P#00000Fツァイト、コッペ。
+		一緒にいたのか。{wait}
+	}
+	TextWait
+	TextTalk name[1] {
+		#00102Fふふ、相変わらず仲がいいわね。{wait}
+	}
+	TextWait
+	TextTalk name[4] {
+		#6P#10304Fフフ、特務支援課で飼っている
+		警察犬ってやつだね。{wait}
+	} {
+		#10300F改めてよろしく、ツァイト。{wait}
+	}
+	TextWait
+	TextTalk char[9] {
+		#01203Fグルル……ウォン。{wait}
+	}
+	TextWait
+	if PartyPosition name[164] > -1:
+		TextTalk name[164] {
+			#01104F『“飼っている”は正しくない、
+			{}  面倒を見ているのはこちらだ』だってー。{wait}
+		}
+		TextWait
+		Emote name[0] 0mm 2000mm 16 19 250ms 1
+		SoundPlay sound[23] 0 100 0
+		Sleep 50ms
+		Emote name[1] 0mm 2000mm 16 19 250ms 1
+		SoundPlay sound[23] 0 100 0
+		Sleep 50ms
+		Emote name[8] 0mm 2000mm 16 19 250ms 1
+		SoundPlay sound[23] 0 100 0
+		Sleep 1000ms
+		TextTalk name[4] {
+			#6P#10309Fアハハ、これは失言だったかな。{wait}
+		}
+		TextWait
+		TextTalk name[0] {
+			#00006Fま、まあ……
+			いつも助けてもらってるけど。
+			相変わらずプライド高いなあ……{wait}
+		}
+		TextWait
+	else:
+		TextTalk name[0] {
+			#00005Fなんだか言いたいことが
+			ありそうだけど……{wait}
+		} {
+			#00003Fうーん、ティオかキーアがいたら
+			分かるんだけどな。{wait}
+		}
+		TextWait
+	CharTurnToChar name[8] char[8] 500deg/s
+	TextTalk name[8] {
+		#6P#10102Fふふ、私は犬は苦手だったんですけど
+		ツァイト君には慣れちゃいました。{wait}
+	} {
+		#10105Fそれで、こっちの黒猫は？{wait}
+	}
+	TextWait
+	CharTurnToChar name[1] char[8] 500deg/s
+	TextTalk name[0] {
+		#6P#00000Fああ、コッペっていってな。{wait}
+	} {
+		このビルにクロスベル通信社が
+		入居していた頃から
+		住み着いているみたいなんだ。{wait}
+	}
+	TextWait
+	TextTalk char[8] {
+		#11Pにゃーご。{wait}
+	}
+	TextWait
+	TextTalk name[8] {
+		#6P#10102Fふふ、可愛いです。{wait}
+	} {
+		#10109Fはあ、これからは支援課で
+		猫と触れ合えるんですね……！{wait}
+	}
+	TextWait
+	TextTalk name[1] {
+		#00109Fノエルさんは猫好きだったっけ。
+		ふふ、これからが楽しみね。{wait}
+	}
+	TextWait
+	TextTalk char[8] {
+		#11Pふみゃああ……{wait}
+	}
+	TextWait
+	_59
+	CharSetPos field_party[0] (-24690, 1300, -19050) 90deg
+	FlagSet flag[2511]
+	_Char4B char[8] 255
+	CharTurnTo char[8] 180deg 0deg/s
+	_Char4B char[9] 255
+	EventEnd 5
+	Return
+
+fn[24]:
+	if flag[3074] && !flag[3089]:
+		if !QuestFlagsGet quest[147] 0x02 | QuestFlagsGet quest[147] 0x40 | QuestFlagsGet quest[147] 0x10:
+			if !flag[3204]:
+				Call fn[1,26]
+				Return
+	TextStart null
+	FadeOut 300ms 0x00000000 100
+	TextSetName ""
+	TextSetPos -1 -1 -1 -1
+	TextMessage null {
+		{color 5}       《クロスベルの鐘》
+		Ｓ１１８５、クロスベル自治州で
+		発掘された巨大な鐘。
+		出土した遺跡の状況から
+		中世の頃の物と考えられている。
+		複数の金属から成り、
+		打つと心地よい低音を響かせる。{wait}
+	}
+	TextWait
+	TextMessage null {
+		{color 5}当時の有力者によって
+		作られたと推察されているが、
+		その用途には未だ諸説がある。{wait}
+	}
+	TextWait
+	TextClose 0
+	FadeIn 300ms 0x00000000
+	_59
+	TextSetPos -1 280 60 3
+	TextEnd null
+	Return
+
+fn[25]:
+	TextStart null
+	if QuestFlagsGet quest[115] 0x02 && !QuestFlagsGet quest[115] 0x10 && !QuestFlagsGet quest[115] 0x40 && flag[2722]:
+		if !flag[3815]:
+			TextTalk name[161] {
+				ジロンド武器商会……
+				なるほど、ここは合法的な武器の店か。{wait}
+			}
+			TextWait
+			TextTalk name[161] {
+				よし、ちょっと寄ってくぞ。{wait}
+			}
+			TextWait
+			if flag[3622]:
+				Fork name[0] fork[1]:
+					CharTurnToChar self name[161] 500deg/s
+				Sleep 50ms
+				Fork name[1] fork[1]:
+					CharTurnToChar self name[161] 500deg/s
+				Sleep 50ms
+				Fork name[3] fork[1]:
+					CharTurnToChar self name[161] 500deg/s
+				Sleep 300ms
+			elif flag[3623]:
+				Fork name[0] fork[1]:
+					CharTurnToChar self name[161] 500deg/s
+				Sleep 50ms
+				Fork name[1] fork[1]:
+					CharTurnToChar self name[161] 500deg/s
+				Sleep 50ms
+				Fork name[8] fork[1]:
+					CharTurnToChar self name[161] 500deg/s
+				Sleep 300ms
+			elif flag[3624]:
+				Fork name[0] fork[1]:
+					CharTurnToChar self name[161] 500deg/s
+				Sleep 50ms
+				Fork name[1] fork[1]:
+					CharTurnToChar self name[161] 500deg/s
+				Sleep 50ms
+				Fork name[4] fork[1]:
+					CharTurnToChar self name[161] 500deg/s
+				Sleep 300ms
+			TextTalk name[0] {
+				#00003Fごめん、シン。
+				君の言う通りここは武器の店なんだ。{wait}
+			} {
+				#00001F中には危ない商品もあるから、
+				さすがに案内するわけには……{wait}
+			}
+			TextWait
+			TextTalk name[161] {
+				フンッ、ベツに
+				商品に触らなければいいんだろ？{wait}
+			}
+			TextWait
+			TextTalk name[161] {
+				ここには興味があるんだ。
+				ボクが寄ってくったら寄ってくぞ。{wait}
+			}
+			TextWait
+			CharTurnToChar name[0] name[1] 500deg/s
+			Sleep 300ms
+			TextTalk name[0] {
+				#00006F（ふぅ……
+				{}  エリィ、お願いするよ。）{wait}
+			}
+			TextWait
+			CharTurnToChar name[1] name[0] 500deg/s
+			Sleep 300ms
+			TextTalk name[1] {
+				#00100F（ふふ、了解よ。）{wait}
+			}
+			TextWait
+			CharTurnToChar name[1] name[161] 500deg/s
+			Sleep 300ms
+			TextTalk name[1] {
+				#00103Fねえシン君、あなたは
+				大事な大事な預かり物よ。{wait}
+			} {
+				だから私たちは、
+				たとえ万が一の可能性でも
+				危険を排除しないといけないの。{wait}
+			} {
+				#00100Fシン君なら賢いから
+				事情は分かってくれるわよね？{wait}
+			}
+			TextWait
+			TextTalk name[161] {
+				う……
+				確かに理解はできますが。{wait}
+			}
+			TextWait
+			TextTalk name[1] {
+				#00109Fふふ、よかった。
+				やっぱりシン君はお利口さんね。{wait}
+			}
+			TextWait
+			TextTalk name[161] {
+				は、はい……
+				ボク、お利口さんなんです！{wait}
+			}
+			TextWait
+			if flag[3622]:
+				TextTalk name[3] {
+					#00309F（はは、お嬢の効果は絶大だな。）{wait}
+				}
+				TextWait
+			elif flag[3623]:
+				TextTalk name[8] {
+					#10109F（あはは、
+					{}  エリィさん効果は絶大ですね。）{wait}
+				}
+				TextWait
+			elif flag[3624]:
+				TextTalk name[4] {
+					#10302F（ふふ、エリィの効果は絶大だね。）{wait}
+				}
+				TextWait
+			FlagSet flag[3815]
+		else:
+			TextTalk name[0] {
+				#00000F今はシンを連れているんだ。
+				武器商会に入るのは止めておこう。{wait}
+			}
+			TextWait
+	TextEnd null
+	Return
+
+fn[26]:
+	EventBegin 0
+	CrossFade 500ms
+	_Char4A char[12] 0
+	_Char4A char[13] 0
+	CharFlagsUnset field_party[4] 0x0080
+	CharFlags2Unset field_party[4] 0x8000
+	CharFlagsUnset field_party[5] 0x0080
+	CharFlags2Unset field_party[5] 0x8000
+	CharSetPos name[0] (150, 0, -3900) 0deg
+	CharSetPos name[8] (1330, 0, -4640) 0deg
+	CharSetPos name[1] (2590, 0, -3300) 315deg
+	CharSetPos name[2] (-1610, 0, -4590) 0deg
+	CharSetPos name[4] (-900, 0, -5970) 0deg
+	CharSetPos name[3] (740, 0, -6130) 0deg
+	CamSetDistance -1190 1900 -5280 0ms
+	ED7CamRotate 45deg 21deg 0deg 0ms
+	CamPers 660 0ms
+	CamZoom 11710 0ms
+	CharFlagsSet char[7] 0x0008
+	FadeWait
+	Sleep 1000ms
+	if flag[3295]:
+		TextTalk char[12] {
+			#14502Fよう、ロイドたち。{wait}
+		}
+		TextWait
+		TextTalk char[13] {
+			特務支援課の皆さん、
+			ノエル曹長もお疲れ様です。{wait}
+		}
+		TextWait
+		TextTalk name[8] {
+			#10100Fお疲れ様です！{wait}
+		}
+		TextWait
+		TextTalk char[12] {
+			#14500Fところで、さっきの仕事は
+			もういいのか？{wait}
+		}
+		TextWait
+		if QuestFlagsGet quest[147] 0x10:
+			TextTalk name[0] {
+				#00002F#2Pああ、さっき解決したところでね。
+				フランツのおかげだよ、ありがとう。{wait}
+			}
+			TextWait
+			TextTalk char[12] {
+				#14509Fはは、なんだかよく分からないけど
+				お役に立てて光栄だよ。{wait}
+			}
+			TextWait
+		else:
+			TextTalk name[0] {
+				#00003F#2Pあ、ああ……さっき終わった所だよ。{wait}
+			} {
+				#00006F（話を無視してしまったせいで
+				{}  詐欺師を取り逃してしまったけど……）{wait}
+			}
+			TextWait
+			TextTalk char[12] {
+				#14509Fはは、なんだかよく分からないけど
+				ひと段落したならよかったな。{wait}
+			}
+			TextWait
+		TextTalk name[0] {
+			#00005F#2Pそういえばフランツ、
+			今日はお前がここの警備に
+			入ってたんだな？{wait}
+		} {
+			いつもはケイト先輩が
+			警備にあたっている場所だけど。{wait}
+		}
+		TextWait
+	else:
+		TextTalk char[12] {
+			#14502Fやあ、ロイドたちじゃないか。{wait}
+		}
+		TextWait
+		TextTalk char[13] {
+			特務支援課の皆さん、
+			ノエル曹長もお疲れ様です。{wait}
+		}
+		TextWait
+		TextTalk name[8] {
+			#10100Fお疲れ様です！{wait}
+		}
+		TextWait
+		TextTalk name[0] {
+			#00005F#2Pフランツ、今日はお前が
+			ここの警備に入ってるんだな？{wait}
+		} {
+			いつもはケイト先輩が
+			警備にあたっている場所だけど。{wait}
+		}
+		TextWait
+	TextTalk char[12] {
+		#14500Fああ、先輩が別件で
+		他の場所に行っているからな。{wait}
+	} {
+		#14510F臨時でこの場所を
+		警備する事になったんだ。{wait}
+	}
+	TextWait
+	CamSetDistance -2320 2800 -900 2000ms
+	ED7CamRotate 45deg 8deg 0deg 2000ms
+	CamPers 660 2000ms
+	CamZoom 15930 2000ms
+	Sleep 2500ms
+	TextTalk name[1] {
+		#12P#00108F『クロスベルの鐘』……
+		赤い星座が盗んでいって
+		しまったのよね。{wait}
+	} {
+		#00101Fここの警備が強化されているのも
+		その関係なんですよね？{wait}
+	}
+	TextWait
+	TextTalk char[13] {
+		何せ、クロスベルの重要な
+		文化財が盗まれた訳ですからね。{wait}
+	}
+	TextWait
+	TextTalk char[13] {
+		念の為、自分が警備隊から
+		応援に来ているのです。{wait}
+	}
+	TextWait
+	CamSetDistance -1190 1900 -5280 2000ms
+	ED7CamRotate 45deg 21deg 0deg 2000ms
+	CamPers 660 2000ms
+	CamZoom 11710 2000ms
+	Sleep 2500ms
+	TextTalk name[2] {
+		#00206F#3P盗んだ目的や、
+		持って行かれた場所も
+		分かってないんですよね。{wait}
+	}
+	TextWait
+	TextTalk char[12] {
+		#14503Fああ、一応警察や警備隊も
+		捜索はしてるんだけど、
+		見つかっていない状態なんだ。{wait}
+	}
+	TextWait
+	TextTalk name[3] {
+		#00303F#4P叔父貴たち……
+		一体何のためにこんな事を
+		しやがったんだか。{wait}
+	}
+	TextWait
+	TextTalk name[4] {
+		#10300F#4Pフフ、持ち歩くには少々
+		かさばりそうな代物だけど。{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#00003F#2P……とにかく、
+		『鐘』のことは任せて
+		俺たちは俺たちの仕事をしよう。{wait}
+	} {
+		#00000Fそれじゃあな、フランツ。
+		市内警備がんばってくれ。{wait}
+	}
+	TextWait
+	TextTalk char[12] {
+		#14500Fああ、またな。{wait}
+	}
+	TextWait
+	_59
+	_Char4B char[12] 0
+	_Char4B char[13] 0
+	CharFlagsUnset char[7] 0x0008
+	CharFlagsSet field_party[4] 0x0080
+	CharFlags2Set field_party[4] 0x8000
+	CharFlagsSet field_party[5] 0x0080
+	CharFlags2Set field_party[5] 0x8000
+	CharSetPos field_party[0] (150, 0, -3900) 0deg
+	FlagSet flag[3204]
+	EventEnd 5
+	Return

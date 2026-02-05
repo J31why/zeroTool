@@ -1,0 +1,234 @@
+calmare ao_k scena
+scena:
+	name "b0100" "b0100" "b0100"
+	town town[0]
+	bgm bgm[0]
+	flags 8192
+	item_use fn[0,255]
+	unk 255 255
+
+entry:
+	pos (0, 0, -1000)
+	unk1 0
+	cam_from (0, 0, 24000)
+	cam_pers 500
+	unk2 30
+	cam_deg 45deg
+	cam_limit 0deg 360deg
+	cam_at (0, 0, 0)
+	unk3 0
+	unk4 0
+	flags 0x0001
+	town town[1]
+	init fn[0,0]
+	reinit fn[0,1]
+
+// NB: the first five sepith sets are seemingly junk data.
+sepith[0] 100 1 2 3 70 89 99 0
+sepith[1] 100 5 1 5 1 5 1 0
+sepith[2] 100 5 1 5 1 5 1 0
+sepith[3] 100 5 0 5 0 5 0 0
+sepith[4] 100 5 0 5 0 5 0 0
+
+at_roll[0]: none 100
+at_roll[1]: none 100; hp10 5; hp50 1; ep10 5; ep50 1; cp10 5; cp50 1; unk1 5; unk2 5; unk6 1
+at_roll[2]: none 100; hp10 5; hp50 1; ep10 5; ep50 1; cp10 5; cp50 1; unk1 5; unk2 5; unk3 5; unk4 5; unk5 5; unk6 5
+at_roll[3]: none 100; hp10 5; ep10 5; cp10 5; unk1 2; unk2 5; unk6 2
+at_roll[4]: none 100; hp10 5; ep10 5; cp10 5; unk2 5
+
+placement[0]:
+	pos 7 9 180deg
+	pos 11 10 180deg
+	pos 10 13 180deg
+	pos 5 11 180deg
+	pos 12 12 180deg
+	pos 4 14 180deg
+	pos 14 14 180deg
+	pos 2 13 180deg
+
+placement[1]:
+	pos 8 8 180deg
+	pos 5 9 180deg
+	pos 11 10 180deg
+	pos 6 12 180deg
+	pos 10 12 180deg
+	pos 13 13 180deg
+	pos 4 14 180deg
+	pos 8 14 180deg
+
+placement[2]:
+	pos 7 8 180deg
+	pos 9 9 180deg
+	pos 6 10 180deg
+	pos 10 11 180deg
+	pos 6 12 180deg
+	pos 10 13 180deg
+	pos 7 14 180deg
+	pos 9 15 180deg
+
+placement[3]:
+	pos 8 8 180deg
+	pos 6 9 180deg
+	pos 10 10 180deg
+	pos 7 11 180deg
+	pos 10 12 180deg
+	pos 8 14 180deg
+	pos 10 14 180deg
+	pos 6 15 180deg
+
+placement[4]:
+	pos 7 4 0deg
+	pos 10 11 225deg
+	pos 4 7 90deg
+	pos 12 7 270deg
+	pos 4 11 135deg
+	pos 11 4 315deg
+	pos 7 12 180deg
+	pos 5 5 45deg
+
+fn[0]:
+	Event fn[0,2]
+	VisShow vis[0] 0 8 480 264 0 0 512 256 0 0 480 256 0x00FFFFFF 0 "c_vis120.itp"
+	VisShow vis[1] 0 8 480 264 0 0 512 256 0 0 480 256 0xFF000000 1 "c_vis120.itp"
+	Sc_C4Set 16
+	SystemFlagsSet 0x00000080
+	AoMap 0
+	if system[32] == 565:
+		var[3] = 565
+	if system[32] == 569:
+		var[3] = 569
+	if system[32] == 581:
+		var[3] = 581
+	Return
+
+fn[1]:
+	Return
+
+fn[2]:
+	VisSet vis[0] 3 0xFFFFFFFF 200ms 0 0
+	VisSet vis[1] 3 0x00000000 500ms 0 0
+	Sleep 100ms
+	SystemFlagsUnset 0x02000000
+	TextSetName ""
+	TextSetPos 120 0 28 1
+	TextMessage null {
+		　　　　　事件閱覽{0x18}{0x06}{wait}
+	}
+	ED7MenuNew menu[0]
+	if ED7_DE 296:
+		ED7MenuAdd menu[0] "和艾莉的羈絆"
+	else:
+		ED7MenuAdd menu[0] "？？？？？？"
+		ED7MenuSetDisabled menu[0] 0
+	if ED7_DE 297:
+		ED7MenuAdd menu[0] "和緹歐的羈絆"
+	else:
+		ED7MenuAdd menu[0] "？？？？？？"
+		ED7MenuSetDisabled menu[0] 1
+	if ED7_DE 298:
+		ED7MenuAdd menu[0] "和蘭迪的羈絆"
+	else:
+		ED7MenuAdd menu[0] "？？？？？？"
+		ED7MenuSetDisabled menu[0] 2
+	if ED7_DE 293:
+		ED7MenuAdd menu[0] "和諾艾兒的羈絆"
+	else:
+		ED7MenuAdd menu[0] "？？？？？？"
+		ED7MenuSetDisabled menu[0] 3
+	if ED7_DE 294:
+		ED7MenuAdd menu[0] "和瓦奇的羈絆"
+	else:
+		ED7MenuAdd menu[0] "？？？？？？"
+		ED7MenuSetDisabled menu[0] 4
+	if ED7_DE 295:
+		ED7MenuAdd menu[0] "和莉夏的羈絆"
+	else:
+		ED7MenuAdd menu[0] "？？？？？？"
+		ED7MenuSetDisabled menu[0] 5
+	ED7MenuAdd menu[0] "返回"
+	ED7MenuSetStyle menu[0] 3
+	ED7MenuShow menu[0] 65535 56 1
+	if flag[3411]:
+		ED7MenuSelect menu[0] 0
+	elif flag[3412]:
+		ED7MenuSelect menu[0] 1
+	elif flag[3413]:
+		ED7MenuSelect menu[0] 2
+	elif flag[3414]:
+		ED7MenuSelect menu[0] 3
+	elif flag[3415]:
+		ED7MenuSelect menu[0] 4
+	elif flag[3416]:
+		ED7MenuSelect menu[0] 5
+	FlagUnset flag[272]
+	FlagUnset flag[3411]
+	FlagUnset flag[3412]
+	FlagUnset flag[3413]
+	FlagUnset flag[3414]
+	FlagUnset flag[3415]
+	FlagUnset flag[3416]
+	MenuWait var[0]
+	ED7Menu_6 menu[1]
+	switch var[0]:
+		case 0:
+			FlagSet flag[272]
+			FlagSet flag[3411]
+			Call fn[0,3]
+			NewScene "scena/e440b.bin" 0 0 0
+			Hcf
+			break
+		case 1:
+			FlagSet flag[272]
+			FlagSet flag[3412]
+			Call fn[0,3]
+			NewScene "scena/e440b.bin" 0 0 0
+			Hcf
+			break
+		case 2:
+			FlagSet flag[272]
+			FlagSet flag[3413]
+			Call fn[0,3]
+			NewScene "scena/e440b.bin" 0 0 0
+			Hcf
+			break
+		case 3:
+			FlagSet flag[272]
+			FlagSet flag[3414]
+			Call fn[0,3]
+			NewScene "scena/e440b.bin" 0 0 0
+			Hcf
+			break
+		case 4:
+			FlagSet flag[272]
+			FlagSet flag[3415]
+			Call fn[0,3]
+			NewScene "scena/e440b.bin" 0 0 0
+			Hcf
+			break
+		case 5:
+			FlagSet flag[272]
+			FlagSet flag[3416]
+			Call fn[0,3]
+			NewScene "scena/e440b.bin" 0 0 0
+			Hcf
+			break
+		default:
+			var[0] = 0
+			MenuClose menu[0]
+			TextClose 0
+			TextSetPos -1 280 60 3
+			VisSet vis[0] 3 0x00FFFFFF 500ms 0 0
+			Sleep 1000ms
+			ReturnToTitle 2
+			break
+	Return
+
+fn[3]:
+	MenuClose menu[0]
+	TextClose 0
+	TextSetPos -1 280 60 3
+	VisSet vis[0] 3 0x00FFFFFF 500ms 0 0
+	BgmStop 1000ms
+	Sleep 500ms
+	Sc_C4Unset 16
+	Return

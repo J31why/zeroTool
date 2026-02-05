@@ -1,0 +1,733 @@
+calmare ao_k scena
+scena:
+	name "m0400" "m0400" "m0400"
+	town town[169]
+	bgm bgm[300]
+	flags 0
+	item_use fn[0,255]
+	unk 255 0
+
+entry:
+	pos (0, 0, -1000)
+	unk1 0
+	cam_from (0, 0, 24000)
+	cam_pers 500
+	unk2 30
+	cam_deg 45deg
+	cam_limit 0deg 360deg
+	cam_at (0, 0, -5000)
+	unk3 0
+	unk4 0
+	flags 0x0001
+	town town[169]
+	init fn[0,0]
+	reinit fn[0,1]
+
+npc char[0]:
+	name "亞里歐斯"
+	pos (0, 0, 0)
+	angle 0deg
+	flags 0x01C5
+	unk2 0
+	chip chip[0]
+	init fn[255,255]
+	talk fn[255,255]
+	unk4 255
+
+npc char[1]:
+	name "達德利搜查官"
+	pos (0, 0, 0)
+	angle 0deg
+	flags 0x01C5
+	unk2 0
+	chip chip[0]
+	init fn[255,255]
+	talk fn[255,255]
+	unk4 255
+
+npc char[2]:
+	name "SE控制"
+	pos (0, 0, 0)
+	angle 0deg
+	flags 0x00C5
+	unk2 0
+	chip chip[0]
+	init fn[255,255]
+	talk fn[255,255]
+	unk4 255
+
+trigger[0]:
+	pos (171000.0, 4000.0, 0.0)
+	radius 20250.0
+	transform
+		0.33333334 -0.0 0.0 -57.0
+		-0.0 0.33333334 -0.0 -1.3333334
+		0.0 -0.0 0.2 -0.0
+		0.0 0.0 0.0 1.0
+		// translate (171.0, 4.0, -0.0)
+		// rotate (1.0, 0.0, 0.0) 0.0deg
+		// scale (3.0, 3.0, 5.0)
+	unk1 0
+	unk2 0
+	function fn[0,22]
+	unk3 0
+	unk4 0
+	unk5 0
+	unk6 0
+
+look_point[0]:
+	pos (-50, 0, 33570)
+	radius 1000
+	bubble_pos (-50, 1500, 33570)
+	unk1 124
+	unk2 0
+	function fn[0,23]
+	unk3 0
+	unk4 0
+
+fn[0]:
+	if system[0] == 100 && flag[297]:
+		FlagUnset flag[297]
+		Call fn[0,2]
+	if flag[272]:
+		FlagUnset flag[272]
+		FlagSet flag[0]
+		Event fn[0,3]
+	elif flag[273]:
+		FlagUnset flag[273]
+		FlagSet flag[0]
+		Event fn[0,21]
+	if system[0] == 103 && flag[2582] && !flag[2583]:
+		Event fn[0,12]
+	Return
+
+fn[1]:
+	if flag[3100] && !flag[3385]:
+		ED7_76_1 object[255] "rai00_add" 1
+		ED7_76_1 object[255] "01_add" 1
+		ED7_76_1 object[255] "02_add" 1
+		ED7_76_1 object[255] "03_add" 1
+		ED7_76_1 object[255] "04_add" 1
+		ED7_76_1 object[255] "05_add" 1
+		ED7_76_1 object[255] "under_add" 1
+		ED7_76_0 object[255] "ugoku01" 1
+	else:
+		ED7_76_0 object[255] "rai00_add" 1
+		ED7_76_0 object[255] "01_add" 1
+		ED7_76_0 object[255] "02_add" 1
+		ED7_76_0 object[255] "03_add" 1
+		ED7_76_0 object[255] "04_add" 1
+		ED7_76_0 object[255] "05_add" 1
+		ED7_76_0 object[255] "under_add" 1
+		ED7_76_1 object[255] "ugoku01" 1
+	TriggerFlagsSet trigger[0] 0x0080
+	ObjFlagsSet object[0] 0x0010
+	if flag[2582] && !flag[2592]:
+		TriggerFlagsUnset trigger[0] 0x0080
+		ObjFlagsUnset object[0] 0x0010
+	if flag[0]:
+		SoundStop sound[148]
+		FlagUnset flag[0]
+	elif system[0] == 100 | system[0] == 102 | system[0] == 0:
+		SoundStop sound[148]
+	else:
+		SoundPlay sound[148] 1 100 0
+	Return
+
+fn[2]:
+	SoundPlay sound[160] 0 100 0
+	Return
+
+fn[3]:
+	EventBegin 0
+	FadeOut 0ms 0x00000000 255
+	ED7LoadChip "chr/ch02400.itc" chip[30]
+	ED7LoadChip "chr/ch02401.itc" chip[31]
+	ED7LoadChip "chr/ch00900.itc" chip[32]
+	ED7LoadChip "chr/ch00901.itc" chip[33]
+	SoundLoad sound[4052]
+	SoundLoad sound[3458]
+	CamSetDistance 171500 2700 -100 0ms
+	ED7CamRotate 45deg 23deg 0deg 0ms
+	CamPers 600 0ms
+	CamZoom 17000 0ms
+	CharSetPos name[0] (171500, 0, 5500) 180deg
+	CharSetPos name[1] (171500, 0, 5500) 180deg
+	CharSetPos name[2] (171500, 0, 5500) 180deg
+	CharSetPos name[3] (171500, 0, 5500) 180deg
+	CharSetPos name[8] (171500, 0, 5500) 180deg
+	CharSetPos name[4] (171500, 0, 5500) 180deg
+	CharFlagsUnset field_party[4] 0x0080
+	CharFlags2Unset field_party[4] 0x8000
+	CharFlagsUnset field_party[5] 0x0080
+	CharFlags2Unset field_party[5] 0x8000
+	CharColor name[0] 0x00FFFFFF 0ms
+	CharColor name[1] 0x00FFFFFF 0ms
+	CharColor name[2] 0x00FFFFFF 0ms
+	CharColor name[3] 0x00FFFFFF 0ms
+	CharColor name[8] 0x00FFFFFF 0ms
+	CharColor name[4] 0x00FFFFFF 0ms
+	CharSetChipBase char[0] chip[30]
+	CharSetChipPattern char[0] 0
+	CharFlagsUnset char[0] 0x0080
+	CharFlagsSet char[0] 0x8000
+	CharSetPos char[0] (171500, 0, 5500) 180deg
+	CharColor char[0] 0x00FFFFFF 0ms
+	CharSetChipBase char[1] chip[32]
+	CharSetChipPattern char[1] 0
+	CharFlagsUnset char[1] 0x0080
+	CharFlagsSet char[1] 0x8000
+	CharSetPos char[1] (171500, 0, 5500) 180deg
+	CharColor char[1] 0x00FFFFFF 0ms
+	SoundPlay sound[160] 0 100 0
+	Sleep 300ms
+	CamSetDistance 171500 1200 -100 3000ms
+	FadeIn 2000ms 0x00000000
+	Sleep 1000ms
+	SoundPlay sound[107] 0 100 0
+	ObjFlagsUnset object[0] 0x0010
+	ED7ObjPlay object[0] 0 10 0 0
+	ObjWait object[0]
+	ForkFunc char[0] fork[3] fn[0,4]
+	Sleep 500ms
+	ForkFunc char[1] fork[3] fn[0,5]
+	Sleep 700ms
+	ForkFunc name[0] fork[3] fn[0,6]
+	Sleep 500ms
+	ForkFunc name[1] fork[3] fn[0,7]
+	Sleep 700ms
+	ForkWait char[0] fork[3]
+	Sc_C4Set 2147483648
+	TextTalk char[0] {
+		#1230140014V#12P#01401F#30W#15A──不能浪費時間。
+		我先走了。{wait}
+	}
+	ForkFunc name[2] fork[3] fn[0,8]
+	Sleep 500ms
+	ForkFunc name[3] fork[3] fn[0,9]
+	Sleep 700ms
+	ForkFunc name[8] fork[3] fn[0,10]
+	Sleep 500ms
+	ForkFunc name[4] fork[3] fn[0,11]
+	TextWait
+	Sleep 300ms
+	TextTalk char[1] {
+		#1230060062V#00607F#30W#15A#11P別落後了！跟我來！{wait}
+	}
+	TextWait
+	Sc_C4Unset 2147483648
+	Fork char[0] fork[2]:
+		CharTurnTo self 270deg 500deg/s
+	Sleep 100ms
+	Fork char[1] fork[2]:
+		CharTurnTo self 270deg 500deg/s
+	ForkWait char[0] fork[2]
+	TextTalk name[0] {
+		#1230000170V#00005F#11P#10A啊……{wait}
+	}
+	CamSetDistance 166500 1100 -100 2000ms
+	CharSetChipBase char[0] chip[31]
+	CharSetChipPattern char[0] 0
+	Fork char[0] fork[1]:
+		CharWalkToPos self (157000, 0, -1300) 5500mm/s 0
+	ForkWait char[1] fork[2]
+	CharSetChipBase char[1] chip[33]
+	CharSetChipPattern char[1] 0
+	Fork char[1] fork[1]:
+		CharWalkToPos self (157000, 0, -1300) 5500mm/s 0
+	TextWait
+	ForkWait char[0] fork[1]
+	ForkWait char[1] fork[1]
+	ForkQuit name[0] fork[2]
+	ForkQuit name[1] fork[2]
+	ForkQuit name[2] fork[2]
+	ForkQuit name[3] fork[2]
+	ForkQuit name[8] fork[2]
+	ForkQuit name[4] fork[2]
+	CharFlagsSet char[0] 0x0080
+	CharFlagsSet char[1] 0x0080
+	ForkWait name[4] fork[3]
+	CamWait 121
+	CrossFade 500ms
+	CamSetDistance 171500 1200 1100 0ms
+	ED7CamRotate 45deg 23deg 0deg 0ms
+	CamPers 600 0ms
+	CamZoom 17000 0ms
+	FadeWait
+	TextTalk name[3] {
+		#1230030062V#00306F#11P傷腦筋……
+		幾位大哥還真有活力啊。{wait}
+	}
+	TextWait
+	TextTalk name[1] {
+		#1230010097V#00101F#11P我們也快過去吧。{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#1230000171V#6P#00007F#5P嗯……！{wait}
+	}
+	TextWait
+	FadeOut 1000ms 0x00000000 255
+	FadeWait
+	UnloadChip chip[30]
+	UnloadChip chip[31]
+	UnloadChip chip[32]
+	UnloadChip chip[33]
+	ED7_37
+	CharSetPos field_party[0] (171500, 0, 1500) 180deg
+	CharFlagsSet field_party[4] 0x0080
+	CharFlags2Set field_party[4] 0x8000
+	CharFlagsSet field_party[5] 0x0080
+	CharFlags2Set field_party[5] 0x8000
+	FlagSet flag[2582]
+	QuestTaskSet quest[164] 6
+	TriggerFlagsUnset trigger[0] 0x0080
+	ObjFlagsUnset object[0] 0x0010
+	EventEnd 5
+	Return
+
+fn[4]:
+	Fork self fork[1]:
+		CharWalkToPos2 self (171500, 0, 2500) 3000mm/s 0
+	Fork self fork[2]:
+		CharColor self 0xFFFFFFFF 500ms
+	ForkWait self fork[1]
+	Fork self fork[1]:
+		CharWalkToPos2 self (170700, 0, -1300) 3000mm/s 0
+	ForkWait self fork[1]
+	Fork char[0] fork[2]:
+		CharTurnTo self 0deg 500deg/s
+	ForkWait self fork[2]
+	Return
+
+fn[5]:
+	Fork self fork[1]:
+		CharWalkToPos2 self (171500, 0, 2500) 3000mm/s 0
+	Fork self fork[2]:
+		CharColor self 0xFFFFFFFF 500ms
+	ForkWait self fork[1]
+	Fork self fork[1]:
+		CharWalkToPos2 self (172300, 0, -1300) 3000mm/s 0
+	ForkWait self fork[1]
+	Fork char[1] fork[2]:
+		CharTurnTo self 0deg 500deg/s
+	ForkWait self fork[2]
+	Return
+
+fn[6]:
+	Fork self fork[1]:
+		CharWalkToPos2 self (171500, 0, 2500) 2500mm/s 0
+	Fork self fork[2]:
+		CharColor self 0xFFFFFFFF 500ms
+	ForkWait self fork[1]
+	Fork self fork[1]:
+		CharWalkToPos2 self (170900, 0, 500) 2500mm/s 0
+	ForkWait self fork[1]
+	ForkLoop self fork[2]:
+		CharTurnToChar self char[0] 500deg/s
+	Return
+
+fn[7]:
+	Fork self fork[1]:
+		CharWalkToPos2 self (171500, 0, 2500) 2500mm/s 0
+	Fork self fork[2]:
+		CharColor self 0xFFFFFFFF 500ms
+	ForkWait self fork[1]
+	Fork self fork[1]:
+		CharWalkToPos2 self (172100, 0, 500) 2500mm/s 0
+	ForkWait self fork[1]
+	ForkLoop self fork[2]:
+		CharTurnToChar self char[1] 500deg/s
+	Return
+
+fn[8]:
+	Fork self fork[1]:
+		CharWalkToPos2 self (171500, 0, 2500) 2500mm/s 0
+	Fork self fork[2]:
+		CharColor self 0xFFFFFFFF 500ms
+	ForkWait self fork[1]
+	Fork self fork[1]:
+		CharWalkToPos self (169900, 0, 1300) 2500mm/s 0
+	ForkWait self fork[1]
+	ForkLoop self fork[2]:
+		CharTurnToChar self char[0] 500deg/s
+	Return
+
+fn[9]:
+	Fork self fork[1]:
+		CharWalkToPos2 self (171500, 0, 2500) 2500mm/s 0
+	Fork self fork[2]:
+		CharColor self 0xFFFFFFFF 500ms
+	ForkWait self fork[1]
+	Fork self fork[1]:
+		CharWalkToPos2 self (173100, 0, 1300) 2500mm/s 0
+	ForkWait self fork[1]
+	ForkLoop self fork[2]:
+		CharTurnToChar self char[1] 500deg/s
+	Return
+
+fn[10]:
+	Fork self fork[1]:
+		CharWalkToPos2 self (171500, 0, 2500) 2500mm/s 0
+	Fork self fork[2]:
+		CharColor self 0xFFFFFFFF 500ms
+	ForkWait self fork[1]
+	Fork self fork[1]:
+		CharWalkToPos2 self (170900, 0, 1900) 2500mm/s 0
+	ForkWait self fork[1]
+	ForkLoop self fork[2]:
+		CharTurnToChar self char[0] 500deg/s
+	Return
+
+fn[11]:
+	Fork self fork[1]:
+		CharWalkToPos2 self (171500, 0, 2500) 2500mm/s 0
+	Fork self fork[2]:
+		CharColor self 0xFFFFFFFF 500ms
+	ForkWait self fork[1]
+	SoundPlay sound[107] 0 100 0
+	ED7ObjPlay object[0] 10 0 0 0
+	Fork self fork[1]:
+		CharWalkToPos2 self (172100, 0, 1900) 2500mm/s 0
+	ForkWait self fork[1]
+	ForkLoop self fork[2]:
+		CharTurnToChar self char[1] 500deg/s
+	ObjWait object[0]
+	ObjFlagsSet object[0] 0x0010
+	Return
+
+fn[12]:
+	EventBegin 0
+	FadeOut 0ms 0x00000000 255
+	ED7LoadChip "chr/ch02401.itc" chip[30]
+	ED7LoadChip "chr/ch00901.itc" chip[31]
+	SoundLoad sound[1007]
+	CharSetPos name[0] (35500, 0, 0) 270deg
+	CharSetPos name[1] (35500, 0, 0) 270deg
+	CharSetPos name[2] (35500, 0, 0) 270deg
+	CharSetPos name[3] (35500, 0, 0) 270deg
+	CharSetPos name[8] (35500, 0, 0) 270deg
+	CharSetPos name[4] (35500, 0, 0) 270deg
+	CharFlagsUnset field_party[4] 0x0080
+	CharFlags2Unset field_party[4] 0x8000
+	CharFlagsUnset field_party[5] 0x0080
+	CharFlags2Unset field_party[5] 0x8000
+	CharColor name[0] 0x00FFFFFF 0ms
+	CharColor name[1] 0x00FFFFFF 0ms
+	CharColor name[2] 0x00FFFFFF 0ms
+	CharColor name[3] 0x00FFFFFF 0ms
+	CharColor name[8] 0x00FFFFFF 0ms
+	CharColor name[4] 0x00FFFFFF 0ms
+	CharSetChipBase char[0] chip[30]
+	CharSetChipPattern char[0] 0
+	CharFlagsUnset char[0] 0x0080
+	CharFlagsSet char[0] 0x8000
+	CharSetPos char[0] (8000, 0, 0) 180deg
+	CharSetChipBase char[1] chip[31]
+	CharSetChipPattern char[1] 0
+	CharFlagsUnset char[1] 0x0080
+	CharFlagsSet char[1] 0x8000
+	CharSetPos char[1] (8000, 0, 0) 180deg
+	CamSetDistance 0 -40000 0 0ms
+	ED7CamRotate 90deg 17deg 0deg 0ms
+	CamPers 900 0ms
+	CamZoom 35500 0ms
+	CamSetDistance 0 0 0 9000ms
+	CamZoom 40500 9000ms
+	FadeIn 2000ms 0x00000000
+	FadeWait
+	CamWait 121
+	ForkFunc char[2] fork[1] fn[0,20]
+	ForkFunc char[0] fork[3] fn[0,13]
+	Sleep 500ms
+	CamSetDistance 0 -3000 0 7000ms
+	ED7CamRotate 40deg 33deg 0deg 7000ms
+	CamZoom 58500 7000ms
+	Sleep 100ms
+	ForkFunc char[1] fork[3] fn[0,13]
+	CamWait 121
+	Sleep 1000ms
+	ForkWait char[0] fork[3]
+	ForkWait char[1] fork[3]
+	ED7_12 1007 2000 100
+	CharFlagsSet char[0] 0x0080
+	CharFlagsSet char[1] 0x0080
+	CrossFade 500ms
+	CamSetDistance 27000 1000 0 0ms
+	ED7CamRotate 45deg 23deg 0deg 0ms
+	CamPers 660 0ms
+	CamZoom 18500 0ms
+	CamSetDistance 32000 1000 0 3000ms
+	CamZoom 15500 3000ms
+	FadeWait
+	SoundPlay sound[107] 0 100 0
+	ObjFlagsUnset object[1] 0x0010
+	ED7ObjPlay object[1] 0 10 0 0
+	ObjWait object[1]
+	ForkFunc name[0] fork[3] fn[0,14]
+	Sleep 500ms
+	ForkFunc name[1] fork[3] fn[0,15]
+	Sleep 700ms
+	ForkFunc name[2] fork[3] fn[0,16]
+	Sleep 500ms
+	ForkFunc name[3] fork[3] fn[0,17]
+	Sleep 700ms
+	ForkFunc name[8] fork[3] fn[0,18]
+	Sleep 500ms
+	ForkFunc name[4] fork[3] fn[0,19]
+	CamWait 121
+	ForkWait name[4] fork[3]
+	TextTalk name[0] {
+		#1230000172V#00011F#11P這是……來到了很驚人的地方啊。{wait}
+	}
+	TextWait
+	TextTalk name[8] {
+		#1230050056V#10111F#11P有種被震懾住的感覺呢……{wait}
+	}
+	TextWait
+	TextTalk name[4] {
+		#1230040050V#10305F#11P哦……
+		這是什麼地方啊？{wait}
+	}
+	TextWait
+	TextTalk name[2] {
+		#1230020087V#11P#00203F這裡是蘭花塔的
+		主通風井。{wait}
+	} {
+		#1230020088V#00200F好像是用來分散
+		巨塔重量的地方。{wait}
+	}
+	TextWait
+	TextTalk name[1] {
+		#1230010098V#00106F#11P我有聽說過，但是……
+		我都不知道原來是
+		這麼大的空間。{wait}
+	}
+	TextWait
+	CharTurnToChar name[3] name[0] 500deg/s
+	Sleep 150ms
+	TextTalk name[3] {
+		#1230030063V#00301F#5P嗯，總之我們快走吧。{wait}
+	}
+	TextWait
+	CharTurnTo name[0] 225deg 500deg/s
+	Sleep 150ms
+	TextTalk name[0] {
+		#1230000173V#5P#00001F沒錯，往南方。{wait}
+	}
+	TextWait
+	FadeOut 1000ms 0x00000000 255
+	FadeWait
+	CharFlagsSet char[0] 0x0080
+	CharFlagsSet char[1] 0x0080
+	NextFrame
+	UnloadChip chip[30]
+	UnloadChip chip[31]
+	ED7_37
+	CharSetPos field_party[0] (32000, 0, 0) 270deg
+	CharFlagsSet field_party[4] 0x0080
+	CharFlags2Set field_party[4] 0x8000
+	CharFlagsSet field_party[5] 0x0080
+	CharFlags2Set field_party[5] 0x8000
+	SoundStop sound[1007]
+	FlagSet flag[2583]
+	EventEnd 5
+	Return
+
+fn[13]:
+	Fork self fork[1]:
+		CharWalkToPos self (0, 0, -8000) 5000mm/s 0
+	ForkWait self fork[1]
+	Fork self fork[1]:
+		CharWalkToPos self (0, 0, -38000) 5000mm/s 0
+	ForkWait self fork[1]
+	Return
+
+fn[14]:
+	Fork self fork[1]:
+		CharWalkToPos2 self (33500, 0, 300) 2500mm/s 1
+	Fork self fork[2]:
+		CharColor self 0xFFFFFFFF 500ms
+	ForkWait self fork[1]
+	Fork self fork[1]:
+		CharWalkToPos2 self (31200, 0, 450) 2500mm/s 0
+	ForkWait self fork[1]
+	Return
+
+fn[15]:
+	Fork self fork[1]:
+		CharWalkToPos2 self (33500, 0, -300) 2500mm/s 1
+	Fork self fork[2]:
+		CharColor self 0xFFFFFFFF 500ms
+	ForkWait self fork[1]
+	Fork self fork[1]:
+		CharWalkToPos2 self (31400, 0, -450) 2500mm/s 0
+	ForkWait self fork[1]
+	Return
+
+fn[16]:
+	Fork self fork[1]:
+		CharWalkToPos2 self (33500, 0, -300) 2500mm/s 1
+	Fork self fork[2]:
+		CharColor self 0xFFFFFFFF 500ms
+	ForkWait self fork[1]
+	Fork self fork[1]:
+		CharWalkToPos self (32400, 0, -1300) 2500mm/s 0
+	ForkWait self fork[1]
+	CharTurnTo self 270deg 500deg/s
+	Return
+
+fn[17]:
+	Fork self fork[1]:
+		CharWalkToPos2 self (33500, 0, 300) 2500mm/s 1
+	Fork self fork[2]:
+		CharColor self 0xFFFFFFFF 500ms
+	ForkWait self fork[1]
+	Fork self fork[1]:
+		CharWalkToPos self (32200, 0, 1300) 2500mm/s 0
+	ForkWait self fork[1]
+	CharTurnTo self 270deg 500deg/s
+	Return
+
+fn[18]:
+	Fork self fork[1]:
+		CharWalkToPos2 self (33500, 0, 300) 2500mm/s 1
+	Fork self fork[2]:
+		CharColor self 0xFFFFFFFF 500ms
+	ForkWait self fork[1]
+	Fork self fork[1]:
+		CharWalkToPos2 self (32700, 0, 450) 2500mm/s 0
+	ForkWait self fork[1]
+	Return
+
+fn[19]:
+	Fork self fork[1]:
+		CharWalkToPos2 self (33500, 0, -300) 2500mm/s 1
+	Fork self fork[2]:
+		CharColor self 0xFFFFFFFF 500ms
+	ForkWait self fork[1]
+	Fork self fork[1]:
+		CharWalkToPos2 self (32900, 0, -450) 2500mm/s 0
+	ForkWait self fork[1]
+	SoundPlay sound[107] 0 100 0
+	ED7ObjPlay object[1] 10 0 0 0
+	ObjWait object[1]
+	ObjFlagsSet object[1] 0x0010
+	Return
+
+fn[20]:
+	SoundPlay sound[1007] 2 20 0
+	Sleep 200ms
+	SoundSetVolume sound[1007] 30
+	Sleep 200ms
+	SoundSetVolume sound[1007] 40
+	Sleep 200ms
+	SoundSetVolume sound[1007] 50
+	Sleep 200ms
+	SoundSetVolume sound[1007] 60
+	Sleep 200ms
+	SoundSetVolume sound[1007] 70
+	Sleep 200ms
+	SoundSetVolume sound[1007] 80
+	Sleep 200ms
+	SoundSetVolume sound[1007] 90
+	Sleep 200ms
+	SoundSetVolume sound[1007] 100
+	Sleep 5200ms
+	ED7_12 1007 2000 90
+	Return
+
+fn[21]:
+	EventBegin 0
+	FadeOut 0ms 0x00000000 255
+	SoundLoad sound[931]
+	SoundLoad sound[825]
+	ED7_76_1 object[255] "rai00_add" 1
+	ED7_76_1 object[255] "01_add" 1
+	ED7_76_1 object[255] "02_add" 1
+	ED7_76_1 object[255] "03_add" 1
+	ED7_76_1 object[255] "04_add" 1
+	ED7_76_1 object[255] "05_add" 1
+	ED7_76_1 object[255] "under_add" 1
+	ED7_76_0 object[255] "ugoku01" 1
+	CamSetDistance -12000 -12000 -2500 0ms
+	ED7CamRotate 75deg 63deg 0deg 0ms
+	CamPers 1000 0ms
+	CamZoom 39500 0ms
+	CharSetPos field_party[0] (0, 0, 0) 0deg
+	CharSetPos field_party[1] (0, 0, 0) 0deg
+	CharSetPos field_party[2] (0, 0, 0) 0deg
+	CharSetPos field_party[3] (0, 0, 0) 0deg
+	ObjFlagsSet object[1] 0x0004
+	ObjFlagsSet object[2] 0x0004
+	ObjFlagsSet object[3] 0x0004
+	CamSetDistance 0 -3000 0 12000ms
+	ED7CamRotate 130deg 63deg 0deg 12000ms
+	CamZoom 79500 12000ms
+	SoundPlay sound[930] 0 100 0
+	SoundPlay sound[929] 0 50 0
+	SoundPlay sound[931] 2 80 0
+	SoundPlay sound[825] 2 100 0
+	FadeIn 2000ms 0x00000000
+	FadeWait
+	Sleep 3000ms
+	SoundPlay sound[929] 0 60 0
+	Sleep 3000ms
+	SoundPlay sound[929] 0 60 0
+	Sleep 2000ms
+	ED7_12 931 2000 80
+	ED7_12 825 2000 100
+	FadeOut 2000ms 0x00000000 255
+	FadeWait
+	FlagSet flag[275]
+	NewScene "scena/m0209.bin" 0 0 0
+	Hcf
+	Return
+
+fn[22]:
+	EventBegin 1
+	TextTalk name[0] {
+		#00001F我們也快點過去！{wait}
+	}
+	TextWait
+	CharSetPos field_party[0] (171130, 0, 1480) 180deg
+	EventEnd 4
+	Return
+
+fn[23]:
+	EventBegin 2
+	TextSetPos -1 -1 -1 -1
+	TextSetName ""
+	TextMessage null {
+		{color 5}※　前方為通風井控制室　※
+		※　非相關人員禁止進入　※{color 0}{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	TextSetPos -1 280 60 3
+	if flag[2582] && !flag[2592]:
+		if !flag[3645]:
+			TextTalk name[3] {
+				#00303F他們該不會沒有往
+				這個方向走吧？{wait}
+			}
+			TextWait
+			TextTalk name[2] {
+				#00200F是啊，保全看起來
+				也沒有被解除，
+				前方應該沒有問題才對。{wait}
+			}
+			TextWait
+			TextTalk name[0] {
+				#00001F──那麼就只剩下
+				追上達德利警官他們了。{wait}
+			}
+			TextWait
+			TextTalk name[1] {
+				#00101F沒錯，我們朝南方前進吧。{wait}
+			}
+			TextWait
+			FlagSet flag[3645]
+	EventEnd 3
+	Return

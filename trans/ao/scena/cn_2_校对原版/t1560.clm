@@ -1,0 +1,147 @@
+calmare ao_k scena
+scena:
+	name "t1560" "t1560" "t1560"
+	town town[83]
+	bgm bgm[123]
+	flags 8192
+	item_use fn[0,255]
+	unk 255 29
+
+entry:
+	pos (0, 0, -1000)
+	unk1 0
+	cam_from (0, 0, 24000)
+	cam_pers 500
+	unk2 30
+	cam_deg 45deg
+	cam_limit 0deg 360deg
+	cam_at (0, 0, 0)
+	unk3 0
+	unk4 0
+	flags 0x0001
+	town town[83]
+	init fn[0,0]
+	reinit fn[0,1]
+
+fn[0]:
+	Event fn[0,2]
+	Return
+
+fn[1]:
+	if flag[3100]:
+		system[1] = 563
+	Return
+
+fn[2]:
+	EventBegin 1
+	FadeOut 0ms 0x00000000 255
+	CamSetDistance 0 1000 0 0ms
+	ED7CamRotate 45deg 30deg 0deg 0ms
+	CamPers 400 0ms
+	CamZoom 24000 0ms
+	CharSetPos field_party[0] (1500, 0, 0) 90deg
+	if system[11] != 255:
+		CharSetPos field_party[1] (300, 0, 800) 90deg
+	if system[12] != 255:
+		CharSetPos field_party[2] (300, 0, -800) 90deg
+	if system[13] != 255:
+		CharSetPos field_party[3] (-700, 0, 0) 90deg
+	if system[14] != 255:
+		CharSetPos field_party[4] (-1700, 0, -800) 90deg
+		CharFlagsUnset field_party[4] 0x0080
+		CharFlags2Unset field_party[4] 0x8000
+	if system[15] != 255:
+		CharSetPos field_party[5] (-1700, 0, 800) 90deg
+		CharFlagsUnset field_party[5] 0x0080
+		CharFlags2Unset field_party[5] 0x8000
+	FadeIn 500ms 0x00000000
+	FadeWait
+	var[0] = 0
+	if system[0] == 102:
+		ED7MenuNew menu[0]
+		ED7MenuAdd menu[0] "★【 ３Ｆ 】"
+		ED7MenuAdd menu[0] "　【 ２Ｆ 】"
+		ED7MenuAdd menu[0] "　【 １Ｆ 】"
+		ED7MenuAdd menu[0] "　【離開】"
+		ED7MenuShow menu[0] 10 10 0
+		var[2] = 0
+	elif system[0] == 101:
+		ED7MenuNew menu[0]
+		ED7MenuAdd menu[0] "　【 ３Ｆ 】"
+		ED7MenuAdd menu[0] "★【 ２Ｆ 】"
+		ED7MenuAdd menu[0] "　【 １Ｆ 】"
+		ED7MenuAdd menu[0] "　【離開】"
+		ED7MenuShow menu[0] 10 10 0
+		var[2] = 1
+	elif system[0] == 100:
+		ED7MenuNew menu[0]
+		ED7MenuAdd menu[0] "　【 ３Ｆ 】"
+		ED7MenuAdd menu[0] "　【 ２Ｆ 】"
+		ED7MenuAdd menu[0] "★【 １Ｆ 】"
+		ED7MenuAdd menu[0] "　【離開】"
+		ED7MenuShow menu[0] 10 10 0
+		var[2] = 2
+	MenuWait var[0]
+	MenuClose menu[0]
+	TextClose 0
+	if var[0] == 3:
+		FadeOut 500ms 0x00000000 255
+		FadeWait
+	elif var[2] < var[0]:
+		FadeOut 2000ms 0x00000000 255
+		SoundPlay sound[159] 0 100 0
+		CamSetDistance 0 16000 0 2000ms
+		FadeWait
+		CamWait 1
+		Sleep 800ms
+	elif var[2] > var[0]:
+		FadeOut 2000ms 0x00000000 255
+		SoundPlay sound[159] 0 100 0
+		CamSetDistance 0 -14000 0 2000ms
+		FadeWait
+		CamWait 1
+		Sleep 800ms
+	else:
+		FadeOut 500ms 0x00000000 255
+		FadeWait
+	if var[0] == 3:
+		switch var[2]:
+			case 0:
+				EventEnd 5
+				NewScene "scena/t1550.bin" 101 0 0
+				Hcf
+				break
+			case 1:
+				EventEnd 5
+				NewScene "scena/t1540.bin" 103 0 0
+				Hcf
+				break
+			case 2:
+				EventEnd 5
+				NewScene "scena/t1530.bin" 102 0 0
+				Hcf
+				break
+	else:
+		switch var[0]:
+			case 0:
+				FlagSet flag[297]
+				Sleep 500ms
+				EventEnd 5
+				NewScene "scena/t1550.bin" 101 0 0
+				Hcf
+				break
+			case 1:
+				FlagSet flag[297]
+				Sleep 500ms
+				EventEnd 5
+				NewScene "scena/t1540.bin" 103 0 0
+				Hcf
+				break
+			case 2:
+				FlagSet flag[297]
+				Sleep 500ms
+				EventEnd 5
+				NewScene "scena/t1530.bin" 102 0 0
+				Hcf
+				break
+	Return

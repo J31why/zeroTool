@@ -1,0 +1,306 @@
+calmare zero_k scena
+scena:
+	name "t1090" "t1090" "t1090"
+	town town[66]
+	bgm bgm[565]
+	flags 8192
+	item_use fn[0,255]
+	unk 255 26
+
+entry:
+	pos (0, 0, -1000)
+	unk1 0
+	cam_from (0, 0, 24000)
+	cam_pers 500
+	unk2 30
+	cam_deg 45deg
+	cam_limit 0deg 360deg
+	cam_at (0, 0, 0)
+	unk3 0
+	unk4 0
+	flags 0x0001
+	town town[66]
+	init fn[0,2]
+	reinit fn[0,3]
+
+chip[0] "chr/ch08200.itc"
+chip[1] "chr/ch00200.itc"
+chip[2] "chr/ch00100.itc"
+
+npc char[0]:
+	name "琪雅"
+	pos (-98199, 800, -3890)
+	angle 0deg
+	flags 0x0185
+	unk2 0
+	chip chip[0]
+	init fn[0,0]
+	talk fn[0,4]
+	unk4 255
+
+npc char[1]:
+	name "緹歐"
+	pos (-98370, 0, -200)
+	angle 180deg
+	flags 0x0185
+	unk2 0
+	chip chip[1]
+	init fn[0,0]
+	talk fn[0,5]
+	unk4 255
+
+npc char[2]:
+	name "艾莉"
+	pos (-96000, 0, 3400)
+	angle 0deg
+	flags 0x0185
+	unk2 0
+	chip chip[2]
+	init fn[0,0]
+	talk fn[0,7]
+	unk4 255
+
+look_point[0]:
+	pos (-98200, 0, -2640)
+	radius 1200
+	bubble_pos (-98200, 2500, -3890)
+	unk1 126
+	unk2 0
+	function fn[0,4]
+	unk3 0
+	unk4 0
+
+fn[0]:
+	var[2] = random % 8
+	switch var[2]:
+		case 0:
+			ED7_A0 self 1450ms 0 251
+			break
+		case 1:
+			ED7_A0 self 1550ms 0 251
+			break
+		case 2:
+			ED7_A0 self 1600ms 0 251
+			break
+		case 3:
+			ED7_A0 self 1400ms 0 251
+			break
+		case 4:
+			ED7_A0 self 1650ms 0 251
+			break
+		case 5:
+			ED7_A0 self 1350ms 0 251
+			break
+		case 6:
+			ED7_A0 self 1500ms 0 251
+			break
+		default:
+			ED7_A0 self 1500ms 0 251
+			break
+	while 1:
+		ED7_A0 self 1500ms 0 251
+	Return
+
+fn[1]:
+	while 1:
+		Emote self 0mm 1700mm 38 39 250ms 2
+		CharJump self 0 0 0 600 3500mm/s
+		Sleep 400ms
+		CharJump self 0 0 0 400 3750mm/s
+		Sleep 250ms
+		CharJump self 0 0 0 500 3500mm/s
+		Sleep 400ms
+		Emote self 0mm 1700mm 38 39 250ms 2
+		CharJump self 0 0 0 400 3750mm/s
+		Sleep 250ms
+		CharJump self 0 0 0 600 3500mm/s
+		Sleep 400ms
+		CharJump self 0 0 0 500 3750mm/s
+		Sleep 350ms
+	Return
+
+fn[2]:
+	if flag[2608]:
+	elif flag[2607]:
+	elif flag[2605]:
+	elif flag[2604]:
+	elif flag[2602]:
+	elif flag[2601]:
+	elif flag[2600]:
+	elif flag[2597]:
+		CharFlagsUnset char[0] 0x0080
+		CharFlagsSet char[0] 0x0010
+		CharFlagsUnset char[0] 0x0001
+		ForkFunc char[0] fork[0] fn[0,1]
+		CharFlagsUnset char[1] 0x0080
+		CharFlagsSet char[1] 0x0010
+		CharFlagsUnset char[2] 0x0080
+	elif flag[2592]:
+	Return
+
+fn[3]:
+	if !flag[2597] | flag[2600]:
+		LookPointFlagsSet look_point[0] 0x0001
+	Return
+
+fn[4]:
+	TextStart char[0]
+	if flag[2608]:
+	elif flag[2605]:
+	elif flag[2604]:
+	elif flag[2602]:
+	elif flag[2601]:
+	elif flag[2600]:
+	elif flag[2597]:
+		if !flag[3]:
+			Call fn[0,6]
+		else:
+			CharSetPos char[0] (-98200, 800, -3890) 0deg
+			TextTalk char[0] {
+				#01109F軟軟的床舖，好舒服喔～！{wait}
+			}
+			TextWait
+	elif flag[2592]:
+	TextEnd char[0]
+	Return
+
+fn[5]:
+	TextStart self
+	if flag[2608]:
+	elif flag[2605]:
+	elif flag[2604]:
+	elif 0:
+	elif flag[2602]:
+	elif flag[2601]:
+	elif flag[2600]:
+	elif flag[2597]:
+		if !flag[3]:
+			Call fn[0,6]
+		else:
+			TextTalk char[1] {
+				#00202F雖然這床舖很誘人，不過……{wait}
+			} {
+				#00206F……總之先把行李放下來吧。{wait}
+			}
+			TextWait
+	elif flag[2592]:
+	TextEnd self
+	Return
+
+fn[6]:
+	_Char4A char[1] 255
+	_Char4A char[0] 255
+	CharSetPos char[0] (-98200, 800, -3890) 0deg
+	Fork field_party[0] fork[0]:
+		CharTurnToChar field_party[0] char[0] 0deg/s
+	Sleep 0ms
+	Fork field_party[1] fork[0]:
+		CharTurnToChar field_party[1] char[0] 0deg/s
+	Sleep 0ms
+	Fork field_party[2] fork[0]:
+		CharTurnToChar field_party[2] char[0] 0deg/s
+	Sleep 0ms
+	ForkWait field_party[0] fork[0]
+	ForkWait field_party[1] fork[0]
+	ForkWait field_party[2] fork[0]
+	TextTalk char[0] {
+		#01109F緹歐、妳看妳看！
+		這床超軟的耶～！{wait}
+	}
+	TextWait
+	TextTalk char[1] {
+		#00202F這床舖看來
+		材質相當不錯呢。{wait}
+	} {
+		#00204F難得有這機會，那我也……{wait}
+	}
+	TextWait
+	Fork field_party[0] fork[0]:
+		CharTurnToChar field_party[0] char[1] 500deg/s
+	Sleep 50ms
+	Fork field_party[1] fork[0]:
+		CharTurnToChar field_party[1] char[1] 500deg/s
+	Sleep 50ms
+	Fork field_party[2] fork[0]:
+		CharTurnToChar field_party[2] char[1] 500deg/s
+	Sleep 50ms
+	ForkWait field_party[0] fork[0]
+	ForkWait field_party[1] fork[0]
+	ForkWait field_party[2] fork[0]
+	TextTalk name[0] {
+		#00006F要是妳們兩個一起鬧，
+		一定會很吵喔……？{wait}
+	}
+	TextWait
+	CharTurnToChar char[1] name[0] 500deg/s
+	TextTalk char[1] {
+		#00206F……當然是開玩笑的。{wait}
+	}
+	TextWait
+	Emote name[0] 0mm 2000mm 16 19 250ms 1
+	SoundPlay sound[23] 0 100 0
+	Emote name[3] 0mm 2000mm 16 19 250ms 1
+	SoundPlay sound[23] 0 100 0
+	Sleep 1000ms
+	TextTalk name[3] {
+		#00306F（我看妳是真心想玩吧……）{wait}
+	}
+	TextWait
+	CharFlagsUnset char[1] 0x0010
+	CharFlagsUnset char[0] 0x0010
+	FlagSet flag[3]
+	_Char4B char[1] 255
+	_Char4B char[0] 255
+	CharTurnToChar char[1] char[0] 0deg/s
+	Return
+
+fn[7]:
+	TextStart self
+	if flag[2608]:
+	elif flag[2605]:
+	elif flag[2604]:
+	elif 0:
+	elif flag[2602]:
+	elif flag[2601]:
+	elif flag[2600]:
+	elif flag[2597]:
+		if !flag[2]:
+			TextTalk char[2] {
+				#00100F沒想到賽西兒她們也來了，
+				真是嚇了我一跳。{wait}
+			} {
+				#00106F不過，會特地計畫這件事，
+				該說果然有貝爾的風格吧……？{wait}
+			}
+			TextWait
+			TextTalk name[4] {
+				#10302F呵呵，也因為這樣，
+				男女比例變得有點誇張。{wait}
+			}
+			TextWait
+			TextTalk name[0] {
+				#00009F不過這驚喜
+				的確讓人蠻開心的。{wait}
+			}
+			TextWait
+			TextTalk char[2] {
+				#00109F是、是沒錯啦。{wait}
+			} {
+				#00106F因為從小
+				我就老是被她驚喜，
+				說起來有點不甘心就是了。{wait}
+			}
+			TextWait
+			FlagSet flag[2]
+		else:
+			TextTalk char[2] {
+				#00100F對了，
+				剛剛我聽貝爾說，
+				沙灘好像蠻漂亮的。{wait}
+			} {
+				#00109F呵呵，那我就期待一下吧。{wait}
+			}
+			TextWait
+	elif flag[2592]:
+	TextEnd self
+	Return

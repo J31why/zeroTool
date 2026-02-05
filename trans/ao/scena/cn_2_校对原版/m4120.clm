@@ -1,0 +1,920 @@
+calmare ao_k scena
+scena:
+	name "m4120" "m4120" "m4120"
+	town town[200]
+	bgm bgm[351]
+	flags 0
+	item_use fn[0,255]
+	unk 255 40
+
+entry:
+	pos (0, 0, -1000)
+	unk1 0
+	cam_from (0, 0, 28000)
+	cam_pers 500
+	unk2 30
+	cam_deg 45deg
+	cam_limit 0deg 360deg
+	cam_at (0, 0, 0)
+	unk3 0
+	unk4 0
+	flags 0x0001
+	town town[200]
+	init fn[0,1]
+	reinit fn[0,2]
+
+chip[0] null
+chip[1] null
+chip[2] null
+chip[3] null
+chip[4] null
+chip[5] null
+chip[6] null
+chip[7] null
+chip[8] null
+chip[9] null
+chip[10] null
+chip[11] null
+chip[12] null
+chip[13] null
+chip[14] null
+chip[15] null
+chip[16] "monster/ch83450.itc"
+chip[17] "monster/ch83451.itc"
+chip[18] null
+chip[19] null
+chip[20] null
+chip[21] null
+chip[22] "monster/ch79450.itc"
+chip[23] "monster/ch79451.itc"
+chip[24] "monster/ch79550.itc"
+chip[25] "monster/ch79551.itc"
+
+npc char[0]:
+	name "急凍蘑菇"
+	pos (-12700, -39500, 213160)
+	angle 0deg
+	flags 0x01E4
+	unk2 0
+	chip chip[16]
+	init fn[0,0]
+	talk fn[255,255]
+	unk4 255
+
+monster char[1]:
+	pos (-13190, -20000, 211110)
+	angle 45
+	flags 0x0101
+	battle battle[1]
+	flag flag[0]
+	chip chip[22]
+	unk2 65535
+	stand_anim anim[2]
+	walk_anim anim[3]
+
+monster char[2]:
+	pos (-199670, 4000, -1030)
+	angle 315
+	flags 0x0101
+	battle battle[0]
+	flag flag[0]
+	chip chip[16]
+	unk2 65535
+	stand_anim anim[0]
+	walk_anim anim[1]
+
+monster char[3]:
+	pos (-210110, 0, -1260)
+	angle 90
+	flags 0x0101
+	battle battle[0]
+	flag flag[0]
+	chip chip[16]
+	unk2 65535
+	stand_anim anim[0]
+	walk_anim anim[1]
+
+monster char[4]:
+	pos (1960, -40000, 185270)
+	angle 350
+	flags 0x0101
+	battle battle[2]
+	flag flag[0]
+	chip chip[24]
+	unk2 65535
+	stand_anim anim[4]
+	walk_anim anim[5]
+
+monster char[5]:
+	pos (-12030, -40000, 202770)
+	angle 130
+	flags 0x0101
+	battle battle[2]
+	flag flag[0]
+	chip chip[24]
+	unk2 65535
+	stand_anim anim[4]
+	walk_anim anim[5]
+
+look_point[0]:
+	pos (18600, -20000, 205190)
+	radius 1200
+	bubble_pos (18600, -19000, 205190)
+	unk1 124
+	unk2 0
+	function fn[0,3]
+	unk3 0
+	unk4 0
+
+look_point[1]:
+	pos (7830, 0, 23910)
+	radius 1200
+	bubble_pos (7830, 1000, 23910)
+	unk1 124
+	unk2 0
+	function fn[0,4]
+	unk3 0
+	unk4 0
+
+look_point[2]:
+	pos (-12700, -40000, 213160)
+	radius 1200
+	bubble_pos (-12700, -39000, 213160)
+	unk1 124
+	unk2 0
+	function fn[0,5]
+	unk3 0
+	unk4 0
+
+look_point[3]:
+	pos (-193760, 4000, 9300)
+	radius 1200
+	bubble_pos (-193760, 6000, 9300)
+	unk1 124
+	unk2 0
+	function fn[0,7]
+	unk3 0
+	unk4 0
+
+look_point[4]:
+	pos (4710, 0, 425160)
+	radius 1200
+	bubble_pos (4710, 1500, 425160)
+	unk1 124
+	unk2 0
+	function fn[0,6]
+	unk3 0
+	unk4 0
+
+anim[0] 1000ms 0 1 2 3 4
+anim[1] 1200ms 0 1 2 3 4
+anim[2] 800ms 0 1 2 3 4
+anim[3] 1500ms 0 1 2 3 4
+anim[4] 1000ms 0 1 2 3 2 1
+anim[5] 800ms 0 1 2 3 4
+
+// NB: the first five sepith sets are seemingly junk data.
+sepith[0] 100 1 2 3 70 89 99 0
+sepith[1] 100 5 1 5 1 5 1 0
+sepith[2] 100 5 1 5 1 5 1 0
+sepith[3] 100 5 0 5 0 5 0 0
+sepith[4] 100 5 0 5 0 5 0 0
+
+sepith[5] 2 7 2 2 0 3 0 0
+sepith[6] 2 3 4 3 2 0 2 0
+sepith[7] 3 0 4 2 3 4 0 0
+sepith[8] 3 3 0 4 4 3 0 0
+sepith[9] 2 2 6 2 0 2 6 0
+sepith[10] 4 4 6 6 4 6 6 0
+sepith[11] 12 12 4 4 4 2 2 0
+sepith[12] 6 6 8 8 8 6 6 0
+
+at_roll[0]: none 100
+at_roll[1]: none 100; hp10 5; hp50 1; ep10 5; ep50 1; cp10 5; cp50 1; unk1 5; unk2 5; unk6 1
+at_roll[2]: none 100; hp10 5; hp50 1; ep10 5; ep50 1; cp10 5; cp50 1; unk1 5; unk2 5; unk3 5; unk4 5; unk5 5; unk6 5
+at_roll[3]: none 100; hp10 5; ep10 5; cp10 5; unk1 2; unk2 5; unk6 2
+at_roll[4]: none 100; hp10 5; ep10 5; cp10 5; unk2 5
+
+placement[0]:
+	pos 7 9 180deg
+	pos 11 10 180deg
+	pos 10 13 180deg
+	pos 5 11 180deg
+	pos 12 12 180deg
+	pos 4 14 180deg
+	pos 14 14 180deg
+	pos 2 13 180deg
+
+placement[1]:
+	pos 8 8 180deg
+	pos 5 9 180deg
+	pos 11 10 180deg
+	pos 6 12 180deg
+	pos 10 12 180deg
+	pos 13 13 180deg
+	pos 4 14 180deg
+	pos 8 14 180deg
+
+placement[2]:
+	pos 7 8 180deg
+	pos 9 9 180deg
+	pos 6 10 180deg
+	pos 10 11 180deg
+	pos 6 12 180deg
+	pos 10 13 180deg
+	pos 7 14 180deg
+	pos 9 15 180deg
+
+placement[3]:
+	pos 8 8 180deg
+	pos 6 9 180deg
+	pos 10 10 180deg
+	pos 7 11 180deg
+	pos 10 12 180deg
+	pos 8 14 180deg
+	pos 10 14 180deg
+	pos 6 15 180deg
+
+placement[4]:
+	pos 7 4 0deg
+	pos 10 11 225deg
+	pos 4 7 90deg
+	pos 12 7 270deg
+	pos 4 11 135deg
+	pos 11 4 315deg
+	pos 7 12 180deg
+	pos 5 5 45deg
+
+battle[0]:
+	flags 0
+	level 54
+	unk1 6
+	vision_range 45
+	move_range 10
+	can_move 1
+	move_speed 30
+	unk2 0
+	battlefield "bm4110"
+	sepith sepith[5]
+	setup 40:
+		enemies "ms83400.dat" "ms83400.dat" null null null null null null
+		placement placement[0] placement[4]
+		bgm bgm[450] bgm[453]
+		at_roll at_roll[1]
+	setup 30:
+		enemies "ms83400.dat" "ms83400.dat" "ms83400.dat" null null null null null
+		placement placement[1] placement[4]
+		bgm bgm[450] bgm[453]
+		at_roll at_roll[1]
+	setup 20:
+		enemies "ms83400.dat" "ms83400.dat" "ms83400.dat" "ms83400.dat" null null null null
+		placement placement[0] placement[4]
+		bgm bgm[450] bgm[453]
+		at_roll at_roll[1]
+
+battle[1]:
+	flags 0
+	level 54
+	unk1 6
+	vision_range 45
+	move_range 10
+	can_move 1
+	move_speed 30
+	unk2 0
+	battlefield "bm4110"
+	sepith sepith[8]
+	setup 40:
+		enemies "ms79400.dat" "ms79400.dat" null null null null null null
+		placement placement[0] placement[4]
+		bgm bgm[450] bgm[453]
+		at_roll at_roll[1]
+	setup 30:
+		enemies "ms79400.dat" "ms79400.dat" "ms79400.dat" null null null null null
+		placement placement[1] placement[4]
+		bgm bgm[450] bgm[453]
+		at_roll at_roll[1]
+	setup 20:
+		enemies "ms79400.dat" "ms79400.dat" "ms79400.dat" "ms79400.dat" null null null null
+		placement placement[0] placement[4]
+		bgm bgm[450] bgm[453]
+		at_roll at_roll[1]
+
+battle[2]:
+	flags 0
+	level 55
+	unk1 6
+	vision_range 45
+	move_range 10
+	can_move 1
+	move_speed 30
+	unk2 0
+	battlefield "bm4110"
+	sepith sepith[9]
+	setup 40:
+		enemies "ms79500.dat" null null null null null null null
+		placement placement[1] placement[4]
+		bgm bgm[450] bgm[453]
+		at_roll at_roll[1]
+	setup 30:
+		enemies "ms79500.dat" "ms79400.dat" null null null null null null
+		placement placement[0] placement[4]
+		bgm bgm[450] bgm[453]
+		at_roll at_roll[1]
+	setup 20:
+		enemies "ms79500.dat" "ms79400.dat" "ms79400.dat" null null null null null
+		placement placement[1] placement[4]
+		bgm bgm[450] bgm[453]
+		at_roll at_roll[1]
+
+battle[3]:
+	flags 3072
+	level 255
+	unk1 6
+	vision_range 0
+	move_range 0
+	can_move 3
+	move_speed 0
+	unk2 0
+	battlefield "bm4110"
+	sepith null
+	setup 100:
+		enemies "ms83400.dat" "ms83400.dat" "ms83400.dat" "ms83400.dat" "ms83400.dat" "ms83400.dat" "ms83400.dat" "ms83400.dat"
+		placement placement[1] placement[4]
+		bgm bgm[451] bgm[453]
+		at_roll at_roll[3]
+
+fn[0]:
+	while 1:
+		ED7CharAnimation self 1000ms 0 1 2 3 4
+	Return
+
+fn[1]:
+	if flag[2386] && !flag[2387]:
+		Event fn[0,8]
+	Return
+
+fn[2]:
+	char[4].12 = 128
+	char[4].20 = 219
+	char[4].13 = 128
+	char[4].21 = 219
+	char[4].14 = 128
+	char[4].22 = 219
+	char[4].15 = 128
+	char[4].23 = 219
+	char[4].16 = 128
+	char[4].24 = 219
+	char[4].17 = 128
+	char[4].25 = 219
+	char[4].18 = 128
+	char[4].26 = 219
+	char[4].19 = 128
+	char[4].27 = 219
+	char[5].12 = 128
+	char[5].20 = 219
+	char[5].13 = 128
+	char[5].21 = 219
+	char[5].14 = 128
+	char[5].22 = 219
+	char[5].15 = 128
+	char[5].23 = 219
+	char[5].16 = 128
+	char[5].24 = 219
+	char[5].17 = 128
+	char[5].25 = 219
+	char[5].18 = 128
+	char[5].26 = 219
+	char[5].19 = 128
+	char[5].27 = 219
+	char[4].55 = 8
+	char[5].55 = 8
+	char[4].51 = 1000
+	char[5].51 = 1000
+	char[4].7 = 2000
+	char[5].7 = 2000
+	ED7_1D_0 0 1 0 (16500, 3000, 205000) 8000 5000 15000
+	if !flag[263]:
+		ED7_76_0 object[255] "extra" 1
+		ED7_76_1 object[255] "kinoko" 1
+		ObjFlagsSet object[3] 0x0004
+	else:
+		ED7_76_1 object[255] "extra" 1
+		ED7_76_0 object[255] "kinoko" 1
+		if flag[3328]:
+			ObjFlagsSet object[3] 0x0004
+			ED7_1D_2 0 1
+		else:
+			ObjFlagsUnset object[3] 0x0004
+	if flag[2560]:
+		ED7_76_0 object[255] "hasigo_a" 1
+		ED7_76_1 object[255] "hasigo_b" 1
+	else:
+		ED7_76_1 object[255] "hasigo_a" 1
+		ED7_76_0 object[255] "hasigo_b" 1
+	if !flag[4052]:
+		ObjFrame object[0] 0
+	else:
+		ObjFrame object[0] 30
+	if !flag[4053]:
+		ObjFrame object[1] 0
+	else:
+		ObjFrame object[1] 30
+	if !flag[4054]:
+		ObjFrame object[2] 0
+	else:
+		ObjFrame object[2] 30
+	Return
+
+fn[3]:
+	ED7_F2 1
+	SystemFlagsSet 0x08000000
+	if !flag[4052]:
+		SoundPlay sound[14] 0 100 0
+		ED7_74 object[0] 0 30
+		ED7ObjPlay object[0] 0 30 0 0
+		Sleep 500ms
+		if ItemAdd item[524] 1:
+			FadeOut 300ms 0x00000000 100
+			SoundPlay sound[17] 0 100 0
+			TextSetPos -1 -1 -1 -1
+			TextSetName ""
+			TextMessage name[742] {
+				{color 0}已取得{item[524]}{color 0}。{wait}
+			}
+			TextWait
+			TextClose 0
+			TextSetPos -1 280 60 3
+			FadeIn 300ms 0x00000000
+			FlagSet flag[4052]
+			ED7_DE 5
+		else:
+			FadeOut 300ms 0x00000000 100
+			TextSetName ""
+			TextMessage name[742] {
+				寶箱裡裝有{item[524]}{color 0}。
+				因持有物品已達上限，已放棄{item[524]}{color 0}。{wait}
+			}
+			TextWait
+			TextClose 0
+			FadeIn 300ms 0x00000000
+			SoundPlay sound[15] 0 100 0
+			ED7ObjPlay object[0] 30 0 0 0
+	else:
+		FadeOut 300ms 0x00000000 100
+		TextSetPos -1 -1 -1 -1
+		TextSetName ""
+		TextMessage name[742] {
+			{0x06}{color 5}寶箱裡什麼都沒有。{color 0}{wait}
+		}
+		TextWait
+		TextClose 0
+		FadeIn 300ms 0x00000000
+	Sleep 30ms
+	TextEnd null
+	SystemFlagsUnset 0x08000000
+	Return
+
+fn[4]:
+	ED7_F2 1
+	SystemFlagsSet 0x08000000
+	if !flag[4053]:
+		SoundPlay sound[14] 0 100 0
+		ED7_74 object[1] 0 30
+		ED7ObjPlay object[1] 0 30 0 0
+		Sleep 500ms
+		if ItemAdd item[820] 1:
+			FadeOut 300ms 0x00000000 100
+			SoundPlay sound[17] 0 100 0
+			TextSetPos -1 -1 -1 -1
+			TextSetName ""
+			TextMessage name[742] {
+				{color 0}已取得{item[820]}{color 0}。{wait}
+			}
+			TextWait
+			TextClose 0
+			TextSetPos -1 280 60 3
+			FadeIn 300ms 0x00000000
+			FlagSet flag[4053]
+			ED7_DE 5
+		else:
+			FadeOut 300ms 0x00000000 100
+			TextSetName ""
+			TextMessage name[742] {
+				寶箱裡裝有{item[820]}{color 0}。
+				因持有物品已達上限，已放棄{item[820]}{color 0}。{wait}
+			}
+			TextWait
+			TextClose 0
+			FadeIn 300ms 0x00000000
+			SoundPlay sound[15] 0 100 0
+			ED7ObjPlay object[1] 30 0 0 0
+	else:
+		FadeOut 300ms 0x00000000 100
+		TextSetPos -1 -1 -1 -1
+		TextSetName ""
+		TextMessage name[742] {
+			{0x06}{color 5}寶箱裡什麼都沒有。{color 0}{wait}
+		}
+		TextWait
+		TextClose 0
+		FadeIn 300ms 0x00000000
+	Sleep 30ms
+	TextEnd null
+	SystemFlagsUnset 0x08000000
+	Return
+
+fn[5]:
+	SystemFlagsSet 0x08000000
+	if !flag[4054]:
+		SoundPlay sound[14] 0 100 0
+		ED7_74 object[2] 0 30
+		ED7ObjPlay object[2] 0 30 0 0
+		Sleep 500ms
+		if !flag[4275]:
+			CharColor char[0] 0x00FFFFFF 0ms
+			CharTurnToChar char[0] field_party[0] 0deg/s
+			_Char91 char[0] 0 1000 0 0 0
+			Fork char[0] fork[1]:
+				_Char91 self 0 -1000 0 1000 0
+			Fork char[0] fork[2]:
+				CharColor self 0xFFFFFFFF 1000ms
+			CharFlagsUnset char[0] 0x0080
+			CharFlagsSet char[0] 0x8000
+			TextMessage name[742] {
+				{color 5}魔獸出現了！{color 0}{wait}
+			}
+			TextWait
+			TextClose 0
+			ForkWait char[0] fork[1]
+			ED7Battle battle[3] null 0 0 11 null
+			CharFlagsSet char[0] 0x0080
+			CharFlagsUnset char[0] 0x8000
+			switch system[3]:
+				case 0:
+					FlagSet flag[4275]
+					ObjFrame object[2] 30
+					Sleep 500ms
+					break
+				case 2:
+					ObjFrame object[2] 0
+					TextEnd null
+					SystemFlagsUnset 0x08000000
+					Return
+				case 1:
+					ReturnToTitle 0
+					Return
+		if ItemAdd item[79] 1:
+			FadeOut 300ms 0x00000000 100
+			SoundPlay sound[17] 0 100 0
+			TextSetPos -1 -1 -1 -1
+			TextMessage name[742] {
+				{color 0}已取得{item[79]}{color 0}。{wait}
+			}
+			TextWait
+			TextClose 0
+			TextSetPos -1 280 60 3
+			FadeIn 300ms 0x00000000
+			FlagSet flag[4054]
+			ED7_DE 5
+		else:
+			FadeOut 300ms 0x00000000 100
+			TextMessage name[742] {
+				寶箱裡裝有{item[79]}{color 0}。
+				因持有物品已達上限，已放棄{item[79]}{color 0}。{wait}
+			}
+			TextWait
+			TextClose 0
+			FadeIn 300ms 0x00000000
+			SoundPlay sound[15] 0 100 0
+			ED7ObjPlay object[2] 30 0 0 0
+	else:
+		FadeOut 300ms 0x00000000 100
+		TextMessage name[742] {
+			{0x06}{color 5}寶箱裡什麼都沒有。{color 0}{wait}
+		}
+		TextWait
+		TextClose 0
+		FadeIn 300ms 0x00000000
+	Sleep 30ms
+	TextEnd null
+	SystemFlagsUnset 0x08000000
+	Return
+
+fn[6]:
+	ED7_F2 2
+	FadeOut 300ms 0x00000000 100
+	TextMessage name[742] {
+		{color 5}有可恢復導力器的裝置。{color 0}{wait}
+	}
+	Menu menu[0] -1 -1 1
+		"在此地休息" // 0
+		"放棄" // 1
+	MenuWait var[0]
+	MenuClose menu[0]
+	TextClose 0
+	if var[0] == 0:
+		FadeIn 100ms 0x00000000
+		Sleep 500ms
+		SoundLoad sound[13]
+		ED7_74 object[4] 0 30
+		SoundPlay sound[7] 0 100 0
+		ObjFrame object[4] 0
+		ED7ObjPlay object[4] 0 30 0 0
+		ObjWait object[4]
+		ED7ObjPlay object[4] 31 390 0 32
+		Sleep 1000ms
+		BgmStop 3000ms
+		FadeOut 1000ms 0x00000000 255
+		Sleep 700ms
+		SoundPlay sound[13] 0 100 0
+		FadeWait
+		PartySetAttr name[255] 254 0
+		CamLookChar field_party[0] 0ms
+		ED7_31 1
+		Sleep 3500ms
+		ObjFrame object[4] 0
+		BgmResume
+		FadeIn 1000ms 0x00000000
+		TextClose 0
+		TextEnd null
+		Return
+	else:
+		FadeIn 300ms 0x00000000
+		TextEnd null
+		Return
+	Return
+	Return
+
+fn[7]:
+	EventBegin 1
+	if flag[2560]:
+		TextMessage null {
+			{color 5}這裡有梯子。
+			是否要攀爬？{wait}
+		}
+		Menu menu[0] -1 -1 1
+			"是" // 0
+			"否" // 1
+		MenuWait var[0]
+		MenuClose menu[0]
+		TextClose 0
+		_59
+		if var[0] == 0:
+			FadeOut 500ms 0x00000000 255
+			FadeWait
+			EventEnd 5
+			NewScene "scena/m4160.bin" 106 0 0
+			Hcf
+	else:
+		TextMessage null {
+			{color 5}這裡有壞掉的梯子。{wait}
+		}
+		TextWait
+		TextClose 0
+		_59
+	EventEnd 5
+	Return
+
+fn[8]:
+	EventBegin 0
+	FadeOut 0ms 0x00000000 255
+	ED7_E0 3
+	SoundLoad sound[814]
+	CamSetDistance -10 3330 -15780 0ms
+	ED7CamRotate 65deg 25deg 0deg 0ms
+	CamPers 700 0ms
+	CamZoom 16910 0ms
+	CharSetPos name[0] (-800, 2330, -15700) 0deg
+	CharSetPos name[1] (800, 2330, -15700) 0deg
+	CharSetPos name[8] (-800, 2330, -17300) 0deg
+	CharSetPos name[4] (800, 3330, -17300) 0deg
+	FadeIn 1000ms 0x00000000
+	CamSetDistance 0 1160 -7500 5000ms
+	CamZoom 14430 5000ms
+	Sleep 50ms
+	Fork name[0] fork[1]:
+		_94 0 self 0deg 9000 2000mm/s 0
+	Sleep 50ms
+	Fork name[1] fork[1]:
+		_94 0 self 0deg 9000 2000mm/s 0
+	Sleep 50ms
+	Fork name[8] fork[1]:
+		_94 0 self 0deg 9000 2000mm/s 0
+	Sleep 50ms
+	Fork name[4] fork[1]:
+		_94 0 self 0deg 9000 2000mm/s 0
+	Sleep 50ms
+	ForkWait name[0] fork[3]
+	ForkWait name[1] fork[3]
+	ForkWait name[8] fork[3]
+	ForkWait name[4] fork[3]
+	CamWait 121
+	Sleep 300ms
+	TextTalk name[0] {
+		#1120000168V#00008F#6P這樣看上去……
+		這紫光好像是植物發出來的。{wait}
+	} {
+		#1120000169V#00001F似乎有很多苔蘚和蕈類。{wait}
+	}
+	TextWait
+	TextTalk name[8] {
+		#1120050056V#10106F#12P這個地方不管怎麼看
+		都不像是普通的礦山遺跡……{wait}
+	}
+	TextWait
+	CharTurnTo name[1] 225deg 500deg/s
+	Sleep 300ms
+	TextTalk name[1] {
+		#1120010084V#00103F#5P我好像有在哪裡聽說過
+		會發光的苔蘚。{wait}
+	} {
+		#1120010085V#00101F名字叫做《塞姆利亞苔》，
+		似乎也有人拿來當作藥材……{wait}
+	}
+	TextWait
+	Fork name[8] fork[1]:
+		CharTurnTo self 45deg 500deg/s
+	Sleep 100ms
+	CharTurnTo name[0] 90deg 500deg/s
+	TextTalk name[0] {
+		#1120000170V#00005F#6P哦，還有這種東西啊。{wait}
+	}
+	TextWait
+	TextTalk name[1] {
+		#1120010086V#00106F#5P不過，這顏色跟我
+		聽說過的完全不同……{wait}
+	} {
+		#1120010087V#00100F說不定是不同的種類。{wait}
+	}
+	TextWait
+	CharTurnTo name[4] 315deg 500deg/s
+	Sleep 200ms
+	TextTalk name[4] {
+		#1120040098V#10302F#11P不……
+		是《塞姆利亞苔》沒錯喔。{wait}
+	}
+	TextWait
+	Fork name[1] fork[1]:
+		CharTurnTo self 180deg 500deg/s
+	Sleep 50ms
+	Fork name[0] fork[1]:
+		CharTurnTo self 135deg 500deg/s
+	Sleep 50ms
+	Fork name[8] fork[1]:
+		CharTurnTo self 90deg 500deg/s
+	Sleep 100ms
+	TextTalk name[1] {
+		#1120010088V#00105F#5P咦？{wait}
+	}
+	TextWait
+	TextTalk name[4] {
+		#1120040099V#10304F#11P原本塞姆利亞苔就會
+		發出金色的光芒，但是……{wait}
+	} {
+		#1120040100V#10300F它們偶而會受到七耀脈的影響
+		而改變顏色。{wait}
+	}
+	TextWait
+	TextTalk name[1] {
+		#1120010089V#00100F#5P原來是這樣……{wait}
+	}
+	TextWait
+	TextTalk name[4] {
+		#1120040101V#10303F#11P順道一提，這些蕈類
+		是一種叫做《螢火菇》的品種。{wait}
+	} {
+		#1120040102V#10308F它們原本會發出綠色的光，
+		而且從來不會長到這麼巨大……{wait}
+	} {
+		#1120040103V#10301F看來七耀脈的流動
+		產生了某種異常。{wait}
+	}
+	TextWait
+	TextTalk name[1] {
+		#1120010090V#00101F#5P七耀脈的流動產生異常……{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#1120000171V#00003F#6P也就是說，這應該跟
+		設下陷阱的犯人沒有關係吧。{wait}
+	} {
+		#1120000172V#00008F入口的門被破壞是昨天的事……{wait}
+	} {
+		#1120000173V#00001F才短短一天，應該不太可能
+		繁殖出這麼多。{wait}
+	}
+	TextWait
+	TextTalk name[4] {
+		#1120040104V#10300F#11P嗯，是啊。{wait}
+	}
+	TextWait
+	TextTalk name[8] {
+		#1120050057V#10102F#6P話說瓦奇，你還真是博學多聞呢。{wait}
+	} {
+		#1120050058V你是從哪裡學來這些知識的？{wait}
+	}
+	TextWait
+	Sleep 150ms
+	CharTurnTo name[4] 270deg 500deg/s
+	TextTalk name[4] {
+		#1120040105V#10305F#11P喔，我最近認識了一個
+		很懂藥草的客人。{wait}
+	} {
+		#1120040106V#10309F在店裡舉杯對飲的時候，
+		對方教了我很多知識嘛㈱{wait}
+	}
+	TextWait
+	TextTalk name[8] {
+		#1120050059V#10106F#6P……我不該問的。{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#1120000174V#00012F#6P唉……
+		我就覺得應該是這樣吧。{wait}
+	}
+	TextWait
+	TextTalk name[1] {
+		#1120010091V#00111F#5P就算你的職業是男公關，
+		我還是不贊成未成年人飲酒啊。{wait}
+	}
+	TextWait
+	CharTurnTo name[4] 0deg 500deg/s
+	Sleep 150ms
+	TextTalk name[4] {
+		#1120040107V#10304F#11P呵呵，別說得這麼難聽嘛。{wait}
+	} {
+		#1120040108V#10302F我喝的只是無酒精的
+		雞尾酒啦。{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#1120000175V#00006F#6P（真的假的……）{wait}
+	}
+	TextWait
+	FadeOut 1000ms 0x00000000 255
+	FadeWait
+	Sleep 500ms
+	SoundPlay sound[814] 0 100 0
+	TextSetPos -1 -1 -1 -1
+	TextSetName ""
+	TextMessage null {
+		{color 5}※關於爆裂猛攻的活用方法{color 0}{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	TextSetPos -1 280 60 3
+	Sleep 300ms
+	TextSetPos -1 -1 -1 -1
+	TextSetName ""
+	TextMessage null {
+		{color 5}※雖然爆裂猛攻只能在劇情中的
+		　特定時機使用，
+		　但只要靈活運用便能獲得驚人的效果。{wait}
+	}
+	TextWait
+	Sleep 500ms
+	TextSetPos -1 -1 -1 -1
+	TextMessage null {
+		{color 5}#2C①由於攻擊力會上昇２０％，ＣＰ亦會自動上昇，
+		　因此攻擊戰技會變得更易於使用且更為強大。{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	Sleep 150ms
+	TextMessage null {
+		{color 5}#2C②發動時，我方全員的異常狀態皆會回復，
+		　且可將敵方的技能及魔法全數取消，
+		　因此可在危急時刻瞬間扭轉戰局。{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	Sleep 150ms
+	TextMessage null {
+		{color 5}#2C③原先發動起來相當耗時的範圍型高階魔法
+		　亦可立即發動，因此只要有ＥＰ，
+		　甚至有可能一口氣殲滅整個敵方集團……{wait}
+	}
+	TextWait
+	Sleep 300ms
+	TextSetPos -1 -1 -1 -1
+	TextMessage null {
+		{color 5}#5C※特別是魔法，由於是瞄準敵方的弱點屬性進行攻擊，
+		　因此尤其能享受到爆裂猛攻的暢快感。{wait}
+	} {
+		※在棘手的頭目戰或攻略寶箱魔獸等時機，
+		　敬請多加利用。{color 0}{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	TextSetPos -1 280 60 3
+	CharSetPos field_party[0] (0, 30, -7150) 0deg
+	FlagSet flag[2387]
+	QuestTaskSet quest[162] 3
+	Sleep 500ms
+	ED7_E0 2
+	EventEnd 5
+	Return

@@ -1,0 +1,886 @@
+calmare ao_k scena
+scena:
+	name "e4700" "e4700" "e4700"
+	town town[0]
+	bgm bgm[114]
+	flags 8192
+	item_use fn[0,255]
+	unk 255 0
+
+entry:
+	pos (0, 0, -1000)
+	unk1 0
+	cam_from (0, 0, 24000)
+	cam_pers 500
+	unk2 30
+	cam_deg 45deg
+	cam_limit 0deg 360deg
+	cam_at (-8840, 6000, 2420)
+	unk3 0
+	unk4 0
+	flags 0x0001
+	town town[1]
+	init fn[0,0]
+	reinit fn[0,1]
+
+npc char[0]:
+	name "劉"
+	pos (0, 0, 0)
+	angle 0deg
+	flags 0x01C5
+	unk2 0
+	chip chip[0]
+	init fn[255,255]
+	talk fn[255,255]
+	unk4 255
+
+npc char[1]:
+	name "曹"
+	pos (0, 0, 0)
+	angle 0deg
+	flags 0x01C5
+	unk2 0
+	chip chip[0]
+	init fn[255,255]
+	talk fn[255,255]
+	unk4 255
+
+npc char[2]:
+	name "鏡頭"
+	pos (0, 0, 0)
+	angle 0deg
+	flags 0x01C5
+	unk2 0
+	chip chip[0]
+	init fn[255,255]
+	talk fn[255,255]
+	unk4 255
+
+fn[0]:
+	if flag[3343] && !flag[3385] && (!flag[3574] | !flag[3575]):
+		if system[0] == 102:
+			Event fn[0,2]
+		elif system[0] == 101:
+			if flag[3362] && !flag[3575]:
+				Event fn[0,10]
+			elif flag[3343] && !flag[3574]:
+				Event fn[0,9]
+	Return
+
+fn[1]:
+	Return
+
+fn[2]:
+	EventBegin 0
+	FadeOut 0ms 0x00000000 255
+	CamZoom 24440 0ms
+	Call fn[0,3]
+	ED7LoadChip "chr/ch31400.itc" chip[30]
+	CharSetChipBase char[0] chip[30]
+	CharFlagsUnset char[0] 0x0080
+	if var[2] >= 5:
+		CharFlagsUnset field_party[4] 0x0080
+		CharFlags2Unset field_party[4] 0x8000
+	if var[2] >= 6:
+		CharFlagsUnset field_party[5] 0x0080
+		CharFlags2Unset field_party[5] 0x8000
+	CamSetDistance 497800 -20000 13130 0ms
+	CharSetPos char[0] (498100, -21000, 11910) 180deg
+	CharSetPos char[2] (498100, -21000, 14500) 180deg
+	_Char6A char[2]
+	ForkFunc char[0] fork[1] fn[0,6]
+	ForkFunc char[2] fork[1] fn[0,5]
+	var[1] = 0
+	var[0] = 0
+	if PartyPosition name[0] > -1:
+		ForkFunc name[0] fork[1] fn[0,4]
+		ForkWait name[0] fork[1]
+		var[1] += 1
+		if var[1] & 1:
+			ForkFunc name[0] fork[1] fn[0,8]
+		else:
+			ForkFunc name[0] fork[1] fn[0,7]
+	if PartyPosition name[1] > -1:
+		ForkFunc name[1] fork[1] fn[0,4]
+		ForkWait name[1] fork[1]
+		var[1] += 1
+		if var[1] & 1:
+			ForkFunc name[1] fork[1] fn[0,8]
+		else:
+			ForkFunc name[1] fork[1] fn[0,7]
+	if PartyPosition name[2] > -1:
+		ForkFunc name[2] fork[1] fn[0,4]
+		ForkWait name[2] fork[1]
+		var[1] += 1
+		if var[1] & 1:
+			ForkFunc name[2] fork[1] fn[0,8]
+		else:
+			ForkFunc name[2] fork[1] fn[0,7]
+	if PartyPosition name[3] > -1:
+		ForkFunc name[3] fork[1] fn[0,4]
+		ForkWait name[3] fork[1]
+		var[1] += 1
+		if var[1] & 1:
+			ForkFunc name[3] fork[1] fn[0,8]
+		else:
+			ForkFunc name[3] fork[1] fn[0,7]
+	if PartyPosition name[4] > -1:
+		ForkFunc name[4] fork[1] fn[0,4]
+		ForkWait name[4] fork[1]
+		var[1] += 1
+		if var[1] & 1:
+			ForkFunc name[4] fork[1] fn[0,8]
+		else:
+			ForkFunc name[4] fork[1] fn[0,7]
+	if PartyPosition name[5] > -1:
+		ForkFunc name[5] fork[1] fn[0,4]
+		ForkWait name[5] fork[1]
+		var[1] += 1
+		if var[1] & 1:
+			ForkFunc name[5] fork[1] fn[0,8]
+		else:
+			ForkFunc name[5] fork[1] fn[0,7]
+	if PartyPosition name[8] > -1:
+		ForkFunc name[8] fork[1] fn[0,4]
+		ForkWait name[8] fork[1]
+		var[1] += 1
+		if var[1] & 1:
+			ForkFunc name[8] fork[1] fn[0,8]
+		else:
+			ForkFunc name[8] fork[1] fn[0,7]
+	if PartyPosition name[6] > -1:
+		ForkFunc name[6] fork[1] fn[0,4]
+		ForkWait name[6] fork[1]
+		var[1] += 1
+		if var[1] & 1:
+			ForkFunc name[6] fork[1] fn[0,8]
+		else:
+			ForkFunc name[6] fork[1] fn[0,7]
+	FadeIn 2000ms 0x00000000
+	FadeWait
+	while 1:
+		if var[0] != 0:
+			break
+		Sleep 50ms
+	FadeOut 2000ms 0x00000000 255
+	FadeWait
+	ForkQuit char[0] fork[1]
+	if var[2] >= 1:
+		ForkQuit field_party[0] fork[1]
+	if var[2] >= 2:
+		ForkQuit field_party[1] fork[1]
+	if var[2] >= 3:
+		ForkQuit field_party[2] fork[1]
+	if var[2] >= 4:
+		ForkQuit field_party[3] fork[1]
+	if var[2] >= 5:
+		ForkQuit field_party[4] fork[1]
+	if var[2] >= 6:
+		ForkQuit field_party[5] fork[1]
+	_Char6A null
+	CharFlagsSet char[0] 0x0080
+	NextFrame
+	UnloadChip chip[30]
+	if var[2] >= 5:
+		CharFlagsSet field_party[4] 0x0080
+		CharFlags2Set field_party[4] 0x8000
+	if var[2] >= 6:
+		CharFlagsSet field_party[5] 0x0080
+		CharFlags2Set field_party[5] 0x8000
+	NewScene "scena/e4700.bin" 101 0 0
+	Hcf
+	Return
+
+fn[3]:
+	var[2] = -1
+	if var[2] < PartyPosition name[0]:
+		var[2] = PartyPosition name[0]
+	if var[2] < PartyPosition name[1]:
+		var[2] = PartyPosition name[1]
+	if var[2] < PartyPosition name[2]:
+		var[2] = PartyPosition name[2]
+	if var[2] < PartyPosition name[3]:
+		var[2] = PartyPosition name[3]
+	if var[2] < PartyPosition name[4]:
+		var[2] = PartyPosition name[4]
+	if var[2] < PartyPosition name[5]:
+		var[2] = PartyPosition name[5]
+	if var[2] < PartyPosition name[8]:
+		var[2] = PartyPosition name[8]
+	if var[2] < PartyPosition name[6]:
+		var[2] = PartyPosition name[6]
+	var[2] += 1
+	Return
+
+fn[4]:
+	switch var[1]:
+		case 0:
+			CharSetPos self (497600, -21000, 14530) 180deg
+			break
+		case 1:
+			CharSetPos self (499000, -21000, 15240) 180deg
+			break
+		case 2:
+			CharSetPos self (497600, -21000, 16120) 180deg
+			break
+		case 3:
+			CharSetPos self (499000, -21000, 16740) 180deg
+			break
+		case 4:
+			CharSetPos self (497600, -21000, 17990) 180deg
+			break
+		case 5:
+			CharSetPos self (499000, -21000, 18390) 180deg
+			break
+	Return
+
+fn[5]:
+	CharWalkToPos self (498180, -21000, 3500) 2000mm/s 1
+	CharPathNew self
+	CharPathAdd (498180, -21000, 3500)
+	CharPathAdd (497180, -21000, 2500)
+	CharPathAdd (495180, -21000, 1500)
+	CharPathRun self 1000mm/s 0
+	Return
+
+fn[6]:
+	CharWalkToPos self (498180, -21000, -230) 2000mm/s 1
+	CharWalkToPos self (495000, -21000, -230) 2000mm/s 1
+	var[0] = 1
+	Fork self fork[2]:
+		CharColor self 0x00FFFFFF 500ms
+	CharWalkToPos self (489890, -21000, -230) 2000mm/s 0
+	Return
+
+fn[7]:
+	CharWalkToPos self (499000, -21000, -430) 2000mm/s 0
+	CharWalkToPos self (495000, -21000, -430) 2000mm/s 1
+	Fork self fork[2]:
+		CharColor self 0x00FFFFFF 500ms
+	CharWalkToPos self (489890, -21000, -430) 2000mm/s 0
+	Return
+
+fn[8]:
+	CharWalkToPos self (497600, -21000, 0) 2000mm/s 1
+	CharWalkToPos self (495000, -21000, 0) 2000mm/s 1
+	Fork self fork[2]:
+		CharColor self 0x00FFFFFF 500ms
+	CharWalkToPos self (489890, -21000, 0) 2000mm/s 0
+	Return
+
+fn[9]:
+	EventBegin 0
+	FadeOut 0ms 0x00000000 255
+	Call fn[0,3]
+	ED7LoadChip "chr/ch31400.itc" chip[30]
+	ED7LoadChip "chr/ch06300.itc" chip[31]
+	CharSetChipBase char[0] chip[30]
+	CharSetChipBase char[1] chip[31]
+	CharFlagsUnset char[0] 0x0080
+	CharFlagsUnset char[1] 0x0080
+	CharFlagsSet char[0] 0x8000
+	CharFlagsSet char[1] 0x8000
+	CharSetPos char[1] (-7900, 6000, -670) 180deg
+	CharSetPos char[0] (-9100, 6000, 210) 180deg
+	if var[2] >= 5:
+		CharFlagsUnset field_party[4] 0x0080
+		CharFlags2Unset field_party[4] 0x8000
+	if var[2] >= 6:
+		CharFlagsUnset field_party[5] 0x0080
+		CharFlags2Unset field_party[5] 0x8000
+	var[1] = 0
+	if PartyPosition name[0] > -1:
+		ForkFunc name[0] fork[1] fn[0,11]
+		ForkWait name[0] fork[1]
+		var[1] += 1
+	if PartyPosition name[1] > -1:
+		ForkFunc name[1] fork[1] fn[0,11]
+		ForkWait name[1] fork[1]
+		var[1] += 1
+	if PartyPosition name[2] > -1:
+		ForkFunc name[2] fork[1] fn[0,11]
+		ForkWait name[2] fork[1]
+		var[1] += 1
+	if PartyPosition name[3] > -1:
+		ForkFunc name[3] fork[1] fn[0,11]
+		ForkWait name[3] fork[1]
+		var[1] += 1
+	if PartyPosition name[4] > -1:
+		ForkFunc name[4] fork[1] fn[0,11]
+		ForkWait name[4] fork[1]
+		var[1] += 1
+	if PartyPosition name[5] > -1:
+		ForkFunc name[5] fork[1] fn[0,11]
+		ForkWait name[5] fork[1]
+		var[1] += 1
+	if PartyPosition name[8] > -1:
+		ForkFunc name[8] fork[1] fn[0,11]
+		ForkWait name[8] fork[1]
+		var[1] += 1
+	if PartyPosition name[6] > -1:
+		ForkFunc name[6] fork[1] fn[0,11]
+		ForkWait name[6] fork[1]
+		var[1] += 1
+	CamSetDistance -20060 6200 -53820 0ms
+	ED7CamRotate 58deg 11deg 0deg 0ms
+	CamPers 520 0ms
+	CamZoom 16700 0ms
+	FadeIn 2000ms 0x00000000
+	CamSetDistance -12270 8000 -29610 7000ms
+	ED7CamRotate 31deg 13deg 0deg 7000ms
+	CamPers 520 7000ms
+	CamZoom 20250 7000ms
+	Sleep 7600ms
+	CrossFade 500ms
+	CamSetDistance -13990 8800 -7980 0ms
+	ED7CamRotate 46deg 9deg 0deg 0ms
+	CamPers 480 0ms
+	CamZoom 10780 0ms
+	FadeWait
+	Sleep 1000ms
+	if flag[3355]:
+		TextTalk char[1] {
+			#5P#03200F呵呵，歡迎你們來。{wait}
+		} {
+			#03204F蘭迪先生、
+			諾艾兒小姐也是好久不見。{wait}
+		} {
+			#03209F雖然似乎幾經波折，
+			不過很高興各位平安會合。{wait}
+		}
+		TextWait
+		TextTalk name[3] {
+			#12P#00306F哎呀呀，聽說跟你們
+			合作時，我還很訝異呢……{wait}
+		}
+		TextWait
+		TextTalk name[8] {
+			#12P#10100F曹先生看來
+			也沒什麼變。{wait}
+		}
+		TextWait
+		TextTalk name[0] {
+			#12P#00001F而且……你們之前就藏身在
+			《太陽堡壘》的內部吧？{wait}
+		}
+		TextWait
+	elif flag[3351]:
+		TextTalk char[1] {
+			#5P#03200F呵呵，歡迎你們來。{wait}
+		} {
+			#03204F蘭迪先生也好久不見了。{wait}
+		} {
+			#03209F聽說你之前在搞
+			反抗軍活動，
+			狀況還好嗎？{wait}
+		}
+		TextWait
+		TextTalk name[3] {
+			#12P#00306F哎呀呀，聽說跟你們
+			合作時，我還很訝異呢……{wait}
+		} {
+			#00301F看來你還是老樣子。{wait}
+		}
+		TextWait
+		TextTalk name[0] {
+			#12P#00001F而且……你們之前就藏身在
+			《太陽堡壘》的內部吧？{wait}
+		}
+		TextWait
+	elif flag[3343]:
+		TextTalk char[1] {
+			#5P#03200F呵呵，歡迎你們來。{wait}
+		} {
+			#03209F羅伊德先生，你總算
+			下定決心加入《黑月》了嗎？{wait}
+		}
+		TextWait
+		Emote name[0] 0mm 2000mm 16 19 250ms 1
+		SoundPlay sound[23] 0 100 0
+		Sleep 1000ms
+		TextTalk name[0] {
+			#12P#00006F不、不是……我沒有這個意思。{wait}
+		} {
+			#00001F原來你們藏身在
+			《太陽堡壘》的內部啊？{wait}
+		}
+		TextWait
+	TextTalk char[1] {
+		#5P#03204F是啊，這裡有
+		『教團』使用的設施，
+		很適合藏身。{wait}
+	} {
+		#03200F而且躲在這裡，國防軍和
+		《紅色星座》想潛進來
+		也沒那麼容易。{wait}
+	} {
+		各位經過的秘密通路，
+		也沒讓他們發現過。{wait}
+	}
+	TextWait
+	TextTalk name[4] {
+		#12P#10404F呵呵，的確。{wait}
+	} {
+		#10402F那位帶路人帶的路，
+		似乎繞得相當
+		複雜迂迴。{wait}
+	}
+	TextWait
+	TextTalk name[2] {
+		#12P#00203F是啊……光靠我們，
+		下次一定沒辦法走來這裡。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		……你們發現啦？{wait}
+	}
+	TextWait
+	TextTalk char[1] {
+		#5P#03204F呵呵，這樣正好。
+		請務必別走漏風聲。{wait}
+	}
+	TextWait
+	TextTalk name[5] {
+		#12P#10701F……黑月的成員
+		暫時都會待在這裡？{wait}
+	}
+	TextWait
+	TextTalk char[1] {
+		#5P#03200F沒錯，我們打算在這裡
+		觀察情勢、等待時機。{wait}
+	} {
+		#03203F克洛斯貝爾市的結界……
+		要是不想辦法處理掉，
+		我們也沒辦法行動。{wait}
+	} {
+		#03200F要跟國防軍和《紅色星座》
+		正面交鋒，
+		可是挺累人的。{wait}
+	} {
+		#03206F不過，假如能動用《銀》大人，
+		我們倒也是有方法。{wait}
+	}
+	TextWait
+	TextTalk name[5] {
+		#12P#10703F…………{wait}
+	}
+	TextWait
+	TextTalk name[4] {
+		#12P#10404F呵呵，想必
+		不是什麼正當的方法。{wait}
+	} {
+		#10402F八成是會徹底弄髒她的手，
+		激進又血腥的作法吧？{wait}
+	}
+	TextWait
+	TextTalk char[1] {
+		#5P#03210F這個嗎，我不予置評……
+		就任君想像吧。{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#12P#00001F……莉夏現在是我們的人，
+		我絕不允許
+		你逼她這麼做。{wait}
+	}
+	TextWait
+	TextTalk name[5] {
+		#12P#10705F羅伊德……{wait}
+	}
+	TextWait
+	TextTalk name[2] {
+		#12P#00203F是啊……{wait}
+	} {
+		#00200F要是弄髒莉夏的手，
+		就算事件順利解決，
+		琪雅也一定會很難過。{wait}
+	}
+	TextWait
+	if flag[3355]:
+		TextTalk name[3] {
+			#12P#00306F是啊，而且用上激進的做法，
+			事情也不一定會全照計畫進行。{wait}
+		}
+		TextWait
+		TextTalk name[8] {
+			#12P#10103F就是說啊……
+			對方手裡還掌握著
+			琪雅的《奇蹟》呢。{wait}
+		} {
+			#10101F總之，既然這樣
+			也只能找
+			其他方法了。{wait}
+		}
+		TextWait
+	elif flag[3351]:
+		TextTalk name[6] {
+			#12P#01200F#3C而且用上激進的做法，
+			事情也不一定會如預期的進行。{wait}
+		} {
+			畢竟對方手裡還掌握著
+			御子的《奇蹟》。{wait}
+		}
+		TextWait
+		TextTalk name[3] {
+			#12P#00303F總之，既然這樣也只能
+			找其他方法了。{wait}
+		}
+		TextWait
+	elif flag[3343]:
+		TextTalk name[6] {
+			#12P#01200F#3C而且用上激進的做法，
+			事情也不一定會如預期的進行。{wait}
+		} {
+			畢竟對方手裡還掌握著
+			御子的《奇蹟》。{wait}
+		} {
+			#01203F既然這樣，也只能
+			摸索其他方式了。{wait}
+		}
+		TextWait
+	TextTalk char[1] {
+		#5P#03203F……嗯，這我明白。
+		既然手頭沒有能動用的棋子，
+		也沒有必要執著於這點上。{wait}
+	} {
+		#03200F想打破目前的僵局，
+		也只能靠你們了。{wait}
+	} {
+		#03204F這也是為了我們，
+		你們就多方走動，
+		擾亂總統方的計畫吧。{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#12P#00001F嗯，交給我們吧。{wait}
+	} {
+		#00003F要是有什麼狀況，
+		再麻煩你們協助。{wait}
+	}
+	TextWait
+	TextTalk name[5] {
+		#12P#10703F……請各位務必要小心。{wait}
+	}
+	TextWait
+	TextTalk char[1] {
+		#5P#03209F呵呵，沒想到竟然能聽到
+		《銀》大人對我們講這樣的話。{wait}
+	} {
+		#03204F……那麼，
+		我就先告辭了。{wait}
+	} {
+		#03200F劉，帶他們回
+		原來的地方。{wait}
+	}
+	TextWait
+	CharTurnToChar char[0] char[1] 500deg/s
+	TextTalk char[0] {
+		是！{wait}
+	}
+	TextWait
+	FadeOut 2000ms 0x00000000 255
+	FadeWait
+	BgmStop 3000ms
+	BgmWait
+	SoundPlay sound[17] 0 100 0
+	TextSetPos -1 -1 -1 -1
+	TextSetName ""
+	TextMessage null {
+		{color 5}羅伊德一行人回去時，從曹手中
+		收下了{color 2}#14I爆靈寶玉{color 5}。{color 0}{wait}
+	}
+	TextWait
+	TextClose 0
+	TextSetPos -1 280 60 3
+	ItemAdd item[524] 1
+	FlagSet flag[3574]
+	CharFlagsSet char[0] 0x0080
+	CharFlagsSet char[1] 0x0080
+	NextFrame
+	UnloadChip chip[30]
+	UnloadChip chip[31]
+	if var[2] >= 5:
+		CharFlagsSet field_party[4] 0x0080
+		CharFlags2Set field_party[4] 0x8000
+	if var[2] >= 6:
+		CharFlagsSet field_party[5] 0x0080
+		CharFlags2Set field_party[5] 0x8000
+	system[76] = 65535
+	FlagSet flag[272]
+	NewScene "scena/r3110.bin" 100 0 0
+	Hcf
+	Return
+
+fn[10]:
+	EventBegin 0
+	FadeOut 0ms 0x00000000 255
+	Call fn[0,3]
+	ED7LoadChip "chr/ch31400.itc" chip[30]
+	ED7LoadChip "chr/ch06300.itc" chip[31]
+	CharSetChipBase char[0] chip[30]
+	CharSetChipBase char[1] chip[31]
+	CharFlagsUnset char[0] 0x0080
+	CharFlagsUnset char[1] 0x0080
+	CharFlagsSet char[0] 0x8000
+	CharFlagsSet char[1] 0x8000
+	CharSetPos char[1] (-7900, 6000, -670) 180deg
+	CharSetPos char[0] (-9100, 6000, 210) 180deg
+	if var[2] >= 5:
+		CharFlagsUnset field_party[4] 0x0080
+		CharFlags2Unset field_party[4] 0x8000
+	if var[2] >= 6:
+		CharFlagsUnset field_party[5] 0x0080
+		CharFlags2Unset field_party[5] 0x8000
+	var[1] = 0
+	if PartyPosition name[0] > -1:
+		ForkFunc name[0] fork[1] fn[0,11]
+		ForkWait name[0] fork[1]
+		var[1] += 1
+	if PartyPosition name[1] > -1:
+		ForkFunc name[1] fork[1] fn[0,11]
+		ForkWait name[1] fork[1]
+		var[1] += 1
+	if PartyPosition name[2] > -1:
+		ForkFunc name[2] fork[1] fn[0,11]
+		ForkWait name[2] fork[1]
+		var[1] += 1
+	if PartyPosition name[3] > -1:
+		ForkFunc name[3] fork[1] fn[0,11]
+		ForkWait name[3] fork[1]
+		var[1] += 1
+	if PartyPosition name[4] > -1:
+		ForkFunc name[4] fork[1] fn[0,11]
+		ForkWait name[4] fork[1]
+		var[1] += 1
+	if PartyPosition name[5] > -1:
+		ForkFunc name[5] fork[1] fn[0,11]
+		ForkWait name[5] fork[1]
+		var[1] += 1
+	if PartyPosition name[8] > -1:
+		ForkFunc name[8] fork[1] fn[0,11]
+		ForkWait name[8] fork[1]
+		var[1] += 1
+	if PartyPosition name[6] > -1:
+		ForkFunc name[6] fork[1] fn[0,11]
+		ForkWait name[6] fork[1]
+		var[1] += 1
+	CamSetDistance -20060 6200 -53820 0ms
+	ED7CamRotate 58deg 11deg 0deg 0ms
+	CamPers 520 0ms
+	CamZoom 16700 0ms
+	FadeIn 2000ms 0x00000000
+	CamSetDistance -12270 8000 -29610 7000ms
+	ED7CamRotate 31deg 13deg 0deg 7000ms
+	CamPers 520 7000ms
+	CamZoom 20250 7000ms
+	Sleep 7600ms
+	CrossFade 500ms
+	CamSetDistance -13990 8800 -7980 0ms
+	ED7CamRotate 46deg 9deg 0deg 0ms
+	CamPers 480 0ms
+	CamZoom 10780 0ms
+	FadeWait
+	Sleep 1000ms
+	TextTalk char[1] {
+		#5P#03204F特務支援課果然不簡單。{wait}
+	} {
+		沒想到你們能跟麥克道爾議長
+		一同做出『克洛斯貝爾獨立國』
+		無效宣言的創舉……{wait}
+	} {
+		#03210F這麼大快人心的事，
+		真是超出我的預期。{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#12P#00003F嗯，多虧許多人的幫忙，
+		我們才好不容易
+		走到這一步。{wait}
+	} {
+		#00001F也知道怎麼解除
+		保護克洛斯貝爾市的《結界》了……{wait}
+	}
+	TextWait
+	TextTalk name[1] {
+		#12P#00100F再來只要能解除《結界》，
+		就能進入琪雅所在的
+		克洛斯貝爾市了。{wait}
+	}
+	TextWait
+	TextTalk char[1] {
+		#5P#03204F呵呵，看來情勢
+		確實一點一滴開始好轉了。{wait}
+	}
+	TextWait
+	if PartyPosition name[5] > -1:
+		TextTalk name[5] {
+			#12P#10701F對了……
+			《黑月》的潛伏狀況還好嗎？{wait}
+		}
+		TextWait
+	elif PartyPosition name[4] > -1:
+		TextTalk name[4] {
+			#12P#10402F對了……
+			你們那邊的潛伏狀況怎麼樣？{wait}
+		}
+		TextWait
+	TextTalk char[1] {
+		#5P#03200F嗯，本來在追捕我們的
+		《紅色星座》暫時收兵，
+		終於能喘口氣了。{wait}
+	} {
+		#03204F本來在街道巡邏的國防軍，
+		似乎也都回歸部隊了。{wait}
+	} {
+		#03200F這麼看來，
+		瑪因茲地區的反抗軍
+		應該也暫時逃過一劫了。{wait}
+	}
+	TextWait
+	if PartyPosition name[8] > -1:
+		TextTalk name[8] {
+			#12P#10103F本來還很擔心
+			米蕾優三尉他們……{wait}
+		} {
+			#10102F這下至少
+			暫時能放心了，蘭迪學長！{wait}
+		}
+		TextWait
+	elif PartyPosition name[4] > -1:
+		TextTalk name[4] {
+			#12P#10404F看來米蕾優他們
+			暫時是不用擔心了。{wait}
+		} {
+			#10402F呵呵，蘭迪。
+			這下你也放心了吧？{wait}
+		}
+		TextWait
+	Emote name[3] 0mm 2000mm 24 27 250ms 0
+	Sleep 2000ms
+	EmoteStop name[3]
+	TextTalk name[3] {
+		#12P#00303F不……還不能放心。{wait}
+	} {
+		#00301F國防軍也就算了，
+		叔叔他們肯定
+		不會在意無效宣言。{wait}
+	} {
+		會暫時收兵，八成是要
+		做好萬全的準備……{wait}
+	}
+	TextWait
+	TextTalk char[1] {
+		#5P#03204F當然，這個可能性很高。{wait}
+	} {
+		#03201F他們開始執行比在瑪因茲
+		還要更徹底的『狩獵』，
+		也只是時間問題了。{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#12P#00010F嗚……！{wait}
+	}
+	TextWait
+	TextTalk name[2] {
+		#12P#00208F這真是完全不能
+		疏忽大意的狀況……{wait}
+	}
+	TextWait
+	TextTalk char[1] {
+		#5P#03206F總之，期待各位
+		能早點解除《結界》。{wait}
+	} {
+		#03200F只要沒有那道結界，
+		目前一面倒的戰局，
+		我們就能轉守為攻。{wait}
+	} {
+		#03204F到時候我們也就能
+		正式協助各位
+		解放克洛斯貝爾市。{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#12P#00003F…………我明白了。{wait}
+	} {
+		想突破《結社》的防守
+		解除結界，
+		雖然並不容易……{wait}
+	} {
+		#00000F但為了曹先生和
+		反抗軍，
+		我們也一定要成功。{wait}
+	}
+	TextWait
+	TextTalk name[1] {
+		#12P#00100F嗯……一起加油吧！{wait}
+	}
+	TextWait
+	TextTalk char[1] {
+		#5P#03204F呵呵，真是可靠。{wait}
+	} {
+		#03200F……那麼，
+		我就先告辭了。{wait}
+	} {
+		#03204F劉，帶他們回
+		原來的地方。{wait}
+	}
+	TextWait
+	CharTurnToChar char[0] char[1] 500deg/s
+	TextTalk char[0] {
+		是！{wait}
+	}
+	TextWait
+	FadeOut 2000ms 0x00000000 255
+	FadeWait
+	BgmStop 3000ms
+	BgmWait
+	SoundPlay sound[17] 0 100 0
+	TextSetPos -1 -1 -1 -1
+	TextSetName ""
+	TextMessage null {
+		{color 5}羅伊德一行人回去時，從曹手中
+		收下了{color 2}#14I還魂粉{color 5}。{color 0}{wait}
+	}
+	TextWait
+	TextClose 0
+	TextSetPos -1 280 60 3
+	ItemAdd item[510] 1
+	FlagSet flag[3575]
+	CharFlagsSet char[0] 0x0080
+	CharFlagsSet char[1] 0x0080
+	NextFrame
+	UnloadChip chip[30]
+	UnloadChip chip[31]
+	if var[2] >= 5:
+		CharFlagsSet field_party[4] 0x0080
+		CharFlags2Set field_party[4] 0x8000
+	if var[2] >= 6:
+		CharFlagsSet field_party[5] 0x0080
+		CharFlags2Set field_party[5] 0x8000
+	system[76] = 65535
+	FlagSet flag[272]
+	NewScene "scena/r3110.bin" 100 0 0
+	Hcf
+	Return
+
+fn[11]:
+	switch var[1]:
+		case 0:
+			CharSetPos self (-8720, 6000, -3540) 0deg
+			break
+		case 1:
+			CharSetPos self (-7650, 6000, -3710) 0deg
+			break
+		case 2:
+			CharSetPos self (-9860, 6000, -4019) 0deg
+			break
+		case 3:
+			CharSetPos self (-6540, 6000, -3770) 0deg
+			break
+		case 4:
+			CharSetPos self (-8820, 6000, -5420) 0deg
+			break
+		case 5:
+			CharSetPos self (-7260, 6000, -5220) 0deg
+			break
+	Return

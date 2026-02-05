@@ -1,0 +1,881 @@
+calmare ao_k scena
+scena:
+	name "c012b" "c012b" "c012b"
+	town town[9]
+	bgm bgm[513]
+	flags 8192
+	item_use fn[0,255]
+	unk 255 0
+
+entry:
+	pos (0, 0, -1000)
+	unk1 0
+	cam_from (0, 0, 24000)
+	cam_pers 500
+	unk2 30
+	cam_deg 45deg
+	cam_limit 0deg 360deg
+	cam_at (0, 0, 0)
+	unk3 0
+	unk4 0
+	flags 0x0001
+	town town[9]
+	init fn[0,0]
+	reinit fn[0,1]
+
+npc char[0]:
+	name "琪雅"
+	pos (0, 0, 0)
+	angle 0deg
+	flags 0x01C5
+	unk2 0
+	chip chip[0]
+	init fn[255,255]
+	talk fn[255,255]
+	unk4 255
+
+look_point[0]:
+	pos (13960, 0, 63640)
+	radius 1500
+	bubble_pos (13960, 1500, 63640)
+	unk1 124
+	unk2 0
+	function fn[0,3]
+	unk3 0
+	unk4 0
+
+look_point[1]:
+	pos (170000, 0, 63560)
+	radius 1500
+	bubble_pos (170000, 1500, 63560)
+	unk1 124
+	unk2 0
+	function fn[0,2]
+	unk3 0
+	unk4 0
+
+look_point[2]:
+	pos (-860, 0, 128259)
+	radius 1200
+	bubble_pos (-860, 3000, 128259)
+	unk1 124
+	unk2 0
+	function fn[0,14]
+	unk3 0
+	unk4 0
+
+look_point[3]:
+	pos (-2790, 0, 127470)
+	radius 1200
+	bubble_pos (-2790, 2000, 127470)
+	unk1 124
+	unk2 0
+	function fn[0,15]
+	unk3 0
+	unk4 0
+
+look_point[4]:
+	pos (49300, 30, 129770)
+	radius 1200
+	bubble_pos (49300, 3500, 129770)
+	unk1 124
+	unk2 0
+	function fn[0,16]
+	unk3 0
+	unk4 0
+
+look_point[5]:
+	pos (53410, 0, 123840)
+	radius 1200
+	bubble_pos (53410, 2000, 123840)
+	unk1 124
+	unk2 0
+	function fn[0,17]
+	unk3 0
+	unk4 0
+
+look_point[6]:
+	pos (100740, 30, 129180)
+	radius 1200
+	bubble_pos (100740, 1500, 129180)
+	unk1 124
+	unk2 0
+	function fn[0,18]
+	unk3 0
+	unk4 0
+
+look_point[7]:
+	pos (102940, 30, 125380)
+	radius 1200
+	bubble_pos (102940, 2000, 125380)
+	unk1 124
+	unk2 0
+	function fn[0,19]
+	unk3 0
+	unk4 0
+
+look_point[8]:
+	pos (2750, 0, 125420)
+	radius 1200
+	bubble_pos (2750, 1500, 125420)
+	unk1 124
+	unk2 0
+	function fn[0,11]
+	unk3 0
+	unk4 0
+
+look_point[9]:
+	pos (48000, 0, 127860)
+	radius 1200
+	bubble_pos (47560, 1500, 128630)
+	unk1 124
+	unk2 0
+	function fn[0,12]
+	unk3 0
+	unk4 0
+
+look_point[10]:
+	pos (102450, 0, 127940)
+	radius 1200
+	bubble_pos (102450, 1500, 127940)
+	unk1 124
+	unk2 0
+	function fn[0,13]
+	unk3 0
+	unk4 0
+
+fn[0]:
+	if flag[279]:
+		FlagUnset flag[279]
+		Event fn[0,21]
+	Return
+
+fn[1]:
+	if flag[3089]:
+		ED7_76_0 object[255] "asihuki" 1
+	else:
+		ED7_76_1 object[255] "asihuki" 1
+	if !flag[2528]:
+		ObjFlagsSet object[17] 0x0004
+		ObjFlagsUnset object[17] 0x0002
+		LookPointFlagsSet look_point[2] 0x0001
+	if !flag[2529]:
+		ObjFlagsSet object[18] 0x0004
+		ObjFlagsUnset object[18] 0x0002
+		LookPointFlagsSet look_point[3] 0x0001
+	else:
+		ObjFlagsSet object[24] 0x0004
+		ObjFlagsUnset object[24] 0x0002
+	if !flag[2530]:
+		ObjFlagsSet object[19] 0x0004
+		ObjFlagsUnset object[19] 0x0002
+		LookPointFlagsSet look_point[4] 0x0001
+	if !flag[2531]:
+		ObjFlagsSet object[20] 0x0004
+		ObjFlagsUnset object[20] 0x0002
+		LookPointFlagsSet look_point[5] 0x0001
+	else:
+		ObjFlagsSet object[23] 0x0004
+	if !flag[2532]:
+		ObjFlagsSet object[21] 0x0004
+		ObjFlagsUnset object[21] 0x0002
+		LookPointFlagsSet look_point[6] 0x0001
+	if !flag[2533]:
+		ObjFlagsSet object[22] 0x0004
+		ObjFlagsUnset object[22] 0x0002
+		LookPointFlagsSet look_point[7] 0x0001
+	LookPointFlagsSet look_point[0] 0x0001
+	ObjFlagsUnset object[4] 0x0010
+	if flag[2573]:
+		ObjFlagsSet object[4] 0x0010
+		LookPointFlagsSet look_point[1] 0x0001
+	Return
+
+fn[2]:
+	TextStart null
+	TextTalk name[0] {
+		#00000F這裡是緹歐的房間。
+		還是別進去吧。{wait}
+	}
+	TextWait
+	TextEnd null
+	Return
+
+fn[3]:
+	Return
+
+fn[4]:
+	EventBegin 0
+	FadeOut 0ms 0x00000000 255
+	FadeWait
+	ObjFlagsUnset object[17] 0x0004
+	ObjFlagsSet object[17] 0x0002
+	CamSetDistance -460 1300 127470 0ms
+	ED7CamRotate 45deg 26deg 0deg 0ms
+	CamPers 350 0ms
+	CamZoom 25000 0ms
+	if system[10] != 255:
+		CharFlagsSet field_party[0] 0x0008
+	if system[11] != 255:
+		CharFlagsSet field_party[1] 0x0008
+	if system[12] != 255:
+		CharFlagsSet field_party[2] 0x0008
+	if system[13] != 255:
+		CharFlagsSet field_party[3] 0x0008
+	if system[14] != 255:
+		CharFlagsSet field_party[4] 0x0008
+	if system[15] != 255:
+		CharFlagsSet field_party[5] 0x0008
+	CharFlagsUnset name[0] 0x0008
+	CharSetPos name[0] (-460, 0, 127470) 0deg
+	FadeIn 500ms 0x00000000
+	FadeWait
+	TextTalk name[0] {
+		#0000F放這裡好了。{wait}
+	}
+	TextWait
+	Sleep 500ms
+	SoundPlay sound[814] 0 100 0
+	TextSetName ""
+	TextMessage null {
+		{color 5}羅伊德的房間
+		追加了新家具。{color 0}{wait}
+	}
+	TextWait
+	TextClose 0
+	ItemRemove item[841] 1
+	FlagSet flag[2528]
+	LookPointFlagsUnset look_point[2] 0x0001
+	Call fn[0,6]
+	Call fn[0,20]
+	if system[10] != 255:
+		CharFlagsUnset field_party[0] 0x0008
+	if system[11] != 255:
+		CharFlagsUnset field_party[1] 0x0008
+	if system[12] != 255:
+		CharFlagsUnset field_party[2] 0x0008
+	if system[13] != 255:
+		CharFlagsUnset field_party[3] 0x0008
+	if system[14] != 255:
+		CharFlagsUnset field_party[4] 0x0008
+	if system[15] != 255:
+		CharFlagsUnset field_party[5] 0x0008
+	CharSetPos field_party[0] (20, 30, 121010) 0deg
+	EventEnd 5
+	Return
+
+fn[5]:
+	EventBegin 0
+	FadeOut 0ms 0x00000000 255
+	FadeWait
+	ObjFlagsUnset object[18] 0x0004
+	ObjFlagsSet object[18] 0x0002
+	ObjFlagsSet object[24] 0x0004
+	ObjFlagsUnset object[24] 0x0002
+	CamSetDistance -2420 1330 126860 0ms
+	ED7CamRotate 45deg 26deg 0deg 0ms
+	CamPers 350 0ms
+	CamZoom 25000 0ms
+	if system[10] != 255:
+		CharFlagsSet field_party[0] 0x0008
+	if system[11] != 255:
+		CharFlagsSet field_party[1] 0x0008
+	if system[12] != 255:
+		CharFlagsSet field_party[2] 0x0008
+	if system[13] != 255:
+		CharFlagsSet field_party[3] 0x0008
+	if system[14] != 255:
+		CharFlagsSet field_party[4] 0x0008
+	if system[15] != 255:
+		CharFlagsSet field_party[5] 0x0008
+	CharFlagsUnset name[0] 0x0008
+	CharSetPos name[0] (-2420, 30, 126860) 315deg
+	FadeIn 500ms 0x00000000
+	FadeWait
+	TextTalk name[0] {
+		#0000F放這裡好了。{wait}
+	}
+	TextWait
+	Sleep 500ms
+	SoundPlay sound[814] 0 100 0
+	TextSetName ""
+	TextMessage null {
+		{color 5}羅伊德的房間
+		追加了新家具。{color 0}{wait}
+	}
+	TextWait
+	TextClose 0
+	ItemRemove item[840] 1
+	FlagSet flag[2529]
+	LookPointFlagsUnset look_point[3] 0x0001
+	Call fn[0,6]
+	Call fn[0,20]
+	if system[10] != 255:
+		CharFlagsUnset field_party[0] 0x0008
+	if system[11] != 255:
+		CharFlagsUnset field_party[1] 0x0008
+	if system[12] != 255:
+		CharFlagsUnset field_party[2] 0x0008
+	if system[13] != 255:
+		CharFlagsUnset field_party[3] 0x0008
+	if system[14] != 255:
+		CharFlagsUnset field_party[4] 0x0008
+	if system[15] != 255:
+		CharFlagsUnset field_party[5] 0x0008
+	CharSetPos field_party[0] (20, 30, 121010) 0deg
+	EventEnd 5
+	Return
+
+fn[6]:
+	if !flag[2527]:
+		TextSetName ""
+		TextMessage null {
+			{color 5}獲得家具道具後，
+			可以放置在支援課成員的房間裡。{color 0}{wait}
+		}
+		TextWait
+		TextClose 0
+		FlagSet flag[2527]
+	Return
+
+fn[7]:
+	EventBegin 0
+	FadeOut 0ms 0x00000000 255
+	FadeWait
+	ObjFlagsUnset object[19] 0x0004
+	ObjFlagsSet object[19] 0x0002
+	CamSetDistance 49580 1330 129410 0ms
+	ED7CamRotate 45deg 26deg 0deg 0ms
+	CamPers 350 0ms
+	CamZoom 25000 0ms
+	if system[10] != 255:
+		CharFlagsSet field_party[0] 0x0008
+	if system[11] != 255:
+		CharFlagsSet field_party[1] 0x0008
+	if system[12] != 255:
+		CharFlagsSet field_party[2] 0x0008
+	if system[13] != 255:
+		CharFlagsSet field_party[3] 0x0008
+	if system[14] != 255:
+		CharFlagsSet field_party[4] 0x0008
+	if system[15] != 255:
+		CharFlagsSet field_party[5] 0x0008
+	CharFlagsUnset name[3] 0x0008
+	CharSetPos name[3] (49580, 30, 129410) 0deg
+	FadeIn 500ms 0x00000000
+	FadeWait
+	TextTalk name[3] {
+		#0300F放這裡好了。{wait}
+	}
+	TextWait
+	Sleep 500ms
+	SoundPlay sound[814] 0 100 0
+	TextSetName ""
+	TextMessage null {
+		{color 5}蘭迪的房間
+		追加了新家具。{color 0}{wait}
+	}
+	TextWait
+	TextClose 0
+	ItemRemove item[846] 1
+	FlagSet flag[2530]
+	LookPointFlagsUnset look_point[4] 0x0001
+	Call fn[0,6]
+	Call fn[0,20]
+	if system[10] != 255:
+		CharFlagsUnset field_party[0] 0x0008
+	if system[11] != 255:
+		CharFlagsUnset field_party[1] 0x0008
+	if system[12] != 255:
+		CharFlagsUnset field_party[2] 0x0008
+	if system[13] != 255:
+		CharFlagsUnset field_party[3] 0x0008
+	if system[14] != 255:
+		CharFlagsUnset field_party[4] 0x0008
+	if system[15] != 255:
+		CharFlagsUnset field_party[5] 0x0008
+	CharSetPos field_party[0] (49930, 0, 121070) 0deg
+	EventEnd 5
+	Return
+
+fn[8]:
+	EventBegin 0
+	FadeOut 0ms 0x00000000 255
+	FadeWait
+	ObjFlagsUnset object[20] 0x0004
+	ObjFlagsSet object[20] 0x0002
+	ObjFlagsSet object[23] 0x0004
+	CamSetDistance 52070 1330 123440 0ms
+	ED7CamRotate 45deg 26deg 0deg 0ms
+	CamPers 350 0ms
+	CamZoom 25000 0ms
+	if system[10] != 255:
+		CharFlagsSet field_party[0] 0x0008
+	if system[11] != 255:
+		CharFlagsSet field_party[1] 0x0008
+	if system[12] != 255:
+		CharFlagsSet field_party[2] 0x0008
+	if system[13] != 255:
+		CharFlagsSet field_party[3] 0x0008
+	if system[14] != 255:
+		CharFlagsSet field_party[4] 0x0008
+	if system[15] != 255:
+		CharFlagsSet field_party[5] 0x0008
+	CharFlagsUnset name[3] 0x0008
+	CharSetPos name[3] (52070, 30, 123440) 90deg
+	FadeIn 500ms 0x00000000
+	FadeWait
+	TextTalk name[3] {
+		#0300F放這裡好了。{wait}
+	}
+	TextWait
+	Sleep 500ms
+	SoundPlay sound[814] 0 100 0
+	TextSetName ""
+	TextMessage null {
+		{color 5}蘭迪的房間
+		追加了新家具。{color 0}{wait}
+	}
+	TextWait
+	TextClose 0
+	ItemRemove item[847] 1
+	FlagSet flag[2531]
+	LookPointFlagsUnset look_point[5] 0x0001
+	Call fn[0,6]
+	Call fn[0,20]
+	if system[10] != 255:
+		CharFlagsUnset field_party[0] 0x0008
+	if system[11] != 255:
+		CharFlagsUnset field_party[1] 0x0008
+	if system[12] != 255:
+		CharFlagsUnset field_party[2] 0x0008
+	if system[13] != 255:
+		CharFlagsUnset field_party[3] 0x0008
+	if system[14] != 255:
+		CharFlagsUnset field_party[4] 0x0008
+	if system[15] != 255:
+		CharFlagsUnset field_party[5] 0x0008
+	CharSetPos field_party[0] (49930, 0, 121070) 0deg
+	EventEnd 5
+	Return
+
+fn[9]:
+	EventBegin 0
+	FadeOut 0ms 0x00000000 255
+	FadeWait
+	ObjFlagsUnset object[21] 0x0004
+	ObjFlagsSet object[21] 0x0002
+	CamSetDistance 100680 1330 127820 0ms
+	ED7CamRotate 45deg 26deg 0deg 0ms
+	CamPers 350 0ms
+	CamZoom 25000 0ms
+	if system[10] != 255:
+		CharFlagsSet field_party[0] 0x0008
+	if system[11] != 255:
+		CharFlagsSet field_party[1] 0x0008
+	if system[12] != 255:
+		CharFlagsSet field_party[2] 0x0008
+	if system[13] != 255:
+		CharFlagsSet field_party[3] 0x0008
+	if system[14] != 255:
+		CharFlagsSet field_party[4] 0x0008
+	if system[15] != 255:
+		CharFlagsSet field_party[5] 0x0008
+	CharFlagsUnset name[4] 0x0008
+	CharSetPos name[4] (100680, 30, 127820) 0deg
+	FadeIn 500ms 0x00000000
+	FadeWait
+	TextTalk name[4] {
+		#10300F呵呵，放這裡好了。{wait}
+	}
+	TextWait
+	Sleep 500ms
+	SoundPlay sound[814] 0 100 0
+	TextSetName ""
+	TextMessage null {
+		{color 5}瓦奇的房間
+		追加了新家具。{color 0}{wait}
+	}
+	TextWait
+	TextClose 0
+	ItemRemove item[850] 1
+	FlagSet flag[2532]
+	LookPointFlagsUnset look_point[6] 0x0001
+	Call fn[0,6]
+	Call fn[0,20]
+	if system[10] != 255:
+		CharFlagsUnset field_party[0] 0x0008
+	if system[11] != 255:
+		CharFlagsUnset field_party[1] 0x0008
+	if system[12] != 255:
+		CharFlagsUnset field_party[2] 0x0008
+	if system[13] != 255:
+		CharFlagsUnset field_party[3] 0x0008
+	if system[14] != 255:
+		CharFlagsUnset field_party[4] 0x0008
+	if system[15] != 255:
+		CharFlagsUnset field_party[5] 0x0008
+	CharSetPos field_party[0] (100020, 30, 121290) 0deg
+	EventEnd 5
+	Return
+
+fn[10]:
+	EventBegin 0
+	FadeOut 0ms 0x00000000 255
+	FadeWait
+	ObjFlagsUnset object[22] 0x0004
+	ObjFlagsSet object[22] 0x0002
+	CamSetDistance 101940 1330 125580 0ms
+	ED7CamRotate 45deg 26deg 0deg 0ms
+	CamPers 350 0ms
+	CamZoom 25000 0ms
+	if system[10] != 255:
+		CharFlagsSet field_party[0] 0x0008
+	if system[11] != 255:
+		CharFlagsSet field_party[1] 0x0008
+	if system[12] != 255:
+		CharFlagsSet field_party[2] 0x0008
+	if system[13] != 255:
+		CharFlagsSet field_party[3] 0x0008
+	if system[14] != 255:
+		CharFlagsSet field_party[4] 0x0008
+	if system[15] != 255:
+		CharFlagsSet field_party[5] 0x0008
+	CharFlagsUnset name[4] 0x0008
+	CharSetPos name[4] (101940, 30, 125580) 90deg
+	FadeIn 500ms 0x00000000
+	FadeWait
+	TextTalk name[4] {
+		#10300F呵呵，放這裡好了。{wait}
+	}
+	TextWait
+	Sleep 500ms
+	SoundPlay sound[814] 0 100 0
+	TextSetName ""
+	TextMessage null {
+		{color 5}瓦奇的房間
+		追加了新家具。{color 0}{wait}
+	}
+	TextWait
+	TextClose 0
+	ItemRemove item[851] 1
+	FlagSet flag[2533]
+	LookPointFlagsUnset look_point[7] 0x0001
+	Call fn[0,6]
+	Call fn[0,20]
+	if system[10] != 255:
+		CharFlagsUnset field_party[0] 0x0008
+	if system[11] != 255:
+		CharFlagsUnset field_party[1] 0x0008
+	if system[12] != 255:
+		CharFlagsUnset field_party[2] 0x0008
+	if system[13] != 255:
+		CharFlagsUnset field_party[3] 0x0008
+	if system[14] != 255:
+		CharFlagsUnset field_party[4] 0x0008
+	if system[15] != 255:
+		CharFlagsUnset field_party[5] 0x0008
+	CharSetPos field_party[0] (100020, 30, 121290) 0deg
+	EventEnd 5
+	Return
+
+fn[11]:
+	ED7_F2 3
+	TextStart null
+	FadeOut 300ms 0x00000000 100
+	Menu menu[0] -1 -1 1
+		"在此地休息" // 0
+		"放棄" // 1
+	MenuWait var[0]
+	MenuClose menu[0]
+	TextClose 0
+	if var[0] == 0:
+		SoundLoad sound[13]
+		BgmStop 3000ms
+		FadeOut 1000ms 0x00000000 255
+		Sleep 700ms
+		SoundPlay sound[13] 0 100 0
+		FadeWait
+		PartySetAttr name[255] 254 0
+		CamLookChar field_party[0] 0ms
+		ED7_31 1
+		Sleep 3500ms
+		BgmResume
+		FadeIn 1000ms 0x00000000
+		TextClose 0
+		TextEnd null
+		Return
+	elif var[0] != 0:
+		FadeIn 300ms 0x00000000
+		TextEnd null
+		Return
+	Return
+	Return
+
+fn[12]:
+	ED7_F2 3
+	TextStart null
+	FadeOut 300ms 0x00000000 100
+	Menu menu[0] -1 -1 1
+		"在此地休息" // 0
+		"放棄" // 1
+	MenuWait var[0]
+	MenuClose menu[0]
+	TextClose 0
+	if var[0] == 0:
+		SoundLoad sound[13]
+		BgmStop 3000ms
+		FadeOut 1000ms 0x00000000 255
+		Sleep 700ms
+		SoundPlay sound[13] 0 100 0
+		FadeWait
+		PartySetAttr name[255] 254 0
+		CamLookChar field_party[0] 0ms
+		ED7_31 1
+		Sleep 3500ms
+		BgmResume
+		FadeIn 1000ms 0x00000000
+		TextClose 0
+		TextEnd null
+		Return
+	elif var[0] != 0:
+		FadeIn 300ms 0x00000000
+		TextEnd null
+		Return
+	Return
+	Return
+
+fn[13]:
+	ED7_F2 3
+	TextStart null
+	FadeOut 300ms 0x00000000 100
+	Menu menu[0] -1 -1 1
+		"在此地休息" // 0
+		"放棄" // 1
+	MenuWait var[0]
+	MenuClose menu[0]
+	TextClose 0
+	if var[0] == 0:
+		SoundLoad sound[13]
+		BgmStop 3000ms
+		FadeOut 1000ms 0x00000000 255
+		Sleep 700ms
+		SoundPlay sound[13] 0 100 0
+		FadeWait
+		PartySetAttr name[255] 254 0
+		CamLookChar field_party[0] 0ms
+		ED7_31 1
+		Sleep 3500ms
+		BgmResume
+		FadeIn 1000ms 0x00000000
+		TextClose 0
+		TextEnd null
+		Return
+	elif var[0] != 0:
+		FadeIn 300ms 0x00000000
+		TextEnd null
+		Return
+	Return
+	Return
+
+fn[14]:
+	TextStart null
+	VisShow vis[0] 112 8 368 264 0 0 256 256 0 0 256 256 0x00FFFFFF 1 "c_vis361.itp"
+	VisSet vis[0] 3 0xFFFFFFFF 500ms 0 0
+	VisSet vis[0] 0 0 -10000 500ms 0
+	VisWait vis[0] 3
+	VisWait vis[0] 0
+	TextSetName ""
+	TextMessage null {
+		{color 5}有一個托利斯塔號。{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	VisSet vis[0] 3 0x00FFFFFF 500ms 0 0
+	VisSet vis[0] 0 0 0 500ms 0
+	VisWait vis[0] 3
+	VisWait vis[0] 0
+	NextFrame
+	VisHide vis[255] 0
+	TextEnd null
+	Return
+
+fn[15]:
+	TextStart null
+	VisShow vis[0] 112 8 368 264 0 0 256 256 0 0 256 256 0x00FFFFFF 1 "c_vis360.itp"
+	VisSet vis[0] 3 0xFFFFFFFF 500ms 0 0
+	VisSet vis[0] 0 0 -10000 500ms 0
+	VisWait vis[0] 3
+	VisWait vis[0] 0
+	TextSetName ""
+	TextMessage null {
+		{color 5}有一個迷你沙袋。{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	VisSet vis[0] 3 0x00FFFFFF 500ms 0 0
+	VisSet vis[0] 0 0 0 500ms 0
+	VisWait vis[0] 3
+	VisWait vis[0] 0
+	NextFrame
+	VisHide vis[255] 0
+	TextEnd null
+	Return
+
+fn[16]:
+	TextStart null
+	VisShow vis[0] 112 8 368 264 0 0 256 256 0 0 256 256 0x00FFFFFF 1 "c_vis366.itp"
+	VisSet vis[0] 3 0xFFFFFFFF 500ms 0 0
+	VisSet vis[0] 0 0 -10000 500ms 0
+	VisWait vis[0] 3
+	VisWait vis[0] 0
+	TextSetName ""
+	TextMessage null {
+		{color 5}有一個衝浪板。{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	VisSet vis[0] 3 0x00FFFFFF 500ms 0 0
+	VisSet vis[0] 0 0 0 500ms 0
+	VisWait vis[0] 3
+	VisWait vis[0] 0
+	NextFrame
+	VisHide vis[255] 0
+	TextEnd null
+	Return
+
+fn[17]:
+	TextStart null
+	VisShow vis[0] 112 8 368 264 0 0 256 256 0 0 256 256 0x00FFFFFF 1 "c_vis367.itp"
+	VisSet vis[0] 3 0xFFFFFFFF 500ms 0 0
+	VisSet vis[0] 0 0 -10000 500ms 0
+	VisWait vis[0] 3
+	VisWait vis[0] 0
+	TextSetName ""
+	TextMessage null {
+		{color 5}有一台點唱機。{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	BgmStop 500ms
+	BgmWait
+	Sleep 10ms
+	BgmPlay bgm[592] 0
+	VisSet vis[0] 3 0x00FFFFFF 500ms 0 0
+	VisSet vis[0] 0 0 0 500ms 0
+	VisWait vis[0] 3
+	VisWait vis[0] 0
+	NextFrame
+	VisHide vis[255] 0
+	TextEnd null
+	Return
+
+fn[18]:
+	TextStart null
+	VisShow vis[0] 112 8 368 264 0 0 256 256 0 0 256 256 0x00FFFFFF 1 "c_vis368.itp"
+	VisSet vis[0] 3 0xFFFFFFFF 500ms 0 0
+	VisSet vis[0] 0 0 -10000 500ms 0
+	VisWait vis[0] 3
+	VisWait vis[0] 0
+	TextSetName ""
+	TextMessage null {
+		{color 5}有一張躺椅。{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	VisSet vis[0] 3 0x00FFFFFF 500ms 0 0
+	VisSet vis[0] 0 0 0 500ms 0
+	VisWait vis[0] 3
+	VisWait vis[0] 0
+	NextFrame
+	VisHide vis[255] 0
+	TextEnd null
+	Return
+
+fn[19]:
+	TextStart null
+	VisShow vis[0] 112 8 368 264 0 0 256 256 0 0 256 256 0x00FFFFFF 1 "c_vis369.itp"
+	VisSet vis[0] 3 0xFFFFFFFF 500ms 0 0
+	VisSet vis[0] 0 0 -10000 500ms 0
+	VisWait vis[0] 3
+	VisWait vis[0] 0
+	TextSetName ""
+	TextMessage null {
+		{color 5}有一個迷你水族箱。{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	VisSet vis[0] 3 0x00FFFFFF 500ms 0 0
+	VisSet vis[0] 0 0 0 500ms 0
+	VisWait vis[0] 3
+	VisWait vis[0] 0
+	NextFrame
+	VisHide vis[255] 0
+	TextEnd null
+	Return
+
+fn[20]:
+	if flag[2528] && flag[2529] && flag[2530] && flag[2531] && flag[2532] && flag[2533] && flag[2534] && flag[2535] && flag[2536] && flag[2537] && flag[2538] && flag[2539] && flag[2540] && flag[2541] && flag[2542] && flag[2543] && flag[2544] && flag[352] && flag[353] && flag[354] && flag[355] && flag[356] && flag[357] && flag[358] && flag[359] && flag[360] && flag[361]:
+		ED7_DE 22
+	Return
+
+fn[21]:
+	EventBegin 0
+	FadeOut 0ms 0x00000000 255
+	ED7LoadChip "apl/ch50106.itc" chip[30]
+	CharSetChipBase name[0] chip[30]
+	CharSetChipPattern name[0] 0
+	CharFlagsSet name[0] 0x0010
+	CharFlagsSet name[0] 0x0002
+	CharFlagsSet name[0] 0x0020
+	CharFlagsSet name[0] 0x0004
+	CharSetPos name[0] (3000, 400, 126000) 180deg
+	CharSetPos name[1] (6000, 0, 125500) 0deg
+	CharSetPos name[2] (6000, 0, 125500) 0deg
+	CharSetPos name[3] (6000, 0, 125500) 0deg
+	CharSetPos name[8] (6000, 0, 125500) 0deg
+	CharSetPos name[4] (6000, 0, 125500) 0deg
+	CharFlagsUnset field_party[4] 0x0080
+	CharFlags2Unset field_party[4] 0x8000
+	CharFlagsUnset field_party[5] 0x0080
+	CharFlags2Unset field_party[5] 0x8000
+	ObjFlagsSet object[8] 0x0004
+	ObjFlagsSet object[9] 0x0004
+	ObjFlagsSet object[10] 0x0004
+	ObjFlagsSet object[11] 0x0004
+	ObjFlagsSet object[12] 0x0004
+	ObjFlagsSet object[13] 0x0004
+	ObjFlagsSet object[14] 0x0004
+	ObjFlagsSet object[15] 0x0004
+	ObjFlagsSet object[16] 0x0004
+	MapColor 0x008B7777 0ms
+	ObjFlagsUnset object[25] 0x0004
+	ED7_76_0 object[255] "rhuton" 1
+	CamSetDistance 2800 1300 125650 0ms
+	ED7CamRotate 43deg 27deg 0deg 0ms
+	CamPers 450 0ms
+	CamZoom 17500 0ms
+	CamZoom 20000 7000ms
+	ED7CamRotate 51deg 27deg 0deg 7000ms
+	FadeIn 2000ms 0x00000000
+	FadeWait
+	Sleep 3000ms
+	FadeOut 2000ms 0x00000000 255
+	FadeWait
+	CamWait 121
+	CharSetChipBase name[0] chip[255]
+	CharSetChipPattern name[0] 0
+	CharFlagsUnset name[0] 0x0010
+	CharFlagsUnset name[0] 0x0002
+	CharFlagsUnset name[0] 0x0020
+	CharFlagsUnset name[0] 0x0004
+	FlagSet flag[272]
+	NewScene "scena/c013b.bin" 0 0 0
+	Hcf
+	Return

@@ -307,7 +307,7 @@ namespace hook {
         LockProtect(ptr);
     }
 
-    void fix_TextLengthScalefactor(uintptr_t ptr) {
+    void fix_TextWidthScalefactor(uintptr_t ptr) {
         UnLockProtect(ptr);
         float* pScaleFactor = reinterpret_cast<float*>(ptr);
         *pScaleFactor = 0.86f;
@@ -402,7 +402,7 @@ namespace hook {
             }
 
             cout << "[INFO]fix text length scale factor" << endl;
-            fix_TextLengthScalefactor(TextWidthScalefactor_addr);
+            fix_TextWidthScalefactor(TextWidthScalefactor_addr);
 
             cout << "[INFO]fix text height scale factor" << endl;
             fix_DialogBoxHeight(DialogBoxHeight_addr);

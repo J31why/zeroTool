@@ -1,0 +1,108 @@
+calmare ao_k scena
+scena:
+	name "m0011" "m0011" "m0011"
+	town town[0]
+	bgm bgm[0]
+	flags 0
+	item_use fn[0,255]
+	unk 255 0
+
+entry:
+	pos (0, 0, -1000)
+	unk1 0
+	cam_from (0, 0, 24000)
+	cam_pers 500
+	unk2 30
+	cam_deg 45deg
+	cam_limit 0deg 360deg
+	cam_at (0, 0, 0)
+	unk3 0
+	unk4 0
+	flags 0x0001
+	town town[1]
+	init fn[0,0]
+	reinit fn[0,1]
+
+npc char[0]:
+	name "SE控制"
+	pos (0, 0, 0)
+	angle 0deg
+	flags 0x00C5
+	unk2 0
+	chip chip[0]
+	init fn[255,255]
+	talk fn[255,255]
+	unk4 255
+
+fn[0]:
+	if flag[272]:
+		FlagUnset flag[272]
+		Event fn[0,2]
+	Return
+
+fn[1]:
+	Return
+
+fn[2]:
+	EventBegin 0
+	FadeOut 0ms 0x00000000 255
+	SoundLoad sound[931]
+	SoundLoad sound[825]
+	SoundLoad sound[148]
+	CamSetDistance 0 1500 90000 0ms
+	ED7CamRotate 40deg 10deg 0deg 0ms
+	CamPers 800 0ms
+	CamZoom 25000 0ms
+	ObjFlagsUnset object[2] 0x0010
+	ObjFrame object[2] 20
+	ObjFlagsUnset object[21] 0x0004
+	ED7_75 object[21] 2 7000ms
+	MapColor 0x00CDFF7D 9000ms
+	CamSetDistance 0 1500 110000 9000ms
+	ED7CamRotate 40deg 10deg 15deg 9000ms
+	CamZoom 23000 9000ms
+	FadeIn 1000ms 0x00000000
+	FadeWait
+	ForkFunc char[0] fork[1] fn[0,3]
+	Sleep 7000ms
+	FadeOut 1000ms 0x00000000 255
+	FadeWait
+	FlagSet flag[275]
+	NewScene "scena/m0101.bin" 0 0 0
+	Hcf
+	Return
+
+fn[3]:
+	SoundPlay sound[931] 2 10 0
+	SoundPlay sound[825] 2 10 0
+	SoundPlay sound[148] 2 100 0
+	Sleep 400ms
+	SoundPlay sound[930] 0 100 0
+	SoundSetVolume sound[931] 20
+	SoundSetVolume sound[825] 20
+	Sleep 400ms
+	SoundSetVolume sound[931] 30
+	SoundSetVolume sound[825] 30
+	Sleep 400ms
+	SoundSetVolume sound[931] 40
+	SoundSetVolume sound[825] 40
+	Sleep 400ms
+	SoundSetVolume sound[931] 50
+	SoundSetVolume sound[825] 50
+	Sleep 400ms
+	SoundSetVolume sound[931] 60
+	SoundSetVolume sound[825] 60
+	Sleep 400ms
+	SoundSetVolume sound[931] 70
+	SoundSetVolume sound[825] 70
+	Sleep 400ms
+	SoundSetVolume sound[931] 80
+	SoundSetVolume sound[825] 80
+	Sleep 400ms
+	SoundSetVolume sound[825] 90
+	Sleep 400ms
+	SoundSetVolume sound[825] 100
+	Sleep 3400ms
+	ED7_12 931 1000 80
+	ED7_12 825 1000 100
+	Return

@@ -1,0 +1,1025 @@
+calmare ao_k scena
+scena:
+	name "c1160" "c1160" "c1160"
+	town town[24]
+	bgm bgm[111]
+	flags 8192
+	item_use fn[0,255]
+	unk 255 0
+
+entry:
+	pos (0, 0, -1000)
+	unk1 0
+	cam_from (0, 0, 24000)
+	cam_pers 500
+	unk2 30
+	cam_deg 45deg
+	cam_limit 0deg 360deg
+	cam_at (0, 0, 0)
+	unk3 0
+	unk4 0
+	flags 0x0001
+	town town[24]
+	init fn[0,0]
+	reinit fn[0,1]
+
+chip[0] "chr/ch06402.itc"
+chip[1] "chr/ch06400.itc"
+
+npc char[0]:
+	name "ピエール副局長"
+	pos (0, 0, 0)
+	angle 0deg
+	flags 0x01C5
+	unk2 0
+	chip chip[0]
+	init fn[255,255]
+	talk fn[255,255]
+	unk4 255
+
+anim[0] 204ms
+
+fn[0]:
+	if flag[272]:
+		FlagUnset flag[272]
+		Event fn[0,2]
+	elif flag[273]:
+		FlagUnset flag[273]
+		Event fn[0,3]
+	elif flag[274]:
+		FlagUnset flag[274]
+		Event fn[0,4]
+	Return
+
+fn[1]:
+	if flag[2848] && !flag[2858] | flag[2369] && system[4] == 1:
+		ED7_76_0 object[255] "ylight_add" 1
+		SoundPlay sound[128] 1 50 0
+	if !flag[3385] && flag[3370]:
+		MapColor 0x00E6D2D2 0ms
+		ED7_76_0 object[255] "ylight_add" 1
+	Return
+
+fn[2]:
+	EventBegin 0
+	FadeOut 0ms 0x00000000 255
+	CamSetDistance 40930 1200 -590 0ms
+	ED7CamRotate 42deg 24deg 0deg 0ms
+	CamPers 400 0ms
+	CamZoom 24070 0ms
+	CharSetPos name[0] (40570, 0, -1240) 0deg
+	CharSetPos name[1] (42040, 0, -1210) 0deg
+	CharSetPos name[2] (40600, 0, -2730) 0deg
+	CharSetPos name[3] (42020, 0, -2750) 0deg
+	CharSetPos name[8] (40570, 0, -4150) 0deg
+	CharSetPos name[4] (42000, 0, -4170) 0deg
+	CharFlagsUnset field_party[4] 0x0080
+	CharFlags2Unset field_party[4] 0x8000
+	CharFlagsUnset field_party[5] 0x0080
+	CharFlags2Unset field_party[5] 0x8000
+	CharSetChipBase char[0] chip[0]
+	CharSetChipPattern char[0] 0
+	CharSetPos char[0] (41100, 200, 1700) 180deg
+	CharFlagsUnset char[0] 0x0080
+	CharFlags2Unset char[0] 0x8000
+	Sleep 1500ms
+	TextTalk name[0] {
+		#1P#N#00005F奥さんがホストと密会している……？{wait}
+	}
+	TextWait
+	Sleep 500ms
+	FadeIn 1000ms 0x00000000
+	FadeWait
+	TextTalk char[0] {
+		#08303F#3Pう、うむ……{wait}
+	} {
+		#08301F#3P近頃、何度もそういったクラブに
+		足を運んでいるようでね。{wait}
+	} {
+		#08301F#3Pどうやら、どこぞのホストと
+		密会しているようなのだよ。{wait}
+	}
+	TextWait
+	TextTalk name[1] {
+		#00101Fで、でも、それがホストとは
+		限らないんじゃないんですか？{wait}
+	}
+	TextWait
+	TextTalk name[8] {
+		#10101Fそうですよ、奥様を信じてあげた方が……{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#08301F#3P決死の覚悟で目を盗んで
+		ワイフの鞄を調べて、
+		確かな証拠を見つけたんだ！{wait}
+	} {
+		#08301F#3P彼女のスケジュール帳に
+		『クライド』とかいう男に会う約束が、
+		ビッシリと書かれていたのをね！{wait}
+	} {
+		#08307F#3P主婦である彼女がそんな男に出会うなど、
+		ホストクラブ以外には
+		考えられないんじゃないのかねっ！？{wait}
+	}
+	TextWait
+	Emote name[0] 0mm 2000mm 16 19 250ms 1
+	SoundPlay sound[23] 0 100 0
+	Emote name[1] 0mm 2000mm 16 19 250ms 1
+	SoundPlay sound[23] 0 100 0
+	Emote name[2] 0mm 2000mm 16 19 250ms 1
+	SoundPlay sound[23] 0 100 0
+	Emote name[3] 0mm 2000mm 16 19 250ms 1
+	SoundPlay sound[23] 0 100 0
+	Emote name[8] 0mm 2000mm 16 19 250ms 1
+	SoundPlay sound[23] 0 100 0
+	Emote name[4] 0mm 2000mm 16 19 250ms 1
+	SoundPlay sound[23] 0 100 0
+	Sleep 1000ms
+	TextTalk name[2] {
+		#00206F（言い分は分かりますけど……）{wait}
+	}
+	TextWait
+	TextTalk name[3] {
+		#00303F（まあ、必死なのは伝わってきたぜ。）{wait}
+	}
+	TextWait
+	TextTalk name[4] {
+		#10303F……ふむ、しかし……
+		ホストの『クライド』か。{wait}
+	} {
+		#10300F生憎だけど、そんな名前は
+		一度も聞いた事はないなあ。{wait}
+	}
+	TextWait
+	Emote char[0] 0mm 2000mm 38 38 250ms 1
+	Emote name[0] 0mm 2000mm 38 38 250ms 1
+	Emote name[1] 0mm 2000mm 38 38 250ms 1
+	Emote name[2] 0mm 2000mm 38 38 250ms 1
+	Emote name[3] 0mm 2000mm 38 38 250ms 1
+	Emote name[8] 0mm 2000mm 38 38 250ms 1
+	Sleep 1000ms
+	Fork name[0] fork[1]:
+		CharTurnToChar name[0] name[4] 500deg/s
+	Sleep 50ms
+	Fork name[1] fork[1]:
+		CharTurnToChar name[1] name[4] 500deg/s
+	Sleep 50ms
+	Fork name[2] fork[1]:
+		CharTurnToChar name[2] name[4] 500deg/s
+	Sleep 50ms
+	Fork name[3] fork[1]:
+		CharTurnToChar name[3] name[4] 500deg/s
+	Sleep 50ms
+	Fork name[8] fork[1]:
+		CharTurnToChar name[8] name[4] 500deg/s
+	TextTalk char[0] {
+		#08305F#3Pな、何……？{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#00005Fそうなのか？{wait}
+	}
+	TextWait
+	TextTalk name[4] {
+		#10302Fま、歓楽街のクラブに在籍する
+		ホストの名前くらいは
+		一通り把握しているからね。{wait}
+	} {
+		新入りだから情報がないって
+		可能性もないわけじゃないけど。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#08303F#3Pま、待ちたまえ。
+		やたら詳しいようだが……{wait}
+	} {
+		#08301F#3Pまさか、支援課に入った
+		現役ホストの臨時メンバー、
+		と噂されているのは……{wait}
+	}
+	TextWait
+	TextTalk name[4] {
+		#10309Fあ、それは僕だね。{wait}
+	}
+	TextWait
+	Emote char[0] 0mm 2000mm 12 13 250ms 2
+	SoundPlay sound[23] 0 100 0
+	Sleep 1000ms
+	TextTalk char[0] {
+		#08307F#3Pき、君ッ！！{wait}
+	} {
+		#08307F#3P仮にも警察ともあろう者が、
+		ホストなどという
+		いかがわしい商売に……！！{wait}
+	}
+	TextWait
+	Fork name[0] fork[1]:
+		CharTurnTo name[0] 0deg 500deg/s
+	TextTalk name[0] {
+		#00006Fま、まあまあ……
+		落ち着いてください。{wait}
+	} {
+		#00001Fとにかく今は、奥さんが
+		現在置かれている状況を
+		確かめることが先決です。{wait}
+	}
+	TextWait
+	Fork name[1] fork[1]:
+		CharTurnTo name[1] 0deg 500deg/s
+	Sleep 50ms
+	Fork name[2] fork[1]:
+		CharTurnTo name[2] 0deg 500deg/s
+	Sleep 50ms
+	Fork name[3] fork[1]:
+		CharTurnTo name[3] 0deg 500deg/s
+	Sleep 50ms
+	Fork name[8] fork[1]:
+		CharTurnTo name[8] 0deg 500deg/s
+	TextTalk name[8] {
+		#10101Fで、ですよね……{wait}
+	} {
+		#10106Fワジ君については
+		この場で言っても
+		仕方ないとは思いますし。{wait}
+	}
+	TextWait
+	TextTalk name[4] {
+		#10304Fフフ、そういうことさ。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#08311F#3Pぐっ……{wait}
+	}
+	TextWait
+	TextTalk name[1] {
+		#00100Fさっき、奥様の鞄を覗いたと
+		言っていましたけど……{wait}
+	} {
+		なにか捜査の
+		手がかりになるものは
+		ありませんでしたか？{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#08303F#3Pう、うむ、そうだな……{wait}
+	}
+	TextWait
+	Emote char[0] 0mm 2000mm 24 27 250ms 0
+	Sleep 2000ms
+	EmoteStop char[0]
+	Emote char[0] 0mm 2000mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Sleep 1000ms
+	TextTalk char[0] {
+		#08301F#3Pそ、そうだ、思い出したよ！{wait}
+	} {
+		#08303F#3Pスケジュール帳を見たとき、
+		行き先のメモも書いてあったのだが……{wait}
+	} {
+		#08301F#3P最近は中央広場のレストランに
+		昼間から行っていることが
+		多いようだったのだ。{wait}
+	}
+	TextWait
+	TextTalk name[2] {
+		#00203F中央広場のレストラン、
+		《ヴァンセット》ですか……{wait}
+	} {
+		#00200Fしかし、相手がホストなら
+		昼間から会ったりしているのは
+		おかしくありませんか？{wait}
+	}
+	TextWait
+	TextTalk name[4] {
+		#10304F旦那が働いている時間帯に
+		目を盗んで逢引きを……
+		ってことかもしれないね。{wait}
+	} {
+		#10302Fフフ、ホストと客が
+		プライベートで会うときは、
+		昼の方が多いだろうし。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#08305F#3Pや、やはりッ……！？{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#00006Fお、落ち着いてください。
+		……っていうか、ワジも煽るなよな。{wait}
+	}
+	TextWait
+	TextTalk name[4] {
+		#10304Fフフ、これは失敬。{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#00003Fコホン、とにかく
+		事情はわかりました。{wait}
+	} {
+		#00000F捜査はこちらに
+		任せていただけますか？{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#08303F#3Pう、うむ。
+		すべて君達に任せよう。{wait}
+	} {
+		#08307F#3Pなんとしても真相を
+		暴いてくれたまえっ！{wait}
+	} {
+		#08311F#3Pただし、くれぐれも内密にだ。
+		……分かったね！？{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#00006Fりょ、了解しました。
+		……それでは失礼します。{wait}
+	}
+	TextWait
+	FadeOut 1000ms 0x00000000 255
+	FadeWait
+	FlagSet flag[275]
+	NewScene "scena/c1150.bin" 101 0 0
+	Hcf
+	Return
+
+fn[3]:
+	EventBegin 0
+	SoundLoad sound[812]
+	FadeOut 0ms 0x00000000 255
+	TextSetName ""
+	TextMessage null {
+		{color 5}その後、ロイドたちは
+		夫人を尾行していたエリィたちと
+		連絡をとり合い……{color 0}{wait}
+	}
+	TextWait
+	TextMessage null {
+		{color 5}ピエール副局長が待つ警察本部で、
+		情報を整理することになった。{color 0}{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	TextSetPos -1 280 60 3
+	CamSetDistance 40930 1200 -590 0ms
+	ED7CamRotate 42deg 24deg 0deg 0ms
+	CamPers 400 0ms
+	CamZoom 24070 0ms
+	CharSetPos name[0] (40570, 0, -1240) 0deg
+	CharSetPos name[1] (42040, 0, -1210) 0deg
+	CharSetPos name[2] (40600, 0, -2730) 0deg
+	CharSetPos name[3] (42020, 0, -2750) 0deg
+	CharSetPos name[8] (40570, 0, -4150) 0deg
+	CharSetPos name[4] (42000, 0, -4170) 0deg
+	CharFlagsUnset field_party[4] 0x0080
+	CharFlags2Unset field_party[4] 0x8000
+	CharFlagsUnset field_party[5] 0x0080
+	CharFlags2Unset field_party[5] 0x8000
+	CharSetChipBase char[0] chip[0]
+	CharSetChipPattern char[0] 0
+	CharSetPos char[0] (41100, 200, 1700) 180deg
+	CharFlagsUnset char[0] 0x0080
+	CharFlags2Unset char[0] 0x8000
+	Sleep 1500ms
+	Sleep 10ms
+	BgmPlay bgm[516] 0
+	FadeIn 1000ms 0x00000000
+	FadeWait
+	TextTalk char[0] {
+		#08305F#3Pそ、それで……
+		調査のほうはどうなったのかね！？{wait}
+	} {
+		#08311F#3Pやはり、わたしのワイフは
+		ホストと密会して……！？{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#00003Fえっと、副局長……
+		落ち着いてください。{wait}
+	}
+	TextWait
+	CharTurnToChar name[0] name[1] 500deg/s
+	Sleep 50ms
+	TextTalk name[0] {
+		#00000Fその前に……エリィたち、
+		夫人の尾行はどうだった？{wait}
+	}
+	TextWait
+	CharTurnToChar name[1] name[0] 500deg/s
+	Sleep 100ms
+	TextTalk name[1] {
+		#00100Fええ、注意深く見ていたけど……
+		変わったことはしていなかったわ。{wait}
+	} {
+		住宅街方面にある、ご自宅に
+		お戻りになっていたみたい。{wait}
+	}
+	TextWait
+	CharTurnToChar name[0] name[2] 500deg/s
+	Sleep 50ms
+	TextTalk name[8] {
+		#10100F特に誰かに会った、ということも
+		ありませんでしたね。{wait}
+	}
+	TextWait
+	TextTalk name[2] {
+		#00200Fこの後、《ノイエ＝ブラン》で
+		あのクライドという男と
+		待ち合わせているみたいですけど……{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#08305F#3Pな、なんだとっ！？{wait}
+	}
+	TextWait
+	Fork name[0] fork[1]:
+		CharTurnToChar self char[0] 500deg/s
+	Sleep 100ms
+	Fork name[1] fork[1]:
+		CharTurnToChar self char[0] 500deg/s
+	Sleep 100ms
+	TextTalk char[0] {
+		#08301F#3Pええい、私のワイフを
+		あんな如何わしい場所に連れ込んで
+		何をするつもりなのだねっ！？{wait}
+	} {
+		#08307F#3Pこ、こうなったら警官隊を編成して、
+		《ノイエ＝ブラン》ごと制圧を……！{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#00006Fだ、だから
+		落ち着いてくださいってば！{wait}
+	}
+	TextWait
+	TextTalk name[3] {
+		#00303Fあの連中相手じゃ、
+		返り討ちにあうのが関の山ッスよ。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#08305F#3Pだ、だからといって……
+		これが落ち着いていられるかね！？{wait}
+	} {
+		#08311F#3Pこうしている間にも、
+		私のワイフがホストの毒牙に……{wait}
+	}
+	TextWait
+	TextTalk name[4] {
+		#10304Fフフ、その心配はないと思うよ。{wait}
+	} {
+		#10302F少なくとも、あのマダムが
+		『ホスト』の毒牙にかかる心配はね。{wait}
+	}
+	TextWait
+	Emote char[0] 0mm 2000mm 38 38 250ms 1
+	Sleep 50ms
+	Emote name[1] 0mm 2000mm 38 38 250ms 1
+	Sleep 50ms
+	Emote name[2] 0mm 2000mm 38 38 250ms 1
+	Sleep 50ms
+	Emote name[3] 0mm 2000mm 38 38 250ms 1
+	Sleep 50ms
+	Emote name[8] 0mm 2000mm 38 38 250ms 1
+	Sleep 1000ms
+	TextTalk char[0] {
+		#08305F#3Pど、どういうことだね……？{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#00003Fワジが最初から
+		言っていたことですが……{wait}
+	} {
+		#00001Fやはり、クライドという男は
+		ホストではないと思います。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#08311F#3Pな、なに……！？{wait}
+	} {
+		#08305F#3Pだとしたら……
+		何者だというのかねっ！？{wait}
+	}
+	TextWait
+	FlagUnset flag[0]
+	var[3] = 0
+	while !flag[0]:
+		TextSetPos -1 30 -1 -1
+		TextSetName ""
+		TextMessage null {
+			{color 5}{0x06}{0x18}#1Kクライドの正体は？{color 0}{wait}
+		}
+		Menu menu[0] -1 -1 0
+			"【ホスト】" // 0
+			"【詐欺師】" // 1
+			"【セールスマン】" // 2
+		MenuWait var[0]
+		MenuClose menu[0]
+		TextSetPos -1 280 60 3
+		switch var[0]:
+			case 0:
+				var[3] += 1
+				TextTalk name[0] {
+					#00006F（……って、たった今、
+					{}  自分でホストじゃないって
+					{}  言ったばかりじゃないか。）{wait}
+				} {
+					#00001F（冷静になって考えよう。
+					{}  あのクライドという男の正体は……）{wait}
+				}
+				TextWait
+				break
+			case 1:
+				var[3] += 1
+				TextTalk name[0] {
+					#00003F（いや……厳密に言えば違う。）{wait}
+				} {
+					#00001F（冷静になって考えよう。
+					{}  あのクライドという男の正体は……）{wait}
+				}
+				TextWait
+				break
+			case 2:
+				TextTalk name[0] {
+					#00001Fクライドという男の正体、
+					それはおそらく……
+					『セールスマン』です。{wait}
+				}
+				TextWait
+				FlagSet flag[0]
+				if var[3] == 0:
+					QuestBonusBp quest[132] 1
+				break
+	TextTalk name[8] {
+		#10105Fセールスマン、ですか？{wait}
+	}
+	TextWait
+	TextTalk name[3] {
+		#00300F確かに、あの丁寧な喋りは
+		ホストっていうより
+		商売人って感じはしたが……{wait}
+	}
+	TextWait
+	TextTalk name[4] {
+		#10304Fフフ、でもそれは明らかに
+		ホストじゃないと言える証拠でもある。{wait}
+	} {
+		#10302F僕たちは寂しいマダムたちに
+		一時の夢を見せてあげるための存在……{wait}
+	} {
+		一流のホストなら、
+		丁寧にエスコートする事はあっても
+		必要以上にへりくだることはしないさ。{wait}
+	}
+	TextWait
+	Emote name[0] 0mm 2000mm 16 19 250ms 1
+	SoundPlay sound[23] 0 100 0
+	Sleep 1000ms
+	TextTalk name[0] {
+		#00006Fワジにしてみれば
+		そういう観点もあるだろうけど……
+		まあ、似たような推測です。{wait}
+	} {
+		#00001Fクライドという男と奥さんは、
+		『密会しているホストと客』には
+		どうしても見えませんでした。{wait}
+	} {
+		どちらかといえば、
+		『商売人』と『その客』……
+		その方がしっくり来る印象です。{wait}
+	} {
+		何度も会っていたのも、
+		なんらかの取引きをするための
+		交渉だと考えるのが自然でしょう。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#08305F#3Pし、しかし仮にそうだとして……
+		ワイフは一体何を買わされようと
+		しているのかね！？{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#00003Fそれも、クライドという男が
+		どこに所属するセールスマンかを
+		推理すれば分かります。{wait}
+	} {
+		#00001Fあの男は、おそらく……{wait}
+	}
+	TextWait
+	FlagUnset flag[0]
+	var[3] = 0
+	while !flag[0]:
+		TextSetPos -1 30 -1 -1
+		TextSetName ""
+		TextMessage null {
+			{color 5}{0x06}{0x18}#1Kクライドはどこのセールスマン？{color 0}{wait}
+		}
+		Menu menu[0] -1 -1 0
+			"【宝石店】" // 0
+			"【不動産業者】" // 1
+			"【証券会社】" // 2
+		MenuWait var[0]
+		MenuClose menu[0]
+		TextSetPos -1 280 60 3
+		switch var[0]:
+			case 0:
+				var[3] += 1
+				TextTalk name[0] {
+					#00003F（いや……それは考えにくい。）{wait}
+				} {
+					#00001F（レストランでの会話、
+					{}  そして尾行した先での光景……
+					{}  それらを総合的に考えれば……）{wait}
+				}
+				TextWait
+				break
+			case 1:
+				TextTalk name[0] {
+					#00001Fおそらく……
+					不動産を取り扱うセールスマン
+					ではないかと思われます。{wait}
+				}
+				TextWait
+				FlagSet flag[0]
+				if var[3] == 0:
+					QuestBonusBp quest[132] 1
+				break
+			case 2:
+				var[3] += 1
+				TextTalk name[0] {
+					#00003F（いや……それは考えにくい。）{wait}
+				} {
+					#00001F（レストランでの会話、
+					{}  そして尾行した先での光景……
+					{}  それらを総合的に考えれば……）{wait}
+				}
+				TextWait
+				break
+	CharTurnToChar name[1] name[0] 500deg/s
+	Sleep 100ms
+	TextTalk name[1] {
+		#00103F不動産……{wait}
+	} {
+		#00100Fそういえば、レストランの会話では
+		ミシュラムの話題が出ていたわね。{wait}
+	} {
+		最初は旅行の話かと思ったけど、
+		話に出た『パンフレット』というのは……{wait}
+	}
+	TextWait
+	CharTurnToChar name[0] name[1] 500deg/s
+	Sleep 100ms
+	TextTalk name[0] {
+		#00000F多分、ミシュラムの高級別荘地にある
+		住宅情報のパンフレットだろう。{wait}
+	} {
+		そして、港湾区まで尾行した先で、
+		クライドという男はスーツ姿の男から
+		何かを受け取っていた。{wait}
+	}
+	TextWait
+	TextTalk name[4] {
+		#10304F口ぶりからすれば、
+		あのスーツの男はクライドの上司だろう。{wait}
+	} {
+		#10300Fおそらく契約書などの重要な書類を
+		受け取っていたんじゃないかな。{wait}
+	}
+	TextWait
+	CharTurnToChar name[0] char[0] 500deg/s
+	Sleep 50ms
+	CharTurnToChar name[1] char[0] 500deg/s
+	Sleep 100ms
+	TextTalk name[0] {
+		#00000Fクライドという男は
+		不動産屋のサラリーマンで、
+		夫人に物件を売る交渉をしていた。{wait}
+	} {
+		夫人もそれを好意的に受け、
+		ミシュラムへの下見などにも行って
+		順調に交渉を進めていた。{wait}
+	} {
+		夫人があの男と会っていたのは、
+		そのためだと考えると自然です。{wait}
+	}
+	TextWait
+	TextTalk name[3] {
+		#00302Fなるほど……
+		つじつまは合いそうだな。{wait}
+	}
+	TextWait
+	TextTalk name[4] {
+		#10302Fそして、今日の交渉で
+		話は大方まとまり……{wait}
+	} {
+		もうすぐ《ノイエ＝ブラン》で
+		最後の交渉が行われるわけだ。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#08303F#3Pふ、ふむ、なるほど……{wait}
+	}
+	TextWait
+	Emote char[0] 0mm 2000mm 40 43 100ms 0
+	Sleep 1000ms
+	EmoteStop char[0]
+	TextTalk char[0] {
+		#08305F#3Pい、いや、待ってくれたまえ！{wait}
+	} {
+		#08305F#3Pマーガレットは、私に黙って
+		ミシュラムの物件を買おうとしている。
+		……そういうことかね！？{wait}
+	} {
+		#08311F#3Pだ、だが……そんな資産は
+		我が家には全くないぞ！？{wait}
+	} {
+		#08307F#3P一体どうやってそんなミラを
+		工面するつもりだというのだね！？{wait}
+	}
+	TextWait
+	TextTalk name[8] {
+		#10108Fも、もしかして……
+		借金とかでしょうか……？{wait}
+	}
+	TextWait
+	TextTalk name[2] {
+		#00203F……十分考えられそうですね。{wait}
+	} {
+		#00200F無理なローンを組ませるよう
+		誘導したのかもしれません。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#08306F#3Pそ、そんな……{wait}
+	}
+	TextWait
+	Emote char[0] 0mm 2000mm 24 27 250ms 0
+	Sleep 2000ms
+	EmoteStop char[0]
+	FadeWait
+	CrossFade 500ms
+	CharSetChipBase char[0] chip[1]
+	CharSetChipPattern char[0] 0
+	SoundPlay sound[812] 0 100 0
+	CharSetPos char[0] (42100, 0, 1700) 90deg
+	FadeWait
+	CharTurnToChar name[0] char[0] 500deg/s
+	Sleep 500ms
+	CharTurnToChar char[0] name[0] 500deg/s
+	Sleep 100ms
+	TextTalk char[0] {
+		#08303F#3Pき、決めたぞ……私はやはり、
+		《ノイエ＝ブラン》に乗り込むっ！{wait}
+	} {
+		#08301F#3Pここまで聞かされて、
+		ワイフがみすみす騙されるのを
+		見過ごすわけにはいかん！！{wait}
+	} {
+		#08307F#3Pそこでクライドとかいう若造を一喝し、
+		ワイフの頬をはたいてでも連れ帰る！！{wait}
+	}
+	TextWait
+	TextTalk name[2] {
+		#00205F（……恐妻家が大きく出ましたね。）{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#00006F（というか、ヘンなスイッチを
+		{}  入れちゃった気がするな……）{wait}
+	}
+	TextWait
+	TextTalk name[4] {
+		#10302Fフフ、せっかくだし
+		手伝ってあげるとしようよ。{wait}
+	} {
+		#10309Fこのまま放っておいて、
+		１人で《ノイエ＝ブラン》に
+		突入されても困るだろうし。{wait}
+	}
+	TextWait
+	Emote name[0] 0mm 2000mm 16 19 250ms 1
+	SoundPlay sound[23] 0 100 0
+	Emote name[1] 0mm 2000mm 16 19 250ms 1
+	SoundPlay sound[23] 0 100 0
+	Emote name[2] 0mm 2000mm 16 19 250ms 1
+	SoundPlay sound[23] 0 100 0
+	Emote name[3] 0mm 2000mm 16 19 250ms 1
+	SoundPlay sound[23] 0 100 0
+	Emote name[8] 0mm 2000mm 16 19 250ms 1
+	SoundPlay sound[23] 0 100 0
+	Sleep 1000ms
+	Fork name[0] fork[1]:
+		CharTurnToChar name[0] name[4] 500deg/s
+	Sleep 50ms
+	Fork name[1] fork[1]:
+		CharTurnToChar name[1] name[4] 500deg/s
+	Sleep 50ms
+	Fork name[2] fork[1]:
+		CharTurnToChar name[2] name[4] 500deg/s
+	Sleep 50ms
+	Fork name[3] fork[1]:
+		CharTurnToChar name[3] name[4] 500deg/s
+	Sleep 50ms
+	Fork name[8] fork[1]:
+		CharTurnToChar name[8] name[4] 500deg/s
+	TextTalk name[0] {
+		#00006Fそれは確かに言えてるかも
+		しれないけど……{wait}
+	}
+	TextWait
+	TextTalk name[8] {
+		#10106F……ワジ君、なんだか
+		ますます楽しんでない？{wait}
+	}
+	TextWait
+	TextTalk name[4] {
+		#10304Fフフ、何のことやら。{wait}
+	}
+	TextWait
+	TextTalk name[1] {
+		#00108Fまあでも、ブレーキになれるのは
+		私たちだけみたいだし……{wait}
+	}
+	TextWait
+	TextTalk name[3] {
+		#00306Fしゃあねえ、気は進まねえが
+		《ノイエ＝ブラン》には
+		俺から話をつけてみるか。{wait}
+	} {
+		#00300F多分、ザックスって顔なじみが
+		番犬をやってるはずだ。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#08307F#3Pええい、なにをゴチャゴチャ
+		話し合っているのかね！？{wait}
+	}
+	TextWait
+	Fork name[0] fork[1]:
+		CharTurnToChar name[0] char[0] 500deg/s
+	Sleep 50ms
+	Fork name[1] fork[1]:
+		CharTurnToChar name[1] char[0] 500deg/s
+	Sleep 50ms
+	Fork name[2] fork[1]:
+		CharTurnToChar name[2] char[0] 500deg/s
+	Sleep 50ms
+	Fork name[3] fork[1]:
+		CharTurnToChar name[3] char[0] 500deg/s
+	Sleep 50ms
+	Fork name[8] fork[1]:
+		CharTurnToChar name[8] char[0] 500deg/s
+	TextTalk char[0] {
+		#08307F#3Pさあ、すぐにでも
+		《ノイエ＝ブラン》へ行くぞ！！
+		君たちもついてきたまえ！{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#00005Fりょ、了解しました……！{wait}
+	}
+	TextWait
+	FadeOut 1000ms 0x00000000 255
+	FadeWait
+	BgmStop 3000ms
+	BgmWait
+	Sleep 10ms
+	system[76] = 65535
+	FlagSet flag[273]
+	NewScene "scena/c0490.bin" 100 0 0
+	Hcf
+	Return
+
+fn[4]:
+	EventBegin 0
+	FadeOut 0ms 0x00000000 255
+	CamSetDistance 40930 1200 -590 0ms
+	ED7CamRotate 42deg 24deg 0deg 0ms
+	CamPers 400 0ms
+	CamZoom 24070 0ms
+	CharSetPos name[0] (40570, 0, -1240) 0deg
+	CharSetPos name[1] (42040, 0, -1210) 0deg
+	CharSetPos name[2] (40600, 0, -2730) 0deg
+	CharSetPos name[3] (42020, 0, -2750) 0deg
+	CharSetPos name[8] (40570, 0, -4150) 0deg
+	CharSetPos name[4] (42000, 0, -4170) 0deg
+	CharFlagsUnset field_party[4] 0x0080
+	CharFlags2Unset field_party[4] 0x8000
+	CharFlagsUnset field_party[5] 0x0080
+	CharFlags2Unset field_party[5] 0x8000
+	CharSetChipBase char[0] chip[0]
+	CharSetChipPattern char[0] 0
+	CharSetPos char[0] (41100, 200, 1700) 180deg
+	CharFlagsUnset char[0] 0x0080
+	CharFlags2Unset char[0] 0x8000
+	Sleep 1500ms
+	FadeIn 1000ms 0x00000000
+	FadeWait
+	TextTalk char[0] {
+		#08303F#3P……コホン。
+		ひとまずご苦労だった、
+		特務支援課の諸君。{wait}
+	}
+	TextWait
+	TextTalk name[1] {
+		#00102F私たちも顛末を聞いて、
+		ひとまず安心しました。{wait}
+	} {
+		奥様が騙されていたわけじゃなくて
+		本当によかったですね。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#08306F#3Pま、まあ、結局別荘は
+		購入することになって
+		しまいそうだがね。{wait}
+	} {
+		#08312F#3Pただ、別居の話は無くなったから、
+		おそらく週末あたりに
+		夫婦で使う事になるだろうな。{wait}
+	}
+	TextWait
+	TextTalk name[8] {
+		#10100Fあはは……
+		奥さんも別荘をかなり
+		気に入っていたみたいですし。{wait}
+	}
+	TextWait
+	TextTalk name[3] {
+		#00309Fま、その程度は
+		大目にみてやっても
+		いいんじゃないッスか？{wait}
+	}
+	TextWait
+	TextTalk name[4] {
+		#10302Fフフ、もともと購入資金も
+		奥さんが株で稼いだって話だし。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#08311F#3Pう、うむ……
+		その点も頭が痛い話なのだがね。{wait}
+	} {
+		#08306F#3Pはあ、今回の件でますます
+		頭が上がらなくなってしまった……{wait}
+	}
+	TextWait
+	Emote name[0] 0mm 2000mm 16 19 250ms 1
+	SoundPlay sound[23] 0 100 0
+	Emote name[1] 0mm 2000mm 16 19 250ms 1
+	SoundPlay sound[23] 0 100 0
+	Emote name[2] 0mm 2000mm 16 19 250ms 1
+	SoundPlay sound[23] 0 100 0
+	Emote name[3] 0mm 2000mm 16 19 250ms 1
+	SoundPlay sound[23] 0 100 0
+	Emote name[8] 0mm 2000mm 16 19 250ms 1
+	SoundPlay sound[23] 0 100 0
+	Emote name[4] 0mm 2000mm 16 19 250ms 1
+	SoundPlay sound[23] 0 100 0
+	Sleep 1000ms
+	TextTalk name[2] {
+		#00211F（……割と自業自得かと。）{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#08304F#3Pまあ、なにはともあれ……
+		離婚という最悪の事態は
+		免れることができた。{wait}
+	} {
+		#08300F#3Pここは素直に
+		礼を言わせてもらおう。{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#00002Fはは、また何かありましたら
+		いつでもご相談ください。{wait}
+	} {
+		#00004F……それでは失礼します。{wait}
+	}
+	TextWait
+	FadeOut 1000ms 0x00000000 255
+	FadeWait
+	SoundPlay sound[9] 0 100 0
+	TextSetPos -1 -1 -1 -1
+	TextSetName ""
+	TextMessage null {
+		{color 2}クエスト【副局長の依頼】{color 0}を達成した！{wait}
+	}
+	TextWait
+	TextClose 0
+	TextSetPos -1 280 60 3
+	FadeOut 1000ms 0x00000000 255
+	FadeWait
+	QuestTaskSet quest[132] 1
+	QuestTaskSet quest[132] 2
+	QuestFlagsSet quest[132] 0x10
+	system[105] += 2
+	EventEnd 5
+	FlagSet flag[276]
+	NewScene "scena/c1150.bin" 0 0 0
+	Hcf
+	Return

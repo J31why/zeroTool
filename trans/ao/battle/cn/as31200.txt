@@ -1,0 +1,723 @@
+//ao
+//as31200
+
+Header:
+	Unk1 = "00-00-50-12-73-00-51-12-73-00-53-12-73-00-54-12-73-00-FF-FF-FF-FF-00"
+	fn[0] = loc:448
+	fn[1] = loc:6B
+	fn[2] = loc:A9
+	fn[3] = loc:E7
+	fn[4] = loc:488
+	fn[5] = loc:4D5
+	fn[6] = loc:62D
+	fn[7] = loc:6A2
+	fn[8] = loc:FFFF
+	fn[9] = loc:FFFF
+	fn[10] = loc:FFFF
+	fn[11] = loc:15A
+	fn[12] = loc:173
+	fn[13] = loc:FFFF
+	fn[14] = loc:FFFF
+	fn[15] = loc:6FA
+	fn[16] = loc:815
+	fn[17] = loc:8C5
+	fn[18] = loc:9BD
+	fn[19] = loc:FFFF
+	fn[20] = loc:FFFF
+	fn[21] = loc:FFFF
+	fn[22] = loc:FFFF
+	fn[23] = loc:FFFF
+	fn[24] = loc:FFFF
+	fn[25] = loc:FFFF
+	fn[26] = loc:FFFF
+	fn[27] = loc:FFFF
+	fn[28] = loc:FFFF
+	fn[29] = loc:FFFF
+	fn[30] = loc:FFFF
+	fn[31] = loc:0
+	Unk2 = "80-B0-80-B0-80-B0-80-B0-80-B0-80-B0-80-B0-80-B0"
+
+Func:
+loc:6B:
+	SelectChip(FF, 0)
+	SubChip(FF, 0)
+	Sleep(82)
+	Update
+	SubChip(FF, 1)
+	Sleep(82)
+	Update
+	SubChip(FF, 2)
+	Sleep(82)
+	Update
+	SubChip(FF, 1)
+	Sleep(82)
+	Update
+	SubChip(FF, 0)
+	Sleep(82)
+	Update
+	SubChip(FF, 3)
+	Sleep(82)
+	Update
+	SubChip(FF, 4)
+	Sleep(82)
+	Update
+	SubChip(FF, 3)
+	Sleep(82)
+	Update
+	Goto(loc:6B)
+loc:A9:
+	SelectChip(FF, 1)
+	SubChip(FF, 0)
+	Sleep(28)
+	Update
+	SubChip(FF, 1)
+	Sleep(28)
+	Update
+	SubChip(FF, 2)
+	Sleep(28)
+	Update
+	SubChip(FF, 1)
+	Sleep(28)
+	Update
+	SubChip(FF, 0)
+	Sleep(28)
+	Update
+	SubChip(FF, 3)
+	Sleep(28)
+	Update
+	SubChip(FF, 4)
+	Sleep(28)
+	Update
+	SubChip(FF, 3)
+	Sleep(28)
+	Update
+	Goto(loc:A9)
+loc:E7:
+	SelectChip(FF, 2)
+	SubChip(FF, 0)
+	Sleep(28)
+	Update
+	Call(loc:213)
+	Return
+	Die
+	Rand(2, 2, 10, loc:102)
+	Goto(loc:12C)
+loc:102:
+	Rand(A, 1, 2, loc:117)
+	Rand(B, 1, 3, loc:117)
+	Goto(loc:12C)
+loc:117:
+	SelectChip(FF, 2)
+	SubChip(FF, 1)
+	Sleep(B4)
+	Update
+	SubChip(FF, 2)
+	Sleep(B4)
+	Update
+	SeEx(202, 0)
+loc:12C:
+	SelectChip(FF, 2)
+	SubChip(FF, 3)
+	Sleep(B4)
+	Update
+	Return
+loc:137:
+	SelectChip(FF, 3)
+loc:13A:
+	SubChip(FF, 0)
+	Sleep(82)
+	Update
+	SubChip(FF, 1)
+	Sleep(82)
+	Update
+	SubChip(FF, 2)
+	Sleep(82)
+	Update
+	SubChip(FF, 1)
+	Sleep(82)
+	Update
+	Goto(loc:13A)
+	Ret
+loc:15A:
+	SelectChip(FF, 2)
+	SubChip(FF, 1)
+	Sleep(64)
+	Update
+	SubChip(FF, 2)
+	Sleep(64)
+	Update
+	SubChip(FF, 3)
+	Sleep(64)
+	Update
+	Return
+loc:173:
+	SelectChip(FF, 0)
+	SubChip(FF, 0)
+	Sleep(64)
+	Update
+	Return
+loc:17E:
+	ResetLoopTarget
+loc:17F:
+	LoopTargetBegin(loc:190)
+	DamageAnime(FE, 0, 32)
+	Damage(FE)
+	Sleep(32)
+	Update
+	LoopTargetEnd
+	Goto(loc:17F)
+loc:190:
+	Return
+	ResetLoopTarget
+loc:192:
+	LoopTargetBegin(loc:19F)
+	Damage(FE)
+	Sleep(32)
+	Update
+	LoopTargetEnd
+	Goto(loc:192)
+loc:19F:
+	Return
+	ResetLoopTarget
+loc:1A1:
+	LoopTargetBegin(loc:1B0)
+	DamageAnime(FE, 1, 32)
+	Sleep(32)
+	Update
+	LoopTargetEnd
+	Goto(loc:1A1)
+loc:1B0:
+	Return
+	ResetLoopTarget
+loc:1B2:
+	LoopTargetBegin(loc:1C1)
+	DamageAnime(FE, 0, 32)
+	Sleep(32)
+	Update
+	LoopTargetEnd
+	Goto(loc:1B2)
+loc:1C1:
+	Return
+loc:1C2:
+	ResetLoopTarget
+loc:1C3:
+	LoopTargetBegin(loc:1D4)
+	DamageAnime(FE, 1, 32)
+	Damage(FE)
+	Sleep(32)
+	Update
+	LoopTargetEnd
+	Goto(loc:1C3)
+loc:1D4:
+	Return
+loc:1D5:
+	ResetLoopTarget
+loc:1D6:
+	LoopTargetBegin(loc:1E5)
+	DamageAnime(FE, 0, 32)
+	Sleep(32)
+	Update
+	LoopTargetEnd
+	Goto(loc:1D6)
+loc:1E5:
+	Sleep(1)
+	Update
+	Goto(loc:1D5)
+loc:1EC:
+	ShakeChar(FF, FFFFFFF6, 0, FFFFFFF6)
+	Sleep(1E)
+	Update
+	ShakeChar(FF, A, 0, A)
+	Sleep(1E)
+	Update
+	Goto(loc:1EC)
+loc:213:
+	ShakeChar(FF, FFFFFF38, 0, FFFFFF38)
+	Sleep(32)
+	Update
+	ShakeChar(FF, C8, 0, C8)
+	Sleep(32)
+	Update
+	ShakeChar(FF, FFFFFF38, 0, FFFFFF38)
+	Sleep(32)
+	Update
+	ShakeChar(FF, C8, 0, C8)
+	Sleep(32)
+	Update
+	ShakeChar(FF, FFFFFF6A, 0, FFFFFF6A)
+	Sleep(32)
+	Update
+	ShakeChar(FF, 96, 0, 96)
+	Sleep(32)
+	Update
+	ShakeChar(FF, FFFFFF9C, 0, FFFFFF9C)
+	Sleep(32)
+	Update
+	ShakeChar(FF, 64, 0, 64)
+	Sleep(32)
+	Update
+	ShakeChar(FF, FFFFFFCE, 0, FFFFFFCE)
+	Sleep(32)
+	Update
+	ShakeChar(FF, 32, 0, 32)
+	Sleep(32)
+	Update
+	ShakeChar(FF, FFFFFFCE, 0, FFFFFFCE)
+	Sleep(32)
+	Update
+	ShakeChar(FF, 32, 0, 32)
+	Sleep(32)
+	Update
+	ShakeChar(FF, 0, 0, 0)
+	Sleep(32)
+	Update
+	Ret
+	OP_8D(4C, 0, 0, 0, 0)
+	ResetLoopTarget
+	OP_5A(0, 0, 0)
+	OP_60(F7)
+	OP_6D(40000)
+	ClearChipModeFlag(0, FF, 1)
+	Ret
+	SuspendThread(FF, 1)
+	SuspendThread(FF, 2)
+	SuspendThread(FF, 3)
+	ShadowEnd(FF)
+	ClearChipModeFlag(0, FF, 2)
+	SubChip(FF, 0)
+	SelectChip(FF, 0)
+	BeginThread(FF, 1, loc:6B, 0)
+	DamageVoice(0, 0)
+	DamageVoice(0, 1)
+	DamageVoice(0, 2)
+	DamageVoice(0, 3)
+	DamageVoice(0, 4)
+	DamageVoice(0, 5)
+	DamageVoice(0, 6)
+	DamageVoice(0, 7)
+	CraftEnd(1)
+	OP_5B(0)
+	ZoomAngle(1, 1F4, 0)
+	OP_6E(40000)
+	Rand(2C, 2, 20, loc:389)
+	OP_31(17, 0)
+	KeepAngle(FD, FFFFD8F0, FFFFD8F0, FFFFD8F0, 0)
+	Goto(loc:3A8)
+loc:389:
+	OP_31(17, 0)
+	KeepAngle(F4, 0, 0, 0, 0)
+	BeginThread(FF, 3, loc:17E, 0)
+	WaitThread(FF, 3)
+	OP_8F(0)
+loc:3A8:
+	Ret
+	SuspendThread(E2, 1)
+	SuspendThread(E2, 2)
+	SuspendThread(E2, 3)
+	SuspendThread(E3, 1)
+	SuspendThread(E3, 2)
+	SuspendThread(E3, 3)
+	ShadowEnd(E2)
+	ShadowEnd(E3)
+	SubChip(E2, 0)
+	Sleep(0)
+	Update
+	SubChip(E3, 0)
+	Sleep(0)
+	Update
+	SelectChip(E2, 0)
+	SelectChip(E3, 0)
+	BeginThread(E2, 1, loc:6B, 0)
+	BeginThread(E3, 1, loc:6B, 0)
+	DamageVoice(0, 0)
+	DamageVoice(0, 1)
+	DamageVoice(0, 2)
+	DamageVoice(0, 3)
+	DamageVoice(0, 4)
+	DamageVoice(0, 5)
+	DamageVoice(0, 6)
+	DamageVoice(0, 7)
+	CraftEnd(1)
+	OP_5B(0)
+	ZoomAngle(1, 1F4, 0)
+	Rand(2C, 2, 20, loc:424)
+	OP_31(17, 0)
+	KeepAngle(FD, FFFFD8F0, FFFFD8F0, FFFFD8F0, 0)
+	Goto(loc:447)
+loc:424:
+	OP_31(17, 0)
+	KeepAngle(F4, 0, 0, 0, 0)
+	OP_31(3, 0)
+	BeginThread(FF, 3, loc:17E, 0)
+	WaitThread(FF, 3)
+	OP_8F(0)
+loc:447:
+	Ret
+loc:448:
+	AddEff(82, "battle/btgun00.eff")
+	AddEff(80, "battle\mgaria0.eff")
+	AddEff(81, "battle\mgaria1.eff")
+	Return
+loc:488:
+	Die
+	Rand(2, 2, 10, loc:495)
+	Goto(loc:12C)
+loc:495:
+	Rand(A, 1, 2, loc:4AA)
+	Rand(B, 1, 3, loc:4AA)
+	Goto(loc:4CA)
+loc:4AA:
+	OP_62(0, C4D, 0, 0, 0, FE)
+	SelectChip(FF, 2)
+	SubChip(FF, 1)
+	Sleep(12C)
+	Update
+	SubChip(FF, 2)
+	Sleep(12C)
+	Update
+	SeEx(202, 0)
+loc:4CA:
+	SelectChip(FF, 2)
+	SubChip(FF, 3)
+	Sleep(12C)
+	Update
+	Return
+loc:4D5:
+	OP_78(1)
+	LoadSChip(7, 731252, FF)
+	AddEff(0, "battle/cr414000.eff")
+	OP_78(0)
+	ResetLoopTarget
+	OP_95
+	SetAngleTarget(FF, "", 0)
+	SetAngleTarget(FE, "", 0)
+	MoveAngle(64, 1E14)
+	BeginThread(FF, 1, loc:A9, 0)
+	OP_1E(FFFFFFFF)
+	SuspendThread(FF, 1)
+	OP_C(FF, FE, 0, 0, 0)
+	SaveCurPos(FF)
+	OP_6D(200000)
+	SelectChip(FF, 7)
+	SubChip(FF, 0)
+	Sleep(64)
+	Update
+	SubChip(FF, 1)
+	Sleep(64)
+	Update
+	SeEx(213, 0)
+	SubChip(FF, 2)
+	OP_5(FF, 0, 0)
+	OP_21(1, FF, FFFFFFCE, 7D0)
+	Sleep(12C)
+	Update
+	BeginThread(FF, 1, loc:5FE, 0)
+	BeginThread(FF, 2, loc:1D5, 0)
+	ShowEff(FF, FE, 0, 5, 0, 0, 0, 0, 0, 0, 3E8, 3E8, 3E8, 2)
+	SeEx(164, 0)
+	ShakeScreen(64, 64, 64, 1F4)
+	Sleep(1F4)
+	Update
+	SuspendThread(FF, 2)
+	SuspendThread(FF, 1)
+	ResetLoopTarget
+	ShowEff(FF, FE, 13, 1, 0, 1F4, 0, 0, 0, 0, 3E8, 3E8, 3E8, FF)
+	DamageAnime(FE, 1, 32)
+	Damage(FE)
+	CancelEff(FF, 2)
+	SubChip(FF, 2)
+	Sleep(64)
+	Update
+	OP_AE(FF, 2, 14)
+	Move(FF, F0, 0, 0, 0, C8, 0)
+	Return
+	SubChip(FF, 1)
+	Sleep(64)
+	Update
+	SubChip(FF, 0)
+	Sleep(64)
+	Update
+	WaitThread(FF, 2)
+	BeginThread(FF, 1, loc:6B, 0)
+	OP_8F(0)
+	SuspendThread(FF, 1)
+	OP_6E(200000)
+	ReleaseEff(0)
+	ResetSCraftChip
+	Return
+loc:5FE:
+	SubChip(FF, 2)
+	Sleep(1E)
+	Update
+	ShowEff(FF, F9, 82, 3, 50, B4, 3E8, 0, 0, 0, 1F4, 1F4, 1F4, FF)
+	SubChip(FF, 3)
+	Sleep(1E)
+	Update
+	Goto(loc:5FE)
+loc:62D:
+	OP_C(FF, FB, 0, 1F4, 0)
+	Rand(8, 1, 0, loc:69C)
+	Rand(2D, 1, 1, loc:66F)
+	ShowEff(FF, FF, 80, 41, 0, 32, 0, 0, 0, 0, FFFF, FFFF, FFFF, 0)
+	OP_A9(FF, 0, FFFF0000)
+	Goto(loc:69C)
+loc:66F:
+	ShowEff(FF, FF, 80, 41, 0, 32, 0, 0, 0, 0, FFFF, FFFF, FFFF, 0)
+	OP_62(0, 0, 0, 0, 0, FE)
+	SeEx(1FD, 0)
+loc:69C:
+	OP_54(1)
+	Call(loc:137)
+	Return
+loc:6A2:
+	Rand(2D, 3, 2, loc:6F5)
+	ShowEff(FF, F9, 81, 0, 0, 32, 0, 0, 0, 0, FFFF, FFFF, FFFF, FF)
+	SeEx(1FE, 0)
+	OP_C(FF, FB, 0, 1F4, 0)
+	Sleep(C8)
+	Update
+	SelectChip(FF, 3)
+	SubChip(FF, 3)
+	Sleep(12C)
+	Update
+	OP_62(0, 0, 0, 0, 0, FE)
+	SubChip(FF, 4)
+	Sleep(0)
+	Update
+loc:6F5:
+	MagicCastBegin(FFFF)
+	MagicCastEnd
+	Return
+loc:6FA:
+	OP_78(1)
+	LoadSChip(7, 731252, FF)
+	AddEff(0, "battle/cr414000.eff")
+	OP_78(0)
+	ResetLoopTarget
+	OP_95
+	SetAngleTarget(FF, "", 0)
+	SetAngleTarget(FE, "", 0)
+	MoveAngle(64, 1E14)
+	OP_C(FF, FE, 0, 0, 0)
+	SaveCurPos(FF)
+	OP_6D(200000)
+	SelectChip(FF, 7)
+	SubChip(FF, 0)
+	Sleep(64)
+	Update
+	SubChip(FF, 1)
+	Sleep(64)
+	Update
+	SeEx(213, 0)
+	SubChip(FF, 2)
+	OP_5(FF, 0, 0)
+	OP_21(1, FF, FFFFFFCE, 7D0)
+	Sleep(12C)
+	Update
+	BeginThread(FF, 1, loc:5FE, 0)
+	BeginThread(FF, 2, loc:1D5, 0)
+	ShowEff(FF, FE, 0, 5, 0, 0, 0, 0, 0, 0, 3E8, 3E8, 3E8, 2)
+	SeEx(164, 0)
+	ShakeScreen(64, 64, 64, 1F4)
+	Sleep(1F4)
+	Update
+	SuspendThread(FF, 2)
+	SuspendThread(FF, 1)
+	ResetLoopTarget
+	ShowEff(FF, FE, 13, 1, 0, 1F4, 0, 0, 0, 0, 3E8, 3E8, 3E8, FF)
+	DamageAnime(FE, 1, 32)
+	Damage(FE)
+	CancelEff(FF, 2)
+	SubChip(FF, 2)
+	Sleep(64)
+	Update
+	OP_AE(FF, 2, 14)
+	Move(FF, F0, 0, 0, 0, C8, 0)
+	Return
+	SubChip(FF, 1)
+	Sleep(64)
+	Update
+	SubChip(FF, 0)
+	Sleep(64)
+	Update
+	WaitThread(FF, 2)
+	BeginThread(FF, 1, loc:6B, 0)
+	OP_8F(0)
+	SuspendThread(FF, 1)
+	OP_6E(200000)
+	ReleaseEff(0)
+	ResetSCraftChip
+	Return
+loc:815:
+	ResetLoopTarget
+	OP_78(1)
+	LoadSChip(7, 731254, FF)
+	AddEff(0, "battle/cr000200.eff")
+	OP_78(0)
+	OP_95
+	SetAngleTarget(FF, "", 0)
+	SetAngleTarget(FC, "", 0)
+	MoveAngle(64, 1E14)
+	OP_C(FF, FE, 0, 0, 0)
+	TalkText(FF, "是新的指令！拿出氣魄來！", 28A)
+	SelectChip(FF, 7)
+	SubChip(FF, 3)
+	Sleep(1F4)
+	Update
+	SeEx(24E, 0)
+	SubChip(FF, 4)
+	Sleep(1F4)
+	Update
+loc:881:
+	LoopTargetBegin(loc:8B0)
+	ShowEff(FF, FE, 0, 0, 0, 0, 0, 0, 0, 0, 3E8, 3E8, 3E8, FF)
+	SeEx(227, 0)
+	Damage(FE)
+	Sleep(32)
+	Update
+	LoopTargetEnd
+	Goto(loc:881)
+loc:8B0:
+	Sleep(1F4)
+	Update
+	BeginThread(FF, 1, loc:6B, 0)
+	OP_8F(0)
+	SuspendThread(FF, 1)
+	WaitEff(0)
+	ReleaseEff(0)
+	ResetSCraftChip
+	Return
+loc:8C5:
+	OP_78(1)
+	LoadSChip(7, 731252, FF)
+	AddEff(0, "battle/cr414100.eff")
+	OP_78(0)
+	ResetLoopTarget
+	SortTarget(0)
+	OP_95
+	SetAngleTarget(FF, "", 0)
+	MoveAngle(64, 1E14)
+	OP_C(FF, FB, 0, 0, 0)
+	SaveCurPos(FF)
+	OP_6D(200000)
+	SelectChip(FF, 7)
+	SubChip(FF, 0)
+	Sleep(64)
+	Update
+	SubChip(FF, 1)
+	Sleep(64)
+	Update
+	SeEx(213, 0)
+	SubChip(FF, 2)
+	OP_5(FF, 4, 0)
+	OP_21(1, FF, FFFFFFCE, 7D0)
+	Sleep(12C)
+	Update
+	SubChip(FF, 3)
+	ShowEff(FF, F9, 0, 5, 50, B4, 3E8, 0, 0, 0, 3E8, 3E8, 3E8, FF)
+	SeEx(11A, 0)
+	BeginThread(FF, 2, loc:1D5, 0)
+	OP_95
+	SetAngleTarget(FC, "", 0)
+	MoveAngle(C8, 1E14)
+	ShakeScreen(78, 78, 78, 384)
+	Sleep(384)
+	Update
+	SuspendThread(FF, 2)
+	BeginThread(FF, 2, loc:1C2, 0)
+	SubChip(FF, 2)
+	Sleep(64)
+	Update
+	OP_AE(FF, 3, 14)
+	Move(FF, F0, 0, 0, 0, C8, 0)
+	Return
+	SubChip(FF, 1)
+	Sleep(64)
+	Update
+	SubChip(FF, 0)
+	Sleep(64)
+	Update
+	BeginThread(FF, 1, loc:6B, 0)
+	OP_8F(0)
+	SuspendThread(FF, 1)
+	OP_6E(200000)
+	ReleaseEff(0)
+	ResetSCraftChip
+	Return
+loc:9BD:
+	OP_78(1)
+	LoadSChip(7, 731252, FF)
+	AddEff(0, "battle/cr414200.eff")
+	OP_78(0)
+	ResetLoopTarget
+	OP_95
+	SetAngleTarget(FF, "", 0)
+	MoveAngle(64, 1E14)
+	BeginThread(FF, 1, loc:A9, 0)
+	OP_1E(FFFFFFFF)
+	SuspendThread(FF, 1)
+	OP_C(FF, FE, 0, 1F4, 0)
+	SaveCurPos(FF)
+	OP_6D(200000)
+	SelectChip(FF, 7)
+	SubChip(FF, 0)
+	Sleep(64)
+	Update
+	SubChip(FF, 1)
+	Sleep(64)
+	Update
+	SeEx(213, 0)
+	SubChip(FF, 2)
+	OP_5(FF, 4, 0)
+	OP_21(1, FF, FFFFFFCE, 7D0)
+	Sleep(1F4)
+	Update
+	ShakeScreen(64, 64, 64, 12C)
+	ShowEff(FF, FF, 0, 3, 0, 0, 0, 0, 0, 0, 3E8, 3E8, 3E8, FF)
+	SeEx(221, 0)
+	SubChip(FF, 3)
+	Sleep(64)
+	Update
+	SubChip(FF, 2)
+	Sleep(190)
+	Update
+	OP_95
+	SetAngleTarget(FC, "", 0)
+	MoveAngle(64, 1E14)
+	ShakeScreen(C8, C8, C8, 12C)
+	DamageAnime(FC, 0, 32)
+	SeEx(16A, 0)
+	SubChip(FF, 3)
+	Sleep(64)
+	Update
+	SubChip(FF, 2)
+	Sleep(190)
+	Update
+	ShakeScreen(C8, C8, C8, 12C)
+	DamageAnime(FC, 0, 32)
+	SeEx(16A, 0)
+	SubChip(FF, 3)
+	Sleep(64)
+	Update
+	SubChip(FF, 2)
+	Sleep(190)
+	Update
+	ShakeScreen(C8, C8, C8, 1F4)
+	BeginThread(FF, 2, loc:1C2, 0)
+	SeEx(C4, 0)
+	OP_AE(FF, 3, 14)
+	Move(FF, F0, 0, 0, 0, C8, 0)
+	Return
+	SubChip(FF, 1)
+	Sleep(64)
+	Update
+	SubChip(FF, 0)
+	Sleep(64)
+	Update
+	BeginThread(FF, 1, loc:6B, 0)
+	OP_8F(0)
+	SuspendThread(FF, 1)
+	OP_6E(200000)
+	ReleaseEff(0)
+	ResetSCraftChip
+	Return

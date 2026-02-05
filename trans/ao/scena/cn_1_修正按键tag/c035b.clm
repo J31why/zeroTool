@@ -1,0 +1,227 @@
+calmare zero_k scena
+scena:
+	name "c035b" "c035b" "c035b"
+	town town[45]
+	bgm bgm[513]
+	flags 8192
+	item_use fn[0,255]
+	unk 255 0
+
+entry:
+	pos (0, 0, -1000)
+	unk1 0
+	cam_from (0, 0, 24000)
+	cam_pers 500
+	unk2 30
+	cam_deg 45deg
+	cam_limit 0deg 360deg
+	cam_at (0, 0, 0)
+	unk3 0
+	unk4 0
+	flags 0x0001
+	town town[1]
+	init fn[0,2]
+	reinit fn[0,3]
+
+chip[0] "chr/ch44100.itc"
+chip[1] "chr/ch47500.itc"
+chip[2] "chr/ch23600.itc"
+chip[3] "chr/ch44102.itc"
+
+npc char[0]:
+	name "尤利"
+	pos (7989, 200, 1600)
+	angle 270deg
+	flags 0x0105
+	unk2 0
+	chip chip[0]
+	init fn[0,0]
+	talk fn[0,4]
+	unk4 255
+
+npc char[1]:
+	name "賽庫斯"
+	pos (5699, 0, 469)
+	angle 45deg
+	flags 0x0105
+	unk2 0
+	chip chip[1]
+	init fn[0,0]
+	talk fn[0,5]
+	unk4 255
+
+npc char[2]:
+	name "瑞吉"
+	pos (7780, 0, -810)
+	angle 0deg
+	flags 0x0105
+	unk2 0
+	chip chip[2]
+	init fn[0,0]
+	talk fn[0,7]
+	unk4 255
+
+fn[0]:
+	switch random % 8:
+		case 0:
+			ED7_A0 self 1450ms 0 251
+			break
+		case 1:
+			ED7_A0 self 1550ms 0 251
+			break
+		case 2:
+			ED7_A0 self 1600ms 0 251
+			break
+		case 3:
+			ED7_A0 self 1400ms 0 251
+			break
+		case 4:
+			ED7_A0 self 1650ms 0 251
+			break
+		case 5:
+			ED7_A0 self 1350ms 0 251
+			break
+		case 6:
+			ED7_A0 self 1500ms 0 251
+			break
+		default:
+			ED7_A0 self 1500ms 0 251
+			break
+	while 1:
+		ED7_A0 self 1500ms 0 251
+	Return
+
+fn[1]:
+	while 1:
+		CharIdle self (820, null, 10500) (-3300, null, 14340) 1000mm/s
+		Sleep 300ms
+	Return
+
+fn[2]:
+	CharSetChipBase char[0] chip[3]
+	CharSetChipPattern char[0] 0
+	ForkQuit char[0] fork[0]
+	CharFlags2Set char[0] 0x0004
+	CharSetPos char[1] (1000, 0, 3700) 270deg
+	CharSetPos char[2] (-500, 0, 3700) 90deg
+	CharFlagsSet char[2] 0x0010
+	CharFlagsSet char[1] 0x0010
+	Return
+
+fn[3]:
+	Return
+
+fn[4]:
+	TextStart self
+	if !flag[2635]:
+		TextTalk self {
+			……這麼晚了，你們想幹嘛？{wait}
+		}
+		TextWait
+		TextTalk self {
+			你們在白天做的好事……
+			別跟我說你們都忘了。{wait}
+		}
+		TextWait
+		TextTalk name[9] {
+			#00605F（你們幾個……
+			　和他們起了什麼爭執嗎？）{wait}
+		}
+		TextWait
+		TextTalk name[3] {
+			#00303F（呃，其實
+			　這也不是出於我們本意啦……）{wait}
+		}
+		TextWait
+		TextTalk name[9] {
+			#00603F（真是的……別在這種敏感的時候
+			　惹出不必要的麻煩。）{wait}
+		} {
+			#00600F（在明天正式會議結束之前，
+			　絕對不能有一絲疏忽。
+			　……知道了嗎？）{wait}
+		}
+		TextWait
+		TextTalk name[0] {
+			#00005F（瞭、瞭解。）{wait}
+		}
+		TextWait
+		FlagSet flag[2635]
+	else:
+		TextTalk self {
+			你們在白天做的好事……
+			別跟我說你們都忘了。{wait}
+		}
+		TextWait
+		TextTalk self {
+			我總有一天一定會讓你們後悔。{wait}
+		}
+		TextWait
+		TextTalk name[3] {
+			#00306F（這傢伙還真煩啊……）{wait}
+		}
+		TextWait
+	TextEnd self
+	Return
+
+fn[5]:
+	TextStart self
+	Call fn[0,6]
+	TextEnd self
+	Return
+
+fn[6]:
+	_Char4A char[1] 255
+	_Char4A char[2] 255
+	if !flag[1]:
+		TextTalk char[1] {
+			尤利那傢伙的
+			心情相當糟啊……{wait}
+		}
+		TextWait
+		TextTalk char[1] {
+			就算想帶他去歡樂街散心，
+			那裡好像也有很多警察
+			在替ＶＩＰ戒備。{wait}
+		}
+		TextWait
+		TextTalk char[2] {
+			嗯，那麼……
+			要不要開車去山道那邊，
+			來趟夜晚兜風？{wait}
+		}
+		TextWait
+		TextTalk char[2] {
+			這個時間應該
+			很少有人會經過那邊，
+			可以盡情奔馳……{wait}
+		}
+		TextWait
+		TextTalk char[1] {
+			喔喔，這個點子或許不錯呢。{wait}
+		}
+		TextWait
+		FlagSet flag[1]
+	else:
+		TextTalk char[1] {
+			很好！既然決定了，那就
+			去找尤利提議看看吧。{wait}
+		}
+		TextWait
+		TextTalk char[1] {
+			瑞吉，你先去準備車子。{wait}
+		}
+		TextWait
+		TextTalk char[2] {
+			瞭解！{wait}
+		}
+		TextWait
+	_Char4B char[1] 255
+	_Char4B char[2] 255
+	Return
+
+fn[7]:
+	TextStart self
+	Call fn[0,6]
+	TextEnd self
+	Return

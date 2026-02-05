@@ -1,0 +1,1443 @@
+calmare ao_k scena
+scena:
+	name "m4060" "m4060" "m4060"
+	town town[125]
+	bgm bgm[350]
+	flags 0
+	item_use fn[0,255]
+	unk 255 39
+	scp 0 "scena/m4060.bin"
+	scp 1 "scena/r0000_1.bin"
+
+entry:
+	pos (0, 0, -1000)
+	unk1 0
+	cam_from (0, 0, 24000)
+	cam_pers 500
+	unk2 30
+	cam_deg 45deg
+	cam_limit 0deg 360deg
+	cam_at (0, 0, 0)
+	unk3 0
+	unk4 0
+	flags 0x0001
+	town town[125]
+	init fn[0,2]
+	reinit fn[0,3]
+
+chip[0] null
+chip[1] null
+chip[2] null
+chip[3] null
+chip[4] null
+chip[5] null
+chip[6] null
+chip[7] null
+chip[8] null
+chip[9] null
+chip[10] null
+chip[11] null
+chip[12] null
+chip[13] null
+chip[14] null
+chip[15] null
+chip[16] "monster/ch80750.itc"
+chip[17] "monster/ch80750.itc"
+chip[18] "monster/ch83650.itc"
+chip[19] "monster/ch83650.itc"
+chip[20] null
+chip[21] null
+chip[22] null
+chip[23] null
+chip[24] "monster/ch83950.itc"
+chip[25] "monster/ch83951.itc"
+chip[26] "monster/ch82950.itc"
+chip[27] "monster/ch82950.itc"
+chip[28] null
+chip[29] null
+
+npc char[0]:
+	name "事件用怪物"
+	pos (0, 0, 0)
+	angle 0deg
+	flags 0x01C5
+	unk2 0
+	chip chip[0]
+	init fn[255,255]
+	talk fn[255,255]
+	unk4 255
+
+npc char[1]:
+	name "礦岩領主"
+	pos (-239, 10500, 32380)
+	angle 0deg
+	flags 0x01E4
+	unk2 0
+	chip chip[16]
+	init fn[0,1]
+	talk fn[255,255]
+	unk4 255
+
+monster char[2]:
+	pos (-166630, 5000, 161730)
+	angle 185
+	flags 0x0101
+	battle battle[4]
+	flag flag[0]
+	chip chip[16]
+	unk2 65535
+	stand_anim anim[0]
+	walk_anim anim[1]
+
+monster char[3]:
+	pos (-164430, 5000, 188750)
+	angle 185
+	flags 0x0101
+	battle battle[2]
+	flag flag[0]
+	chip chip[24]
+	unk2 65535
+	stand_anim anim[4]
+	walk_anim anim[5]
+
+monster char[4]:
+	pos (-298920, 5000, 165910)
+	angle 185
+	flags 0x0101
+	battle battle[1]
+	flag flag[0]
+	chip chip[18]
+	unk2 65535
+	stand_anim anim[2]
+	walk_anim anim[3]
+
+monster char[5]:
+	pos (168220, 5000, 172490)
+	angle 230
+	flags 0x0101
+	battle battle[2]
+	flag flag[0]
+	chip chip[24]
+	unk2 65535
+	stand_anim anim[4]
+	walk_anim anim[5]
+
+monster char[6]:
+	pos (154890, 5000, 187560)
+	angle 95
+	flags 0x0101
+	battle battle[3]
+	flag flag[0]
+	chip chip[26]
+	unk2 65535
+	stand_anim anim[6]
+	walk_anim anim[7]
+
+monster char[7]:
+	pos (299310, 5000, 190630)
+	angle 232
+	flags 0x0101
+	battle battle[1]
+	flag flag[0]
+	chip chip[18]
+	unk2 65535
+	stand_anim anim[2]
+	walk_anim anim[3]
+
+monster char[8]:
+	pos (302640, 5000, 192150)
+	angle 232
+	flags 0x0101
+	battle battle[1]
+	flag flag[0]
+	chip chip[18]
+	unk2 65535
+	stand_anim anim[2]
+	walk_anim anim[3]
+
+monster char[9]:
+	pos (302320, 5000, 185940)
+	angle 232
+	flags 0x0101
+	battle battle[1]
+	flag flag[0]
+	chip chip[18]
+	unk2 65535
+	stand_anim anim[2]
+	walk_anim anim[3]
+
+trigger[0]:
+	pos (0.0, 14000.0, -1000.0)
+	radius 182250.0
+	transform
+		0.11111111 -0.0 0.0 -0.0
+		-0.0 0.3333333 -0.0 -4.6666665
+		0.0 -0.0 0.2 0.2
+		0.0 0.0 0.0 1.0
+		// translate (-0.0, 14.000002, -1.0)
+		// rotate (1.0, 0.0, 0.0) 0.0deg
+		// scale (9.000001, 3.0000005, 5.0)
+	unk1 0
+	unk2 0
+	function fn[0,9]
+	unk3 0
+	unk4 0
+	unk5 0
+	unk6 0
+
+look_point[0]:
+	pos (-240, 10000, 32870)
+	radius 1200
+	bubble_pos (-240, 11000, 32870)
+	unk1 124
+	unk2 0
+	function fn[0,4]
+	unk3 0
+	unk4 0
+
+look_point[1]:
+	pos (296180, 5000, 193510)
+	radius 1200
+	bubble_pos (296180, 6000, 193510)
+	unk1 124
+	unk2 0
+	function fn[0,5]
+	unk3 0
+	unk4 0
+
+look_point[2]:
+	pos (-299630, 5000, 160570)
+	radius 1200
+	bubble_pos (-299630, 6000, 160570)
+	unk1 124
+	unk2 0
+	function fn[0,6]
+	unk3 0
+	unk4 0
+
+look_point[3]:
+	pos (220, 5250, 324370)
+	radius 2000
+	bubble_pos (220, 6750, 324370)
+	unk1 124
+	unk2 0
+	function fn[0,12]
+	unk3 0
+	unk4 0
+
+look_point[4]:
+	pos (-1850, 200, -1430)
+	radius 1200
+	bubble_pos (-1850, 1700, -1430)
+	unk1 124
+	unk2 0
+	function fn[0,8]
+	unk3 0
+	unk4 0
+
+look_point[5]:
+	pos (190, 160, 31000)
+	radius 2000
+	bubble_pos (190, 2160, 31000)
+	unk1 124
+	unk2 0
+	function fn[0,13]
+	unk3 0
+	unk4 0
+
+anim[0] 699ms 0 1 2 3 4 3 2 1
+anim[1] 1000ms 0 1 2 3 4 3 2 1
+anim[2] 699ms 0 1 2 3 4 5 6
+anim[3] 1000ms 0 1 2 3 4 5 6
+anim[4] 1000ms 0 1 2 3 4 3 2 1
+anim[5] 1500ms 0 1 2 3 4
+anim[6] 800ms 0 1 2 3 4
+anim[7] 1000ms 0 1 2 3 4
+
+// NB: the first five sepith sets are seemingly junk data.
+sepith[0] 100 1 2 3 70 89 99 0
+sepith[1] 100 5 1 5 1 5 1 0
+sepith[2] 100 5 1 5 1 5 1 0
+sepith[3] 100 5 0 5 0 5 0 0
+sepith[4] 100 5 0 5 0 5 0 0
+
+sepith[5] 3 4 5 2 0 0 0 0
+sepith[6] 0 4 0 4 1 1 1 0
+sepith[7] 2 2 0 2 2 2 1 0
+sepith[8] 2 2 2 2 0 1 1 0
+sepith[9] 0 3 3 3 0 0 1 0
+sepith[10] 3 0 4 3 3 5 0 0
+sepith[11] 4 4 2 0 2 2 4 0
+
+at_roll[0]: none 100
+at_roll[1]: none 100; hp10 5; hp50 1; ep10 5; ep50 1; cp10 5; cp50 1; unk1 5; unk2 5; unk6 1
+at_roll[2]: none 100; hp10 5; hp50 1; ep10 5; ep50 1; cp10 5; cp50 1; unk1 5; unk2 5; unk3 5; unk4 5; unk5 5; unk6 5
+at_roll[3]: none 100; hp10 5; ep10 5; cp10 5; unk1 2; unk2 5; unk6 2
+at_roll[4]: none 100; hp10 5; ep10 5; cp10 5; unk2 5
+
+placement[0]:
+	pos 7 9 180deg
+	pos 11 10 180deg
+	pos 10 13 180deg
+	pos 5 11 180deg
+	pos 12 12 180deg
+	pos 4 14 180deg
+	pos 14 14 180deg
+	pos 2 13 180deg
+
+placement[1]:
+	pos 8 8 180deg
+	pos 5 9 180deg
+	pos 11 10 180deg
+	pos 6 12 180deg
+	pos 10 12 180deg
+	pos 13 13 180deg
+	pos 4 14 180deg
+	pos 8 14 180deg
+
+placement[2]:
+	pos 7 8 180deg
+	pos 9 9 180deg
+	pos 6 10 180deg
+	pos 10 11 180deg
+	pos 6 12 180deg
+	pos 10 13 180deg
+	pos 7 14 180deg
+	pos 9 15 180deg
+
+placement[3]:
+	pos 8 8 180deg
+	pos 6 9 180deg
+	pos 10 10 180deg
+	pos 7 11 180deg
+	pos 10 12 180deg
+	pos 8 14 180deg
+	pos 10 14 180deg
+	pos 6 15 180deg
+
+placement[4]:
+	pos 7 4 0deg
+	pos 10 11 225deg
+	pos 4 7 90deg
+	pos 12 7 270deg
+	pos 4 11 135deg
+	pos 11 4 315deg
+	pos 7 12 180deg
+	pos 5 5 45deg
+
+placement[5]:
+	pos 6 12 180deg
+	pos 10 12 180deg
+	pos 0 0 180deg
+	pos 0 0 180deg
+	pos 0 0 180deg
+	pos 0 0 180deg
+	pos 0 0 180deg
+	pos 0 0 180deg
+
+battle[0]:
+	flags 0
+	level 46
+	unk1 6
+	vision_range 45
+	move_range 6
+	can_move 1
+	move_speed 40
+	unk2 0
+	battlefield "bm4010"
+	sepith sepith[5]
+	setup 60:
+		enemies "ms86200.dat" null null null null null null null
+		placement placement[1] placement[4]
+		bgm bgm[450] bgm[453]
+		at_roll at_roll[2]
+	setup 25:
+		enemies "ms86200.dat" "ms86200.dat" null null null null null null
+		placement placement[0] placement[4]
+		bgm bgm[450] bgm[453]
+		at_roll at_roll[2]
+	setup 10:
+		enemies "ms86200.dat" "ms86200.dat" "ms86200.dat" null null null null null
+		placement placement[1] placement[4]
+		bgm bgm[450] bgm[453]
+		at_roll at_roll[2]
+
+battle[1]:
+	flags 0
+	level 46
+	unk1 6
+	vision_range 45
+	move_range 6
+	can_move 1
+	move_speed 40
+	unk2 0
+	battlefield "bm4010"
+	sepith sepith[6]
+	setup 60:
+		enemies "ms83600.dat" null null null null null null null
+		placement placement[1] placement[4]
+		bgm bgm[450] bgm[453]
+		at_roll at_roll[2]
+	setup 25:
+		enemies "ms83600.dat" "ms83600.dat" null null null null null null
+		placement placement[0] placement[4]
+		bgm bgm[450] bgm[453]
+		at_roll at_roll[2]
+	setup 10:
+		enemies "ms83600.dat" "ms83600.dat" "ms83600.dat" null null null null null
+		placement placement[1] placement[4]
+		bgm bgm[450] bgm[453]
+		at_roll at_roll[2]
+
+battle[2]:
+	flags 0
+	level 47
+	unk1 6
+	vision_range 45
+	move_range 6
+	can_move 1
+	move_speed 40
+	unk2 0
+	battlefield "bm4010"
+	sepith sepith[9]
+	setup 60:
+		enemies "ms83900.dat" null null null null null null null
+		placement placement[1] placement[4]
+		bgm bgm[450] bgm[453]
+		at_roll at_roll[2]
+	setup 25:
+		enemies "ms83900.dat" "ms83900.dat" null null null null null null
+		placement placement[0] placement[4]
+		bgm bgm[450] bgm[453]
+		at_roll at_roll[2]
+	setup 10:
+		enemies "ms83900.dat" "ms83900.dat" "ms83900.dat" null null null null null
+		placement placement[1] placement[4]
+		bgm bgm[450] bgm[453]
+		at_roll at_roll[2]
+
+battle[3]:
+	flags 0
+	level 47
+	unk1 6
+	vision_range 45
+	move_range 6
+	can_move 1
+	move_speed 40
+	unk2 0
+	battlefield "bm4010"
+	sepith sepith[10]
+	setup 100:
+		enemies "ms82900.dat" null null null null null null null
+		placement placement[1] placement[4]
+		bgm bgm[450] bgm[453]
+		at_roll at_roll[2]
+
+battle[4]:
+	flags 16
+	level 48
+	unk1 6
+	vision_range 45
+	move_range 6
+	can_move 1
+	move_speed 30
+	unk2 0
+	battlefield "bm4010"
+	sepith sepith[11]
+	setup 100:
+		enemies "ms80700.dat" "ms84600.dat" null null null null "ms84600.dat" null
+		placement placement[1] placement[4]
+		bgm bgm[450] bgm[453]
+		at_roll at_roll[3]
+
+battle[5]:
+	flags 18
+	level 48
+	unk1 6
+	vision_range 45
+	move_range 3
+	can_move 3
+	move_speed 30
+	unk2 0
+	battlefield "bm4010"
+	sepith null
+	setup 100:
+		enemies "ms80700.dat" "ms84600.dat" "ms84600.dat" null null null "ms84600.dat" null
+		placement placement[1] placement[4]
+		bgm bgm[452] bgm[453]
+		at_roll at_roll[3]
+
+battle[6]:
+	flags 0
+	level 255
+	unk1 6
+	vision_range 45
+	move_range 0
+	can_move 1
+	move_speed 0
+	unk2 0
+	battlefield "bm4010"
+	sepith null
+	setup 100:
+		enemies "ms80700.dat" "ms80700.dat" null null null null null null
+		placement placement[5] placement[4]
+		bgm bgm[451] bgm[453]
+		at_roll at_roll[3]
+
+fn[0]:
+	while 1:
+		CharSetChipPattern self 0
+		Sleep 100ms
+		CharSetChipPattern self 1
+		Sleep 100ms
+		CharSetChipPattern self 2
+		Sleep 100ms
+		CharSetChipPattern self 3
+		Sleep 100ms
+		CharSetChipPattern self 4
+		Sleep 100ms
+		CharSetChipPattern self 5
+		Sleep 100ms
+		CharSetChipPattern self 4
+		Sleep 100ms
+		CharSetChipPattern self 3
+		Sleep 100ms
+		CharSetChipPattern self 2
+		Sleep 100ms
+		CharSetChipPattern self 1
+		Sleep 100ms
+	Return
+
+fn[1]:
+	while 1:
+		ED7CharAnimation self 700ms 0 1 2 3 4 3 2 1
+	Return
+
+fn[2]:
+	if system[0] == 110 && flag[2345] && flag[2312] && !flag[2313]:
+		Event fn[0,10]
+	Return
+
+fn[3]:
+	char[2].12 = 128
+	char[2].20 = 195
+	char[2].13 = 128
+	char[2].21 = 195
+	char[2].14 = 128
+	char[2].22 = 195
+	char[2].15 = 128
+	char[2].23 = 195
+	char[2].16 = 128
+	char[2].24 = 195
+	char[2].17 = 128
+	char[2].25 = 195
+	char[2].18 = 128
+	char[2].26 = 195
+	char[2].19 = 128
+	char[2].27 = 195
+	char[6].12 = 128
+	char[6].20 = 227
+	char[6].13 = 128
+	char[6].21 = 227
+	char[6].14 = 128
+	char[6].22 = 227
+	char[6].15 = 128
+	char[6].23 = 227
+	char[6].16 = 128
+	char[6].24 = 227
+	char[6].17 = 128
+	char[6].25 = 227
+	char[6].18 = 128
+	char[6].26 = 227
+	char[6].19 = 128
+	char[6].27 = 227
+	char[3].12 = 128
+	char[3].20 = 215
+	char[3].13 = 128
+	char[3].21 = 215
+	char[3].14 = 128
+	char[3].22 = 215
+	char[3].15 = 128
+	char[3].23 = 215
+	char[3].16 = 128
+	char[3].24 = 215
+	char[3].17 = 128
+	char[3].25 = 215
+	char[3].18 = 128
+	char[3].26 = 215
+	char[3].19 = 128
+	char[3].27 = 215
+	char[5].12 = 128
+	char[5].20 = 215
+	char[5].13 = 128
+	char[5].21 = 215
+	char[5].14 = 128
+	char[5].22 = 215
+	char[5].15 = 128
+	char[5].23 = 215
+	char[5].16 = 128
+	char[5].24 = 215
+	char[5].17 = 128
+	char[5].25 = 215
+	char[5].18 = 128
+	char[5].26 = 215
+	char[5].19 = 128
+	char[5].27 = 215
+	char[2].55 = 8
+	char[6].55 = 8
+	char[3].55 = 8
+	char[5].55 = 8
+	char[6].51 = 1200
+	char[2].7 = 1500
+	char[6].7 = 2000
+	char[3].7 = 1500
+	char[5].7 = 1500
+	TriggerFlagsSet trigger[0] 0x0080
+	if flag[2311] && !flag[2312]:
+		TriggerFlagsUnset trigger[0] 0x0080
+	LookPointFlagsSet look_point[5] 0x0001
+	if !flag[2345]:
+		LookPointFlagsUnset look_point[5] 0x0001
+	ObjFlagsUnset object[3] 0x0010
+	if !flag[2345]:
+		ObjFrame object[3] 0
+		ObjFrame object[4] 0
+	else:
+		ObjFrame object[3] 20
+		ObjFrame object[4] 20
+	if !flag[3853]:
+		ObjFrame object[0] 0
+	else:
+		ObjFrame object[0] 30
+	if !flag[3854]:
+		ObjFrame object[1] 0
+	else:
+		ObjFrame object[1] 30
+	if !flag[3855]:
+		ObjFrame object[2] 0
+	else:
+		ObjFrame object[2] 30
+	SoundPlay sound[129] 1 100 0
+	ED7_1C 0 object[6] 0 50 fn[0,7] flag[0] 0
+	ED7_1C 0 object[7] 0 50 fn[0,7] flag[0] 0
+	ED7_1C 0 object[8] 0 50 fn[0,7] flag[0] 0
+	EffLoad eff[16] "event\\eva00_00.eff"
+	Return
+
+fn[4]:
+	SystemFlagsSet 0x08000000
+	if !flag[3853]:
+		SoundPlay sound[14] 0 100 0
+		ED7_74 object[0] 0 30
+		ED7ObjPlay object[0] 0 30 0 0
+		Sleep 500ms
+		if !flag[4312]:
+			CharColor char[1] 0x00FFFFFF 0ms
+			CharTurnToChar char[1] field_party[0] 0deg/s
+			_Char91 char[1] 0 1000 0 0 0
+			Fork char[1] fork[1]:
+				_Char91 self 0 -1000 0 1000 0
+			Fork char[1] fork[2]:
+				CharColor self 0xFFFFFFFF 1000ms
+			CharFlagsUnset char[1] 0x0080
+			CharFlagsSet char[1] 0x8000
+			TextMessage name[742] {
+				{color 5}魔獸出現了！{color 0}{wait}
+			}
+			TextWait
+			TextClose 0
+			ForkWait char[1] fork[1]
+			ED7Battle battle[6] null 0 0 11 null
+			CharFlagsSet char[1] 0x0080
+			CharFlagsUnset char[1] 0x8000
+			switch system[3]:
+				case 0:
+					FlagSet flag[4312]
+					ObjFrame object[0] 30
+					Sleep 500ms
+					break
+				case 2:
+					ObjFrame object[0] 0
+					TextEnd null
+					SystemFlagsUnset 0x08000000
+					Return
+				case 1:
+					ReturnToTitle 0
+					Return
+		if ItemAdd item[150] 1:
+			FadeOut 300ms 0x00000000 100
+			SoundPlay sound[17] 0 100 0
+			TextSetPos -1 -1 -1 -1
+			TextMessage name[742] {
+				{color 0}已取得{item[150]}{color 0}。{wait}
+			}
+			TextWait
+			TextClose 0
+			TextSetPos -1 280 60 3
+			FadeIn 300ms 0x00000000
+			FlagSet flag[3853]
+			ED7_DE 5
+		else:
+			FadeOut 300ms 0x00000000 100
+			TextMessage name[742] {
+				寶箱裡裝有{item[150]}{color 0}。
+				因持有物品已達上限，已放棄{item[150]}{color 0}。{wait}
+			}
+			TextWait
+			TextClose 0
+			FadeIn 300ms 0x00000000
+			SoundPlay sound[15] 0 100 0
+			ED7ObjPlay object[0] 30 0 0 0
+	else:
+		FadeOut 300ms 0x00000000 100
+		TextMessage name[742] {
+			{0x06}{color 5}寶箱裡什麼都沒有。{color 0}{wait}
+		}
+		TextWait
+		TextClose 0
+		FadeIn 300ms 0x00000000
+	Sleep 30ms
+	TextEnd null
+	SystemFlagsUnset 0x08000000
+	Return
+
+fn[5]:
+	ED7_F2 1
+	SystemFlagsSet 0x08000000
+	if !flag[3854]:
+		SoundPlay sound[14] 0 100 0
+		ED7_74 object[1] 0 30
+		ED7ObjPlay object[1] 0 30 0 0
+		Sleep 500ms
+		if ItemAdd item[501] 1:
+			FadeOut 300ms 0x00000000 100
+			SoundPlay sound[17] 0 100 0
+			TextSetPos -1 -1 -1 -1
+			TextSetName ""
+			TextMessage name[742] {
+				{color 0}已取得{item[501]}{color 0}。{wait}
+			}
+			TextWait
+			TextClose 0
+			TextSetPos -1 280 60 3
+			FadeIn 300ms 0x00000000
+			FlagSet flag[3854]
+			ED7_DE 5
+		else:
+			FadeOut 300ms 0x00000000 100
+			TextSetName ""
+			TextMessage name[742] {
+				寶箱裡裝有{item[501]}{color 0}。
+				因持有物品已達上限，已放棄{item[501]}{color 0}。{wait}
+			}
+			TextWait
+			TextClose 0
+			FadeIn 300ms 0x00000000
+			SoundPlay sound[15] 0 100 0
+			ED7ObjPlay object[1] 30 0 0 0
+	else:
+		FadeOut 300ms 0x00000000 100
+		TextSetPos -1 -1 -1 -1
+		TextSetName ""
+		TextMessage name[742] {
+			{0x06}{color 5}寶箱裡什麼都沒有。{color 0}{wait}
+		}
+		TextWait
+		TextClose 0
+		FadeIn 300ms 0x00000000
+	Sleep 30ms
+	TextEnd null
+	SystemFlagsUnset 0x08000000
+	Return
+
+fn[6]:
+	ED7_F2 1
+	SystemFlagsSet 0x08000000
+	if !flag[3855]:
+		SoundPlay sound[14] 0 100 0
+		ED7_74 object[2] 0 30
+		ED7ObjPlay object[2] 0 30 0 0
+		Sleep 500ms
+		if ItemAdd item[504] 1:
+			FadeOut 300ms 0x00000000 100
+			SoundPlay sound[17] 0 100 0
+			TextSetPos -1 -1 -1 -1
+			TextSetName ""
+			TextMessage name[742] {
+				{color 0}已取得{item[504]}{color 0}。{wait}
+			}
+			TextWait
+			TextClose 0
+			TextSetPos -1 280 60 3
+			FadeIn 300ms 0x00000000
+			FlagSet flag[3855]
+			ED7_DE 5
+		else:
+			FadeOut 300ms 0x00000000 100
+			TextSetName ""
+			TextMessage name[742] {
+				寶箱裡裝有{item[504]}{color 0}。
+				因持有物品已達上限，已放棄{item[504]}{color 0}。{wait}
+			}
+			TextWait
+			TextClose 0
+			FadeIn 300ms 0x00000000
+			SoundPlay sound[15] 0 100 0
+			ED7ObjPlay object[2] 30 0 0 0
+	else:
+		FadeOut 300ms 0x00000000 100
+		TextSetPos -1 -1 -1 -1
+		TextSetName ""
+		TextMessage name[742] {
+			{0x06}{color 5}寶箱裡什麼都沒有。{color 0}{wait}
+		}
+		TextWait
+		TextClose 0
+		FadeIn 300ms 0x00000000
+	Sleep 30ms
+	TextEnd null
+	SystemFlagsUnset 0x08000000
+	Return
+
+fn[7]:
+	Call fn[1,6]
+	Return
+
+fn[8]:
+	ED7_F2 2
+	FadeOut 300ms 0x00000000 100
+	TextMessage name[742] {
+		{color 5}有可恢復導力器的裝置。{color 0}{wait}
+	}
+	Menu menu[0] -1 -1 1
+		"在此地休息" // 0
+		"放棄" // 1
+	MenuWait var[0]
+	MenuClose menu[0]
+	TextClose 0
+	if var[0] == 0:
+		FadeIn 100ms 0x00000000
+		Sleep 500ms
+		SoundLoad sound[13]
+		ED7_74 object[5] 0 30
+		SoundPlay sound[7] 0 100 0
+		ObjFrame object[5] 0
+		ED7ObjPlay object[5] 0 30 0 0
+		ObjWait object[5]
+		ED7ObjPlay object[5] 31 390 0 32
+		Sleep 1000ms
+		BgmStop 3000ms
+		FadeOut 1000ms 0x00000000 255
+		Sleep 700ms
+		SoundPlay sound[13] 0 100 0
+		FadeWait
+		PartySetAttr name[255] 254 0
+		CamLookChar field_party[0] 0ms
+		ED7_31 1
+		Sleep 3500ms
+		ObjFrame object[5] 0
+		BgmResume
+		FadeIn 1000ms 0x00000000
+		TextClose 0
+		TextEnd null
+		Return
+	else:
+		FadeIn 300ms 0x00000000
+		TextEnd null
+		Return
+	Return
+	Return
+
+fn[9]:
+	EventBegin 0
+	FadeOut 0ms 0xFFFFFFFF 0
+	FadeOut 500ms 0x00000000 255
+	FadeWait
+	FadeIn 0ms 0xFFFFFFFF
+	ED7_E0 3
+	VisShow vis[0] 224 0 480 256 0 16 256 256 0 0 512 512 0x00FFFFFF 0 "bu01903.itp"
+	VisShow vis[1] 224 0 480 256 0 16 256 256 0 0 512 512 0x00FFFFFF 0 "bu01001.itp"
+	VisShow vis[2] 224 0 480 256 0 16 256 256 0 0 512 512 0x00FFFFFF 0 "bu01201.itp"
+	VisShow vis[3] 224 0 480 256 0 16 256 256 0 0 512 512 0x00FFFFFF 0 "bu01105.itp"
+	SoundLoad sound[2707]
+	SoundLoad sound[4125]
+	SoundLoad sound[3593]
+	SoundLoad sound[3594]
+	CamSetDistance 0 1000 18350 0ms
+	ED7CamRotate 317deg 22deg 0deg 0ms
+	CamPers 600 0ms
+	CamZoom 19000 0ms
+	CharSetPos name[0] (500, 0, 13500) 0deg
+	CharSetPos name[8] (-800, 0, 13200) 0deg
+	Fork name[0] fork[0]:
+		_Char90 name[0] 0 0 5000 2000 0
+	Sleep 100ms
+	Fork name[8] fork[0]:
+		_Char90 name[8] 0 0 5000 2000 0
+	CamZoom 17000 2500ms
+	FadeIn 1000ms 0x00000000
+	FadeWait
+	ForkWait name[8] fork[0]
+	CamWait 121
+	TextTalk name[8] {
+		#1000050053V#10111F#6P這是……{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#1000000094V#00013F#6P又是一道門……{wait}
+	}
+	TextWait
+	CamSetDistance -710 1000 28570 5000ms
+	Fork name[0] fork[0]:
+		_Char90 name[0] 0 0 10000 2000 0
+	Sleep 100ms
+	Fork name[8] fork[0]:
+		_Char90 name[8] 0 0 10000 2000 0
+	ForkWait name[8] fork[0]
+	CamWait 121
+	FadeOut 300ms 0x00000000 100
+	TextSetName ""
+	TextMessage null {
+		{color 5}石門牢牢關著。{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	FadeIn 300ms 0x00000000
+	FadeWait
+	TextTalk name[0] {
+		#1000000095V#6P#00003F不行啊……{wait}
+	} {
+		#1000000096V#00008F這應該跟入口附近的門一樣，
+		可以透過某種裝置打開。{wait}
+	}
+	TextWait
+	TextTalk name[8] {
+		#1000050054V#10101F#6P嗯，我們找找看吧。{wait}
+	}
+	TextWait
+	CharTurnToChar name[8] name[0] 500deg/s
+	Sleep 300ms
+	TextTalk name[8] {
+		#1000050055V#10113F#5P話說回來……
+		不知道達德利警官他們那邊
+		情況如何呢？{wait}
+	}
+	TextWait
+	CharTurnToChar name[0] name[8] 500deg/s
+	Sleep 100ms
+	TextTalk name[0] {
+		#1000000097V#12P#00006F憑他們兩人的身手來說，
+		應該是沒什麼問題才對……{wait}
+	} {
+		#1000000098V#00008F不過敵人不但會使用真知，
+		還能召喚出那種危險的傀儡。{wait}
+	} {
+		#1000000099V#00001F或許不能這麼樂觀。{wait}
+	}
+	TextWait
+	TextTalk name[8] {
+		#1000050056V#10108F#5P說的也是……{wait}
+	} {
+		#1000050057V#10106F唉，這種時候要是能用
+		ＥＮＩＧＭＡ來互相聯絡就好了。{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#1000000100V#12P#00006F嗯，畢竟好像只有在克洛斯貝爾
+		還有財團根據地所在的
+		列曼自治州內才能使用通訊機能。{wait}
+	} {
+		#1000000101V#00000F不過仔細想想，那還真是個
+		非常方便的機能呢。{wait}
+	} {
+		#1000000102V之前也是透過它接受芙蘭的支援。{wait}
+	}
+	TextWait
+	TextTalk name[8] {
+		#1000050058V#10112F#5P啊哈哈……
+		她有幫上忙就好。{wait}
+	} {
+		#1000050059V#10100F我真擔心她那個樣子
+		到底能不能把工作做好。{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#1000000103V#12P#00009F哈哈，妳是指來阿勒泰爾市之前，
+		她跟琪雅一起來車站送行時的事嗎？{wait}
+	} {
+		#1000000104V#00002F她那樣也沒什麼關係吧？
+		畢竟她也是在擔心妳啊。{wait}
+	}
+	TextWait
+	TextTalk name[8] {
+		#1000050060V#10106F#5P就算是這樣，她也不能
+		在工作時間翹班跑來啊……{wait}
+	} {
+		#1000050061V#10101F而且她還試圖和琪雅
+		一起搭上列車。{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#1000000105V#12P#00004F哈哈，這次連琪雅
+		也難得無理取鬧了一回啊。{wait}
+	}
+	TextWait
+	BgmVolume 70 1000ms
+	FadeOut 1000ms 0x00000000 255
+	FadeWait
+	VisSet vis[0] 3 0xFFFFFFFF 800ms 0 0
+	VisWait vis[0] 3
+	Sleep 300ms
+	Sc_C4Set 2147483648
+	TextSetPos -1 280 35 3
+	TextSetName "芙蘭"
+	TextMessage null {
+		{color 12}#1000190001V#30W姊姊、羅伊德先生！
+		你們千萬要小心喔！！{color 0}{wait}
+	}
+	TextWait
+	Sc_C4Unset 2147483648
+	SoundStop sound[2707]
+	TextClose 0
+	_59
+	VisSet vis[0] 3 0x00FFFFFF 500ms 0 0
+	VisWait vis[0] 3
+	VisSet vis[1] 3 0xFFFFFFFF 800ms 0 0
+	VisWait vis[1] 3
+	Sleep 300ms
+	TextSetName "賽爾蓋課長"
+	TextMessage null {
+		{color 12}#1000100001V#30W嗯，可別鬆懈了喔。{wait}
+	} {
+		#1000100002V雖說他們是失去後盾的亡命之徒，
+		但畢竟還是曾與那個教團有關聯的人。{color 0}{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	VisSet vis[1] 3 0x00FFFFFF 500ms 0 0
+	VisWait vis[1] 3
+	VisSet vis[2] 3 0xFFFFFFFF 800ms 0 0
+	VisWait vis[2] 3
+	Sleep 300ms
+	Sc_C4Set 2147483648
+	TextSetName "賽特"
+	TextMessage null {
+		{color 12}#1000120001V#30W汪。{color 0}{wait}
+	}
+	TextWait
+	SoundStop sound[4125]
+	TextClose 0
+	_59
+	VisSet vis[2] 3 0x00FFFFFF 500ms 0 0
+	VisWait vis[2] 3
+	VisSet vis[3] 3 0xFFFFFFFF 800ms 0 0
+	VisWait vis[3] 3
+	Sleep 500ms
+	TextSetName "琪雅"
+	TextMessage null {
+		{color 12}#1000110001V#30W羅伊德……
+		你一定要平安回來喔。{wait}
+	} {
+		#1000110002V琪雅會乖乖等你回來的……！{color 0}{wait}
+	}
+	TextWait
+	SoundStop sound[3594]
+	TextClose 0
+	_59
+	TextSetPos -1 280 60 3
+	Sc_C4Unset 2147483648
+	FadeIn 800ms 0x00000000
+	VisSet vis[3] 3 0x00FFFFFF 800ms 0 0
+	VisWait vis[3] 3
+	BgmVolume 100 1000ms
+	Sleep 300ms
+	TextTalk name[0] {
+		#1000000106V#12P#00004F我們珍惜的人們就在
+		克洛斯貝爾等著我們……{wait}
+	} {
+		#1000000107V#00000F無論如何都要完成任務，
+		平安無事地回去見他們。{wait}
+	}
+	TextWait
+	TextTalk name[8] {
+		#1000050062V#10102F#5P……是！{wait}
+	}
+	TextWait
+	FadeOut 1000ms 0x00000000 255
+	FadeWait
+	VisHide vis[255] 0
+	CharSetPos field_party[0] (530, 0, 27590) 180deg
+	ED7_Cam69 255 0
+	FlagSet flag[2312]
+	TriggerFlagsSet trigger[0] 0x0080
+	ED7_E0 2
+	Sleep 500ms
+	EventEnd 5
+	Return
+
+fn[10]:
+	EventBegin 0
+	FadeOut 0ms 0x00000000 255
+	ED7_E0 3
+	ED7LoadChip "monster/ch80750.itc" chip[30]
+	ED7LoadChip "chr/ch00050.itc" chip[31]
+	ED7LoadChip "chr/ch00051.itc" chip[32]
+	ED7LoadChip "chr/ch02950.itc" chip[33]
+	ED7LoadChip "chr/ch02951.itc" chip[34]
+	CamSetDistance 0 6000 201500 0ms
+	ED7CamRotate 323deg 23deg 0deg 0ms
+	CamPers 600 0ms
+	CamZoom 19000 0ms
+	CharSetPos name[0] (800, 5000, 205100) 180deg
+	CharSetPos name[8] (-600, 5000, 205500) 180deg
+	CharFlagsUnset char[0] 0x0080
+	CharFlagsSet char[0] 0x0020
+	CharFlagsSet char[0] 0x8000
+	CharSetChipBase char[0] chip[30]
+	CharSetChipPattern char[0] 0
+	CharSetPos char[0] (0, 5000, 191500) 0deg
+	char[0].36 = 199
+	char[0].7 = 1500
+	char[0].52 = 1500
+	Fork name[0] fork[0]:
+		_Char90 name[0] 0 0 -7000 2000 0
+	Sleep 50ms
+	Fork name[8] fork[0]:
+		_Char90 name[8] 0 0 -7000 2000 0
+	FadeIn 2000ms 0x00000000
+	FadeWait
+	ForkWait name[0] fork[0]
+	Emote name[0] 0mm 2000mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	ForkWait name[8] fork[0]
+	Emote name[8] 0mm 2000mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Sleep 1000ms
+	CamWait 121
+	CrossFade 250ms
+	CharSetChipBase name[0] chip[31]
+	CharSetChipPattern name[0] 0
+	CharSetChipBase name[8] chip[33]
+	CharSetChipPattern name[8] 0
+	SoundPlay sound[531] 0 100 0
+	SoundPlay sound[805] 0 100 0
+	FadeWait
+	ForkFunc char[0] fork[0] fn[0,0]
+	CamSetDistance 0 6100 195000 2000ms
+	ED7CamRotate 311deg 21deg 0deg 2000ms
+	CamZoom 17500 2000ms
+	CamWait 121
+	Sleep 800ms
+	BlurOn 600ms 0xBBFFFFFF 0 0 0
+	CamSetDistance 0 6300 193700 600ms
+	CamZoom 15000 600ms
+	Fork name[0] fork[1]:
+		CharWalkToPos2 self (800, 0, 190500) 5000mm/s 0
+	Sleep 50ms
+	Fork name[8] fork[1]:
+		CharWalkToPos2 self (-600, 0, 190500) 5000mm/s 0
+	Sleep 550ms
+	ForkQuit name[0] fork[255]
+	ForkQuit name[8] fork[255]
+	ED7Battle battle[5] null 0 0 0 null
+	FadeOut 0ms 0x00000000 255
+	CharFlagsSet char[0] 0x0080
+	Call fn[0,11]
+	Return
+
+fn[11]:
+	EventBegin 0
+	FadeOut 0ms 0x00000000 255
+	ED7_E0 3
+	ED7LoadChip "chr/ch00050.itc" chip[30]
+	ED7LoadChip "chr/ch02950.itc" chip[31]
+	VisShow vis[0] 0 8 480 264 0 0 512 256 0 0 480 256 0x00FFFFFF 0 "c_vis221.itp"
+	VisShow vis[1] 0 8 480 264 0 0 512 256 0 0 480 256 0x00FFFFFF 0 "c_vis222.itp"
+	CamSetDistance 150 6100 196150 0ms
+	ED7CamRotate 320deg 21deg 0deg 0ms
+	CamPers 600 0ms
+	CamZoom 16000 0ms
+	ED7_EE 0 1
+	CharSetPos name[0] (800, 5000, 196000) 180deg
+	CharSetChipBase name[0] chip[30]
+	CharSetChipPattern name[0] 0
+	CharSetPos name[8] (-700, 5000, 196300) 180deg
+	CharSetChipBase name[8] chip[31]
+	CharSetChipPattern name[8] 0
+	CamZoom 15000 2000ms
+	FadeIn 2000ms 0x00000000
+	FadeWait
+	CamWait 121
+	TextTalk name[0] {
+		#1000000108V#11P#00000F好……！{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	CrossFade 250ms
+	CharSetChipBase name[0] chip[255]
+	CharSetChipPattern name[0] 0
+	CharSetChipBase name[8] chip[255]
+	CharSetChipPattern name[8] 0
+	SoundPlay sound[531] 0 100 0
+	SoundPlay sound[805] 0 100 0
+	FadeWait
+	Fork name[8] fork[2]:
+		CharTurnToChar self name[0] 500deg/s
+	Sleep 100ms
+	CharTurnToChar name[0] name[8] 500deg/s
+	Sleep 150ms
+	TextTalk name[8] {
+		#1000050063V#10109F#5P呵呵，辛苦你了。{wait}
+	} {
+		#1000050064V#10106F不過話說回來……
+		那個叫阿奈斯特的男人
+		真正的目的究竟是什麼呢？{wait}
+	} {
+		#1000050065V#10101F看起來前議長，應該就只是
+		被迫與他一起行動吧。{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#1000000109V#12P#00003F……不知道。{wait}
+	} {
+		#1000000110V#00001F我們只能肯定
+		他似乎正試圖取得
+		與約亞西姆相同的力量。{wait}
+	}
+	TextWait
+	TextTalk name[8] {
+		#1000050066V#10105F#5P與教團事件的幕後黑手相同的力量……{wait}
+	} {
+		#1000050067V#10101F是那個能任意操縱黑手黨和
+		貝爾加德門的部隊的力量嗎？{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#1000000111V#12P#00006F嗯，那個力量也很危險，
+		但還有更惡劣的力量。{wait}
+	} {
+		#1000000112V#00013F是能夠『看見』人的內心與背景的力量。{wait}
+	}
+	TextWait
+	BgmVolume 70 1000ms
+	VisSet vis[0] 3 0xFFFFFFFF 800ms 0 0
+	VisWait vis[0] 3
+	FadeOut 0ms 0x00000000 255
+	Sleep 500ms
+	VisSet vis[0] 3 0xAAFFFFFF 300ms 0 0
+	VisWait vis[0] 3
+	Sc_C4Set 2048
+	TextSetPos 30 60 -1 -1
+	TextSetName ""
+	TextMessage null {
+		{color 13}#1000080001V#30W這傢伙……
+		可以窺視我們的記憶！？{wait}
+	}
+	TextWait
+	TextSetPos 100 110 -1 -1
+	TextMessage null {
+		{color 13}#1000090001V#30W難道說……
+		這是從我們的記憶中再現的嗎！？{color 0}{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	TextSetPos -1 280 60 3
+	Sc_C4Unset 2048
+	FadeIn 800ms 0x00000000
+	VisSet vis[0] 3 0x00FFFFFF 800ms 0 0
+	Sleep 500ms
+	BgmVolume 100 1000ms
+	Emote name[8] 0mm 2000mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Sleep 1000ms
+	TextTalk name[8] {
+		#1000050068V#10107F#5P那、那個能力……
+		不是非常不妙嗎？{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#1000000113V#12P#00003F嗯，應該這麼說，那個能力
+		無論如何都會被濫用吧。{wait}
+	} {
+		#1000000114V#00008F不只如此──{wait}
+	}
+	TextWait
+	BgmVolume 70 1000ms
+	SoundPlay sound[824] 0 100 0
+	VisSet vis[1] 3 0xFFFFFFFF 800ms 0 0
+	VisWait vis[1] 3
+	FadeOut 0ms 0x00000000 255
+	Sleep 500ms
+	VisSet vis[1] 3 0xAAFFFFFF 300ms 0 0
+	VisWait vis[1] 3
+	FadeOut 0ms 0x00000000 255
+	SoundPlay sound[1005] 0 80 0
+	Sc_C4Set 2048
+	TextSetPos -1 120 -1 -1
+	TextSetName ""
+	TextMessage null {
+		{color 11}#1000240001V#60W而吾能看到一切……{wait}
+	}
+	TextWait
+	TextMessage null {
+		{color 11}#1000240002V#60W琪雅大人失蹤的經過……
+		以及你哥哥死亡的真相……{wait}
+	}
+	TextWait
+	TextMessage null {
+		{color 11}#1000240003V#60W還有克洛斯貝爾這片土地
+		無法逃避的命運……{color 0}{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	TextSetPos -1 280 60 3
+	Sc_C4Unset 2048
+	Emote name[0] 0mm 2000mm 24 27 250ms 0
+	FadeIn 800ms 0x00000000
+	VisSet vis[1] 3 0x00FFFFFF 800ms 0 0
+	VisWait vis[1] 3
+	BgmVolume 100 1000ms
+	Sleep 1000ms
+	TextTalk name[8] {
+		#1000050069V#10105F#5P羅伊德警官……？{wait}
+	}
+	TextWait
+	EmoteStop name[0]
+	Sleep 500ms
+	TextTalk name[0] {
+		#1000000115V#12P#00003F……不，沒什麼。{wait}
+	} {
+		#1000000116V#00008F無論如何，我們都不能
+		讓阿奈斯特走上
+		與約亞西姆同樣的末路。{wait}
+	} {
+		#1000000117V#00013F一定要……
+		一定要逮到活口才行。{wait}
+	}
+	TextWait
+	Emote name[8] 0mm 2000mm 38 38 250ms 1
+	Sleep 1000ms
+	TextTalk name[8] {
+		#1000050070V#10113F#5P羅伊德警官……{wait}
+	} {
+		#1000050071V#10106F呃，之前那個主謀死去
+		並不是羅伊德警官的錯……{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#1000000118V#12P#00006F儘管如此……
+		我還是一直在想，一定有辦法
+		活捉他，而不是讓他死去。{wait}
+	} {
+		#1000000119V#00008F我很清楚這樣無濟於事，可是……{wait}
+	}
+	TextWait
+	TextTalk name[8] {
+		#1000050072V#10108F#5P…………{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#1000000120V#12P#00004F哈哈，我再說這些喪氣話，
+		大概又要被蘭迪罵了吧。{wait}
+	} {
+		#1000000121V#00000F──趕快前進吧。
+		我們得去跟亞里歐斯先生他們會合才行。{wait}
+	}
+	TextWait
+	TextTalk name[8] {
+		#1000050073V#10100F#5P好……！{wait}
+	}
+	TextWait
+	CamZoom 15250 1000ms
+	FadeOut 1000ms 0x00000000 255
+	FadeWait
+	UnloadChip chip[30]
+	UnloadChip chip[31]
+	ED7_37
+	VisHide vis[255] 0
+	CharSetPos field_party[0] (0, 5000, 196600) 180deg
+	ED7_Cam69 255 0
+	ED7_EE 0 10
+	FlagSet flag[2313]
+	ED7_E0 2
+	Sleep 500ms
+	EventEnd 5
+	Return
+
+fn[12]:
+	SystemFlagsSet 0x08000000
+	if flag[2345]:
+		TextStart null
+		TextSetName ""
+		TextMessage null {
+			{color 5}似乎已經無法動作。{wait}
+		}
+		TextWait
+		TextClose 0
+		_59
+		SystemFlagsUnset 0x08000000
+		TextEnd null
+	else:
+		EventBegin 1
+		TextMessage null {
+			{color 5}這裡有開關。
+			是否要操作？{wait}
+		}
+		Menu menu[0] -1 -1 1
+			"是" // 0
+			"否" // 1
+		MenuWait var[0]
+		MenuClose menu[0]
+		TextClose 0
+		_59
+		if var[0] == 0:
+			CrossFade 500ms
+			CamSetDistance 290 6300 321960 0ms
+			ED7CamRotate 330deg 35deg 0deg 0ms
+			CamPers 550 0ms
+			CamZoom 17000 0ms
+			CharSetPos field_party[0] (910, 5000, 322080) 1deg
+			CharSetPos field_party[1] (-220, 5000, 322120) 1deg
+			FadeWait
+			Sleep 500ms
+			SoundPlay sound[143] 0 100 0
+			ED7ObjPlay object[4] 0 20 0 0
+			Sleep 1000ms
+			CrossFade 500ms
+			CamSetDistance -1250 1300 28830 0ms
+			ED7CamRotate 336deg 28deg 0deg 0ms
+			CamPers 550 0ms
+			CamZoom 20000 0ms
+			FadeWait
+			Sleep 500ms
+			SoundPlay sound[155] 2 100 0
+			ED7_74 object[3] 0 15
+			ED7ObjPlay object[3] 0 20 0 0
+			Sleep 1300ms
+			SoundStop sound[155]
+			SoundPlay sound[149] 0 100 0
+			Shake 100 0 1000 100ms
+			Sleep 1000ms
+			FlagSet flag[2345]
+			LookPointFlagsSet look_point[5] 0x0001
+		SystemFlagsUnset 0x08000000
+		EventEnd 5
+	Return
+
+fn[13]:
+	TextStart null
+	TextSetName ""
+	TextMessage null {
+		{color 5}石門牢牢關著。{color 0}{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	TextSetPos -1 280 60 3
+	TextEnd null
+	Return

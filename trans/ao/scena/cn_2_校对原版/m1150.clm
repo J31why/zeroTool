@@ -1,0 +1,96 @@
+calmare zero_k scena
+scena:
+	name "m1150" "m1150" "m1150"
+	town town[115]
+	bgm bgm[304]
+	flags 0
+	item_use fn[0,255]
+	unk 255 33
+
+entry:
+	pos (0, 0, -1000)
+	unk1 0
+	cam_from (0, 0, 24000)
+	cam_pers 500
+	unk2 30
+	cam_deg 45deg
+	cam_limit 0deg 360deg
+	cam_at (0, 0, 0)
+	unk3 0
+	unk4 0
+	flags 0x0001
+	town town[115]
+	init fn[0,0]
+	reinit fn[0,1]
+
+look_point[0]:
+	pos (0, 7200, -34700)
+	radius 1200
+	bubble_pos (0, 8700, -34700)
+	unk1 124
+	unk2 0
+	function fn[0,2]
+	unk3 0
+	unk4 0
+
+fn[0]:
+	if flag[272]:
+		FlagUnset flag[272]
+		Event fn[0,3]
+	Return
+
+fn[1]:
+	if system[4] == 7:
+		system[1] = 351
+	if flag[3525] && flag[3526]:
+		ObjFlagsSet object[1] 0x0010
+		ObjFlagsSet object[2] 0x0004
+		LookPointFlagsSet look_point[0] 0x0001
+	elif system[4] < 7:
+		ObjFlagsSet object[1] 0x0010
+		ObjFlagsSet object[2] 0x0004
+		LookPointFlagsSet look_point[0] 0x0001
+	else:
+		ObjFlagsUnset object[1] 0x0010
+	Return
+
+fn[2]:
+	EventBegin 2
+	SystemFlagsUnset 0x00000020
+	TextSetName ""
+	TextMessage null {
+		{color 5}門被結界封住了。{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	EventEnd 3
+	Return
+
+fn[3]:
+	EventBegin 1
+	FadeOut 0ms 0x00000000 255
+	FadeWait
+	ObjFlagsUnset object[2] 0x0004
+	CamSetDistance 1770 8400 -33450 0ms
+	ED7CamRotate 36deg 16deg 0deg 0ms
+	CamPers 590 0ms
+	CamZoom 30730 0ms
+	FadeIn 500ms 0x00000000
+	FadeWait
+	Sleep 1000ms
+	CrossFade 500ms
+	SoundPlay sound[202] 0 100 0
+	SoundPlay sound[223] 0 100 0
+	ObjFlagsSet object[2] 0x0004
+	CamZoom 29730 0ms
+	FadeWait
+	Sleep 1000ms
+	FadeOut 500ms 0x00000000 255
+	FadeWait
+	SystemFlagsUnset 0x08000000
+	EventEnd 5
+	FlagSet flag[272]
+	NewScene "scena/m1140.bin" 0 0 0
+	Hcf
+	Return

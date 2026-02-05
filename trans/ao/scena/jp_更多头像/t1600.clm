@@ -1,0 +1,1473 @@
+calmare ao_k scena
+scena:
+	name "t1600" "t1600" "t1600"
+	town town[77]
+	bgm bgm[123]
+	flags 8192
+	item_use fn[0,255]
+	unk 255 29
+
+entry:
+	pos (0, 0, -1000)
+	unk1 0
+	cam_from (0, 0, 24000)
+	cam_pers 500
+	unk2 30
+	cam_deg 45deg
+	cam_limit 0deg 360deg
+	cam_at (0, 0, 0)
+	unk3 0
+	unk4 0
+	flags 0x0001
+	town town[77]
+	init fn[0,1]
+	reinit fn[0,2]
+
+chip[0] "chr/ch20400.itc"
+chip[1] "chr/ch05400.itc"
+chip[2] "chr/ch44800.itc"
+chip[3] "chr/ch20200.itc"
+chip[4] "chr/ch29900.itc"
+chip[5] "chr/ch29800.itc"
+chip[6] "chr/ch05300.itc"
+
+npc char[0]:
+	name "バッジョ"
+	pos (-21980, 6000, 18520)
+	angle 180deg
+	flags 0x0185
+	unk2 0
+	chip chip[0]
+	init fn[0,0]
+	talk fn[0,3]
+	unk4 255
+
+npc char[1]:
+	name "シズク"
+	pos (-3590, 7000, 11230)
+	angle 225deg
+	flags 0x0185
+	unk2 0
+	chip chip[1]
+	init fn[0,0]
+	talk fn[0,4]
+	unk4 255
+
+npc char[2]:
+	name "セイランド教授"
+	pos (4040, 7000, 2160)
+	angle 270deg
+	flags 0x0185
+	unk2 0
+	chip chip[2]
+	init fn[0,0]
+	talk fn[0,5]
+	unk4 255
+
+npc char[3]:
+	name "ダイソン用務員"
+	pos (3430, 7000, -9160)
+	angle 180deg
+	flags 0x0185
+	unk2 0
+	chip chip[3]
+	init fn[0,0]
+	talk fn[0,6]
+	unk4 255
+
+npc char[4]:
+	name "看護師シロン"
+	pos (-26560, 6000, 14200)
+	angle 0deg
+	flags 0x0185
+	unk2 0
+	chip chip[4]
+	init fn[0,0]
+	talk fn[0,7]
+	unk4 255
+
+npc char[5]:
+	name "看護師メイファ"
+	pos (-26560, 6000, 14200)
+	angle 0deg
+	flags 0x0185
+	unk2 0
+	chip chip[5]
+	init fn[0,0]
+	talk fn[0,10]
+	unk4 255
+
+npc char[6]:
+	name "アリオス"
+	pos (0, 0, 0)
+	angle 0deg
+	flags 0x0185
+	unk2 0
+	chip chip[0]
+	init fn[255,255]
+	talk fn[255,255]
+	unk4 255
+
+npc char[7]:
+	name "セルゲイ"
+	pos (0, 0, 0)
+	angle 0deg
+	flags 0x0185
+	unk2 0
+	chip chip[0]
+	init fn[255,255]
+	talk fn[255,255]
+	unk4 255
+
+trigger[0]:
+	pos (-13500.0, 20000.0, 5500.0)
+	radius 4000.0
+	transform
+		0.5 -0.0 0.0 6.75
+		-0.0 0.5 -0.0 -10.0
+		0.0 -0.0 0.2 -1.1
+		0.0 0.0 0.0 1.0
+		// translate (-13.5, 20.0, 5.5)
+		// rotate (1.0, 0.0, 0.0) 0.0deg
+		// scale (2.0, 2.0, 5.0)
+	unk1 0
+	unk2 0
+	function fn[0,29]
+	unk3 0
+	unk4 0
+	unk5 0
+	unk6 0
+
+look_point[0]:
+	pos (17500, 7000, -3000)
+	radius 2000
+	bubble_pos (18000, 8000, -3000)
+	unk1 124
+	unk2 0
+	function fn[0,22]
+	unk3 0
+	unk4 0
+
+label[0]:
+	name "ウルスラ間道"
+	pos (-69000.0, 0.0, -8000.0)
+	unk1 0
+	unk2 0
+
+label[1]:
+	name ""
+	pos (-23000.0, 0.0, 18000.0)
+	unk1 0
+	unk2 82
+
+label[2]:
+	name ""
+	pos (-57900.0, 0.0, 4200.0)
+	unk1 0
+	unk2 85
+
+anim[0] 712ms
+
+sepith[0] 0 0 0 0 0 0 0 0
+
+fn[0]:
+	var[2] = random % 8
+	switch var[2]:
+		case 0:
+			ED7_A0 self 1450ms 0 251
+			break
+		case 1:
+			ED7_A0 self 1550ms 0 251
+			break
+		case 2:
+			ED7_A0 self 1600ms 0 251
+			break
+		case 3:
+			ED7_A0 self 1400ms 0 251
+			break
+		case 4:
+			ED7_A0 self 1650ms 0 251
+			break
+		case 5:
+			ED7_A0 self 1350ms 0 251
+			break
+		case 6:
+			ED7_A0 self 1500ms 0 251
+			break
+		default:
+			ED7_A0 self 1500ms 0 251
+			break
+	while 1:
+		ED7_A0 self 1500ms 0 251
+	Return
+
+fn[1]:
+	if flag[3385]:
+		CharFlagsUnset char[3] 0x0080
+		CharSetPos char[3] (8450, 7000, -13870) 135deg
+	elif flag[3362]:
+		CharFlagsUnset char[2] 0x0080
+		CharSetPos char[2] (13730, 7000, -3100) 90deg
+	elif flag[3338]:
+		CharFlagsUnset char[3] 0x0080
+		CharFlagsUnset char[4] 0x0080
+		CharSetPos char[4] (-26060, 6000, 14200) 0deg
+		CharFlagsSet char[4] 0x0010
+		CharFlagsUnset char[5] 0x0080
+		CharSetPos char[5] (-27060, 6000, 14200) 0deg
+		CharFlagsSet char[5] 0x0010
+	elif flag[3328]:
+		CharFlagsUnset char[4] 0x0080
+	elif flag[3074]:
+		CharFlagsUnset char[1] 0x0080
+		if !flag[3189]:
+			CharFlagsSet char[1] 0x0010
+	elif flag[2848]:
+	elif flag[2832]:
+		CharFlagsUnset char[2] 0x0080
+		CharFlagsUnset char[5] 0x0080
+	elif flag[2816]:
+		CharFlagsUnset char[4] 0x0080
+	elif flag[2573]:
+		CharFlagsUnset char[0] 0x0080
+		CharFlagsSet char[0] 0x0010
+		CharFlagsUnset char[4] 0x0080
+		CharFlagsSet char[4] 0x0010
+		CharSetPos char[4] (-22110, 6000, 16760) 0deg
+		CharFlagsUnset char[5] 0x0080
+		CharSetPos char[5] (-20450, 6000, 17030) 315deg
+		CharFlagsSet char[5] 0x0010
+	elif flag[2564]:
+		CharFlagsUnset char[4] 0x0080
+	elif flag[2560]:
+		CharFlagsUnset char[3] 0x0080
+	if flag[272]:
+		FlagUnset flag[272]
+		Event fn[0,23]
+	elif flag[273]:
+		FlagUnset flag[273]
+		Event fn[0,12]
+	Return
+
+fn[2]:
+	if flag[3100]:
+		system[1] = 563
+	if flag[2848] && !flag[2858] | flag[2369] && system[4] == 1:
+		EffLoad eff[9] "map/mprain00.eff"
+		EffPlay eff[9] eff_instance[7] null 0 (0, 0, 0) 0 0 0 1000 1000 1000 null (0, 0, 0) 1000ms
+		MapColor 0x00B4B4B4 0ms
+		Fog 0xFFD5B47B 13 110 0
+		SoundPlay sound[128] 1 100 0
+	if flag[3100]:
+		MapColor 0x00FFEBDC 0ms
+	else:
+	ObjFlagsUnset object[5] 0x0010
+	TriggerFlagsSet trigger[0] 0x0080
+	if flag[3077] && !flag[3078]:
+		TriggerFlagsUnset trigger[0] 0x0080
+	Return
+
+fn[3]:
+	TextStart self
+	if flag[2573]:
+		if !flag[6]:
+			Call fn[0,8]
+		else:
+			TextTalk char[0] {
+				看護師、いいかもな。
+				男の看護師もいないわけじゃ
+				ないだろうし……{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				ダメ元で姉ちゃんに
+				相談に来てみたけど、
+				なんだか道が開けた気分だよ。{wait}
+			}
+			TextWait
+	TextEnd self
+	Return
+
+fn[4]:
+	TextStart self
+	if !flag[3189]:
+		Call fn[0,11]
+	elif !flag[3190]:
+		Emote char[1] 0mm 1700mm 38 38 250ms 1
+		Sleep 1000ms
+		TextTalk char[1] {
+			#11200Fそういえば、皆さん。{wait}
+		} {
+			キーアちゃんが３日前に
+			病院に来ていたんですけど……{wait}
+		}
+		TextWait
+		TextTalk name[0] {
+			#00005Fああ……そういえば
+			シズクちゃんのお見舞いに
+			行ってたんだったか。{wait}
+		} {
+			#00000Fえっと、キーアが
+			どうかしたのかい？{wait}
+		}
+		TextWait
+		TextTalk char[1] {
+			#11208Fいえ……なんだか少し、
+			様子が変だったような
+			気がするんです。{wait}
+		} {
+			#11203Fどこか思いつめてるというか……{wait}
+		}
+		TextWait
+		TextTalk name[2] {
+			#00205Fキーアが……？{wait}
+		}
+		TextWait
+		TextTalk name[3] {
+			#00303F俺たちの前では、
+			そんな素振りは見せて
+			なかったが……{wait}
+		}
+		TextWait
+		TextTalk name[8] {
+			#10108F……キーアちゃんも、
+			クロスベルの状況に不安を
+			感じてるのかもしれませんね。{wait}
+		}
+		TextWait
+		TextTalk name[1] {
+			#00103Fそうね……
+			私たちには心配をかけないために
+			気持ちを隠しているのかも。{wait}
+		}
+		TextWait
+		TextTalk name[4] {
+			#10302Fま、何にせよ気にかけて
+			あげたほうがよさそうだね。{wait}
+		}
+		TextWait
+		FlagSet flag[3190]
+	else:
+		TextTalk char[1] {
+			#11200Fみなさんも大変だと思いますけど、
+			どうか頑張ってください。{wait}
+		} {
+			私もここから応援してますから……{wait}
+		}
+		TextWait
+	TextEnd self
+	Return
+
+fn[5]:
+	TextStart self
+	if flag[3385]:
+	elif flag[3362]:
+		if !flag[1]:
+			TextTalk char[2] {
+				#08901F内科系の医師と研修医が総出で、
+				薬品の種類が不足している問題の
+				対策を進めている。{wait}
+			} {
+				#08903F完全とはいかないだろうが、
+				どんな時でも最善を尽くすのが
+				医者としての義務だ。{wait}
+			} {
+				#08901F薬学・神経科教授としての
+				誇りと威信を賭けて、必ずや
+				何とかすることを女神に誓おう。{wait}
+			}
+			TextWait
+			FlagSet flag[1]
+		else:
+			TextTalk char[2] {
+				#08901F内科系の医師と研修医が総出で、
+				薬品の種類が不足している問題の
+				対策を進めている。{wait}
+			} {
+				#08901F薬学・神経科教授としての
+				誇りと威信を賭けて、必ずや
+				何とかすることを女神に誓おう。{wait}
+			}
+			TextWait
+	elif flag[3338]:
+	elif flag[3328]:
+	elif flag[2832]:
+		if !flag[1]:
+			TextTalk char[2] {
+				#08901Fシズク……
+				彼女の視力が回復する
+				可能性は限りなく低いだろう。{wait}
+			} {
+				#08903F……だが、患者が諦めないかぎり、
+				私も絶対に諦めない。{wait}
+			} {
+				#08901Fセイランドの名にかけて……
+				いつか必ず、この手で治してみせる。{wait}
+			}
+			TextWait
+			FlagSet flag[1]
+		else:
+			TextTalk char[2] {
+				#08903Fシズクの視力回復手術が
+				成功すれば、同様の障害を持つ
+				患者たちの希望にもなるだろう。{wait}
+			} {
+				#08901Fセイランドの名にかけて……
+				いつか必ず、この手で治してみせる。{wait}
+			}
+			TextWait
+	TextEnd self
+	Return
+
+fn[6]:
+	TextStart self
+	if flag[3385]:
+		TextTalk char[3] {
+			あの巨大な樹はすごいな……
+			こんな所からも見えるなんて。{wait}
+		}
+		TextWait
+		TextTalk char[3] {
+			……一体クロスベルは
+			どうなってしまうんだろう？{wait}
+		}
+		TextWait
+	elif flag[3362]:
+	elif flag[3338]:
+		if !flag[2]:
+			TextTalk char[3] {
+				最近の研究棟での講義では、
+				実験などが殆どできないらしくてね。{wait}
+			}
+			TextWait
+			TextTalk char[3] {
+				サンプルを街道で採取したり、
+				レミフェリアから仕入れたりが
+				できなくなってる影響なんだろう。{wait}
+			}
+			TextWait
+			TextTalk char[3] {
+				このままだと、研修医たちの教育環境も
+				段々と悪くなってしまいそうだな。{wait}
+			}
+			TextWait
+			FlagSet flag[2]
+		else:
+			TextTalk char[3] {
+				最近の研究棟での講義では、
+				実験などが殆どできないらしくてね。{wait}
+			}
+			TextWait
+			TextTalk char[3] {
+				このままだと、研修医たちの教育環境も
+				段々と悪くなってしまいそうだな。{wait}
+			}
+			TextWait
+	elif flag[3328]:
+	elif flag[2560]:
+		if !flag[2]:
+			TextTalk char[3] {
+				この辺りで仕事をしていると、
+				ランチタイムの研修医たちの
+				噂話が聞こえるんだが……{wait}
+			}
+			TextWait
+			TextTalk char[3] {
+				最近は、もっぱら
+				セイランド教授の噂が多くてね。{wait}
+			}
+			TextWait
+			TextTalk char[3] {
+				私にはあまり縁がないが……
+				実際はどんな人なんだろうね。{wait}
+			}
+			TextWait
+			FlagSet flag[2]
+		else:
+			TextTalk char[3] {
+				最近、研修医の間で
+				セイランド教授が噂になっててね。{wait}
+			}
+			TextWait
+			TextTalk char[3] {
+				私にはあまり縁がないが……
+				実際はどんな人なんだろうね。{wait}
+			}
+			TextWait
+	TextEnd self
+	Return
+
+fn[7]:
+	TextStart self
+	if flag[3385]:
+	elif flag[3362]:
+	elif flag[3338]:
+		if !flag[5]:
+			Call fn[0,9]
+		else:
+			TextTalk char[4] {
+				えへへ、やっぱりメイファちゃんは
+				頼りになりますよ～。{wait}
+			}
+			TextWait
+	elif flag[3328]:
+		if !flag[3]:
+			TextTalk char[4] {
+				今日のシーツの干し方は
+				あたしが昨日思いついた、
+				必殺の『重ね干し』なのです。{wait}
+			}
+			TextWait
+			TextTalk char[4] {
+				なんと、２枚重ねて干す事で
+				倍の枚数のシーツを同時に
+				乾かす事ができるので～す！{wait}
+			}
+			TextWait
+			TextTalk char[4] {
+				これで、今日お休みの
+				メイファちゃんの分も
+				バッチリカバーですよ！！{wait}
+			}
+			TextWait
+			TextTalk char[4] {
+				……あれれ、でも……
+				もしかして全然乾いてない……？{wait}
+			}
+			TextWait
+			FlagSet flag[3]
+		else:
+			TextTalk char[4] {
+				うう、必殺の『重ね干し』は
+				シーツが全然乾かないことが
+				発覚してしまいました……{wait}
+			}
+			TextWait
+			TextTalk char[4] {
+				メイファちゃんが休みだから、
+				あたしが２人分がんばらないとって
+				思ってたんですけど～……{wait}
+			}
+			TextWait
+	elif flag[3074]:
+	elif flag[2848]:
+	elif flag[2832]:
+	elif flag[2816]:
+		if !flag[3]:
+			TextTalk char[4] {
+				この間のミハイル君の退院の時、
+				泣いてたメイファちゃんに
+				私のハンカチを渡してあげたの。{wait}
+			}
+			TextWait
+			TextTalk char[4] {
+				そしたら、なんだか急に泣き止んで、
+				じぃっとあたしを見るのよ。{wait}
+			}
+			TextWait
+			TextTalk char[4] {
+				う～ん、なんだったんだろ？
+				その後ハンカチも返してくれないし……{wait}
+			}
+			TextWait
+			FlagSet flag[3]
+		else:
+			TextTalk char[4] {
+				メイファちゃん、あたしのハンカチ
+				どうしちゃったのかな～。{wait}
+			}
+			TextWait
+			TextTalk char[4] {
+				前に寮の部屋で拾ってから、
+				手触りがよくてデザインもいいから
+				気に入ってたのにな～。{wait}
+			}
+			TextWait
+	elif flag[2573]:
+		if !flag[6]:
+			Call fn[0,8]
+		else:
+			_Char4A char[4] 255
+			_Char4A char[5] 255
+			_Char4A char[0] 255
+			TextTalk char[4] {
+				あ、そうだ！
+				ためしにナース服着てみる？{wait}
+			}
+			TextWait
+			CharTurnToChar char[4] char[5] 500deg/s
+			TextTalk char[4] {
+				ほら、メイファちゃん、
+				それ脱いで貸したげてよー。{wait}
+			}
+			TextWait
+			TextTalk char[5] {
+				か、貸さないわよっ！！{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				（う、うーん、
+				{}  相変わらずだなー……）{wait}
+			}
+			TextWait
+			CharTurnToChar char[4] char[0] 0deg/s
+			_Char4B char[4] 255
+			_Char4B char[5] 255
+			_Char4B char[0] 255
+	elif flag[2564]:
+		if !flag[3]:
+			TextTalk char[4] {
+				ふふ、今日はいいお天気。
+				洗濯物もよく乾きそう♪{wait}
+			}
+			TextWait
+			TextTalk char[4] {
+				……は～、なんだか
+				このぽかぽか陽気……
+				眠くなってきちゃうなぁ。{wait}
+			}
+			TextWait
+			TextTalk char[4] {
+				また、シーツを一枚借りて
+				寝ちゃおっかなぁ。{wait}
+			}
+			TextWait
+			FlagSet flag[3]
+		else:
+			TextTalk char[4] {
+				ここで日向ぼっこすると
+				きもちいいんですよー。{wait}
+			}
+			TextWait
+			TextTalk char[4] {
+				今日はメイファちゃん
+				来ない気がするし……
+				うん、寝ちゃおうっと☆{wait}
+			}
+			TextWait
+	elif flag[2560]:
+	TextEnd self
+	Return
+
+fn[8]:
+	_Char4A char[4] 255
+	_Char4A char[5] 255
+	_Char4A char[0] 255
+	TextTalk char[0] {
+		研修医の試験も落ちちゃって……
+		いよいよ家でも肩身が狭いよ。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		なあ、シロン姉ちゃん。
+		これから俺、どうすればいいかなあ。{wait}
+	}
+	TextWait
+	TextTalk char[5] {
+		（バッジョ君……
+		{}  シロンなんかに相談するなんて、
+		{}  よっぽど切羽詰ってるのね。）{wait}
+	}
+	TextWait
+	TextTalk char[4] {
+		んー、そうだなぁ……{wait}
+	}
+	TextWait
+	TextTalk char[4] {
+		そんじゃ、お姉ちゃんと同じ
+		ナースになってみたりとか？{wait}
+	}
+	TextWait
+	Emote char[0] 0mm 2000mm 24 27 250ms 0
+	Emote char[5] 0mm 2000mm 24 27 250ms 0
+	Sleep 2000ms
+	EmoteStop char[0]
+	EmoteStop char[5]
+	TextTalk char[5] {
+		シ、シロンにしちゃ
+		マトモな意見じゃない。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		なるほど、男性看護師か……
+		それは盲点だったなあ！{wait}
+	}
+	TextWait
+	CharFlagsUnset char[5] 0x0010
+	CharFlagsUnset char[0] 0x0010
+	FlagSet flag[6]
+	_Char4B char[4] 255
+	_Char4B char[5] 255
+	_Char4B char[0] 255
+	Return
+
+fn[9]:
+	_Char4A char[4] 255
+	_Char4A char[5] 255
+	TextTalk char[5] {
+		シロン、あんたね……
+		シーツを重ねて干したら
+		乾くものも乾かないでしょ！{wait}
+	}
+	TextWait
+	TextTalk char[5] {
+		まったくもう、
+		あんた何年この仕事を
+		やってんだっつーの。{wait}
+	}
+	TextWait
+	TextTalk char[4] {
+		えーっと、メイファちゃんと
+		一緒に入ったから、いち、にぃ……{wait}
+	}
+	TextWait
+	TextTalk char[5] {
+		えーい、余計なところで
+		律儀に答えなくていいのっ！{wait}
+	}
+	TextWait
+	TextTalk char[5] {
+		ほら、さっさと干しなおす！{wait}
+	}
+	TextWait
+	FlagSet flag[5]
+	CharFlagsUnset char[4] 0x0010
+	CharFlagsUnset char[5] 0x0010
+	_Char4B char[4] 255
+	_Char4B char[5] 255
+	Return
+
+fn[10]:
+	TextStart self
+	if flag[3385]:
+	elif flag[3362]:
+	elif flag[3338]:
+		if !flag[5]:
+			Call fn[0,9]
+		else:
+			TextTalk char[5] {
+				まったくシロンったら……
+				シーツくらい１人で
+				まともに干せないのかしら。{wait}
+			}
+			TextWait
+			TextTalk char[5] {
+				やっぱり私が見ていないと
+				全然ダメね……{wait}
+			}
+			TextWait
+	elif flag[3328]:
+	elif flag[3074]:
+	elif flag[2848]:
+	elif flag[2832]:
+		if !flag[4]:
+			TextTalk char[5] {
+				シロンのやつ、今日はなんだか
+				師長に怒られてるみたい。{wait}
+			}
+			TextWait
+			TextTalk char[5] {
+				普段ミスばっかりするから、
+				たまにはちゃんと怒られるのも
+				大事よね。{wait}
+			}
+			TextWait
+			TextTalk char[5] {
+				……ま、頃合いを見て
+				庇いに行ってやるか。{wait}
+			}
+			TextWait
+			FlagSet flag[4]
+		else:
+			TextTalk char[5] {
+				シロンのやつ、今日はなんだか
+				師長に怒られてるみたい。{wait}
+			}
+			TextWait
+			TextTalk char[5] {
+				ま、あとで庇いに行ってやるか。
+				……あたしもつくづく甘いわね。{wait}
+			}
+			TextWait
+	elif flag[2816]:
+	elif flag[2573]:
+		if !flag[6]:
+			Call fn[0,8]
+		else:
+			TextTalk char[5] {
+				シロンって、たま～～～～に
+				マトモなこと言うのよね。{wait}
+			}
+			TextWait
+			TextTalk char[5] {
+				……明日はレーザー光線でも
+				降るんじゃないかしら。{wait}
+			}
+			TextWait
+	elif flag[2564]:
+	elif flag[2560]:
+	TextEnd self
+	Return
+
+fn[11]:
+	EventBegin 0
+	CrossFade 500ms
+	CamSetDistance -3510 8300 11470 0ms
+	ED7CamRotate 45deg 19deg 0deg 0ms
+	CamPers 500 0ms
+	CamZoom 18000 0ms
+	CharSetPos name[3] (-1400, 7000, 11230) 270deg
+	CharSetPos name[1] (-1990, 7000, 12030) 225deg
+	CharSetPos name[0] (-2790, 7000, 12830) 225deg
+	CharSetPos name[2] (-3590, 7000, 13630) 180deg
+	CharSetPos name[8] (-2590, 7000, 14030) 180deg
+	CharSetPos name[4] (-3400, 7000, 14840) 180deg
+	CharFlagsUnset field_party[4] 0x0080
+	CharFlags2Unset field_party[4] 0x8000
+	CharFlagsUnset field_party[5] 0x0080
+	CharFlags2Unset field_party[5] 0x8000
+	_Char4A char[1] 255
+	FadeWait
+	TextTalk name[0] {
+		#5P#00000Fシズクちゃん、
+		こんな所にいたのか。{wait}
+	}
+	TextWait
+	Emote char[1] 0mm 1700mm 38 38 250ms 1
+	Sleep 1000ms
+	CharTurnToChar char[1] name[0] 500deg/s
+	TextTalk char[1] {
+		#12P#11205Fあ……もしかして、
+		支援課の皆さん？{wait}
+	} {
+		#11200F今日は、誰かのお見舞いに
+		来てたんですか？{wait}
+	}
+	TextWait
+	TextTalk name[8] {
+		#5P#10108Fうん、フランが入院してるから。{wait}
+	} {
+		#10100Fあとは警察の警部さんや
+		イリアさんもお見舞いしてたの。{wait}
+	}
+	TextWait
+	TextTalk char[1] {
+		#12P#11208Fそうでしたか……
+		フランさんの事はセシルさんに
+		聞いてましたけど……{wait}
+	}
+	TextWait
+	Emote char[1] 0mm 1700mm 24 27 250ms 0
+	Sleep 2000ms
+	EmoteStop char[1]
+	TextTalk char[1] {
+		#12P#11203Fやっぱり、街の襲撃事件は
+		相当酷かったみたいですね。{wait}
+	} {
+		#11208Fセシルさんたちや先生たちも、
+		ずっと忙しくしているみたいで……{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#5P#00003Fああ……
+		確かにそんな感じだったな。{wait}
+	}
+	TextWait
+	TextTalk name[1] {
+		#11P#00100Fそういえばシズクちゃん、
+		アリオスさんは
+		最近、見舞いに来れてる？{wait}
+	}
+	TextWait
+	TextTalk char[1] {
+		#12P#11208Fいえ、襲撃事件があってからは
+		まだ一度も……{wait}
+	} {
+		#11200F連絡はあったんですが、
+		やっぱり色々と忙しいそうです。{wait}
+	}
+	TextWait
+	TextTalk name[2] {
+		#5P#00200Fそうですか……
+		寂しいですね。{wait}
+	}
+	TextWait
+	TextTalk char[1] {
+		#12P#11200F……いいえ、私なら大丈夫です。{wait}
+	} {
+		#11203Fたくさんの人が犠牲になって、
+		怪我人も多く出て……{wait}
+	} {
+		そんな中、私だけが甘えている
+		わけにはいきませんから。{wait}
+	} {
+		#11208F……私も何かしたいと思って、
+		フランさんや他の患者さんたちを
+		励ましたりしてるんですけど……{wait}
+	} {
+		#11203F……ただ、目の見えない私には
+		それくらいしかできなくて……
+		それは、やっぱり悔しいです。{wait}
+	}
+	TextWait
+	TextTalk name[3] {
+		#11P#00300F……いや、充分すぎると思うぜ。{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#00000F君のそういう姿は、
+		逆境に立ち向かう勇気を
+		みんなに与えていると思うよ。{wait}
+	} {
+		#00004F……俺たちも頑張らなくちゃな。{wait}
+	}
+	TextWait
+	TextTalk name[4] {
+		#5P#10302Fフフ……そうだね。{wait}
+	}
+	TextWait
+	TextTalk char[1] {
+		#12P#11200Fえっと……
+		みなさんも大変だと思いますけど、
+		どうか頑張ってください。{wait}
+	} {
+		#11203F私もここから応援してますから……{wait}
+	}
+	TextWait
+	_59
+	CharFlagsUnset char[1] 0x0010
+	CharTurnTo char[1] 90deg 0deg/s
+	_Char4B char[1] 255
+	FlagSet flag[3189]
+	ED7_Cam69 255 0
+	CharSetPos field_party[0] (-2790, 7000, 12830) 225deg
+	CharFlagsSet field_party[4] 0x0080
+	CharFlags2Set field_party[4] 0x8000
+	CharFlagsSet field_party[5] 0x0080
+	CharFlags2Set field_party[5] 0x8000
+	EventEnd 5
+	Return
+
+fn[12]:
+	EventBegin 0
+	FadeOut 0ms 0x00000000 255
+	ED7LoadChip "chr/ch02400.itc" chip[30]
+	ED7LoadChip "chr/ch02500.itc" chip[31]
+	CharSetChipBase char[6] chip[30]
+	CharSetChipPattern char[6] 0
+	CharFlagsUnset char[6] 0x0080
+	CharFlagsSet char[6] 0x8000
+	CharSetPos char[6] (-1900, 7000, 14600) 180deg
+	CharSetChipBase char[7] chip[31]
+	CharSetChipPattern char[7] 0
+	CharFlagsUnset char[7] 0x0080
+	CharFlagsSet char[7] 0x8000
+	CharSetPos char[7] (-1300, 7000, 15610) 180deg
+	CharFlagsUnset char[1] 0x0080
+	CharFlagsSet char[1] 0x8000
+	CharSetPos char[1] (-3100, 7000, 14600) 180deg
+	CamSetDistance -3510 8400 11470 0ms
+	ED7CamRotate 44deg 21deg 0deg 0ms
+	CamPers 500 0ms
+	CamZoom 16160 0ms
+	CharSetPos name[3] (-2100, 7000, 16800) 180deg
+	CharSetPos name[1] (-1900, 7000, 17810) 180deg
+	CharSetPos name[0] (-2310, 7000, 18610) 180deg
+	CharSetPos name[2] (-1700, 7000, 19600) 180deg
+	CharSetPos name[8] (-1910, 7000, 20600) 180deg
+	CharSetPos name[4] (-2120, 7000, 21590) 180deg
+	CharFlagsUnset field_party[4] 0x0080
+	CharFlags2Unset field_party[4] 0x8000
+	CharFlagsUnset field_party[5] 0x0080
+	CharFlags2Unset field_party[5] 0x8000
+	_Char4A char[1] 255
+	ForkFunc char[1] fork[3] fn[0,13]
+	ForkFunc char[6] fork[3] fn[0,14]
+	ForkFunc char[7] fork[3] fn[0,15]
+	ForkFunc name[3] fork[3] fn[0,16]
+	ForkFunc name[1] fork[3] fn[0,17]
+	ForkFunc name[0] fork[3] fn[0,18]
+	ForkFunc name[2] fork[3] fn[0,19]
+	ForkFunc name[8] fork[3] fn[0,20]
+	ForkFunc name[4] fork[3] fn[0,21]
+	FadeIn 1000ms 0x00000000
+	FadeWait
+	ForkWait char[1] fork[3]
+	ForkWait char[6] fork[3]
+	ForkWait char[7] fork[3]
+	ForkWait name[3] fork[3]
+	ForkWait name[1] fork[3]
+	ForkWait name[0] fork[3]
+	ForkWait name[2] fork[3]
+	ForkWait name[8] fork[3]
+	ForkWait name[4] fork[3]
+	TextTalk char[6] {
+		#01400Fシズク、足元に気をつけろ。{wait}
+	}
+	TextWait
+	TextTalk char[1] {
+		#6P#11202Fうん、ありがとうお父さん。{wait}
+	} {
+		#11204Fふふ、いい風……
+		それに、日の光が明るくて、
+		あったかくて気持ちいい……{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#00002Fはは、それはよかった。{wait}
+	} {
+		#00003F……そういえばさっき、
+		周囲の光が感じられるように
+		なったって言ってたけど……{wait}
+	}
+	TextWait
+	CharTurnToChar char[1] name[0] 500deg/s
+	TextTalk char[1] {
+		#12P#11200Fええ、といっても
+		そんなに細かくは分かりませんけど。{wait}
+	} {
+		#11203Fあたり一面に真っ白なモヤが
+		かかったようになって、
+		明るさを感じられるくらいです。{wait}
+	}
+	TextWait
+	TextTalk name[1] {
+		#00108Fそう……{wait}
+	}
+	TextWait
+	TextTalk name[3] {
+		#00303F光を感じられるっつっても、
+		やっぱ見えてるってレベルじゃ
+		ないみたいだな……{wait}
+	}
+	TextWait
+	TextTalk char[6] {
+		#01403F…………………………{wait}
+	}
+	TextWait
+	Emote name[0] 0mm 2000mm 24 27 250ms 0
+	Emote name[1] 0mm 2000mm 24 27 250ms 0
+	Emote name[2] 0mm 2000mm 24 27 250ms 0
+	Emote name[3] 0mm 2000mm 24 27 250ms 0
+	Emote name[8] 0mm 2000mm 24 27 250ms 0
+	Emote name[4] 0mm 2000mm 24 27 250ms 0
+	Sleep 2000ms
+	EmoteStop name[0]
+	EmoteStop name[1]
+	EmoteStop name[2]
+	EmoteStop name[3]
+	EmoteStop name[8]
+	EmoteStop name[4]
+	TextTalk char[1] {
+		#6P#11202F……え、えっと。
+		皆さん、そんなに暗く
+		ならないでください。{wait}
+	} {
+		#11209F私は、今回の手術の結果には
+		とても喜んでるんですから。{wait}
+	}
+	TextWait
+	TextTalk name[4] {
+		#5P#10305Fへえ……そうなのかい？{wait}
+	}
+	TextWait
+	TextTalk char[1] {
+		#6P#11203F……確かに最初は、
+		完治しなかったことに
+		落ち込みもしました。{wait}
+	} {
+		#11208Fもう、絶対に
+		治らないんじゃないかって……
+		諦めそうになったんです。{wait}
+	}
+	TextWait
+	TextTalk name[2] {
+		#00208Fシズクさん……{wait}
+	}
+	TextWait
+	TextTalk char[1] {
+		#6P#11202Fでも、考えてみれば、
+		こうまで“治療が進んだ”のは
+		今回が初めてなんです。{wait}
+	} {
+		#11204Fだから私の目はゆっくりだけど、
+		きっとよくなっていく……
+		改めてそう思うことができました。{wait}
+	} {
+		#11200F支えてくれるお父さんや、
+		病院の皆さん、そして
+		キーアちゃんのためにも……{wait}
+	} {
+		#11209Fこれからも諦めずに
+		治療を続けていこうと思います。{wait}
+	}
+	TextWait
+	TextTalk name[8] {
+		#5P#10102Fシズクちゃん……{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#00004F……君は強いな、本当に。{wait}
+	}
+	TextWait
+	Emote char[1] 0mm 1700mm 40 43 100ms 0
+	Sleep 1000ms
+	EmoteStop char[1]
+	TextTalk char[1] {
+		#6P#11205Fえ、えっと……すみません、
+		流石に偉そうですよね。{wait}
+	} {
+		#11203F治療費だってお父さんに
+		出してもらって、いつも
+		迷惑かけてるのに……{wait}
+	}
+	TextWait
+	TextTalk char[6] {
+		#01403F……お前が諦めないというなら、
+		俺は今まで通りに支えていくだけだ。{wait}
+	} {
+		#01402F余計なことを考えずに、
+		光を取り戻すことに集中するといい。{wait}
+	} {
+		#01404Fサヤも、それを望んでいるだろう。{wait}
+	}
+	TextWait
+	TextTalk char[1] {
+		#6P#11203Fお父さん……そうだね。{wait}
+	} {
+		#11202F女神様の元にいる
+		お母さんのためにも……
+		これからも頑張るから。{wait}
+	}
+	TextWait
+	TextTalk char[7] {
+		#01004Fクク、アリオス。
+		やはりお前の子供だな。{wait}
+	}
+	TextWait
+	TextTalk name[3] {
+		#00309Fハハ、確かに。
+		芯の強いところがソックリだぜ。{wait}
+	}
+	TextWait
+	TextTalk char[6] {
+		#01404F……きっと、
+		母親#4Rサ　ヤ#に似たんだろう。{wait}
+	} {
+		#01400F──そろそろ外出時間は終わりだな。
+		シズク、病室に戻るぞ。{wait}
+	}
+	TextWait
+	TextTalk char[1] {
+		#6P#11205Fあ……うん、分かった。{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#00000Fそれじゃあ、戻るとしましょう。{wait}
+	}
+	TextWait
+	FadeOut 1000ms 0x00000000 255
+	FadeWait
+	TextMessage null {
+		{color 5}その後、ロイドたちは
+		シズクの病室で一時の歓談を楽しんだのだった。{color 0}{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	FlagSet flag[272]
+	NewScene "scena/t1550.bin" 100 0 0
+	Hcf
+	Return
+
+fn[13]:
+	Fork self fork[1]:
+		CharWalkToPos self (-3590, 7000, 11230) 2000mm/s 0
+	ForkWait self fork[1]
+	CharTurnTo self 225deg 500deg/s
+	Return
+
+fn[14]:
+	Fork self fork[1]:
+		CharWalkToPos self (-2590, 7000, 11020) 2000mm/s 0
+	ForkWait self fork[1]
+	CharTurnTo self 225deg 500deg/s
+	Return
+
+fn[15]:
+	Fork self fork[1]:
+		CharWalkToPos self (-1500, 7000, 10030) 2000mm/s 0
+	ForkWait self fork[1]
+	CharTurnTo self 270deg 500deg/s
+	Return
+
+fn[16]:
+	Fork self fork[1]:
+		CharWalkToPos self (-1400, 7000, 11230) 2000mm/s 0
+	ForkWait self fork[1]
+	CharTurnTo self 225deg 500deg/s
+	Return
+
+fn[17]:
+	Fork self fork[1]:
+		CharWalkToPos self (-1990, 7000, 12030) 2000mm/s 0
+	ForkWait self fork[1]
+	CharTurnTo self 225deg 500deg/s
+	Return
+
+fn[18]:
+	Fork self fork[1]:
+		CharWalkToPos self (-2790, 7000, 12830) 2000mm/s 0
+	ForkWait self fork[1]
+	CharTurnTo self 225deg 500deg/s
+	Return
+
+fn[19]:
+	Fork self fork[1]:
+		CharWalkToPos self (-3590, 7000, 13630) 2000mm/s 0
+	ForkWait self fork[1]
+	CharTurnTo self 180deg 500deg/s
+	Return
+
+fn[20]:
+	Fork self fork[1]:
+		CharWalkToPos self (-2590, 7000, 14030) 2000mm/s 0
+	ForkWait self fork[1]
+	CharTurnTo self 180deg 500deg/s
+	Return
+
+fn[21]:
+	Fork self fork[1]:
+		CharWalkToPos self (-3400, 7000, 14840) 2000mm/s 0
+	ForkWait self fork[1]
+	CharTurnTo self 180deg 500deg/s
+	Return
+
+fn[22]:
+	if QuestFlagsGet quest[112] 0x02 && !QuestFlagsGet quest[112] 0x10 && !QuestFlagsGet quest[112] 0x40 && flag[2705]:
+		EventBegin 2
+		FadeOut 300ms 0x00000000 100
+		FadeWait
+		TextSetPos -1 30 -1 -1
+		TextSetName ""
+		TextMessage null {
+			{color 5}{0x06}{0x18}#1Kどこに行きますか？{color 0}{wait}
+		}
+		Menu menu[0] -1 -1 0
+			"【４Ｆ 薬学・神経科研究室】" // 0
+			"【やめる】" // 1
+		MenuWait var[0]
+		MenuClose menu[0]
+		TextClose 0
+		TextSetPos -1 280 60 3
+		FadeIn 300ms 0x00000000
+		FadeWait
+		switch var[0]:
+			case 0:
+				FadeOut 1000ms 0x00000000 255
+				ED7ObjPlay object[5] 0 5 0 0
+				SoundPlay sound[107] 0 100 0
+				ObjWait object[5]
+				FadeWait
+				if !flag[2706]:
+					FlagSet flag[272]
+					NewScene "scena/t1650.bin" 100 0 0
+					Hcf
+				else:
+					NewScene "scena/t1650.bin" 101 0 0
+					Hcf
+				break
+			case 1:
+				EventEnd 3
+				break
+	else:
+		EventBegin 2
+		SystemFlagsUnset 0x00000020
+		TextTalk name[0] {
+			#00000Fこっちは研究棟か。
+			特に用事はないし、
+			立ち入らないでおこう。{wait}
+		}
+		TextWait
+		_59
+		EventEnd 3
+	Return
+
+fn[23]:
+	EventBegin 0
+	FadeOut 0ms 0x00000000 255
+	CamSetDistance 14750 9400 -3400 0ms
+	ED7CamRotate 47deg 27deg 0deg 0ms
+	CamPers 600 0ms
+	CamZoom 15860 0ms
+	CharSetPos name[0] (18740, 7000, -3160) 270deg
+	CharSetPos name[1] (18740, 7000, -3160) 270deg
+	CharSetPos name[8] (18740, 7000, -3160) 270deg
+	CharSetPos name[4] (18740, 7000, -3160) 270deg
+	CharSetPos name[3] (18740, 7000, -3160) 270deg
+	CharFlagsUnset field_party[4] 0x0080
+	CharFlags2Unset field_party[4] 0x8000
+	CharColor name[0] 0x00FFFFFF 0ms
+	CharColor name[1] 0x00FFFFFF 0ms
+	CharColor name[3] 0x00FFFFFF 0ms
+	CharColor name[8] 0x00FFFFFF 0ms
+	CharColor name[4] 0x00FFFFFF 0ms
+	CamSetDistance 14750 8000 -3400 3000ms
+	FadeIn 1000ms 0x00000000
+	FadeWait
+	CamWait 1
+	Sleep 500ms
+	SoundPlay sound[107] 0 100 0
+	ObjFlagsUnset object[5] 0x0010
+	ED7ObjPlay object[5] 0 16 0 0
+	ObjWait object[5]
+	Sleep 500ms
+	ForkFunc name[0] fork[3] fn[0,24]
+	Sleep 700ms
+	ForkFunc name[1] fork[3] fn[0,25]
+	Sleep 700ms
+	ForkFunc name[8] fork[3] fn[0,27]
+	Sleep 700ms
+	ForkFunc name[3] fork[3] fn[0,26]
+	Sleep 700ms
+	ForkFunc name[4] fork[3] fn[0,28]
+	ForkWait name[4] fork[3]
+	SoundPlay sound[107] 0 100 0
+	ED7ObjPlay object[5] 16 0 0 0
+	ObjWait object[5]
+	ObjFlagsSet object[5] 0x0010
+	Emote name[0] 0mm 2000mm 24 27 250ms 0
+	Emote name[1] 0mm 2000mm 24 27 250ms 0
+	Emote name[3] 0mm 2000mm 24 27 250ms 0
+	Emote name[8] 0mm 2000mm 24 27 250ms 0
+	Emote name[4] 0mm 2000mm 24 27 250ms 0
+	Sleep 2000ms
+	EmoteStop name[0]
+	EmoteStop name[1]
+	EmoteStop name[3]
+	EmoteStop name[8]
+	EmoteStop name[4]
+	TextTalk name[3] {
+		#1250030026V#00301F……なんか色々判ったような、
+		謎が増えたような気分だぜ。{wait}
+	}
+	TextWait
+	TextTalk name[8] {
+		#1250050019V#12P#10106F何だか歯がゆいですね……{wait}
+	}
+	TextWait
+	TextTalk name[1] {
+		#1250010025V#00108Fええ、ヨアヒム先生が亡くなった今、
+		あまりに手がかりが少なすぎる……{wait}
+	} {
+		#1250010026V#00103Fせめて教団のデータベースの解析が
+		進めば何か判るかもしれないけど……{wait}
+	}
+	TextWait
+	TextTalk name[4] {
+		#1250040021V#11P#10300Fま、そのあたりは
+		今後の課題ってやつかな？{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#1250000069V#6P#00001Fああ……俺たちの方でも
+		忘れずに気にかけておこう。{wait}
+	} {
+		#1250000070V#00003F──とりあえず、
+		今回の依頼はこれで達成だ。{wait}
+	} {
+		#1250000071V#00000F帰りにセシル姉のところに
+		寄ってもいいかもしれないな。{wait}
+	}
+	TextWait
+	TextTalk name[3] {
+		#1250030027V#00309Fおう、そうすっか！{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	FadeOut 1000ms 0x00000000 255
+	FadeWait
+	SoundPlay sound[9] 0 100 0
+	TextSetPos -1 -1 -1 -1
+	TextSetName ""
+	TextMessage null {
+		{color 2}クエスト【新教授の依頼】{color 0}を達成した！{wait}
+	}
+	TextWait
+	TextClose 0
+	TextSetPos -1 280 60 3
+	QuestTaskSet quest[112] 6
+	QuestTaskSet quest[112] 7
+	QuestFlagsSet quest[112] 0x10
+	QuestTaskSet quest[163] 5
+	LookPointFlagsUnset look_point[0] 0x0001
+	ED7_Cam69 255 0
+	CharSetPos field_party[0] (15500, 7000, -3000) 270deg
+	CharFlagsSet field_party[4] 0x0080
+	CharFlags2Set field_party[4] 0x8000
+	ObjFlagsUnset object[5] 0x0010
+	EventEnd 5
+	Return
+
+fn[24]:
+	Fork name[0] fork[2]:
+		CharColor self 0xFFFFFFFF 500ms
+	Fork name[0] fork[1]:
+		_Char91 self -2000 0 0 2000 0
+	ForkWait name[0] fork[1]
+	CharWalkToPos name[0] (13000, 7000, -3000) 2000mm/s 0
+	CharTurnTo name[0] 90deg 500deg/s
+	Return
+
+fn[25]:
+	Fork name[1] fork[2]:
+		CharColor self 0xFFFFFFFF 500ms
+	Fork name[1] fork[1]:
+		_Char91 self -2000 0 0 2000 0
+	ForkWait name[1] fork[1]
+	CharWalkToPos name[1] (14160, 7000, -2240) 2000mm/s 0
+	CharTurnTo name[1] 180deg 500deg/s
+	Return
+
+fn[26]:
+	Fork name[3] fork[2]:
+		CharColor self 0xFFFFFFFF 500ms
+	Fork name[3] fork[1]:
+		_Char91 self -2000 0 0 2000 0
+	ForkWait name[3] fork[1]
+	CharWalkToPos name[3] (15890, 7000, -3980) 2000mm/s 0
+	CharTurnTo name[3] 270deg 500deg/s
+	Return
+
+fn[27]:
+	Fork name[8] fork[2]:
+		CharColor self 0xFFFFFFFF 500ms
+	Fork name[8] fork[1]:
+		_Char91 self -2000 0 0 2000 0
+	ForkWait name[8] fork[1]
+	CharWalkToPos name[8] (14180, 7000, -4310) 2000mm/s 0
+	CharTurnTo name[8] 0deg 500deg/s
+	Return
+
+fn[28]:
+	Fork name[4] fork[2]:
+		CharColor self 0xFFFFFFFF 500ms
+	Fork name[4] fork[1]:
+		_Char91 self -2000 0 0 2000 0
+	ForkWait name[4] fork[1]
+	CharWalkToPos name[4] (15840, 7000, -2650) 2000mm/s 0
+	CharTurnTo name[4] 270deg 500deg/s
+	Return
+
+fn[29]:
+	EventBegin 1
+	TextTalk name[0] {
+		#00000Fおっと、受付にも行かずに
+		病棟に入るわけにはいかないな。{wait}
+	}
+	TextWait
+	_59
+	CharSetPos field_party[0] (-16059, 6000, 19210) 270deg
+	EventEnd 4
+	Return

@@ -1,0 +1,330 @@
+calmare ao_k scena
+scena:
+	name "c153b" "c153b" "c153b"
+	town town[174]
+	bgm bgm[0]
+	flags 8192
+	item_use fn[0,255]
+	unk 255 0
+
+entry:
+	pos (0, 0, -1000)
+	unk1 0
+	cam_from (0, 0, 24000)
+	cam_pers 500
+	unk2 30
+	cam_deg 45deg
+	cam_limit 0deg 360deg
+	cam_at (0, 0, 0)
+	unk3 0
+	unk4 0
+	flags 0x0001
+	town town[174]
+	init fn[0,0]
+	reinit fn[0,1]
+
+npc char[0]:
+	name "ディーター市長"
+	pos (0, 0, 0)
+	angle 0deg
+	flags 0x01C5
+	unk2 0
+	chip chip[0]
+	init fn[255,255]
+	talk fn[255,255]
+	unk4 255
+
+npc char[1]:
+	name "マクダエル議長"
+	pos (0, 0, 0)
+	angle 0deg
+	flags 0x01C5
+	unk2 0
+	chip chip[0]
+	init fn[255,255]
+	talk fn[255,255]
+	unk4 255
+
+npc char[2]:
+	name "ダドリー捜査官"
+	pos (0, 0, 0)
+	angle 0deg
+	flags 0x01C5
+	unk2 0
+	chip chip[0]
+	init fn[255,255]
+	talk fn[255,255]
+	unk4 255
+
+npc char[3]:
+	name "ソーニャ司令"
+	pos (0, 0, 0)
+	angle 0deg
+	flags 0x01C5
+	unk2 0
+	chip chip[0]
+	init fn[255,255]
+	talk fn[255,255]
+	unk4 255
+
+npc char[4]:
+	name "ダグラス副司令"
+	pos (0, 0, 0)
+	angle 0deg
+	flags 0x01C5
+	unk2 0
+	chip chip[0]
+	init fn[255,255]
+	talk fn[255,255]
+	unk4 255
+
+npc char[5]:
+	name "セルゲイ課長"
+	pos (0, 0, 0)
+	angle 0deg
+	flags 0x01C5
+	unk2 0
+	chip chip[0]
+	init fn[255,255]
+	talk fn[255,255]
+	unk4 255
+
+npc char[6]:
+	name "ピエール副局長"
+	pos (0, 0, 0)
+	angle 0deg
+	flags 0x01C5
+	unk2 0
+	chip chip[0]
+	init fn[255,255]
+	talk fn[255,255]
+	unk4 255
+
+npc char[7]:
+	name "局長？"
+	pos (0, 0, 0)
+	angle 0deg
+	flags 0x01C5
+	unk2 0
+	chip chip[0]
+	init fn[255,255]
+	talk fn[255,255]
+	unk4 255
+
+anim[0] 384ms
+
+fn[0]:
+	if flag[272]:
+		FlagUnset flag[272]
+		Event fn[0,2]
+	Return
+
+fn[1]:
+	Return
+
+fn[2]:
+	EventBegin 0
+	FadeOut 0ms 0x00000000 255
+	ED7LoadChip "chr/ch05602.itc" chip[30]
+	ED7LoadChip "chr/ch05802.itc" chip[31]
+	ED7LoadChip "chr/ch05702.itc" chip[32]
+	ED7LoadChip "chr/ch44902.itc" chip[33]
+	ED7LoadChip "chr/ch06402.itc" chip[34]
+	ED7LoadChip "chr/ch02502.itc" chip[35]
+	ED7LoadChip "chr/ch00902.itc" chip[36]
+	CharSetChipBase char[0] chip[30]
+	CharSetChipPattern char[0] 0
+	CharFlagsUnset char[0] 0x0080
+	CharFlagsSet char[0] 0x8000
+	CharSetPos char[0] (272800, 100, 6950) 270deg
+	CharSetChipBase char[1] chip[31]
+	CharSetChipPattern char[1] 0
+	CharFlagsUnset char[1] 0x0080
+	CharFlagsSet char[1] 0x8000
+	CharSetPos char[1] (272800, 100, 4950) 270deg
+	CharSetChipBase char[4] chip[33]
+	CharSetChipPattern char[4] 2
+	CharFlagsUnset char[4] 0x0080
+	CharFlagsSet char[4] 0x8000
+	CharSetPos char[4] (269200, 100, 8950) 90deg
+	CharSetChipBase char[3] chip[32]
+	CharSetChipPattern char[3] 0
+	CharFlagsUnset char[3] 0x0080
+	CharFlagsSet char[3] 0x8000
+	CharSetPos char[3] (269200, 100, 6950) 90deg
+	CharSetChipBase char[6] chip[34]
+	CharSetChipPattern char[6] 0
+	CharFlagsUnset char[6] 0x0080
+	CharFlagsSet char[6] 0x8000
+	CharSetPos char[6] (269200, 100, 4950) 90deg
+	CharSetChipBase char[5] chip[35]
+	CharSetChipPattern char[5] 1
+	CharFlagsUnset char[5] 0x0080
+	CharFlagsSet char[5] 0x8000
+	CharSetPos char[5] (269200, 100, 2950) 90deg
+	CharSetChipBase char[2] chip[36]
+	CharSetChipPattern char[2] 1
+	CharFlagsUnset char[2] 0x0080
+	CharFlagsSet char[2] 0x8000
+	CharSetPos char[2] (269200, 100, 900) 90deg
+	CamSetDistance 271500 -1100 5950 0ms
+	ED7CamRotate 90deg 21deg 0deg 0ms
+	CamPers 650 0ms
+	CamZoom 21000 0ms
+	CamSetDistance 271500 900 5950 3000ms
+	FadeIn 2000ms 0x00000000
+	FadeWait
+	CamWait 121
+	Sleep 500ms
+	CrossFade 500ms
+	CamSetDistance 271700 800 5950 0ms
+	ED7CamRotate 36deg 12deg 0deg 0ms
+	CamPers 600 0ms
+	CamZoom 17630 0ms
+	CamZoom 16630 2000ms
+	FadeWait
+	CamWait 121
+	TextTalk char[1] {
+		#1330250001V#02503F#11P何たることか……{wait}
+	} {
+		#1330250002V#02501Fまさかここまで大それた事を
+		一猟兵団が引き起こすとは。{wait}
+	}
+	TextWait
+	CharSetChipPattern char[0] 1
+	Sleep 300ms
+	TextTalk char[0] {
+		#1330280001V#5P#02803F……背後に何者かがいるのは
+		間違いないでしょう。{wait}
+	} {
+		#1330280002V#02801Fそれも通商会議の時と同じく……{wait}
+	}
+	TextWait
+	TextTalk char[5] {
+		#1330100012V#6P#01003Fエレボニア帝国政府……{wait}
+	} {
+		#1330100013V#01001Fいや、あえて特定するなら
+		『帝国軍情報局』ですか。{wait}
+	}
+	TextWait
+	TextTalk char[2] {
+		#1330060023V#12P#00606Fその可能性は高いと
+		言わざるを得ませんね……{wait}
+	} {
+		#1330060024V#00601Fこのクロスベルでも
+		情報局の将校が『赤い星座』と
+		頻繁に連絡を取り合っていました。{wait}
+	}
+	TextWait
+	TextTalk char[6] {
+		#1332360001V#08305F#6Pこ、こうなってしまっては
+		帝国政府に泣き付いてみるしか
+		ないんじゃないでしょうか！？{wait}
+	} {
+		#1332360002V#08301F#6Pもしくは共和国政府に頼んで
+		味方になってもらうとか……！{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#1330280003V#5P#02803Fいや、既に昼間の時点で
+		帝国政府には問い合わせている。{wait}
+	} {
+		#1330280004V#02801F返事は当然ながら……
+		『身に覚えがない』だったがね。{wait}
+	} {
+		#1330280005V#02806F……そしてこれは私の責任だが
+		独立提言以来、共和国政府にも
+		協力を頼める状況ではなくてね。{wait}
+	}
+	TextWait
+	TextTalk char[6] {
+		#1332360003V#08311F#6Pそ、そんな……{wait}
+	} {
+		#1332360004V#08305F#6P……い、いえ！
+		決して市長の責任ではっ！{wait}
+	}
+	TextWait
+	TextTalk char[1] {
+		#1330250003V#02503F#11Pいずれにしても……
+		このままでは、自治州政府としても
+		正式な抗議声明を出すしかないだろう。{wait}
+	} {
+		#1330250004V#02500Fしかし……何はともあれ
+		マインツの住民の安否が気になる。{wait}
+	}
+	TextWait
+	TextTalk char[3] {
+		#1330200001V#6P#02003F……民間の飛行艇に依頼して
+		何とか上空から確認は出来ました。{wait}
+	} {
+		#1330200002V#02001F現時点では、略奪などの行為が
+		行われている気配は無さそうです。{wait}
+	}
+	TextWait
+	TextTalk char[4] {
+		#1332460001V#07601F#5Pですが、マインツの住民が、
+		人質である状況は変わりません。{wait}
+	} {
+		#1332460002V#07601F#5P食料の備蓄も心配ですし、
+		グズグズはしてられませんね。{wait}
+	}
+	TextWait
+	CharSetChipPattern char[0] 0
+	Sleep 150ms
+	TextTalk char[0] {
+		#1330280006V#11P#02803F無論だ、すぐに対策を打とう。{wait}
+	} {
+		#1330280007V#02801F……警備隊の被害は
+		どの程度のものだったかね？{wait}
+	}
+	TextWait
+	TextTalk char[3] {
+		#1330200003V#6P#02006F……人的、物的被害共に
+		甚大と言わざるを得ません。{wait}
+	} {
+		#1330200004V#02001F現在、予備戦力の全てを
+		山道に展開している状況です。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#1330280008V#11P#02806Fそうか……{wait}
+	}
+	TextWait
+	CharSetChipPattern char[0] 1
+	Sleep 300ms
+	TextTalk char[0] {
+		#1330280009V#02801F#5P──相手は戦闘のプロだが
+		あくまでミラで雇われている集団だ。{wait}
+	} {
+		#1330280010V交渉次第では、これ以上の惨事を
+		食い止められる可能性もあるだろう。{wait}
+	} {
+		#1330280011V警察の諸君には、
+		市民の不安を抑えてもらうと同時に
+		そのあたりの可能性も探って欲しい。{wait}
+	}
+	TextWait
+	TextTalk char[2] {
+		#1330060025V#12P#00601F了解しました！{wait}
+	}
+	TextWait
+	TextTalk char[6] {
+		#1332360005V#08301F#6Pた、直ちに！{wait}
+	}
+	TextWait
+	TextTalk char[5] {
+		#1330100014V#6P#01003Fギルドとも連絡を取って
+		手を尽くしてみますか……{wait}
+	}
+	TextWait
+	CamZoom 17130 2000ms
+	FadeOut 2000ms 0x00000000 255
+	FadeWait
+	CamWait 121
+	BgmStop 4000ms
+	BgmWait
+	system[76] = 65535
+	FlagSet flag[275]
+	NewScene "scena/c010b.bin" 0 0 0
+	Hcf
+	Return

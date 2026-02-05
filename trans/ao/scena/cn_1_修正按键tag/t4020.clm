@@ -1,0 +1,991 @@
+calmare ao_k scena
+scena:
+	name "t4020" "t4020" "t4020"
+	town town[93]
+	bgm bgm[124]
+	flags 8192
+	item_use fn[0,255]
+	unk 255 31
+
+entry:
+	pos (0, 0, -1000)
+	unk1 0
+	cam_from (0, 0, 24000)
+	cam_pers 500
+	unk2 30
+	cam_deg 45deg
+	cam_limit 0deg 360deg
+	cam_at (0, 0, 0)
+	unk3 0
+	unk4 0
+	flags 0x0001
+	town town[93]
+	init fn[0,2]
+	reinit fn[0,3]
+
+chip[0] "chr/ch20000.itc"
+chip[1] "chr/ch45100.itc"
+chip[2] "chr/ch10102.itc"
+chip[3] "apl/ch51090.itc"
+
+npc char[0]:
+	name "昆特老先生"
+	pos (260260, 0, 250)
+	angle 0deg
+	flags 0x0181
+	unk2 0
+	chip chip[0]
+	init fn[0,1]
+	talk fn[0,5]
+	unk4 255
+
+npc char[1]:
+	name "尼爾森"
+	pos (260149, 0, -1750)
+	angle 135deg
+	flags 0x0185
+	unk2 0
+	chip chip[1]
+	init fn[0,0]
+	talk fn[0,8]
+	unk4 255
+
+npc char[2]:
+	name "修莉"
+	pos (257899, 50, 2880)
+	angle 90deg
+	flags 0x0185
+	unk2 0
+	chip chip[2]
+	init fn[255,255]
+	talk fn[0,10]
+	unk4 255
+
+npc char[3]:
+	name "可可亞"
+	pos (258209, 500, 2099)
+	angle 0deg
+	flags 0x01F6
+	unk2 1792
+	chip chip[3]
+	init fn[255,255]
+	talk fn[255,255]
+	unk4 255
+
+look_point[0]:
+	pos (262920, 0, 3100)
+	radius 1200
+	bubble_pos (262920, 1200, 3100)
+	unk1 124
+	unk2 0
+	function fn[0,4]
+	unk3 0
+	unk4 0
+
+look_point[1]:
+	pos (257930, 0, 1240)
+	radius 1200
+	bubble_pos (257899, 1000, 2880)
+	unk1 126
+	unk2 0
+	function fn[0,9]
+	unk3 0
+	unk4 0
+
+fn[0]:
+	switch random % 8:
+		case 0:
+			ED7_A0 self 1450ms 0 251
+			break
+		case 1:
+			ED7_A0 self 1550ms 0 251
+			break
+		case 2:
+			ED7_A0 self 1600ms 0 251
+			break
+		case 3:
+			ED7_A0 self 1400ms 0 251
+			break
+		case 4:
+			ED7_A0 self 1650ms 0 251
+			break
+		case 5:
+			ED7_A0 self 1350ms 0 251
+			break
+		case 6:
+			ED7_A0 self 1500ms 0 251
+			break
+		default:
+			ED7_A0 self 1500ms 0 251
+			break
+	while 1:
+		ED7_A0 self 1500ms 0 251
+	Return
+
+fn[1]:
+	while 1:
+		CharIdle self (259350, null, -1480) (261390, null, 2230) 1000mm/s
+		Sleep 600ms
+	Return
+
+fn[2]:
+	if flag[3385]:
+	elif flag[3371]:
+	elif flag[3089]:
+		CharFlagsUnset char[0] 0x0080
+		ForkFunc char[0] fork[0] fn[0,1]
+	elif flag[3074]:
+		CharFlagsUnset char[0] 0x0080
+		ForkFunc char[0] fork[0] fn[0,1]
+	elif flag[2861]:
+		CharFlagsUnset char[0] 0x0080
+		ForkFunc char[0] fork[0] fn[0,1]
+	elif flag[2848]:
+		CharFlagsUnset char[0] 0x0080
+		ForkFunc char[0] fork[0] fn[0,1]
+	elif flag[2837]:
+		CharFlagsUnset char[0] 0x0080
+		ForkFunc char[0] fork[0] fn[0,1]
+	elif flag[2832]:
+		CharFlagsUnset char[0] 0x0080
+		ForkFunc char[0] fork[0] fn[0,1]
+	elif flag[2831]:
+		CharFlagsUnset char[0] 0x0080
+		ForkFunc char[0] fork[0] fn[0,1]
+	elif flag[2829]:
+	elif flag[2816]:
+	elif flag[2573]:
+		CharFlagsUnset char[0] 0x0080
+		ForkFunc char[0] fork[0] fn[0,1]
+	elif flag[2564]:
+		CharFlagsUnset char[0] 0x0080
+		ForkFunc char[0] fork[0] fn[0,0]
+		CharSetPos char[0] (260209, 0, -130) 0deg
+		CharFlagsUnset char[1] 0x0080
+		CharSetPos char[1] (260260, 0, 1420) 180deg
+		ForkFunc char[1] fork[0] fn[0,0]
+		CharFlagsSet char[0] 0x0010
+		CharFlagsSet char[1] 0x0010
+	elif flag[2560]:
+	elif flag[2369]:
+		CharFlagsUnset char[0] 0x0080
+		CharFlagsUnset char[2] 0x0080
+		CharFlagsUnset char[3] 0x0080
+		CharSetChipBase char[2] chip[2]
+		CharSetChipPattern char[2] 0
+		ForkQuit char[2] fork[0]
+		CharFlags2Set char[2] 0x0004
+		CharSetPos char[0] (259550, 0, 2840) 270deg
+		ForkFunc char[0] fork[0] fn[0,0]
+		if !flag[2462]:
+			CharFlagsSet char[0] 0x0010
+			CharFlagsSet char[2] 0x0010
+	elif flag[2368]:
+		CharFlagsUnset char[0] 0x0080
+		ForkFunc char[0] fork[0] fn[0,1]
+	elif flag[2367]:
+	elif flag[2353]:
+	Return
+
+fn[3]:
+	if flag[2831] && !flag[2832]:
+		MapColor 0x00C8D2FF 0ms
+	elif flag[2367] && !flag[2369]:
+		MapColor 0x00C8D2FF 0ms
+	if flag[2848] && !flag[2858] | flag[2369] && system[4] == 1:
+		ED7_76_0 object[255] "hikari00" 1
+		ED7_76_0 object[255] "footlight00" 1
+		SoundPlay sound[128] 1 50 0
+	else:
+		ED7_76_0 object[255] "footlight01" 1
+	LookPointFlagsSet look_point[1] 0x0001
+	if !flag[2560] && flag[2369]:
+		LookPointFlagsUnset look_point[1] 0x0001
+	Return
+
+fn[4]:
+	TextSetName ""
+	TextMessage null {
+		{color 5}放有一本『一分鐘料理教室・小吃篇』。{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	TextSetPos -1 280 60 3
+	if ItemHas item[2] 0:
+		if !RecipeLearn 13:
+			FadeOut 300ms 0x00000000 100
+			SoundPlay sound[17] 0 100 0
+			TextSetPos -1 -1 -1 -1
+			TextSetName ""
+			TextMessage null {
+				記住了{color 2}『鮮美三明治』{color 0}的食譜。{wait}
+			}
+			TextWait
+			TextClose 0
+			FadeIn 300ms 0x00000000
+			FadeWait
+			_59
+			TextSetPos -1 280 60 3
+	TextEnd null
+	Return
+
+fn[5]:
+	TextStart self
+	if flag[3089]:
+		if flag[3090] && QuestFlagsGet quest[137] 0x10 && !QuestFlagsGet quest[149] 0x10:
+			TextTalk self {
+				尼爾森似乎
+				有來為蓋掃墓呢。{wait}
+			}
+			TextWait
+			TextTalk self {
+				他最近似乎在調查
+				蓋的事件，不過……
+				調查有進展嗎？{wait}
+			}
+			TextWait
+		else:
+			TextTalk self {
+				成為獨立國家……
+				那究竟會為克洛斯貝爾帶來什麼呢……？{wait}
+			}
+			TextWait
+			TextTalk self {
+				……希望長眠於此地的人們
+				能夠守護我們。{wait}
+			}
+			TextWait
+	elif flag[3074]:
+		if !flag[0]:
+			TextTalk self {
+				剛才亞里歐斯有來這裡。
+				他也有來跟我打招呼。{wait}
+			}
+			TextWait
+			TextTalk self {
+				雖然不再像以前一樣
+				一起喝酒，不過……{wait}
+			}
+			TextWait
+			TextTalk self {
+				他也沒有變呢。{wait}
+			}
+			TextWait
+			FlagSet flag[0]
+		else:
+			TextTalk self {
+				直到現在，
+				亞里歐斯到墓地的時候
+				還是會過來打招呼。{wait}
+			}
+			TextWait
+			TextTalk self {
+				他也沒有變呢。{wait}
+			}
+			TextWait
+	elif flag[2861]:
+		TextTalk self {
+			聽說警備隊在山道上
+			死傷慘重。{wait}
+		}
+		TextWait
+		TextTalk self {
+			……我實在無法忍受
+			那些前途無量的年輕人
+			就這樣喪失生命。{wait}
+		}
+		TextWait
+	elif flag[2848]:
+		if !flag[0]:
+			TextTalk self {
+				在風雨吹打之下，
+				刻在墓碑上的銘文也會
+				一點一點風化消失。{wait}
+			}
+			TextWait
+			TextTalk self {
+				許多墓碑的存在
+				就這樣逐漸被人們遺忘……{wait}
+			}
+			TextWait
+			TextTalk self {
+				為了不讓事情變成如此，
+				像我這樣的守墓人也有必要存在。{wait}
+			}
+			TextWait
+			FlagSet flag[0]
+		else:
+			TextTalk self {
+				經歷長年的風雨吹打，
+				墓碑上的銘文逐漸風化之後，就連
+				其存在本身也會被人們遺忘……{wait}
+			}
+			TextWait
+			TextTalk self {
+				為了不讓事情變成如此，
+				像我這樣的守墓人也有必要存在。{wait}
+			}
+			TextWait
+	elif flag[2837]:
+		if !flag[0]:
+			TextTalk self {
+				蓋他跟兒時玩伴有婚約，
+				未來才正要開始的時候就殉職了。{wait}
+			}
+			TextWait
+			TextTalk self {
+				亞里歐斯則因為意外
+				失去了妻子的生命及愛女的眼睛。{wait}
+			}
+			TextWait
+			TextTalk self {
+				為了他人跟克洛斯貝爾
+				盡心盡力的他們，
+				居然會遇到如此不幸……{wait}
+			}
+			TextWait
+			TextTalk self {
+				……真讓人無法接受。{wait}
+			}
+			TextWait
+			FlagSet flag[0]
+		else:
+			TextTalk self {
+				蓋跟亞里歐斯
+				為了他人跟克洛斯貝爾，
+				比任何人都還要盡心盡力。{wait}
+			}
+			TextWait
+			TextTalk self {
+				這樣的他們居然會遭遇不幸……
+				真讓人無法接受。{wait}
+			}
+			TextWait
+	elif flag[2832]:
+		if !flag[0]:
+			TextTalk self {
+				亞里歐斯現在是名人了，
+				他當年也曾經被蓋拉著
+				跟我們一起喝酒。{wait}
+			}
+			TextWait
+			TextTalk self {
+				那傢伙很節制。
+				總是用若無其事的表情
+				看我跟蓋喝醉。{wait}
+			}
+			TextWait
+			TextTalk self {
+				呵呵，真想看一次
+				他喝醉酒的模樣呢。{wait}
+			}
+			TextWait
+			FlagSet flag[0]
+		else:
+			TextTalk self {
+				以前，亞里歐斯偶爾也會
+				被蓋拉著到這裡
+				跟我們一起喝酒。{wait}
+			}
+			TextWait
+			TextTalk self {
+				因為他是個節制的傢伙，
+				所以不會像我跟蓋
+				一樣喝醉。{wait}
+			}
+			TextWait
+	elif flag[2831]:
+		if !flag[0]:
+			TextTalk self {
+				你們現在要掃墓嗎？{wait}
+			}
+			TextWait
+			TextTalk self {
+				晚上這裡會有點冷。
+				早點掃完會比較好喔。{wait}
+			}
+			TextWait
+			FlagSet flag[0]
+		else:
+			TextTalk self {
+				因為這裡地勢高，
+				所以晚上會有點冷。{wait}
+			}
+			TextWait
+			TextTalk self {
+				早點掃完會比較好喔。{wait}
+			}
+			TextWait
+	elif flag[2829]:
+	elif flag[2816]:
+	elif flag[2573]:
+		if !flag[0]:
+			TextTalk self {
+				《克洛斯貝爾問題》
+				在被如此稱呼之前，
+				就已經存在這裡許久了。{wait}
+			}
+			TextWait
+			TextTalk self {
+				被捲入帝國及共和國
+				不斷反覆的紛爭，
+				喪失了數不盡的生命。{wait}
+			}
+			TextWait
+			TextTalk self {
+				我雖然托蓋的福
+				克服了這份悲傷，不過……
+				還有許多人至今依然哀痛逾恆吧。{wait}
+			}
+			TextWait
+			FlagSet flag[0]
+		else:
+			TextTalk self {
+				剛才過來的利貝爾公主，
+				對《克洛斯貝爾問題》的痛苦
+				能感同身受。{wait}
+			}
+			TextWait
+			TextTalk self {
+				雖然她還很年輕，不過我覺得
+				她是位充滿慈悲與關愛的女性。{wait}
+			}
+			TextWait
+	elif flag[2564]:
+		if !flag[0]:
+			Call fn[0,7]
+		else:
+			TextTalk self {
+				嗯，沒想到
+				尼爾森居然回來了。{wait}
+			}
+			TextWait
+			TextTalk self {
+				來吧，今晚就讓我
+				聽你多聊聊吧。{wait}
+			}
+			TextWait
+	elif flag[2560]:
+	elif flag[2369]:
+		if !flag[2462]:
+			Call fn[0,11]
+		else:
+			TextTalk self {
+				來自諾森比亞啊……
+				那孩子肯定也吃了很多苦吧。{wait}
+			}
+			TextWait
+			TextTalk self {
+				畢竟不能請小孩喝酒，
+				在他下次來玩時，
+				我可得準備一些茶點呢。{wait}
+			}
+			TextWait
+	elif flag[2368]:
+		if !flag[2476]:
+			Call fn[0,6]
+		elif !flag[0]:
+			TextTalk self {
+				蓋死了之後，
+				我喝酒的量也減少許多。{wait}
+			}
+			TextWait
+			TextTalk self {
+				失去合得來的酒友，
+				果然很寂寞呢。{wait}
+			}
+			TextWait
+			TextTalk name[82] {
+				#01108F爺爺……{wait}
+			} {
+				#01100F……等琪雅長大之後，
+				會跟羅伊德他們一起來陪你喝酒！{wait}
+			}
+			TextWait
+			CharTurnToChar self name[82] 500deg/s
+			TextTalk self {
+				哈哈，這樣啊。
+				我會很期待
+				那時候到來。{wait}
+			}
+			TextWait
+			FlagSet flag[0]
+		else:
+			TextTalk self {
+				呵呵，等妳長到
+				可以喝酒的年紀時，
+				應該也是個大美女吧。{wait}
+			}
+			TextWait
+			TextTalk self {
+				我會盡量活久一點，
+				並且期待
+				那時候到來。{wait}
+			}
+			TextWait
+	elif flag[2367]:
+	elif flag[2353]:
+	TextEnd self
+	Return
+
+fn[6]:
+	_Char4A char[0] 255
+	CharTurnToChar char[0] name[0] 0deg/s
+	Emote char[0] 0mm 2000mm 38 38 250ms 1
+	Sleep 1000ms
+	TextTalk char[0] {
+		喔喔，你是羅伊德……
+		好久不見了。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		你什麼時候回來的？{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#00000F嗯，前陣子剛回來。
+		別來無恙。{wait}
+	}
+	TextWait
+	TextTalk name[8] {
+		#10105F羅伊德，這位先生是……？{wait}
+	}
+	TextWait
+	if QuestFlagsGet quest[46] 0x10:
+		TextTalk name[1] {
+			#00100F呵呵，是我們之前
+			透過委託認識的人喔。{wait}
+		}
+		TextWait
+	TextTalk name[0] {
+		#00000F嗯……
+		這位是昆特，
+		跟我大哥是酒友。{wait}
+	} {
+		#00004F他對我這個弟弟也很好。
+		在教團事件之後，我們一起喝酒時，
+		他也告訴了我很多以前的事情。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		那個時候真的很開心。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		不過，羅伊德酒量比不上蓋，
+		所以有點無聊呢。{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#00012F哈哈……不好意思。{wait}
+	}
+	TextWait
+	TextTalk name[1] {
+		#00100F呵呵，那個時候
+		我們也在場。{wait}
+	} {
+		#00109F只有未成年的緹歐喝果汁，
+		她似乎感到很不滿呢。{wait}
+	}
+	TextWait
+	TextTalk name[4] {
+		#10302F呵呵，原來如此。{wait}
+	} {
+		#10304F嗯，我們今後
+		也要請你多關照了，老先生。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		嗯，如果是羅伊德的同事，我很歡迎喔。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		平常我負責管理這塊墓地。
+		歡迎你們隨時過來。{wait}
+	}
+	TextWait
+	_Char4B char[0] 255
+	FlagSet flag[2476]
+	Return
+
+fn[7]:
+	_Char4A char[1] 255
+	_Char4A char[0] 255
+	TextTalk char[0] {
+		真不好意思，尼爾森。
+		居然帶這麼好的酒過來。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		這酒很貴吧？{wait}
+	}
+	TextWait
+	TextTalk char[1] {
+		不，這是別人送我的酒，
+		請不用在意。{wait}
+	}
+	TextWait
+	TextTalk char[1] {
+		如果能在這裡喝的話，
+		我也會很高興。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		呵呵，那今晚馬上就來
+		喝一杯如何？{wait}
+	}
+	TextWait
+	TextTalk char[1] {
+		呵呵，真不錯呢。
+		就讓我久違地陪你喝一杯吧。{wait}
+	}
+	TextWait
+	_Char4B char[1] 255
+	_Char4B char[0] 255
+	FlagSet flag[0]
+	FlagSet flag[1]
+	CharFlagsUnset char[0] 0x0010
+	CharFlagsUnset char[1] 0x0010
+	Return
+
+fn[8]:
+	TextStart self
+	if flag[2564]:
+		if !flag[1]:
+			Call fn[0,7]
+		else:
+			TextTalk self {
+				呵呵，如果我說的無聊故事也好的話，
+				多少我都很樂意說。{wait}
+			}
+			TextWait
+			TextTalk self {
+				話說回來，看到昆特先生
+				這麼有精神，真讓人開心。{wait}
+			}
+			TextWait
+	TextEnd self
+	Return
+
+fn[9]:
+	Call fn[0,10]
+	Return
+
+fn[10]:
+	TextStart char[2]
+	if !flag[2462]:
+		Call fn[0,11]
+	elif !flag[2]:
+		TextTalk char[2] {
+			#14008F該怎麼說……
+			克洛斯貝爾真的是個
+			很不可思議的城市呢。{wait}
+		} {
+			#14003F……總之，多虧如此，
+			我現在姑且算是
+			找到了眼前的目標了吧。{wait}
+		} {
+			#14002F為了報答伊莉雅小姐的恩情，
+			我必須好好努力才行。{wait}
+		}
+		TextWait
+	else:
+		TextTalk char[2] {
+			#14003F……總之，多虧如此，
+			我現在姑且算是
+			找到了眼前的目標了吧。{wait}
+		} {
+			#14002F為了報答伊莉雅小姐的恩情，
+			我必須好好努力才行。{wait}
+		}
+		TextWait
+	TextEnd char[2]
+	Return
+
+fn[11]:
+	EventBegin 0
+	FadeOut 1000ms 0x00000000 255
+	FadeWait
+	CamSetDistance 258420 1500 830 0ms
+	ED7CamRotate 28deg 23deg 0deg 0ms
+	CamPers 260 0ms
+	CamZoom 33960 0ms
+	CharSetPos name[0] (258709, 0, 120) 0deg
+	CharSetPos name[1] (259860, 0, -120) 0deg
+	CharSetPos name[8] (259010, 0, -1110) 0deg
+	CharSetPos name[4] (260160, 0, -1370) 0deg
+	VisShow vis[0] 234 0 490 256 0 0 512 512 0 0 512 512 0x00FFFFFF 0 "bu14000.itp"
+	_Char4A char[0] 255
+	CharTurnTo char[0] 180deg 0deg/s
+	CharTurnTo char[2] 100deg 0deg/s
+	CharSetChipPattern char[2] 2
+	FadeIn 1000ms 0x00000000
+	FadeWait
+	if QuestFlagsGet quest[29] 0x10 | flag[2490]:
+		TextTalk name[0] {
+			#12P#00005F咦？妳是修莉……？
+			居然會在這種地方碰面。{wait}
+		}
+		TextWait
+		TextTalk char[2] {
+			#14000F……嗨，是你們啊。{wait}
+		}
+		TextWait
+		TextTalk name[1] {
+			#12P#00100F呃，妳在這裡做什麼？{wait}
+		}
+		TextWait
+	else:
+		TextTalk name[0] {
+			#12P#00005F咦？妳是彩虹劇團的……
+			居然會在這種地方碰到。{wait}
+		}
+		TextWait
+		TextTalk char[2] {
+			#14000F……你們是
+			伊莉雅小姐跟莉夏姊的
+			朋友對吧？{wait}
+		} {
+			這麼說來，
+			我還沒自我介紹呢。{wait}
+		}
+		TextWait
+		VisSet vis[0] 3 0xFFFFFFFF 500ms 0 0
+		VisSet vis[0] 0 -10000 0 500ms 0
+		VisWait vis[0] 3
+		VisWait vis[0] 0
+		TextSetPos -1 280 35 3
+		Sleep 500ms
+		TextMessage char[2] {
+			我是在劇團裡打雜的
+			修莉・亞特雷德。{wait}
+		} {
+			……呃，請多指教。{wait}
+		}
+		TextWait
+		TextClose 0
+		_59
+		TextSetPos -1 280 60 3
+		VisSet vis[0] 3 0x00FFFFFF 500ms 0 0
+		VisSet vis[0] 0 0 0 500ms 0
+		VisWait vis[0] 3
+		VisWait vis[0] 0
+		TextTalk name[1] {
+			#12P#00109F呵呵，請多指教囉，修莉。{wait}
+		} {
+			#00100F呃，妳在這裡做什麼？{wait}
+		}
+		TextWait
+	TextTalk char[0] {
+		在這種雨天，她竟然
+		連傘都不撐就跑來墓地。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		所以我才邀請她
+		進來小屋，幫她泡了杯
+		熱可可亞。{wait}
+	}
+	TextWait
+	CharSetChipPattern char[2] 0
+	Sleep 100ms
+	TextTalk char[2] {
+		#14002F……謝謝你讓我躲雨，
+		爺爺。{wait}
+	} {
+		#14004F這杯可可亞也是……
+		托它的福，身體暖和起來了。{wait}
+	}
+	TextWait
+	CharTurnTo char[0] 270deg 500deg/s
+	TextTalk char[0] {
+		#11P呵呵，那就好。{wait}
+	}
+	TextWait
+	TextTalk name[8] {
+		#12P#10100F但是，妳為什麼到墓地來……？{wait}
+	}
+	TextWait
+	Emote char[2] 0mm 1700mm 24 27 250ms 0
+	Sleep 1500ms
+	EmoteStop char[2]
+	CharSetChipPattern char[2] 2
+	Sleep 100ms
+	TextTalk char[2] {
+		#14001F……其實我本來是打算
+		到教堂去祈禱。{wait}
+	} {
+		#14003F但是，總覺得有點猶豫。{wait}
+	} {
+		#14008F……畢竟在諾森比亞
+		沒有那麼氣派的教堂。{wait}
+	}
+	TextWait
+	Emote name[0] 0mm 2000mm 38 38 250ms 1
+	Sleep 50ms
+	Emote name[1] 0mm 2000mm 38 38 250ms 1
+	Sleep 50ms
+	Emote name[8] 0mm 2000mm 38 38 250ms 1
+	Sleep 50ms
+	Emote name[4] 0mm 2000mm 38 38 250ms 1
+	Sleep 1000ms
+	TextTalk name[0] {
+		#12P#00001F我記得諾森比亞是……{wait}
+	}
+	TextWait
+	TextTalk name[4] {
+		#12P#10303F嗯，是在大陸北部的自治州。{wait}
+	}
+	TextWait
+	if QuestFlagsGet quest[29] 0x10:
+		TextTalk name[1] {
+			#12P#00105F那麼，修莉說有待過的
+			貧民窟是指……{wait}
+		}
+		TextWait
+		TextTalk char[2] {
+			#14008F嗯……我就是來自那裡。{wait}
+		}
+		TextWait
+	else:
+		TextTalk char[2] {
+			#14008F嗯……我就是來自
+			那裡的貧民窟。{wait}
+		}
+		TextWait
+	TextTalk name[8] {
+		#12P#10108F這樣啊……{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#11P嗯，我聽說諾森比亞是一個
+		各方面都很艱困的地區……{wait}
+	}
+	TextWait
+	TextTalk char[2] {
+		#14003F嗯……
+		是非常艱困。{wait}
+	}
+	TextWait
+	Emote char[2] 0mm 1700mm 24 27 250ms 0
+	Sleep 1500ms
+	EmoteStop char[2]
+	TextTalk char[2] {
+		#14008F在那裡，大家拚死拚活，
+		只為了活過今天。{wait}
+	} {
+		根本完全沒有……
+		沒有餘力關心別人。{wait}
+	} {
+		#14003F……雖然我不太懂，不過我覺得
+		這裡真的是個很奇妙的城市。{wait}
+	} {
+		雖然也有許多人很討厭，不過……{wait}
+	} {
+		既有讓我這種人加入劇團的
+		伊莉雅小姐……{wait}
+	} {
+		也有像爺爺這樣，
+		會特地關心我的人。{wait}
+	} {
+		#14000F還有，不知不覺間
+		就讓我接受
+		身為演員的訓練……{wait}
+	}
+	TextWait
+	Emote name[0] 0mm 2000mm 38 38 250ms 1
+	Sleep 1000ms
+	TextTalk name[0] {
+		#12P#00002F演員的訓練……
+		哦，那不是很厲害嗎？{wait}
+	}
+	TextWait
+	TextTalk char[2] {
+		#14005F對、對啊……{wait}
+	} {
+		#14003F只是，我還是
+		多少會覺得有點困惑。{wait}
+	} {
+		#14008F像我這種人的目標
+		居然會是當演員……
+		我連想都沒想過。{wait}
+	}
+	TextWait
+	TextTalk name[1] {
+		#12P#00108F修莉……{wait}
+	}
+	TextWait
+	TextTalk char[2] {
+		#14003F嗯，不管再怎麼煩惱
+		都無可奈何，
+		這種事我也很清楚。{wait}
+	} {
+		#14002F話說回來……
+		你們也是一群
+		很奇怪的人呢。{wait}
+	} {
+		竟然會願意像這樣
+		聽我這種人所說的話。{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#12P#00005F是、是嗎……？{wait}
+	}
+	TextWait
+	TextTalk name[1] {
+		#12P#00100F呵呵，不過
+		這點或許難以否認呢。{wait}
+	}
+	TextWait
+	TextTalk name[8] {
+		#12P#10102F的確，在警察當中，
+		支援課也是個非常
+		特殊的部門呢。{wait}
+	}
+	TextWait
+	TextTalk name[4] {
+		#12P#10302F呵呵，不管怎麼說，還是
+		我們的隊長最奇怪吧。{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#12P#00006F瓦奇，你沒資格說這種話啦。{wait}
+	} {
+		#00000F嗯，該怎麼說呢，
+		我們能像這樣認識修莉，
+		應該也是某種緣份吧。{wait}
+	} {
+		如果有遇到任何困難的話，
+		隨時都可以來找我們商量喔！{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#11P呵呵，妳也可以
+		隨時來這個小屋玩喔。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#11P下次就讓我準備
+		一些茶點來招待你們吧。{wait}
+	}
+	TextWait
+	CharSetChipPattern char[2] 0
+	TextTalk char[2] {
+		#14002F哈哈……謝謝你。{wait}
+	}
+	TextWait
+	_59
+	FlagSet flag[2462]
+	system[111] += 2
+	VisHide vis[255] 0
+	_Char4B char[0] 255
+	CharTurnTo char[0] 270deg 0deg/s
+	CharTurnTo char[2] 90deg 0deg/s
+	CharSetChipPattern char[2] 0
+	CharFlagsUnset char[0] 0x0010
+	CharFlagsUnset char[2] 0x0010
+	ED7_Cam69 255 0
+	CharSetPos field_party[0] (259230, 0, -370) 0deg
+	EventEnd 5
+	Return

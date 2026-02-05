@@ -1,0 +1,1899 @@
+calmare ao_k scena
+scena:
+	name "t2020" "t2020" "t2020"
+	town town[89]
+	bgm bgm[126]
+	flags 8192
+	item_use fn[0,255]
+	unk 255 28
+
+entry:
+	pos (0, 0, -1000)
+	unk1 0
+	cam_from (0, 0, 24000)
+	cam_pers 500
+	unk2 30
+	cam_deg 45deg
+	cam_limit 0deg 360deg
+	cam_at (0, 0, 0)
+	unk3 0
+	unk4 0
+	flags 0x0001
+	town town[89]
+	init fn[0,2]
+	reinit fn[0,3]
+
+chip[0] "chr/ch32600.itc"
+chip[1] "chr/ch05702.itc"
+chip[2] "chr/ch41400.itc"
+
+npc char[0]:
+	name "ミレイユ准尉"
+	pos (0, 0, 0)
+	angle 0deg
+	flags 0x0185
+	unk2 0
+	chip chip[0]
+	init fn[0,0]
+	talk fn[0,5]
+	unk4 255
+
+npc char[1]:
+	name "ミレイユ三尉"
+	pos (0, 0, 0)
+	angle 0deg
+	flags 0x0185
+	unk2 0
+	chip chip[0]
+	init fn[0,0]
+	talk fn[0,6]
+	unk4 255
+
+npc char[2]:
+	name "ソーニャ司令"
+	pos (0, 0, 0)
+	angle 0deg
+	flags 0x01C5
+	unk2 0
+	chip chip[0]
+	init fn[255,255]
+	talk fn[0,8]
+	unk4 255
+
+npc char[3]:
+	name "兵士ロメオ"
+	pos (-250, 0, 1410)
+	angle 0deg
+	flags 0x0185
+	unk2 0
+	chip chip[2]
+	init fn[0,1]
+	talk fn[0,9]
+	unk4 255
+
+npc char[4]:
+	name "ノエル少尉"
+	pos (0, 0, 0)
+	angle 0deg
+	flags 0x01C5
+	unk2 0
+	chip chip[0]
+	init fn[255,255]
+	talk fn[255,255]
+	unk4 255
+
+npc char[5]:
+	name "ダグラス副司令"
+	pos (0, 0, 0)
+	angle 0deg
+	flags 0x01C5
+	unk2 0
+	chip chip[0]
+	init fn[255,255]
+	talk fn[255,255]
+	unk4 255
+
+look_point[0]:
+	pos (48900, 0, -27260)
+	radius 1200
+	bubble_pos (48900, 850, -27260)
+	unk1 124
+	unk2 0
+	function fn[0,4]
+	unk3 0
+	unk4 0
+
+look_point[1]:
+	pos (-2000, 0, -4520)
+	radius 1200
+	bubble_pos (-2000, 1000, -4520)
+	unk1 124
+	unk2 0
+	function fn[0,14]
+	unk3 0
+	unk4 0
+
+look_point[2]:
+	pos (-38750, 0, 0)
+	radius 1200
+	bubble_pos (-40300, 1500, 0)
+	unk1 126
+	unk2 0
+	function fn[0,7]
+	unk3 0
+	unk4 0
+
+anim[0] 496ms
+
+sepith[0] 0 0 0 0 0 0 0 0
+
+fn[0]:
+	switch random % 8:
+		case 0:
+			ED7_A0 self 1450ms 0 251
+			break
+		case 1:
+			ED7_A0 self 1550ms 0 251
+			break
+		case 2:
+			ED7_A0 self 1600ms 0 251
+			break
+		case 3:
+			ED7_A0 self 1400ms 0 251
+			break
+		case 4:
+			ED7_A0 self 1650ms 0 251
+			break
+		case 5:
+			ED7_A0 self 1350ms 0 251
+			break
+		case 6:
+			ED7_A0 self 1500ms 0 251
+			break
+		default:
+			ED7_A0 self 1500ms 0 251
+			break
+	while 1:
+		ED7_A0 self 1500ms 0 251
+	Return
+
+fn[1]:
+	while 1:
+		CharWalkToPos self (-250, 0, 4390) 2000mm/s 0
+		CharWalkToPos self (19540, 0, 4390) 2000mm/s 0
+		CharWalkToPos self (-250, 0, 4390) 2000mm/s 0
+		CharWalkToPos self (-250, 0, -11650) 2000mm/s 0
+	Return
+
+fn[2]:
+	if flag[3385]:
+		CharFlagsUnset char[3] 0x0080
+	elif flag[3074]:
+		CharFlagsUnset char[2] 0x0080
+		CharSetPos char[2] (-40300, 150, 0) 90deg
+		CharSetChipBase char[2] chip[1]
+		CharSetChipPattern char[2] 0
+		ForkQuit char[2] fork[0]
+		CharFlags2Set char[2] 0x0004
+	elif flag[2861]:
+		CharFlagsUnset char[2] 0x0080
+		CharSetPos char[2] (-40300, 150, 0) 90deg
+		CharSetChipBase char[2] chip[1]
+		CharSetChipPattern char[2] 0
+		ForkQuit char[2] fork[0]
+		CharFlags2Set char[2] 0x0004
+	elif flag[2848]:
+		CharFlagsUnset char[2] 0x0080
+		CharSetPos char[2] (-40300, 150, 0) 90deg
+		CharSetChipBase char[2] chip[1]
+		CharSetChipPattern char[2] 0
+		ForkQuit char[2] fork[0]
+		CharFlags2Set char[2] 0x0004
+	elif flag[2832]:
+		CharFlagsUnset char[1] 0x0080
+		CharSetPos char[1] (-1310, 0, 42250) 0deg
+		CharFlagsUnset char[2] 0x0080
+		CharSetPos char[2] (-40300, 150, 0) 90deg
+		CharSetChipBase char[2] chip[1]
+		CharSetChipPattern char[2] 0
+		ForkQuit char[2] fork[0]
+		CharFlags2Set char[2] 0x0004
+	elif flag[2816]:
+		CharFlagsUnset char[1] 0x0080
+		CharSetPos char[1] (-1310, 0, 42250) 0deg
+		CharFlagsUnset char[2] 0x0080
+		CharSetPos char[2] (-40300, 150, 0) 90deg
+		CharSetChipBase char[2] chip[1]
+		CharSetChipPattern char[2] 0
+		ForkQuit char[2] fork[0]
+		CharFlags2Set char[2] 0x0004
+	elif flag[2573]:
+		CharFlagsUnset char[0] 0x0080
+		CharSetPos char[0] (-1310, 0, 42250) 0deg
+		CharFlagsUnset char[2] 0x0080
+		CharSetPos char[2] (-40300, 150, 0) 90deg
+		CharSetChipBase char[2] chip[1]
+		CharSetChipPattern char[2] 0
+		ForkQuit char[2] fork[0]
+		CharFlags2Set char[2] 0x0004
+	elif flag[2564]:
+		CharFlagsUnset char[0] 0x0080
+		CharSetPos char[0] (-36160, 0, 3980) 0deg
+	elif flag[2560]:
+		CharFlagsUnset char[0] 0x0080
+		CharSetPos char[0] (-1310, 0, 42250) 0deg
+		CharFlagsUnset char[2] 0x0080
+		CharSetPos char[2] (-40300, 150, 0) 90deg
+		CharSetChipBase char[2] chip[1]
+		CharSetChipPattern char[2] 0
+		ForkQuit char[2] fork[0]
+		CharFlags2Set char[2] 0x0004
+	if flag[272]:
+		FlagUnset flag[272]
+		FlagSet flag[0]
+		Event fn[0,10]
+	Return
+
+fn[3]:
+	if flag[0]:
+		system[1] = 0
+		FlagUnset flag[0]
+	elif flag[3074] && !flag[3355]:
+		system[1] = 151
+	elif flag[3355]:
+		system[1] = 566
+	if system[4] >= 7:
+		EntranceSetDisabled entrance[11] 0
+		EntranceSetDisabled entrance[13] 1
+		EntranceSetDisabled entrance[12] 0
+		EntranceSetDisabled entrance[14] 1
+	else:
+		EntranceSetDisabled entrance[11] 1
+		EntranceSetDisabled entrance[13] 0
+		EntranceSetDisabled entrance[12] 1
+		EntranceSetDisabled entrance[14] 0
+	if flag[2848] && !flag[2858]:
+		ED7_76_0 object[255] "hikari_add" 1
+		SoundPlay sound[128] 1 50 0
+	ED7_76_1 object[255] "cgf1" 1
+	ED7_76_0 object[255] "cda1" 1
+	if system[4] >= 6:
+		ED7_76_0 object[255] "cgf1" 1
+		ED7_76_1 object[255] "cda1" 1
+	LookPointFlagsSet look_point[1] 0x0001
+	if !flag[2816] && flag[2573]:
+		ObjFlagsUnset object[2] 0x0010
+		LookPointFlagsUnset look_point[1] 0x0001
+	if flag[3385]:
+		LookPointFlagsSet look_point[2] 0x0001
+	elif !flag[2573] && flag[2564]:
+		LookPointFlagsSet look_point[2] 0x0001
+	Return
+
+fn[4]:
+	TextSetName ""
+	TextMessage null {
+		{color 5}『おうちで作ろう！　スープ特集』がある。{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	TextSetPos -1 280 60 3
+	if ItemHas item[2] 0:
+		if !RecipeLearn 15:
+			FadeOut 300ms 0x00000000 100
+			SoundPlay sound[17] 0 100 0
+			TextSetPos -1 -1 -1 -1
+			TextSetName ""
+			TextMessage null {
+				{color 2}『ミルクポタージュ』{color 0}のレシピを覚えた。{wait}
+			}
+			TextWait
+			TextClose 0
+			FadeIn 300ms 0x00000000
+			FadeWait
+			_59
+			TextSetPos -1 280 60 3
+	TextEnd null
+	Return
+
+fn[5]:
+	TextStart self
+	if flag[2573]:
+		if !flag[2636]:
+			Call fn[0,12]
+		else:
+			TextTalk self {
+				#07900F今、ソーニャ司令とダグラス副司令が
+				テロ対策の打ち合わせをしてるの。{wait}
+			} {
+				#07903Fあまり邪魔をしないようにね。{wait}
+			}
+			TextWait
+	elif flag[2564]:
+		if !flag[2636]:
+			Call fn[0,12]
+		elif !flag[1]:
+			TextTalk self {
+				#07900Fソーニャ司令なら、
+				今日は保養地ミシュラムで
+				警備の指揮をとっているわ。{wait}
+			} {
+				#07903F国賓たちが迎賓館に
+				招待されているから、
+				最も重要な警備地点なのよね。{wait}
+			}
+			TextWait
+			TextTalk name[3] {
+				#00305Fっつーことは
+				今日はお前が司令の代わりに
+				ベルガード門の連中を纏めるわけか。{wait}
+			} {
+				#00306Fはあ、ミレイユなんかに
+				あのソーニャ司令の
+				代理が務まるんですかねえ～？{wait}
+			}
+			TextWait
+			CharTurnToChar self name[3] 500deg/s
+			TextTalk self {
+				#07901Fし、失礼なッ……{wait}
+			} {
+				#07903F……ふん、あなたの心配なんか結構。
+				前司令がいたころは似たような事を
+				よくやらされてたもの。{wait}
+			} {
+				#07907Fソーニャ司令のお留守は、
+				絶対に守ってみせるんだから！{wait}
+			}
+			TextWait
+			TextTalk name[3] {
+				#00309Fはは、その意気なら大丈夫そうだな。{wait}
+			}
+			TextWait
+			FlagSet flag[1]
+		else:
+			TextTalk self {
+				#07903F前司令がいたころは
+				よく代理で門の指揮を
+				任されていたもの。{wait}
+			} {
+				#07901Fソーニャ司令のお留守は、
+				絶対に守ってみせるんだから！{wait}
+			}
+			TextWait
+	elif flag[2560]:
+		if !flag[2636]:
+			Call fn[0,12]
+		elif !flag[1]:
+			TextTalk self {
+				#07904Fま、まあ、
+				私の昇進の話はさておき……{wait}
+			} {
+				#07900F通商会議に向けて、
+				国境門でも警戒を強めているわ。{wait}
+			} {
+				旅行者なんかとトラブルを
+				起こしたりしないよう、
+				注意してちょうだいね。{wait}
+			}
+			TextWait
+			FlagSet flag[1]
+		else:
+			TextTalk self {
+				#07900F通商会議に向けて、
+				国境門でも警戒を強めているわ。{wait}
+			} {
+				旅行者なんかとトラブルを
+				起こしたりしないよう、
+				注意してちょうだいね。{wait}
+			}
+			TextWait
+	TextEnd self
+	Return
+
+fn[6]:
+	TextStart self
+	if flag[3074]:
+	elif flag[2861]:
+	elif flag[2848]:
+	elif flag[2832]:
+		if !flag[1]:
+			TextTalk self {
+				#07900Fああ、あなたたち……{wait}
+			} {
+				ベルガード門に来る途中に、
+				何か危ない目に合わなかった？{wait}
+			}
+			TextWait
+			TextTalk name[0] {
+				#00005Fえっ……？{wait}
+			}
+			TextWait
+			TextTalk name[3] {
+				#00305F別段いつもと変わった様子は
+				なかったみてえだけどな。{wait}
+			}
+			TextWait
+			TextTalk self {
+				#07900Fそう……{wait}
+			} {
+				#07903F……どうやら今日は
+				現れる気配はないみたいね。{wait}
+			}
+			TextWait
+			Emote field_party[0] 0mm 2000mm 0 1 250ms 2
+			SoundPlay sound[29] 0 100 0
+			Emote field_party[1] 0mm 2000mm 0 1 250ms 2
+			SoundPlay sound[29] 0 100 0
+			Emote field_party[2] 0mm 2000mm 0 1 250ms 2
+			SoundPlay sound[29] 0 100 0
+			Emote field_party[3] 0mm 2000mm 0 1 250ms 2
+			SoundPlay sound[29] 0 100 0
+			Sleep 1000ms
+			TextTalk self {
+				#07900Fいえ、気にしないで。
+				こちらの仕事の話だから。{wait}
+			} {
+				#07903Fもしかしたら近い内に、
+				あなたたちに相談するかも
+				しれないけど……{wait}
+			}
+			TextWait
+			TextTalk name[3] {
+				#00303Fふーむ、よくわからねえが……
+				助けが必要ならいつでも呼んでくれや。{wait}
+			}
+			TextWait
+			TextTalk self {
+				#07902Fええ、その時はお願いするわね。{wait}
+			}
+			TextWait
+			FlagSet flag[1]
+		else:
+			TextTalk self {
+				#07903F……どうやら今日は
+				現れる気配はないみたいだし……{wait}
+			} {
+				#07901F今はとにかく、２大国との緊張状態に
+				全力であたっていかないとね。{wait}
+			}
+			TextWait
+	elif flag[2816]:
+		if !flag[2900]:
+			TextTalk name[3] {
+				#00309Fいよっ、ミレイユ准尉殿。
+				元気にしてたかよ？{wait}
+			}
+			TextWait
+			CharTurnToChar self name[3] 500deg/s
+			TextTalk self {
+				#07901F……あなた、
+				わざとやってるでしょ？{wait}
+			} {
+				#07906Fこの間三尉に昇進したって
+				言ったばかりじゃない……
+				まったくもう。{wait}
+			}
+			TextWait
+			TextTalk name[8] {
+				#10109Fあはは……何はともあれ、
+				昇進、おめでとうございます。{wait}
+			}
+			TextWait
+			CharTurnToChar self name[8] 500deg/s
+			TextTalk self {
+				#07909Fふふ、ありがとう曹長。{wait}
+			} {
+				#07903F昇進はありがたいことだけど……
+				背負う責任もだんだんと
+				大きくなってくるでしょう。{wait}
+			} {
+				#07901Fこれからも一層、
+				精進を重ねていかなくちゃね。{wait}
+			}
+			TextWait
+			TextTalk name[3] {
+				#00306Fやれやれ、あいかわらず
+				クソマジメなやつだなあ。{wait}
+			} {
+				#00302Fガンバるばかりじゃ疲れちまうぜ。
+				テケトーにやっとけ、テケトーに。{wait}
+			}
+			TextWait
+			CharTurnToChar self name[3] 500deg/s
+			Emote self 0mm 2000mm 12 13 250ms 2
+			SoundPlay sound[23] 0 100 0
+			Sleep 1000ms
+			TextTalk self {
+				#07901F人が折角いい話を
+				してるっていうのに……
+				この、ぼけなすランディ！{wait}
+			}
+			TextWait
+			TextTalk name[8] {
+				#10112Fあ、あはは……
+				（昇進しても相変わらずですね……）{wait}
+			}
+			TextWait
+			FlagSet flag[2900]
+			CharTurnTo self 180deg 0deg/s
+		elif !flag[2901]:
+			TextTalk name[3] {
+				#00300Fおっと、そういや……
+				昇進祝いにプレゼントしたアレ、
+				つけてるか？{wait}
+			} {
+				ミシュラムの宝飾店で
+				買ってきたアレだよ、アレ。{wait}
+			}
+			TextWait
+			if !flag[2769]:
+				TextTalk name[0] {
+					#00005Fへえ……
+					プレゼントなんてしてたのか。{wait}
+				}
+				TextWait
+			else:
+				TextTalk name[0] {
+					#00002Fああ……そういえば、
+					ブローチを買ってたんだっけ。{wait}
+				}
+				TextWait
+			CharTurnToChar self name[3] 500deg/s
+			TextTalk self {
+				#07906Fあのねえ……
+				つけてるわけないでしょ。{wait}
+			} {
+				#07900F警備隊の士官ともあろうものが
+				そんなチャラチャラできないし、
+				アレは大事にしまって……{wait}
+			}
+			TextWait
+			Emote self 0mm 2000mm 2 7 80ms 1
+			SoundPlay sound[28] 0 100 0
+			Sleep 1000ms
+			Emote self 0mm 2000mm 40 43 100ms 0
+			Sleep 1000ms
+			EmoteStop self
+			TextTalk self {
+				#07911Fちっ、ちがっ……ちがうからね！
+				大事になんてしてないから！{wait}
+			} {
+				#07909Fそ、そう！　タンスのすみ～の方に
+				ぞんざいに投げ入れてて……！{wait}
+			}
+			TextWait
+			TextTalk name[3] {
+				#00309Fわはは、照れるなっつの。{wait}
+			}
+			TextWait
+			TextTalk name[2] {
+				#00204F（……ほほえましいです。）{wait}
+			}
+			TextWait
+			FlagSet flag[2901]
+			CharTurnTo self 180deg 0deg/s
+		else:
+			TextTalk self {
+				#07902Fコ、コホン、とにかく……
+				昇進したからには、
+				前以上に頑張っていくつもりよ。{wait}
+			} {
+				#07903F少しでも司令の力になれるよう、
+				より一層精進していかなくちゃね。{wait}
+			}
+			TextWait
+	TextEnd self
+	Return
+
+fn[7]:
+	Call fn[0,8]
+	Return
+
+fn[8]:
+	TextStart char[2]
+	if flag[3074]:
+		name[8].5 = char[2].4
+		char[2].5 = char[2].4
+		CharFlagsUnset char[2] 0x0010
+		CharTurnToChar char[2] name[8] 0deg/s
+		char[2].4 = (char[2].4 + 360) % 360
+		char[2].4 = char[2].4 + 360 - char[2].5
+		char[2].5 = char[2].4 / 180
+		if char[2].4 <= 45 | char[2].4 >= 315 && char[2].4 <= 405 | char[2].4 >= 675:
+		elif char[2].5 < 1:
+			char[2].8 = 2
+		elif char[2].5 > 2:
+			char[2].8 = 1
+		else:
+			char[2].8 = char[2].5
+		char[2].4 = name[8].5
+		name[8].5 = 0
+		char[2].5 = 0
+		CharFlagsSet char[2] 0x0010
+		if !flag[2]:
+			TextTalk char[2] {
+				#02008F……………………………………{wait}
+			}
+			TextWait
+			TextTalk name[0] {
+				#00001Fソーニャ司令……
+				何か悩み事でもあるんですか？{wait}
+			}
+			TextWait
+			TextTalk char[2] {
+				#02003F……警備隊の再編について少しね。{wait}
+			} {
+				#02000Fマインツ山道で受けた甚大な被害から
+				元の状態まで立ち直るには、
+				やはり時間がかかるでしょう。{wait}
+			}
+			TextWait
+			TextTalk name[1] {
+				#00108Fやはりそうですか……{wait}
+			}
+			TextWait
+			TextTalk name[8] {
+				#10108F…………………………{wait}
+			}
+			TextWait
+			TextTalk char[2] {
+				#02000F……ノエル曹長。
+				浮かない顔をしているわね。{wait}
+			} {
+				#02003F警備隊への復帰を決めたこと、
+				後悔しているのかしら。{wait}
+			}
+			TextWait
+			TextTalk name[8] {
+				#10103F……いえ、そんなことは。{wait}
+			} {
+				#10108Fただ、支援課も忙しいのに
+				私だけ抜けてしまうのが
+				少し忍びない気持ちですけど……{wait}
+			}
+			TextWait
+			TextTalk name[0] {
+				#00003Fノエル……{wait}
+			}
+			TextWait
+			TextTalk char[2] {
+				#02003F……警備隊の建て直しに
+				あなたの力は是非とも欲しいけど……{wait}
+			} {
+				#02000Fやはり、復帰は止めておくのかしら？{wait}
+			}
+			TextWait
+			TextTalk name[8] {
+				#10103Fいえ……
+				やっぱり決めたことですから。{wait}
+			} {
+				#10101Fノエル・シーカー、
+				今日一日の業務が終わり次第、
+				警備隊に復帰させていただきます！{wait}
+			}
+			TextWait
+			TextTalk char[2] {
+				#02004F結構。{wait}
+			} {
+				#02000Fでももちろん、今の貴女はまだ
+				支援課の出向員よ。{wait}
+			} {
+				悔いのないよう、残った仕事は
+				全て片付けてきなさい。
+				……いいわね？{wait}
+			}
+			TextWait
+			TextTalk name[8] {
+				#10100Fハッ、了解です！{wait}
+			}
+			TextWait
+			FlagSet flag[2]
+		else:
+			TextTalk char[2] {
+				#02000F警備隊の建て直しに
+				ノエルの力は是非とも欲しいわ。{wait}
+			} {
+				#02004F今日一日、悔いのないように
+				支援課の業務を片付けて、
+				それから戻ってきてちょうだい。{wait}
+			}
+			TextWait
+			TextTalk name[8] {
+				#10100Fハッ、了解です！{wait}
+			}
+			TextWait
+		CharFlagsUnset char[2] 0x0010
+	elif flag[2848]:
+		if !flag[2904]:
+			TextTalk char[2] {
+				#02002Fロイド君、
+				昨日はお手柄だったわね。{wait}
+			}
+			TextWait
+			TextTalk name[0] {
+				#00005Fえっ……{wait}
+			}
+			TextWait
+			TextTalk name[1] {
+				#00100F昨日の事故現場での
+				調査の事ですか？{wait}
+			}
+			TextWait
+			TextTalk char[2] {
+				#02003F……もしあの時、
+				私が復旧を急がせていたら
+				脱線事故の原因は不明のままだった。{wait}
+			} {
+				#02008F真実に辿り着く証拠をこの手で
+				潰そうとしていたなんて……
+				私も焦りすぎていたわ。{wait}
+			}
+			TextWait
+			TextTalk name[2] {
+				#00203F警備隊の立場を考えたら
+				仕方ないかと……{wait}
+			}
+			TextWait
+			TextTalk name[3] {
+				#00300Fああ、それにあの後
+				復旧は迅速に進んだんッスよね。{wait}
+			} {
+				#00302F別に落ち込むことは
+				ないんじゃないッスか？{wait}
+			}
+			TextWait
+			TextTalk name[8] {
+				#10100Fそ、そうですよ！{wait}
+			}
+			TextWait
+			TextTalk char[2] {
+				#02004F……ふふ、そう言って
+				もらえると私も救われるわ。{wait}
+			} {
+				#02002F改めて礼を言わせてちょうだい。{wait}
+			}
+			TextWait
+			FlagSet flag[2904]
+		else:
+			TextTalk char[2] {
+				#02004Fともかく、おかげで
+				脱線事故の原因は判明したわ。{wait}
+			} {
+				#02002F大型魔獣のことは気になるけど……
+				それはこちらに任せてちょうだい。{wait}
+			}
+			TextWait
+	elif flag[2832]:
+		if !flag[2903]:
+			TextTalk char[2] {
+				#02000Fあなたたちの調査報告書を
+				読ませてもらったわ。{wait}
+			} {
+				#02003F《プレロマ草》……まさか、
+				教団事件で出てきたという名前が
+				再び現れるなんてね。{wait}
+			}
+			TextWait
+			TextTalk name[0] {
+				#00003Fええ……
+				俺たちも正直驚きました。{wait}
+			} {
+				#00001F今後の調査はどうなって
+				行くんでしょう？{wait}
+			}
+			TextWait
+			TextTalk char[2] {
+				#02003Fそうね、警備隊が
+				動く事ができないのは
+				依然変わらないけれど……{wait}
+			} {
+				#02000Fひとまず、《幻獣》が現れる
+				原因が判明しただけでも
+				大きな進歩だといえるわ。{wait}
+			} {
+				あなたたちは、このまま
+				できる範囲での調査を
+				続けてちょうだい。{wait}
+			}
+			TextWait
+			TextTalk name[3] {
+				#00302Fあいよ、任せてくださいッス。{wait}
+			}
+			TextWait
+			FlagSet flag[2903]
+		else:
+			TextTalk char[2] {
+				#02000Fひとまず、《幻獣》が現れる
+				原因が判明しただけでも
+				大きな進歩だといえるわ。{wait}
+			} {
+				あなたたちは、このまま
+				できる範囲での調査を
+				続けてちょうだい。{wait}
+			}
+			TextWait
+	elif flag[2816]:
+		if !flag[2]:
+			TextTalk char[2] {
+				#02001F不可解な《幻獣》の発生……
+				クロスベル自治州にとって
+				決して無視できない問題だわ。{wait}
+			} {
+				#02003Fとはいえ、私たち警備隊は
+				国境の緊張状態に
+				集中する必要がある……{wait}
+			} {
+				#02000F幻獣の発生原因の調査、
+				どうかよろしくお願いするわね。{wait}
+			}
+			TextWait
+			TextTalk name[0] {
+				#00000Fええ、お任せください。{wait}
+			}
+			TextWait
+			FlagSet flag[2]
+		else:
+			TextTalk char[2] {
+				#02003F私たち警備隊は
+				国境の緊張状態に
+				集中する必要がある……{wait}
+			} {
+				#02000F幻獣の発生原因の調査、
+				どうかよろしくお願いするわね。{wait}
+			}
+			TextWait
+	elif flag[2573]:
+	elif flag[2564]:
+	elif flag[2560]:
+		if !flag[2637]:
+			Call fn[0,11]
+		else:
+			TextTalk char[2] {
+				#02003F猟兵団である『赤い星座』は、
+				通商会議の警備においても
+				要注意だと言わざるを得ない。{wait}
+			} {
+				#02000F何か分かったら、
+				警備隊にも連絡してちょうだい。{wait}
+			}
+			TextWait
+	TextEnd char[2]
+	Return
+
+fn[9]:
+	TextStart self
+	if flag[3385]:
+		if !flag[3]:
+			TextTalk char[3] {
+				国防軍を受け入れた司令、
+				レジスタンス活動を始めた
+				ミレイユ三尉たち……{wait}
+			}
+			TextWait
+			TextTalk char[3] {
+				あの人たちは、考えに考えた末に
+				それぞれの道を選んだんだ。{wait}
+			}
+			TextWait
+			TextTalk char[3] {
+				だが、国防軍になれた事で
+				隊員のほとんどは浮かれちまって、
+				ただ流されるままになっていた。{wait}
+			}
+			TextWait
+			TextTalk char[3] {
+				……はあ、自分で自分が情けないな。{wait}
+			}
+			TextWait
+			FlagSet flag[3]
+		else:
+			TextTalk char[3] {
+				ソーニャ司令もミレイユ三尉たちも、
+				考えに考えた末に
+				それぞれの道を選んだんだ。{wait}
+			}
+			TextWait
+			TextTalk char[3] {
+				……俺たちも頑張らないとな。{wait}
+			}
+			TextWait
+	TextEnd self
+	Return
+
+fn[10]:
+	EventBegin 0
+	FadeOut 0ms 0x00000000 255
+	ED7LoadChip "chr/ch03900.itc" chip[30]
+	ED7LoadChip "chr/ch12202.itc" chip[31]
+	ED7LoadChip "apl/ch51533.itc" chip[32]
+	CharFlagsUnset field_party[4] 0x0080
+	CharFlags2Unset field_party[4] 0x8000
+	CharFlagsUnset field_party[5] 0x0080
+	CharFlags2Unset field_party[5] 0x8000
+	CharSetPos name[0] (-36600, 0, 0) 270deg
+	CharSetPos name[5] (-35830, 0, 870) 270deg
+	CharSetPos name[2] (-35240, 0, -680) 270deg
+	CharSetPos name[3] (-35430, 0, -1680) 270deg
+	CharSetPos name[6] (-34080, 0, 1450) 270deg
+	CharSetPos name[4] (-34350, 0, -80) 270deg
+	CharSetChipPattern name[6] 5
+	CharFlagsUnset char[4] 0x0080
+	CharSetChipBase char[4] chip[30]
+	CharSetChipPattern char[4] 0
+	CharFlagsSet char[4] 0x8000
+	CharSetPos char[4] (-40000, 0, 2000) 90deg
+	CharFlagsUnset char[2] 0x0080
+	CharSetChipBase char[2] chip[31]
+	CharSetChipPattern char[2] 0
+	CharFlagsSet char[2] 0x8000
+	CharSetPos char[2] (-40150, 100, 0) 90deg
+	TextSetName ""
+	TextMessage null {
+		{color 5}その後、ロイドたちは
+		人目に付かぬように司令室まで案内され……{wait}
+	} {
+		今までの事情や経緯を含め、
+		《零の至宝》に関わる話まで
+		全てを司令たちに打ち明けた。{color 0}{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	TextSetPos -1 280 60 3
+	BgmPlay bgm[566] 0
+	CamSetDistance -40000 1100 1000 0ms
+	ED7CamRotate 320deg 18deg 0deg 0ms
+	CamPers 350 0ms
+	CamZoom 25500 0ms
+	FadeIn 1000ms 0x00000000
+	CamSetDistance -38000 1100 1000 4000ms
+	CamWait 121
+	FadeWait
+	TextTalk char[4] {
+		#1510050027V#10206F#5Pそ、そんな事が……{wait}
+	}
+	TextWait
+	TextTalk char[2] {
+		#1510200007V#10603F#5P……なるほどね。{wait}
+	} {
+		#1510200008V#10601F大統領側の不可解な行動も
+		ようやく見えて来たわね。{wait}
+	}
+	TextWait
+	TextTalk name[3] {
+		#1510030060V#00305F#12Pって事は、ひょっとして？{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#1510000350V#00002F#12P……こちらにある程度
+		協力していただけるとか？{wait}
+	}
+	TextWait
+	TextTalk char[2] {
+		#1510200009V#10603F#5P残念ながらそれは無理ね。{wait}
+	} {
+		#1510200010V警備隊にせよ、国防軍にせよ、
+		《文民統制#8Rシビリアンコントロール#》の原則は変わらない。{wait}
+	} {
+		#1510200011V#10608F問題があるとはいえ、
+		『クロスベル独立国』が成立して
+		大統領という国家元首がいる以上……{wait}
+	} {
+		#1510200012V#10601F私たち軍人は、勝手な判断で
+		武力を行使することは許されない。{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#1510000351V#00006F#12P……そうですか。{wait}
+	}
+	TextWait
+	TextTalk char[4] {
+		#1510050028V#10208F#5P………………………………{wait}
+	}
+	TextWait
+	TextTalk name[3] {
+		#1510030061V#00306F#12Pハア、正規軍ってのは
+		そのあたりが厳格ッスよね。{wait}
+	}
+	TextWait
+	TextTalk name[4] {
+		#1510040179V#10401F#12Pそれじゃあやっぱり
+		歩み寄るのは無理そうだね。{wait}
+	}
+	TextWait
+	TextTalk char[2] {
+		#1510200013V#10603F#5Pええ、そうなるわね。{wait}
+	} {
+		#1510200014V#10608F──そうでなくても、
+		アリオス国防長官は優秀よ。{wait}
+	} {
+		#1510200015V仮にベルガード門の部隊が
+		そちらに協力したとしても……{wait}
+	} {
+		#1510200016V#10601F彼の率いる主力部隊に
+		“反乱軍”としてあっという間に
+		鎮圧されてしまうでしょうね。{wait}
+	}
+	TextWait
+	TextTalk name[2] {
+		#1510020147V#00201F#12Pそうなんですか……{wait}
+	}
+	TextWait
+	TextTalk name[3] {
+		#1510030062V#00301F#12Pあのオッサン、
+		指揮官としても優秀なのかよ。{wait}
+	}
+	TextWait
+	TextTalk char[2] {
+		#1510200017V#10606F#5Pええ、セルゲイの元部下だけど
+		さすが『剣聖』と呼ばれるだけ
+		《理#2Rことわり#》に通じているみたいね。{wait}
+	} {
+		#1510200018V#10601Fその戦略の巧みさ……
+		兄弟子であるリベール王国軍司令、
+		カシウス准将に通じる物があるわ。{wait}
+	}
+	TextWait
+	CharTurnTo char[4] 180deg 500deg/s
+	TextTalk char[4] {
+		#1510050029V#10206F#11Pで、でも……！{wait}
+	} {
+		#1510050030V#10201Fたとえアリオス長官相手でも
+		タングラム門のダグラス副司令と
+		協力できれば……！{wait}
+	}
+	TextWait
+	CharSetChipPattern char[2] 1
+	TextTalk char[2] {
+		#1510200019V#10605F#5Pあら、ノエル。{wait}
+	} {
+		#1510200020V#10604Fなぜ彼らに協力する事が
+		前提になっているのかしら？{wait}
+	}
+	TextWait
+	TextTalk char[4] {
+		#1510050031V#10208F#11P……っ………{wait}
+	}
+	TextWait
+	TextTalk name[2] {
+		#1510020148V#00202F#12Pノエルさん……{wait}
+	}
+	TextWait
+	TextTalk name[4] {
+		#1510040180V#10409F#12Pはは、さっきの一騎打ちが
+		効いちゃってるみたいだね。{wait}
+	}
+	TextWait
+	Emote name[0] 0mm 2000mm 24 27 250ms 0
+	Sleep 1500ms
+	EmoteStop name[0]
+	TextTalk name[0] {
+		#1510000352V#00003F#12P──ソーニャ司令。{wait}
+	} {
+		#1510000353V#00008Fもし仮に、ディーター大統領と
+		クロスベル独立国の“正当性”が
+		揺らいだ場合……{wait}
+	} {
+		#1510000354V#00001F国防軍の対応はどうなりますか？{wait}
+	}
+	TextWait
+	Emote name[5] 0mm 2000mm 38 38 250ms 1
+	Emote name[2] 0mm 2000mm 38 38 250ms 1
+	Sleep 50ms
+	Emote name[3] 0mm 2000mm 38 38 250ms 1
+	Emote name[4] 0mm 2000mm 38 38 250ms 1
+	Sleep 50ms
+	Emote char[4] 0mm 2000mm 38 38 250ms 1
+	Emote char[2] 0mm 1700mm 38 38 250ms 1
+	Sleep 1000ms
+	CharSetChipPattern char[2] 0
+	CharTurnTo char[4] 90deg 500deg/s
+	TextTalk char[4] {
+		#1510050032V#10205F#5Pえ……{wait}
+	}
+	TextWait
+	TextTalk name[5] {
+		#1510180095V#10712F#12Pそれって……{wait}
+	}
+	TextWait
+	TextTalk char[2] {
+		#1510200021V#10604F#5Pふふ、そうね……{wait}
+	} {
+		#1510200022Vどの程度かによるけど
+		事の真偽がはっきりするまで
+		“慎重に状況を見極める”……{wait}
+	} {
+		#1510200023V#10602Fその必要はあるかもしれない。{wait}
+	}
+	TextWait
+	TextTalk char[4] {
+		#1510050033V#10202F#5P……！{wait}
+	}
+	TextWait
+	TextTalk name[4] {
+		#1510040181V#10404F#12Pフフ、なるほどね。{wait}
+	} {
+		#1510040182V#10402Fとなると、どうやってその
+		“正当性”を揺るがせるかが
+		鍵になってくるわけだ。{wait}
+	}
+	TextWait
+	CharTurnTo name[0] 90deg 500deg/s
+	TextTalk name[0] {
+		#1510000355V#00004F#5Pああ……{wait}
+	} {
+		#1510000356Vこういう事はエリィの判断が
+		一番頼りになりそうだけど……{wait}
+	} {
+		#1510000357V#00000Fたぶん鍵は、マクダエル議長じゃ
+		ないかと思う。{wait}
+	}
+	TextWait
+	Fork name[2] fork[0]:
+		CharTurnToChar name[2] name[0] 500deg/s
+	Sleep 50ms
+	Fork name[3] fork[0]:
+		CharTurnToChar name[3] name[0] 500deg/s
+	Sleep 50ms
+	Fork name[4] fork[0]:
+		CharTurnToChar name[4] name[0] 500deg/s
+	Sleep 50ms
+	Fork name[5] fork[0]:
+		CharTurnToChar name[5] name[0] 500deg/s
+	Sleep 50ms
+	ForkWait name[2] fork[0]
+	ForkWait name[3] fork[0]
+	ForkWait name[4] fork[0]
+	ForkWait name[5] fork[0]
+	TextTalk name[2] {
+		#1510020149V#00205F#12Pあ……{wait}
+	}
+	TextWait
+	TextTalk name[3] {
+		#1510030063V#00300F#6Pお嬢のジーサマか……{wait}
+	}
+	TextWait
+	TextTalk name[5] {
+		#1510180096V#10702F#12P確か、クロスベル自治州の
+		代表の一人になるんですよね？{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#1510000358V#00006F#5Pああ、もう一人は他ならぬ
+		ディーター市長だったけど。{wait}
+	} {
+		#1510000359V#00008F独立国の宣言にあたって
+		マクダエル議長の意見は
+		完全に封じられたと聞いている。{wait}
+	} {
+		#1510000360V#00013Fその彼の意見が、何らかの形で
+		国内外に発表されたら……？{wait}
+	}
+	TextWait
+	TextTalk name[2] {
+		#1510020150V#00203F#12P大統領や独立国の正当性が
+		わずかに揺らぐかもしれない……{wait}
+	}
+	TextWait
+	TextTalk char[4] {
+		#1510050034V#10201F#5Pそうなったら国防軍も……！{wait}
+	}
+	TextWait
+	TextTalk char[2] {
+		#1510200024V#10602F#5Pふふ……
+		いい所に気付いたわね。{wait}
+	} {
+		#1510200025V#10604Fどうやらヒントを
+		出すまでも無かったか。{wait}
+	}
+	TextWait
+	Fork name[0] fork[0]:
+		CharTurnTo name[0] 270deg 500deg/s
+	Sleep 50ms
+	Fork name[2] fork[0]:
+		CharTurnTo name[2] 270deg 500deg/s
+	Sleep 50ms
+	Fork name[3] fork[0]:
+		CharTurnTo name[3] 270deg 500deg/s
+	Sleep 50ms
+	Fork name[4] fork[0]:
+		CharTurnTo name[4] 270deg 500deg/s
+	Sleep 50ms
+	Fork name[5] fork[0]:
+		CharTurnTo name[5] 270deg 500deg/s
+	Sleep 50ms
+	ForkWait name[0] fork[0]
+	ForkWait name[2] fork[0]
+	ForkWait name[3] fork[0]
+	ForkWait name[4] fork[0]
+	ForkWait name[5] fork[0]
+	CharSetChipPattern char[2] 1
+	Sleep 300ms
+	TextTalk char[2] {
+		#1510200026V#10603F#5P──ノエル少尉。{wait}
+	} {
+		#1510200027V#10601Fマクダエル元議長は、
+		ミシュラムだったかしら？{wait}
+	}
+	TextWait
+	CharTurnTo char[4] 180deg 500deg/s
+	TextTalk char[4] {
+		#1510050035V#10211F#11Pえ……あ、はいっ！{wait}
+	} {
+		#1510050036V#10203Fお孫さんのエリィ嬢と共に
+		迎賓館内に軟禁されています！{wait}
+	}
+	TextWait
+	Emote name[0] 0mm 2000mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Emote name[2] 0mm 2000mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Sleep 50ms
+	Emote name[5] 0mm 2000mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Emote name[3] 0mm 2000mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Sleep 50ms
+	Emote name[4] 0mm 2000mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Sleep 1000ms
+	TextTalk char[2] {
+		#1510200028V#10608F#5Pふむ、ミシュラムの警備は
+		確か《赤い星座》の部隊……{wait}
+	} {
+		#1510200029V#10601F国防軍の部隊は
+		常駐していなかったわね？{wait}
+	}
+	TextWait
+	TextTalk char[4] {
+		#1510050037V#10201F#11Pは、その通りであります。{wait}
+	}
+	TextWait
+	CharTurnTo name[0] 270deg 500deg/s
+	TextTalk name[0] {
+		#1510000361V#00002F#12Pソーニャ司令……{wait}
+	}
+	TextWait
+	CharSetChipPattern char[2] 0
+	Sleep 100ms
+	TextTalk char[2] {
+		#1510200030V#10605F#5Pあら、私としたことが
+		うっかり部外者の前で……{wait}
+	} {
+		#1510200031V#10604F何でもないわ。
+		今のはすぐに忘れなさい。{wait}
+	}
+	TextWait
+	TextTalk name[2] {
+		#1510020151V#00209F#12Pふふっ……{wait}
+	}
+	TextWait
+	TextTalk name[3] {
+		#1510030064V#00309F#12Pハハ……
+		さすがソーニャ司令。{wait}
+	}
+	TextWait
+	TextTalk name[4] {
+		#1510040183V#10402F#12P気持ちがいいほどの
+		しらばっくれぶりだねぇ。{wait}
+	}
+	TextWait
+	CharSetChipPattern char[2] 1
+	Sleep 200ms
+	TextTalk char[2] {
+		#1510200032V#10603F#5P──それとノエル少尉。{wait}
+	} {
+		#1510200033V#10601F先ほどの一騎打ちだけど、
+		甘いと言われても仕方ないわね。{wait}
+	}
+	TextWait
+	TextTalk char[4] {
+		#1510050038V#10206F#11P……はい。{wait}
+	}
+	TextWait
+	TextTalk char[2] {
+		#1510200034V#10603F#5P罰として、しばらくの間、
+		無期限の謹慎処分とし──{wait}
+	} {
+		#1510200035V#10602F代わりに、クロスベル警察、
+		特務支援課への再出向を命じます。{wait}
+	}
+	TextWait
+	Emote char[4] 0mm 2000mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Sleep 1000ms
+	TextTalk char[4] {
+		#1510050039V#10202F#11Pあ……{wait}
+	}
+	TextWait
+	TextTalk char[2] {
+		#1510200036V#10604F#5P自分に何が足りなかったか……{wait}
+	} {
+		#1510200037Vそして、クロスベルの将来のため
+		自分が何をすべきなのか。{wait}
+	} {
+		#1510200038V#10602Fしっかりと見極めて来なさい。{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	CrossFade 250ms
+	CamZoom 25200 0ms
+	SoundPlay sound[802] 0 100 0
+	CharSetChipBase char[4] chip[32]
+	CharSetChipPattern char[4] 0
+	FadeWait
+	Sleep 300ms
+	Shake 100 0 3000 300ms
+	TextTalk char[4] {
+		#1510050040V#10212F#11P了解しました#12Rイ エ ス ・ マ ム#！{wait}
+	}
+	TextWait
+	FadeOut 1000ms 0x00000000 255
+	CamZoom 25000 1000ms
+	CamWait 121
+	FadeWait
+	BgmStop 4000ms
+	BgmWait
+	FlagSet flag[278]
+	NewScene "scena/e3020.bin" 0 0 0
+	Hcf
+	Return
+
+fn[11]:
+	EventBegin 0
+	CrossFade 500ms
+	CamSetDistance -38900 900 260 0ms
+	ED7CamRotate 314deg 22deg 0deg 0ms
+	CamPers 350 0ms
+	CamZoom 25180 0ms
+	CharSetPos name[0] (-37250, 0, 0) 270deg
+	CharSetPos name[1] (-37250, 0, 980) 270deg
+	CharSetPos name[8] (-37250, 0, -1020) 270deg
+	CharSetPos name[3] (-36050, 0, -720) 270deg
+	CharSetPos name[4] (-35700, 0, 680) 270deg
+	CharFlagsUnset field_party[4] 0x0080
+	CharFlags2Unset field_party[4] 0x8000
+	CharSetChipPattern char[2] 0
+	FadeWait
+	TextTalk name[8] {
+		#12P#10100Fお疲れ様です、ソーニャ司令！{wait}
+	}
+	TextWait
+	TextTalk char[2] {
+		#5P#02000Fお疲れ様、ノエル曹長。{wait}
+	} {
+		#02004F特務支援課への出向、
+		頑張っているみたいね。{wait}
+	}
+	TextWait
+	TextTalk name[8] {
+		#12P#10104Fはい、本当に学ぶことが多くて……{wait}
+	}
+	TextWait
+	TextTalk name[4] {
+		#12P#10300Fなるほど、警備隊司令の
+		ソーニャ・ベルツ殿か。{wait}
+	} {
+		#10302F警備隊を纏める有能な司令官……
+		フフ、なかなかの女傑みたいだね。{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#00004Fああ、俺たちも前々から
+		お世話になってる人なんだ。{wait}
+	} {
+		#00000F──お久しぶりです、司令。
+		それと……今更になりましたが
+		昇進、おめでとうございます。{wait}
+	}
+	TextWait
+	TextTalk char[2] {
+		#5P#02002Fフフ、どういたしまして。
+		そういえば久しぶりだったわね。{wait}
+	} {
+		#02002F最近は通商会議の警備もあって
+		なかなか顔を合わせる機会が
+		なかったけれど……{wait}
+	}
+	TextWait
+	TextTalk name[1] {
+		#00100Fやっぱりお忙しく
+		されているみたいですね。{wait}
+	}
+	TextWait
+	TextTalk char[2] {
+		#5P#02000Fそうね、最近は連日、
+		部隊と一緒に警備範囲周辺を
+		チェックさせてもらっているわ。{wait}
+	} {
+		#02003F万が一のことがないように、
+		入念な準備をして
+		おかなければならないから。{wait}
+	}
+	TextWait
+	TextTalk name[3] {
+		#12P#00306Fまあ、明日は各国のＶＩＰ達が
+		来るっつー話だからなぁ。
+		当然といえば当然か。{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#00003Fすみません、司令。
+		なんだかお忙しいところに
+		お邪魔してしまって……{wait}
+	}
+	TextWait
+	TextTalk char[2] {
+		#5P#02003Fいえ、むしろ丁度よかったわ。{wait}
+	} {
+		#02001Fあなたたちに、どうしても
+		伝えておくべき事もあったから。{wait}
+	}
+	TextWait
+	TextTalk name[8] {
+		#12P#10105Fえ……？{wait}
+	}
+	TextWait
+	TextTalk char[2] {
+		#5P#02003F──先日、このベルガード門に
+		ある一団が訪れたわ。{wait}
+	} {
+		#02001F『赤い星座』……
+		ゼムリア大陸西部において
+		最強と言われる猟兵たちがね。{wait}
+	}
+	TextWait
+	Emote name[0] 0mm 2000mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Sleep 50ms
+	Emote name[1] 0mm 2000mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Sleep 50ms
+	Emote name[8] 0mm 2000mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Sleep 50ms
+	Emote name[3] 0mm 2000mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Sleep 50ms
+	Emote name[4] 0mm 2000mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Sleep 1000ms
+	TextTalk name[0] {
+		#00011Fなっ……！？{wait}
+	}
+	TextWait
+	TextTalk name[1] {
+		#00101Fこんな所にまで……！？{wait}
+	}
+	TextWait
+	TextTalk char[2] {
+		#5P#02000F赤い星座は、ランディ……
+		あなたと密接に関わっている
+		という話だったわね。{wait}
+	} {
+		#02003Fだから、その目撃情報は
+		直接あなた達に伝えるべきだと思って。{wait}
+	}
+	TextWait
+	TextTalk name[3] {
+		#12P#00301F……奴らは、ここで何を？{wait}
+	}
+	TextWait
+	TextTalk char[2] {
+		#5P#02000F目撃した警備隊員の話では、
+		特別に目立ったことは
+		していなかったらしいわ。{wait}
+	} {
+		#02003F到着してからしばらく、
+		食堂でくつろいだあと……{wait}
+	} {
+		#02000F帝国から来た商人を出迎えて、
+		そのまま一緒に門を去ったそうよ。{wait}
+	}
+	TextWait
+	TextTalk name[4] {
+		#12P#10304Fふうん、帝国商人の出迎えねえ。{wait}
+	} {
+		#10302Fさしずめ、例の
+		『クリムゾン商会』とやらの
+		関係者か何かってトコかな？{wait}
+	}
+	TextWait
+	TextTalk name[1] {
+		#00100Fああ、赤い星座の資金調達用の
+		ダミー会社っていう……{wait}
+	}
+	TextWait
+	TextTalk name[8] {
+		#12P#10106F可能性は高そうですけど……
+		そ、それにしても、あまりに大胆です。{wait}
+	} {
+		#10101F治安維持組織である警備隊……
+		それも、帝国方面を守る精鋭たちの
+		真っ只中に来るなんて。{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#00003F……連中はこのクロスベルでは、
+		まだ何も事を起こしてはいないからな。{wait}
+	} {
+		#00001Fこの間の旧鉱山での一件も
+		証拠があるわけじゃないし、
+		コソコソすることもないだろうけど……{wait}
+	}
+	TextWait
+	TextTalk name[3] {
+		#12P#00303F……それくらい面の皮が厚くねえと、
+		堂々と高級クラブなんて経営しねえさ。{wait}
+	} {
+		#00300Fソーニャ司令、情報どうもッス。{wait}
+	}
+	TextWait
+	TextTalk char[2] {
+		#5P#02003F……礼には及ばないわ。{wait}
+	} {
+		#02001F猟兵団である『赤い星座』は、
+		通商会議の警備においても
+		要注意だと言わざるを得ない。{wait}
+	} {
+		何か分かったら、
+		警備隊にも連絡してちょうだい。{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#00001F……分かりました。
+		こちらでも気をつけてみます。{wait}
+	}
+	TextWait
+	_59
+	FlagSet flag[2637]
+	QuestTaskSet quest[163] 2
+	ED7_Cam69 255 0
+	CharSetPos field_party[0] (-37250, 0, 0) 270deg
+	CharFlagsSet field_party[4] 0x0080
+	CharFlags2Set field_party[4] 0x8000
+	EventEnd 5
+	Return
+
+fn[12]:
+	EventBegin 0
+	CrossFade 500ms
+	if system[0] == 104:
+		CamSetDistance -1550 910 41080 0ms
+		ED7CamRotate 315deg 25deg 0deg 0ms
+		CamPers 350 0ms
+		CamZoom 25500 0ms
+		if PartyPosition name[2] > -1:
+			CharSetPos name[0] (-1850, 10, 40450) 0deg
+			CharSetPos name[3] (-590, 10, 40320) 0deg
+			CharSetPos name[1] (-2060, 10, 39240) 0deg
+			CharSetPos name[2] (-720, 10, 39190) 0deg
+			CharSetPos name[8] (-2140, 10, 38080) 0deg
+			CharSetPos name[4] (-540, 10, 37980) 0deg
+			CharFlagsUnset field_party[4] 0x0080
+			CharFlags2Unset field_party[4] 0x8000
+			CharFlagsUnset field_party[5] 0x0080
+			CharFlags2Unset field_party[5] 0x8000
+		else:
+			CamSetDistance -1940 910 41470 0ms
+			ED7CamRotate 315deg 25deg 0deg 0ms
+			CamPers 350 0ms
+			CamZoom 25500 0ms
+			CharSetPos name[0] (-1850, 10, 40450) 0deg
+			CharSetPos name[3] (-590, 10, 40320) 0deg
+			CharSetPos name[1] (-2060, 10, 39240) 0deg
+			CharSetPos name[8] (-720, 10, 39190) 0deg
+			CharSetPos name[4] (-1740, 10, 38080) 0deg
+			CharFlagsUnset field_party[4] 0x0080
+			CharFlags2Unset field_party[4] 0x8000
+		CharTurnTo char[0] 180deg 0deg/s
+	elif system[0] == 106:
+		CamSetDistance -37130 700 3380 0ms
+		ED7CamRotate 313deg 25deg 0deg 0ms
+		CamPers 350 0ms
+		CamZoom 25500 0ms
+		CharSetPos name[0] (-36980, 0, 2200) 0deg
+		CharSetPos name[3] (-35490, 0, 2200) 0deg
+		CharSetPos name[1] (-36980, 0, 1200) 0deg
+		CharSetPos name[8] (-35490, 0, 1200) 0deg
+		CharSetPos name[4] (-36250, 0, 600) 0deg
+		CharTurnTo char[0] 180deg 0deg/s
+		CharFlagsUnset field_party[4] 0x0080
+		CharFlags2Unset field_party[4] 0x8000
+	_Char4A char[0] 255
+	FadeWait
+	TextTalk char[0] {
+		#07902Fあら、支援課の皆さん。
+		お久しぶりね。{wait}
+	} {
+		#07909Fそれと、そこの馬鹿──{wait}
+	} {
+		#07903F……コホン。
+		ランディ、調子はどう？{wait}
+	}
+	TextWait
+	Emote name[0] 0mm 2000mm 16 19 250ms 1
+	SoundPlay sound[23] 0 100 0
+	Emote name[1] 0mm 2000mm 16 19 250ms 1
+	SoundPlay sound[23] 0 100 0
+	if PartyPosition name[2] > -1:
+		Emote name[2] 0mm 2000mm 16 19 250ms 1
+		SoundPlay sound[23] 0 100 0
+	Emote name[3] 0mm 2000mm 16 19 250ms 1
+	SoundPlay sound[23] 0 100 0
+	Emote name[4] 0mm 2000mm 16 19 250ms 1
+	SoundPlay sound[23] 0 100 0
+	Emote name[8] 0mm 2000mm 16 19 250ms 1
+	SoundPlay sound[23] 0 100 0
+	Sleep 1000ms
+	TextTalk name[3] {
+		#6P#00304Fフフ、ミレイユ。
+		言うようになったみてえだが……
+		お前の気持ちは分かってるぜ。{wait}
+	} {
+		#00302F俺様が支援課に復帰しちまって、
+		さぞ寂しい思いをしてんだろ。{wait}
+	} {
+		#00309F『──行かないで、ランディ！
+		{}  これからも私と一緒にいて！（裏声）』
+		……な～んて言ってたもんな？{wait}
+	}
+	TextWait
+	Emote char[0] 0mm 2000mm 40 43 100ms 0
+	Sleep 1000ms
+	EmoteStop char[0]
+	TextTalk char[0] {
+		#07907Fい、いつ私がそんな事を言いました！？
+		……この、大馬鹿ランディ！{wait}
+	}
+	TextWait
+	TextTalk name[8] {
+		#6P#10100F（クスクス……
+		{}  相変わらず仲がいいですね。）{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#00000Fはは……ミレイユ准尉、
+		お元気そうで何よりです。{wait}
+	}
+	TextWait
+	TextTalk name[1] {
+		#00100Fそういえば、
+		昇進の話が出ているそうですね。
+		ふふ、おめでとうございます。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#07902Fコ、コホン、ええ……
+		正直、身に余る気持ちですけど。{wait}
+	} {
+		#07908F教団事件の時は、あろうことか
+		ＩＢＣの襲撃を先導するなんて
+		重大な過ちを犯しましたし……{wait}
+	}
+	TextWait
+	TextTalk name[4] {
+		#6P#10300Fま、あの時は妙な薬を盛られて
+		操られてたって話なんだし、
+		気にしなくてもいいんじゃない？{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#07903F……ええ、頭では
+		分かってるんですけど、
+		自分が許せないというか……{wait}
+	}
+	TextWait
+	TextTalk name[3] {
+		#6P#00306Fやれやれ、相変わらず
+		固ぇヤツだなあ、お前は。{wait}
+	} {
+		#00300F今回のは、前のアホ司令の下でも
+		最善の指揮をとってきたことが、
+		正当に評価された結果だろ？{wait}
+	} {
+		#00302F謹んで受けるのが、
+		司令への礼儀ってもんだろうが。{wait}
+	}
+	TextWait
+	Emote name[0] 0mm 2000mm 24 27 250ms 0
+	Emote name[1] 0mm 2000mm 24 27 250ms 0
+	if PartyPosition name[2] > -1:
+		Emote name[2] 0mm 2000mm 24 27 250ms 0
+	Emote name[8] 0mm 2000mm 24 27 250ms 0
+	Emote name[4] 0mm 2000mm 24 27 250ms 0
+	Emote char[0] 0mm 2000mm 24 27 250ms 0
+	Sleep 2000ms
+	EmoteStop name[0]
+	EmoteStop name[1]
+	if PartyPosition name[2] > -1:
+		EmoteStop name[2]
+	EmoteStop name[8]
+	EmoteStop name[4]
+	EmoteStop char[0]
+	if PartyPosition name[2] > -1:
+		TextTalk name[2] {
+			#6P#00205Fランディさんが
+			いきなりマトモな意見を……{wait}
+		}
+		TextWait
+	else:
+		TextTalk name[0] {
+			#00006Fな、なんていうか……
+			急にマトモな意見を言うんだな。{wait}
+		}
+		TextWait
+	TextTalk name[3] {
+		#6P#00309Fハハ、俺はいつだって
+		マトモだろうが。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#07902F……うん、そうよね。
+		謹んで受けることにする。{wait}
+	} {
+		#07906F#1S……ありがとう、ランディ。#3S{wait}
+	}
+	TextWait
+	TextTalk name[3] {
+		#6P#00305F……へ？　何か言ったか？{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#07903Fな、なんでもないっ。{wait}
+	}
+	TextWait
+	_59
+	FlagSet flag[2636]
+	if system[0] == 104:
+		CharTurnTo char[0] 0deg 0deg/s
+		CharSetPos field_party[0] (-1310, 10, 40450) 0deg
+	elif system[0] == 106:
+		CharTurnTo char[0] 270deg 0deg/s
+		CharSetPos field_party[0] (-36300, 0, 2009) 0deg
+	CharFlagsSet field_party[4] 0x0080
+	CharFlags2Set field_party[4] 0x8000
+	if PartyPosition name[2] > -1:
+		CharFlagsSet field_party[5] 0x0080
+		CharFlags2Set field_party[5] 0x8000
+	ED7_Cam69 255 0
+	EventEnd 5
+	Return
+
+fn[13]:
+	EventBegin 0
+	FadeOut 500ms 0x00000000 255
+	FadeWait
+	ED7LoadChip "chr/ch44900.itc" chip[30]
+	CamSetDistance -39050 900 70 0ms
+	ED7CamRotate 315deg 25deg 0deg 0ms
+	CamPers 350 0ms
+	CamZoom 25500 0ms
+	CharFlagsSet char[2] 0x8000
+	CharSetChipBase char[5] chip[30]
+	CharSetChipPattern char[5] 0
+	CharFlagsUnset char[5] 0x0080
+	CharFlagsSet char[5] 0x8000
+	CharSetPos char[5] (-37300, 0, 0) 270deg
+	FadeIn 1000ms 0x00000000
+	FadeWait
+	TextTalk char[2] {
+		#5P#02001F──以上が、
+		警察の確かな筋からの情報よ。{wait}
+	} {
+		#02003Fおそらく、テロリストが
+		なんらかの方法で侵入を試みるのは
+		間違いないでしょう。{wait}
+	}
+	TextWait
+	TextTalk char[5] {
+		#07603F#12Pふむ……厄介な連中ですな。{wait}
+	} {
+		#07601F#12P了解です。
+		タングラム門でも引き続き
+		警戒を強めていくとしましょう。{wait}
+	}
+	TextWait
+	TextTalk char[2] {
+		#5P#02003Fええ、それと……
+		飛行艇を用いて侵入する可能性も
+		ゼロとはいえないわ。{wait}
+	} {
+		#02000Fついては、国境門付近に配備されている
+		レーダー施設を有効活用するように。{wait}
+	}
+	TextWait
+	TextTalk char[5] {
+		#07601F#12Pふむ、あの対空レーダーですな？{wait}
+	} {
+		#07603F#12P重ねて了解しました。
+		早速担当者に連絡を入れて……{wait}
+	}
+	TextWait
+	FadeOut 1000ms 0x00000000 255
+	FadeWait
+	CharFlagsSet char[5] 0x0080
+	CamSetDistance -1850 900 -4540 0ms
+	ED7CamRotate 315deg 25deg 0deg 0ms
+	CamPers 350 0ms
+	CamZoom 25500 0ms
+	CharSetPos name[0] (-1050, 0, -4470) 270deg
+	CharSetPos name[1] (-650, 0, -3490) 270deg
+	CharSetPos name[2] (-550, 0, -5500) 270deg
+	CharSetPos name[3] (950, 0, -4470) 270deg
+	CharSetPos name[8] (650, 0, -5500) 270deg
+	CharSetPos name[4] (1050, 0, -3200) 270deg
+	CharFlagsUnset field_party[4] 0x0080
+	CharFlags2Unset field_party[4] 0x8000
+	CharFlagsUnset field_party[5] 0x0080
+	CharFlags2Unset field_party[5] 0x8000
+	FadeIn 500ms 0x00000000
+	FadeWait
+	TextTalk name[0] {
+		#00000Fどうやら、今日の警備体制を
+		話し合っているみたいだな。{wait}
+	}
+	TextWait
+	TextTalk name[1] {
+		#00100Fええ、どうやらテロ対策が
+		主軸におかれてるようだけど。{wait}
+	}
+	TextWait
+	TextTalk name[3] {
+		#12P#00303Fにしても、レーダー施設か……
+		門の近くにそんなもんがあったんだな？{wait}
+	}
+	TextWait
+	TextTalk name[8] {
+		#12P#10100F確か両国境門の付近に
+		配備されているはずです。{wait}
+	} {
+		#10103F私は扱ったことはないですけど……{wait}
+	}
+	TextWait
+	TextTalk name[2] {
+		#6P#00203F以前、財団がそういったものを
+		クロスベルに設置したと
+		聞いたことがあります。{wait}
+	} {
+		#00200F自治州領空に入る飛行船を
+		かなり広範囲で補足できる
+		高性能なものだとか。{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#00005Fへえ……{wait}
+	}
+	TextWait
+	TextTalk name[4] {
+		#12P#10300Fまあ、そんなものがあるなら
+		ある程度安心できるかもしれないね。{wait}
+	}
+	TextWait
+	_59
+	FlagSet flag[2638]
+	UnloadChip chip[30]
+	ED7_Cam69 255 0
+	CharSetPos field_party[0] (-1050, 0, -4470) 90deg
+	CharFlagsSet field_party[4] 0x0080
+	CharFlags2Set field_party[4] 0x8000
+	CharFlagsSet field_party[5] 0x0080
+	CharFlags2Set field_party[5] 0x8000
+	EventEnd 5
+	Return
+
+fn[14]:
+	if !flag[2638]:
+		Call fn[0,13]
+	else:
+		TextStart null
+		TextTalk name[0] {
+			#00000Fソーニャ司令とダグラス副司令が
+			テロ対策について話しているみたいだ。
+			……中に入るのはやめておこう。{wait}
+		}
+		TextWait
+		TextEnd null
+	Return

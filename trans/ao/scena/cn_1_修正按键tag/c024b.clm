@@ -1,0 +1,327 @@
+calmare zero_k scena
+scena:
+	name "c024b" "c024b" "c024b"
+	town town[15]
+	bgm bgm[513]
+	flags 8192
+	item_use fn[0,255]
+	unk 255 0
+
+entry:
+	pos (0, 0, -1000)
+	unk1 0
+	cam_from (0, 0, 24000)
+	cam_pers 500
+	unk2 30
+	cam_deg 45deg
+	cam_limit 0deg 360deg
+	cam_at (0, 0, 0)
+	unk3 0
+	unk4 0
+	flags 0x0001
+	town town[1]
+	init fn[0,3]
+	reinit fn[0,4]
+
+chip[0] "chr/ch25600.itc"
+chip[1] "chr/ch21800.itc"
+chip[2] "chr/ch21802.itc"
+chip[3] "chr/ch20300.itc"
+chip[4] "chr/ch21600.itc"
+chip[5] "chr/ch21602.itc"
+chip[6] "chr/ch20100.itc"
+chip[7] "chr/ch20102.itc"
+chip[8] "chr/ch05102.itc"
+chip[9] "chr/ch10000.itc"
+
+npc char[0]:
+	name "珊蜜"
+	pos (9060, 10000, 18000)
+	angle 45deg
+	flags 0x0105
+	unk2 0
+	chip chip[0]
+	init fn[0,0]
+	talk fn[0,5]
+	unk4 255
+
+npc char[1]:
+	name "金德爾"
+	pos (-2009, 1149, 60479)
+	angle 270deg
+	flags 0x0105
+	unk2 0
+	chip chip[1]
+	init fn[0,0]
+	talk fn[0,6]
+	unk4 255
+
+npc char[2]:
+	name "布里吉塔"
+	pos (8470, 1019, 62380)
+	angle 0deg
+	flags 0x0105
+	unk2 0
+	chip chip[3]
+	init fn[0,0]
+	talk fn[0,7]
+	unk4 255
+
+npc char[3]:
+	name "路維克老先生"
+	pos (-45650, 1019, 60169)
+	angle 180deg
+	flags 0x0105
+	unk2 0
+	chip chip[4]
+	init fn[0,2]
+	talk fn[0,8]
+	unk4 255
+
+npc char[4]:
+	name "奧莉嘉夫人"
+	pos (7030, 150, 6969)
+	angle 180deg
+	flags 0x0105
+	unk2 0
+	chip chip[6]
+	init fn[0,0]
+	talk fn[0,10]
+	unk4 255
+
+look_point[0]:
+	pos (-340, 10000, 20320)
+	radius 1200
+	bubble_pos (-340, 11500, 20320)
+	unk1 124
+	unk2 0
+	function fn[0,11]
+	unk3 0
+	unk4 0
+
+fn[0]:
+	switch random % 8:
+		case 0:
+			ED7_A0 self 1450ms 0 251
+			break
+		case 1:
+			ED7_A0 self 1550ms 0 251
+			break
+		case 2:
+			ED7_A0 self 1600ms 0 251
+			break
+		case 3:
+			ED7_A0 self 1400ms 0 251
+			break
+		case 4:
+			ED7_A0 self 1650ms 0 251
+			break
+		case 5:
+			ED7_A0 self 1350ms 0 251
+			break
+		case 6:
+			ED7_A0 self 1500ms 0 251
+			break
+		default:
+			ED7_A0 self 1500ms 0 251
+			break
+	while 1:
+		ED7_A0 self 1500ms 0 251
+	Return
+
+fn[1]:
+	while 1:
+		CharIdle self (-1960, null, 10820) (2150, null, 12570) 1000mm/s
+		Sleep 300ms
+	Return
+
+fn[2]:
+	while 1:
+		CharIdle self (-46010, null, 58560) (-42710, null, 61560) 1000mm/s
+		Sleep 300ms
+	Return
+
+fn[3]:
+	CharSetChipBase char[1] chip[2]
+	CharSetChipPattern char[1] 0
+	ForkQuit char[1] fork[0]
+	CharFlags2Set char[1] 0x0004
+	CharSetChipBase char[3] chip[5]
+	CharSetChipPattern char[3] 0
+	ForkQuit char[3] fork[0]
+	CharFlags2Set char[3] 0x0004
+	CharFlagsSet char[3] 0x0010
+	CharSetPos char[3] (-48700, 1200, 60400) 270deg
+	CharSetChipBase char[4] chip[7]
+	CharSetChipPattern char[4] 0
+	ForkQuit char[4] fork[0]
+	CharFlags2Set char[4] 0x0004
+	CharFlagsSet char[4] 0x0010
+	CharSetPos char[4] (-51460, 1200, 60400) 90deg
+	Return
+
+fn[4]:
+	ObjFlagsUnset object[2] 0x0010
+	Return
+
+fn[5]:
+	TextStart self
+	if !flag[0]:
+		TextTalk self {
+			聽說今天
+			各國首腦會去彩虹劇團
+			觀看表演呢。{wait}
+		}
+		TextWait
+		TextTalk self {
+			嗯，想必他們正
+			坐在好位置上享受表演吧。{wait}
+		}
+		TextWait
+		TextTalk self {
+			可惡！好羨慕他們喔！{wait}
+		}
+		TextWait
+		FlagSet flag[0]
+	else:
+		TextTalk self {
+			結果我沒能買到
+			這次改版公演的門票。{wait}
+		}
+		TextWait
+		TextTalk self {
+			唉……{wait}
+		}
+		TextWait
+	TextEnd self
+	Return
+
+fn[6]:
+	TextStart self
+	if !flag[1]:
+		TextTalk self {
+			晚上的蘭花塔燈火燦爛，
+			非常漂亮喔。{wait}
+		}
+		TextWait
+		TextTalk self {
+			以藍色和白色為基底的高塔，
+			在夜晚閃耀著動人的光輝，
+			美到令人屏息。{wait}
+		}
+		TextWait
+		TextTalk self {
+			呵呵，你有機會一定
+			要去見識一下。{wait}
+		}
+		TextWait
+		FlagSet flag[1]
+	else:
+		TextTalk self {
+			晚上的蘭花塔燈火燦爛，
+			非常漂亮喔。{wait}
+		}
+		TextWait
+		TextTalk self {
+			呵呵，你有機會一定
+			要去見識一下。{wait}
+		}
+		TextWait
+	TextEnd self
+	Return
+
+fn[7]:
+	TextStart self
+	TextTalk self {
+		我老公真是的，我明明
+		就沒有問蘭花塔的事情，
+		他卻跟我講了一大堆。{wait}
+	}
+	TextWait
+	TextTalk self {
+		呵呵，看來白天的揭幕儀式
+		讓他興奮到冷靜不下來呢。{wait}
+	}
+	TextWait
+	TextEnd self
+	Return
+
+fn[8]:
+	TextStart self
+	if !flag[3]:
+		Call fn[0,9]
+	else:
+		TextTalk self {
+			難得我想找她一起喝一杯，
+			才跑去買了這麼好的葡萄酒……{wait}
+		}
+		TextWait
+		TextTalk self {
+			哼，算了。
+			我要自己把它喝光。{wait}
+		}
+		TextWait
+	TextEnd self
+	Return
+
+fn[9]:
+	_Char4A char[3] 255
+	_Char4A char[4] 255
+	TextTalk char[3] {
+		啊～這瓶葡萄酒
+		果然好喝。
+		幸好我有買下來。{wait}
+	}
+	TextWait
+	TextTalk char[3] {
+		老伴不喝的話，
+		我自己一個人喝。{wait}
+	}
+	TextWait
+	TextTalk char[4] {
+		……嗯，你高興就好。{wait}
+	}
+	TextWait
+	TextTalk char[4] {
+		你就是為此而花費大把的米拉
+		買下來的吧。{wait}
+	}
+	TextWait
+	TextTalk char[3] {
+		……哼！
+		咕嚕咕嚕咕嚕咕嚕。{wait}
+	}
+	TextWait
+	FlagSet flag[3]
+	FlagSet flag[4]
+	CharFlagsUnset char[3] 0x0010
+	CharFlagsUnset char[4] 0x0010
+	_Char4B char[3] 255
+	_Char4B char[4] 255
+	Return
+
+fn[10]:
+	TextStart self
+	if !flag[4]:
+		Call fn[0,9]
+	else:
+		TextTalk self {
+			……哼，我才不管
+			我丈夫呢。{wait}
+		}
+		TextWait
+	TextEnd self
+	Return
+
+fn[11]:
+	TextStart null
+	SoundPlay sound[807] 0 100 0
+	TextSetName ""
+	TextMessage null {
+		{color 5}門上鎖了。{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	TextEnd null
+	Return

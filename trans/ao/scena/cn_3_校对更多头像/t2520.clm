@@ -1,0 +1,2382 @@
+calmare ao_k scena
+scena:
+	name "t2520" "t2520" "t2520"
+	town town[90]
+	bgm bgm[126]
+	flags 8192
+	item_use fn[0,255]
+	unk 255 27
+
+entry:
+	pos (0, 0, -1000)
+	unk1 0
+	cam_from (0, 0, 24000)
+	cam_pers 500
+	unk2 30
+	cam_deg 45deg
+	cam_limit 0deg 360deg
+	cam_at (0, 0, 0)
+	unk3 0
+	unk4 0
+	flags 0x0001
+	town town[90]
+	init fn[0,3]
+	reinit fn[0,4]
+
+chip[0] "chr/ch34100.itc"
+chip[1] "chr/ch44902.itc"
+chip[2] "chr/ch41800.itc"
+
+npc char[0]:
+	name "隊員弗拉米"
+	pos (-32750, 10, 40700)
+	angle 0deg
+	flags 0x0105
+	unk2 0
+	chip chip[0]
+	init fn[0,1]
+	talk fn[0,6]
+	unk4 255
+
+npc char[1]:
+	name "道格拉斯副司令"
+	pos (6210, 150, -150)
+	angle 270deg
+	flags 0x0145
+	unk2 0
+	chip chip[1]
+	init fn[255,255]
+	talk fn[0,9]
+	unk4 255
+
+look_point[0]:
+	pos (4760, 0, -280)
+	radius 1200
+	bubble_pos (6210, 1500, -150)
+	unk1 126
+	unk2 0
+	function fn[0,8]
+	unk3 0
+	unk4 0
+
+look_point[1]:
+	pos (-83680, 0, 22050)
+	radius 1200
+	bubble_pos (-83680, 1200, 22050)
+	unk1 124
+	unk2 0
+	function fn[0,5]
+	unk3 0
+	unk4 0
+
+anim[0] 384ms
+
+sepith[0] 0 0 0 0 0 0 0 0
+
+fn[0]:
+	var[2] = random % 8
+	switch var[2]:
+		case 0:
+			ED7_A0 self 1450ms 0 251
+			break
+		case 1:
+			ED7_A0 self 1550ms 0 251
+			break
+		case 2:
+			ED7_A0 self 1600ms 0 251
+			break
+		case 3:
+			ED7_A0 self 1400ms 0 251
+			break
+		case 4:
+			ED7_A0 self 1650ms 0 251
+			break
+		case 5:
+			ED7_A0 self 1350ms 0 251
+			break
+		case 6:
+			ED7_A0 self 1500ms 0 251
+			break
+		default:
+			ED7_A0 self 1500ms 0 251
+			break
+	while 1:
+		ED7_A0 self 1500ms 0 251
+	Return
+
+fn[1]:
+	while 1:
+		CharIdle self (-31000, null, 42400) (-34500, null, 39000) 1000mm/s
+		Sleep 300ms
+	Return
+
+fn[2]:
+	while 1:
+		CharWalkToPos self (-33890, 0, 4560) 2000mm/s 0
+		CharWalkToPos self (-33890, 0, -11290) 2000mm/s 0
+		CharWalkToPos self (-33890, 0, 4560) 2000mm/s 0
+		CharWalkToPos self (-53890, 0, 4560) 2000mm/s 0
+	Return
+
+fn[3]:
+	CharSetChipBase char[1] chip[1]
+	CharSetChipPattern char[1] 0
+	ForkQuit char[1] fork[0]
+	CharFlags2Set char[1] 0x0004
+	if flag[3385]:
+		CharSetChipBase char[0] chip[2]
+		CharFlagsSet char[1] 0x0080
+		CharSetPos char[0] (-40000, 0, 4560) 90deg
+		ForkFunc char[0] fork[0] fn[0,2]
+	elif flag[3074]:
+	elif flag[2848]:
+	elif flag[2832]:
+	elif flag[2816]:
+		CharSetPos char[0] (3900, 0, -150) 90deg
+		ForkFunc char[0] fork[0] fn[0,0]
+		if !flag[2]:
+			CharFlagsSet char[0] 0x0010
+			CharFlagsSet char[1] 0x0010
+	elif flag[2573]:
+		CharSetPos char[0] (740, 0, 4470) 0deg
+		ForkFunc char[0] fork[0] fn[0,0]
+		CharFlagsSet char[1] 0x0080
+	elif flag[2564]:
+	elif flag[2560]:
+		if !QuestFlagsGet quest[111] 0x02:
+			CharFlagsSet char[1] 0x0080
+	if flag[272]:
+		FlagUnset flag[272]
+		Event fn[0,19]
+	elif flag[273]:
+		FlagUnset flag[273]
+		Event fn[0,23]
+	if system[0] == 106 && QuestFlagsGet quest[111] 0x02 && !QuestFlagsGet quest[111] 0x10 && !QuestFlagsGet quest[111] 0x40 && !flag[2704]:
+		Event fn[0,10]
+	Return
+
+fn[4]:
+	if flag[3074] && !flag[3355]:
+		system[1] = 151
+	elif flag[3355]:
+		system[1] = 566
+	if flag[3385]:
+		LookPointFlagsSet look_point[0] 0x0001
+	elif flag[3074]:
+	elif flag[2848]:
+	elif flag[2832]:
+	elif flag[2816]:
+		LookPointFlagsSet look_point[0] 0x0001
+	elif flag[2573]:
+		LookPointFlagsSet look_point[0] 0x0001
+	elif flag[2564]:
+	elif flag[2560]:
+		if !QuestFlagsGet quest[111] 0x02:
+			LookPointFlagsSet look_point[0] 0x0001
+	if flag[2848] && !flag[2858]:
+		ED7_76_0 object[255] "hikari_add" 1
+		SoundPlay sound[128] 1 50 0
+	ED7_76_0 object[255] "bear" 1
+	if !flag[3089]:
+		ED7_76_1 object[255] "cgf2" 1
+		ED7_76_0 object[255] "cda2" 1
+	else:
+		ED7_76_0 object[255] "cgf2" 1
+		ED7_76_1 object[255] "cda2" 1
+	Return
+
+fn[5]:
+	TextSetName ""
+	TextMessage null {
+		{color 5}有一本『美味火鍋料理　沙鍋篇』。{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	TextSetPos -1 280 60 3
+	if ItemHas item[2] 0:
+		if !RecipeLearn 7:
+			FadeOut 300ms 0x00000000 100
+			SoundPlay sound[17] 0 100 0
+			TextSetPos -1 -1 -1 -1
+			TextSetName ""
+			TextMessage null {
+				記住了{color 2}『芳醇潮鍋』{color 0}的食譜。{wait}
+			}
+			TextWait
+			TextClose 0
+			FadeIn 300ms 0x00000000
+			FadeWait
+			_59
+			TextSetPos -1 280 60 3
+	TextEnd null
+	Return
+
+fn[6]:
+	TextStart self
+	if flag[3385]:
+		if !flag[0]:
+			TextTalkNamed char[0] "士兵弗拉米" {
+				道格拉斯副司令好像
+				現在正在克洛斯貝爾市
+				討論未來要如何因應。{wait}
+			}
+			TextWait
+			TextTalkNamed char[0] "士兵弗拉米" {
+				那棵淡藍色大樹、
+				可能會發生帝國跟共和國的入侵……
+				問題還是堆積如山。{wait}
+			}
+			TextWait
+			TextTalkNamed char[0] "士兵弗拉米" {
+				身為國防軍，雖然不曉得
+				我究竟可以做到什麼程度，不過……{wait}
+			}
+			TextWait
+			TextTalkNamed char[0] "士兵弗拉米" {
+				我想努力保持希望，
+				想繼續努力下去。{wait}
+			}
+			TextWait
+			FlagSet flag[0]
+		else:
+			TextTalkNamed char[0] "士兵弗拉米" {
+				道格拉斯副司令好像
+				現在正在克洛斯貝爾市
+				討論未來要如何因應。{wait}
+			}
+			TextWait
+			TextTalkNamed char[0] "士兵弗拉米" {
+				身為國防軍，
+				雖然不曉得我究竟可以做到什麼程度……
+				不過我想盡量努力。{wait}
+			}
+			TextWait
+	elif flag[3074]:
+		if !flag[0]:
+			TextTalk char[0] {
+				諾艾兒上士……
+				能救出妹妹
+				真的是太好了呢。{wait}
+			}
+			TextWait
+			TextTalk name[8] {
+				#10108F嗯……雖然看到警備隊的災情，
+				老實說我高興不起來就是了。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				……嗯，老實說，
+				我們也非常難過，不過……{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				正因為是這種狀況，
+				所以我才對諾艾兒的妹妹獲救
+				感到非常高興。{wait}
+			}
+			TextWait
+			TextTalk name[8] {
+				#10103F……對不起。
+				謝謝你們。{wait}
+			}
+			TextWait
+			FlagSet flag[0]
+		else:
+			TextTalk char[0] {
+				我認為，正因為
+				是這種狀況，我們才
+				更是非得忍耐下去不可。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				為了守護克洛斯貝爾
+				而燃燒、奉獻生命……
+				這才是警備隊的使命。{wait}
+			}
+			TextWait
+	elif flag[2848]:
+		if !flag[0]:
+			TextTalk char[0] {
+				昨天的列車脫軌意外……{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				考慮到是在接近公民投票的
+				這個時機發生的話，
+				兇手是兩大國的機率就……{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				……雖然我很清楚
+				不能先入為主，不過
+				總是忍不住會這樣推測。{wait}
+			}
+			TextWait
+			FlagSet flag[0]
+		else:
+			TextTalk char[0] {
+				昨天的列車脫軌意外，
+				果然是兩大國中的某一國幹的……？{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				畢竟壓力也在日漸升高，
+				讓人實在忍不住這樣推測。{wait}
+			}
+			TextWait
+	elif flag[2832]:
+		if !flag[0]:
+			TextTalk char[0] {
+				雖說公民投票的結果
+				還沒確定是否真的要
+				跨出獨立的第一步，不過……{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				考慮到來自帝國及共和國的
+				壓力增加，這份影響力
+				肯定會被當成是威脅。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				公民投票
+				對周遭諸國的影響，
+				似乎比我們想像的更大呢。{wait}
+			}
+			TextWait
+			FlagSet flag[0]
+		else:
+			TextTalk char[0] {
+				考慮到來自帝國及共和國的
+				壓力增加，這份影響力
+				肯定會被當成是威脅。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				公民投票
+				對周遭諸國的影響，
+				似乎比我們想像的更大呢。{wait}
+			}
+			TextWait
+	elif flag[2816]:
+		if !flag[2]:
+			Call fn[0,7]
+		else:
+			TextTalk char[0] {
+				來自共和國的壓力
+				似乎日漸增強呢。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				果然不能放鬆呢……{wait}
+			}
+			TextWait
+	elif flag[2573]:
+		if !flag[0]:
+			TextTalk char[0] {
+				道格拉斯副司令
+				為了會商恐怖攻擊的對策，
+				所以前往貝爾加德門了。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				希望在正式會議開始之前，
+				無論如何都要做好
+				萬全的警備體制呢。{wait}
+			}
+			TextWait
+			FlagSet flag[0]
+		else:
+			TextTalk char[0] {
+				道格拉斯副司令
+				為了會商恐怖攻擊的對策，
+				所以前往貝爾加德門了。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				如果是跟索妮亞司令
+				會商的話，一定能夠
+				做好萬全的警備體制吧。{wait}
+			}
+			TextWait
+	elif flag[2564]:
+		if !flag[0]:
+			TextTalk char[0] {
+				索妮亞司令的異動跟
+				諾艾兒上士的外派
+				都發生在同一時間呢。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				就因為這樣，唐古拉姆門的
+				女性成員比例也下降了……{wait}
+			}
+			TextWait
+			TextTalk name[8] {
+				#10106F嗯，雖然這是無可奈何的，
+				我還是要表達遺憾。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				嗚嗚……可以在晚上閒聊八卦的
+				對象也減少了，我好寂寞喔～{wait}
+			}
+			TextWait
+			TextTalk name[0] {
+				#00005F呃……
+				那種事情對男性隊員
+				難道就不能說出來嗎？{wait}
+			}
+			TextWait
+			TextTalk name[4] {
+				#10304F呵呵，這你就不懂了。{wait}
+			} {
+				#10309F女孩子聊的八卦，
+				內容幾乎都是有男性在場
+				就不能聊的話題喔！{wait}
+			}
+			TextWait
+			TextTalk name[0] {
+				#00006F（雖、雖然我覺得有參雜偏見……
+				　不過我感受到莫名的恐懼呢。）{wait}
+			}
+			TextWait
+			FlagSet flag[0]
+		else:
+			TextTalk char[0] {
+				諾艾兒上士……拜託妳
+				快點回來警備隊啦。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				在那之前，
+				我會收集很多八卦等妳喔！{wait}
+			}
+			TextWait
+			TextTalk name[8] {
+				#10106F（回、回去之後似乎會很精彩呢……）{wait}
+			}
+			TextWait
+	elif flag[2560]:
+		if !flag[0]:
+			TextTalk char[0] {
+				道格拉斯副司令
+				以前被降職後，似乎長時間
+				在警察學校任教……{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				不久之前，因為接到
+				索妮亞司令的委託，
+				才再度回到警備隊執勤。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				我們也對副司令的復出
+				感到非常高興喔。{wait}
+			}
+			TextWait
+			FlagSet flag[0]
+		else:
+			TextTalk char[0] {
+				道格拉斯副司令
+				從以前就以身為非常
+				優秀的警備隊員而聞名。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				我們也對副司令的復出
+				感到非常高興喔。{wait}
+			}
+			TextWait
+	TextEnd self
+	Return
+
+fn[7]:
+	_Char4A char[0] 255
+	TextTalk char[0] {
+		────報告完畢。{wait}
+	}
+	TextWait
+	TextTalk char[1] {
+		#07603F原來如此，在唐古拉姆丘陵
+		進行模擬演習啊……{wait}
+	} {
+		#07601F雖然只是小規模演習，
+		不過施壓的手段
+		越來越明顯了呢。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		嗯，果然到公民投票之前
+		都不能放鬆呢。{wait}
+	}
+	TextWait
+	TextTalk char[1] {
+		#07603F只能一邊與各方面保持合作，
+		一邊進行警戒了。{wait}
+	} {
+		#07601F辛苦你了，繼續監視吧。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		是！{wait}
+	}
+	TextWait
+	CharFlagsUnset char[0] 0x0010
+	CharFlagsUnset char[1] 0x0010
+	FlagSet flag[2]
+	_Char4B char[0] 255
+	Return
+
+fn[8]:
+	if QuestFlagsGet quest[111] 0x02 && !QuestFlagsGet quest[111] 0x10 && !QuestFlagsGet quest[111] 0x40 && flag[2704]:
+		Call fn[0,11]
+		Return
+	if QuestFlagsGet quest[145] 0x02 && !QuestFlagsGet quest[145] 0x10 && !QuestFlagsGet quest[145] 0x40 && !flag[3292]:
+		Call fn[0,20]
+		Return
+	Call fn[0,9]
+	Return
+
+fn[9]:
+	if QuestFlagsGet quest[111] 0x02 && !QuestFlagsGet quest[111] 0x10 && !QuestFlagsGet quest[111] 0x40 && flag[2704]:
+		Call fn[0,11]
+		Return
+	if QuestFlagsGet quest[145] 0x02 && !QuestFlagsGet quest[145] 0x10 && !QuestFlagsGet quest[145] 0x40 && !flag[3292]:
+		Call fn[0,20]
+		Return
+	TextStart char[1]
+	if flag[3074]:
+		if QuestFlagsGet quest[145] 0x02:
+			if !QuestFlagsGet quest[145] 0x10:
+				if !flag[1]:
+					TextTalk char[1] {
+						#07601F我已經聯絡過，
+						要他們解除古戰場的封鎖了。{wait}
+					} {
+						#07603F請從阿爾摩利卡古道方向
+						前往魔獸出現地點。{wait}
+					} {
+						#07601F身為警備隊員，對於我方無暇承接
+						擊退魔獸任務一事非常抱歉，不過……{wait}
+					} {
+						#07600F憑你們的本領，我相信你們
+						能夠解決這件事情。{wait}
+					}
+					TextWait
+					FlagSet flag[1]
+				else:
+					TextTalk char[1] {
+						#07601F我已經聯絡過，
+						要他們解除古戰場的封鎖了。{wait}
+					} {
+						#07603F請從古道方向前往魔獸出現地點。{wait}
+					} {
+						#07600F憑你們的本領，我相信你們
+						能夠解決這件事情。{wait}
+					}
+					TextWait
+			elif !flag[3307]:
+				TextTalk char[1] {
+					#07600F辛苦了，特務支援課的各位。{wait}
+				} {
+					#07604F雖然問題還堆積如山，
+					不過托你們的福，總算解決
+					一件掛心的事了。{wait}
+				} {
+					#07602F因為那起攻擊事件的傷害，
+					目前人手還是不足。
+					真的非常感謝你們。{wait}
+				}
+				TextWait
+				TextTalk name[0] {
+					#00000F別客氣，有困難就該互相幫忙嘛。{wait}
+				}
+				TextWait
+				TextTalk name[1] {
+					#00103F……警備隊受到的傷害
+					真的是非常嚴重吧？{wait}
+				} {
+					#00101F未來的重建狀況
+					大概進展到什麼程度了呢？{wait}
+				}
+				TextWait
+				TextTalk char[1] {
+					#07603F……因為還有眼前的緊張狀態要因應，
+					老實說非常不理想。{wait}
+				} {
+					#07601F不過，只要諾艾兒上士回到警備隊，
+					那方面應該就可以好好處理了。{wait}
+				} {
+					#07601F到那時，我們肯定會請她
+					以她應有的職級
+					為組織的重建奉獻心力。{wait}
+				}
+				TextWait
+				if system[10] != 255:
+					Emote field_party[0] 0mm 2000mm 38 38 250ms 1
+					Sleep 50ms
+				if system[11] != 255:
+					Emote field_party[1] 0mm 2000mm 38 38 250ms 1
+					Sleep 50ms
+				if system[12] != 255:
+					Emote field_party[2] 0mm 2000mm 38 38 250ms 1
+					Sleep 50ms
+				if system[13] != 255:
+					Emote field_party[3] 0mm 2000mm 38 38 250ms 1
+				Sleep 1000ms
+				TextTalk name[3] {
+					#00305F你的意思是……{wait}
+				}
+				TextWait
+				TextTalk name[8] {
+					#10108F……是要讓我晉升嗎？{wait}
+				}
+				TextWait
+				TextTalk char[1] {
+					#07603F……這次警備隊受到的傷害，
+					在某個層面上來說，
+					受損最嚴重的是『士氣』。{wait}
+				} {
+					#07601F在夥伴犧牲帶來的打擊下，
+					對警備隊任務本身感到恐懼的
+					人數肯定增加了不少。{wait}
+				} {
+					#07603F有部分的隊員現在
+					是靠著憤怒和榮譽感
+					才勉強撐住，可是……{wait}
+				}
+				TextWait
+				TextTalk name[2] {
+					#00203F……你說得對。
+					我們也深切感受到
+					隊員有這樣的情緒。{wait}
+				}
+				TextWait
+				TextTalk char[1] {
+					#07603F為了找回喪失的士氣，
+					肯定需要優秀的軍官。{wait}
+				} {
+					#07601F雖然這件事還沒底定，不過……
+					妳的確擁有足以
+					擔負這個責任的能力。{wait}
+				}
+				TextWait
+				TextTalk name[8] {
+					#10103F……雖然我不知道自己能不能
+					做到像米蕾優三尉那麼好，不過……{wait}
+				} {
+					#10101F如果事情變成那樣的話，
+					我一定會努力達成自己的使命。{wait}
+				}
+				TextWait
+				TextTalk char[1] {
+					#07601F……抱歉。
+					雖然痛苦的日子還會持續一陣子，
+					不過就拜託妳了。{wait}
+				}
+				TextWait
+				FlagSet flag[3307]
+			else:
+				TextTalk char[1] {
+					#07603F為了重建警備隊，我們會
+					請上士以她應有的職級
+					為大家奉獻心力。{wait}
+				} {
+					#07601F雖然痛苦的日子還會持續一陣子，
+					不過就拜託妳了。{wait}
+				}
+				TextWait
+			TextEnd char[1]
+			Return
+		if !flag[3187]:
+			TextTalk char[1] {
+				#07601F在一連串的攻擊事件當中，
+				警備隊受到的傷害是無法估計的。{wait}
+			} {
+				#07601F等諾艾兒上士一回到警備隊，
+				我們肯定會請她以她應有的職級
+				為組織的重建奉獻心力。{wait}
+			}
+			TextWait
+			TextTalk name[0] {
+				#00005F你的意思是……{wait}
+			}
+			TextWait
+			TextTalk name[8] {
+				#10108F……是要讓我晉升嗎？{wait}
+			}
+			TextWait
+			TextTalk char[1] {
+				#07603F……這次警備隊受到的傷害，
+				在某個層面上來說，
+				受損最嚴重的是『士氣』。{wait}
+			} {
+				#07601F在夥伴犧牲帶來的打擊下，
+				對警備隊任務本身感到恐懼的
+				人數肯定增加了不少。{wait}
+			} {
+				#07603F有部分的隊員現在
+				是靠著憤怒和榮譽感
+				才勉強撐住，可是……{wait}
+			}
+			TextWait
+			TextTalk name[2] {
+				#00203F……你說得對。
+				我們也深切感受到
+				隊員有這樣的情緒。{wait}
+			}
+			TextWait
+			TextTalk char[1] {
+				#07603F為了找回喪失的士氣，
+				肯定需要優秀的軍官。{wait}
+			} {
+				#07601F雖然這件事還沒底定，不過……
+				妳的確擁有足以
+				擔負這個責任的能力。{wait}
+			}
+			TextWait
+			TextTalk name[8] {
+				#10103F……雖然我不知道自己能不能
+				做到像米蕾優三尉那麼好，不過……{wait}
+			} {
+				#10101F如果事情變成那樣的話，
+				我一定會努力達成自己的使命。{wait}
+			}
+			TextWait
+			TextTalk char[1] {
+				#07601F……抱歉。
+				雖然痛苦的日子還會持續一陣子，
+				不過就拜託妳了。{wait}
+			}
+			TextWait
+			FlagSet flag[3187]
+		else:
+			TextTalk char[1] {
+				#07601F為了重建警備隊，我們會
+				請上士以她應有的職級
+				為大家奉獻心力。{wait}
+			} {
+				#07601F雖然痛苦的日子還會持續一陣子，
+				不過就拜託妳了。{wait}
+			}
+			TextWait
+	elif flag[2848]:
+		if !flag[2946]:
+			TextTalk char[1] {
+				#07602F你們昨天
+				在脫軌意外現場
+				似乎立下大功了。{wait}
+			}
+			TextWait
+			TextTalk name[3] {
+				#00300F哈哈，因為我們支援課的隊長
+				非常活躍啊。{wait}
+			}
+			TextWait
+			TextTalk name[0] {
+				#00006F呃……
+				你這也太未免誇過頭了吧。{wait}
+			}
+			TextWait
+			TextTalk name[1] {
+				#00100F呵呵，沒這回事。{wait}
+			}
+			TextWait
+			TextTalk char[1] {
+				#07604F我在警察學校教導的
+				主要是戰鬥技術，不過……{wait}
+			} {
+				#07602F羅伊德，你已經成長為一名
+				出色的搜查官了呢。
+				真是讓人感觸良多啊。{wait}
+			}
+			TextWait
+			TextTalk name[0] {
+				#00012F連、連副司令都這麼說……{wait}
+			} {
+				#00003F……我真的還差很遠啊。
+				對於大哥，我根本望塵莫及。{wait}
+			} {
+				#00000F只是，我有各位夥伴陪著我，
+				讓我能夠彌補這段差距而已。{wait}
+			}
+			TextWait
+			TextTalk name[2] {
+				#00200F羅伊德前輩……{wait}
+			}
+			TextWait
+			TextTalk char[1] {
+				#07609F呵呵，這樣就夠了。
+				我相信你一定能夠就這樣
+				繼續成長下去。{wait}
+			} {
+				#07604F我很期待你的將來喔，羅伊德。{wait}
+			}
+			TextWait
+			FlagSet flag[2946]
+		elif !flag[3144]:
+			TextTalk char[1] {
+				#07605F啊，話說回來……{wait}
+			} {
+				#07600F你們要不要
+				看看這本書？{wait}
+			}
+			TextWait
+			TextSetPos -1 -1 -1 -1
+			FadeOut 300ms 0x00000000 100
+			SoundPlay sound[17] 0 100 0
+			TextSetName ""
+			TextMessage name[742] {
+				{color 0}已取得{item[758]}{color 0}。{wait}
+			}
+			TextWait
+			TextClose 0
+			FadeIn 300ms 0x00000000
+			ItemAdd item[758] 1
+			TextSetPos -1 280 60 3
+			FlagSet flag[3144]
+			TextTalk name[1] {
+				#00105F這是……娛樂性的小說嗎？{wait}
+			}
+			TextWait
+			TextTalk name[3] {
+				#00309F道格拉斯老兄會看這種東西，
+				還真讓人意外呢。{wait}
+			}
+			TextWait
+			TextTalk char[1] {
+				#07609F哈哈，我也會看小說啊。{wait}
+			} {
+				#07600F那本書是索妮亞司令推薦的，
+				不過……你們也知道，
+				我最近很忙啊。{wait}
+			} {
+				#07610F嗯，總之就是這麼回事，
+				有時間的話你們就看看吧。{wait}
+			}
+			TextWait
+			TextTalk name[0] {
+				#00000F好的，非常感謝你。{wait}
+			}
+			TextWait
+		elif !flag[1]:
+			TextTalk char[1] {
+				#07603F那麼，先不說這個……{wait}
+			} {
+				#07601F發生脫軌意外後，才過了一天。
+				要完全放心下來，現在還太早。{wait}
+			} {
+				#07603F短期之內，警備隊這邊
+				或許也應該在鐵路附近
+				加強戒備比較好。{wait}
+			}
+			TextWait
+			FlagSet flag[1]
+		else:
+			TextTalk char[1] {
+				#07601F發生脫軌意外後，才過了一天。
+				要完全放心下來，現在還太早。{wait}
+			} {
+				#07603F短期之內，警備隊這邊
+				或許也應該在鐵路附近
+				加強戒備比較好。{wait}
+			}
+			TextWait
+	elif flag[2832]:
+		if !flag[2945]:
+			TextTalk char[1] {
+				#07603F在你們的調查中
+				發現的《靈智之草》……{wait}
+			} {
+				#07601F據說其實是
+				那個《真知》的原料呢。{wait}
+			} {
+				#07606F雖然我知道那是種
+				很麻煩的藥，不過……{wait}
+			}
+			TextWait
+			TextTalk name[0] {
+				#00005F這樣啊……
+				副司令在教團事件那時
+				也在警察學校對吧？{wait}
+			} {
+				#00003F被操縱的警備隊
+				第一個襲擊的那個現場……{wait}
+			}
+			TextWait
+			TextTalk name[8] {
+				#10105F啊……{wait}
+			}
+			TextWait
+			TextTalk char[1] {
+				#07606F……被操縱的隊員們
+				突然襲擊而來的時候，
+				老實說，我被殺得措手不及。{wait}
+			} {
+				#07603F結果只靠我跟警察學校的人手
+				根本對付不了……因此讓拘留所裡的
+				秘書阿奈斯特給逃走了。{wait}
+			}
+			TextWait
+			TextTalk name[1] {
+				#00108F原來是這樣啊……{wait}
+			}
+			TextWait
+			TextTalk char[1] {
+				#07603F具有那麼強大的力量的藥品原料，
+				原來也是幻獸出現的原因呢。{wait}
+			} {
+				#07601F這次的幻獸騷動……
+				嚴重程度說不定比我們
+				原本所想像的更麻煩。{wait}
+			}
+			TextWait
+			FlagSet flag[2945]
+		else:
+			TextTalk char[1] {
+				#07603F具有那麼強大的力量的藥品原料，
+				原來也是幻獸出現的原因呢。{wait}
+			} {
+				#07601F這次的幻獸騷動……
+				嚴重程度說不定比我們
+				原本所想像的更麻煩。{wait}
+			}
+			TextWait
+	elif flag[2816]:
+		if !flag[2]:
+			Call fn[0,7]
+		else:
+			TextTalk char[1] {
+				#07606F誠如各位所見，看來警備隊
+				目前實在沒有時間處理《幻獸》。{wait}
+			} {
+				#07601F雖然會給你們添麻煩，
+				不過還是得拜託你們調查了。{wait}
+			}
+			TextWait
+	elif flag[2573]:
+	elif flag[2564]:
+		if !flag[2760]:
+			TextTalk name[8] {
+				#10100F副司令，辛苦你了！{wait}
+			}
+			TextWait
+			TextTalk char[1] {
+				#07602F喔，是你們啊。
+				你們來得正好呢。{wait}
+			} {
+				#07610F我現在正好打算休息一下，
+				難得過來一趟，
+				你們就慢慢來吧。{wait}
+			}
+			TextWait
+			TextTalk name[3] {
+				#00300F呼，我還以為老兄你
+				又會跟上次一樣說
+				要我們陪你演習呢。{wait}
+			}
+			TextWait
+			TextTalk char[1] {
+				#07606F嗯，我的確很想這麼做，
+				不過現在實在沒那麼多時間。{wait}
+			}
+			TextWait
+			TextTalk name[0] {
+				#00009F哈哈……
+				看來你很忙碌呢。{wait}
+			}
+			TextWait
+			TextTalk char[1] {
+				#07600F畢竟明天就是
+				正式會議了呢。{wait}
+			} {
+				#07603F雖然我覺得通商會議的警備體制
+				已經做好萬全的準備了，
+				不過狀況總是瞬息萬變。{wait}
+			} {
+				#07600F我跟在米修拉姆警備的
+				索妮亞司令，明早大概
+				還需要再次會商吧。{wait}
+			}
+			TextWait
+			TextTalk name[1] {
+				#00103F是啊……
+				畢竟在蘭花塔，所有的貴賓
+				都會齊聚一堂。{wait}
+			}
+			TextWait
+			TextTalk name[4] {
+				#10300F不管準備再多
+				都不至於過度吧。{wait}
+			}
+			TextWait
+			TextTalk name[3] {
+				#00300F嗯，總之交給警備隊
+				就可以放心了吧。{wait}
+			} {
+				#00304F而且畢竟現在的警備隊
+				有『迅雷道格拉斯』坐鎮啊。{wait}
+			}
+			TextWait
+			if PartyPosition name[3] != 0:
+				Emote field_party[0] 0mm 2000mm 0 1 250ms 2
+				SoundPlay sound[29] 0 100 0
+				Sleep 50ms
+			if PartyPosition name[3] != 1:
+				Emote field_party[1] 0mm 2000mm 0 1 250ms 2
+				SoundPlay sound[29] 0 100 0
+				Sleep 50ms
+			if PartyPosition name[3] != 2:
+				Emote field_party[2] 0mm 2000mm 0 1 250ms 2
+				SoundPlay sound[29] 0 100 0
+				Sleep 50ms
+			if PartyPosition name[3] != 3:
+				Emote field_party[3] 0mm 2000mm 0 1 250ms 2
+				SoundPlay sound[29] 0 100 0
+			Sleep 1000ms
+			TextTalk name[8] {
+				#10105F迅雷……是嗎？{wait}
+			}
+			TextWait
+			TextTalk char[1] {
+				#07609F哈哈，你又說出
+				令人懷念的稱號了呢。{wait}
+			} {
+				#07600F在被降職到警察學校之前，
+				有段時間的確有些人
+				是這樣稱呼我的。{wait}
+			} {
+				#07603F不過，又是迅雷又是魔鬼……
+				那些傢伙真的很喜歡
+				隨便給我亂取綽號啊。{wait}
+			}
+			TextWait
+			TextTalk name[0] {
+				#00000F哈哈，但我覺得
+				這兩個稱號都很適合你啊。{wait}
+			}
+			TextWait
+			TextTalk char[1] {
+				#07606F夠了夠了，別說笑了。{wait}
+			} {
+				#07601F嗯哼，回到正題……
+				通商會議的警備，
+				我會做好萬全準備。{wait}
+			} {
+				#07600F你們也別太在意，
+				就做好自己的工作吧。{wait}
+			}
+			TextWait
+			TextTalk name[0] {
+				#00000F嗯，我們會的。{wait}
+			}
+			TextWait
+			FlagSet flag[2760]
+		elif !flag[1]:
+			TextTalk char[1] {
+				#07604F『迅雷』啊……
+				哈哈，這綽號真令人懷念啊。{wait}
+			} {
+				#07601F嗯哼，反正……
+				通商會議的警備，
+				我會做好萬全準備。{wait}
+			} {
+				#07600F你們也別太在意，
+				就做好自己的工作吧。{wait}
+			}
+			TextWait
+			FlagSet flag[1]
+		else:
+			TextTalk char[1] {
+				#07601F通商會議的警備，
+				我會做好萬全準備。{wait}
+			} {
+				#07600F你們也不要太在意，
+				就做好自己的工作吧。{wait}
+			}
+			TextWait
+	elif flag[2560]:
+		if QuestFlagsGet quest[111] 0x10:
+			if !flag[1]:
+				TextTalk char[1] {
+					#07600F#4P各位參加演習，辛苦了。
+					下次有事的話，我會再拜託各位。{wait}
+				} {
+					#07601F#4P還有，關於剛才那件事……
+					希望各位千萬要『保密』，
+					可以嗎？{wait}
+				}
+				TextWait
+				TextTalk name[0] {
+					#00005F我、我知道了。
+					總之，
+					我這邊也會多注意──{wait}
+				}
+				TextWait
+				TextTalk name[3] {
+					#00304F……下次可得
+					告訴小緹才行呢♪{wait}
+				}
+				TextWait
+				TextTalk name[4] {
+					#10309F呵呵，就是說啊。
+					不然會不公平呢。{wait}
+				}
+				TextWait
+				TextTalk name[0] {
+					#00011F啊、喂！你們兩個！
+					不要這麼快就害我毀約啦！{wait}
+				}
+				TextWait
+				TextTalk char[1] {
+					#07606F#4P……拜託啦。{wait}
+				}
+				TextWait
+				FlagSet flag[1]
+			else:
+				TextTalk char[1] {
+					#07600F#4P各位參加演習，辛苦了。
+					下次有事的話，我會再拜託各位。{wait}
+				} {
+					#07601F#4P……剛才那件事也
+					希望各位千萬要『保密』，
+					可以嗎？{wait}
+				}
+				TextWait
+	TextEnd char[1]
+	Return
+
+fn[10]:
+	EventBegin 0
+	VisShow vis[0] 234 0 490 256 0 0 512 512 0 0 512 512 0x00FFFFFF 0 "bu08200.itp"
+	FadeOut 1000ms 0x00000000 255
+	FadeWait
+	CamSetDistance -1120 900 -310 0ms
+	ED7CamRotate 45deg 21deg 0deg 0ms
+	CamPers 350 0ms
+	CamZoom 25500 0ms
+	CharSetPos char[1] (6630, 0, -20) 270deg
+	CharSetPos name[0] (-5500, 0, -20) 90deg
+	CharSetPos name[1] (-5500, 0, -20) 90deg
+	CharSetPos name[3] (-5500, 0, -20) 90deg
+	CharSetPos name[8] (-5500, 0, -20) 90deg
+	CharSetPos name[4] (-5500, 0, -20) 90deg
+	CharColor name[0] 0x00FFFFFF 0ms
+	CharColor name[1] 0x00FFFFFF 0ms
+	CharColor name[3] 0x00FFFFFF 0ms
+	CharColor name[8] 0x00FFFFFF 0ms
+	CharColor name[4] 0x00FFFFFF 0ms
+	CharFlagsUnset field_party[4] 0x0080
+	CharFlags2Unset field_party[4] 0x8000
+	FadeIn 1000ms 0x00000000
+	FadeWait
+	SoundPlay sound[105] 0 100 0
+	ForkFunc name[0] fork[3] fn[0,12]
+	Sleep 700ms
+	ForkFunc name[8] fork[3] fn[0,13]
+	Sleep 700ms
+	ForkFunc name[1] fork[3] fn[0,14]
+	CamSetDistance 930 900 -520 3000ms
+	Sleep 700ms
+	ForkFunc name[3] fork[3] fn[0,15]
+	Sleep 700ms
+	ForkFunc name[4] fork[3] fn[0,16]
+	ForkWait name[4] fork[3]
+	CamWait 121
+	TextTalk char[1] {
+		#07602F#11P──你們總算來啦。{wait}
+	}
+	TextWait
+	Emote name[0] 0mm 2000mm 38 38 250ms 1
+	Sleep 50ms
+	Emote name[1] 0mm 2000mm 38 38 250ms 1
+	Sleep 50ms
+	Emote name[3] 0mm 2000mm 38 38 250ms 1
+	Sleep 50ms
+	Emote name[8] 0mm 2000mm 38 38 250ms 1
+	Sleep 50ms
+	Emote name[4] 0mm 2000mm 38 38 250ms 1
+	Sleep 1000ms
+	TextTalk name[0] {
+		#6P#00002F啊……{wait}
+	}
+	TextWait
+	CamSetDistance 3420 900 80 3000ms
+	ED7CamRotate 45deg 19deg 0deg 3000ms
+	CamPers 350 3000ms
+	CamZoom 25500 3000ms
+	Fork name[0] fork[1]:
+		_Char91 self 2500 0 0 2000 0
+	Sleep 100ms
+	Fork name[8] fork[1]:
+		_Char91 self 3000 0 0 2000 0
+	Sleep 100ms
+	Fork name[1] fork[1]:
+		_Char91 self 3000 0 0 2000 0
+	Sleep 100ms
+	Fork name[3] fork[1]:
+		_Char91 self 2800 0 0 2000 0
+	Sleep 100ms
+	Fork name[4] fork[1]:
+		_Char91 self 2500 0 0 2000 0
+	Sleep 1000ms
+	CamWait 121
+	FadeWait
+	TextTalk name[8] {
+		#10100F道格拉斯副司令……
+		辛苦你了！{wait}
+	}
+	TextWait
+	TextTalk char[1] {
+		#07610F#11P嗨，希卡上士。{wait}
+	} {
+		#07600F#11P在特務支援課
+		過得還好嗎？{wait}
+	}
+	TextWait
+	TextTalk name[8] {
+		#10100F是！
+		我每天都學習到
+		很多東西！{wait}
+	}
+	TextWait
+	TextTalk char[1] {
+		#07609F#11P哈哈，那太好了。{wait}
+	} {
+		#07600F#11P為了將來，
+		妳可要好好努力。{wait}
+	}
+	TextWait
+	TextTalk name[1] {
+		#12P#00105F諾艾兒，這位就是……？{wait}
+	}
+	TextWait
+	VisSet vis[0] 3 0xFFFFFFFF 500ms 0 0
+	VisSet vis[0] 0 -10000 0 500ms 0
+	VisWait vis[0] 3
+	VisWait vis[0] 0
+	TextSetPos -1 280 35 3
+	Sleep 300ms
+	TextMessage char[1] {
+		#11P……哎呀，
+		我還沒自我介紹呢。{wait}
+	} {
+		#11P我叫道格拉斯。
+		是警備隊
+		新到任的副司令。{wait}
+	} {
+		#11P關於你們的事，
+		我已經聽司令詳細說明過了。
+		今後請多指教。{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	TextSetPos -1 280 60 3
+	VisSet vis[0] 3 0x00FFFFFF 500ms 0 0
+	VisSet vis[0] 0 0 0 500ms 0
+	VisWait vis[0] 3
+	VisWait vis[0] 0
+	TextTalk name[1] {
+		#6P#00100F請多指教。{wait}
+	}
+	TextWait
+	TextTalk name[4] {
+		#6P#10302F呵呵，看來是位
+		表裡如一的人呢。{wait}
+	}
+	TextWait
+	TextTalk name[3] {
+		#6P#00300F你還是老樣子，很有精神呢，
+		道格拉斯老兄。{wait}
+	}
+	TextWait
+	TextTalk char[1] {
+		#07600F#11P你也是啊，蘭迪。
+		在貝爾加德門進行的復健訓練，
+		真是辛苦你了。{wait}
+	} {
+		#07602F#11P還有──羅伊德。
+		好久不見了呢。{wait}
+	} {
+		#07610F#11P在之前的教團事件中，
+		你似乎非常活躍呢。{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#6P#00000F哈哈……
+		別來無恙。{wait}
+	} {
+		#00004F我聽說教官
+		當上副司令的時候，
+		真的很驚訝呢。{wait}
+	} {
+		#00012F該說當時被那位
+		『魔鬼道格拉斯』蹂躪的記憶
+		又清楚浮現了吧……{wait}
+	}
+	TextWait
+	TextTalk char[1] {
+		#07605F#11P喂喂喂，就別提
+		我以前的外號了吧。{wait}
+	} {
+		#07606F#11P真是的，這樣很丟臉耶。{wait}
+	}
+	TextWait
+	TextTalk name[1] {
+		#6P#00100F（嗯，看來他在警察學校
+		　是位很嚴格的人呢……）{wait}
+	}
+	TextWait
+	TextTalk char[1] {
+		#07603F#11P……哎呀，
+		就先聊到這吧。{wait}
+	} {
+		#07600F#11P畢竟今天是以工作的名義
+		特地請你們過來呢。{wait}
+	}
+	TextWait
+	TextTalk name[4] {
+		#6P#10300F工作是指……
+		『委託參加演習』對吧？{wait}
+	}
+	TextWait
+	TextTalk char[1] {
+		#07602F#11P嗯，沒錯。{wait}
+	} {
+		#07604F#11P這次的演習目的就是
+		訓練你們特務支援課。{wait}
+	} {
+		#07600F#11P麻煩你們好好接受
+		我的嚴格訓練喔。{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#6P#00005F咦……？
+		不是為了警備隊，
+		而是為了我們嗎？{wait}
+	}
+	TextWait
+	TextTalk char[1] {
+		#07604F#11P嗯，不過對警備隊員來說，
+		也會是個好經驗吧。{wait}
+	} {
+		#07600F#11P此外，我已經跟
+		警察高層說好了。
+		名義上是正式的共同訓練。{wait}
+	}
+	TextWait
+	TextTalk name[3] {
+		#6P#00300F原來如此……
+		與其說是支援委託，
+		比較像是正式的訓練呢。{wait}
+	}
+	TextWait
+	TextTalk char[1] {
+		#07609F#11P哈哈，就是這麼回事。{wait}
+	} {
+		#07600F#11P我們這邊已經準備好了。
+		再來就看你們……{wait}
+	}
+	TextWait
+	CharTurnToChar name[1] name[0] 500deg/s
+	Sleep 500ms
+	TextTalk name[1] {
+		#12P#00100F或許應該重新
+		確認一次裝備比較好。{wait}
+	} {
+		#00104F結晶迴路的結構
+		也重新檢查看看吧。{wait}
+	}
+	TextWait
+	TextTalk char[1] {
+		#07600F#11P如何，
+		要立刻開始演習嗎？{wait}
+	}
+	TextWait
+	QuestTaskSet quest[111] 0
+	Call fn[0,17]
+	CharFlagsSet field_party[4] 0x0080
+	CharFlags2Set field_party[4] 0x8000
+	EventEnd 5
+	Return
+
+fn[11]:
+	EventBegin 0
+	CrossFade 500ms
+	CamSetDistance 3420 900 80 0ms
+	ED7CamRotate 45deg 19deg 0deg 0ms
+	CamPers 350 0ms
+	CamZoom 25500 0ms
+	CharSetPos name[0] (2500, 0, -20) 90deg
+	CharSetPos name[8] (2500, 0, 980) 90deg
+	CharSetPos name[1] (2500, 0, -1020) 90deg
+	CharSetPos name[3] (1300, 0, 680) 90deg
+	CharSetPos name[4] (1000, 0, -720) 90deg
+	CharFlagsUnset field_party[4] 0x0080
+	CharFlags2Unset field_party[4] 0x8000
+	FadeWait
+	TextTalk char[1] {
+		#07604F#11P為了訓練各位隊員，
+		請你們務必當他們的
+		演習對象。{wait}
+	} {
+		#07600F#11P我們這邊已經準備好了。
+		可以立刻開始演習嗎？{wait}
+	}
+	TextWait
+	Call fn[0,17]
+	CharFlagsSet field_party[4] 0x0080
+	CharFlags2Set field_party[4] 0x8000
+	EventEnd 5
+	Return
+
+fn[12]:
+	Fork name[0] fork[2]:
+		CharColor self 0xFFFFFFFF 500ms
+	Fork name[0] fork[1]:
+		_Char91 self 5500 0 0 2000 0
+	ForkWait name[0] fork[1]
+	Return
+
+fn[13]:
+	Fork name[8] fork[2]:
+		CharColor self 0xFFFFFFFF 500ms
+	Fork name[8] fork[1]:
+		_Char91 self 4000 0 0 2000 0
+	ForkWait name[8] fork[1]
+	_Char90 name[8] 0 0 1000 2000 0
+	_Char90 name[8] 1000 0 0 2000 0
+	Return
+
+fn[14]:
+	Fork name[1] fork[2]:
+		CharColor self 0xFFFFFFFF 500ms
+	Fork name[1] fork[1]:
+		_Char91 self 4000 0 0 2000 0
+	ForkWait name[1] fork[1]
+	_Char90 name[1] 0 0 -1000 2000 0
+	_Char90 name[1] 1000 0 0 2000 0
+	Return
+
+fn[15]:
+	Fork name[3] fork[2]:
+		CharColor self 0xFFFFFFFF 500ms
+	Fork name[3] fork[1]:
+		_Char91 self 3000 0 0 2000 0
+	ForkWait name[3] fork[1]
+	_Char90 name[3] 1000 0 700 2000 0
+	CharTurnTo name[3] 90deg 500deg/s
+	Return
+
+fn[16]:
+	Fork name[4] fork[2]:
+		CharColor self 0xFFFFFFFF 500ms
+	Fork name[4] fork[1]:
+		_Char91 self 3000 0 0 2000 0
+	ForkWait name[4] fork[1]
+	_Char90 name[4] 1000 0 -700 2000 0
+	CharTurnTo name[4] 90deg 500deg/s
+	Return
+
+fn[17]:
+	FadeOut 300ms 0x00000000 100
+	FadeWait
+	TextSetPos -1 30 -1 -1
+	TextSetName ""
+	Menu menu[0] -1 -1 0
+		"【開始演習】" // 0
+		"【還沒做好準備】" // 1
+	MenuWait var[0]
+	MenuClose menu[0]
+	TextClose 0
+	TextSetPos -1 280 60 3
+	FadeIn 300ms 0x00000000
+	FadeWait
+	switch var[0]:
+		case 0:
+			Call fn[0,18]
+			break
+		case 1:
+			TextTalk name[0] {
+				#6P#00000F雖然很抱歉，不過……
+				可以給我一點時間嗎？{wait}
+			}
+			TextWait
+			TextTalk char[1] {
+				#07600F#11P嗯，這樣啊。{wait}
+			} {
+				#07610F#11P那麼，準備好之後
+				你再來找我。{wait}
+			}
+			TextWait
+			_59
+			FlagSet flag[2704]
+			break
+	Return
+
+fn[18]:
+	TextTalk name[0] {
+		#6P#00000F嗯，我們這邊
+		也準備好了。{wait}
+	}
+	TextWait
+	CharTurnTo name[1] 90deg 500deg/s
+	Sleep 500ms
+	TextTalk char[1] {
+		#07602F#11P好。{wait}
+	} {
+		#07600F#11P希卡上士也是，
+		不能因為對方是警備隊
+		而猶豫。{wait}
+	} {
+		#07604F#11P藉由跟警備隊員對峙，
+		妳也會學到新的東西吧。{wait}
+	}
+	TextWait
+	TextTalk name[8] {
+		#10100F是！瞭解！{wait}
+	}
+	TextWait
+	TextTalk char[1] {
+		#07600F#11P那麼，
+		我們立刻開始演習吧。{wait}
+	} {
+		#07600F#11P全體注意，移動到
+		室外的停車場。{wait}
+	}
+	TextWait
+	FadeOut 1000ms 0x00000000 255
+	FadeWait
+	SoundPlay sound[80] 0 100 0
+	TextSetPos -1 -1 -1 -1
+	TextSetName ""
+	TextMessage null {
+		開始進行{color 2}委託【警備隊演習的參加請託】{color 0}！{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	TextSetPos -1 280 60 3
+	QuestTaskSet quest[111] 1
+	CharFlagsSet field_party[4] 0x0080
+	CharFlags2Set field_party[4] 0x8000
+	FlagSet flag[273]
+	NewScene "scena/t2500.bin" 0 0 0
+	Hcf
+	Return
+
+fn[19]:
+	EventBegin 0
+	FadeOut 0ms 0x00000000 255
+	CamSetDistance 3420 900 80 0ms
+	ED7CamRotate 45deg 19deg 0deg 0ms
+	CamPers 350 0ms
+	CamZoom 25500 0ms
+	CharSetPos char[1] (6630, 0, -20) 270deg
+	CharFlagsUnset char[1] 0x0080
+	CharSetPos name[0] (2500, 0, -20) 90deg
+	CharSetPos name[8] (2500, 0, 980) 90deg
+	CharSetPos name[1] (2500, 0, -1020) 90deg
+	CharSetPos name[3] (1300, 0, 680) 90deg
+	CharSetPos name[4] (1000, 0, -720) 90deg
+	CharFlagsUnset field_party[4] 0x0080
+	CharFlags2Unset field_party[4] 0x8000
+	FadeIn 1000ms 0x00000000
+	FadeWait
+	TextTalk char[1] {
+		#07602F#11P──各位參加演習，
+		辛苦了。{wait}
+	} {
+		#07604F#11P對隊員來說，
+		也會是很好的經驗吧。{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#6P#00000F不，我們才是。
+		我認為這是非常好的經驗。{wait}
+	}
+	TextWait
+	TextTalk name[3] {
+		#6P#00306F不過，你完全
+		都沒有退步呢。{wait}
+	} {
+		#00300F讓我想起第一次演習
+		被你打倒的事情。{wait}
+	}
+	TextWait
+	TextTalk char[1] {
+		#07604F#11P你才是，
+		看來成長了很多啊。{wait}
+	} {
+		#07600F#11P我教你的衝擊斧槍，
+		似乎也已經吸收成自己的招式了呢。{wait}
+	}
+	TextWait
+	TextTalk name[3] {
+		#6P#00304F沒錯，現在已經
+		進化成超帥氣＆優雅的
+		蘭迪流了。{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#6P#00000F衝擊斧槍……
+		原來是這樣啊。{wait}
+	}
+	TextWait
+	TextTalk name[1] {
+		#6P#00109F呵呵，看來他似乎
+		對蘭迪有恩呢。{wait}
+	}
+	TextWait
+	TextTalk char[1] {
+		#07603F#11P嗯，因為這傢伙
+		不喜歡用步槍，
+		所以我才專心教導他這個。{wait}
+	} {
+		#07600F#11P因此，現在的他
+		就算只用斧槍，也有足以
+		在第一線戰鬥的實力。{wait}
+	} {
+		#07606F#11P雖然這也成為被前司令討厭的
+		原因就是了。{wait}
+	}
+	TextWait
+	TextTalk name[3] {
+		#6P#00300F哈哈，因為被紀律束縛
+		不符合我的個性嘛。{wait}
+	} {
+		#00309F托這件事的福，我才能轉調到
+		支援課，也落得輕鬆。{wait}
+	}
+	TextWait
+	TextTalk name[4] {
+		#6P#10304F呵呵，
+		無論好壞，
+		都是托副司令的福呢。{wait}
+	} {
+		#10302F看來
+		降職到警察學校
+		果然是調度失誤啊。{wait}
+	}
+	TextWait
+	TextTalk name[8] {
+		#10100F畢竟在教團事件之前，
+		警備隊是在
+		那位前司令的指揮下呢。{wait}
+	} {
+		#10109F就算不是這樣，
+		副司令也十分受到下屬信賴，
+		而且也有實力……{wait}
+	}
+	TextWait
+	TextTalk char[1] {
+		#07600F#11P雖然我沒有這麼厲害……
+		不過，對他來說很礙眼吧。{wait}
+	} {
+		#07600F#11P去警察學校之後，
+		我就專注於培養
+		可以重建這個腐敗體制的人才。{wait}
+	} {
+		#07604F#11P現在回想起來，
+		某種意義上也可以說是
+		很幸運呢。{wait}
+	} {
+		#07600F#11P畢竟可以教育
+		還沒被染上任何顏色的
+		警備隊員跟警察的新人。{wait}
+	}
+	TextWait
+	Emote name[0] 0mm 2000mm 16 19 250ms 1
+	SoundPlay sound[23] 0 100 0
+	Sleep 1000ms
+	TextTalk name[0] {
+		#6P#00012F不過那時候
+		我覺得實在太過嚴格了。{wait}
+	} {
+		#00006F像弗蘭茲
+		偶爾還會哭呢。{wait}
+	}
+	TextWait
+	TextTalk char[1] {
+		#07609F#11P哈哈，別這麼說嘛。
+		訓練很有成效不是嗎？{wait}
+	} {
+		#07600F#11P嗯，雖然發生許多事，
+		不過我又回到警備隊了。{wait}
+	} {
+		#07610F#11P今後我會跟你們
+		互相合作，一起
+		守護自治州吧。{wait}
+	}
+	TextWait
+	TextTalk name[1] {
+		#6P#00100F呵呵……
+		就讓我也盡一份力量吧。{wait}
+	} {
+		#00104F雖然我們都還有
+		許多不足之處。{wait}
+	}
+	TextWait
+	TextTalk char[1] {
+		#07602F#11P哎呀，不用那麼謙虛。
+		你們肯定也有
+		一定程度的力量才對。{wait}
+	} {
+		#07604F#11P是賽爾蓋學長成立了
+		特務支援課，而你們一直都有
+		努力工作的成果吧。{wait}
+	}
+	TextWait
+	Emote name[0] 0mm 2000mm 38 38 250ms 1
+	Sleep 50ms
+	Emote name[1] 0mm 2000mm 38 38 250ms 1
+	Sleep 50ms
+	Emote name[3] 0mm 2000mm 38 38 250ms 1
+	Sleep 50ms
+	Emote name[8] 0mm 2000mm 38 38 250ms 1
+	Sleep 50ms
+	Emote name[4] 0mm 2000mm 38 38 250ms 1
+	Sleep 1000ms
+	TextTalk name[0] {
+		#6P#00005F賽爾蓋學長……？{wait}
+	}
+	TextWait
+	TextTalk name[3] {
+		#6P#00305F什麼嘛，原來
+		你跟那位大叔認識啊？{wait}
+	}
+	TextWait
+	TextTalk char[1] {
+		#07605F#11P咦？豈只認識……{wait}
+	} {
+		#07604F#11P賽爾蓋學長跟
+		索妮亞學姊
+		一直對我照顧有加。{wait}
+	} {
+		#07600F#11P就連他們倆結婚的時候
+		也是我證婚的喔。{wait}
+	}
+	TextWait
+	Emote name[0] 0mm 2000mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Sleep 50ms
+	Emote name[1] 0mm 2000mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Sleep 50ms
+	Emote name[3] 0mm 2000mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Sleep 50ms
+	Emote name[8] 0mm 2000mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Sleep 50ms
+	Emote name[4] 0mm 2000mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Sleep 1000ms
+	TextTalk name[0] {
+		#6P#00011F結……！！！！{wait}
+	}
+	TextWait
+	TextTalk name[1] {
+		#4S#6P#00105F結婚…………！？{wait}
+	}
+	TextWait
+	TextTalk name[8] {
+		#4S#10111F索妮亞司令跟
+		賽爾蓋課長嗎！？{wait}
+	}
+	TextWait
+	TextTalk name[4] {
+		#6P#10305F哦……{wait}
+	}
+	TextWait
+	TextTalk name[3] {
+		#6P#00306F喂喂喂，
+		你怎麼突然就說出
+		這麼讓人震驚的事情呢……！{wait}
+	}
+	TextWait
+	TextTalk char[1] {
+		#07605F#11P……什、什麼嘛。
+		原來你們不知道嗎？{wait}
+	} {
+		#07603F#11P嗯，不過他們大概
+		五年前就離婚了呢。{wait}
+	} {
+		#07603F#11P賽爾蓋學長的降職啦、
+		索妮亞學姊的晉升啦，
+		發生了很多事，所以啦……{wait}
+	}
+	TextWait
+	TextTalk name[4] {
+		#6P#10304F呵呵，原來如此。
+		看來有成熟男女
+		特有的故事呢。{wait}
+	}
+	TextWait
+	TextTalk name[8] {
+		#10105F咦……
+		那位索妮亞司令嗎……？{wait}
+	}
+	TextWait
+	TextTalk name[3] {
+		#6P#00303F我的確覺得
+		他們有點可疑，不過……{wait}
+	} {
+		#00309F該怎麼說，像是
+		解開一個謎團的感覺呢♪{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#6P#00011F大、大家等等……
+		不要一副看好戲的樣子啦。{wait}
+	}
+	TextWait
+	TextTalk name[1] {
+		#6P#00109F（雖、雖然我也
+		　有點在意……）{wait}
+	}
+	TextWait
+	Emote char[1] 0mm 2000mm 16 19 250ms 1
+	SoundPlay sound[23] 0 100 0
+	Sleep 1000ms
+	TextTalk char[1] {
+		#07606F#11P……糟糕了。
+		看來我不小心說溜嘴了。{wait}
+	} {
+		#07601F#11P總、總之。
+		關於這件事，你們
+		不要到處去亂說喔。{wait}
+	} {
+		#07603F#11P嗯哼，總之……
+		演習的事辛苦你們了。{wait}
+	} {
+		#07600F#11P下次有事的話，我會再拜託各位。{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#6P#00000F是、是的。
+		我們等你的聯絡。{wait}
+	}
+	TextWait
+	FadeOut 1000ms 0x00000000 255
+	FadeWait
+	SoundPlay sound[9] 0 100 0
+	TextSetPos -1 -1 -1 -1
+	TextSetName ""
+	TextMessage null {
+		達成{color 2}委託【警備隊演習的參加請託】{color 0}了！{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	TextSetPos -1 280 60 3
+	CharFlagsSet field_party[4] 0x0080
+	CharFlags2Set field_party[4] 0x8000
+	QuestTaskSet quest[111] 4
+	QuestTaskSet quest[111] 5
+	QuestFlagsSet quest[111] 0x10
+	QuestTaskSet quest[163] 4
+	CharSetPos field_party[0] (3000, 0, 0) 90deg
+	EventEnd 5
+	Return
+
+fn[20]:
+	EventBegin 0
+	FadeOut 1000ms 0x00000000 255
+	FadeWait
+	CamSetDistance 3420 900 80 0ms
+	ED7CamRotate 44deg 23deg 0deg 0ms
+	CamPers 350 0ms
+	CamZoom 25500 0ms
+	CharSetPos name[0] (2500, 0, -20) 90deg
+	CharSetPos name[1] (2300, 0, -1020) 90deg
+	CharSetPos name[2] (2300, 0, 980) 90deg
+	CharSetPos name[3] (1000, 0, -20) 90deg
+	CharSetPos name[8] (900, 0, 980) 90deg
+	CharSetPos name[4] (900, 0, -1020) 90deg
+	CharFlagsUnset field_party[4] 0x0080
+	CharFlags2Unset field_party[4] 0x8000
+	CharFlagsUnset field_party[5] 0x0080
+	CharFlags2Unset field_party[5] 0x8000
+	CharTurnTo char[1] 270deg 0deg/s
+	FadeIn 1000ms 0x00000000
+	FadeWait
+	if !flag[3291]:
+		TextTalk name[0] {
+			#6P#00000F道格拉斯副司令，
+			辛苦你了。{wait}
+		}
+		TextWait
+		TextTalk char[1] {
+			#07601F#11P……嗨，是你們啊。
+			辛苦了。{wait}
+		} {
+			#07601F#11P看來你們是看到委託
+			才過來的對吧？{wait}
+		}
+		TextWait
+		TextTalk name[3] {
+			#6P#00300F嗯，就是這麼一回事……{wait}
+		} {
+			#00303F……道格拉斯老兄，
+			你似乎很緊張呢。{wait}
+		}
+		TextWait
+		if QuestFlagsGet quest[147] 0x10:
+			TextTalk char[1] {
+				#07603F#11P進到門裡，你們肯定也會
+				深刻感受到……{wait}
+			} {
+				#07601F#11P目前克洛斯貝爾警備隊
+				是處於高度戒備狀態。{wait}
+			} {
+				#07601F#11P再加上發生了
+				一名通緝犯硬是
+				闖過閘門的狀況。{wait}
+			} {
+				#11P如此這般，所以變成
+				更不能鬆懈的狀態了。{wait}
+			}
+			TextWait
+			TextTalk name[1] {
+				#6P#00100F原來如此……{wait}
+			}
+			TextWait
+			TextTalk char[1] {
+				#07601F#11P不過，通緝犯
+				似乎被你們抓到了呢。{wait}
+			} {
+				#07603F#11P關於這件事，
+				也請讓我道謝。{wait}
+			}
+			TextWait
+			TextTalk name[0] {
+				#6P#00003F不，我們只是做了該做的事。{wait}
+			} {
+				#00001F……這次的委託也是
+				有關的事對吧？{wait}
+			}
+			TextWait
+		elif QuestFlagsGet quest[147] 0x40:
+			TextTalk char[1] {
+				#07603F#11P進到門裡，你們肯定也會
+				深刻感受到……{wait}
+			} {
+				#07601F#11P目前克洛斯貝爾警備隊
+				是處於高度戒備狀態。{wait}
+			} {
+				#07601F#11P再加上發生了
+				一名通緝犯硬是
+				闖過閘門的狀況。{wait}
+			} {
+				#07603F#11P如此這般，所以變成
+				更不能鬆懈的狀態了。{wait}
+			}
+			TextWait
+			TextTalk name[1] {
+				#6P#00100F原來如此……{wait}
+			}
+			TextWait
+			TextTalk name[0] {
+				#6P#00003F（是我們讓他逃走的
+				　那位醫療物資偷竊犯嗎……？）{wait}
+			} {
+				#00001F……但是，這次的委託
+				也是有關的事對吧？{wait}
+			}
+			TextWait
+		else:
+			TextTalk char[1] {
+				#07603F#11P進到門裡，你們肯定也會
+				深刻感受到……{wait}
+			} {
+				#07601F#11P目前克洛斯貝爾警備隊
+				是處於高度戒備狀態。{wait}
+			} {
+				#07601F#11P暫時是無法鬆懈的
+				狀態呢。{wait}
+			}
+			TextWait
+			TextTalk name[0] {
+				#6P#00001F原來如此……
+				這次的委託
+				也是有關的事對吧？{wait}
+			}
+			TextWait
+		TextTalk char[1] {
+			#07603F#11P嗯，就是這樣。{wait}
+		} {
+			#07601F#11P雖然我想馬上開始
+			說明工作內容，不過……{wait}
+		} {
+			#07601F#11P你們願意
+			接下委託嗎？{wait}
+		}
+		TextWait
+	else:
+		TextTalk char[1] {
+			#07601F#11P你們目前有空嗎？{wait}
+		} {
+			#07601F#11P我希望你們能夠盡速接下委託……{wait}
+		}
+		TextWait
+	Call fn[0,21]
+	ED7_Cam69 255 0
+	CharSetPos field_party[0] (2710, 0, -330) 270deg
+	CharFlagsSet field_party[4] 0x0080
+	CharFlags2Set field_party[4] 0x8000
+	CharFlagsSet field_party[5] 0x0080
+	CharFlags2Set field_party[5] 0x8000
+	EventEnd 5
+	Return
+
+fn[21]:
+	FadeOut 300ms 0x00000000 100
+	FadeWait
+	TextSetPos -1 30 -1 -1
+	TextSetName ""
+	Menu menu[0] -1 -1 0
+		"【接受】" // 0
+		"【放棄】" // 1
+	MenuWait var[0]
+	MenuClose menu[0]
+	TextClose 0
+	TextSetPos -1 280 60 3
+	FadeIn 300ms 0x00000000
+	FadeWait
+	if var[0] == 0:
+		Call fn[0,22]
+	else:
+		TextTalk name[0] {
+			#6P#00006F……對不起。
+			我們手上還有
+			非常多的工作……{wait}
+		}
+		TextWait
+		TextTalk char[1] {
+			#07606F#11P嗯……
+			正因為是這種時候，
+			所以也無可奈何呢。{wait}
+		} {
+			#07601F#11P我懂了，等你們有空的時候，
+			再麻煩你們吧。{wait}
+		}
+		TextWait
+		FadeOut 1000ms 0x00000000 255
+		FadeWait
+		FlagSet flag[3291]
+	Return
+
+fn[22]:
+	TextTalk name[0] {
+		#6P#00000F嗯，那就拜託你了。{wait}
+	}
+	TextWait
+	TextTalk char[1] {
+		#07600F#11P嗯，太感謝你們了。{wait}
+	} {
+		#07601F#11P──正如委託上所寫，
+		最近我們收到
+		神秘『黑色魔獸』的目擊情報。{wait}
+	} {
+		#07601F#11P在阿爾摩利卡村附近，
+		似乎有農作物跟家畜等
+		災情發生。{wait}
+	}
+	TextWait
+	TextTalk name[1] {
+		#6P#00105F黑色魔獸……
+		我記得似乎有在哪裡
+		聽過呢。{wait}
+	}
+	TextWait
+	TextTalk name[3] {
+		#6P#00303F我也記得有聽過
+		襲擊農作物的事件呢。{wait}
+	}
+	TextWait
+	TextTalk name[8] {
+		#10105F說不定……
+		和以前發生的
+		『狼型魔獸』事件很類似呢。{wait}
+	} {
+		#10103F那時的犯人是
+		黑手黨操縱的軍犬……{wait}
+	}
+	TextWait
+	TextTalk char[1] {
+		#07601F#11P……那個事件
+		我也有看過報告，
+		讓人有點在意呢。{wait}
+	} {
+		#07603F#11P實際上，
+		魯巴徹雖然瓦解，但是他們擁有的
+		大多數軍犬都不知去向。{wait}
+	} {
+		#07601F#11P可能性絕對不會太低吧。{wait}
+	}
+	TextWait
+	TextTalk name[2] {
+		#00200F警備隊已經調查到
+		什麼程度了呢？{wait}
+	}
+	TextWait
+	TextTalk char[1] {
+		#07601F#11P受害現場跟
+		周圍居民的調查
+		大致上都結束了。{wait}
+	} {
+		#07603F#11P結果，我們得知
+		『黑色魔獸』是從
+		古戰場方向過來的。{wait}
+	} {
+		#07601F#11P因此我想請你們
+		前往古戰場。{wait}
+	} {
+		#07601F#11P調查這些魔獸，
+		可以的話就擊退他們。{wait}
+	}
+	TextWait
+	TextTalk name[4] {
+		#6P#10302F我大概瞭解事情經過了。{wait}
+	} {
+		#10303F話說回來，看來你們
+		似乎真的很忙，是嗎？{wait}
+	} {
+		#10300F我還以為
+		這種工作是由
+		警備隊負責才對……{wait}
+	}
+	TextWait
+	if QuestFlagsGet quest[147] 0x02:
+		TextTalk char[1] {
+			#07606F#11P雖然我也想這麼做……
+			不過就像我剛才說的，
+			警備隊目前是高度戒備狀態。{wait}
+		} {
+			#07601F#11P被認為是克洛斯貝爾市襲擊犯的
+			《紅色星座》也消失無蹤，
+			連一點線索都沒有。{wait}
+		} {
+			#07603F#11P再加上，帝國跟共和國
+			打算開始進行大規模演習的
+			這個狀況……{wait}
+		} {
+			#07601F#11P為了不讓剛才的事重演，
+			身為警備隊，有必要特別加強
+			國界的警備吧。{wait}
+		}
+		TextWait
+	else:
+		TextTalk char[1] {
+			#07606F#11P雖然我也想這麼做……
+			不過就像我剛才說的，
+			警備隊目前是高度戒備狀態。{wait}
+		} {
+			#07601F#11P被認為是克洛斯貝爾市襲擊犯的
+			《紅色星座》也消失無蹤，
+			連一點線索都沒有。{wait}
+		} {
+			#07603F#11P再加上，帝國跟共和國
+			打算開始進行大規模演習的
+			這個狀況……{wait}
+		} {
+			#07601F#11P身為警備隊，有必要特別加強
+			國界的警備吧。{wait}
+		}
+		TextWait
+	TextTalk name[1] {
+		#6P#00108F《不戰條約》締結之前……
+		變成和當時一樣的
+		狀況了呢。{wait}
+	}
+	TextWait
+	TextTalk char[1] {
+		#07603F#11P……嗯。{wait}
+	} {
+		#07601F#11P就算是魔獸造成的災情，
+		在這種狀況下，
+		優先順序也會因此降低。{wait}
+	} {
+		#07601F#11P畢竟沒有發現
+		非常嚴重的災情，
+		實在無法撥出人手呢。{wait}
+	}
+	TextWait
+	TextTalk name[3] {
+		#6P#00304F……的確，
+		現在不是讓警備隊
+		去擊退魔獸的時候呢。{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#6P#00003F……我大概瞭解狀況了。{wait}
+	} {
+		#00000F那麼，『黑色魔獸』的調查
+		就交給我們吧。{wait}
+	}
+	TextWait
+	TextTalk char[1] {
+		#07604F#11P嗯，很抱歉。{wait}
+	} {
+		#07600F#11P那就拜託你們了，特務支援課。{wait}
+	}
+	TextWait
+	FadeOut 300ms 0x00000000 100
+	SoundPlay sound[80] 0 100 0
+	TextSetPos -1 -1 -1 -1
+	TextSetName ""
+	TextMessage null {
+		開始進行{color 2}委託【調查古戰場】{color 0}！{wait}
+	}
+	TextWait
+	TextClose 0
+	FadeIn 300ms 0x00000000
+	FadeWait
+	_59
+	TextSetPos -1 280 60 3
+	FadeOut 1000ms 0x00000000 255
+	FadeWait
+	FlagSet flag[3292]
+	QuestTaskSet quest[145] 0
+	ED7_Cam69 255 0
+	CharSetPos field_party[0] (2710, 0, -330) 270deg
+	CharFlagsSet field_party[4] 0x0080
+	CharFlags2Set field_party[4] 0x8000
+	CharFlagsSet field_party[5] 0x0080
+	CharFlags2Set field_party[5] 0x8000
+	EventEnd 5
+	Return
+
+fn[23]:
+	EventBegin 0
+	FadeOut 0ms 0x00000000 255
+	CamSetDistance 3420 1800 80 0ms
+	ED7CamRotate 44deg 23deg 0deg 0ms
+	CamPers 350 0ms
+	CamZoom 25500 0ms
+	CharSetPos name[0] (2500, 0, -20) 90deg
+	CharSetPos name[1] (2300, 0, -1020) 90deg
+	CharSetPos name[2] (2300, 0, 980) 90deg
+	CharSetPos name[3] (1000, 0, -20) 90deg
+	CharSetPos name[8] (900, 0, 980) 90deg
+	CharSetPos name[4] (900, 0, -1020) 90deg
+	CharFlagsUnset field_party[4] 0x0080
+	CharFlags2Unset field_party[4] 0x8000
+	CharFlagsUnset field_party[5] 0x0080
+	CharFlags2Unset field_party[5] 0x8000
+	CharTurnTo char[1] 270deg 0deg/s
+	CamSetDistance 3420 900 80 3000ms
+	FadeIn 1000ms 0x00000000
+	FadeWait
+	CamWait 1
+	TextTalk name[0] {
+		#6P#00000F──以上就是這次委託的經過。{wait}
+	} {
+		#00003F我想之後應該不會再有
+		因為軍犬而發生的災情了。{wait}
+	}
+	TextWait
+	TextTalk char[1] {
+		#07603F#11P……原來如此……{wait}
+	}
+	TextWait
+	Emote char[1] 0mm 2000mm 24 27 250ms 0
+	Sleep 2000ms
+	EmoteStop char[1]
+	TextTalk name[0] {
+		#6P#00012F呃、呃……{wait}
+	}
+	TextWait
+	TextTalk name[3] {
+		#6P#00305F怎麼了？道格拉斯老兄。
+		你怎麼突然不說話了。{wait}
+	}
+	TextWait
+	TextTalk name[8] {
+		#10106F沒有擊退軍犬果然
+		還是會出問題嗎？{wait}
+	}
+	TextWait
+	TextTalk char[1] {
+		#07604F#11P……不，你們幹得很好。{wait}
+	} {
+		#07602F#11P比我預期的結果更好，
+		所以我有點嚇到。{wait}
+	}
+	TextWait
+	TextTalk name[4] {
+		#6P#10300F嗯，我想也是。{wait}
+	} {
+		#10309F『我們說服軍犬了』這種事，
+		一般都不會相信吧。{wait}
+	}
+	TextWait
+	TextTalk name[1] {
+		#6P#00106F的、的確是讓人
+		很難相信吧。{wait}
+	}
+	TextWait
+	TextTalk name[2] {
+		#00200F不過，因為是事實，
+		所以我覺得沒有問題。{wait}
+	}
+	TextWait
+	TextTalk char[1] {
+		#07604F#11P……不，這就夠了。{wait}
+	} {
+		#07600F#11P能夠和平解決
+		當然是最好的。{wait}
+	} {
+		#07610F#11P辛苦了，特務支援課的各位。
+		托你們的福，我總算
+		解決一件掛心的事了。{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#6P#00004F那真是太好了。{wait}
+	} {
+		#00000F如果又發生狀況的話，
+		歡迎隨時聯絡我們。{wait}
+	}
+	TextWait
+	TextTalk char[1] {
+		#07600F#11P嗯，我會的。{wait}
+	} {
+		#07604F#11P──那麼，我們就繼續
+		保持高度戒備狀態。{wait}
+	} {
+		#07600F#11P你們也要提高警覺啊。{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#6P#00000F……是！{wait}
+	}
+	TextWait
+	FadeOut 1000ms 0x00000000 255
+	FadeWait
+	SoundPlay sound[9] 0 100 0
+	TextSetPos -1 -1 -1 -1
+	TextSetName ""
+	TextMessage null {
+		達成{color 2}委託【調查古戰場】{color 0}了！{wait}
+	}
+	TextWait
+	TextClose 0
+	TextSetPos -1 280 60 3
+	QuestTaskSet quest[145] 2
+	QuestTaskSet quest[145] 3
+	QuestFlagsSet quest[145] 0x10
+	system[106] += 1
+	ED7_Cam69 255 0
+	CharSetPos field_party[0] (2710, 0, -330) 270deg
+	CharFlagsSet field_party[4] 0x0080
+	CharFlags2Set field_party[4] 0x8000
+	CharFlagsSet field_party[5] 0x0080
+	CharFlags2Set field_party[5] 0x8000
+	EventEnd 5
+	Return

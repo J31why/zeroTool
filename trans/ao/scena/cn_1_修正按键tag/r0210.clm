@@ -1,0 +1,1014 @@
+calmare ao_k scena
+scena:
+	name "r0210" "r0210" "r0210"
+	town town[165]
+	bgm bgm[121]
+	flags 8192
+	item_use fn[0,255]
+	unk 255 4
+
+entry:
+	pos (0, 0, -1000)
+	unk1 0
+	cam_from (0, 0, 24000)
+	cam_pers 500
+	unk2 30
+	cam_deg 45deg
+	cam_limit 0deg 360deg
+	cam_at (0, 0, 0)
+	unk3 0
+	unk4 0
+	flags 0x0001
+	town town[1]
+	init fn[0,1]
+	reinit fn[0,2]
+
+chip[0] "chr/ch32200.itc"
+chip[1] "chr/ch24200.itc"
+chip[2] "chr/ch46100.itc"
+chip[3] "chr/ch45600.itc"
+chip[4] "chr/ch45800.itc"
+
+npc char[0]:
+	name "塞爾當分部長"
+	pos (-389, 0, -1149)
+	angle 188deg
+	flags 0x0105
+	unk2 0
+	chip chip[0]
+	init fn[0,0]
+	talk fn[0,4]
+	unk4 255
+
+npc char[1]:
+	name "彼得"
+	pos (1080, 0, -1110)
+	angle 270deg
+	flags 0x0185
+	unk2 0
+	chip chip[1]
+	init fn[0,0]
+	talk fn[0,5]
+	unk4 255
+
+npc char[2]:
+	name "費瑟爾"
+	pos (6010, 0, -8220)
+	angle 0deg
+	flags 0x0185
+	unk2 0
+	chip chip[2]
+	init fn[0,0]
+	talk fn[0,6]
+	unk4 255
+
+npc char[3]:
+	name "雷克羅德Ⅲ世"
+	pos (529, 0, -1149)
+	angle 270deg
+	flags 0x0185
+	unk2 0
+	chip chip[3]
+	init fn[0,0]
+	talk fn[0,7]
+	unk4 255
+
+npc char[4]:
+	name "《龍宮》輝夜"
+	pos (-449, 0, -1190)
+	angle 90deg
+	flags 0x0185
+	unk2 0
+	chip chip[4]
+	init fn[0,0]
+	talk fn[0,9]
+	unk4 255
+
+look_point[0]:
+	pos (1510, 0, 3420)
+	radius 1200
+	bubble_pos (1510, 750, 3420)
+	unk1 124
+	unk2 0
+	function fn[0,3]
+	unk3 0
+	unk4 0
+
+fn[0]:
+	switch random % 8:
+		case 0:
+			ED7_A0 self 1450ms 0 251
+			break
+		case 1:
+			ED7_A0 self 1550ms 0 251
+			break
+		case 2:
+			ED7_A0 self 1600ms 0 251
+			break
+		case 3:
+			ED7_A0 self 1400ms 0 251
+			break
+		case 4:
+			ED7_A0 self 1650ms 0 251
+			break
+		case 5:
+			ED7_A0 self 1350ms 0 251
+			break
+		case 6:
+			ED7_A0 self 1500ms 0 251
+			break
+		default:
+			ED7_A0 self 1500ms 0 251
+			break
+	while 1:
+		ED7_A0 self 1500ms 0 251
+	Return
+
+fn[1]:
+	if flag[3385]:
+		CharFlagsSet char[0] 0x0080
+	elif flag[3343]:
+		CharFlagsUnset char[3] 0x0080
+		CharFlagsUnset char[4] 0x0080
+		if !flag[3562]:
+			CharFlagsSet char[3] 0x0010
+			CharFlagsSet char[4] 0x0010
+		CharFlagsSet char[0] 0x0080
+	elif flag[3089]:
+		CharFlagsSet char[0] 0x0080
+	elif flag[3074]:
+		if flag[3209]:
+			CharSetPos char[2] (1080, 0, -1110) 270deg
+			CharFlagsUnset char[2] 0x0080
+			CharTurnToChar char[0] char[2] 0deg/s
+	elif flag[2861]:
+	elif flag[2848]:
+		CharSetPos char[0] (-390, 0, -1150) 90deg
+		CharFlagsSet char[0] 0x0010
+		CharSetPos char[1] (1080, 0, -1110) 270deg
+		CharFlagsSet char[1] 0x0010
+		CharFlagsUnset char[1] 0x0080
+	elif flag[2837]:
+	elif flag[2832]:
+	elif flag[2816]:
+		if !flag[3025]:
+			CharFlagsSet char[0] 0x0080
+	elif flag[2573]:
+	elif flag[2564]:
+	elif flag[2560]:
+		if !flag[3586]:
+			CharFlagsSet char[0] 0x0080
+	elif flag[2369]:
+		CharFlagsSet char[0] 0x0080
+	elif flag[2353]:
+		CharFlagsSet char[0] 0x0080
+	Return
+
+fn[2]:
+	if flag[3100]:
+		system[1] = 251
+	if flag[2848] && !flag[2858]:
+		ED7_76_0 object[255] "wlight_add" 1
+		ED7_76_0 object[255] "ylight_add" 1
+		SoundPlay sound[128] 1 50 0
+	Return
+
+fn[3]:
+	TextSetName ""
+	TextMessage null {
+		{color 5}放有『點心王國　第二卷』。{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	TextSetPos -1 280 60 3
+	if ItemHas item[2] 0:
+		if !RecipeLearn 18:
+			FadeOut 300ms 0x00000000 100
+			SoundPlay sound[17] 0 100 0
+			TextSetPos -1 -1 -1 -1
+			TextSetName ""
+			TextMessage null {
+				記住了{color 2}『滑溜杏仁豆腐』{color 0}的食譜。{wait}
+			}
+			TextWait
+			TextClose 0
+			FadeIn 300ms 0x00000000
+			FadeWait
+			_59
+			TextSetPos -1 280 60 3
+	TextEnd null
+	Return
+
+fn[4]:
+	TextStart self
+	if !flag[2816] && flag[2564] && !flag[3584] && !flag[3586]:
+		CharTurnToChar self name[0] 0deg/s
+		TextTalk self {
+			喔喔，羅伊德團員。
+			你終於露臉了啊。{wait}
+		}
+		TextWait
+		TextTalk name[0] {
+			#00005F塞爾當分部長，這裡是……{wait}
+		}
+		TextWait
+		TextTalk self {
+			啊，這棟建築原本是
+			出租小船屋。{wait}
+		}
+		TextWait
+		TextTalk self {
+			不過幾年前停業之後，
+			好像就被一直閒置到現在，
+			所以我才能以低價租下來。{wait}
+		}
+		TextWait
+		TextTalk self {
+			這對重新出發的我們來說，
+			是個再好不過的新分部。{wait}
+		}
+		TextWait
+		TextTalk self {
+			對了，羅伊德團員，
+			關於我們和釣皇俱樂部的《爆釣比賽》，
+			我想先說明一下……{wait}
+		}
+		TextWait
+		TextTalk name[0] {
+			#00005F爆、《爆釣比賽》嗎……？{wait}
+		}
+		TextWait
+		FadeOut 1000ms 0x00000000 255
+		FadeWait
+		FadeIn 1000ms 0x00000000
+		FadeWait
+		TextTalk name[0] {
+			#00003F原來如此，和釣皇俱樂部的
+			五位成員進行《爆釣比賽》……{wait}
+		}
+		TextWait
+		TextTalk self {
+			是的，就是這麼一回事。{wait}
+		}
+		TextWait
+		TextTalk self {
+			比賽基本上
+			是打算由我們這邊
+			來負責，不過……{wait}
+		}
+		TextWait
+		TextTalk self {
+			可以的話，我也想
+			請羅伊德團員協助。{wait}
+		}
+		TextWait
+		TextTalk name[0] {
+			#00004F好的，我也不希望以後
+			不能在自己喜歡的地方
+			釣魚啊。{wait}
+		} {
+			#00000F我會盡力而為。{wait}
+		}
+		TextWait
+		SoundPlay sound[814] 0 100 0
+		FadeOut 300ms 0x00000000 100
+		TextSetPos -1 -1 -1 -1
+		TextSetName ""
+		TextMessage null {
+			{color 5}現在可以向釣皇俱樂部的成員
+			挑戰《爆釣比賽》了。{color 0}{wait}
+		}
+		TextWait
+		TextMessage null {
+			{color 5}有關比賽的詳細內容，
+			可以向『東側大道的釣皇俱樂部』裡面的
+			受理小姐賽拉姆詢問。{color 0}{wait}
+		}
+		TextWait
+		TextClose 0
+		FadeIn 300ms 0x00000000
+		FadeWait
+		_59
+		TextSetPos -1 280 60 3
+		FlagSet flag[1]
+		FlagSet flag[3584]
+	if !flag[2564] && flag[2560] && flag[3586] && !flag[2815]:
+		CharTurnToChar self name[0] 0deg/s
+		TextTalk self {
+			喔喔，羅伊德團員。
+			你這麼快就來了啊。{wait}
+		}
+		TextWait
+		TextTalk self {
+			如你所見，這裡什麼也沒有，
+			不過還是請你好好休息。{wait}
+		}
+		TextWait
+		TextTalk self {
+			另外，雖然材料不足
+			導致價格上揚，不過我也準備了
+			一些商品。{wait}
+		}
+		TextWait
+		TextTalk self {
+			不嫌棄的話，請你隨意看看吧。{wait}
+		}
+		TextWait
+		FlagSet flag[2815]
+	var[0] = 99
+	while var[0] == 99:
+		FadeOut 300ms 0x00000000 100
+		Menu menu[0] -1 -1 1
+			"交談" // 0
+			"買東西" // 1
+			"放棄" // 2
+		MenuWait var[0]
+		if var[0] != 1:
+			MenuClose menu[0]
+			FadeIn 300ms 0x00000000
+			FadeWait
+		elif !flag[2861] && flag[2848]:
+			CharTurnToChar self field_party[0] 0deg/s
+		if var[0] == 1:
+			if flag[3205]:
+				if flag[3089]:
+					ShopOpen shop[55]
+				else:
+					ShopOpen shop[59]
+			elif flag[3089]:
+				ShopOpen shop[54]
+			else:
+				ShopOpen shop[58]
+			var[0] = 99
+			if !flag[2861] && flag[2848]:
+				CharTurnToChar self char[1] 0deg/s
+		elif var[0] == 0:
+			var[0] = 99
+			if flag[1]:
+				CharTurnToChar self name[0] 0deg/s
+				TextTalk self {
+					我們和釣皇俱樂部的爆釣比賽……
+					我也想請羅伊德團員協助。{wait}
+				}
+				TextWait
+				TextTalk self {
+					畢竟這場比賽
+					關係到釣公師團的未來啊。{wait}
+				}
+				TextWait
+			elif flag[3089]:
+			elif flag[3074]:
+				if flag[3209]:
+					CharTurnToChar self name[0] 0deg/s
+					TextTalk self {
+						嗯，我對羅伊德大師
+						真是感激不盡啊。{wait}
+					}
+					TextWait
+					TextTalk self {
+						期待你今後
+						也能繼續創造出
+						更偉大的傳說。{wait}
+					}
+					TextWait
+				elif !flag[3587] | !flag[3588] | !flag[3589] | !flag[3590]:
+					TextTalk self {
+						嗯，再過一段時間
+						就能請那位大人過來……{wait}
+					}
+					TextWait
+					TextTalk self {
+						那樣的話，一定可以……{wait}
+					}
+					TextWait
+				elif !flag[3205]:
+					CharTurnToChar self name[0] 0deg/s
+					TextTalk self {
+						羅伊德團員，那塊獎牌是……
+						難道你打倒了四天王所有成員？{wait}
+					}
+					TextWait
+					TextTalk name[0] {
+						#00000F是的……好不容易才打倒。{wait}
+					}
+					TextWait
+					TextTalk self {
+						呵哈哈！不愧是羅伊德團員！{wait}
+					}
+					TextWait
+					TextTalk self {
+						嗯，如果是羅伊德團員，
+						我就能放心地託付這東西了。{wait}
+					}
+					TextWait
+					TextTalk self {
+						請收下
+						我們的『靈魂』吧。{wait}
+					}
+					TextWait
+					TextSetPos -1 -1 -1 -1
+					FadeOut 300ms 0x00000000 100
+					SoundPlay sound[17] 0 100 0
+					TextSetName ""
+					TextMessage name[742] {
+						{color 0}已收下{item[395]}{color 0}。{wait}
+					}
+					TextWait
+					TextClose 0
+					FadeIn 300ms 0x00000000
+					ItemAdd item[395] 1
+					TextSetPos -1 280 60 3
+					TextTalk name[0] {
+						#00005F這、這是……{wait}
+					}
+					TextWait
+					TextTalk self {
+						那是為了對付釣皇俱樂部，
+						我們嘔心瀝血才終於
+						研發出來的終極釣餌。{wait}
+					}
+					TextWait
+					TextTalk self {
+						材料是耀晶石，所以價格比較昂貴……
+						不過只要你開口，需要多少我們都能生產。{wait}
+					}
+					TextWait
+					TextTalk name[0] {
+						#00004F原來如此……這是
+						各位的心血結晶啊。{wait}
+					}
+					TextWait
+					TextTalk self {
+						嗯，沒錯。{wait}
+					}
+					TextWait
+					TextTalk self {
+						羅伊德團員……
+						請你務必以這些釣餌，
+						挫挫雷克羅德那傢伙的銳氣！{wait}
+					}
+					TextWait
+					TextTalk self {
+						我相信你
+						一定做得到！{wait}
+					}
+					TextWait
+					TextTalk name[0] {
+						#00001F好、好的……我會試試看！{wait}
+					}
+					TextWait
+					FlagSet flag[3205]
+				else:
+					CharTurnToChar self name[0] 0deg/s
+					TextTalk self {
+						羅伊德團員……
+						請帶著我們的心意，
+						挫挫雷克羅德那傢伙的銳氣！{wait}
+					}
+					TextWait
+					TextTalk self {
+						我相信你
+						一定做得到！{wait}
+					}
+					TextWait
+			elif flag[2861]:
+			elif flag[2848]:
+				TextTalk self {
+					嗯，不過
+					最終兵器畢竟是最終兵器啊。{wait}
+				}
+				TextWait
+			elif flag[2837]:
+			elif flag[2832]:
+				if !flag[0]:
+					TextTalk self {
+						可惡！這是第幾次了！？{wait}
+					}
+					TextWait
+					TextTalk self {
+						《銀鯊》特里同……
+						他真是個可怕的男人。{wait}
+					}
+					TextWait
+					TextTalk self {
+						四天王之首的格局
+						果然不同凡響啊。{wait}
+					}
+					TextWait
+					FlagSet flag[0]
+				else:
+					TextTalk self {
+						《銀鯊》特里同……
+						他真是個可怕的男人。{wait}
+					}
+					TextWait
+					TextTalk self {
+						竟然能準確地投放到那一帶……
+						難道他看得見水下嗎？{wait}
+					}
+					TextWait
+			elif flag[2816]:
+				if !flag[3025]:
+				else:
+					CharTurnToChar self name[0] 0deg/s
+					TextTalk self {
+						羅伊德團員，
+						今天真的很謝謝你。{wait}
+					}
+					TextWait
+					TextTalk self {
+						托你的福，我今晚
+						應該能睡個好覺。{wait}
+					}
+					TextWait
+			elif flag[2573]:
+				if !flag[0]:
+					CharTurnToChar self name[0] 0deg/s
+					TextTalk self {
+						羅伊德團員，你知道嗎？{wait}
+					}
+					TextWait
+					TextTalk self {
+						打倒釣皇俱樂部的話，
+						好像可以得到
+						某些怪怪的稱號喔。{wait}
+					}
+					TextWait
+					TextTalk self {
+						另外，我昨天立刻就
+						打倒了名叫納西斯的傢伙，
+						得到了『水狂獵人』的稱號。{wait}
+					}
+					TextWait
+					TextTalk self {
+						哈哈哈，雖然是敵人設計的巧思，
+						不過還頗有樂趣的啊。{wait}
+					}
+					TextWait
+					FlagSet flag[0]
+				else:
+					TextTalk self {
+						我昨天立刻就
+						打倒了名叫納西斯的傢伙，
+						得到了『水狂獵人』的稱號。{wait}
+					}
+					TextWait
+					TextTalk self {
+						哈哈哈，雖然是敵人設計的巧思，
+						不過還頗有樂趣的啊。{wait}
+					}
+					TextWait
+			elif flag[2564]:
+				if !flag[0]:
+					TextTalk self {
+						不過，我不曉得有多久
+						沒用這種心情
+						來看待釣魚了。{wait}
+					}
+					TextWait
+					TextTalk self {
+						年輕時我也曾莽撞地
+						以釣具為賭注
+						挑戰爆釣比賽，不過……{wait}
+					}
+					TextWait
+					TextTalk self {
+						該怎麼說呢，雖然傷腦筋，
+						但我卻莫名地感到興奮啊。{wait}
+					}
+					TextWait
+					FlagSet flag[0]
+				else:
+					TextTalk self {
+						嗯，我不曉得有多久
+						沒用這種心情
+						來看待釣魚了。{wait}
+					}
+					TextWait
+					TextTalk self {
+						該怎麼說呢，雖然傷腦筋，
+						但我卻莫名地感到興奮啊。{wait}
+					}
+					TextWait
+			elif flag[2560]:
+				CharTurnToChar self name[0] 0deg/s
+				TextTalk self {
+					無論如何，
+					釣公師團・克洛斯貝爾分部
+					就從這裡重新出發。{wait}
+				}
+				TextWait
+				TextTalk self {
+					羅伊德團員，我們彼此
+					互相努力吧。{wait}
+				}
+				TextWait
+			elif flag[2369]:
+			elif flag[2353]:
+	TextEnd self
+	Return
+
+fn[5]:
+	TextStart self
+	if !flag[3585] && !flag[3089]:
+		if ItemHas item[836] 0 && ItemHas item[837] 0 && ItemHas item[838] 0 && ItemHas item[839] 0:
+		elif ItemHas item[836] 0 | ItemHas item[837] 0 | ItemHas item[838] 0 | ItemHas item[839] 0:
+			Emote self 0mm 2000mm 38 38 250ms 1
+			Sleep 1000ms
+			CharTurnToChar self name[0] 500deg/s
+			TextTalk self {
+				羅伊德，那是……{wait}
+			}
+			TextWait
+			TextTalk name[0] {
+				#00003F嗯，我想這毫無疑問是
+				釣具的零件，
+				不過相當精巧呢。{wait}
+			} {
+				#00000F我在從四天王手中取回的
+				釣魚地點釣到了罕見的魚……
+				這是那條魚吐出來的東西。{wait}
+			}
+			TextWait
+			TextTalk self {
+				……絕對不會錯。{wait}
+			}
+			TextWait
+			TextTalk self {
+				那是過去一位雲遊四方的高強釣師
+				用過的傳說中的釣具的零件。{wait}
+			}
+			TextWait
+			TextTalk self {
+				我聽說他離開克洛斯貝爾時，
+				把零件封印在
+				這個地方……{wait}
+			}
+			TextWait
+			TextTalk self {
+				想不到
+				會以這種方式找到！{wait}
+			}
+			TextWait
+			TextTalk name[0] {
+				#00005F原、原來這東西
+				這麼了不起啊……？{wait}
+			} {
+				#00003F可是，我該怎麼辦？
+				既然如此，是不是應該還給那個人……{wait}
+			}
+			TextWait
+			TextTalk self {
+				不，沒有那個必要。{wait}
+			}
+			TextWait
+			TextTalk self {
+				……因為他曾經說過，
+				找到釣具的人就可以使用。{wait}
+			}
+			TextWait
+			TextTalk self {
+				羅伊德，
+				釣具總共有四個零件。{wait}
+			}
+			TextWait
+			TextTalk self {
+				如果你取得了全部的零件，
+				請務必來找我。{wait}
+			}
+			TextWait
+			TextTalk self {
+				我可以把那些零件
+				組合起來。{wait}
+			}
+			TextWait
+			TextTalk name[0] {
+				#00005F原、原來如此……
+				瞭解了，我會放在心上的。{wait}
+			}
+			TextWait
+			CharTurnToChar self char[0] 0deg/s
+			FlagSet flag[3]
+			FlagSet flag[3585]
+			TextEnd self
+			Return
+	if flag[3]:
+		CharTurnToChar self name[0] 0deg/s
+		TextTalk self {
+			沒想到昔日被封印的傳說中的釣具
+			會在這個時候出現……{wait}
+		}
+		TextWait
+		TextTalk self {
+			嗯，羅伊德。
+			這或許是命運的安排喔！{wait}
+		}
+		TextWait
+		CharTurnToChar self char[0] 0deg/s
+	elif flag[3089]:
+	elif flag[3074]:
+	elif flag[2861]:
+	elif flag[2848]:
+		TextTalk self {
+			而且寇潘他
+			好像也碰到了
+			障礙呢。{wait}
+		}
+		TextWait
+		TextTalk self {
+			看來只靠我們的力量
+			還是無法做到更多……{wait}
+		}
+		TextWait
+	elif flag[2837]:
+	elif flag[2832]:
+	elif flag[2816]:
+	elif flag[2573]:
+	elif flag[2564]:
+	elif flag[2560]:
+	elif flag[2369]:
+	elif flag[2353]:
+	TextEnd self
+	Return
+
+fn[6]:
+	TextStart self
+	if flag[3089]:
+	elif flag[3074]:
+		CharTurnToChar self name[0] 0deg/s
+		TextTalkNamed self "費瑟爾團長" {
+			羅伊德大師，你是
+			我們釣公師團的驕傲。{wait}
+		}
+		TextWait
+		TextTalkNamed self "費瑟爾團長" {
+			如果有機會，我很想在利貝爾
+			與你一起釣魚。{wait}
+		}
+		TextWait
+	TextEnd self
+	Return
+
+fn[7]:
+	TextStart self
+	if flag[3343] && !flag[3385] && !flag[3562]:
+		Call fn[0,8]
+		TextEnd self
+		Return
+	if !flag[3362] | flag[4]:
+		TextTalk char[3] {
+			我們不僅對野外求生術
+			頗有心得，還擁有ＥＮＩＧＭＡ。{wait}
+		}
+		TextWait
+		TextTalk char[3] {
+			明白的話就不必再操心，
+			趕快離開吧。{wait}
+		}
+		TextWait
+	elif flag[3385]:
+	elif flag[3362]:
+		TextTalk char[3] {
+			嗯，話說回來，竟然發表了
+			獨立無效宣言嗎……？{wait}
+		}
+		TextWait
+		TextTalk char[3] {
+			看樣子局勢
+			越來越不平靜了啊。{wait}
+		}
+		TextWait
+	elif flag[3343]:
+	elif flag[3328]:
+	TextEnd self
+	Return
+
+fn[8]:
+	_Char4A char[3] 255
+	_Char4A char[4] 255
+	if !flag[3362]:
+		TextTalk char[3] {
+			『大陸諸國聯盟』的提倡，
+			以及祖國埃雷波尼亞的內戰……{wait}
+		}
+		TextWait
+		TextTalk char[3] {
+			想不到在這大約一個月間，
+			世俗竟有如此劇烈的變化啊。{wait}
+		}
+		TextWait
+		TextTalk char[4] {
+			是啊……所謂的晴天霹靂
+			就是這麼一回事呢。{wait}
+		}
+		TextWait
+	else:
+		TextTalk char[3] {
+			『大陸諸國聯盟』的提倡，
+			以及祖國埃雷波尼亞的內戰……{wait}
+		}
+		TextWait
+		TextTalk char[3] {
+			想不到在這大約一個月間，
+			世俗竟有如此劇烈的變化啊。{wait}
+		}
+		TextWait
+		TextTalk char[3] {
+			……而在這個時候
+			又來了一個獨立無效宣言。{wait}
+		}
+		TextWait
+		TextTalk char[4] {
+			是啊……所謂的晴天霹靂
+			就是這麼一回事呢。{wait}
+		}
+		TextWait
+	Emote char[3] 0mm 2000mm 38 38 250ms 1
+	Sleep 1000ms
+	CharTurnToChar char[3] name[0] 500deg/s
+	Sleep 500ms
+	CharTurnToChar char[4] name[0] 500deg/s
+	if !flag[258]:
+		FadeOut 300ms 0x00000000 100
+		FadeWait
+		TextSetPos -1 30 -1 -1
+		TextSetName ""
+		Menu menu[0] -1 -1 0
+			"【不變更】" // 0
+			"【已打倒】" // 1
+			"【尚未打倒】" // 2
+		MenuWait var[0]
+		MenuClose menu[0]
+		TextClose 0
+		TextSetPos -1 280 60 3
+		FadeIn 300ms 0x00000000
+		FadeWait
+		if var[0] == 1:
+			FlagSet flag[3209]
+		elif var[0] == 2:
+			FlagUnset flag[3209]
+	if flag[3209]:
+		TextTalk char[3] {
+			嗯，你就是釣公師團的
+			羅伊德・班寧斯啊。{wait}
+		}
+		TextWait
+	else:
+		TextTalk char[3] {
+			嗯，你就是釣公師團的
+			羅伊德・班寧斯啊。{wait}
+		}
+		TextWait
+	TextTalk name[0] {
+		#00005F你是釣皇俱樂部的
+		雷克羅德先生……
+		你為什麼會在這裡？{wait}
+	}
+	TextWait
+	TextTalk char[3] {
+		哼，沒有為什麼，
+		我是來做釣魚修行的。{wait}
+	}
+	TextWait
+	TextTalk char[3] {
+		畢竟我是俱樂部之長……
+		輸掉比賽後也不能
+		就這樣厚著臉皮回去。{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#00006F原、原來如此……{wait}
+	} {
+		#00001F但是，也不能一直
+		待在這個地方……{wait}
+	}
+	TextWait
+	TextTalk name[2] {
+		#00200F是啊，我們會
+		送你們到阿爾摩利卡村，
+		請立刻準備避難……{wait}
+	}
+	TextWait
+	TextTalk char[4] {
+		哼！請不要
+		插手管我們好嗎？{wait}
+	}
+	TextWait
+	TextTalk char[4] {
+		身為釣師，平日早已
+		習慣了外界的危險，你也不必
+		擔心我們會餓肚子。{wait}
+	}
+	TextWait
+	TextTalk char[3] {
+		沒錯，而且說到危險，
+		我想無論人在哪裡都一樣。{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#00005F可、可是……{wait}
+	}
+	TextWait
+	TextTalk char[3] {
+		總之，反正我們還有ＥＮＩＧＭＡ，
+		坦白說你的操心根本是多餘的。{wait}
+	}
+	TextWait
+	TextTalk char[3] {
+		明白的話就請趕快離開吧。{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#00006F呃、嗯……{wait}
+	}
+	TextWait
+	if flag[3209]:
+		Emote char[3] 0mm 2000mm 38 38 250ms 1
+		Sleep 1000ms
+		TextTalk char[3] {
+			啊……不過你難得來一趟。
+			我就送你一些伴手禮吧。{wait}
+		}
+		TextWait
+		TextTalk char[3] {
+			我們稍微釣得太多了。
+			光靠我們自己吃不完。{wait}
+		}
+		TextWait
+		TextSetPos -1 -1 -1 -1
+		FadeOut 300ms 0x00000000 100
+		SoundPlay sound[17] 0 100 0
+		TextSetName ""
+		TextMessage name[742] {
+			{color 0}已收下１０隻{item[360]}{color 0}。{wait}
+		}
+		TextWait
+		TextClose 0
+		FadeIn 300ms 0x00000000
+		ItemAdd item[360] 10
+		TextSetPos -1 280 60 3
+		TextTalk char[3] {
+			另外，這是
+			那些魚吐出來的東西。{wait}
+		}
+		TextWait
+		TextSetPos -1 -1 -1 -1
+		FadeOut 300ms 0x00000000 100
+		SoundPlay sound[17] 0 100 0
+		TextSetName ""
+		TextMessage name[742] {
+			{color 0}已收下{item[510]}{color 0}。{wait}
+		}
+		TextWait
+		TextClose 0
+		FadeIn 300ms 0x00000000
+		ItemAdd item[510] 1
+		TextSetPos -1 280 60 3
+		TextTalk name[0] {
+			#00005F謝、謝謝。{wait}
+		}
+		TextWait
+	FlagSet flag[3562]
+	FlagSet flag[4]
+	CharFlagsUnset char[3] 0x0010
+	CharFlagsUnset char[4] 0x0010
+	_Char4B char[3] 255
+	_Char4B char[4] 255
+	CharTurnToChar char[3] char[4] 0deg/s
+	CharTurnToChar char[4] char[3] 0deg/s
+	Return
+
+fn[9]:
+	TextStart self
+	if flag[3343] && !flag[3385] && !flag[3562]:
+		Call fn[0,8]
+		TextEnd self
+		Return
+	if !flag[3362] | flag[4]:
+		TextTalk char[4] {
+			……話應該說完了吧？{wait}
+		}
+		TextWait
+		TextTalk char[4] {
+			我們也很忙，
+			請不要來打擾我們。{wait}
+		}
+		TextWait
+	elif flag[3385]:
+	elif flag[3362]:
+		TextTalk char[4] {
+			無論前方有什麼困難，
+			我都做好了與雷克羅德大人
+			一同跨越的決心。{wait}
+		}
+		TextWait
+		TextTalk char[4] {
+			倒不如說希望
+			我們可以就此兩人獨處……㈱{wait}
+		}
+		TextWait
+	elif flag[3343]:
+	elif flag[3328]:
+	TextEnd self
+	Return

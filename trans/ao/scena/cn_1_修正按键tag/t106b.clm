@@ -1,0 +1,222 @@
+calmare zero_k scena
+scena:
+	name "t106b" "t106b" "t106b"
+	town town[66]
+	bgm bgm[513]
+	flags 8192
+	item_use fn[0,255]
+	unk 255 26
+
+entry:
+	pos (0, 0, -1000)
+	unk1 0
+	cam_from (0, 0, 24000)
+	cam_pers 500
+	unk2 30
+	cam_deg 45deg
+	cam_limit 0deg 360deg
+	cam_at (0, 0, 0)
+	unk3 0
+	unk4 0
+	flags 0x0001
+	town town[66]
+	init fn[0,1]
+	reinit fn[0,2]
+
+chip[0] "chr/ch27600.itc"
+chip[1] "chr/ch33300.itc"
+chip[2] "chr/ch23402.itc"
+chip[3] "chr/ch23500.itc"
+chip[4] "chr/ch23800.itc"
+
+npc char[0]:
+	name "觀光客"
+	pos (-101040, 0, 1070)
+	angle 180deg
+	flags 0x0185
+	unk2 0
+	chip chip[0]
+	init fn[0,0]
+	talk fn[0,3]
+	unk4 255
+
+npc char[1]:
+	name "觀光客"
+	pos (-95849, 0, 3210)
+	angle 0deg
+	flags 0x0185
+	unk2 0
+	chip chip[1]
+	init fn[0,0]
+	talk fn[0,4]
+	unk4 255
+
+npc char[2]:
+	name "觀光客"
+	pos (101919, 400, -2849)
+	angle 0deg
+	flags 0x01C5
+	unk2 0
+	chip chip[2]
+	init fn[255,255]
+	talk fn[0,5]
+	unk4 255
+
+npc char[3]:
+	name "觀光客"
+	pos (101940, 0, -1720)
+	angle 180deg
+	flags 0x0185
+	unk2 0
+	chip chip[3]
+	init fn[0,0]
+	talk fn[0,6]
+	unk4 255
+
+npc char[4]:
+	name "男孩"
+	pos (99339, 0, -209)
+	angle 135deg
+	flags 0x0185
+	unk2 0
+	chip chip[4]
+	init fn[0,0]
+	talk fn[0,7]
+	unk4 255
+
+fn[0]:
+	var[2] = random % 8
+	switch var[2]:
+		case 0:
+			ED7_A0 self 1450ms 0 251
+			break
+		case 1:
+			ED7_A0 self 1550ms 0 251
+			break
+		case 2:
+			ED7_A0 self 1600ms 0 251
+			break
+		case 3:
+			ED7_A0 self 1400ms 0 251
+			break
+		case 4:
+			ED7_A0 self 1650ms 0 251
+			break
+		case 5:
+			ED7_A0 self 1350ms 0 251
+			break
+		case 6:
+			ED7_A0 self 1500ms 0 251
+			break
+		default:
+			ED7_A0 self 1500ms 0 251
+			break
+	while 1:
+		ED7_A0 self 1500ms 0 251
+	Return
+
+fn[1]:
+	CharSetChipBase char[2] chip[2]
+	CharSetChipPattern char[2] 0
+	ForkQuit char[2] fork[0]
+	CharFlags2Set char[2] 0x0004
+	if flag[2607]:
+	elif flag[2605]:
+		CharFlagsUnset char[0] 0x0080
+		CharFlagsUnset char[1] 0x0080
+		CharFlagsUnset char[2] 0x0080
+		CharFlagsUnset char[3] 0x0080
+		CharFlagsUnset char[4] 0x0080
+		CharFlagsSet char[4] 0x0010
+	elif flag[2601]:
+	elif flag[2597]:
+	Return
+
+fn[2]:
+	Return
+
+fn[3]:
+	TextStart self
+	if flag[2605]:
+		TextTalk self {
+			我們來
+			米修拉姆蜜月旅行。{wait}
+		}
+		TextWait
+		TextTalk self {
+			今天度過非常
+			美好的一天。
+			我得感謝她和女神。{wait}
+		}
+		TextWait
+	elif flag[2601]:
+	elif flag[2597]:
+	TextEnd self
+	Return
+
+fn[4]:
+	TextStart self
+	if flag[2605]:
+		TextTalk self {
+			這麼開心又美麗的地方
+			應該是很少見的。{wait}
+		}
+		TextWait
+		TextTalk self {
+			呵呵，搬到克洛斯貝爾住
+			或許也不錯呢。{wait}
+		}
+		TextWait
+	elif flag[2601]:
+	elif flag[2597]:
+	TextEnd self
+	Return
+
+fn[5]:
+	TextStart self
+	if flag[2605]:
+		TextTalk self {
+			我們接下來要去看主題樂園的
+			夜間遊行{wait}
+		}
+		TextWait
+		TextTalk self {
+			但我個人想在
+			房間休息就是了……
+			哈哈，當爸爸還真不輕鬆。{wait}
+		}
+		TextWait
+	elif flag[2601]:
+	elif flag[2597]:
+	TextEnd self
+	Return
+
+fn[6]:
+	TextStart self
+	if flag[2605]:
+		TextTalk self {
+			呵呵，那孩子已經在等了，
+			得快點做好準備呢。{wait}
+		}
+		TextWait
+	elif flag[2601]:
+	elif flag[2597]:
+	TextEnd self
+	Return
+
+fn[7]:
+	TextStart self
+	if flag[2605]:
+		TextTalk self {
+			爸爸、媽媽，還沒好嗎──！？{wait}
+		}
+		TextWait
+		TextTalk self {
+			不快點去，
+			遊行就要結束了啦！{wait}
+		}
+		TextWait
+	elif flag[2601]:
+	elif flag[2597]:
+	TextEnd self
+	Return

@@ -1,0 +1,807 @@
+calmare ao_k scena
+scena:
+	name "t103b" "t103b" "t103b"
+	town town[65]
+	bgm bgm[513]
+	flags 8192
+	item_use fn[0,255]
+	unk 255 26
+
+entry:
+	pos (0, 0, -1000)
+	unk1 0
+	cam_from (0, 0, 24000)
+	cam_pers 500
+	unk2 30
+	cam_deg 45deg
+	cam_limit 0deg 360deg
+	cam_at (0, 0, 0)
+	unk3 0
+	unk4 0
+	flags 0x0001
+	town town[65]
+	init fn[0,1]
+	reinit fn[0,2]
+
+chip[0] "chr/ch44500.itc"
+chip[1] "chr/ch32300.itc"
+chip[2] "chr/ch32400.itc"
+chip[3] "chr/ch26200.itc"
+chip[4] "chr/ch22700.itc"
+chip[5] "chr/ch20700.itc"
+
+npc char[0]:
+	name "ＭＷＬ工作人員"
+	pos (-4000, 4400, 0)
+	angle 180deg
+	flags 0x0185
+	unk2 0
+	chip chip[0]
+	init fn[0,0]
+	talk fn[0,3]
+	unk4 255
+
+npc char[1]:
+	name "ＭＷＬ工作人員"
+	pos (4750, 4400, 0)
+	angle 180deg
+	flags 0x0185
+	unk2 0
+	chip chip[0]
+	init fn[0,0]
+	talk fn[0,4]
+	unk4 255
+
+npc char[2]:
+	name "觀光客"
+	pos (4330, 2600, -23490)
+	angle 0deg
+	flags 0x0185
+	unk2 0
+	chip chip[1]
+	init fn[0,0]
+	talk fn[0,5]
+	unk4 255
+
+npc char[3]:
+	name "觀光客"
+	pos (5330, 2600, -23490)
+	angle 0deg
+	flags 0x0185
+	unk2 0
+	chip chip[2]
+	init fn[0,0]
+	talk fn[0,6]
+	unk4 255
+
+npc char[4]:
+	name "梅爾斯"
+	pos (-13270, 4000, -4580)
+	angle 135deg
+	flags 0x0105
+	unk2 0
+	chip chip[3]
+	init fn[0,0]
+	talk fn[0,7]
+	unk4 255
+
+npc char[5]:
+	name "柯洛娜"
+	pos (-11810, 4000, -4820)
+	angle 270deg
+	flags 0x0105
+	unk2 0
+	chip chip[4]
+	init fn[0,0]
+	talk fn[0,9]
+	unk4 255
+
+npc char[6]:
+	name "利瑪"
+	pos (-13080, 4000, -6130)
+	angle 0deg
+	flags 0x0105
+	unk2 0
+	chip chip[5]
+	init fn[0,0]
+	talk fn[0,10]
+	unk4 255
+
+trigger[0]:
+	pos (0.0, 2500.0, 3400.0)
+	radius 100000.0
+	transform
+		0.099999994 -0.0 0.0 -0.0
+		-0.0 0.5 -0.0 -1.25
+		0.0 -0.0 0.19999999 -0.68
+		0.0 0.0 0.0 1.0
+		// translate (-0.0, 2.5, 3.4000003)
+		// rotate (1.0, 0.0, 0.0) 0.0deg
+		// scale (10.000001, 2.0, 5.0000005)
+	unk1 0
+	unk2 0
+	function fn[0,14]
+	unk3 0
+	unk4 0
+	unk5 0
+	unk6 0
+
+look_point[0]:
+	pos (-14170, 4000, -6040)
+	radius 1200
+	bubble_pos (-14170, 5500, -6040)
+	unk1 124
+	unk2 0
+	function fn[0,15]
+	unk3 0
+	unk4 0
+
+look_point[1]:
+	pos (-6650, 4000, 1550)
+	radius 1200
+	bubble_pos (-6650, 5500, 1550)
+	unk1 124
+	unk2 0
+	function fn[0,16]
+	unk3 0
+	unk4 0
+
+label[0]:
+	name "翠雀飯店方向"
+	pos (10000.0, 0.0, -68000.0)
+	unk1 0
+	unk2 0
+
+label[1]:
+	name "主題樂園方向"
+	pos (-5000.0, 0.0, 20000.0)
+	unk1 0
+	unk2 0
+
+fn[0]:
+	var[2] = random % 8
+	switch var[2]:
+		case 0:
+			ED7_A0 self 1450ms 0 251
+			break
+		case 1:
+			ED7_A0 self 1550ms 0 251
+			break
+		case 2:
+			ED7_A0 self 1600ms 0 251
+			break
+		case 3:
+			ED7_A0 self 1400ms 0 251
+			break
+		case 4:
+			ED7_A0 self 1650ms 0 251
+			break
+		case 5:
+			ED7_A0 self 1350ms 0 251
+			break
+		case 6:
+			ED7_A0 self 1500ms 0 251
+			break
+		default:
+			ED7_A0 self 1500ms 0 251
+			break
+	while 1:
+		ED7_A0 self 1500ms 0 251
+	Return
+
+fn[1]:
+	if flag[2608]:
+		CharFlagsSet char[4] 0x0080
+		CharFlagsSet char[5] 0x0080
+		CharFlagsSet char[6] 0x0080
+	elif flag[2607]:
+	elif flag[2605]:
+		CharFlagsUnset char[0] 0x0080
+		CharFlagsUnset char[1] 0x0080
+		CharFlagsUnset char[2] 0x0080
+		CharFlagsSet char[2] 0x0010
+		CharFlagsUnset char[3] 0x0080
+		CharFlagsSet char[3] 0x0010
+		CharFlagsUnset char[4] 0x0080
+		CharFlagsSet char[4] 0x0010
+		CharFlagsUnset char[5] 0x0080
+		CharFlagsSet char[5] 0x0010
+		CharFlagsUnset char[6] 0x0080
+		CharFlagsSet char[6] 0x0010
+	elif flag[2604]:
+	elif flag[2602]:
+	elif flag[2601]:
+	elif flag[2600]:
+	elif flag[2597]:
+	elif flag[2592]:
+	if flag[272]:
+		FlagUnset flag[272]
+		SystemFlagsSet 0x10000000
+		Event fn[0,13]
+	if flag[2608] && !flag[2609]:
+		SystemFlagsSet 0x10000000
+		Event fn[0,11]
+	elif flag[2605] && !flag[2607] && !flag[2778]:
+		SystemFlagsSet 0x10000000
+		Event fn[0,12]
+	Return
+
+fn[2]:
+	if flag[2608] && !flag[2610]:
+		ED7_76_0 object[255] "board0a" 1
+		ED7_76_0 object[255] "board0b" 1
+	else:
+		ED7_76_0 object[255] "board1a" 1
+		ED7_76_0 object[255] "board1b" 1
+	TriggerFlagsSet trigger[0] 0x0080
+	if flag[2606] && !flag[2607]:
+		TriggerFlagsUnset trigger[0] 0x0080
+	if flag[2608] && !flag[2816]:
+		SoundStop sound[821]
+		SoundStop sound[444]
+	elif flag[2605] && !flag[2607] && !flag[2778]:
+		SoundPlay sound[821] 1 40 0
+		SoundStop sound[444]
+	else:
+		SoundPlay sound[821] 1 40 0
+		SoundPlay sound[444] 1 100 0
+	SoundPlayContinuously sound[123] (-70, 4250, -9760) 10000 100000 80 0
+	Return
+
+fn[3]:
+	TextStart self
+	if flag[2605]:
+		if !flag[0]:
+			TextTalk char[0] {
+				主題樂園內
+				正在舉辦夜間活動。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				咪西他們巡遊園內的
+				夜間遊行也盛況空前喔。{wait}
+			}
+			TextWait
+			if PartyPosition name[2] > -1:
+				TextTalk name[2] {
+					#00203F……老實說，我很想看。{wait}
+				}
+				TextWait
+				TextTalk name[0] {
+					#00002F哈哈，這次沒辦法啊。
+					下次有機會再去看吧。{wait}
+				}
+				TextWait
+				TextTalk name[2] {
+					#00202F呵呵……就這麼說定了喔。{wait}
+				}
+				TextWait
+			else:
+				TextTalk name[0] {
+					#00003F（嗯～如果緹歐聽到，
+					　一定會想去看吧……）{wait}
+				}
+				TextWait
+			FlagSet flag[0]
+		else:
+			TextTalk char[0] {
+				主題樂園內
+				正在舉辦夜間活動。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				咪西他們巡遊園內的
+				夜間遊行也盛況空前喔。{wait}
+			}
+			TextWait
+	elif flag[2601]:
+	elif flag[2597]:
+	TextEnd self
+	Return
+
+fn[4]:
+	TextStart self
+	if flag[2605]:
+		TextTalk char[1] {
+			每天會施放
+			約１００發
+			米修拉姆的招牌煙火。{wait}
+		}
+		TextWait
+		TextTalk char[1] {
+			本煙火廣受好評，除了在主題樂園
+			當然能觀賞外，在飯店和
+			夜航中的飛行船也能觀賞到喔。{wait}
+		}
+		TextWait
+	elif flag[2601]:
+	elif flag[2597]:
+	TextEnd self
+	Return
+
+fn[5]:
+	TextStart self
+	if flag[2605]:
+		TextTalk char[2] {
+			（……現、現在的話，也許能握手……）{wait}
+		}
+		TextWait
+	elif flag[2601]:
+	elif flag[2597]:
+	TextEnd self
+	Return
+
+fn[6]:
+	TextStart self
+	if flag[2605]:
+		TextTalk char[3] {
+			哇，升起好多煙火……{wait}
+		}
+		TextWait
+		TextTalk char[3] {
+			……呵呵，真美……{wait}
+		}
+		TextWait
+	elif flag[2601]:
+	elif flag[2597]:
+	TextEnd self
+	Return
+
+fn[7]:
+	TextStart self
+	if flag[2605]:
+		if !flag[1]:
+			Call fn[0,8]
+		else:
+			TextTalk char[4] {
+				我其實想住飯店，
+				但無論如何都訂不到房。{wait}
+			}
+			TextWait
+			TextTalk char[4] {
+				不過，利瑪似乎玩得很開心，
+				所以算是來對了吧。{wait}
+			}
+			TextWait
+	elif flag[2604]:
+	elif flag[2601]:
+	elif flag[2597]:
+	elif flag[2592]:
+	TextEnd self
+	Return
+
+fn[8]:
+	_Char4A char[4] 255
+	_Char4A char[5] 255
+	_Char4A char[6] 255
+	TextTalk char[4] {
+		呼，今天真的
+		玩了一整天呢。{wait}
+	}
+	TextWait
+	TextTalk char[4] {
+		利瑪，玩得開心嗎？{wait}
+	}
+	TextWait
+	TextTalk char[6] {
+		嗯，很開心──！！
+		謝謝爸爸～！！{wait}
+	}
+	TextWait
+	TextTalk char[5] {
+		呵呵，謝謝。{wait}
+	}
+	TextWait
+	CharFlagsUnset char[4] 0x0010
+	CharFlagsUnset char[6] 0x0010
+	FlagSet flag[1]
+	_Char4B char[4] 255
+	_Char4B char[5] 255
+	_Char4B char[6] 255
+	Return
+
+fn[9]:
+	TextStart self
+	if flag[2605]:
+		if !flag[1]:
+			Call fn[0,8]
+		else:
+			TextTalk char[5] {
+				呵呵，謝謝。{wait}
+			}
+			TextWait
+			TextTalk char[5] {
+				回家後，我會煮很多
+				好吃的菜給你們吃喔。{wait}
+			}
+			TextWait
+	elif flag[2604]:
+	elif flag[2601]:
+	elif flag[2597]:
+	elif flag[2592]:
+	TextEnd self
+	Return
+
+fn[10]:
+	TextStart self
+	if flag[2605]:
+		if !flag[1]:
+			Call fn[0,8]
+		else:
+			TextTalk char[6] {
+				我在鏡子城堡的頂端
+				許願要和爸爸媽媽
+				永遠在一起喔──！{wait}
+			}
+			TextWait
+			TextTalk char[6] {
+				還有坐到摩天輪和恐怖雲霄飛車，
+				真的好開心──！{wait}
+			}
+			TextWait
+	elif flag[2604]:
+	elif flag[2601]:
+	elif flag[2597]:
+	elif flag[2592]:
+	TextEnd self
+	Return
+
+fn[11]:
+	EventBegin 0
+	FadeOut 0ms 0x00000000 255
+	CharFlagsUnset field_party[4] 0x0080
+	CharFlags2Unset field_party[4] 0x8000
+	CharFlagsUnset field_party[5] 0x0080
+	CharFlags2Unset field_party[5] 0x8000
+	CharSetPos name[0] (0, 0, -61000) 0deg
+	CharSetPos name[1] (-700, 0, -61700) 0deg
+	CharSetPos name[2] (600, 0, -62100) 0deg
+	CharSetPos name[3] (100, 0, -63000) 0deg
+	CharSetPos name[4] (1000, 0, -63500) 0deg
+	CharSetPos name[8] (-950, 0, -63100) 0deg
+	CamSetDistance 0 4500 -53000 0ms
+	ED7CamRotate 314deg 24deg 0deg 0ms
+	CamPers 400 0ms
+	CamZoom 28000 0ms
+	FadeIn 1000ms 0x00000000
+	CamSetDistance 0 1500 -53000 5000ms
+	Fork name[0] fork[0]:
+		_94 0 name[0] 0deg 7000 2000mm/s 0
+	Sleep 50ms
+	Fork name[1] fork[0]:
+		_94 0 name[1] 0deg 7000 2000mm/s 0
+	Sleep 50ms
+	Fork name[2] fork[0]:
+		_94 0 name[2] 0deg 7000 2000mm/s 0
+	Sleep 50ms
+	Fork name[3] fork[0]:
+		_94 0 name[3] 0deg 7000 2000mm/s 0
+	Sleep 50ms
+	Fork name[4] fork[0]:
+		_94 0 name[4] 0deg 7000 2000mm/s 0
+	Sleep 50ms
+	Fork name[8] fork[0]:
+		_94 0 name[8] 0deg 7000 2000mm/s 0
+	ForkWait name[0] fork[0]
+	ForkWait name[1] fork[0]
+	Emote name[0] 0mm 2000mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Emote name[1] 0mm 2000mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Sleep 50ms
+	Emote name[2] 0mm 2000mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Emote name[3] 0mm 2000mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Sleep 50ms
+	Emote name[8] 0mm 2000mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Emote name[4] 0mm 2000mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Sleep 1000ms
+	CamWait 121
+	TextTalk name[1] {
+		#1240010083V#00107F#6P這、這是……！？{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#1240000500V#00013F#6P垂幕變了！？{wait}
+	}
+	TextWait
+	TextTalk name[3] {
+		#1240030145V#00301F#6P喂喂，這是……{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	CrossFade 1000ms
+	CamSetDistance -4000 1000 -38000 0ms
+	CamSetDistance -4000 1000 -33000 5500ms
+	ED7CamRotate 315deg 28deg 0deg 0ms
+	CamPers 400 0ms
+	CamZoom 33000 0ms
+	CamZoom 26000 5500ms
+	CharSetPos name[0] (-3500, 0, -42000) 0deg
+	CharSetPos name[1] (-4100, 0, -42900) 0deg
+	CharSetPos name[2] (-2900, 0, -43100) 0deg
+	CharSetPos name[3] (-3400, 0, -44200) 0deg
+	CharSetPos name[4] (-2000, 0, -44500) 0deg
+	CharSetPos name[8] (-4900, 0, -44100) 0deg
+	Fork name[0] fork[0]:
+		_94 0 name[0] 0deg 10000 2000mm/s 0
+	Sleep 50ms
+	Fork name[1] fork[0]:
+		_94 0 name[1] 0deg 10000 2000mm/s 0
+	Sleep 50ms
+	Fork name[2] fork[0]:
+		_94 0 name[2] 0deg 10000 2000mm/s 0
+	Sleep 50ms
+	Fork name[3] fork[0]:
+		_94 0 name[3] 0deg 10000 2000mm/s 0
+	Sleep 50ms
+	Fork name[4] fork[0]:
+		_94 0 name[4] 0deg 10000 2000mm/s 0
+	Sleep 50ms
+	Fork name[8] fork[0]:
+		_94 0 name[8] 0deg 10000 2000mm/s 0
+	ForkWait name[0] fork[0]
+	ForkWait name[1] fork[0]
+	ForkWait name[2] fork[0]
+	ForkWait name[3] fork[0]
+	ForkWait name[4] fork[0]
+	ForkWait name[8] fork[0]
+	CamWait 121
+	FadeWait
+	TextTalk name[8] {
+		#1240050062V#10108F#6P什、什麼時候……？{wait}
+	}
+	TextWait
+	TextTalk name[4] {
+		#1240040091V#10308F#6P唔，似乎也不像是
+		僅限夜間的活動……{wait}
+	}
+	TextWait
+	TextTalk name[2] {
+		#1240020090V#00206F#6P……我沒聽過
+		這樣的事。{wait}
+	} {
+		#1240020091V#00201F而且……
+		不可能把咪西
+		改成其他角色的。{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#1240000501V#00006F#6P……我想也是。{wait}
+	}
+	TextWait
+	Emote name[0] 0mm 2000mm 38 38 250ms 1
+	Sleep 1000ms
+	TextTalk name[0] {
+		#1240000502V#00005F#6P那是……{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	CrossFade 1000ms
+	CamSetDistance 0 4500 -7000 0ms
+	ED7CamRotate 0deg 35deg 0deg 0ms
+	CamPers 600 0ms
+	CamZoom 26000 0ms
+	CamSetDistance 0 9500 0 7000ms
+	ED7CamRotate 0deg 18deg 0deg 7000ms
+	CamPers 600 7000ms
+	CamZoom 20000 7000ms
+	CamWait 121
+	FadeWait
+	TextSetPos 50 160 -1 -1
+	TextMessage name[1] {
+		#1240010084V#00105F『小丑的奇幻樂園』……{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	TextSetPos -1 160 -1 -1
+	TextMessage name[3] {
+		#1240030146V#00306F名字完全被
+		改寫了嘛……{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	TextSetPos 280 160 -1 -1
+	TextMessage name[8] {
+		#1240050063V#10113F我、我是不是
+		在作夢呢……？{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	TextSetPos 50 160 -1 -1
+	TextMessage name[4] {
+		#1240040092V#10306F……就算是夢，
+		也是屬於惡夢呢。{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	TextSetPos -1 160 -1 -1
+	TextMessage name[0] {
+		#1240000503V#00008F……………………………………{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	TextSetPos -1 280 60 3
+	CrossFade 500ms
+	CamSetDistance -3580 1000 -32790 0ms
+	ED7CamRotate 315deg 28deg 0deg 0ms
+	CamPers 400 0ms
+	CamZoom 24640 0ms
+	FadeWait
+	Sleep 300ms
+	TextTalk name[0] {
+		#1240000504V#00003F#5P──琪雅
+		似乎就在這前方。{wait}
+	} {
+		#1240000505V#00013F既然如此……
+		只能進去了！{wait}
+	}
+	TextWait
+	TextTalk name[1] {
+		#1240010085V#00101F#6P是啊……！{wait}
+	}
+	TextWait
+	TextTalk name[3] {
+		#1240030147V#00301F#6P只能去了……！{wait}
+	}
+	TextWait
+	FadeOut 1000ms 0x00000000 255
+	FadeWait
+	CharSetPos field_party[0] (-2890, 0, -32110) 0deg
+	CharFlagsSet field_party[4] 0x0080
+	CharFlags2Set field_party[4] 0x8000
+	CharFlagsSet field_party[5] 0x0080
+	CharFlags2Set field_party[5] 0x8000
+	FlagSet flag[2609]
+	QuestTaskSet quest[165] 10
+	EventEnd 5
+	Return
+
+fn[12]:
+	EventBegin 0
+	FadeOut 0ms 0x00000000 255
+	CamSetDistance 780 1600 -58060 0ms
+	ED7CamRotate 315deg 28deg 0deg 0ms
+	CamPers 400 0ms
+	CamZoom 25500 0ms
+	CharSetPos name[0] (600, 0, -57250) 0deg
+	CharSetPos party[1] (-600, 0, -57250) 0deg
+	FadeIn 1000ms 0x00000000
+	FadeWait
+	Emote name[0] 0mm 2000mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Sleep 50ms
+	Emote party[1] 0mm 2000mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Sleep 1000ms
+	TextTalk name[0] {
+		#6P#00002F啊…………{wait}
+	}
+	TextWait
+	system[76] = 513
+	ED7_12 821 500 100
+	Sleep 500ms
+	FlagSet flag[2778]
+	FlagSet flag[272]
+	NewScene "scena/e3110.bin" 0 0 0
+	Hcf
+	Return
+
+fn[13]:
+	EventBegin 0
+	FadeOut 0ms 0x00000000 255
+	CamSetDistance 780 1600 -58060 0ms
+	ED7CamRotate 315deg 28deg 0deg 0ms
+	CamPers 400 0ms
+	CamZoom 25500 0ms
+	CharSetPos name[0] (600, 0, -57250) 0deg
+	CharSetPos party[1] (-600, 0, -57250) 0deg
+	FadeIn 1000ms 0x00000000
+	FadeWait
+	CharTurnToChar name[0] party[1] 500deg/s
+	TextTalk name[0] {
+		#12P#00004F……好，那麼，
+		差不多該去迎賓館了吧。{wait}
+	}
+	TextWait
+	CharTurnToChar party[1] name[0] 500deg/s
+	if flag[2618]:
+		TextTalk name[1] {
+			#00102F好的，明白了。{wait}
+		}
+		TextWait
+	elif flag[2619]:
+		TextTalk name[2] {
+			#00202F瞭解。{wait}
+		}
+		TextWait
+	elif flag[2620]:
+		TextTalk name[3] {
+			#00309F喔。{wait}
+		}
+		TextWait
+	elif flag[2621]:
+		TextTalk name[8] {
+			#10109F瞭解了！{wait}
+		}
+		TextWait
+	elif flag[2622]:
+		TextTalk name[4] {
+			#10304F呵呵，是啊。{wait}
+		}
+		TextWait
+	_59
+	SystemFlagsUnset 0x10000000
+	system[76] = 65535
+	ED7_Cam69 255 0
+	CharSetPos field_party[0] (0, 0, -57250) 0deg
+	EventEnd 5
+	Return
+
+fn[14]:
+	EventBegin 1
+	TextTalk name[0] {
+		#00000F晚上的主題樂園
+		感覺也很有趣，
+		但那就等下次機會吧。{wait}
+	} {
+		早點前往迎賓館吧。{wait}
+	}
+	TextWait
+	_59
+	CharSetPos field_party[0] (0, 4400, -1250) 180deg
+	EventEnd 4
+	Return
+
+fn[15]:
+	EventBegin 2
+	SystemFlagsUnset 0x00000020
+	TextSetName ""
+	TextMessage null {
+		{color 5}上頭畫著
+		主題樂園的全景圖。{wait}
+	} {
+		廣大的園區裡
+		似乎設有各式各樣的
+		遊樂設施。{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	EventEnd 3
+	Return
+
+fn[16]:
+	EventBegin 2
+	SystemFlagsUnset 0x00000020
+	FadeOut 300ms 0x00000000 100
+	TextSetName ""
+	TextSetPos -1 -1 -1 -1
+	TextMessage null {
+		{color 5}   ～給入園遊客的提醒～
+
+		本主題樂園嚴禁
+		任何不當暴力行為，
+		並禁止攜帶危險物品入園。
+
+		另外，
+		孩童在園區中遊玩時，
+		請家長務必隨時陪同。{wait}
+	}
+	TextWait
+	TextClose 0
+	FadeIn 300ms 0x00000000
+	_59
+	TextSetPos -1 280 60 3
+	EventEnd 3
+	Return

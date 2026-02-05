@@ -1,0 +1,1793 @@
+calmare ao_k scena
+scena:
+	name "c1520" "c1520" "c1520"
+	town town[170]
+	bgm bgm[550]
+	flags 8192
+	item_use fn[0,255]
+	unk 255 0
+
+entry:
+	pos (0, 0, -1000)
+	unk1 0
+	cam_from (0, 0, 24000)
+	cam_pers 500
+	unk2 30
+	cam_deg 45deg
+	cam_limit 0deg 360deg
+	cam_at (0, 0, 0)
+	unk3 0
+	unk4 0
+	flags 0x0001
+	town town[170]
+	init fn[0,0]
+	reinit fn[0,1]
+
+npc char[0]:
+	name "迪塔市長"
+	pos (0, 0, 0)
+	angle 0deg
+	flags 0x01C5
+	unk2 0
+	chip chip[0]
+	init fn[255,255]
+	talk fn[255,255]
+	unk4 255
+
+npc char[1]:
+	name "亞里歐斯"
+	pos (0, 0, 0)
+	angle 0deg
+	flags 0x01C5
+	unk2 0
+	chip chip[0]
+	init fn[255,255]
+	talk fn[255,255]
+	unk4 255
+
+npc char[2]:
+	name "達德利搜查官"
+	pos (0, 0, 0)
+	angle 0deg
+	flags 0x01C5
+	unk2 0
+	chip chip[0]
+	init fn[255,255]
+	talk fn[255,255]
+	unk4 255
+
+look_point[0]:
+	pos (3200, 0, 100000)
+	radius 2000
+	bubble_pos (3300, 900, 100000)
+	unk1 124
+	unk2 0
+	function fn[0,3]
+	unk3 0
+	unk4 0
+
+look_point[1]:
+	pos (70000, 0, 103200)
+	radius 2000
+	bubble_pos (70000, 900, 103300)
+	unk1 124
+	unk2 0
+	function fn[0,3]
+	unk3 0
+	unk4 0
+
+fn[0]:
+	if flag[272]:
+		FlagUnset flag[272]
+		Event fn[0,4]
+	elif flag[273]:
+		FlagUnset flag[273]
+		Event fn[0,5]
+	elif flag[2852] && !flag[2853]:
+		Event fn[0,6]
+	elif !(system[0] >= 115 && system[0] <= 118):
+		Event fn[0,2]
+	Return
+
+fn[1]:
+	if flag[2576] && !flag[2577]:
+		BgmVolume 70 200ms
+	elif system[0] == 115 | system[0] == 116 | system[0] == 117 | system[0] == 118:
+		system[1] = 352
+	elif flag[3385]:
+		system[1] = 151
+	if system[0] == 115:
+		EntranceSetDisabled entrance[15] 1
+		EntranceSetDisabled entrance[16] 0
+	elif system[0] == 116:
+		EntranceSetDisabled entrance[15] 0
+		EntranceSetDisabled entrance[16] 1
+	elif system[0] == 117:
+		EntranceSetDisabled entrance[17] 1
+		EntranceSetDisabled entrance[18] 0
+	elif system[0] == 118:
+		EntranceSetDisabled entrance[17] 0
+		EntranceSetDisabled entrance[18] 1
+	ObjFrame object[0] 0
+	if system[0] == 115 | system[0] == 116 | system[0] == 117 | system[0] == 118:
+		SoundPlay sound[927] 1 100 0
+	Return
+
+fn[2]:
+	EventBegin 1
+	FadeOut 0ms 0x00000000 255
+	FlagUnset flag[0]
+	FlagUnset flag[1]
+	FlagUnset flag[2]
+	if system[0] >= 100 && system[0] <= 104 | system[0] == 120 | system[0] == 119:
+		FlagSet flag[0]
+		CamSetDistance 0 1000 1000 0ms
+		ED7CamRotate 45deg 25deg 0deg 0ms
+		CamPers 450 0ms
+		CamZoom 21500 0ms
+		CharSetPos field_party[0] (0, 0, 1800) 0deg
+		if system[11] != 255:
+			CharSetPos field_party[1] (800, 0, 600) 0deg
+		if system[12] != 255:
+			CharSetPos field_party[2] (-800, 0, 600) 0deg
+		if system[13] != 255:
+			CharSetPos field_party[3] (0, 0, -500) 0deg
+		if system[14] != 255:
+			CharSetPos field_party[4] (800, 0, -1600) 0deg
+			CharFlagsUnset field_party[4] 0x0080
+			CharFlags2Unset field_party[4] 0x8000
+		if system[15] != 255:
+			CharSetPos field_party[5] (-800, 0, -1600) 0deg
+			CharFlagsUnset field_party[5] 0x0080
+			CharFlags2Unset field_party[5] 0x8000
+	elif system[0] >= 105 && system[0] <= 109:
+		FlagSet flag[1]
+		CamSetDistance 70000 1000 1000 0ms
+		ED7CamRotate 45deg 25deg 0deg 0ms
+		CamPers 450 0ms
+		CamZoom 21500 0ms
+		CharSetPos field_party[0] (70000, 0, 1800) 0deg
+		if system[11] != 255:
+			CharSetPos field_party[1] (70800, 0, 600) 0deg
+		if system[12] != 255:
+			CharSetPos field_party[2] (69200, 0, 600) 0deg
+		if system[13] != 255:
+			CharSetPos field_party[3] (70000, 0, -500) 0deg
+		if system[14] != 255:
+			CharSetPos field_party[4] (70800, 0, -1600) 0deg
+			CharFlagsUnset field_party[4] 0x0080
+			CharFlags2Unset field_party[4] 0x8000
+		if system[15] != 255:
+			CharSetPos field_party[5] (69200, 0, -1600) 0deg
+			CharFlagsUnset field_party[5] 0x0080
+			CharFlags2Unset field_party[5] 0x8000
+	elif system[0] >= 110 && system[0] <= 114:
+		FlagSet flag[2]
+		CamSetDistance 140000 1000 1000 0ms
+		ED7CamRotate 45deg 25deg 0deg 0ms
+		CamPers 450 0ms
+		CamZoom 21500 0ms
+		CharSetPos field_party[0] (140000, 0, 1800) 0deg
+		if system[11] != 255:
+			CharSetPos field_party[1] (140800, 0, 600) 0deg
+		if system[12] != 255:
+			CharSetPos field_party[2] (139200, 0, 600) 0deg
+		if system[13] != 255:
+			CharSetPos field_party[3] (140000, 0, -500) 0deg
+		if system[14] != 255:
+			CharSetPos field_party[4] (140800, 0, -1600) 0deg
+			CharFlagsUnset field_party[4] 0x0080
+			CharFlags2Unset field_party[4] 0x8000
+		if system[15] != 255:
+			CharSetPos field_party[5] (139200, 0, -1600) 0deg
+			CharFlagsUnset field_party[5] 0x0080
+			CharFlags2Unset field_party[5] 0x8000
+	FadeIn 500ms 0x00000000
+	FadeWait
+	var[0] = 0
+	var[3] = system[0]
+	var[3] = var[3] - 100
+	if var[3] >= 5:
+		var[3] = var[3] - 5
+	if var[3] >= 5:
+		var[3] = var[3] - 5
+	ED7MenuNew menu[0]
+	if flag[3385]:
+		if var[3] == 4:
+			ED7MenuAdd menu[0] "★【４０Ｆ】"
+			var[2] = 0
+		else:
+			ED7MenuAdd menu[0] "　【４０Ｆ】"
+		if var[3] == 3:
+			ED7MenuAdd menu[0] "★【３６Ｆ】"
+			var[2] = 1
+		else:
+			ED7MenuAdd menu[0] "　【３６Ｆ】"
+		if system[0] == 120:
+			ED7MenuAdd menu[0] "★【２１Ｆ】"
+			var[2] = 4
+		else:
+			ED7MenuAdd menu[0] "　【２１Ｆ】"
+		if var[3] == 0:
+			ED7MenuAdd menu[0] "★【 １Ｆ 】"
+			var[2] = 5
+		else:
+			ED7MenuAdd menu[0] "　【 １Ｆ 】"
+		if system[0] == 119:
+			ED7MenuAdd menu[0] "★【Ｂ８Ｆ】"
+			var[2] = 6
+		else:
+			ED7MenuAdd menu[0] "　【Ｂ８Ｆ】"
+		ED7MenuAdd menu[0] "　【離開】"
+	elif flag[3383]:
+		if var[3] == 4:
+			ED7MenuAdd menu[0] "★【４０Ｆ】"
+			var[2] = 0
+		else:
+			ED7MenuAdd menu[0] "　【４０Ｆ】"
+		if var[3] == 3:
+			ED7MenuAdd menu[0] "★【３６Ｆ】"
+			var[2] = 1
+		else:
+			ED7MenuAdd menu[0] "　【３６Ｆ】"
+		if system[0] == 120:
+			ED7MenuAdd menu[0] "★【２１Ｆ】"
+			var[2] = 4
+		else:
+			ED7MenuAdd menu[0] "　【２１Ｆ】"
+		if var[3] == 0:
+			ED7MenuAdd menu[0] "★【 １Ｆ 】"
+			var[2] = 5
+		else:
+			ED7MenuAdd menu[0] "　【 １Ｆ 】"
+		ED7MenuAdd menu[0] "　【離開】"
+	elif flag[3376]:
+		if system[0] == 120:
+			ED7MenuAdd menu[0] "★【２１Ｆ】"
+			var[2] = 4
+		else:
+			ED7MenuAdd menu[0] "　【２１Ｆ】"
+		if var[3] == 0:
+			ED7MenuAdd menu[0] "★【 １Ｆ 】"
+			var[2] = 5
+		else:
+			ED7MenuAdd menu[0] "　【 １Ｆ 】"
+		ED7MenuAdd menu[0] "　【離開】"
+	elif flag[2853]:
+		if var[3] == 4:
+			ED7MenuAdd menu[0] "★【４０Ｆ】"
+			var[2] = 0
+		else:
+			ED7MenuAdd menu[0] "　【４０Ｆ】"
+		if var[3] == 0:
+			ED7MenuAdd menu[0] "★【 １Ｆ 】"
+			var[2] = 5
+		else:
+			ED7MenuAdd menu[0] "　【 １Ｆ 】"
+		ED7MenuAdd menu[0] "　【離開】"
+	else:
+		if var[3] == 3:
+			ED7MenuAdd menu[0] "★【３６Ｆ】"
+			var[2] = 1
+		else:
+			ED7MenuAdd menu[0] "　【３６Ｆ】"
+		if var[3] == 2:
+			ED7MenuAdd menu[0] "★【３５Ｆ】"
+			var[2] = 2
+		else:
+			ED7MenuAdd menu[0] "　【３５Ｆ】"
+		if var[3] == 1:
+			ED7MenuAdd menu[0] "★【３４Ｆ】"
+			var[2] = 3
+		else:
+			ED7MenuAdd menu[0] "　【３４Ｆ】"
+		ED7MenuAdd menu[0] "　【離開】"
+	ED7MenuShow menu[0] 10 10 0
+	MenuWait var[0]
+	MenuClose menu[0]
+	TextClose 0
+	if flag[3385]:
+		if var[0] == 0:
+			var[0] = 0
+		elif var[0] == 1:
+			var[0] = 1
+		elif var[0] == 2:
+			var[0] = 4
+		elif var[0] == 3:
+			var[0] = 5
+		elif var[0] == 4:
+			var[0] = 6
+		elif var[0] == 5:
+			var[0] = 7
+	elif flag[3383]:
+		if var[0] == 0:
+			var[0] = 0
+		elif var[0] == 1:
+			var[0] = 1
+		elif var[0] == 2:
+			var[0] = 4
+		elif var[0] == 3:
+			var[0] = 5
+		elif var[0] == 4:
+			var[0] = 7
+	elif flag[3376]:
+		if var[0] == 0:
+			var[0] = 4
+		elif var[0] == 1:
+			var[0] = 5
+		elif var[0] == 2:
+			var[0] = 7
+	elif flag[2853]:
+		if var[0] == 0:
+			var[0] = 0
+		elif var[0] == 1:
+			var[0] = 5
+		elif var[0] == 2:
+			var[0] = 7
+	elif var[0] == 0:
+		var[0] = 1
+	elif var[0] == 1:
+		var[0] = 2
+	elif var[0] == 2:
+		var[0] = 3
+	elif var[0] == 3:
+		var[0] = 7
+	if var[0] == 7:
+		FadeOut 500ms 0x00000000 255
+		FadeWait
+	elif var[2] < var[0]:
+		SoundPlay sound[159] 0 100 0
+		ED7ObjPlay object[0] 100 135 0 0
+		ObjWait object[0]
+		ED7ObjPlay object[0] 135 154 0 32
+		FadeOut 2000ms 0x00000000 255
+		if flag[0]:
+			CamSetDistance 0 4000 1000 2000ms
+		elif flag[1]:
+			CamSetDistance 70000 4000 1000 2000ms
+		elif flag[2]:
+			CamSetDistance 140000 4000 1000 2000ms
+		FadeWait
+		CamWait 1
+		Sleep 300ms
+	elif var[2] > var[0]:
+		SoundPlay sound[159] 0 100 0
+		ED7ObjPlay object[0] 0 35 0 0
+		ObjWait object[0]
+		ED7ObjPlay object[0] 35 54 0 32
+		FadeOut 2000ms 0x00000000 255
+		if flag[0]:
+			CamSetDistance 0 -3500 1000 2000ms
+		elif flag[1]:
+			CamSetDistance 70000 -3500 1000 2000ms
+		elif flag[2]:
+			CamSetDistance 140000 -3500 1000 2000ms
+		FadeWait
+		CamWait 1
+		Sleep 300ms
+	else:
+		FadeOut 500ms 0x00000000 255
+		FadeWait
+	if var[0] == 7:
+		switch var[2]:
+			case 0:
+				EventEnd 5
+				if flag[0]:
+					NewScene "scena/c1583.bin" 109 0 0
+					Hcf
+				elif flag[1]:
+					NewScene "scena/c1583.bin" 110 0 0
+					Hcf
+				elif flag[2]:
+					NewScene "scena/c1583.bin" 111 0 0
+					Hcf
+				break
+			case 1:
+				EventEnd 5
+				if flag[0]:
+					NewScene "scena/c1550.bin" 100 0 0
+					Hcf
+				elif flag[1]:
+					NewScene "scena/c1550.bin" 101 0 0
+					Hcf
+				elif flag[2]:
+					NewScene "scena/c1550.bin" 102 0 0
+					Hcf
+				break
+			case 2:
+				EventEnd 5
+				if flag[0]:
+					NewScene "scena/c1540.bin" 100 0 0
+					Hcf
+				elif flag[1]:
+					NewScene "scena/c1540.bin" 101 0 0
+					Hcf
+				elif flag[2]:
+					NewScene "scena/c1540.bin" 102 0 0
+					Hcf
+				break
+			case 3:
+				EventEnd 5
+				if flag[0]:
+					NewScene "scena/c1530.bin" 100 0 0
+					Hcf
+				elif flag[1]:
+					NewScene "scena/c1530.bin" 101 0 0
+					Hcf
+				elif flag[2]:
+					NewScene "scena/c1530.bin" 102 0 0
+					Hcf
+				break
+			case 4:
+				EventEnd 5
+				NewScene "scena/c1580.bin" 100 0 0
+				Hcf
+				break
+			case 5:
+				EventEnd 5
+				if flag[0]:
+					NewScene "scena/c1510.bin" 103 0 0
+					Hcf
+				elif flag[1]:
+					NewScene "scena/c1510.bin" 104 0 0
+					Hcf
+				elif flag[2]:
+					NewScene "scena/c1510.bin" 105 0 0
+					Hcf
+				break
+			case 6:
+				EventEnd 5
+				NewScene "scena/m0400.bin" 100 0 0
+				Hcf
+				break
+	else:
+		FlagSet flag[297]
+		Sleep 500ms
+		switch var[0]:
+			case 0:
+				if flag[2853] && !flag[2854]:
+					Call fn[0,7]
+				elif flag[3383] && !flag[3384]:
+					Call fn[0,10]
+				else:
+					EventEnd 5
+					if flag[0]:
+						NewScene "scena/c1583.bin" 109 0 0
+						Hcf
+					elif flag[1]:
+						NewScene "scena/c1583.bin" 110 0 0
+						Hcf
+					elif flag[2]:
+						NewScene "scena/c1583.bin" 111 0 0
+						Hcf
+				break
+			case 1:
+				EventEnd 5
+				if flag[0]:
+					NewScene "scena/c1550.bin" 100 0 0
+					Hcf
+				elif flag[1]:
+					NewScene "scena/c1550.bin" 101 0 0
+					Hcf
+				elif flag[2]:
+					NewScene "scena/c1550.bin" 102 0 0
+					Hcf
+				break
+			case 2:
+				EventEnd 5
+				if flag[0]:
+					NewScene "scena/c1540.bin" 100 0 0
+					Hcf
+				elif flag[1]:
+					NewScene "scena/c1540.bin" 101 0 0
+					Hcf
+				elif flag[2]:
+					NewScene "scena/c1540.bin" 102 0 0
+					Hcf
+				break
+			case 3:
+				EventEnd 5
+				if flag[0]:
+					NewScene "scena/c1530.bin" 100 0 0
+					Hcf
+				elif flag[1]:
+					NewScene "scena/c1530.bin" 101 0 0
+					Hcf
+				elif flag[2]:
+					NewScene "scena/c1530.bin" 102 0 0
+					Hcf
+				break
+			case 4:
+				if flag[3376] && !flag[3377]:
+					Call fn[0,8]
+				else:
+					EventEnd 5
+					NewScene "scena/c1580.bin" 100 0 0
+					Hcf
+				break
+			case 5:
+				EventEnd 5
+				if flag[0]:
+					NewScene "scena/c1510.bin" 103 0 0
+					Hcf
+				elif flag[1]:
+					NewScene "scena/c1510.bin" 104 0 0
+					Hcf
+				elif flag[2]:
+					NewScene "scena/c1510.bin" 105 0 0
+					Hcf
+				break
+			case 6:
+				EventEnd 5
+				NewScene "scena/m0400.bin" 100 0 0
+				Hcf
+				break
+	Return
+
+fn[3]:
+	EventBegin 1
+	SystemFlagsSet 0x08000000
+	SoundLoad sound[832]
+	TextMessage null {
+		{color 5}有昇降機的操作面板。
+		是否要操作？{wait}
+	}
+	Menu menu[0] -1 -1 1
+		"是" // 0
+		"否" // 1
+	MenuWait var[0]
+	MenuClose menu[0]
+	TextClose 0
+	_59
+	if var[0] == 0:
+		CrossFade 500ms
+		if system[0] == 115 | system[0] == 116:
+			CharSetPos field_party[0] (1800, 0, 100000) 90deg
+			if system[11] != 255:
+				CharSetPos field_party[1] (600, 0, 100800) 90deg
+			if system[12] != 255:
+				CharSetPos field_party[2] (600, 0, 99200) 90deg
+			if system[13] != 255:
+				CharSetPos field_party[3] (-500, 0, 100000) 90deg
+			if system[14] != 255:
+				CharSetPos field_party[4] (-1600, 0, 100800) 90deg
+				CharFlagsUnset field_party[4] 0x0080
+				CharFlags2Unset field_party[4] 0x8000
+			if system[15] != 255:
+				CharSetPos field_party[5] (-1600, 0, 99200) 90deg
+				CharFlagsUnset field_party[5] 0x0080
+				CharFlags2Unset field_party[5] 0x8000
+			CamSetDistance 1000 1000 100000 0ms
+			ED7CamRotate 45deg 25deg 0deg 0ms
+			CamPers 550 0ms
+			CamZoom 19500 0ms
+		elif system[0] == 117 | system[0] == 118:
+			CharSetPos field_party[0] (70000, 0, 101800) 0deg
+			if system[11] != 255:
+				CharSetPos field_party[1] (70800, 0, 100600) 0deg
+			if system[12] != 255:
+				CharSetPos field_party[2] (69200, 0, 100600) 0deg
+			if system[13] != 255:
+				CharSetPos field_party[3] (70000, 0, 99500) 0deg
+			if system[14] != 255:
+				CharSetPos field_party[4] (70800, 0, 98400) 0deg
+				CharFlagsUnset field_party[4] 0x0080
+				CharFlags2Unset field_party[4] 0x8000
+			if system[15] != 255:
+				CharSetPos field_party[5] (69200, 0, 98400) 0deg
+				CharFlagsUnset field_party[5] 0x0080
+				CharFlags2Unset field_party[5] 0x8000
+			CamSetDistance 70000 1000 101000 0ms
+			ED7CamRotate 45deg 25deg 0deg 0ms
+			CamPers 550 0ms
+			CamZoom 19500 0ms
+		FadeWait
+		Sleep 500ms
+		SoundPlay sound[159] 0 100 0
+		if system[0] == 115:
+			CamSetDistance 1000 -9000 100000 3000ms
+		elif system[0] == 116:
+			CamSetDistance 1000 9000 100000 3000ms
+		elif system[0] == 117:
+			CamSetDistance 70000 -9000 101000 3000ms
+		elif system[0] == 118:
+			CamSetDistance 70000 9000 101000 3000ms
+		Sleep 1000ms
+		FadeOut 2000ms 0x00000000 255
+		FadeWait
+		CamWait 1
+		if system[0] == 115 && flag[3378] && !flag[3379]:
+			Call fn[0,9]
+			Return
+		if system[0] == 115:
+			SoundPlay sound[832] 2 100 0
+			CamSetDistance 1000 9000 100000 0ms
+			CamSetDistance 1000 1000 100000 3000ms
+		elif system[0] == 116:
+			SoundPlay sound[832] 2 100 0
+			CamSetDistance 1000 -9000 100000 0ms
+			CamSetDistance 1000 1000 100000 3000ms
+		elif system[0] == 117:
+			SoundPlay sound[832] 2 100 0
+			CamSetDistance 70000 9000 101000 0ms
+			CamSetDistance 70000 1000 101000 3000ms
+		elif system[0] == 118:
+			SoundPlay sound[832] 2 100 0
+			CamSetDistance 70000 -9000 101000 0ms
+			CamSetDistance 70000 1000 101000 3000ms
+		FadeIn 2000ms 0x00000000
+		FadeWait
+		CamWait 1
+		ED7_12 832 1000 100
+		SoundPlay sound[160] 0 100 0
+		Sleep 500ms
+		if system[0] == 115:
+			system[0] = 116
+			EntranceSetDisabled entrance[15] 0
+			EntranceSetDisabled entrance[16] 1
+		elif system[0] == 116:
+			system[0] = 115
+			EntranceSetDisabled entrance[15] 1
+			EntranceSetDisabled entrance[16] 0
+		elif system[0] == 117:
+			system[0] = 118
+			EntranceSetDisabled entrance[17] 0
+			EntranceSetDisabled entrance[18] 1
+		elif system[0] == 118:
+			system[0] = 117
+			EntranceSetDisabled entrance[17] 1
+			EntranceSetDisabled entrance[18] 0
+		if system[14] != 255:
+			CharFlagsSet field_party[4] 0x0080
+			CharFlags2Set field_party[4] 0x8000
+		if system[15] != 255:
+			CharFlagsSet field_party[5] 0x0080
+			CharFlags2Set field_party[5] 0x8000
+	SystemFlagsUnset 0x08000000
+	EventEnd 5
+	Return
+
+fn[4]:
+	EventBegin 0
+	FadeOut 0ms 0x00000000 255
+	ED7LoadChip "chr/ch05600.itc" chip[30]
+	SoundLoad sound[832]
+	CamSetDistance 70000 2100 1000 0ms
+	ED7CamRotate 50deg 21deg 0deg 0ms
+	CamPers 550 0ms
+	CamZoom 17500 0ms
+	CharSetPos name[0] (70000, 0, 0) 0deg
+	CharSetPos name[1] (68700, 0, -600) 0deg
+	CharSetPos name[2] (69300, 0, -1600) 0deg
+	CharSetPos name[3] (70600, 0, -1000) 315deg
+	CharSetPos name[8] (67400, 0, -600) 45deg
+	CharSetPos name[4] (71600, 0, -1600) 315deg
+	CharFlagsUnset field_party[4] 0x0080
+	CharFlags2Unset field_party[4] 0x8000
+	CharFlagsUnset field_party[5] 0x0080
+	CharFlags2Unset field_party[5] 0x8000
+	CharSetChipBase char[0] chip[30]
+	CharSetChipPattern char[0] 0
+	CharFlagsUnset char[0] 0x0080
+	CharFlagsSet char[0] 0x8000
+	CharSetPos char[0] (70000, 0, 1800) 180deg
+	ED7ObjPlay object[0] 35 54 0 32
+	BgmVolume 80 1000ms
+	SoundPlay sound[832] 2 100 0
+	Sleep 1000ms
+	Sleep 300ms
+	TextSetPos -1 -1 -1 -1
+	TextSetName "迪塔的聲音"
+	TextMessage null {
+		#1230280018V──原來如此。{wait}
+	}
+	TextWait
+	TextMessage null {
+		#1230280019V我也聽達德利說了，
+		情況確實是很危險。{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	TextSetPos -1 280 60 3
+	CamSetDistance 70000 1100 1000 3000ms
+	FadeIn 2000ms 0x00000000
+	FadeWait
+	CamWait 121
+	TextTalk name[0] {
+		#1230000030V#12P#00006F嗯……{wait}
+	} {
+		#1230000031V#00001F獵兵團和犯罪組織的動向，
+		加上帝國政府和共和國政府的意圖……{wait}
+	}
+	TextWait
+	TextTalk name[1] {
+		#1230010023V#6P#00108F……還有以兩國領導人為目標的
+		恐怖份子威脅。{wait}
+	}
+	TextWait
+	TextTalk name[2] {
+		#1230020013V#12P#00203F再加上神祕的駭客。{wait}
+	} {
+		#1230020014V#00200F蘭花塔的平面圖，
+		是從這裡的終端機搶走的嗎？{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#1230280020V#02806F#5P沒錯，對方似乎
+		駭入了蘭花塔的
+		副終端機。{wait}
+	} {
+		#1230280021V#02801F自從發生過ＩＢＣ的事件之後，
+		系統部門也加強了駭客防堵，
+		但是……{wait}
+	} {
+		#1230280022V看來還是有漏洞。{wait}
+	}
+	TextWait
+	TextTalk name[4] {
+		#1230040007V#10303F唔，不過駭客的人數
+		應該還很少。{wait}
+	}
+	TextWait
+	TextTalk name[3] {
+		#1230030013V#00305F很有可能是
+		跟愛普斯泰恩財團有關的人吧？{wait}
+	}
+	TextWait
+	TextTalk name[2] {
+		#1230020015V#12P#00203F現在羅伯茲主任正在
+		調查這個可能性。{wait}
+	} {
+		#1230020016V#00208F不過，感覺這次應該不是
+		跟財團有關的人……{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#1230280023V#02804F#5P總之，只能之後再進行
+		這方面的調查了吧。{wait}
+	} {
+		#1230280024V#02801F雖然也很擔心獵兵團、
+		犯罪組織還有恐怖份子……{wait}
+	} {
+		#1230280025V但我最在意的是諸位
+		領導人的目的和企圖。{wait}
+	}
+	TextWait
+	Emote name[0] 0mm 2000mm 38 38 250ms 1
+	Emote name[1] 0mm 2000mm 38 38 250ms 1
+	Sleep 50ms
+	Emote name[8] 0mm 2000mm 38 38 250ms 1
+	Emote name[4] 0mm 2000mm 38 38 250ms 1
+	Sleep 50ms
+	Emote name[2] 0mm 2000mm 38 38 250ms 1
+	Emote name[3] 0mm 2000mm 38 38 250ms 1
+	Sleep 1000ms
+	TextTalk name[0] {
+		#1230000032V#12P#00001F諸位領導人的目的和企圖……{wait}
+	}
+	TextWait
+	TextTalk name[3] {
+		#1230030014V#00301F你是指參加
+		通商會議的那群人嗎？{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#1230280026V#02803F#5P我並不擔心
+		你們見過的克蘿蒂雅公主和
+		奧利巴特皇子。{wait}
+	} {
+		#1230280027V雷米菲利亞的大公閣下
+		也是個值得信任的人。{wait}
+	} {
+		#1230280028V#02801F……問題是奧斯本宰相和
+		洛克史密斯總統這兩個人。{wait}
+	}
+	TextWait
+	TextTalk name[8] {
+		#1230050010V#6P#10108F兩大國的領導人啊……{wait}
+	}
+	TextWait
+	TextTalk name[4] {
+		#1230040008V#10305F他們兩個人確實是
+		掌握了克洛斯貝爾的命運。{wait}
+	} {
+		#1230040009V#10301F但他們有什麼具體的行動嗎？{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#1230280029V#02806F#5P沒有，正好相反。{wait}
+	} {
+		#1230280030V#02801F──為了舉行會議，
+		我事前曾經寄送過幾次
+		契約和國際協定的提案……{wait}
+	} {
+		#1230280031V兩國給予的回應都充滿善意，
+		甚至有點好過頭了。{wait}
+	} {
+		#1230280032V簡直就像是真心希望西塞姆利亞
+		能獲得和平與更好的發展似的。{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#1230000033V#12P#00011F這、這個嘛……{wait}
+	}
+	TextWait
+	TextTalk name[1] {
+		#1230010024V#6P#00106F……的確是很不自然。{wait}
+	} {
+		#1230010025V#00101F那兩個國家平常不管什麼事情
+		都跟我們唱反調……{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#1230280033V#02803F#5P沒錯，老實說，我無法想像
+		這場會議最後會怎麼樣。{wait}
+	} {
+		#1230280034V#02801F看來必須要做好心理準備，
+		會議可能會演變得非常複雜。{wait}
+	}
+	TextWait
+	TextTalk name[2] {
+		#1230020017V#12P#00208F原來如此……{wait}
+	}
+	TextWait
+	TextTalk name[8] {
+		#1230050011V#6P#10106F政、政治方面的情況，
+		果然也很嚴峻……{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#1230280035V#02804F#5P哈哈，不過麥克道爾議長
+		應該也會幫忙吧。{wait}
+	} {
+		#1230280036V#02800F順利的話，或許還能
+		透過交涉，讓利貝爾
+		和雷米菲利亞站在我們這邊。{wait}
+	} {
+		#1230280037V#02809F總而言之，只能做好準備，
+		並向愛德斯女神祈禱了。{wait}
+	}
+	TextWait
+	TextTalk name[1] {
+		#1230010026V#6P#00108F叔叔……{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#1230000034V#12P#00006F不好意思……
+		情況這麼危險的時候，
+		還勞煩您帶我們參觀。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#1230280038V#02804F#5P哈哈，別這麼說。{wait}
+	} {
+		#1230280039V#02800F反而正因為是這種情況，
+		才想要放鬆一下啊。{wait}
+	} {
+		#1230280040V這也是我特地主動
+		提出要帶你們參觀的原因。{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#1230000035V#12P#00002F原來如此……{wait}
+	}
+	TextWait
+	TextTalk name[8] {
+		#1230050012V#6P#10101F這是我們的榮幸！市長！{wait}
+	}
+	TextWait
+	TextTalk name[3] {
+		#1230030015V#00309F那麼，我們就
+		欣然接受您的導覽了。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#1230280041V#02809F#5P嗯，交給我吧。{wait}
+	}
+	TextWait
+	Emote char[0] 0mm 2000mm 38 38 250ms 1
+	Sleep 1000ms
+	CharTurnTo char[0] 0deg 500deg/s
+	TextTalk char[0] {
+		#1230280042V#11P#02800F哎呀，已經到了啊。{wait}
+	}
+	TextWait
+	ED7_12 832 1000 100
+	ObjFlagsUnset object[0] 0x0020
+	ED7ObjPlay object[0] 55 90 0 0
+	ObjWait object[0]
+	SoundPlay sound[160] 0 100 0
+	BgmVolume 100 1000ms
+	FadeOut 1000ms 0x00000000 255
+	FadeWait
+	SoundPlay sound[107] 0 100 0
+	Sleep 500ms
+	SoundStop sound[832]
+	FlagSet flag[272]
+	NewScene "scena/c1530.bin" 0 0 0
+	Hcf
+	Return
+
+fn[5]:
+	EventBegin 0
+	FadeOut 0ms 0x00000000 255
+	ED7LoadChip "chr/ch02400.itc" chip[30]
+	ED7LoadChip "chr/ch00900.itc" chip[31]
+	ED7LoadChip "apl/ch51255.itc" chip[32]
+	SoundLoad sound[832]
+	CamSetDistance 0 -10000 0 0ms
+	ED7CamRotate 45deg 11deg 0deg 0ms
+	CamPers 750 0ms
+	CamZoom 16000 0ms
+	CharSetPos name[0] (-600, 0, 0) 225deg
+	CharSetPos name[1] (500, 0, 0) 225deg
+	CharSetChipBase name[2] chip[32]
+	CharSetChipPattern name[2] 1
+	CharFlagsSet name[2] 0x0020
+	CharFlagsSet name[2] 0x0010
+	CharFlagsSet name[2] 0x0002
+	CharSetPos name[2] (-1500, 0, -1500) 270deg
+	CharSetPos name[3] (1600, 0, -1000) 270deg
+	CharSetPos name[8] (400, 0, -1300) 270deg
+	CharSetPos name[4] (900, 0, -2200) 270deg
+	CharFlagsUnset field_party[4] 0x0080
+	CharFlags2Unset field_party[4] 0x8000
+	CharFlagsUnset field_party[5] 0x0080
+	CharFlags2Unset field_party[5] 0x8000
+	CharSetChipBase char[1] chip[30]
+	CharSetChipPattern char[1] 0
+	CharFlagsUnset char[1] 0x0080
+	CharFlagsSet char[1] 0x8000
+	CharSetPos char[1] (-700, 0, 1500) 180deg
+	CharSetChipBase char[2] chip[31]
+	CharSetChipPattern char[2] 0
+	CharFlagsUnset char[2] 0x0080
+	CharFlagsSet char[2] 0x8000
+	CharSetPos char[2] (-1900, 0, 1300) 180deg
+	ED7ObjPlay object[0] 135 154 0 32
+	SoundPlay sound[832] 2 100 0
+	BlurOn 7000ms 0xBBFFFFFF 0 0 0
+	CamSetDistance 0 20000 0 7000ms
+	ED7CamRotate 45deg 33deg 0deg 7000ms
+	FadeIn 2000ms 0x00000000
+	FadeWait
+	CamWait 121
+	CrossFade 500ms
+	CamSetDistance 0 -900 0 0ms
+	ED7CamRotate 45deg 19deg 0deg 0ms
+	CamPers 550 0ms
+	CamZoom 17000 0ms
+	BlurOff 0ms
+	CamSetDistance 0 1100 0 3000ms
+	FadeWait
+	CamWait 121
+	Sleep 300ms
+	TextTalk name[2] {
+		#1230020081V#11P#00203F嗯……好。{wait}
+	} {
+		#1230020082V#00202F……我明白了。
+		只要知道這樣就夠了。{wait}
+	} {
+		#1230020083V#00204F辛苦你了，約納。
+		那就等一下再見──{wait}
+	}
+	TextWait
+	CharSetChipPattern name[2] 0
+	Sleep 300ms
+	SoundPlay sound[804] 0 100 0
+	Sleep 400ms
+	TextTalk name[0] {
+		#1230000167V#5P#00001F約納說什麼……？{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	SoundPlay sound[802] 0 100 0
+	CrossFade 250ms
+	CharSetChipBase name[2] chip[255]
+	CharSetChipPattern name[2] 0
+	CharFlagsUnset name[2] 0x0020
+	CharFlagsUnset name[2] 0x0010
+	CharFlagsUnset name[2] 0x0002
+	FadeWait
+	CharTurnTo name[2] 45deg 500deg/s
+	TextTalk name[2] {
+		#1230020084V#6P#00203F他好像找到恐怖份子的
+		逃脫路線了。{wait}
+	} {
+		#1230020085V#00201F蘭花塔的地基──
+		他們好像是從那裡
+		逃往地下區域的。{wait}
+	}
+	TextWait
+	TextTalk name[1] {
+		#1230010095V#00108F#5P地基是指……
+		蘭花塔的地下部分吧？{wait}
+	} {
+		#1230010096V#00101F那裡確實是跟
+		地下區域的各區塊相通……{wait}
+	}
+	TextWait
+	TextTalk char[2] {
+		#1230060060V#00603F#5P好，一定要抓到他們。{wait}
+	} {
+		#1230060061V#00610F要是讓他們幹了那種事還全身而退，
+		有損克洛斯貝爾警察的名譽！{wait}
+	}
+	TextWait
+	TextTalk char[1] {
+		#1230140011V#01403F#5P──我們也一樣。{wait}
+	} {
+		#1230140012V#01401F協會正式參與的國際會議
+		發生那種暴行……{wait}
+	} {
+		#1230140013V如果讓他們逃走，
+		可能會創下不好的先例。{wait}
+	}
+	TextWait
+	TextTalk name[8] {
+		#1230050054V#10107F#11P嗯，一定要抓到他們！{wait}
+	} {
+		#1230050055V#10106F雖然也有點擔心頂樓的
+		導力炸彈就是了……{wait}
+	}
+	TextWait
+	Fork name[0] fork[0]:
+		CharTurnToChar name[0] name[8] 500deg/s
+	Sleep 50ms
+	Fork name[1] fork[0]:
+		CharTurnToChar name[1] name[8] 500deg/s
+	Sleep 50ms
+	Fork name[4] fork[0]:
+		CharTurnToChar name[4] name[8] 500deg/s
+	Sleep 50ms
+	Fork name[2] fork[0]:
+		CharTurnToChar name[2] name[8] 500deg/s
+	Sleep 50ms
+	ForkWait name[0] fork[0]
+	ForkWait name[1] fork[0]
+	ForkWait name[4] fork[0]
+	ForkWait name[2] fork[0]
+	Sleep 100ms
+	TextTalk name[0] {
+		#1230000168V#00003F#5P交給霧香小姐和雷克多先生
+		應該沒問題吧。{wait}
+	} {
+		#1230000169V#00002F況且還有尤莉亞准校
+		和穆拉少校跟著他們。{wait}
+	}
+	TextWait
+	TextTalk name[3] {
+		#1230030060V#00304F#11P哈哈，有那幾個高手在場，
+		確實是不可能會出差錯。{wait}
+	} {
+		#1230030061V#00305F……話說回來，
+		感覺下降了很久耶？{wait}
+	}
+	TextWait
+	TextTalk name[2] {
+		#1230020086V#6P#00204F畢竟是從地上３５Ｆ
+		一直下降到地下８Ｆ啊。{wait}
+	}
+	TextWait
+	TextTalk name[4] {
+		#1230040049V#10302F#11P所以我們要去
+		克洛斯貝爾的最深處囉。{wait}
+	}
+	TextWait
+	CamSetDistance 0 3100 0 2000ms
+	FadeOut 2000ms 0x00000000 255
+	ED7_12 832 2000 100
+	FadeWait
+	CamWait 1
+	BgmStop 5000ms
+	BgmWait
+	system[76] = 65535
+	SoundStop sound[832]
+	FlagSet flag[272]
+	NewScene "scena/m0400.bin" 0 0 0
+	Hcf
+	Return
+
+fn[6]:
+	EventBegin 0
+	FadeOut 0ms 0x00000000 255
+	CamSetDistance 0 1000 700 0ms
+	ED7CamRotate 45deg 25deg 0deg 0ms
+	CamPers 450 0ms
+	CamZoom 22250 0ms
+	CharSetPos name[0] (0, 0, 1300) 0deg
+	CharSetPos name[1] (800, 0, 0) 0deg
+	CharSetPos name[2] (-800, 0, 0) 0deg
+	CharSetPos name[3] (0, 0, -1600) 0deg
+	CharSetPos name[8] (1200, 0, -1000) 0deg
+	CharSetPos name[4] (-1200, 0, -1000) 0deg
+	CharFlagsUnset field_party[4] 0x0080
+	CharFlags2Unset field_party[4] 0x8000
+	CharFlagsUnset field_party[5] 0x0080
+	CharFlags2Unset field_party[5] 0x8000
+	CamZoom 21500 1500ms
+	FadeIn 1000ms 0x00000000
+	FadeWait
+	CamWait 121
+	TextTalk name[0] {
+		#1330000052V#11P#00011F呃……
+		應該就是這裡吧？{wait}
+	}
+	TextWait
+	TextTalk name[2] {
+		#1330020036V#12P#00202F嗯，請把剛才拿到的通行卡
+		拿到前面感應。{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	CamSetDistance 0 1000 1000 800ms
+	Fork name[0] fork[1]:
+		CharWalkToPos2 self (0, 0, 2400) 1500mm/s 0
+	ForkWait name[0] fork[1]
+	Sleep 300ms
+	TextSetName ""
+	TextMessage null {
+		{color 5}把臨時認證卡片拿到面板前感應。{color 0}{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	SoundPlay sound[72] 0 100 0
+	FadeOut 500ms 0x00000000 255
+	FadeWait
+	Sleep 500ms
+	FlagSet flag[2853]
+	Call fn[0,2]
+	Return
+
+fn[7]:
+	EventBegin 0
+	FadeOut 0ms 0x00000000 255
+	SoundLoad sound[832]
+	CamSetDistance 0 2300 0 0ms
+	ED7CamRotate 35deg 23deg 0deg 0ms
+	CamPers 550 0ms
+	CamZoom 16000 0ms
+	CharSetPos name[0] (0, 0, 1500) 180deg
+	CharSetPos name[1] (1100, 0, 600) 225deg
+	CharSetPos name[2] (1100, 0, -1000) 315deg
+	CharSetPos name[3] (0, 0, -1500) 0deg
+	CharSetPos name[8] (-1100, 0, 600) 135deg
+	CharSetPos name[4] (-1100, 0, -1000) 45deg
+	CharFlagsUnset field_party[4] 0x0080
+	CharFlags2Unset field_party[4] 0x8000
+	CharFlagsUnset field_party[5] 0x0080
+	CharFlags2Unset field_party[5] 0x8000
+	ED7ObjPlay object[0] 35 54 0 32
+	SoundPlay sound[832] 2 100 0
+	Sleep 500ms
+	CamSetDistance 0 1300 0 3000ms
+	FadeIn 2000ms 0x00000000
+	FadeWait
+	CamWait 121
+	TextTalk name[4] {
+		#1330040018V#6P#10305F話說回來，這個面板……{wait}
+	} {
+		#1330040019V好像沒有２１Ｆ到３０Ｆ的
+		按鈕？{wait}
+	}
+	TextWait
+	TextTalk name[1] {
+		#1330010020V#11P#00102F嗯，那幾層好像全部都是
+		維護樓層。{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#1330000053V#00005F#5P維護樓層？{wait}
+	}
+	TextWait
+	TextTalk name[2] {
+		#1330020037V#00203F#11P好像是為了要
+		平衡巨大建築物的重量，
+		安排了幾層幾乎中空的樓層。{wait}
+	} {
+		#1330020038V#00200F除此之外，似乎還有
+		發生地震時的衝擊吸收裝置。{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#1330000054V#00006F#5P真厲害……{wait}
+	}
+	TextWait
+	TextTalk name[8] {
+		#1330050017V#6P#10102F看來這裡真的應用了很多
+		最新的建築技術。{wait}
+	}
+	TextWait
+	TextTalk name[3] {
+		#1330030014V#12P#00306F不過，有必要花那麼多工夫
+		建造摩天大樓嗎？{wait}
+	} {
+		#1330030015V#00301F如果需要同樣的樓層，
+		直接蓋到３０Ｆ左右不就好了嗎？{wait}
+	}
+	TextWait
+	TextTalk name[1] {
+		#1330010021V#11P#00106F嗯，從當初的計劃來看，
+		好像有很多不必要的設計……{wait}
+	} {
+		#1330010022V#00100F接手這項計畫的叔叔，
+		又是個喜歡浮誇的人。{wait}
+	} {
+		#1330010023V#00104F結果最後好像是用庫羅伊斯家的
+		資產去填補不足的建造費用。{wait}
+	}
+	TextWait
+	TextTalk name[4] {
+		#1330040020V#6P#10302F哦，還真闊氣啊。{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#1330000055V#00012F#5P不過，多虧如此，
+		這棟大樓確實是個令人印象深刻的
+		克洛斯貝爾市新地標……{wait}
+	}
+	TextWait
+	Emote name[0] 0mm 2000mm 38 38 250ms 1
+	Sleep 1000ms
+	TextTalk name[0] {
+		#1330000056V#00002F#5P喔，差不多到了。{wait}
+	}
+	TextWait
+	ED7CamRotate 35deg 30deg 0deg 4000ms
+	CamZoom 19000 4000ms
+	Sleep 3000ms
+	ED7_12 832 2000 100
+	ObjFlagsUnset object[0] 0x0020
+	ED7ObjPlay object[0] 55 90 0 0
+	ObjWait object[0]
+	CamWait 121
+	Sleep 500ms
+	FadeOut 1000ms 0x00000000 255
+	FadeWait
+	FlagSet flag[2854]
+	SoundStop sound[832]
+	EventEnd 5
+	NewScene "scena/c1583.bin" 109 0 0
+	Hcf
+	Return
+
+fn[8]:
+	EventBegin 0
+	FadeOut 0ms 0x00000000 255
+	SoundLoad sound[832]
+	CamSetDistance 0 2300 0 0ms
+	ED7CamRotate 35deg 23deg 0deg 0ms
+	CamPers 550 0ms
+	CamZoom 17500 0ms
+	CharSetPos name[0] (0, 0, 1500) 180deg
+	CharSetPos name[1] (1100, 0, 600) 225deg
+	CharSetPos name[2] (1100, 0, -1000) 315deg
+	CharSetPos name[3] (0, 0, -1500) 0deg
+	CharSetPos custom[0] (-1100, 0, 600) 135deg
+	CharSetPos custom[1] (-1100, 0, -1000) 45deg
+	CharFlagsUnset field_party[4] 0x0080
+	CharFlags2Unset field_party[4] 0x8000
+	CharFlagsUnset field_party[5] 0x0080
+	CharFlags2Unset field_party[5] 0x8000
+	ED7ObjPlay object[0] 35 54 0 32
+	SoundPlay sound[832] 2 100 0
+	CamSetDistance 0 1300 0 3000ms
+	FadeIn 2000ms 0x00000000
+	FadeWait
+	CamWait 121
+	TextTalk name[0] {
+		#1530000080V#00008F#5P──最後保全只能成功解除到
+		２１Ｆ嗎……？{wait}
+	}
+	TextWait
+	TextTalk name[2] {
+		#1530020043V#00206F嗯，根據主任的說法，
+		３０Ｆ好像有個用物理方式
+		阻斷導力網路的控制終端機。{wait}
+	} {
+		#1530020044V#00201F如果不先解除那台終端機，
+		想透過導力網路控制大樓
+		是不可能的任務。{wait}
+	}
+	TextWait
+	TextTalk name[3] {
+		#1530030036V#12P#00303F也就是說，從２１Ｆ到３０Ｆ
+		得由我們自己爬上去囉？{wait}
+	} {
+		#1530030037V#00301F不過，我記得之前好像說過，
+		那幾層樓幾乎都是維護用的樓層，
+		裡面應該是空的？{wait}
+	}
+	TextWait
+	TextTalk name[1] {
+		#1530010044V#11P#00106F……對外發表的內容
+		好像是假的。{wait}
+	} {
+		#1530010045V#00108F看來那個區域就是
+		庫羅伊斯家的秘密所在……{wait}
+	} {
+		#1530010046V#00101F那裡好像也是在琪雅的儀式中
+		扮演重要角色的區塊。{wait}
+	}
+	TextWait
+	TextTalk name[3] {
+		#1530030038V#12P#00307F是、是這樣嗎？{wait}
+	}
+	TextWait
+	if PartyPosition name[9] > -1:
+		TextTalk name[9] {
+			#1530060042V#6P#00606F……在通商會議警備工作那時，
+			我也覺得那裡莫名的不自然……{wait}
+		} {
+			#1530060043V#00610F沒想到他們居然擅自在公家
+			設施裡蓋了那種違章建築。{wait}
+		}
+		TextWait
+	if PartyPosition name[4] > -1:
+		TextTalk name[4] {
+			#1530040030V#6P#10403F那一區恐怕是匯集了
+			魔導科學精華的區塊吧。{wait}
+		} {
+			#1530040031V#10408F早知道就在事情演變成這樣
+			之前先來這裡探路……{wait}
+		}
+		TextWait
+	if PartyPosition name[8] > -1:
+		TextTalk name[8] {
+			#1530050034V#6P#10103F無論如何……
+			看來需要先做好心理準備。{wait}
+		}
+		TextWait
+	else:
+		TextTalk name[2] {
+			#1530020045V#00203F……無論如何，
+			看來需要先做好心理準備。{wait}
+		}
+		TextWait
+	if PartyPosition name[5] > -1:
+		TextTalk name[5] {
+			#1530180019V#6P#10701F……是的。
+			《紅色星座》的人搞不好
+			也在那裡。{wait}
+		}
+		TextWait
+	else:
+		TextTalk name[1] {
+			#1530010047V#11P#00106F對啊……
+			亞里歐斯先生和《紅色星座》的人
+			搞不好也在那裡。{wait}
+		}
+		TextWait
+	TextTalk name[0] {
+		#1530000081V#00008F#5P嗯……還有琪雅也在。{wait}
+	} {
+		#1530000082V#00003F……無論有什麼阻礙，
+		我們都一定要突破。{wait}
+	} {
+		#1530000083V#00000F這也是為了回報
+		把我們送來這裡的課長他們。{wait}
+	}
+	TextWait
+	TextTalk name[2] {
+		#1530020046V#00202F……是的。{wait}
+	}
+	TextWait
+	TextTalk name[1] {
+		#1530010048V#11P#00102F呵呵……責任重大啊。{wait}
+	}
+	TextWait
+	TextTalk name[3] {
+		#1530030039V#12P#00304F我們得要……
+		打起精神來才行。{wait}
+	}
+	TextWait
+	CamSetDistance 0 -1700 0 3000ms
+	ED7_12 832 2000 100
+	FadeOut 2000ms 0x00000000 255
+	FadeWait
+	BgmStop 6000ms
+	CamWait 121
+	BgmWait
+	ED7_B8 352 0
+	FlagSet flag[3377]
+	QuestTaskSet quest[177] 10
+	SoundStop sound[832]
+	FlagSet flag[297]
+	EventEnd 5
+	NewScene "scena/c1580.bin" 100 0 0
+	Hcf
+	Return
+
+fn[9]:
+	EventBegin 0
+	FadeOut 0ms 0x00000000 255
+	SoundLoad sound[832]
+	CamSetDistance 0 2300 100000 0ms
+	ED7CamRotate 55deg 23deg 0deg 0ms
+	CamPers 550 0ms
+	CamZoom 17500 0ms
+	CharSetPos name[0] (1500, 0, 100000) 270deg
+	CharSetPos name[1] (600, 0, 101100) 225deg
+	CharSetPos name[2] (-1000, 0, 101100) 135deg
+	CharSetPos name[3] (-1500, 0, 100000) 90deg
+	CharSetPos custom[0] (600, 0, 98900) 315deg
+	CharSetPos custom[1] (-1000, 0, 98900) 45deg
+	CharFlagsUnset field_party[4] 0x0080
+	CharFlags2Unset field_party[4] 0x8000
+	CharFlagsUnset field_party[5] 0x0080
+	CharFlags2Unset field_party[5] 0x8000
+	ForkFunc name[0] fork[3] fn[0,11]
+	SoundPlay sound[832] 2 100 0
+	CamSetDistance 0 1300 100000 3000ms
+	FadeIn 2000ms 0x00000000
+	FadeWait
+	CamWait 121
+	TextTalk name[0] {
+		#1530000092V#00003F#11P這麼說來……{wait}
+	} {
+		#1530000093V#00001F之前好像說過，
+		這裡有阻斷導力網路的
+		控制終端機？{wait}
+	}
+	TextWait
+	TextTalk name[2] {
+		#1530020050V#00206F#5P對，因為那個地方的關係，
+		沒辦法駭入
+		蘭花塔的上層。{wait}
+	} {
+		#1530020051V#00201F只要解除那個終端機，
+		主任應該就能掌握到
+		蘭花塔上層的詳細資訊……{wait}
+	}
+	TextWait
+	TextTalk name[1] {
+		#1530010053V#5P#00108F這樣就能知道琪雅在哪一層樓，
+		還有貝爾他們的動向了……{wait}
+	}
+	TextWait
+	if PartyPosition name[9] > -1:
+		TextTalk name[9] {
+			#1530060048V#12P#00603F看來有必要
+			設法控制住那裡……{wait}
+		}
+		TextWait
+	elif PartyPosition name[8] > -1:
+		TextTalk name[8] {
+			#1530050037V#12P#10103F有必要
+			設法控制住那裡呢……{wait}
+		}
+		TextWait
+	elif PartyPosition name[5] > -1:
+		TextTalk name[5] {
+			#1530180026V#12P#10703F看來有必要
+			設法控制住那裡……{wait}
+		}
+		TextWait
+	if PartyPosition name[4] > -1:
+		TextTalk name[4] {
+			#1530040034V#12P#10401F我記得是在３０Ｆ吧？{wait}
+		}
+		TextWait
+	elif PartyPosition name[5] > -1:
+		TextTalk name[5] {
+			#1530180027V#12P#10701F我記得是在３０Ｆ吧？{wait}
+		}
+		TextWait
+	elif PartyPosition name[8] > -1:
+		TextTalk name[8] {
+			#1530050038V#12P#10101F我記得是在３０Ｆ對吧？{wait}
+		}
+		TextWait
+	TextTalk name[2] {
+		#1530020052V#00203F#5P對，我猜應該是在
+		這個中樞區塊的最上層。{wait}
+	}
+	TextWait
+	TextTalk name[3] {
+		#1530030042V#6P#00300F既然這樣，我們只要
+		繼續往上走就行了。{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#1530000094V#00013F#11P嗯……一鼓作氣衝上去吧！{wait}
+	}
+	TextWait
+	CamSetDistance 0 -8700 100000 2000ms
+	ED7_12 832 2000 100
+	FadeOut 2000ms 0x00000000 255
+	FadeWait
+	CamWait 121
+	FlagSet flag[3379]
+	SoundPlay sound[160] 0 100 0
+	Sleep 500ms
+	SoundStop sound[832]
+	EventEnd 5
+	SystemFlagsUnset 0x08000000
+	NewScene "scena/c1582.bin" 102 0 0
+	Hcf
+	Return
+
+fn[10]:
+	EventBegin 0
+	FadeOut 0ms 0x00000000 255
+	ED7LoadChip "apl/ch50011.itc" chip[30]
+	SoundLoad sound[832]
+	SoundLoad sound[803]
+	VisShow vis[0] 180 0 436 256 0 0 256 256 0 0 256 256 0x00FFFFFF 0 "c_vis007.itp"
+	CamSetDistance 0 2300 0 0ms
+	ED7CamRotate 35deg 23deg 0deg 0ms
+	CamPers 550 0ms
+	CamZoom 17500 0ms
+	CharSetPos name[0] (0, 0, 1500) 180deg
+	CharSetPos name[1] (1100, 0, 600) 225deg
+	CharSetPos name[2] (1100, 0, -1000) 315deg
+	CharSetPos name[3] (0, 0, -1500) 0deg
+	CharSetPos custom[0] (-1100, 0, 600) 135deg
+	CharSetPos custom[1] (-1100, 0, -1000) 45deg
+	CharFlagsUnset field_party[4] 0x0080
+	CharFlags2Unset field_party[4] 0x8000
+	CharFlagsUnset field_party[5] 0x0080
+	CharFlags2Unset field_party[5] 0x8000
+	ED7ObjPlay object[0] 35 54 0 32
+	SoundPlay sound[832] 2 100 0
+	CamSetDistance 0 1300 0 3000ms
+	FadeIn 2000ms 0x00000000
+	FadeWait
+	CamWait 121
+	SoundPlay sound[803] 2 100 0
+	Sleep 300ms
+	Emote name[0] 0mm 2000mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Sleep 1000ms
+	Fork name[1] fork[0]:
+		CharTurnToChar name[1] name[0] 500deg/s
+	Sleep 50ms
+	Fork custom[0] fork[0]:
+		CharTurnToChar custom[0] name[0] 500deg/s
+	Sleep 50ms
+	ForkWait name[1] fork[0]
+	ForkWait custom[0] fork[0]
+	CrossFade 250ms
+	CharFlagsSet name[0] 0x0020
+	CharFlagsSet name[0] 0x0002
+	CharSetChipBase name[0] chip[30]
+	CharSetChipPattern name[0] 6
+	SoundPlay sound[802] 0 100 0
+	Sleep 500ms
+	CharSetChipPattern name[0] 7
+	SoundStop sound[803]
+	SoundPlay sound[804] 0 100 0
+	Sleep 300ms
+	VisSet vis[0] 3 0xFFFFFFFF 500ms 0 0
+	FadeOut 500ms 0x00000000 100
+	FadeWait
+	VisWait vis[0] 3
+	Sc_C4Set 2147483648
+	SoundPlay sound[1530000142] 255 100 0
+	TextSetPos 90 130 -1 -1
+	TextMessage name[0] {
+		{color 0}#00013F喂？{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	Sc_C4Unset 2147483648
+	TextSetPos 170 50 -1 -1
+	TextSetName "芙蘭的聲音"
+	TextMessage null {
+		{color 5}#1530190003V太、太好了……
+		你們沒事啊！{wait}
+	} {
+		#1530190004V這裡是《梅爾卡巴玖號機》！{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	if PartyPosition name[8] > -1:
+		TextSetPos 50 30 -1 -1
+		TextMessage name[8] {
+			{color 0}#1530050053V#10102F芙蘭……！{wait}
+		}
+		TextWait
+		TextClose 0
+		_59
+	else:
+		TextSetPos 50 30 -1 -1
+		TextMessage name[1] {
+			{color 0}#1530010078V#00102F芙蘭小姐……！{wait}
+		}
+		TextWait
+		TextClose 0
+		_59
+	TextSetPos 240 80 -1 -1
+	TextSetName "阿巴斯的聲音"
+	TextMessage null {
+		{color 5}#1530410003V看來你們已經進入蘭花塔了，
+		情況怎麼樣？{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	if PartyPosition name[4] > -1:
+		TextSetPos 90 130 -1 -1
+		TextMessage name[0] {
+			{color 0}#1530000143V#00003F嗯，已經到最後階段了。{wait}
+		}
+		TextWait
+		TextClose 0
+		_59
+		TextSetPos 50 30 -1 -1
+		TextMessage name[4] {
+			{color 0}#1530040050V#10400F我們簡單說明一下情況吧。{wait}
+		}
+		TextWait
+		TextClose 0
+		_59
+	else:
+		TextSetPos 90 130 -1 -1
+		TextMessage name[0] {
+			{color 0}#1530000144V#00001F嗯，已經到最後階段了。
+			我會說明情況。{wait}
+		}
+		TextWait
+		TextClose 0
+		_59
+	TextSetPos -1 280 60 3
+	TextSetName ""
+	TextMessage null {
+		{color 5}向梅爾卡巴的艦橋
+		說明現在的情況。{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	TextSetPos 240 80 -1 -1
+	TextSetName "阿巴斯的聲音"
+	TextMessage null {
+		{color 5}#1530410004V原來如此……
+		確實是最後階段了。{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	TextSetPos 170 50 -1 -1
+	TextSetName "約納的聲音"
+	TextMessage null {
+		{color 5}#1530230002V那個頂樓的白色人偶
+		好像在四周１００亞矩的範圍
+		設下了《結界》。{wait}
+	} {
+		#1530230003V我們沒辦法靠近，
+		不要期待我們掩護你們喔！{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	TextSetPos 90 130 -1 -1
+	TextMessage name[0] {
+		{color 0}#1530000145V#00013F這樣啊……瞭解了。{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	if PartyPosition name[4] > -1:
+		TextSetPos 50 30 -1 -1
+		TextMessage name[4] {
+			{color 0}#1530040051V#10406F唉，看來只能靠我們自己
+			想辦法解決了。{wait}
+		}
+		TextWait
+		TextClose 0
+		_59
+	else:
+		TextSetPos 50 30 -1 -1
+		TextMessage name[3] {
+			{color 0}#1530030061V#00306F唉，只能靠我們
+			自己想辦法解決了。{wait}
+		}
+		TextWait
+		TextClose 0
+		_59
+	TextSetPos 170 50 -1 -1
+	TextSetName "芙蘭的聲音"
+	TextMessage null {
+		{color 5}#1530190005V順道一提，其他兩部機器……
+		好像沒反應了。{wait}
+	} {
+		#1530190006V應該是凱文神父和艾絲蒂爾小姐
+		他們努力的結果吧？{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	TextSetPos 90 130 -1 -1
+	TextMessage name[0] {
+		{color 0}#1530000146V#00005F這樣啊……{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	TextSetPos 50 30 -1 -1
+	TextMessage name[2] {
+		{color 0}#1530020076V#00204F……真是好消息。{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	TextSetPos 50 30 -1 -1
+	TextMessage name[3] {
+		{color 0}#1530030062V#00300F嗯……
+		真虧他們能獲勝。{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	TextSetPos 170 50 -1 -1
+	TextSetName "格蕾絲的聲音"
+	TextMessage null {
+		{color 5}#1530210002V──總之！
+		千萬不要逞強！{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	TextSetPos 240 80 -1 -1
+	TextSetName "麥克道爾議長的聲音"
+	TextMessage null {
+		{color 5}#1530250002V願愛德斯女神保佑你們……
+		請各位務必要提高警覺。{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	TextSetPos 50 30 -1 -1
+	TextMessage name[1] {
+		{color 0}#1530010079V#00100F是……！{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	TextSetPos 90 130 -1 -1
+	TextMessage name[0] {
+		{color 0}#1530000147V#00000F瞭解……！{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	TextSetPos -1 280 60 3
+	VisSet vis[0] 3 0x00FFFFFF 500ms 0 0
+	FadeIn 500ms 0x00000000
+	FadeWait
+	VisWait vis[0] 3
+	CharSetChipPattern name[0] 6
+	SoundPlay sound[804] 0 100 0
+	CamSetDistance 0 -1700 0 3000ms
+	ED7_12 832 2000 100
+	FadeOut 2000ms 0x00000000 255
+	FadeWait
+	CamWait 121
+	VisHide vis[255] 0
+	CharFlagsUnset name[0] 0x0020
+	CharFlagsUnset name[0] 0x0002
+	CharSetChipBase name[0] chip[255]
+	CharSetChipPattern name[0] 0
+	BgmStop 4000ms
+	BgmWait
+	SoundStop sound[803]
+	SoundStop sound[832]
+	FlagSet flag[272]
+	NewScene "scena/e4201.bin" 0 0 0
+	Hcf
+	Return
+
+fn[11]:
+	while 1:
+		Shake 0 5 3000 500ms
+		Sleep 2000ms
+		Shake 0 10 1000 500ms
+		Sleep 1000ms
+	Return

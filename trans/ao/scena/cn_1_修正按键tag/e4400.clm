@@ -1,0 +1,911 @@
+calmare ao_k scena
+scena:
+	name "e4400" "e4400" "e4400"
+	town town[0]
+	bgm bgm[570]
+	flags 8192
+	item_use fn[0,255]
+	unk 255 255
+
+entry:
+	pos (0, 0, -1000)
+	unk1 0
+	cam_from (0, 0, 24000)
+	cam_pers 500
+	unk2 30
+	cam_deg 45deg
+	cam_limit 0deg 360deg
+	cam_at (0, 0, 0)
+	unk3 0
+	unk4 0
+	flags 0x0001
+	town town[1]
+	init fn[0,1]
+	reinit fn[0,2]
+
+chip[0] "chr/ch00100.itc"
+chip[1] "chr/ch03200.itc"
+chip[2] "chr/ch02708.itc"
+chip[3] "chr/ch06000.itc"
+
+npc char[0]:
+	name "艾莉"
+	pos (-2930, 0, 509)
+	angle 270deg
+	flags 0x0185
+	unk2 0
+	chip chip[0]
+	init fn[0,0]
+	talk fn[0,3]
+	unk4 255
+
+npc char[1]:
+	name "莉夏"
+	pos (2589, 0, -29)
+	angle 90deg
+	flags 0x0185
+	unk2 0
+	chip chip[1]
+	init fn[0,0]
+	talk fn[0,5]
+	unk4 255
+
+npc char[2]:
+	name "神狼賽特"
+	pos (-1549, 0, -959)
+	angle 180deg
+	flags 0x0195
+	unk2 0
+	chip chip[2]
+	init fn[0,0]
+	talk fn[0,7]
+	unk4 255
+
+npc char[3]:
+	name "格蕾絲"
+	pos (-2930, 0, 509)
+	angle 270deg
+	flags 0x0185
+	unk2 0
+	chip chip[3]
+	init fn[0,0]
+	talk fn[0,9]
+	unk4 255
+
+fn[0]:
+	switch random % 8:
+		case 0:
+			ED7_A0 self 1450ms 0 251
+			break
+		case 1:
+			ED7_A0 self 1550ms 0 251
+			break
+		case 2:
+			ED7_A0 self 1600ms 0 251
+			break
+		case 3:
+			ED7_A0 self 1400ms 0 251
+			break
+		case 4:
+			ED7_A0 self 1650ms 0 251
+			break
+		case 5:
+			ED7_A0 self 1350ms 0 251
+			break
+		case 6:
+			ED7_A0 self 1500ms 0 251
+			break
+		default:
+			ED7_A0 self 1500ms 0 251
+			break
+	while 1:
+		ED7_A0 self 1500ms 0 251
+	Return
+
+fn[1]:
+	if flag[3404]:
+		CharFlagsUnset char[3] 0x0080
+	elif flag[3386]:
+		CharFlagsUnset char[3] 0x0080
+	elif flag[3385]:
+		CharFlagsUnset char[3] 0x0080
+	elif flag[3362]:
+		CharFlagsUnset char[1] 0x0080
+	elif flag[3361]:
+		CharFlagsUnset char[0] 0x0080
+	elif flag[3355]:
+		CharFlagsUnset char[3] 0x0080
+	elif flag[3351]:
+		CharFlagsUnset char[2] 0x0080
+	elif flag[3343]:
+		CharFlagsUnset char[1] 0x0080
+	elif flag[3338]:
+	elif flag[3328]:
+		CharFlagsUnset char[2] 0x0080
+	if flag[272]:
+		FlagUnset flag[272]
+		FlagSet flag[0]
+		FlagSet flag[1]
+		Event fn[0,11]
+	Return
+
+fn[2]:
+	system[49] = 208
+	if flag[1]:
+		SoundPlay sound[132] 1 70 0
+		SoundPlay sound[497] 1 30 0
+		FlagUnset flag[1]
+	else:
+		SoundPlay sound[132] 1 100 0
+		SoundPlay sound[497] 1 100 0
+	if flag[0]:
+		system[1] = 0
+		FlagUnset flag[0]
+	system[81] = 4278397047
+	ED7_EE 1 2000
+	SystemFlagsSet 0x00010000
+	if flag[3385]:
+		if system[0] == 100:
+			MapColor 0x00FFFFD7 0ms
+		else:
+			MapColor 0x00FFFFFF 0ms
+	ED7_76_0 object[0] "door_l1" 1
+	ED7_76_0 object[0] "door_l2" 1
+	ED7_76_0 object[0] "door_r1" 1
+	ED7_76_0 object[0] "door_r2" 1
+	Return
+
+fn[3]:
+	TextStart self
+	if !flag[3760]:
+		Call fn[0,4]
+	elif !flag[2]:
+		TextTalk self {
+			#00103F『獨立國』無效宣言……
+			我還不能肯定這麼做
+			是不是真的正確，不過……{wait}
+		} {
+			#00101F要靠犧牲琪雅
+			才能得到的和平，
+			絕對是錯的。{wait}
+		} {
+			#00103F這次作戰一定要成功……
+			想把琪雅搶回來，
+			這就是起步。{wait}
+		}
+		TextWait
+	else:
+		TextTalk self {
+			#00103F『獨立國』無效宣言……
+			我還不能肯定這麼做
+			是不是真的正確，不過……{wait}
+		} {
+			#00100F這次作戰一定要成功……
+			想把琪雅搶回來，
+			這就是起步。{wait}
+		}
+		TextWait
+	TextEnd self
+	Return
+
+fn[4]:
+	TextTalk char[0] {
+		#00103F『克洛斯貝爾獨立國』無效宣言……
+		再來似乎只剩決定
+		入侵系統的時機了。{wait}
+	} {
+		#00106F……呼，我好像開始緊張了。{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#00002F哈哈……這也難怪。{wait}
+	} {
+		#00003F本來存在於克洛斯貝爾的
+		短暫和平，就要被我們
+		親手撼動了。{wait}
+	}
+	TextWait
+	Emote char[0] 0mm 2000mm 24 27 250ms 0
+	Sleep 2000ms
+	EmoteStop char[0]
+	TextTalk char[0] {
+		#00108F……我們打算做的事，
+		真的是正確的嗎？{wait}
+	} {
+		#00103F多虧叔叔他們的努力，
+		克洛斯貝爾的眾多居民，
+		才能夾在兩大國之下還過著和平的生活……{wait}
+	} {
+		#00108F而我們卻準備
+		剝奪這份和平……{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#00003F……嗯。{wait}
+	} {
+		#00001F但是，現在的和平
+		是建立在迪塔總統他們
+		利用琪雅的前提之上。{wait}
+	} {
+		#00003F就算大多數市民
+		不清楚這個狀況……
+		對我們來說卻是重大的問題。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#00108F……嗯，是啊。{wait}
+	} {
+		#00103F要靠犧牲琪雅
+		才能得到的和平，
+		絕對是錯的。{wait}
+	} {
+		#00100F……呵呵，謝謝你，羅伊德。
+		多虧有你，
+		讓我稍微不再那麼迷惘了。{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#00009F哈哈，很高興能幫上妳。{wait}
+	} {
+		#00000F為了搶回琪雅……
+		這次作戰
+		一定要成功。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#00100F是啊……一起加油吧。{wait}
+	}
+	TextWait
+	FlagSet flag[3760]
+	Return
+
+fn[5]:
+	TextStart self
+	if flag[3404]:
+	elif flag[3362]:
+		if !flag[3]:
+			TextTalk char[1] {
+				#10703F《鋼之聖女》……{wait}
+			} {
+				#10701F這麼說起來，她把
+				《銀》的面具弄碎的帳，
+				我還沒找她算呢。{wait}
+			} {
+				#10706F面對那樣的絕世高手，
+				雖然不知道我能
+				拚到什麼程度……{wait}
+			} {
+				#10701F現在的我有著絕不能妥協，
+				必須完成的使命。
+				……我可不能輸。{wait}
+			}
+			TextWait
+			FlagSet flag[3]
+		else:
+			TextTalk char[1] {
+				#10703F面對《鋼之聖女》那樣的高手，
+				雖然不知道我能
+				拚到什麼程度……{wait}
+			} {
+				#10701F現在的我有著絕不能妥協，
+				必須完成的使命。
+				……我可不能輸。{wait}
+			}
+			TextWait
+	elif flag[3343]:
+		if !flag[3779]:
+			Call fn[0,6]
+		elif !flag[3]:
+			TextTalk char[1] {
+				#10703F瑪因茲地區的抵抗勢力情報，
+				是我藏身在古戰場時，
+				從國防軍那裡得來的。{wait}
+			} {
+				#10708F……現在想想，我也受到
+				《黑月》不少照顧。{wait}
+			} {
+				契約又以
+				那種形式被我毀掉……{wait}
+			} {
+				#10703F總有一天，我得把
+				欠曹他們的恩情還清。{wait}
+			}
+			TextWait
+			FlagSet flag[3]
+		else:
+			TextTalk char[1] {
+				#10708F……現在想想，我也受到
+				《黑月》不少照顧。{wait}
+			} {
+				#10703F總有一天，我得把
+				欠曹他們的恩情還清。{wait}
+			}
+			TextWait
+	TextEnd self
+	Return
+
+fn[6]:
+	TextTalk char[1] {
+		#10702F伊莉雅小姐……
+		能恢復意識真是太好了。{wait}
+	} {
+		#10703F…………………………………………{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#00003F……莉夏，如果妳想見
+		伊莉雅小姐，
+		隨時可以告訴我不用客氣。{wait}
+	} {
+		#00000F我一定會找出空檔，
+		繞去烏爾斯拉醫院。{wait}
+	}
+	TextWait
+	TextTalk char[1] {
+		#10702F呵呵，非常
+		感謝你的關心。{wait}
+	} {
+		#10703F不過現在，我決定
+		全神貫注在解放
+		克洛斯貝爾市跟彩虹劇團。{wait}
+	} {
+		#10701F這也是為了讓我
+		能夠抬頭挺胸，
+		站在伊莉雅小姐面前……{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#00000F……這樣啊。
+		既然如此，可得
+		盡早達成這個目標。{wait}
+	} {
+		#00004F如果這能幫助妳
+		跟伊莉雅小姐重逢，
+		我們也會更加努力。{wait}
+	} {
+		#00000F為了琪雅、伊莉雅小姐，還有
+		其他夥伴……
+		我們都要全力以赴，莉夏。{wait}
+	}
+	TextWait
+	TextTalk char[1] {
+		#10702F是……！
+		請多多指教！{wait}
+	}
+	TextWait
+	FlagSet flag[3779]
+	Return
+
+fn[7]:
+	TextStart self
+	if flag[3404]:
+	elif flag[3351]:
+		if !flag[4]:
+			TextTalk char[2] {
+				#01203F#3C支援課的成員也
+				逐漸找回來了。{wait}
+			} {
+				#01200F等你們不再需要
+				直接的協助，我打算
+				再次退居後方。{wait}
+			}
+			TextWait
+			TextTalk name[0] {
+				#00004F嗯……我知道。{wait}
+			} {
+				#00000F不過，在那之前
+				還請你多幫忙了，賽特。{wait}
+			}
+			TextWait
+			TextTalk char[2] {
+				#01200F#3C呵呵，那當然。
+				我會確實盡到
+				警犬的職責。{wait}
+			}
+			TextWait
+			FlagSet flag[4]
+		else:
+			TextTalk char[2] {
+				#01200F#3C等你們不再需要
+				直接的協助，我會
+				再次退居後方。{wait}
+			} {
+				不過，我會確實盡到
+				警犬的職責，
+				這點你可以放心。{wait}
+			}
+			TextWait
+	elif flag[3328]:
+		if !flag[3783]:
+			Call fn[0,8]
+		elif !flag[4]:
+			TextTalk char[2] {
+				#01203F#3C雖然我無法使用
+				你們擁有的
+				戰術導力器，不過……{wait}
+			} {
+				#01200F身為神狼，我多少會一些法術，
+				戰技也跟過去一樣
+				能派上用場。{wait}
+			} {
+				羅伊德，你這位
+				隊長的本領，
+				也讓我好好領教吧。{wait}
+			}
+			TextWait
+			FlagSet flag[4]
+		else:
+			TextTalk char[2] {
+				#01200F#3C羅伊德，你這位
+				隊長的本領，
+				也讓我好好領教吧。{wait}
+			} {
+				#01203F呵呵，努力讓我
+				神狼的力量得以發揮吧。{wait}
+			}
+			TextWait
+	TextEnd self
+	Return
+
+fn[8]:
+	TextTalk char[2] {
+		#01200F#3C烏爾斯拉醫院啊…………{wait}
+	} {
+		#01203F……………………………{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#00005F賽特……？{wait}
+	}
+	TextWait
+	TextTalk char[2] {
+		#01203F#3C呵呵，沒什麼。
+		只是想起一些以前的事。{wait}
+	} {
+		#01200F說起來，我以前雖然
+		幫過你們好幾次，但……{wait}
+	} {
+		這還是我第一次
+		跟你們一起走上街道。{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#00009F哈哈……真的耶。{wait}
+	} {
+		#00000F這段期間就有勞你了。
+		還請多多指教，賽特。{wait}
+	}
+	TextWait
+	TextTalk char[2] {
+		#01200F#3C呵呵，你這位
+		隊長的本領，
+		也讓我好好領教吧。{wait}
+	}
+	TextWait
+	FlagSet flag[3783]
+	Return
+
+fn[9]:
+	TextStart self
+	if flag[3404]:
+		if !flag[3792]:
+			Call fn[0,10]
+		elif !flag[5]:
+			TextTalk char[3] {
+				#02105F沒想到羅伊德你們
+				竟然能打倒那個
+				亞里歐斯・馬克萊因。{wait}
+			} {
+				#02102F呵呵，
+				你們成長了這麼多，
+				大姊姊我很高興喔☆{wait}
+			} {
+				#02104F我相信，你們幾個
+				無論碰上什麼難關，都能順利跨越。{wait}
+			} {
+				#02109F就這樣保持下去，
+				我們大家一起迎接最棒的快樂結局吧！{wait}
+			}
+			TextWait
+			FlagSet flag[5]
+		else:
+			TextTalk char[3] {
+				#02104F我相信，你們幾個
+				無論碰上什麼難關，都能順利跨越。{wait}
+			} {
+				#02109F就這樣保持下去，
+				我們大家一起迎接最棒的快樂結局吧！{wait}
+			}
+			TextWait
+	elif flag[3386]:
+		if !flag[5]:
+			TextTalk char[3] {
+				#02104F在我待在《大樹》的這段期間，
+				我會盡可能多拍些照片。{wait}
+			} {
+				#02100F還有，回到通訊社之後，
+				我一定要把這次事件的真相
+				寫成報導……{wait}
+			} {
+				#02102F所以，羅伊德你們
+				要努力解決這次的事件喔！{wait}
+			} {
+				#02109F讓我寫出一篇超棒的
+				社會新聞吧！{wait}
+			}
+			TextWait
+			FlagSet flag[5]
+		else:
+			TextTalk char[3] {
+				#02100F羅伊德你們
+				要努力解決這次的事件喔！{wait}
+			} {
+				#02109F讓我寫出一篇超棒的
+				社會新聞吧！{wait}
+			}
+			TextWait
+	elif flag[3385]:
+		if !flag[5]:
+			TextTalk char[3] {
+				#02106F沒想到濕地
+				竟然會出現那樣的《大樹》～{wait}
+			} {
+				#02100F看它遠遠高過蘭花塔，
+				搞不好連帝國跟共和國
+				都看得見吧？{wait}
+			} {
+				#02103F目前整個大陸應該都很關注
+				克洛斯貝爾的動向……{wait}
+			} {
+				#02102F既然這樣，我也要拚了命
+				追你們到天涯海角！{wait}
+			}
+			TextWait
+			FlagSet flag[5]
+		else:
+			TextTalk char[3] {
+				#02103F目前整個大陸應該都很關注
+				克洛斯貝爾的動向……{wait}
+			} {
+				#02102F既然這樣，我也要拚了命
+				追你們到天涯海角！{wait}
+			}
+			TextWait
+	elif flag[3355]:
+		if !flag[5]:
+			TextTalk char[3] {
+				#02103F救出其中一位自治州代表：
+				麥克道爾議長，
+				把他說的話對國內外發表……{wait}
+			} {
+				#02100F要是順利成功，至少
+				國防軍就必須
+				維持觀望狀態了。{wait}
+			} {
+				#02104F公開議長發言的手段，
+				雖然需要另外準備……
+				不過很有機會成為最棒的獨家！{wait}
+			} {
+				#02102F呵呵，請努力
+				把議長救出來吧！{wait}
+			}
+			TextWait
+			FlagSet flag[5]
+		else:
+			TextTalk char[3] {
+				#02104F發表麥克道爾議長的意見……
+				要動搖獨立國的正當性，
+				沒有比這更好的手段了。{wait}
+			} {
+				#02102F呵呵，請努力
+				把議長救出來吧！{wait}
+			}
+			TextWait
+	TextEnd self
+	Return
+
+fn[10]:
+	TextTalk char[3] {
+		#02105F聽說你們打倒了那個
+		亞里歐斯・馬克萊因？{wait}
+	} {
+		#02106F啊……
+		真沒想到羅伊德你們
+		竟然這麼能幹……{wait}
+	} {
+		#02109F《克洛斯貝爾的英雄》
+		是不是也到了該換人當的時候啦？
+		哎呀～真是個超級獨家新聞！{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#00004F哈哈……妳太抬舉啦。{wait}
+	} {
+		#00000F而且，亞里歐斯先生是
+		克洛斯貝爾的英雄，
+		這點依然沒有變。{wait}
+	}
+	TextWait
+	TextTalk char[3] {
+		#02104F呵呵……
+		羅伊德，你也成長了不少呢。{wait}
+	} {
+		#02102F既然你們的實力已經
+		超越了亞里歐斯先生，我相信你們
+		無論碰上什麼難關都能順利跨越。{wait}
+	} {
+		#02109F就這樣保持下去，
+		我們大家一起迎接最棒的快樂結局吧！{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#00000F好的！！{wait}
+	}
+	TextWait
+	FlagSet flag[3792]
+	Return
+
+fn[11]:
+	EventBegin 0
+	FadeOut 0ms 0x00000000 255
+	PartyClear
+	PartyAdd name[0] null 255
+	PartyAdd name[1] null 255
+	PartyAdd name[2] null 255
+	PartyAdd name[3] null 255
+	PartyAdd name[4] null 255
+	PartyAdd name[8] null 255
+	PartyAdd name[5] null 255
+	PartySetAttr name[255] 254 0
+	ED7_CC 1
+	PartyRemove name[4] 255
+	PartyRemove name[8] 255
+	PartyRemove name[5] 255
+	CharFlagsSet char[3] 0x0080
+	BgmPlay bgm[534] 0
+	CharSetPos name[0] (0, 0, -2000) 180deg
+	CharSetPos name[1] (1050, 0, -2950) 270deg
+	CharSetPos name[2] (-950, 0, -3250) 90deg
+	CharSetPos name[3] (0, 0, -4250) 0deg
+	CamSetDistance 1840 1100 14830 0ms
+	ED7CamRotate 51deg 25deg 0deg 0ms
+	CamPers 800 0ms
+	CamZoom 27300 0ms
+	CamSetDistance 0 1100 -3000 7000ms
+	ED7CamRotate 51deg 25deg 0deg 7000ms
+	CamPers 800 7000ms
+	CamZoom 18480 7000ms
+	FadeIn 1000ms 0x00000000
+	FadeWait
+	CamWait 121
+	CrossFade 500ms
+	CamSetDistance 0 1100 -3000 0ms
+	ED7CamRotate 51deg 25deg 0deg 0ms
+	CamPers 800 0ms
+	CamZoom 10200 0ms
+	FadeWait
+	Sleep 300ms
+	TextTalk name[3] {
+		#1510030091V#00306F#12P不過現在想想，
+		我們真是走了好漫長的路啊。{wait}
+	}
+	TextWait
+	TextTalk name[2] {
+		#1510020177V#00208F#6P是啊……
+		明明仍然待在
+		克洛斯貝爾這個小地方。{wait}
+	}
+	TextWait
+	TextTalk name[1] {
+		#1510010024V#00103F#11P……我猜不光是我們，
+		克洛斯貝爾……不，整個大陸
+		都開始有所行動了。{wait}
+	} {
+		#1510010025V#00108F說不定，我們正在見證
+		歷史的轉捩點……{wait}
+	} {
+		#1510010026V…………………………………{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#1510000416V#00003F#5P……艾莉。{wait}
+	} {
+		#1510000417V#00008F要跟瑪利亞貝爾小姐他們
+		針鋒相對，妳果然還是有抗拒感嗎？{wait}
+	}
+	TextWait
+	TextTalk name[1] {
+		#1510010027V#00106F#11P是啊……畢竟跟他們
+		都相處很久了。{wait}
+	} {
+		#1510010028V#00108F而且從政治觀點來看，
+		有一部分我也無法
+		徹底否定他們的行為……{wait}
+	}
+	TextWait
+	TextTalk name[2] {
+		#1510020178V#00208F#6P………………………………{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#1510000418V#00006F#5P……這樣啊……{wait}
+	}
+	TextWait
+	TextTalk name[3] {
+		#1510030092V#00306F#12P哎，就算不是鐵血宰相，
+		會做出更慘無人道事情的人，
+		可是跟山一樣多……{wait}
+	}
+	TextWait
+	TextTalk name[1] {
+		#1510010029V#00103F#11P──不過，有一點我可以確定。{wait}
+	} {
+		#1510010030V#00101F不管狀況再怎麼變化，
+		我們都是『特務支援課』。{wait}
+	} {
+		#1510010031V只有這點，
+		不管發生什麼事都不會動搖。{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#1510000419V#00005F#5P艾莉……{wait}
+	}
+	TextWait
+	TextTalk name[2] {
+		#1510020179V#00202F#6P……艾莉前輩……{wait}
+	}
+	TextWait
+	TextTalk name[3] {
+		#1510030093V#00309F#12P哈哈，怎麼啦，大小姐？{wait}
+	} {
+		#1510030094V#00302F警察對妳來說，
+		不是頂多就是個過渡嗎？{wait}
+	}
+	TextWait
+	TextTalk name[1] {
+		#1510010032V#00109F#11P呵呵，一開始是這樣沒錯。{wait}
+	} {
+		#1510010033V#00104F……不過太遲了。
+		我已經被徹底影響了。{wait}
+	} {
+		#1510010034V我想未來，不管
+		我選擇走上哪條路……{wait}
+	} {
+		#1510010035V#00102F跟你們度過的日子，
+		永遠都會是
+		我心中的原點。{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#1510000420V#00000F#5P……這樣啊。{wait}
+	}
+	TextWait
+	TextTalk name[2] {
+		#1510020180V#00204F#6P我也……有同樣的感覺。{wait}
+	}
+	TextWait
+	TextTalk name[3] {
+		#1510030095V#00304F#12P哈哈，這麼說起來，
+		課長也真是創了個
+		影響深遠的部門。{wait}
+	} {
+		#1510030096V#00305F不對，這最一開始
+		是羅伊德大哥的點子吧？{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#1510000421V#00012F#5P哈哈，大哥應該
+		怎麼也想像不到，
+		事情會變成這樣吧。{wait}
+	}
+	TextWait
+	Emote name[0] 0mm 2000mm 24 27 250ms 0
+	Sleep 1500ms
+	EmoteStop name[0]
+	TextTalk name[0] {
+		#1510000422V#00001F#5P……搶回琪雅，
+		解決這次的事件。{wait}
+	} {
+		#1510000423V那或許就象徵著我們
+		特務支援課必須完成的使命。{wait}
+	} {
+		#1510000424V#00004F不過，不用勉強
+		去思考這些理論。{wait}
+	} {
+		#1510000425V為了我們
+		重視的事物……{wait}
+	} {
+		#1510000426V#00000F現在只需要邁步向前。{wait}
+	}
+	TextWait
+	TextTalk name[1] {
+		#1510010036V#00102F#11P沒錯……！{wait}
+	}
+	TextWait
+	TextTalk name[2] {
+		#1510020181V#00204F#6P還得去找
+		失聯的課長呢。{wait}
+	}
+	TextWait
+	TextTalk name[3] {
+		#1510030097V#00309F#12P哈哈……是啊。{wait}
+	}
+	TextWait
+	CamZoom 9200 3000ms
+	FadeOut 1000ms 0x00000000 255
+	FadeWait
+	ED7_12 132 1000 70
+	ED7_12 497 1000 30
+	BgmStop 4000ms
+	BgmWait
+	SoundPlay sound[814] 0 100 0
+	TextSetPos -1 -1 -1 -1
+	TextSetName ""
+	TextMessage null {
+		{color 5}艾莉加入隊伍了。{color 0}{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	Sleep 500ms
+	SoundPlay sound[517] 0 100 0
+	PartyAddCraft name[1] magic[287]
+	TextSetPos -1 -1 -1 -1
+	TextMessage null {
+		{color 5}艾莉學會了Ｓ戰技
+		{color 2}『神聖十字波』{color 5}。{wait}
+	}
+	TextWait
+	TextSetPos -1 52 -1 -1
+	TextMessage null {
+		{color 5}要將{color 2}『神聖十字波』{color 5}登錄為Ｓ-Ｂｒｅａｋ嗎？{0x06}{0x18}{wait}
+	}
+	var[0] = 0
+	Menu menu[1] -1 208 0
+		"【是】" // 0
+		"【否】" // 1
+	MenuWait var[0]
+	TextClose 0
+	MenuClose menu[1]
+	if var[0] == 0:
+		PartySetPortrait name[1] 6 31 1 0 0
+	_59
+	TextSetName ""
+	TextMessage null {
+		{color 5}艾莉加入後，
+		隊伍人數便超過上限６人。{wait}
+	} {
+		請從以下成員中
+		重新選擇
+		要加入隊伍的成員。{color 0}{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	ED7_CC 0
+	ED7_CC 2
+	Sleep 500ms
+	TextSetName ""
+	TextMessage null {
+		{color 5}以後跟待在艦橋的
+		阿巴斯對話，
+		便可編組隊伍。{wait}
+	} {
+		另外，若要繼續劇情，
+		請選擇梅爾卡巴的移動地圖上，
+		位於東邊的『信號放大器地點』。{color 0}{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	TextSetPos -1 280 60 3
+	PartyClear
+	PartyAdd name[0] null 255
+	FlagSet flag[3361]
+	QuestTaskSet quest[175] 20
+	FlagSet flag[398]
+	FlagSet flag[399]
+	EventEnd 5
+	NewScene "scena/e3020.bin" 100 0 0
+	Hcf
+	Return

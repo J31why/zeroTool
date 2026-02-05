@@ -1,0 +1,1403 @@
+calmare zero_k scena
+scena:
+	name "c1050" "c1050" "c1050"
+	town town[1]
+	bgm bgm[150]
+	flags 8192
+	item_use fn[0,255]
+	unk 255 0
+
+entry:
+	pos (0, 0, -1000)
+	unk1 0
+	cam_from (0, 0, 24000)
+	cam_pers 500
+	unk2 30
+	cam_deg 45deg
+	cam_limit 0deg 360deg
+	cam_at (0, 0, 0)
+	unk3 0
+	unk4 0
+	flags 0x0001
+	town town[1]
+	init fn[0,2]
+	reinit fn[0,3]
+
+chip[0] "chr/ch20800.itc"
+chip[1] "chr/ch20900.itc"
+chip[2] "chr/ch20802.itc"
+chip[3] "chr/ch21202.itc"
+chip[4] "chr/ch21502.itc"
+chip[5] "chr/ch21200.itc"
+chip[6] "chr/ch21500.itc"
+
+npc char[0]:
+	name "摩爾斯老先生"
+	pos (570, 4020, 7690)
+	angle 135deg
+	flags 0x0105
+	unk2 0
+	chip chip[0]
+	init fn[0,1]
+	talk fn[0,4]
+	unk4 255
+
+npc char[1]:
+	name "帕拉夫人"
+	pos (380, 0, 9850)
+	angle 0deg
+	flags 0x0105
+	unk2 0
+	chip chip[1]
+	init fn[0,0]
+	talk fn[0,5]
+	unk4 255
+
+npc char[2]:
+	name "洛伊"
+	pos (890, 100, 6970)
+	angle 270deg
+	flags 0x0185
+	unk2 0
+	chip chip[3]
+	init fn[255,255]
+	talk fn[0,6]
+	unk4 255
+
+npc char[3]:
+	name "梅琳"
+	pos (-2150, 100, 7010)
+	angle 90deg
+	flags 0x0185
+	unk2 0
+	chip chip[4]
+	init fn[255,255]
+	talk fn[0,7]
+	unk4 255
+
+anim[0] 328ms
+
+sepith[0] 0 0 0 0 0 0 0 0
+
+fn[0]:
+	var[2] = random % 8
+	switch var[2]:
+		case 0:
+			ED7_A0 self 1450ms 0 251
+			break
+		case 1:
+			ED7_A0 self 1550ms 0 251
+			break
+		case 2:
+			ED7_A0 self 1600ms 0 251
+			break
+		case 3:
+			ED7_A0 self 1400ms 0 251
+			break
+		case 4:
+			ED7_A0 self 1650ms 0 251
+			break
+		case 5:
+			ED7_A0 self 1350ms 0 251
+			break
+		case 6:
+			ED7_A0 self 1500ms 0 251
+			break
+		default:
+			ED7_A0 self 1500ms 0 251
+			break
+	while 1:
+		ED7_A0 self 1500ms 0 251
+	Return
+
+fn[1]:
+	while 1:
+		CharIdle self (1410, null, 9460) (-780, null, 4870) 1000mm/s
+		Sleep 300ms
+	Return
+
+fn[2]:
+	if flag[3385]:
+	elif flag[3371]:
+		CharFlagsUnset char[2] 0x0080
+		CharSetChipBase char[2] chip[5]
+		ForkFunc char[2] fork[0] fn[0,0]
+		CharSetPos char[2] (1020, 0, 3500) 270deg
+		CharSetPos char[0] (-800, 0, 3500) 90deg
+		ForkFunc char[0] fork[0] fn[0,0]
+		if !flag[2]:
+			CharFlagsSet char[2] 0x0010
+		CharFlagsSet char[0] 0x0010
+		CharFlagsUnset char[3] 0x0080
+		CharSetChipBase char[3] chip[6]
+		ForkFunc char[3] fork[0] fn[0,0]
+		CharSetPos char[3] (1040, 4019, 7540) 0deg
+		CharSetPos char[1] (1040, 4019, 8540) 180deg
+		CharFlagsSet char[1] 0x0010
+	elif flag[3089]:
+	elif flag[3074]:
+		CharFlagsSet char[0] 0x0080
+	elif flag[2861]:
+	elif flag[2848]:
+	elif flag[2837]:
+		CharFlagsSet char[0] 0x0080
+	elif flag[2832]:
+		CharFlagsSet char[0] 0x0080
+	elif flag[2816]:
+	elif flag[2573]:
+	elif flag[2564]:
+	elif flag[2560]:
+	elif flag[2369]:
+		if QuestFlagsGet quest[107] 0x10:
+			CharSetChipBase char[2] chip[3]
+			CharSetChipPattern char[2] 0
+			ForkQuit char[2] fork[0]
+			CharFlags2Set char[2] 0x0004
+			CharFlagsUnset char[2] 0x0080
+			CharSetChipBase char[3] chip[4]
+			CharSetChipPattern char[3] 0
+			ForkQuit char[3] fork[0]
+			CharFlags2Set char[3] 0x0004
+			CharFlagsUnset char[3] 0x0080
+	elif flag[2353]:
+	Return
+
+fn[3]:
+	if flag[2848] && !flag[2858] | flag[2369] && system[4] == 1:
+		ED7_76_0 object[255] "hikari00_add" 1
+		ED7_76_0 object[255] "hikari01_add" 1
+		SoundPlay sound[128] 1 50 0
+	if !flag[3385] && flag[3370]:
+		MapColor 0x00E6D2D2 0ms
+		ED7_76_0 object[255] "hikari00_add" 1
+		ED7_76_0 object[255] "hikari01_add" 1
+	Return
+
+fn[4]:
+	TextStart self
+	if flag[3385]:
+		if !flag[0]:
+			TextTalk self {
+				雖然克洛斯貝爾
+				已經漸漸恢復往常的平靜，
+				但還有許多問題需要解決。{wait}
+			}
+			TextWait
+			TextTalk self {
+				因為與兩大國斷絕往來的關係，
+				不管哪間商店都沒辦法
+				準備足夠的商品。{wait}
+			}
+			TextWait
+			TextTalk self {
+				所以我們正一面努力和
+				麥克道爾議長取得聯絡，
+				一面努力思考對策。{wait}
+			}
+			TextWait
+			FlagSet flag[0]
+		else:
+			TextTalk self {
+				雖然克洛斯貝爾
+				已經漸漸恢復往常的平靜，
+				但還有許多問題需要解決。{wait}
+			}
+			TextWait
+			TextTalk self {
+				所以我們正一面努力和
+				麥克道爾議長取得聯絡，
+				一面努力思考對策。{wait}
+			}
+			TextWait
+	elif flag[3371]:
+		if !flag[0]:
+			TextTalk self {
+				嗯，我真擔心
+				攤商們的安危啊。{wait}
+			}
+			TextWait
+			TextTalk self {
+				因為就算下達戒嚴令，還是有人
+				無論如何都想繼續營業，
+				所以我勉強答應了他們，可是……{wait}
+			}
+			TextWait
+			TextTalk self {
+				如果他們有什麼萬一，
+				那可都是我的責任。{wait}
+			}
+			TextWait
+			FlagSet flag[0]
+		else:
+			TextTalk self {
+				嗯，我真擔心
+				攤商們的安危啊。{wait}
+			}
+			TextWait
+			TextTalk self {
+				如果他們有什麼萬一，
+				那都是在戒嚴令下允許他們營業的
+				我的責任。{wait}
+			}
+			TextWait
+	elif flag[3089]:
+		if !flag[0]:
+			TextTalk self {
+				之前迪塔先生那次演說……
+				麥克道爾議長完全
+				沒有露面，這點挺讓人在意的。{wait}
+			}
+			TextWait
+			TextTalk self {
+				艾莉，
+				妳知道什麼內情嗎？{wait}
+			}
+			TextWait
+			TextTalk name[1] {
+				#00103F……我也不知道。
+				其實我也蠻在意這個的……{wait}
+			}
+			TextWait
+			TextTalk self {
+				嗯，這樣啊……
+				妳一定也很擔心吧。{wait}
+			}
+			TextWait
+			TextTalk self {
+				無論如何，
+				既然狀況已經變成這樣，
+				那我們勢必會和兩大國間形成對立。{wait}
+			}
+			TextWait
+			TextTalk self {
+				為了預防萬一，我得透過
+				工商會呼籲大家做好準備才行……{wait}
+			}
+			TextWait
+			FlagSet flag[0]
+		else:
+			TextTalk self {
+				既然事已至此，那我們
+				勢必會和兩大國間形成對立。{wait}
+			}
+			TextWait
+			TextTalk self {
+				為了預防萬一，我得透過
+				工商會呼籲大家做好準備才行……{wait}
+			}
+			TextWait
+	elif flag[3074]:
+	elif flag[2861]:
+		if !flag[0]:
+			TextTalk self {
+				嗯，真沒想到竟然會在
+				這公民投票即將舉行的時期
+				發生這樣的事件……{wait}
+			}
+			TextWait
+			TextTalk self {
+				萬一沒弄好的話，
+				這可能會成為帝國和共和國
+				趁機介入的最好藉口。{wait}
+			}
+			TextWait
+			TextTalk self {
+				無論如何我們都得
+				盡早解決這個問題才行。{wait}
+			}
+			TextWait
+			FlagSet flag[0]
+		else:
+			TextTalk self {
+				我們原本就已經
+				在治安方面被帝國和
+				共和國看出弱點了。{wait}
+			}
+			TextWait
+			TextTalk self {
+				無論如何我們都得
+				盡早解決這個問題才行。{wait}
+			}
+			TextWait
+	elif flag[2848]:
+		if !flag[0]:
+			TextTalk self {
+				聽說昨天的列車事故
+				其實是由身分不詳的怪物
+				所引起的……{wait}
+			}
+			TextWait
+			TextTalk self {
+				嗯，那該不會跟
+				最近常有人目擊的
+				神秘怪物是同一種吧？{wait}
+			}
+			TextWait
+			TextTalk self {
+				不過最近各種狀況頻傳，
+				你們也要提高警覺才行。{wait}
+			}
+			TextWait
+			FlagSet flag[0]
+		else:
+			TextTalk self {
+				雖然不知道引發列車事故的怪物
+				和最近常有人目擊的
+				神秘怪物是不是同一種……{wait}
+			}
+			TextWait
+			TextTalk self {
+				不過最近各種狀況頻傳，
+				你們也要提高警覺才行。{wait}
+			}
+			TextWait
+	elif flag[2837]:
+	elif flag[2832]:
+	elif flag[2816]:
+		if !flag[0]:
+			TextTalk self {
+				克洛斯貝爾自治州的獨立……
+				迪塔市長這宣言
+				還真是大膽啊。{wait}
+			}
+			TextWait
+			TextTalk self {
+				不過，在這對國內外影響力
+				都達到前所未有的巔峰的現在，
+				說不定正是最好的時機啊。{wait}
+			}
+			TextWait
+			TextTalk self {
+				克洛斯貝爾的尊嚴已經因為長年
+				遭到兩大國支配而逐漸喪失……{wait}
+			}
+			TextWait
+			TextTalk self {
+				雖然可能遭遇各種阻礙，
+				不過我們還是希望能透過
+				實現獨立的結果來重拾這份尊嚴。{wait}
+			}
+			TextWait
+			FlagSet flag[0]
+		else:
+			TextTalk self {
+				……對了，為了呼應
+				推動獨立的市長最近逐漸拉抬的聲勢，
+				我們正計畫舉行某項活動。{wait}
+			}
+			TextWait
+			TextTalk self {
+				這是跟克洛斯貝爾通訊社共同
+				舉辦的企劃，應該能為市民帶來活力，
+				各位就好好期待吧。{wait}
+			}
+			TextWait
+	elif flag[2573]:
+		if !flag[0]:
+			TextTalk self {
+				通商會議終於要開始了。{wait}
+			}
+			TextWait
+			TextTalk self {
+				我們小市民
+				也只能等克洛斯貝爾
+				時報周刊發佈結果了。{wait}
+			}
+			TextWait
+			TextTalk self {
+				好……這次會議
+				到底會有什麼樣的結果呢？{wait}
+			}
+			TextWait
+			FlagSet flag[0]
+		else:
+			TextTalk self {
+				如果可以的話，我真想
+				親眼目睹會議進行的樣子。{wait}
+			}
+			TextWait
+			TextTalk self {
+				好……這次會議
+				到底會有什麼樣的結果呢？{wait}
+			}
+			TextWait
+	elif flag[2564]:
+		TextTalk self {
+			看來我孫子洛伊
+			似乎開始對攤商的工作
+			產生興趣了。{wait}
+		}
+		TextWait
+		TextTalk self {
+			……其實我原本也是個攤商，
+			嗯，這也算是遺傳吧。{wait}
+		}
+		TextWait
+	elif flag[2560]:
+		if flag[3627] && !QuestFlagsGet quest[115] 0x10 && !QuestFlagsGet quest[115] 0x40:
+			if !flag[3664]:
+				Call fn[0,9]
+			elif flag[3664]:
+				TextTalk char[0] {
+					嗯，真沒想到黑月
+					長老的孫子竟然會
+					跑到我們這裡來。{wait}
+				}
+				TextWait
+				TextTalk char[0] {
+					無論如何，
+					如果他能喜歡上這個城市，
+					我也會覺得很開心的。{wait}
+				}
+				TextWait
+		else:
+			TextTalk self {
+				通商會議室由各國代表
+				就經濟關係的議題
+				進行各種協議。{wait}
+			}
+			TextWait
+			TextTalk self {
+				我們工商會也非常注意
+				這會議的動向。{wait}
+			}
+			TextWait
+	elif flag[2369]:
+		if QuestFlagsGet quest[107] 0x02 && flag[2451]:
+			if !QuestFlagsGet quest[107] 0x10:
+				if !flag[2452]:
+					if !flag[0]:
+						TextTalk self {
+							哎呀？這不是羅伊德嗎？
+							發生什麼事啦？{wait}
+						}
+						TextWait
+						TextTalk name[0] {
+							#00000F呃……
+							請問梅琳
+							在家嗎？{wait}
+						}
+						TextWait
+						TextTalk self {
+							嗯，我記得她剛剛
+							應該有回來……
+							這下又跑到哪裡去啦？{wait}
+						}
+						TextWait
+						TextTalk self {
+							不好意思，你可以
+							去問問奶奶嗎？{wait}
+						}
+						TextWait
+						FlagSet flag[0]
+					else:
+						TextTalk self {
+							因為我一直在工作，
+							所以沒注意到
+							孫子跑出去了。{wait}
+						}
+						TextWait
+						TextTalk self {
+							關於孫子的去處，你可以
+							去問問奶奶嗎？{wait}
+						}
+						TextWait
+				else:
+					TextTalk self {
+						好了，我得繼續處理
+						工商會的工作了……{wait}
+					}
+					TextWait
+			else:
+				TextTalk self {
+					雖然我很想
+					好好唸洛伊
+					那傢伙幾句……{wait}
+				}
+				TextWait
+				TextTalk self {
+					不過有梅琳在場
+					實在不太方便。{wait}
+				}
+				TextWait
+				TextTalk self {
+					今天就先放他一馬吧。{wait}
+				}
+				TextWait
+			TextEnd self
+			Return
+		if !flag[0]:
+			TextTalk self {
+				原本在教團事件之前
+				舉辦的克洛斯貝爾預算會議，
+				現在決定要重新進行一次。{wait}
+			}
+			TextWait
+			TextTalk self {
+				這次似乎會在新市長跟新議長
+				主導下，重新將預算編列成
+				不受特權影響的方案。{wait}
+			}
+			TextWait
+			TextTalk self {
+				嗯，這也表示
+				市政終於要開始朝
+				好的方向前進了。{wait}
+			}
+			TextWait
+			FlagSet flag[0]
+		else:
+			TextTalk self {
+				市政終於要開始朝
+				好的方向前進了。{wait}
+			}
+			TextWait
+			TextTalk self {
+				這都是托了
+				新市長跟新議長的福啊。{wait}
+			}
+			TextWait
+	elif flag[2353]:
+		if !flag[2425]:
+			TextTalk self {
+				哎呀……這不是羅伊德和
+				麥克道爾議長家的大小姐嗎？{wait}
+			}
+			TextWait
+			TextTalk self {
+				好久不見啦，
+				看到你這麼有精神，真是太好了。{wait}
+			}
+			TextWait
+			TextTalk name[0] {
+				#00000F你好，摩爾斯會長。{wait}
+			}
+			TextWait
+			TextTalk name[1] {
+				#00100F別來無恙。{wait}
+			}
+			TextWait
+			TextTalk name[4] {
+				#10300F我記得他是管理東側大道商人的
+				工商會會長對吧。{wait}
+			}
+			TextWait
+			TextTalk name[8] {
+				#10105F哦，就是他嗎……
+				（我記得媽媽還是攤商時
+				　好像也受過他照顧。）{wait}
+			}
+			TextWait
+			TextTalk self {
+				嗯，看來你們也有加入新血，
+				特務支援課也終於要
+				重新出發了是吧。{wait}
+			}
+			TextWait
+			TextTalk self {
+				我們這些市民
+				也很期待你們的表現，
+				好好努力吧。{wait}
+			}
+			TextWait
+			FlagSet flag[2425]
+		else:
+			TextTalk self {
+				我們也很期待
+				你們將來的表現喔。{wait}
+			}
+			TextWait
+			TextTalk self {
+				如果有什麼事情需要幫忙，
+				隨時都可以來找我。{wait}
+			}
+			TextWait
+	TextEnd self
+	Return
+
+fn[5]:
+	if QuestFlagsGet quest[107] 0x02 && !QuestFlagsGet quest[107] 0x10 && !QuestFlagsGet quest[107] 0x40 && flag[2451] && !flag[2452]:
+		Call fn[0,8]
+		Return
+	TextStart self
+	if flag[3385]:
+		if !flag[1]:
+			TextTalk self {
+				經歷過總統的拘捕事件以後，
+				將來到底該怎麼辦……{wait}
+			}
+			TextWait
+			TextTalk self {
+				這對居住在克洛斯貝爾的人來說，
+				應該就是最重要的事了吧。{wait}
+			}
+			TextWait
+			TextTalk self {
+				只要大家能集思廣益，一定能讓
+				未來走向更好的方向。{wait}
+			}
+			TextWait
+			FlagSet flag[1]
+		else:
+			TextTalk self {
+				將來到底該怎麼辦……
+				這對居住在克洛斯貝爾的人來說，
+				應該就是最重要的事了吧。{wait}
+			}
+			TextWait
+			TextTalk self {
+				只要大家能集思廣益，一定能讓
+				未來走向更好的方向。{wait}
+			}
+			TextWait
+	elif flag[3371]:
+		TextTalk self {
+			因為有洛伊和爺爺
+			守在外面，可怕的東西都不會
+			過來這邊的。{wait}
+		}
+		TextWait
+		TextTalk self {
+			所以梅琳
+			妳不用擔心啦。{wait}
+		}
+		TextWait
+	elif flag[3089]:
+		if !flag[1]:
+			TextTalk self {
+				迪塔先生的獨立宣言……
+				我覺得那似乎還有點太早了……{wait}
+			}
+			TextWait
+			TextTalk self {
+				雖然我知道
+				這世上的事物都會
+				不斷改變，可是……{wait}
+			}
+			TextWait
+			TextTalk self {
+				不……克洛斯貝爾
+				說不定已經到了不改變
+				就無法生存的狀態了……{wait}
+			}
+			TextWait
+			FlagSet flag[1]
+		else:
+			TextTalk self {
+				快速變遷的事物
+				對我們老人家來說
+				是相當可怕的。{wait}
+			}
+			TextWait
+			TextTalk self {
+				克洛斯貝爾
+				說不定已經走到無法回頭的
+				處境中了……{wait}
+			}
+			TextWait
+	elif flag[3074]:
+		TextTalk self {
+			如果要找爺爺的話，
+			他去市民會館處理工商會的事了。{wait}
+		}
+		TextWait
+		TextTalk self {
+			雖然這次的慈善活動
+			洛伊好像也會幫忙，不過……
+			到底會變成怎樣呢？{wait}
+		}
+		TextWait
+	elif flag[2861]:
+		TextTalk self {
+			現在我們能做的事，大概也只剩
+			向女神祈禱了吧。{wait}
+		}
+		TextWait
+		TextTalk self {
+			希望我們克洛斯貝爾
+			不要再多流無謂的鮮血了……{wait}
+		}
+		TextWait
+	elif flag[2848]:
+		TextTalk self {
+			最近真的隨時
+			都有可能發生狀況……{wait}
+		}
+		TextWait
+		TextTalk self {
+			我也得提醒
+			洛伊和梅琳出門的時候
+			一定要小心一點才行。{wait}
+		}
+		TextWait
+	elif flag[2837]:
+		TextTalk self {
+			好了……
+			爺爺和梅琳也差不多
+			該回來了。{wait}
+		}
+		TextWait
+		TextTalk self {
+			我就先準備好
+			紅茶和點心等他們吧。{wait}
+		}
+		TextWait
+	elif flag[2832]:
+		TextTalk self {
+			爺爺他現在
+			應該在前面的路上
+			陪梅琳玩吧。{wait}
+		}
+		TextWait
+		TextTalk self {
+			呵呵，爺爺也真是的，
+			竟然因為難得能在假日陪孫子玩
+			而高興得不得了呢。{wait}
+		}
+		TextWait
+	elif flag[2816]:
+		TextTalk self {
+			舉行公民投票的時候，
+			應該也會需要工商會幫忙吧。{wait}
+		}
+		TextWait
+		TextTalk self {
+			事情到底會變成怎樣呢……
+			我實在一點也猜不透啊。{wait}
+		}
+		TextWait
+	elif flag[2573]:
+		TextTalk self {
+			爺爺身為工商會長，
+			似乎有很多想法的樣子……{wait}
+		}
+		TextWait
+		TextTalk self {
+			不過他畢竟年紀也大了，
+			可得提醒他不能
+			太逞強啊。{wait}
+		}
+		TextWait
+	elif flag[2564]:
+		if !flag[1]:
+			TextTalk self {
+				以前爺爺似乎也對
+				洛伊有氣無力的生活態度
+				感到非常煩惱，不過……{wait}
+			}
+			TextWait
+			TextTalk self {
+				如果洛伊能發憤圖強，
+				並進入工商會的話……{wait}
+			}
+			TextWait
+			TextTalk self {
+				我想爺爺他一定會
+				非常高興吧。{wait}
+			}
+			TextWait
+			FlagSet flag[1]
+		else:
+			TextTalk self {
+				如果洛伊能發憤圖強，
+				並進入工商會的話……{wait}
+			}
+			TextWait
+			TextTalk self {
+				我想爺爺他一定會
+				非常高興吧。{wait}
+			}
+			TextWait
+	elif flag[2560]:
+		if flag[3627] && !QuestFlagsGet quest[115] 0x10 && !QuestFlagsGet quest[115] 0x40:
+			if !flag[3810]:
+				TextTalk char[1] {
+					哎呀呀，是你們啊。
+					今天還帶了一個這麼
+					可愛的小朋友啊。{wait}
+				}
+				TextWait
+				TextTalk name[161] {
+					嗯，夫人，
+					抱歉打擾了。{wait}
+				}
+				TextWait
+				CharTurnToChar char[1] name[161] 500deg/s
+				Sleep 300ms
+				TextTalk char[1] {
+					呵呵，不用客氣。
+					你還真是有禮貌啊。{wait}
+				}
+				TextWait
+				TextTalk char[1] {
+					若不嫌棄的話，要不要喝杯紅茶？{wait}
+				}
+				TextWait
+				TextTalk name[161] {
+					啊，
+					我們不會打擾太久，
+					您不用麻煩了。{wait}
+				}
+				TextWait
+				TextTalk name[1] {
+					#00100F（呵呵，社交技巧很純熟呢。）{wait}
+				}
+				TextWait
+				TextTalk name[0] {
+					#00006F（該怎麼說呢……）{wait}
+				}
+				TextWait
+				if flag[3622]:
+					TextTalk name[3] {
+						#00300F（嗯，完全無懈可擊啊。）{wait}
+					}
+					TextWait
+				elif flag[3623]:
+					TextTalk name[8] {
+						#10100F（嗯，完全無懈可擊呢。）{wait}
+					}
+					TextWait
+				elif flag[3624]:
+					TextTalk name[4] {
+						#10300F（嗯，完全無懈可擊啊。）{wait}
+					}
+					TextWait
+				FlagSet flag[3810]
+			else:
+				TextTalk char[1] {
+					呵呵，你真是個
+					有禮貌的好孩子呢。{wait}
+				}
+				TextWait
+				TextTalk char[1] {
+					真希望洛伊也能跟你學學。{wait}
+				}
+				TextWait
+		elif !flag[1]:
+			TextTalk self {
+				即使是對政治很有主見的爺爺，
+				似乎也對迪塔市長的能力
+				非常肯定。{wait}
+			}
+			TextWait
+			TextTalk self {
+				再怎麼說他也是世界知名企業
+				ＩＢＣ的經營首腦嘛。{wait}
+			}
+			TextWait
+			TextTalk self {
+				他在通商會議中
+				一定能有一番作為吧。{wait}
+			}
+			TextWait
+			FlagSet flag[1]
+		else:
+			TextTalk self {
+				爺爺似乎也對新任市長的
+				能力非常肯定。{wait}
+			}
+			TextWait
+			TextTalk self {
+				他在通商會議中
+				一定能有一番作為吧。{wait}
+			}
+			TextWait
+	elif flag[2369]:
+		if QuestFlagsGet quest[107] 0x02 && flag[2451]:
+			if !QuestFlagsGet quest[107] 0x10:
+				if flag[2452]:
+					if !flag[1]:
+						TextTalk self {
+							現在明明下雨，
+							但洛伊和梅琳卻還是出門散步了。{wait}
+						}
+						TextWait
+						TextTalk self {
+							我想他們應該
+							還沒有走太遠，你們就到
+							附近的街區找找看吧。{wait}
+						}
+						TextWait
+						TextTalk char[1] {
+							只要看洛伊的綠色雨傘和
+							梅琳的粉紅雨傘
+							應該就不難找到。{wait}
+						}
+						TextWait
+						FlagSet flag[1]
+					else:
+						TextTalk self {
+							洛伊和梅琳應該
+							還沒有走太遠，你們就到
+							附近的街區找找看吧。{wait}
+						}
+						TextWait
+						TextTalk char[1] {
+							只要看洛伊的綠色雨傘和
+							梅琳的粉紅雨傘
+							應該就不難找到。{wait}
+						}
+						TextWait
+			else:
+				TextTalk self {
+					反正兩個孫子
+					都回來了……{wait}
+				}
+				TextWait
+				TextTalk self {
+					我就來幫他們泡個
+					熱檸檬水吧。{wait}
+				}
+				TextWait
+			TextEnd self
+			Return
+		TextTalk self {
+			嗯，雨下得雖然不大，
+			但卻沒有要停的意思呢。{wait}
+		}
+		TextWait
+		TextTalk self {
+			洛伊他們到底跑到
+			哪裡去買東西啦。{wait}
+		}
+		TextWait
+	elif flag[2353]:
+		if !flag[2426]:
+			TextTalk self {
+				哎呀哎呀，是你們啊……！{wait}
+			}
+			TextWait
+			TextTalk name[0] {
+				#00002F老婆婆，好久不見了。{wait}
+			}
+			TextWait
+			TextTalk self {
+				嗯，彼此彼此，
+				你們看來都很好呢。{wait}
+			}
+			TextWait
+			TextTalk self {
+				跟爺爺
+				見過面了沒啊？{wait}
+			}
+			TextWait
+			TextTalk self {
+				他現在人在上面，
+				如果方便的話就跟他
+				打聲招呼吧。{wait}
+			}
+			TextWait
+			FlagSet flag[2426]
+		else:
+			TextTalk self {
+				跟爺爺
+				見過面了沒啊？{wait}
+			}
+			TextWait
+			TextTalk self {
+				他現在人在上面，
+				如果方便的話就跟他
+				打聲招呼吧。{wait}
+			}
+			TextWait
+	TextEnd self
+	Return
+
+fn[6]:
+	TextStart self
+	if flag[3371]:
+		if !flag[2]:
+			TextTalk self {
+				#15700F別擔心啦，爺爺，
+				庫隆克他們
+				一定不會有問題的。{wait}
+			} {
+				#15703F我們現在連跟市民會館
+				打聽消息都沒辦法，
+				所以只能安分的待在家裡了。{wait}
+			}
+			TextWait
+			CharFlagsUnset char[2] 0x0010
+			FlagSet flag[2]
+		else:
+			TextTalk self {
+				#15700F庫隆克他們
+				一定不會有問題的。{wait}
+			} {
+				#15703F我們現在連跟市民會館
+				打聽消息都沒辦法，
+				所以只能安分的待在家裡了。{wait}
+			}
+			TextWait
+	else:
+		TextTalk self {
+			#15700F嗨，看來你們平安
+			把傘送到了嘛。{wait}
+		} {
+			#15706F以後我也得
+			振作一點才行啊……{wait}
+		}
+		TextWait
+	TextEnd self
+	Return
+
+fn[7]:
+	TextStart self
+	if flag[3371]:
+		TextTalk self {
+			#15808F哥哥和爺爺叫我
+			好好待在這裡。{wait}
+		} {
+			#15810F我感覺好害怕……{wait}
+		}
+		TextWait
+	else:
+		TextTalk self {
+			#15803F嚼嚼嚼……{wait}
+		} {
+			#15809F哥哥，麵包好好吃喔～！{wait}
+		}
+		TextWait
+	TextEnd self
+	Return
+
+fn[8]:
+	EventBegin 0
+	CrossFade 500ms
+	CamSetDistance -610 1000 9780 0ms
+	ED7CamRotate 45deg 21deg 0deg 0ms
+	CamPers 440 0ms
+	CamZoom 21000 0ms
+	CharSetPos name[0] (-1400, 20, 9580) 90deg
+	CharSetPos name[1] (-2470, 0, 10160) 90deg
+	CharSetPos name[8] (-2700, 30, 8760) 90deg
+	CharSetPos name[4] (-3840, 30, 9080) 90deg
+	_Char4A char[1] 255
+	FadeWait
+	TextTalk name[0] {
+		#6P#00000F呃，您好。{wait}
+	}
+	TextWait
+	CharTurnToChar char[1] name[0] 500deg/s
+	TextTalk char[1] {
+		哎呀呀，你們好。
+		竟然特地在雨天過來，有什麼事情嗎？{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#6P#00003F嗯，其實
+		我有點事情想請教一下。{wait}
+	} {
+		#00000F妳看過這個嗎？{wait}
+	}
+	TextWait
+	TextSetName ""
+	TextMessage null {
+		{color 5}羅伊德把梅琳的雨傘
+		拿給夫人看。{color 0}{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	TextTalk char[1] {
+		啊呀，這個……
+		不是梅琳的雨傘嗎？{wait}
+	}
+	TextWait
+	TextTalk char[1] {
+		你們專程送過來啊？{wait}
+	}
+	TextWait
+	Emote char[1] 0mm 2000mm 0 1 250ms 2
+	SoundPlay sound[29] 0 100 0
+	Sleep 1000ms
+	TextTalk char[1] {
+		咦？可是……{wait}
+	}
+	TextWait
+	TextTalk char[1] {
+		我記得她從
+		麵包店回來的時候，
+		應該有帶傘吧。{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#6P#00003F呃，其實……{wait}
+	}
+	TextWait
+	TextSetName ""
+	TextMessage null {
+		{color 5}羅伊德
+		向她說明他們在找
+		小桃的傘的事情。{color 0}{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	TextTalk char[1] {
+		哎呀哎呀，原來是
+		這麼一回事呀。{wait}
+	}
+	TextWait
+	TextTalk char[1] {
+		那我們還真是對不起
+		那位叫小桃的女孩啊。{wait}
+	}
+	TextWait
+	TextTalk name[4] {
+		#6P#10305F那麼，夫人，
+		請問您的孫女現在在哪裡？{wait}
+	} {
+		#10300F看起來現在
+		好像不在這邊呢。{wait}
+	}
+	TextWait
+	TextTalk char[1] {
+		嗯，她剛剛好像跟洛伊
+		一起撐著傘去散步了。{wait}
+	}
+	TextWait
+	TextTalk char[1] {
+		……對不起喔，
+		我剛剛沒有問
+		他們要去哪裡。{wait}
+	}
+	TextWait
+	TextTalk name[8] {
+		#6P#10103F嗯，看樣子我們好像
+		跟她擦身而過了。{wait}
+	}
+	TextWait
+	TextTalk name[1] {
+		#6P#00100F不過現在外面還在下雨，
+		我想他們應該不會走太遠。{wait}
+	} {
+		#00104F應該會在東側大道旁邊的
+		中央廣場、港灣區還有舊市街……
+		就這幾個地方了吧。{wait}
+	}
+	TextWait
+	TextTalk char[1] {
+		嗯，我想他們應該就在那附近。{wait}
+	}
+	TextWait
+	TextTalk char[1] {
+		只要看洛伊的綠色雨傘和
+		梅琳的粉紅雨傘
+		應該就不難找到。{wait}
+	}
+	TextWait
+	TextTalk name[8] {
+		#6P#10100F綠色雨傘和粉紅雨傘啊……
+		那應該是很好認才對。{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#6P#00000F嗯，那我們就去找他們吧。{wait}
+	} {
+		#00004F非常感謝您的協助，我們就先告辭了。{wait}
+	}
+	TextWait
+	TextTalk char[1] {
+		不會不會。
+		隨時都歡迎你們來玩。{wait}
+	}
+	TextWait
+	_59
+	CharSetPos field_party[0] (-3270, 20, 8130) 225deg
+	CharTurnTo char[1] 0deg 0deg/s
+	_Char4B char[1] 255
+	FlagSet flag[2452]
+	QuestTaskSet quest[107] 1
+	EventEnd 5
+	Return
+
+fn[9]:
+	EventBegin 0
+	CrossFade 500ms
+	CamSetDistance 630 5020 6780 0ms
+	ED7CamRotate 44deg 20deg 0deg 0ms
+	CamPers 440 0ms
+	CamZoom 18950 0ms
+	CharSetPos char[0] (390, 4019, 5600) 0deg
+	CharSetPos name[161] (-600, 4000, 8580) 180deg
+	CharSetPos name[0] (390, 4019, 6840) 180deg
+	CharSetPos name[1] (390, 4019, 8320) 180deg
+	if flag[3622]:
+		CharSetPos name[3] (1590, 4019, 8580) 180deg
+	elif flag[3623]:
+		CharSetPos name[8] (1590, 4019, 8580) 180deg
+	elif flag[3624]:
+		CharSetPos name[4] (1590, 4019, 8580) 180deg
+	_Char4A char[0] 255
+	FadeWait
+	TextTalk char[0] {
+		#12P嗯，這不是羅伊德嗎？{wait}
+	}
+	TextWait
+	Emote char[0] 0mm 2000mm 38 38 250ms 1
+	Sleep 1000ms
+	ForkLoop char[0] fork[1]:
+		CharTurnToChar self name[161] 500deg/s
+	Sleep 300ms
+	TextTalk char[0] {
+		#12P那邊那個小朋友……
+		穿著東方風格的服裝，
+		似乎沒在這附近看過啊。{wait}
+	}
+	TextWait
+	_94 0 name[161] 0deg 2000 2000mm/s 0
+	CharTurnToChar name[161] char[0] 500deg/s
+	Sleep 300ms
+	ForkQuit char[0] fork[1]
+	TextTalk name[161] {
+		#6P原來如此，您就是
+		克洛斯貝爾工商會的會長吧。{wait}
+	}
+	TextWait
+	TextTalk name[161] {
+		#6P我叫做星，
+		是背負《黑月》未來的男子漢。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#12P嗯，說到《黑月》，
+		不就是最近也開始出現在
+		克洛斯貝爾的東方人街組織……{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#12P你剛剛說要背負未來，
+		該不會跟長老會有什麼關係吧？{wait}
+	}
+	TextWait
+	TextTalk name[161] {
+		#6P嗯，簡單來說，
+		我的爺爺正是長老。{wait}
+	}
+	TextWait
+	TextTalk name[161] {
+		#6P摩爾斯先生您該不會
+		跟長老們認識吧？{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#12P啊，我只是因為生意的關係
+		跟他們稍微有一點交流，
+		並沒有跟他們直接打過照面。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#12P嗯，不過還
+		真不愧是長老的孫子，
+		看起來相當聰慧呢。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#12P不過你又為什麼會
+		跟羅伊德他們在一起啊？{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#00009F呃，其實這中間
+		發生了不少事啦。{wait}
+	}
+	TextWait
+	TextTalk name[161] {
+		#6P呵呵，因為這幾個人
+		無論如何都想為我
+		介紹市區的狀況。{wait}
+	}
+	TextWait
+	TextTalk name[161] {
+		#6P所以我只好勉為其難的
+		陪他們走一趟啊。{wait}
+	}
+	TextWait
+	if flag[3622]:
+		Emote name[0] 0mm 2000mm 16 19 250ms 1
+		SoundPlay sound[23] 0 100 0
+		Emote name[1] 0mm 2000mm 16 19 250ms 1
+		SoundPlay sound[23] 0 100 0
+		Emote name[3] 0mm 2000mm 16 19 250ms 1
+		SoundPlay sound[23] 0 100 0
+		Sleep 1000ms
+		Fork name[0] fork[1]:
+			CharTurnToChar self name[161] 500deg/s
+		Sleep 50ms
+		Fork name[1] fork[1]:
+			CharTurnToChar self name[161] 500deg/s
+		Sleep 50ms
+		Fork name[3] fork[1]:
+			CharTurnToChar self name[161] 500deg/s
+		Sleep 300ms
+		TextTalk name[3] {
+			#11P#00306F喂喂喂……{wait}
+		}
+		TextWait
+	elif flag[3623]:
+		Emote name[0] 0mm 2000mm 16 19 250ms 1
+		SoundPlay sound[23] 0 100 0
+		Emote name[1] 0mm 2000mm 16 19 250ms 1
+		SoundPlay sound[23] 0 100 0
+		Emote name[8] 0mm 2000mm 16 19 250ms 1
+		SoundPlay sound[23] 0 100 0
+		Sleep 1000ms
+		Fork name[0] fork[1]:
+			CharTurnToChar self name[161] 500deg/s
+		Sleep 50ms
+		Fork name[1] fork[1]:
+			CharTurnToChar self name[161] 500deg/s
+		Sleep 50ms
+		Fork name[8] fork[1]:
+			CharTurnToChar self name[161] 500deg/s
+		Sleep 300ms
+		TextTalk name[8] {
+			#11P#10106F呃……{wait}
+		}
+		TextWait
+	elif flag[3624]:
+		Emote name[0] 0mm 2000mm 16 19 250ms 1
+		SoundPlay sound[23] 0 100 0
+		Emote name[1] 0mm 2000mm 16 19 250ms 1
+		SoundPlay sound[23] 0 100 0
+		Emote name[4] 0mm 2000mm 16 19 250ms 1
+		SoundPlay sound[23] 0 100 0
+		Sleep 1000ms
+		Fork name[0] fork[1]:
+			CharTurnToChar self name[161] 500deg/s
+		Sleep 50ms
+		Fork name[1] fork[1]:
+			CharTurnToChar self name[161] 500deg/s
+		Sleep 50ms
+		Fork name[4] fork[1]:
+			CharTurnToChar self name[161] 500deg/s
+		Sleep 300ms
+		TextTalk name[4] {
+			#11P#10306F呵，還真傷腦筋啊。{wait}
+		}
+		TextWait
+	TextTalk char[0] {
+		#12P哈哈，雖然不清楚發生什麼狀況，
+		不過你們感情好像不錯嘛。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#12P你叫星沒錯吧？
+		希望你會喜歡
+		克洛斯貝爾這個城市。{wait}
+	}
+	TextWait
+	TextTalk name[161] {
+		#6P嗯，我也是這麼認為。
+		那麼請恕我先告辭了。{wait}
+	}
+	TextWait
+	FadeOut 1000ms 0x00000000 255
+	FadeWait
+	CharSetPos field_party[0] (390, 4019, 8320) 0deg
+	_Char4B char[0] 255
+	FlagSet flag[3664]
+	QuestTaskSet quest[115] 7
+	EventEnd 5
+	Return

@@ -1,0 +1,512 @@
+//ao
+//as66400
+
+Header:
+	Unk1 = "00-00-50-64-96-00-50-64-96-00-53-64-96-00-FF-FF-FF-FF-00"
+	fn[0] = loc:31A
+	fn[1] = loc:31B
+	fn[2] = loc:359
+	fn[3] = loc:67
+	fn[4] = loc:7C
+	fn[5] = loc:3DB
+	fn[6] = loc:A5
+	fn[7] = loc:119
+	fn[8] = loc:FFFF
+	fn[9] = loc:FFFF
+	fn[10] = loc:FFFF
+	fn[11] = loc:156
+	fn[12] = loc:161
+	fn[13] = loc:75
+	fn[14] = loc:FFFF
+	fn[15] = loc:61C
+	fn[16] = loc:4F6
+	fn[17] = loc:397
+	fn[18] = loc:FFFF
+	fn[19] = loc:FFFF
+	fn[20] = loc:FFFF
+	fn[21] = loc:FFFF
+	fn[22] = loc:FFFF
+	fn[23] = loc:FFFF
+	fn[24] = loc:FFFF
+	fn[25] = loc:FFFF
+	fn[26] = loc:FFFF
+	fn[27] = loc:FFFF
+	fn[28] = loc:FFFF
+	fn[29] = loc:FFFF
+	fn[30] = loc:FFFF
+	fn[31] = loc:0
+	Unk2 = "80-B0-80-B0-80-B0-80-B0-80-B0-80-B0-80-B0-80-B0"
+
+Func:
+loc:67:
+	SelectChip(FF, 2)
+	SubChip(FF, 0)
+	Sleep(28)
+	Update
+	Call(loc:22F)
+	Return
+loc:75:
+	SelectChip(FF, 2)
+	SubChip(FF, 0)
+	Return
+loc:7C:
+	SetChipModeFlag(0, FF, 8)
+	ShowEff(FF, F9, 2E, 0, 0, 0, 0, 0, 0, 0, 3E8, 3E8, 3E8, FF)
+	Die
+	Sleep(1F4)
+	Update
+	Return
+loc:A5:
+	Rand(8, 1, 0, loc:D8)
+	ShowEff(FF, FF, 80, 0, 0, 32, 0, 0, 0, 0, 3E8, 3E8, 3E8, 0)
+	OP_C(FF, FB, 0, 1F4, 0)
+	SeEx(1FD, 0)
+loc:D8:
+	OP_54(1)
+	SelectChip(FF, 0)
+loc:DD:
+	SubChip(FF, 0)
+	Sleep(E1)
+	Update
+	SubChip(FF, 1)
+	Sleep(E1)
+	Update
+	SubChip(FF, 2)
+	Sleep(E1)
+	Update
+	SubChip(FF, 3)
+	Sleep(E1)
+	Update
+	SubChip(FF, 4)
+	Sleep(E1)
+	Update
+	SubChip(FF, 5)
+	Sleep(E1)
+	Update
+	SubChip(FF, 6)
+	Sleep(E1)
+	Update
+	SubChip(FF, 7)
+	Sleep(E1)
+	Update
+	Goto(loc:DD)
+	Return
+loc:119:
+	ShowEff(FF, FF, 81, 0, 0, 32, 0, 0, 0, 0, 3E8, 3E8, 3E8, FF)
+	SeEx(1FE, 0)
+	OP_C(FF, FB, 0, 1F4, 0)
+	Sleep(C8)
+	Update
+	SelectChip(FF, 0)
+	SubChip(FF, 0)
+	Sleep(28)
+	Update
+	MagicCastBegin(FFFF)
+	MagicCastEnd
+	Return
+loc:156:
+	SelectChip(FF, 2)
+	SubChip(FF, 1)
+	Sleep(96)
+	Update
+	Return
+loc:161:
+	SelectChip(FF, 0)
+	SubChip(FF, 0)
+	Sleep(64)
+	Update
+	Return
+loc:16C:
+	ShakeChar(FF, 0, 64, 0)
+	Sleep(14)
+	Update
+	ShakeChar(FF, 0, FFFFFF9C, 0)
+	Sleep(14)
+	Update
+	Goto(loc:16C)
+	Return
+	ResetLoopTarget
+loc:195:
+	LoopTargetBegin(loc:1A4)
+	DamageAnime(FE, 1, 32)
+	Sleep(32)
+	Update
+	LoopTargetEnd
+	Goto(loc:195)
+loc:1A4:
+	Ret
+	ResetLoopTarget
+loc:1A6:
+	LoopTargetBegin(loc:1B7)
+	DamageAnime(FE, 1, 32)
+	Damage(FE)
+	Sleep(32)
+	Update
+	LoopTargetEnd
+	Goto(loc:1A6)
+loc:1B7:
+	Ret
+	ResetLoopTarget
+loc:1B9:
+	LoopTargetBegin(loc:1C6)
+	Damage(FE)
+	Sleep(32)
+	Update
+	LoopTargetEnd
+	Goto(loc:1B9)
+loc:1C6:
+	Ret
+	ResetLoopTarget
+loc:1C8:
+	LoopTargetBegin(loc:1D7)
+	DamageAnime(FE, 0, 32)
+	Sleep(32)
+	Update
+	LoopTargetEnd
+	Goto(loc:1C8)
+loc:1D7:
+	Ret
+	ResetLoopTarget
+loc:1D9:
+	LoopTargetBegin(loc:1EA)
+	DamageAnime(FE, 0, 32)
+	Damage(FE)
+	Sleep(32)
+	Update
+	LoopTargetEnd
+	Goto(loc:1D9)
+loc:1EA:
+	Ret
+	ResetLoopTarget
+loc:1EC:
+	LoopTargetBegin(loc:1F9)
+	Damage(FE)
+	Sleep(32)
+	Update
+	LoopTargetEnd
+	Goto(loc:1EC)
+loc:1F9:
+	Return
+	ResetLoopTarget
+loc:1FB:
+	LoopTargetBegin(loc:20A)
+	DamageAnime(FE, 1, 32)
+	Sleep(32)
+	Update
+	LoopTargetEnd
+	Goto(loc:1FB)
+loc:20A:
+	Return
+	ResetLoopTarget
+loc:20C:
+	LoopTargetBegin(loc:21D)
+	DamageAnime(FE, 1, 32)
+	Damage(FE)
+	Sleep(32)
+	Update
+	LoopTargetEnd
+	Goto(loc:20C)
+loc:21D:
+	Return
+	ResetLoopTarget
+loc:21F:
+	LoopTargetBegin(loc:22E)
+	DamageAnime(FE, 0, 32)
+	Sleep(32)
+	Update
+	LoopTargetEnd
+	Goto(loc:21F)
+loc:22E:
+	Return
+loc:22F:
+	ShakeChar(FF, FFFFFF38, 0, FFFFFF38)
+	Sleep(32)
+	Update
+	ShakeChar(FF, C8, 0, C8)
+	Sleep(32)
+	Update
+	ShakeChar(FF, FFFFFF38, 0, FFFFFF38)
+	Sleep(32)
+	Update
+	ShakeChar(FF, C8, 0, C8)
+	Sleep(32)
+	Update
+	ShakeChar(FF, FFFFFF6A, 0, FFFFFF6A)
+	Sleep(32)
+	Update
+	ShakeChar(FF, 96, 0, 96)
+	Sleep(32)
+	Update
+	ShakeChar(FF, FFFFFF9C, 0, FFFFFF9C)
+	Sleep(32)
+	Update
+	ShakeChar(FF, 64, 0, 64)
+	Sleep(32)
+	Update
+	ShakeChar(FF, FFFFFFCE, 0, FFFFFFCE)
+	Sleep(32)
+	Update
+	ShakeChar(FF, 32, 0, 32)
+	Sleep(32)
+	Update
+	ShakeChar(FF, FFFFFFCE, 0, FFFFFFCE)
+	Sleep(32)
+	Update
+	ShakeChar(FF, 32, 0, 32)
+	Sleep(32)
+	Update
+	ShakeChar(FF, 0, 0, 0)
+	Sleep(32)
+	Update
+	Ret
+loc:31A:
+	Return
+loc:31B:
+	SelectChip(FF, 0)
+	SubChip(FF, 0)
+	Sleep(64)
+	Update
+	SubChip(FF, 1)
+	Sleep(64)
+	Update
+	SubChip(FF, 2)
+	Sleep(64)
+	Update
+	SubChip(FF, 3)
+	Sleep(64)
+	Update
+	SubChip(FF, 4)
+	Sleep(64)
+	Update
+	SubChip(FF, 3)
+	Sleep(64)
+	Update
+	SubChip(FF, 2)
+	Sleep(64)
+	Update
+	SubChip(FF, 1)
+	Sleep(64)
+	Update
+	Goto(loc:31B)
+loc:359:
+	SelectChip(FF, 0)
+	SubChip(FF, 0)
+	Sleep(19)
+	Update
+	SubChip(FF, 1)
+	Sleep(19)
+	Update
+	SubChip(FF, 2)
+	Sleep(19)
+	Update
+	SubChip(FF, 3)
+	Sleep(19)
+	Update
+	SubChip(FF, 4)
+	Sleep(19)
+	Update
+	SubChip(FF, 3)
+	Sleep(19)
+	Update
+	SubChip(FF, 2)
+	Sleep(19)
+	Update
+	SubChip(FF, 1)
+	Sleep(19)
+	Update
+	Goto(loc:359)
+loc:397:
+	ResetLoopTarget
+	OP_78(1)
+	OP_78(0)
+	OP_95
+	SetAngleTarget(FF, "", 0)
+	MoveAngle(64, 1E14)
+	BeginThread(FF, 1, loc:359, 0)
+	OP_7C(FF, 1)
+	SuspendThread(FF, 1)
+	OP_4(FF, 1, B4)
+	Sleep(64)
+	Update
+	BeginThread(FF, 1, loc:31B, 0)
+	BeginThread(FF, 2, loc:5E0, 0)
+	SeEx(BA, 0)
+	ShadowBegin(FF, 64, 12C)
+	Sleep(5DC)
+	Update
+	SuspendThread(FF, 1)
+	ShadowEnd(FF)
+	Return
+loc:3DB:
+	ResetLoopTarget
+	OP_78(1)
+	OP_78(0)
+	OP_95
+	SetAngleTarget(FF, "", 0)
+	MoveAngle(64, 1E14)
+	BeginThread(FF, 1, loc:359, 0)
+	OP_1E(FFFFFFFF)
+	SuspendThread(FF, 1)
+	SaveCurPos(FF)
+	OP_C(FF, FE, 0, 0, 0)
+	OP_5(FF, 0, 0)
+	BeginThread(FF, 1, loc:5A7, 0)
+	SelectChip(FF, 0)
+	SubChip(FF, 0)
+	SubChip(FF, 0)
+	Sleep(32)
+	Update
+	SubChip(FF, 1)
+	Sleep(32)
+	Update
+	SubChip(FF, 2)
+	Sleep(32)
+	Update
+	SubChip(FF, 3)
+	Sleep(32)
+	Update
+	SubChip(FF, 4)
+	Sleep(32)
+	Update
+	SubChip(FF, 3)
+	Sleep(32)
+	Update
+	SubChip(FF, 2)
+	Sleep(32)
+	Update
+	SubChip(FF, 1)
+	Sleep(32)
+	Update
+	Sleep(64)
+	Update
+	WaitThread(FF, 1)
+	SuspendThread(FF, 1)
+	SeEx(24E, 0)
+	BeginThread(FF, 1, loc:5BA, 0)
+	SubChip(FF, 0)
+	Sleep(32)
+	Update
+	SubChip(FF, 1)
+	Sleep(32)
+	Update
+	SubChip(FF, 2)
+	Sleep(32)
+	Update
+	SubChip(FF, 3)
+	Sleep(32)
+	Update
+	SubChip(FF, 4)
+	Sleep(32)
+	Update
+	ShowEff(FF, F8, 13, 0, 0, 0, 0, 0, 0, 0, 3E8, 3E8, 3E8, FF)
+	DamageAnime(FE, 0, 32)
+	Damage(FE)
+	Sleep(32)
+	Update
+	WaitThread(FF, 1)
+	SuspendThread(FF, 1)
+	BeginThread(FF, 2, loc:5CD, 0)
+	SubChip(FF, 3)
+	Sleep(64)
+	Update
+	SubChip(FF, 2)
+	Sleep(64)
+	Update
+	SubChip(FF, 1)
+	Sleep(64)
+	Update
+	WaitThread(FF, 2)
+	SuspendThread(FF, 2)
+	Move(FF, F0, 0, 0, 0, A, 0)
+	ShakeChar(FF, 0, 0, 0)
+	Return
+loc:4F6:
+	ResetLoopTarget
+	OP_78(1)
+	AddEff(0, "battle/ms00127.eff")
+	OP_78(0)
+	OP_95
+	SetAngleTarget(FF, "", 0)
+	SetAngleTarget(FC, "", 0)
+	MoveAngle(64, 1E14)
+	BeginThread(FF, 1, loc:359, 0)
+	OP_7C(FF, 1)
+	SuspendThread(FF, 1)
+	OP_4(FF, 1, B4)
+	Sleep(64)
+	Update
+	ShowEff(FF, F9, 0, 0, 0, 0, 0, 0, 0, 0, 1F4, 1F4, 1F4, FF)
+	SeEx(102, 0)
+	BeginThread(FF, 1, loc:5FA, 0)
+	ShadowBegin(FF, 64, 12C)
+	Sleep(3E8)
+	Update
+	SetAngleTarget(FC, "", 0)
+loc:569:
+	LoopTargetBegin(loc:598)
+	ShowEff(FF, F8, 13, 0, 0, 0, 0, 0, 0, 0, 3E8, 3E8, 3E8, FF)
+	DamageAnime(FE, 0, 32)
+	Damage(FE)
+	Sleep(C8)
+	Update
+	LoopTargetEnd
+	Goto(loc:569)
+loc:598:
+	Sleep(3E8)
+	Update
+	ResetLoopTarget
+	SuspendThread(FF, 1)
+	ShadowEnd(FF)
+	WaitEff(0)
+	ReleaseEff(0)
+	Return
+loc:5A7:
+	OP_5(FF, 0, 0)
+	OP_21(1, FF, FFFFFF06, 3E8)
+	Return
+loc:5BA:
+	OP_5(FF, 0, 0)
+	OP_21(1, FF, 3E8, 1D4C)
+	Return
+loc:5CD:
+	OP_5(FF, 0, 0)
+	OP_21(1, FF, FFFFFD12, BB8)
+	Return
+loc:5E0:
+	TipText("閃耀波姆在炫耀光澤", 3E8)
+	OP_2B
+	Return
+loc:5FA:
+	SelectChip(FF, 0)
+	SubChip(FF, 3)
+	Sleep(19)
+	Update
+	SubChip(FF, 4)
+	Sleep(19)
+	Update
+	SubChip(FF, 3)
+	Sleep(19)
+	Update
+	SubChip(FF, 4)
+	Sleep(19)
+	Update
+	Goto(loc:5FA)
+loc:61C:
+	ResetLoopTarget
+	OP_78(1)
+	OP_78(0)
+	OP_95
+	SetAngleTarget(FF, "", 0)
+	MoveAngle(64, 1E14)
+	OP_C(FF, FE, 0, 1F4, 0)
+	Sleep(64)
+	Update
+	BeginThread(FF, 1, loc:31B, 0)
+	BeginThread(FF, 2, loc:5E0, 0)
+	SeEx(BA, 0)
+	ShadowBegin(FF, 64, 12C)
+	Sleep(7D0)
+	Update
+	SuspendThread(FF, 1)
+	ShadowEnd(FF)
+	Return

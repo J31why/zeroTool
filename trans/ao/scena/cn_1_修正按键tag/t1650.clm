@@ -1,0 +1,1133 @@
+calmare ao_k scena
+scena:
+	name "t1650" "t1650" "t1650"
+	town town[88]
+	bgm bgm[123]
+	flags 8192
+	item_use fn[0,255]
+	unk 255 29
+
+entry:
+	pos (0, 0, -1000)
+	unk1 0
+	cam_from (0, 0, 24000)
+	cam_pers 500
+	unk2 30
+	cam_deg 45deg
+	cam_limit 0deg 360deg
+	cam_at (0, 0, 0)
+	unk3 0
+	unk4 0
+	flags 0x0001
+	town town[88]
+	init fn[0,0]
+	reinit fn[0,1]
+
+chip[0] "chr/ch44802.itc"
+
+npc char[0]:
+	name "賽蘭德教授"
+	pos (110690, 150, 57000)
+	angle 270deg
+	flags 0x01C5
+	unk2 0
+	chip chip[0]
+	init fn[255,255]
+	talk fn[0,3]
+	unk4 255
+
+look_point[0]:
+	pos (109380, 0, 57000)
+	radius 1500
+	bubble_pos (110690, 1500, 57000)
+	unk1 126
+	unk2 0
+	function fn[0,2]
+	unk3 0
+	unk4 0
+
+fn[0]:
+	if QuestFlagsGet quest[112] 0x02 && !QuestFlagsGet quest[112] 0x10 && !QuestFlagsGet quest[112] 0x40 && flag[2705]:
+		CharSetChipBase char[0] chip[0]
+		CharSetChipPattern char[0] 0
+		ForkQuit char[0] fork[0]
+		CharFlags2Set char[0] 0x0004
+		CharFlagsUnset char[0] 0x0080
+	if flag[272]:
+		FlagUnset flag[272]
+		Event fn[0,4]
+	Return
+
+fn[1]:
+	if flag[3100]:
+		system[1] = 563
+	EntranceSetFunc entrance[1] fn[0,11]
+	LookPointFlagsSet look_point[0] 0x0001
+	if QuestFlagsGet quest[112] 0x02 && !QuestFlagsGet quest[112] 0x10 && !QuestFlagsGet quest[112] 0x40 && flag[2705]:
+		LookPointFlagsUnset look_point[0] 0x0001
+	if flag[2848] && !flag[2858]:
+		ED7_76_0 object[255] "hikari00_add" 1
+		ED7_76_0 object[255] "hikari01_add" 1
+		SoundPlay sound[128] 1 30 0
+	Return
+
+fn[2]:
+	Call fn[0,3]
+	Return
+
+fn[3]:
+	if QuestFlagsGet quest[112] 0x02 && !QuestFlagsGet quest[112] 0x10 && !QuestFlagsGet quest[112] 0x40 && flag[2707] && flag[2708] && flag[2710]:
+		Call fn[0,10]
+		Return
+	TextStart char[0]
+	if !flag[0]:
+		TextTalk char[0] {
+			服用過那種藥物的病患
+			幾乎都治療完畢了，不過，
+			有些人還沒交回問診表。{wait}
+		}
+		TextWait
+		TextTalk char[0] {
+			首先是克洛斯貝爾市，
+			住在舊市街的少年迪諾。{wait}
+		}
+		TextWait
+		TextTalk char[0] {
+			接下來是彩虹劇團的
+			演員，尼可團員。{wait}
+		}
+		TextWait
+		TextTalk char[0] {
+			然後是克洛斯貝爾警備隊中，
+			負責貝爾加德門勤務的庫雷斯隊員。{wait}
+		}
+		TextWait
+		TextTalk char[0] {
+			我希望你們向他們說明
+			原委後，回收問診表。{wait}
+		}
+		TextWait
+		TextTalk char[0] {
+			等到全都收完，
+			你們再來這裡向我報告。
+			那就拜託你們了。{wait}
+		}
+		TextWait
+		FlagSet flag[0]
+	else:
+		TextTalk char[0] {
+			克洛斯貝爾市，
+			住在舊市街的少年迪諾。{wait}
+		}
+		TextWait
+		TextTalk char[0] {
+			彩虹劇團的
+			演員，尼可團員。{wait}
+		}
+		TextWait
+		TextTalk char[0] {
+			然後是克洛斯貝爾警備隊中，
+			負責貝爾加德門勤務的庫雷斯隊員。{wait}
+		}
+		TextWait
+		TextTalk char[0] {
+			我希望你們向他們說明
+			原委後，回收問診表。{wait}
+		}
+		TextWait
+		TextTalk char[0] {
+			那就拜託你們了。{wait}
+		}
+		TextWait
+	TextEnd char[0]
+	Return
+
+fn[4]:
+	EventBegin 0
+	FadeOut 0ms 0x00000000 255
+	CharSetPos char[0] (59520, 0, 59900) 0deg
+	CamSetDistance 57330 1000 58820 0ms
+	ED7CamRotate 45deg 30deg 0deg 0ms
+	CamPers 440 0ms
+	CamZoom 22000 0ms
+	CharSetPos name[0] (57250, 0, 59010) 90deg
+	CharSetPos name[1] (56500, 0, 57980) 90deg
+	CharSetPos name[8] (56600, 0, 59920) 135deg
+	CharSetPos name[4] (54680, 0, 57620) 90deg
+	CharSetPos name[3] (55270, 0, 59030) 90deg
+	CharFlagsUnset field_party[4] 0x0080
+	CharFlags2Unset field_party[4] 0x8000
+	FadeIn 1000ms 0x00000000
+	FadeWait
+	TextTalk name[0] {
+		#6P#00000F#1250000032V──不好意思，打擾了。
+		我們是特務支援課的人……{wait}
+	}
+	TextWait
+	TextTalkNamed char[0] "女子的聲音" {
+		#1252810001V進來吧。{wait}
+	}
+	TextWait
+	FadeOut 1000ms 0x00000000 255
+	FadeWait
+	CharSetPos char[0] (110690, 150, 57000) 270deg
+	CharSetChipPattern char[0] 1
+	CamSetDistance 100830 1250 48810 0ms
+	ED7CamRotate 49deg 27deg 0deg 0ms
+	CamPers 440 0ms
+	CamZoom 19000 0ms
+	CharSetPos name[0] (98390, 0, 49590) 90deg
+	CharSetPos name[1] (98390, 0, 49590) 90deg
+	CharSetPos name[3] (98390, 0, 49590) 90deg
+	CharSetPos name[8] (98390, 0, 49590) 90deg
+	CharSetPos name[4] (98390, 0, 49590) 90deg
+	CharColor name[0] 0x00FFFFFF 0ms
+	CharColor name[1] 0x00FFFFFF 0ms
+	CharColor name[3] 0x00FFFFFF 0ms
+	CharColor name[8] 0x00FFFFFF 0ms
+	CharColor name[4] 0x00FFFFFF 0ms
+	FadeIn 1000ms 0x00000000
+	FadeWait
+	SoundPlay sound[107] 0 100 0
+	ForkFunc name[0] fork[3] fn[0,5]
+	Sleep 700ms
+	ForkFunc name[1] fork[3] fn[0,6]
+	Sleep 700ms
+	ForkFunc name[3] fork[3] fn[0,7]
+	Sleep 700ms
+	ForkFunc name[8] fork[3] fn[0,8]
+	Sleep 700ms
+	ForkFunc name[4] fork[3] fn[0,9]
+	CamSetDistance 105790 1250 52080 3000ms
+	ED7CamRotate 62deg 24deg 0deg 3000ms
+	CamPers 440 3000ms
+	CamZoom 19000 3000ms
+	CamWait 121
+	TextTalkNamed char[0] "女醫生" {
+		#1252810002V嗯，你們總算來了。{wait}
+	}
+	TextWait
+	TextTalkNamed char[0] "女醫生" {
+		#1252810003V抵達時間比我預料的
+		晚了兩分鐘，不過……
+		嗯，還稱得上是優秀吧。{wait}
+	}
+	TextWait
+	Emote name[0] 0mm 2000mm 16 19 250ms 1
+	SoundPlay sound[23] 0 100 0
+	Emote name[1] 0mm 2000mm 16 19 250ms 1
+	SoundPlay sound[23] 0 100 0
+	Emote name[8] 0mm 2000mm 16 19 250ms 1
+	SoundPlay sound[23] 0 100 0
+	Emote name[4] 0mm 2000mm 16 19 250ms 1
+	SoundPlay sound[23] 0 100 0
+	Emote name[3] 0mm 2000mm 16 19 250ms 1
+	SoundPlay sound[23] 0 100 0
+	Sleep 1000ms
+	TextTalk name[3] {
+		#12P#00306F#1250030010V（她、她好像很嚴格……
+		　不過毫無疑問是個美女。）{wait}
+	}
+	TextWait
+	TextTalkNamed char[0] "女醫生" {
+		#1252810004V嗯，總之你們先過來這邊。
+		離這麼遠不好說話。{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#12P#00000F#1250000033V也、也是。{wait}
+	}
+	TextWait
+	CharSetChipPattern char[0] 0
+	CamSetDistance 108640 950 57250 5000ms
+	ED7CamRotate 45deg 28deg 0deg 5000ms
+	CamPers 440 5000ms
+	CamZoom 20000 5000ms
+	Fork name[0] fork[1]:
+		CharWalkToPos self (107920, 0, 57770) 2000mm/s 0
+	Sleep 500ms
+	Fork name[1] fork[1]:
+		CharWalkToPos self (107840, 0, 56600) 2000mm/s 0
+	Sleep 500ms
+	Fork name[3] fork[1]:
+		CharWalkToPos self (106710, 0, 58390) 2000mm/s 0
+	Sleep 700ms
+	Fork name[8] fork[1]:
+		CharWalkToPos self (106120, 0, 57330) 2000mm/s 0
+	Sleep 500ms
+	Fork name[4] fork[1]:
+		CharWalkToPos self (106680, 0, 56190) 2000mm/s 0
+	ForkWait name[0] fork[1]
+	Fork name[0] fork[1]:
+		CharTurnTo self 90deg 500deg/s
+	ForkWait name[1] fork[1]
+	Fork name[1] fork[1]:
+		CharTurnTo self 90deg 500deg/s
+	ForkWait name[8] fork[1]
+	Fork name[8] fork[1]:
+		CharTurnTo self 90deg 500deg/s
+	ForkWait name[3] fork[1]
+	Fork name[3] fork[1]:
+		CharTurnTo self 90deg 500deg/s
+	ForkWait name[4] fork[1]
+	Fork name[4] fork[1]:
+		CharTurnTo self 90deg 500deg/s
+	CamWait 121
+	FadeWait
+	TextTalk name[1] {
+		#6P#00100F#1250010008V呃，妳就是
+		賽蘭德教授吧？{wait}
+	} {
+		#00103F#1250010009V我們聽說真知成份的
+		分析報告出來了──{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#11P#1252810005V──不好意思，在那之前，
+		我有件事想拜託你們。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#11P#1252810006V我想請你們
+		先解決那件事。{wait}
+	}
+	TextWait
+	TextTalk name[4] {
+		#6P#10303F#1250040010V妳說的是委託的那件事吧？{wait}
+	} {
+		#10301F#1250040011V不能先將
+		真知的分析報告
+		交給我們嗎？{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#11P#1252810007V因為這件事和分析報告有關，
+		所以我想先解決它。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#11P#1252810008V我會這麼說，也是因為這件事
+		和那些受真知危害的病患有關。{wait}
+	}
+	TextWait
+	Emote name[0] 0mm 2000mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Sleep 50ms
+	Emote name[1] 0mm 2000mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Sleep 50ms
+	Emote name[3] 0mm 2000mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Sleep 50ms
+	Emote name[8] 0mm 2000mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Sleep 50ms
+	Emote name[4] 0mm 2000mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Sleep 1000ms
+	TextTalk name[8] {
+		#6P#10105F#1250050010V原來如此，是這麼一回事啊。{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#6P#00003F#1250000034V……我知道了，那麼我們
+		就先處理那件事吧。{wait}
+	} {
+		#00000F#1250000035V妳能詳細說明一下委託的內容嗎？{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#11P#1252810009V嗯，我想拜託你們的是
+		『回收問診表』。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#11P#1252810010V……那起教團事件之後，
+		醫院一直致力於『真知』
+		受害者的事後處理。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#11P#1252810011V大部分的病患都
+		治療得差不多了，不過……{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#11P#1252810012V最後要他們寫的問診表，
+		有幾名病患還沒有繳回來。{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#6P#00003F#1250000036V原來如此……
+		聽起來這的確
+		和分析報告有關。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#11P#1252810013V嗯，希望你們能盡快解決。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#11P#1252810014V……還沒繳回問診表的
+		病患一共有三位。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#11P#1252810015V首先是克洛斯貝爾市，
+		住在舊市街的少年，迪諾。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#11P#1252810016V接下來是彩虹劇團的
+		演員，尼可。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#11P#1252810017V然後是負責貝爾加德門勤務的
+		克洛斯貝爾警備隊隊員，庫雷斯。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#11P#1252810018V我希望你們向這些病患說明
+		原因後，回收問診表。{wait}
+	}
+	TextWait
+	TextTalk name[3] {
+		#6P#00300F#1250030011V原來如此，這些名字我好像都聽過啊。{wait}
+	} {
+		#00303F#1250030012V舊市街和彩虹劇團那兩人在市鎮裡，
+		應該很快就能找到吧。{wait}
+	} {
+		#00302F#1250030013V至於庫雷斯學長的話，應該正在
+		貝爾加德門的餐廳吃飯吧。{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#6P#00000F#1250000037V嗯，我們這就去找找看吧。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#11P#1252810019V那就拜託你們了。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#11P#1252810020V等到全都回收完畢，
+		你們再來這裡向我報告。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#11P#1252810021V到時我再告訴你們
+		真知的分析結果。{wait}
+	}
+	TextWait
+	FadeOut 300ms 0x00000000 100
+	SoundPlay sound[80] 0 100 0
+	TextSetPos -1 -1 -1 -1
+	TextSetName ""
+	TextMessage null {
+		開始進行{color 2}委託【新教授的委託】{color 0}！{wait}
+	}
+	TextWait
+	TextClose 0
+	FadeOut 1000ms 0x00000000 255
+	FadeWait
+	_59
+	TextSetPos -1 280 60 3
+	FlagSet flag[2706]
+	QuestTaskSet quest[112] 1
+	ED7_Cam69 255 0
+	CharSetPos field_party[0] (107500, 0, 57000) 90deg
+	CharFlagsSet field_party[4] 0x0080
+	CharFlags2Set field_party[4] 0x8000
+	EventEnd 5
+	Return
+
+fn[5]:
+	Fork name[0] fork[2]:
+		CharColor self 0xFFFFFFFF 500ms
+	Fork name[0] fork[1]:
+		_Char91 self 4300 0 0 2000 0
+	ForkWait name[0] fork[1]
+	CharWalkToPos name[0] (105730, 0, 50340) 2000mm/s 0
+	CharTurnTo name[0] 0deg 500deg/s
+	Return
+
+fn[6]:
+	Fork name[1] fork[2]:
+		CharColor self 0xFFFFFFFF 500ms
+	Fork name[1] fork[1]:
+		_Char91 self 4300 0 0 2000 0
+	ForkWait name[1] fork[1]
+	CharWalkToPos name[1] (104600, 0, 50890) 2000mm/s 0
+	CharTurnTo name[1] 0deg 500deg/s
+	Return
+
+fn[7]:
+	Fork name[3] fork[2]:
+		CharColor self 0xFFFFFFFF 500ms
+	Fork name[3] fork[1]:
+		_Char91 self 4300 0 0 2000 0
+	ForkWait name[3] fork[1]
+	CharWalkToPos name[3] (105690, 0, 48970) 2000mm/s 0
+	CharTurnTo name[3] 0deg 500deg/s
+	Return
+
+fn[8]:
+	Fork name[8] fork[2]:
+		CharColor self 0xFFFFFFFF 500ms
+	Fork name[8] fork[1]:
+		_Char91 self 4300 0 0 2000 0
+	ForkWait name[8] fork[1]
+	SoundPlay sound[107] 0 100 0
+	CharWalkToPos name[8] (104810, 0, 49520) 2000mm/s 0
+	CharTurnTo name[8] 0deg 500deg/s
+	Return
+
+fn[9]:
+	Fork name[4] fork[2]:
+		CharColor self 0xFFFFFFFF 500ms
+	Fork name[4] fork[1]:
+		_Char91 self 4300 0 0 2000 0
+	ForkWait name[4] fork[1]
+	CharWalkToPos name[4] (103660, 0, 49780) 2000mm/s 0
+	CharTurnTo name[4] 0deg 500deg/s
+	Return
+
+fn[10]:
+	EventBegin 0
+	FadeOut 1000ms 0x00000000 255
+	FadeWait
+	CamSetDistance 108640 950 57250 0ms
+	ED7CamRotate 45deg 28deg 0deg 0ms
+	CamPers 440 0ms
+	CamZoom 20000 0ms
+	CharSetPos name[0] (107920, 0, 57770) 90deg
+	CharSetPos name[1] (107840, 0, 56600) 90deg
+	CharSetPos name[8] (106120, 0, 57330) 90deg
+	CharSetPos name[4] (106680, 0, 56190) 90deg
+	CharSetPos name[3] (106710, 0, 58390) 90deg
+	CharFlagsUnset field_party[4] 0x0080
+	CharFlags2Unset field_party[4] 0x8000
+	FadeIn 1000ms 0x00000000
+	FadeWait
+	TextTalk char[0] {
+		#11P#1252810022V……你們回來了啊。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#11P#1252810023V完成的時間比我預料的晚了五分鐘……
+		勉強算是及格了。{wait}
+	}
+	TextWait
+	Emote name[0] 0mm 2000mm 16 19 250ms 1
+	SoundPlay sound[23] 0 100 0
+	Emote name[1] 0mm 2000mm 16 19 250ms 1
+	SoundPlay sound[23] 0 100 0
+	Emote name[8] 0mm 2000mm 16 19 250ms 1
+	SoundPlay sound[23] 0 100 0
+	Emote name[4] 0mm 2000mm 16 19 250ms 1
+	SoundPlay sound[23] 0 100 0
+	Emote name[3] 0mm 2000mm 16 19 250ms 1
+	SoundPlay sound[23] 0 100 0
+	Sleep 1000ms
+	TextTalk name[3] {
+		#6P#00306F#1250030018V（果、果然很嚴格……）{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#6P#00000F#1250000054V呃，我們回收完
+		問診表了……在這裡。{wait}
+	}
+	TextWait
+	TextSetName ""
+	TextMessage null {
+		{color 5}把問診表交給了賽蘭德教授。{color 0}{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	ItemRemove item[813] 1
+	ItemRemove item[814] 1
+	ItemRemove item[815] 1
+	TextTalk char[0] {
+		#11P#1252810024V……嗯…………{wait}
+	}
+	TextWait
+	Emote char[0] 0mm 1700mm 24 27 250ms 0
+	Sleep 2000ms
+	TextTalk name[1] {
+		#6P#00101F#1250010015V那、那個……
+		請問有什麼問題嗎？{wait}
+	}
+	TextWait
+	EmoteStop char[0]
+	Sleep 500ms
+	TextTalk char[0] {
+		#11P#1252810025V……不、正好相反。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#11P#1252810026V從問診表看來，他們
+		並沒有後遺症之類的問題。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#11P#1252810027V這下可以說
+		服用過真知的人
+		全部都治療完畢了。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#11P#1252810028V辛苦你們了。{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#6P#00002F#1250000055V這、這樣啊……！{wait}
+	}
+	TextWait
+	TextTalk name[8] {
+		#6P#10109F#1250050014V呵呵，太好了。{wait}
+	}
+	TextWait
+	TextTalk name[4] {
+		#6P#10300F#1250040016V雖然很費工夫，不過……
+		能幫上忙是我們的榮幸。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#11P#1252810029V那麼，我這就告訴你們
+		真知的分析結果吧。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#11P#1252810030V這會稍微耽誤你們一點時間。{wait}
+	}
+	TextWait
+	BgmStop 4000ms
+	TextTalk name[0] {
+		#6P#00001F#1250000056V啊……
+		好的，拜託妳了！{wait}
+	}
+	TextWait
+	FadeOut 1000ms 0x00000000 255
+	FadeWait
+	ED7LoadChip "chr/ch00002.itc" chip[30]
+	ED7LoadChip "chr/ch00102.itc" chip[31]
+	ED7LoadChip "chr/ch02902.itc" chip[32]
+	ED7LoadChip "chr/ch03002.itc" chip[33]
+	ED7LoadChip "chr/ch00302.itc" chip[34]
+	CharSetChipBase name[0] chip[30]
+	CharSetChipPattern name[0] 0
+	CharSetChipBase name[1] chip[31]
+	CharSetChipPattern name[1] 2
+	CharSetChipBase name[8] chip[32]
+	CharSetChipPattern name[8] 1
+	CharSetChipBase name[4] chip[33]
+	CharSetChipPattern name[4] 0
+	CharSetChipBase name[3] chip[34]
+	CharSetChipPattern name[3] 0
+	CharFlagsSet name[0] 0x0004
+	CharFlagsSet name[1] 0x0004
+	CharFlagsSet name[8] 0x0004
+	CharFlagsSet name[4] 0x0004
+	CharFlagsSet name[3] 0x0004
+	CamSetDistance 103000 1050 57370 0ms
+	ED7CamRotate 45deg 21deg 0deg 0ms
+	CamPers 350 0ms
+	CamZoom 22900 0ms
+	CharSetPos char[0] (103000, 150, 58690) 180deg
+	CharSetPos name[8] (102150, 150, 58690) 180deg
+	CharSetPos name[1] (103850, 150, 58690) 180deg
+	CharSetPos name[4] (102150, 150, 55850) 0deg
+	CharSetPos name[0] (103000, 150, 55880) 0deg
+	CharSetPos name[3] (103850, 150, 55890) 0deg
+	BgmWait
+	Sleep 10ms
+	BgmPlay bgm[516] 0
+	FadeIn 1000ms 0x00000000
+	FadeWait
+	TextTalk char[0] {
+		#5P#1252810031V──將真知徹底分析
+		之後的結果……{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#5P#1252810032V首先，我們瞭解到
+		真知具有強制解除
+		『腦部限制』的作用。{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#12P#00005F#1250000057V腦部限制……
+		意思是？{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#5P#1252810033V說起來，人類所擁有的體能，
+		普遍被認為只能發揮出
+		不到一半的實力。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#5P#1252810034V這是因為大腦為了減輕身體的
+		負擔，會在潛意識裡
+		限制身體的能力。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#5P#1252810035V如果能夠
+		刻意解除那個
+		限制的話……{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#5P#1252810036V理論上來說，
+		應該就能把那個人的
+		能力發揮到極限。{wait}
+	}
+	TextWait
+	TextTalk name[4] {
+		#12P#10303F#1250040017V也就是說，真知並非單純
+		只是強化力氣的藥物……{wait}
+	} {
+		#10301F#1250040018V而是可以把平常沒有發揮出來的
+		潛能強制發揮出來的藥嗎？{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#5P#1252810037V沒錯。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#5P#1252810038V當然，如果解除了大腦在潛意識裡
+		加上的限制，
+		對身體的負擔也會相當大。{wait}
+	}
+	TextWait
+	TextTalk name[3] {
+		#12P#00301F#1250030019V這麼說來，在教團事件之後，
+		那些警備隊的隊員
+		看起來確實非常疲憊。{wait}
+	} {
+		#00303F#1250030020V好像就連動動手指都會讓
+		他們非常難受……{wait}
+	} {
+		#00302F#1250030021V不過，多虧嚴密的
+		復健訓練，他們好像總算是
+		取回了警備隊應有的直覺。{wait}
+	}
+	TextWait
+	TextTalk name[8] {
+		#5P#10104F#1250050015V嗯……好像是吧。{wait}
+	}
+	TextWait
+	TextTalk name[1] {
+		#11P#00103F#1250010016V……說到直覺。{wait}
+	} {
+		#00101F#1250010017V之前不是有人靠著
+		高漲的運勢和直覺
+		連贏好幾場賭局嗎？{wait}
+	} {
+		#00108F#1250010018V同時那個人的性格和言行舉止
+		也跟著產生了相當大的變化……{wait}
+	} {
+		#00101F#1250010019V這些變化也能用
+		真知解除了腦部的限制
+		這個機制來說明嗎？{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#5P#1252810039V嗯，可以這麼說。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#5P#1252810040V因為我們發現這個藥物
+		還具有讓感官的敏銳度
+		劇烈提升的作用。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#5P#1252810041V我們也發現它的副作用
+		會使人神經過敏，讓人的情緒
+		處於不穩定的狀態。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#5P#1252810042V就是這點讓人的
+		性格變殘暴的吧。{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#12P#00003F#1250000058V原來如此……{wait}
+	}
+	TextWait
+	TextTalk name[8] {
+		#5P#10100F#1250050016V這樣的話，大部分的事情
+		都說得通了。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#5P#1252810043V──不過，能用生物化學來
+		說明的部分只到這裡。{wait}
+	}
+	TextWait
+	Emote name[0] 0mm 1700mm 38 38 250ms 1
+	Sleep 50ms
+	Emote name[1] 0mm 1700mm 38 38 250ms 1
+	Sleep 50ms
+	Emote name[3] 0mm 1700mm 38 38 250ms 1
+	Sleep 50ms
+	Emote name[8] 0mm 1700mm 38 38 250ms 1
+	Sleep 50ms
+	Emote name[4] 0mm 1700mm 38 38 250ms 1
+	Sleep 1000ms
+	TextTalk name[0] {
+		#12P#00005F#1250000059V咦……{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#5P#1252810044V我只能說，其中
+		某些效果並不科學。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#5P#1252810045V具體的例子就像妳剛剛說的
+		那個招來好運的效果……{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#5P#1252810046V還有你們也看過許多次的那個
+		名為『魔人化』的肉體變異現象。{wait}
+	}
+	TextWait
+	TextTalk name[1] {
+		#11P#00105F#1250010020V……的、的確……{wait}
+	}
+	TextWait
+	TextTalk name[3] {
+		#12P#00303F#1250030022V還有這回事啊……{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#12P#00003F#1250000060V……引起魔人化的是
+		紅色類型的真知……{wait}
+	} {
+		#00001F#1250000061V它和藍色類型的
+		成份果然不一樣嗎？{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#5P#1252810047V關於這一點……{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#5P#1252810048V事實上，藍色類型的真知和
+		紅色類型的真知，
+		成份完全一樣，沒有差別。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#5P#1252810049V至少在生物化學上來說是這樣。{wait}
+	}
+	TextWait
+	Emote name[0] 0mm 1700mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Sleep 50ms
+	Emote name[1] 0mm 1700mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Sleep 50ms
+	Emote name[3] 0mm 1700mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Sleep 50ms
+	Emote name[8] 0mm 1700mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Sleep 50ms
+	Emote name[4] 0mm 1700mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Sleep 1000ms
+	TextTalk name[0] {
+		#12P#00005F#1250000062V是、是這樣嗎！？{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#5P#1252810050V嗯，顏色的差異是
+		來自精製時的處理方式。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#5P#1252810051V它們在主要的成份上沒有區別，
+		就連分子結構也大致相同……{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#5P#1252810052V即使是如此，紅色類型
+		還是能引起肉體變異等等的
+		無法解釋的現象……{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#5P#1252810053V──說真的，我還是覺得把魔人化
+		當作是你們因為太害怕而看見的
+		『幻覺』來看待會比較實際。{wait}
+	}
+	TextWait
+	Emote name[0] 0mm 1700mm 16 19 250ms 1
+	SoundPlay sound[23] 0 100 0
+	Emote name[1] 0mm 1700mm 16 19 250ms 1
+	SoundPlay sound[23] 0 100 0
+	Emote name[3] 0mm 1700mm 16 19 250ms 1
+	SoundPlay sound[23] 0 100 0
+	Emote name[8] 0mm 1700mm 16 19 250ms 1
+	SoundPlay sound[23] 0 100 0
+	Emote name[4] 0mm 1700mm 16 19 250ms 1
+	SoundPlay sound[23] 0 100 0
+	Sleep 1000ms
+	TextTalk name[3] {
+		#12P#00306F#1250030023V呃，這也未免太……{wait}
+	}
+	TextWait
+	TextTalk name[8] {
+		#5P#10108F#1250050017V我也有目擊到阿奈斯特秘書
+		魔人化時的樣子……{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#5P#1252810054V我知道。
+		──所以我說到這裡就是極限了。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#5P#1252810055V單從生物化學的角度來試圖
+		解開這種名為真知的藥物真相的話，
+		這結果已經是極限了。{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#12P#00003F#1250000063V……原來如此……{wait}
+	}
+	TextWait
+	TextTalk name[4] {
+		#12P#10302F#1250040019V以一名現代醫學最頂尖的
+		能手來說，這還真是認分的發言啊。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#5P#1252810056V現代醫學並不是萬能的。
+		尤其是面對心靈和靈魂的時候。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#5P#1252810057V於是我在想，真知裡多半有
+		某種作用，能夠產生出讓心靈和
+		靈魂與肉體共鳴的效果吧。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#5P#1252810058V我猜就連約亞西姆本人，
+		都沒有掌握到真知的全貌。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#5P#1252810059V他只不過是以教團傳承下來的
+		秘方為基礎，在經過不斷的失敗和
+		嘗試後才完成了量產化而已吧。{wait}
+	}
+	TextWait
+	TextTalk name[1] {
+		#11P#00101F#1250010021V的確，這件事他本人
+		好像也承認……{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#12P#00001F#1250000064V嗯，他說過真知是他以在
+		各地舉行過的儀式資料為基礎，
+		在多方嘗試後才完成的……{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#5P#1252810060V嗯，跟我想的一樣。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#5P#1252810061V他雖然有能力也有熱情，
+		不過他的思考方式還沒
+		獨特到足以被稱為天才。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#5P#1252810062V最後那些才能被用在壞的用途上……{wait}
+	}
+	TextWait
+	Emote name[0] 0mm 1700mm 38 38 250ms 1
+	Sleep 50ms
+	Emote name[1] 0mm 1700mm 38 38 250ms 1
+	Sleep 50ms
+	Emote name[3] 0mm 1700mm 38 38 250ms 1
+	Sleep 50ms
+	Emote name[8] 0mm 1700mm 38 38 250ms 1
+	Sleep 50ms
+	Emote name[4] 0mm 1700mm 38 38 250ms 1
+	Sleep 1000ms
+	TextTalk name[0] {
+		#12P#00005F#1250000065V該不會……{wait}
+	}
+	TextWait
+	TextTalk name[3] {
+		#12P#00305F#1250030024V妳和約亞西姆
+		私底下互相認識嗎？{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#5P#1252810063V嗯，他是我在雷米菲利亞的
+		醫科大學讀書時的同學。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#5P#1252810064V畢業後我們都沒有再見過面，
+		只有偶而會用寫信的方式
+		來交流最新的研究成果等等。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#5P#1252810065V不過，沒想到他會以這樣的方式
+		濫用醫療技術，最後竟然
+		連自己的生命都葬送掉了……{wait}
+	}
+	TextWait
+	TextTalk name[1] {
+		#11P#00108F#1250010022V教授……{wait}
+	}
+	TextWait
+	TextTalk name[8] {
+		#5P#10103F#1250050018V……我能理解妳的感受。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#5P#1252810066V沒事，我說了些沒意義的話。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#5P#1252810067V──總之，我能告訴你們的
+		報告內容就只有這些了。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#5P#1252810068V如果想瞭解真知的全貌，
+		有必要從別的方面著手吧。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#5P#1252810069V我接下來要說的都是我的直覺……{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#5P#1252810070V我認為作為真知原料的
+		《靈智之草》這種植物的特徵，
+		應該會是瞭解它的關鍵。{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#12P#00001F#1250000066V《靈智之草》……{wait}
+	}
+	TextWait
+	TextTalk name[1] {
+		#11P#00103F#1250010023V這名字在教團的
+		資料庫裡有記載……{wait}
+	}
+	TextWait
+	TextTalk name[3] {
+		#12P#00306F#1250030025V不過，我們還是不明白
+		它到底是什麼植物，也不知道
+		要在哪裡才能找到它不是嗎？{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#5P#1252810071V嗯，我也試著詢問了我認識的
+		植物學家，但是都沒有找到
+		符合那些特徵的植物。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#5P#1252810072V是一種只有教團傳承的
+		未知品種嗎？或是說……{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#5P#1252810073V無論如何，從藥的效果來看，
+		我們可以推測那種植物應該也
+		具有某種『不可思議的特徵』吧。{wait}
+	}
+	TextWait
+	TextTalk name[1] {
+		#11P#00101F#1250010024V『不可思議的特徵』嗎……？{wait}
+	}
+	TextWait
+	TextTalk name[4] {
+		#12P#10309F#1250040020V呵呵，感覺這件事好像
+		很神秘，讓我有點興趣了。{wait}
+	}
+	TextWait
+	Emote name[0] 0mm 1700mm 24 27 250ms 0
+	Sleep 2000ms
+	EmoteStop name[0]
+	TextTalk name[0] {
+		#12P#00003F#1250000067V──賽蘭德教授。
+		非常感謝妳。{wait}
+	} {
+		#00000F#1250000068V因為妳的意見，我覺得那些原本
+		模糊不清的事情漸漸理出個頭緒來了。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#5P#1252810074V這樣啊，那就好。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#5P#1252810075V我這邊有關真知成份的調查
+		就到此告一段落，不過……{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#5P#1252810076V你們還有什麼新發現的話，
+		可以隨時過來找我。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#5P#1252810077V我只能以醫生的立場提供意見，
+		若不嫌棄的話，我很樂意分享。{wait}
+	}
+	TextWait
+	FadeOut 1000ms 0x00000000 255
+	FadeWait
+	BgmStop 4000ms
+	BgmWait
+	FlagSet flag[272]
+	NewScene "scena/t1600.bin" 104 0 0
+	Hcf
+	Return
+
+fn[11]:
+	EventBegin 2
+	FadeOut 300ms 0x00000000 100
+	FadeWait
+	Menu menu[0] -1 -1 0
+		"【離開研究大樓】" // 0
+		"【放棄】" // 1
+	MenuWait var[0]
+	MenuClose menu[0]
+	TextClose 0
+	TextSetPos -1 280 60 3
+	FadeIn 300ms 0x00000000
+	FadeWait
+	switch var[0]:
+		case 0:
+			FadeOut 1000ms 0x00000000 255
+			FadeWait
+			NewScene "scena/t1600.bin" 104 0 0
+			Hcf
+			break
+		case 1:
+			CharSetPos field_party[0] (100500, 0, 50000) 90deg
+			EventEnd 5
+			break
+	Return

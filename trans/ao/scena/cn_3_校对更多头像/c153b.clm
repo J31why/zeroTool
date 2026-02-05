@@ -1,0 +1,330 @@
+calmare ao_k scena
+scena:
+	name "c153b" "c153b" "c153b"
+	town town[174]
+	bgm bgm[0]
+	flags 8192
+	item_use fn[0,255]
+	unk 255 0
+
+entry:
+	pos (0, 0, -1000)
+	unk1 0
+	cam_from (0, 0, 24000)
+	cam_pers 500
+	unk2 30
+	cam_deg 45deg
+	cam_limit 0deg 360deg
+	cam_at (0, 0, 0)
+	unk3 0
+	unk4 0
+	flags 0x0001
+	town town[174]
+	init fn[0,0]
+	reinit fn[0,1]
+
+npc char[0]:
+	name "迪塔市長"
+	pos (0, 0, 0)
+	angle 0deg
+	flags 0x01C5
+	unk2 0
+	chip chip[0]
+	init fn[255,255]
+	talk fn[255,255]
+	unk4 255
+
+npc char[1]:
+	name "麥克道爾議長"
+	pos (0, 0, 0)
+	angle 0deg
+	flags 0x01C5
+	unk2 0
+	chip chip[0]
+	init fn[255,255]
+	talk fn[255,255]
+	unk4 255
+
+npc char[2]:
+	name "達德利搜查官"
+	pos (0, 0, 0)
+	angle 0deg
+	flags 0x01C5
+	unk2 0
+	chip chip[0]
+	init fn[255,255]
+	talk fn[255,255]
+	unk4 255
+
+npc char[3]:
+	name "索妮亞司令"
+	pos (0, 0, 0)
+	angle 0deg
+	flags 0x01C5
+	unk2 0
+	chip chip[0]
+	init fn[255,255]
+	talk fn[255,255]
+	unk4 255
+
+npc char[4]:
+	name "道格拉斯副司令"
+	pos (0, 0, 0)
+	angle 0deg
+	flags 0x01C5
+	unk2 0
+	chip chip[0]
+	init fn[255,255]
+	talk fn[255,255]
+	unk4 255
+
+npc char[5]:
+	name "賽爾蓋課長"
+	pos (0, 0, 0)
+	angle 0deg
+	flags 0x01C5
+	unk2 0
+	chip chip[0]
+	init fn[255,255]
+	talk fn[255,255]
+	unk4 255
+
+npc char[6]:
+	name "皮埃爾副局長    "
+	pos (0, 0, 0)
+	angle 0deg
+	flags 0x01C5
+	unk2 0
+	chip chip[0]
+	init fn[255,255]
+	talk fn[255,255]
+	unk4 255
+
+npc char[7]:
+	name "局長？"
+	pos (0, 0, 0)
+	angle 0deg
+	flags 0x01C5
+	unk2 0
+	chip chip[0]
+	init fn[255,255]
+	talk fn[255,255]
+	unk4 255
+
+anim[0] 384ms
+
+fn[0]:
+	if flag[272]:
+		FlagUnset flag[272]
+		Event fn[0,2]
+	Return
+
+fn[1]:
+	Return
+
+fn[2]:
+	EventBegin 0
+	FadeOut 0ms 0x00000000 255
+	ED7LoadChip "chr/ch05602.itc" chip[30]
+	ED7LoadChip "chr/ch05802.itc" chip[31]
+	ED7LoadChip "chr/ch05702.itc" chip[32]
+	ED7LoadChip "chr/ch44902.itc" chip[33]
+	ED7LoadChip "chr/ch06402.itc" chip[34]
+	ED7LoadChip "chr/ch02502.itc" chip[35]
+	ED7LoadChip "chr/ch00902.itc" chip[36]
+	CharSetChipBase char[0] chip[30]
+	CharSetChipPattern char[0] 0
+	CharFlagsUnset char[0] 0x0080
+	CharFlagsSet char[0] 0x8000
+	CharSetPos char[0] (272800, 100, 6950) 270deg
+	CharSetChipBase char[1] chip[31]
+	CharSetChipPattern char[1] 0
+	CharFlagsUnset char[1] 0x0080
+	CharFlagsSet char[1] 0x8000
+	CharSetPos char[1] (272800, 100, 4950) 270deg
+	CharSetChipBase char[4] chip[33]
+	CharSetChipPattern char[4] 2
+	CharFlagsUnset char[4] 0x0080
+	CharFlagsSet char[4] 0x8000
+	CharSetPos char[4] (269200, 100, 8950) 90deg
+	CharSetChipBase char[3] chip[32]
+	CharSetChipPattern char[3] 0
+	CharFlagsUnset char[3] 0x0080
+	CharFlagsSet char[3] 0x8000
+	CharSetPos char[3] (269200, 100, 6950) 90deg
+	CharSetChipBase char[6] chip[34]
+	CharSetChipPattern char[6] 0
+	CharFlagsUnset char[6] 0x0080
+	CharFlagsSet char[6] 0x8000
+	CharSetPos char[6] (269200, 100, 4950) 90deg
+	CharSetChipBase char[5] chip[35]
+	CharSetChipPattern char[5] 1
+	CharFlagsUnset char[5] 0x0080
+	CharFlagsSet char[5] 0x8000
+	CharSetPos char[5] (269200, 100, 2950) 90deg
+	CharSetChipBase char[2] chip[36]
+	CharSetChipPattern char[2] 1
+	CharFlagsUnset char[2] 0x0080
+	CharFlagsSet char[2] 0x8000
+	CharSetPos char[2] (269200, 100, 900) 90deg
+	CamSetDistance 271500 -1100 5950 0ms
+	ED7CamRotate 90deg 21deg 0deg 0ms
+	CamPers 650 0ms
+	CamZoom 21000 0ms
+	CamSetDistance 271500 900 5950 3000ms
+	FadeIn 2000ms 0x00000000
+	FadeWait
+	CamWait 121
+	Sleep 500ms
+	CrossFade 500ms
+	CamSetDistance 271700 800 5950 0ms
+	ED7CamRotate 36deg 12deg 0deg 0ms
+	CamPers 600 0ms
+	CamZoom 17630 0ms
+	CamZoom 16630 2000ms
+	FadeWait
+	CamWait 121
+	TextTalk char[1] {
+		#1330250001V#02503F#11P怎麼會……{wait}
+	} {
+		#1330250002V#02501F沒想到這麼大的事件，
+		居然是一個獵兵團引發的。{wait}
+	}
+	TextWait
+	CharSetChipPattern char[0] 1
+	Sleep 300ms
+	TextTalk char[0] {
+		#1330280001V#5P#02803F……背後肯定有人
+		在操控吧。{wait}
+	} {
+		#1330280002V#02801F而且，跟通商會議的時候一樣……{wait}
+	}
+	TextWait
+	TextTalk char[5] {
+		#1330100012V#6P#01003F埃雷波尼亞帝國政府……{wait}
+	} {
+		#1330100013V#01001F不，如果縮小範圍的話，
+		應該是『帝國軍情報局』吧。{wait}
+	}
+	TextWait
+	TextTalk char[2] {
+		#1330060023V#12P#00606F我不得不說
+		這個可能性很高……{wait}
+	} {
+		#1330060024V#00601F在我們克洛斯貝爾，
+		情報局的軍官跟『紅色星座』
+		之間的聯絡也很頻繁。{wait}
+	}
+	TextWait
+	TextTalk char[6] {
+		#08305F#1332360001V#6P既、既然這樣，
+		不是只能哭著
+		去求帝國政府幫忙了嗎！？{wait}
+	} {
+		#08301F#1332360002V#6P或是投靠共和國政府，
+		拜託他們出手相助……！{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#1330280003V#5P#02803F不，在上午的時候，
+		我已經問過帝國政府了。{wait}
+	} {
+		#1330280004V#02801F理所當然……
+		對方的回答是『沒印象』。{wait}
+	} {
+		#1330280005V#02806F……然後，雖然是我的責任，但是
+		自從提出獨立之後，我們也無法
+		再拜託共和國政府幫忙了。{wait}
+	}
+	TextWait
+	TextTalk char[6] {
+		#08311F#1332360003V#6P怎、怎麼會……{wait}
+	} {
+		#08305F#1332360004V#6P……不、不是的！
+		這絕對不是市長的責任！{wait}
+	}
+	TextWait
+	TextTalk char[1] {
+		#1330250003V#02503F#11P無論如何……
+		照這樣下去，只能以自治州政府的名義
+		發出正式的抗議聲明了吧。{wait}
+	} {
+		#1330250004V#02500F但是……不管怎樣，
+		我還是很擔心瑪因茲居民的安危。{wait}
+	}
+	TextWait
+	TextTalk char[3] {
+		#1330200001V#6P#02003F……我們委託民間的飛行艇，
+		好不容易從上空確認到狀況了。{wait}
+	} {
+		#1330200002V#02001F目前似乎沒有進行
+		掠奪行為的跡象。{wait}
+	}
+	TextWait
+	TextTalk char[4] {
+		#07601F#1332460001V#5P但是，瑪因茲的居民
+		依舊是被當成了人質。{wait}
+	} {
+		#07601F#1332460002V#5P當地食物的存量也很讓人擔心，
+		不能再拖延下去了。{wait}
+	}
+	TextWait
+	CharSetChipPattern char[0] 0
+	Sleep 150ms
+	TextTalk char[0] {
+		#1330280006V#11P#02803F當然，我會立刻研擬對策。{wait}
+	} {
+		#1330280007V#02801F……警備隊的損失
+		大概到什麼程度？{wait}
+	}
+	TextWait
+	TextTalk char[3] {
+		#1330200003V#6P#02006F……我不得不說，
+		人力、物力上的損失非常慘重。{wait}
+	} {
+		#1330200004V#02001F目前已經把後備戰力
+		全部都佈署在山道上了。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#1330280008V#11P#02806F這樣啊……{wait}
+	}
+	TextWait
+	CharSetChipPattern char[0] 1
+	Sleep 300ms
+	TextTalk char[0] {
+		#1330280009V#02801F#5P──雖然對手是戰鬥方面的專家，
+		但也只是用米拉雇用的集團。{wait}
+	} {
+		#1330280010V如果交涉順利，或許還是有機會
+		阻止慘況繼續擴大。{wait}
+	} {
+		#1330280011V希望各位警察同仁
+		在安撫市民不安情緒的同時，
+		也能努力尋找交涉的可能性。{wait}
+	}
+	TextWait
+	TextTalk char[2] {
+		#1330060025V#12P#00601F瞭解！{wait}
+	}
+	TextWait
+	TextTalk char[6] {
+		#08301F#1332360005V#6P我、我馬上辦！{wait}
+	}
+	TextWait
+	TextTalk char[5] {
+		#1330100014V#6P#01003F還要聯絡協會，
+		盡一切可能努力嘗試吧……{wait}
+	}
+	TextWait
+	CamZoom 17130 2000ms
+	FadeOut 2000ms 0x00000000 255
+	FadeWait
+	CamWait 121
+	BgmStop 4000ms
+	BgmWait
+	system[76] = 65535
+	FlagSet flag[275]
+	NewScene "scena/c010b.bin" 0 0 0
+	Hcf
+	Return

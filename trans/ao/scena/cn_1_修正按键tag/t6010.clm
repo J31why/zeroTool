@@ -1,0 +1,4568 @@
+calmare ao_k scena
+scena:
+	name "t6010" "t6010" "t6010"
+	town town[164]
+	bgm bgm[111]
+	flags 8192
+	item_use fn[0,255]
+	unk 255 37
+
+entry:
+	pos (0, 0, -1000)
+	unk1 0
+	cam_from (0, 0, 24000)
+	cam_pers 500
+	unk2 30
+	cam_deg 45deg
+	cam_limit 0deg 360deg
+	cam_at (0, 0, 0)
+	unk3 0
+	unk4 0
+	flags 0x0001
+	town town[164]
+	init fn[0,1]
+	reinit fn[0,2]
+
+chip[0] "chr/ch28000.itc"
+chip[1] "chr/ch30000.itc"
+chip[2] "chr/ch30600.itc"
+chip[3] "chr/ch30100.itc"
+chip[4] "chr/ch30400.itc"
+chip[5] "chr/ch30100.itc"
+chip[6] "chr/ch17100.itc"
+chip[7] null
+chip[8] null
+chip[9] null
+chip[10] null
+chip[11] null
+chip[12] null
+chip[13] null
+chip[14] null
+chip[15] null
+chip[16] null
+chip[17] null
+chip[18] null
+chip[19] null
+chip[20] null
+chip[21] null
+chip[22] null
+chip[23] null
+chip[24] null
+chip[25] null
+chip[26] null
+chip[27] null
+chip[28] null
+chip[29] null
+
+npc char[0]:
+	name "胡安事務長"
+	pos (0, 0, 15399)
+	angle 180deg
+	flags 0x0105
+	unk2 0
+	chip chip[0]
+	init fn[0,0]
+	talk fn[0,4]
+	unk4 255
+
+npc char[1]:
+	name "訓練生"
+	pos (67300, 0, 5900)
+	angle 270deg
+	flags 0x0185
+	unk2 0
+	chip chip[2]
+	init fn[0,0]
+	talk fn[0,10]
+	unk4 255
+
+npc char[2]:
+	name "悠娜"
+	pos (15500, 0, 12250)
+	angle 90deg
+	flags 0x0185
+	unk2 0
+	chip chip[6]
+	init fn[0,0]
+	talk fn[0,9]
+	unk4 255
+
+npc char[3]:
+	name "教官"
+	pos (18000, 0, 12250)
+	angle 0deg
+	flags 0x0185
+	unk2 0
+	chip chip[3]
+	init fn[0,0]
+	talk fn[0,11]
+	unk4 255
+
+npc char[4]:
+	name "接待小姐瑞貝卡"
+	pos (3200, 0, 16090)
+	angle 90deg
+	flags 0x0185
+	unk2 0
+	chip chip[4]
+	init fn[0,0]
+	talk fn[0,13]
+	unk4 255
+
+npc char[5]:
+	name "喬里基課長"
+	pos (67300, 0, 20149)
+	angle 270deg
+	flags 0x0185
+	unk2 0
+	chip chip[5]
+	init fn[0,0]
+	talk fn[0,24]
+	unk4 255
+
+npc char[6]:
+	name "警官"
+	pos (66099, 0, 20149)
+	angle 90deg
+	flags 0x0185
+	unk2 0
+	chip chip[1]
+	init fn[0,0]
+	talk fn[0,25]
+	unk4 255
+
+npc char[7]:
+	name "賽爾蓋課長"
+	pos (0, 0, 0)
+	angle 0deg
+	flags 0x01C5
+	unk2 0
+	chip chip[0]
+	init fn[255,255]
+	talk fn[255,255]
+	unk4 255
+
+look_point[0]:
+	pos (0, 0, 14400)
+	radius 1000
+	bubble_pos (0, 1500, 15400)
+	unk1 126
+	unk2 0
+	function fn[0,3]
+	unk3 0
+	unk4 0
+
+look_point[1]:
+	pos (2690, 0, 14400)
+	radius 1000
+	bubble_pos (3200, 1500, 16090)
+	unk1 126
+	unk2 0
+	function fn[0,12]
+	unk3 0
+	unk4 0
+
+look_point[2]:
+	pos (20020, 0, 9890)
+	radius 1000
+	bubble_pos (20020, 1500, 9890)
+	unk1 124
+	unk2 0
+	function fn[0,31]
+	unk3 0
+	unk4 0
+
+look_point[3]:
+	pos (15360, 0, 12700)
+	radius 1000
+	bubble_pos (15360, 1500, 12700)
+	unk1 124
+	unk2 0
+	function fn[0,32]
+	unk3 0
+	unk4 0
+
+look_point[4]:
+	pos (17920, 0, 12660)
+	radius 1000
+	bubble_pos (17920, 1500, 12660)
+	unk1 124
+	unk2 0
+	function fn[0,32]
+	unk3 0
+	unk4 0
+
+fn[0]:
+	var[2] = random % 8
+	switch var[2]:
+		case 0:
+			ED7_A0 self 1450ms 0 251
+			break
+		case 1:
+			ED7_A0 self 1550ms 0 251
+			break
+		case 2:
+			ED7_A0 self 1600ms 0 251
+			break
+		case 3:
+			ED7_A0 self 1400ms 0 251
+			break
+		case 4:
+			ED7_A0 self 1650ms 0 251
+			break
+		case 5:
+			ED7_A0 self 1350ms 0 251
+			break
+		case 6:
+			ED7_A0 self 1500ms 0 251
+			break
+		default:
+			ED7_A0 self 1500ms 0 251
+			break
+	while 1:
+		ED7_A0 self 1500ms 0 251
+	Return
+
+fn[1]:
+	if flag[3385]:
+		CharFlagsUnset char[0] 0x0080
+		CharFlagsUnset char[5] 0x0080
+		CharFlagsUnset char[6] 0x0080
+		CharFlagsSet char[6] 0x0010
+		CharFlagsUnset char[2] 0x0080
+		CharSetPos char[2] (15500, 0, 11930) 0deg
+	elif flag[3074]:
+		CharFlagsUnset char[2] 0x0080
+		CharSetPos char[2] (17790, 0, 12020) 0deg
+		CharFlagsUnset char[4] 0x0080
+	elif flag[2848]:
+		CharFlagsUnset char[3] 0x0080
+	elif flag[2842]:
+		CharFlagsUnset char[1] 0x0080
+	elif flag[2832]:
+		CharFlagsUnset char[2] 0x0080
+		CharSetPos char[2] (19000, 0, 9000) 90deg
+		CharFlagsSet char[2] 0x0010
+	elif flag[2816]:
+		CharFlagsUnset char[1] 0x0080
+		CharSetPos char[1] (18000, 0, 12250) 0deg
+	elif flag[2573]:
+		CharFlagsUnset char[3] 0x0080
+		CharSetPos char[3] (66700, 0, 19750) 180deg
+	elif flag[2564]:
+		CharFlagsUnset char[1] 0x0080
+	elif flag[2560]:
+		CharFlagsUnset char[2] 0x0080
+		CharSetPos char[2] (15500, 0, 11930) 0deg
+	elif flag[2366]:
+		CharFlagsUnset char[3] 0x0080
+	elif flag[2353]:
+	if flag[2363] && !flag[2365]:
+		Event fn[0,26]
+	Return
+
+fn[2]:
+	if flag[2848] && !flag[2858]:
+		ED7_76_0 object[255] "t6010:Layer11" 1
+		SoundPlay sound[128] 1 50 0
+	LookPointFlagsSet look_point[1] 0x0001
+	if !flag[3089] && flag[3074]:
+		LookPointFlagsUnset look_point[1] 0x0001
+	ObjFlagsUnset object[7] 0x0010
+	Return
+
+fn[3]:
+	Call fn[0,4]
+	Return
+
+fn[4]:
+	if flag[3385]:
+		if !flag[3554]:
+			Call fn[0,29]
+			Return
+	TextStart char[0]
+	if flag[4216] && !flag[4217]:
+		var[0] = 99
+		while var[0] == 99:
+			FadeOut 300ms 0x00000000 100
+			Menu menu[0] -1 -1 1
+				"交談" // 0
+				"交付意外料理" // 1
+				"放棄" // 2
+			MenuWait var[0]
+			MenuClose menu[0]
+			if var[0] != 1:
+				FadeIn 300ms 0x00000000
+				FadeWait
+			if var[0] == 0:
+				var[0] = 99
+				Call fn[0,5]
+			elif var[0] == 1:
+				var[0] = 99
+				while var[0] == 99:
+					var[1] = 0
+					ED7MenuNew menu[1]
+					if flag[4192] | ItemHas item[402] 0:
+						ED7MenuAdd menu[1] "極苦麵《斷頭》"
+						if flag[4192]:
+							Call fn[0,7]
+						var[1] += 1
+					if flag[4193] | ItemHas item[405] 0:
+						ED7MenuAdd menu[1] "煉獄麻婆《閰魔》"
+						if flag[4193]:
+							Call fn[0,7]
+						var[1] += 1
+					if flag[4194] | ItemHas item[408] 0:
+						ED7MenuAdd menu[1] "雜色鍋巴飯"
+						if flag[4194]:
+							Call fn[0,7]
+						var[1] += 1
+					if flag[4195] | ItemHas item[411] 0:
+						ED7MenuAdd menu[1] "頑固牛排《岩》"
+						if flag[4195]:
+							Call fn[0,7]
+						var[1] += 1
+					if flag[4196] | ItemHas item[414] 0:
+						ED7MenuAdd menu[1] "混沌久煮《濁》"
+						if flag[4196]:
+							Call fn[0,7]
+						var[1] += 1
+					if flag[4197] | ItemHas item[417] 0:
+						ED7MenuAdd menu[1] "男人料理《山》"
+						if flag[4197]:
+							Call fn[0,7]
+						var[1] += 1
+					if flag[4198] | ItemHas item[420] 0:
+						ED7MenuAdd menu[1] "男人料理《川》"
+						if flag[4198]:
+							Call fn[0,7]
+						var[1] += 1
+					if flag[4199] | ItemHas item[423] 0:
+						ED7MenuAdd menu[1] "魚箭"
+						if flag[4199]:
+							Call fn[0,7]
+						var[1] += 1
+					if flag[4200] | ItemHas item[426] 0:
+						ED7MenuAdd menu[1] "激辣炸彈蛋包飯"
+						if flag[4200]:
+							Call fn[0,7]
+						var[1] += 1
+					if flag[4201] | ItemHas item[429] 0:
+						ED7MenuAdd menu[1] "細針麵"
+						if flag[4201]:
+							Call fn[0,7]
+						var[1] += 1
+					if flag[4202] | ItemHas item[432] 0:
+						ED7MenuAdd menu[1] "苦味漢堡"
+						if flag[4202]:
+							Call fn[0,7]
+						var[1] += 1
+					if flag[4203] | ItemHas item[435] 0:
+						ED7MenuAdd menu[1] "四重番茄披薩"
+						if flag[4203]:
+							Call fn[0,7]
+						var[1] += 1
+					if flag[4204] | ItemHas item[438] 0:
+						ED7MenuAdd menu[1] "守護三明治"
+						if flag[4204]:
+							Call fn[0,7]
+						var[1] += 1
+					if flag[4205] | ItemHas item[441] 0:
+						ED7MenuAdd menu[1] "不可思議便當《仰天》"
+						if flag[4205]:
+							Call fn[0,7]
+						var[1] += 1
+					if flag[4206] | ItemHas item[444] 0:
+						ED7MenuAdd menu[1] "魔法湯"
+						if flag[4206]:
+							Call fn[0,7]
+						var[1] += 1
+					if flag[4207] | ItemHas item[447] 0:
+						ED7MenuAdd menu[1] "謎味糖果"
+						if flag[4207]:
+							Call fn[0,7]
+						var[1] += 1
+					if flag[4208] | ItemHas item[450] 0:
+						ED7MenuAdd menu[1] "反射巧克力"
+						if flag[4208]:
+							Call fn[0,7]
+						var[1] += 1
+					if flag[4209] | ItemHas item[453] 0:
+						ED7MenuAdd menu[1] "爽彈布丁"
+						if flag[4209]:
+							Call fn[0,7]
+						var[1] += 1
+					if flag[4210] | ItemHas item[456] 0:
+						ED7MenuAdd menu[1] "復生冰淇淋"
+						if flag[4210]:
+							Call fn[0,7]
+						var[1] += 1
+					if flag[4211] | ItemHas item[459] 0:
+						ED7MenuAdd menu[1] "隱密爆米花"
+						if flag[4211]:
+							Call fn[0,7]
+						var[1] += 1
+					if flag[4212] | ItemHas item[462] 0:
+						ED7MenuAdd menu[1] "良藥《熊竹》"
+						if flag[4212]:
+							Call fn[0,7]
+						var[1] += 1
+					if flag[4213] | ItemHas item[465] 0:
+						ED7MenuAdd menu[1] "紫色液體"
+						if flag[4213]:
+							Call fn[0,7]
+						var[1] += 1
+					if flag[4214] | ItemHas item[468] 0:
+						ED7MenuAdd menu[1] "褐色液體"
+						if flag[4214]:
+							Call fn[0,7]
+						var[1] += 1
+					if flag[4215] | ItemHas item[471] 0:
+						ED7MenuAdd menu[1] "粉紅液體"
+						if flag[4215]:
+							Call fn[0,7]
+						var[1] += 1
+					ED7MenuAdd menu[1] "放棄"
+					var[0] = 99
+					ED7MenuShow menu[1] 65535 65535 1
+					MenuWait var[0]
+					MenuClose menu[1]
+					TextClose 0
+					_59
+					if var[0] >= var[1] | var[0] < 0:
+						FadeIn 300ms 0x00000000
+						FadeWait
+						TextTalk char[0] {
+							謝謝你，如果還有好東西的話，
+							就再拜託你了。{wait}
+						}
+						TextWait
+					else:
+						TextSetName ""
+						TextSetPos -1 -1 -1 -1
+						var[2] = 0
+						var[1] = 0
+						if flag[4192] | ItemHas item[402] 0:
+							if var[0] == var[1]:
+								var[2] = 1
+								ItemRemove item[402] 1
+								FlagSet flag[4192]
+								TextMessage null {
+									將『{item[402]}{color 0}』交給了胡安事務長。{wait}
+								}
+							var[1] += 1
+						if flag[4193] | ItemHas item[405] 0:
+							if var[0] == var[1]:
+								var[2] = 1
+								ItemRemove item[405] 1
+								FlagSet flag[4193]
+								TextMessage null {
+									將『{item[405]}{color 0}』交給了胡安事務長。{wait}
+								}
+							var[1] += 1
+						if flag[4194] | ItemHas item[408] 0:
+							if var[0] == var[1]:
+								var[2] = 1
+								ItemRemove item[408] 1
+								FlagSet flag[4194]
+								TextMessage null {
+									將『{item[408]}{color 0}』交給了胡安事務長。{wait}
+								}
+							var[1] += 1
+						if flag[4195] | ItemHas item[411] 0:
+							if var[0] == var[1]:
+								var[2] = 1
+								ItemRemove item[411] 1
+								FlagSet flag[4195]
+								TextMessage null {
+									將『{item[411]}{color 0}』交給了胡安事務長。{wait}
+								}
+							var[1] += 1
+						if flag[4196] | ItemHas item[414] 0:
+							if var[0] == var[1]:
+								var[2] = 1
+								ItemRemove item[414] 1
+								FlagSet flag[4196]
+								TextMessage null {
+									將『{item[414]}{color 0}』交給了胡安事務長。{wait}
+								}
+							var[1] += 1
+						if flag[4197] | ItemHas item[417] 0:
+							if var[0] == var[1]:
+								var[2] = 1
+								ItemRemove item[417] 1
+								FlagSet flag[4197]
+								TextMessage null {
+									將『{item[417]}{color 0}』交給了胡安事務長。{wait}
+								}
+							var[1] += 1
+						if flag[4198] | ItemHas item[420] 0:
+							if var[0] == var[1]:
+								var[2] = 1
+								ItemRemove item[420] 1
+								FlagSet flag[4198]
+								TextMessage null {
+									將『{item[420]}{color 0}』交給了胡安事務長。{wait}
+								}
+							var[1] += 1
+						if flag[4199] | ItemHas item[423] 0:
+							if var[0] == var[1]:
+								var[2] = 1
+								ItemRemove item[423] 1
+								FlagSet flag[4199]
+								TextMessage null {
+									將『{item[423]}{color 0}』交給了胡安事務長。{wait}
+								}
+							var[1] += 1
+						if flag[4200] | ItemHas item[426] 0:
+							if var[0] == var[1]:
+								var[2] = 1
+								ItemRemove item[426] 1
+								FlagSet flag[4200]
+								TextMessage null {
+									將『{item[426]}{color 0}』交給了胡安事務長。{wait}
+								}
+							var[1] += 1
+						if flag[4201] | ItemHas item[429] 0:
+							if var[0] == var[1]:
+								var[2] = 1
+								ItemRemove item[429] 1
+								FlagSet flag[4201]
+								TextMessage null {
+									將『{item[429]}{color 0}』交給了胡安事務長。{wait}
+								}
+							var[1] += 1
+						if flag[4202] | ItemHas item[432] 0:
+							if var[0] == var[1]:
+								var[2] = 1
+								ItemRemove item[432] 1
+								FlagSet flag[4202]
+								TextMessage null {
+									將『{item[432]}{color 0}』交給了胡安事務長。{wait}
+								}
+							var[1] += 1
+						if flag[4203] | ItemHas item[435] 0:
+							if var[0] == var[1]:
+								var[2] = 1
+								ItemRemove item[435] 1
+								FlagSet flag[4203]
+								TextMessage null {
+									將『{item[435]}{color 0}』交給了胡安事務長。{wait}
+								}
+							var[1] += 1
+						if flag[4204] | ItemHas item[438] 0:
+							if var[0] == var[1]:
+								var[2] = 1
+								ItemRemove item[438] 1
+								FlagSet flag[4204]
+								TextMessage null {
+									將『{item[438]}{color 0}』交給了胡安事務長。{wait}
+								}
+							var[1] += 1
+						if flag[4205] | ItemHas item[441] 0:
+							if var[0] == var[1]:
+								var[2] = 1
+								ItemRemove item[441] 1
+								FlagSet flag[4205]
+								TextMessage null {
+									將『{item[441]}{color 0}』交給了胡安事務長。{wait}
+								}
+							var[1] += 1
+						if flag[4206] | ItemHas item[444] 0:
+							if var[0] == var[1]:
+								var[2] = 1
+								ItemRemove item[444] 1
+								FlagSet flag[4206]
+								TextMessage null {
+									將『{item[444]}{color 0}』交給了胡安事務長。{wait}
+								}
+							var[1] += 1
+						if flag[4207] | ItemHas item[447] 0:
+							if var[0] == var[1]:
+								var[2] = 1
+								ItemRemove item[447] 1
+								FlagSet flag[4207]
+								TextMessage null {
+									將『{item[447]}{color 0}』交給了胡安事務長。{wait}
+								}
+							var[1] += 1
+						if flag[4208] | ItemHas item[450] 0:
+							if var[0] == var[1]:
+								var[2] = 1
+								ItemRemove item[450] 1
+								FlagSet flag[4208]
+								TextMessage null {
+									將『{item[450]}{color 0}』交給了胡安事務長。{wait}
+								}
+							var[1] += 1
+						if flag[4209] | ItemHas item[453] 0:
+							if var[0] == var[1]:
+								var[2] = 1
+								ItemRemove item[453] 1
+								FlagSet flag[4209]
+								TextMessage null {
+									將『{item[453]}{color 0}』交給了胡安事務長。{wait}
+								}
+							var[1] += 1
+						if flag[4210] | ItemHas item[456] 0:
+							if var[0] == var[1]:
+								var[2] = 1
+								ItemRemove item[456] 1
+								FlagSet flag[4210]
+								TextMessage null {
+									將『{item[456]}{color 0}』交給了胡安事務長。{wait}
+								}
+							var[1] += 1
+						if flag[4211] | ItemHas item[459] 0:
+							if var[0] == var[1]:
+								var[2] = 1
+								ItemRemove item[459] 1
+								FlagSet flag[4211]
+								TextMessage null {
+									將『{item[459]}{color 0}』交給了胡安事務長。{wait}
+								}
+							var[1] += 1
+						if flag[4212] | ItemHas item[462] 0:
+							if var[0] == var[1]:
+								var[2] = 1
+								ItemRemove item[462] 1
+								FlagSet flag[4212]
+								TextMessage null {
+									將『{item[462]}{color 0}』交給了胡安事務長。{wait}
+								}
+							var[1] += 1
+						if flag[4213] | ItemHas item[465] 0:
+							if var[0] == var[1]:
+								var[2] = 1
+								ItemRemove item[465] 1
+								FlagSet flag[4213]
+								TextMessage null {
+									將『{item[465]}{color 0}』交給了胡安事務長。{wait}
+								}
+							var[1] += 1
+						if flag[4214] | ItemHas item[468] 0:
+							if var[0] == var[1]:
+								var[2] = 1
+								ItemRemove item[468] 1
+								FlagSet flag[4214]
+								TextMessage null {
+									將『{item[468]}{color 0}』交給了胡安事務長。{wait}
+								}
+							var[1] += 1
+						if flag[4215] | ItemHas item[471] 0:
+							if var[0] == var[1]:
+								var[2] = 1
+								ItemRemove item[471] 1
+								FlagSet flag[4215]
+								TextMessage null {
+									將『{item[471]}{color 0}』交給了胡安事務長。{wait}
+								}
+							var[1] += 1
+						TextWait
+						TextClose 0
+						_59
+						TextSetPos -1 280 60 3
+						Call fn[0,6]
+						if var[1] == 24:
+							FadeIn 300ms 0x00000000
+							FadeWait
+							TextTalk char[0] {
+								哎呀，
+								你似乎帶來很多
+								『古怪料理』呢。{wait}
+							}
+							TextWait
+							TextTalk char[0] {
+								這麼一來，鑑識班的實習
+								暫時也沒問題了呢。
+								……真的很感謝你們。{wait}
+							}
+							TextWait
+							TextTalk name[0] {
+								#00000F呵呵，請別放在心上。
+								這也不是什麼了不起的東西……{wait}
+							} {
+								而且看來有幫上
+								母校的忙就好。{wait}
+							}
+							TextWait
+							TextTalk char[0] {
+								羅伊德真是優秀呢……
+								嗯，他這種地方從學生時期
+								到現在都沒變呢。{wait}
+							}
+							TextWait
+							TextTalk char[0] {
+								對了，你方便的話，
+								今天要不要帶這個走呢？{wait}
+							}
+							TextWait
+							TextTalk char[0] {
+								這是最近實習開始使用的
+								ＥＮＩＧＭＡⅡ的結晶迴路，
+								結果多出一個呢。{wait}
+							}
+							TextWait
+							TextSetPos -1 -1 -1 -1
+							FadeOut 300ms 0x00000000 100
+							SoundPlay sound[17] 0 100 0
+							TextSetName ""
+							TextMessage name[742] {
+								{color 0}已收下{item[189]}{color 0}。{wait}
+							}
+							TextWait
+							TextClose 0
+							FadeIn 300ms 0x00000000
+							ItemAdd item[189] 1
+							TextSetPos -1 280 60 3
+							TextTalk name[0] {
+								#00000F謝謝你，
+								胡安事務長。{wait}
+							}
+							TextWait
+							TextTalk char[0] {
+								不不不，彼此彼此，
+								之後還有需要的話，再麻煩你們了。{wait}
+							}
+							TextWait
+							FlagSet flag[4217]
+							TextEnd char[0]
+							Return
+						var[0] = 99
+				var[0] = 99
+	else:
+		var[0] = 99
+		Call fn[0,5]
+	TextEnd char[0]
+	Return
+
+fn[5]:
+	if flag[3385]:
+		if !flag[0]:
+			TextTalk char[0] {
+				得知總統
+				被捕後，國防軍
+				也撤退了呢。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				為了處理
+				各地的混亂，國防軍
+				要好好努力才行呢。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				我們也得做
+				我們辦得到的事才行呢。{wait}
+			}
+			TextWait
+			FlagSet flag[0]
+		else:
+			TextTalk char[0] {
+				從本部過來的支援部隊，
+				目前正在處理這附近的混亂狀況。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				我們也得做
+				我們辦得到的事才行呢。{wait}
+			}
+			TextWait
+	elif flag[3074]:
+		if !flag[0]:
+			TextTalk char[0] {
+				……那起攻擊事件
+				實在是太過淒慘。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				警察學校跟
+				各位新人警察沒事，
+				真是不幸中的大幸，不過……{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				克洛斯貝爾要完全振作起來，
+				看來還需要很多時間呢。{wait}
+			}
+			TextWait
+			FlagSet flag[0]
+		else:
+			TextTalk char[0] {
+				……在那起攻擊事件中，警察學校跟
+				各位新人警察沒事，
+				真是不幸中的大幸，不過……{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				克洛斯貝爾要完全振作起來，
+				看來還需要很多時間呢。{wait}
+			}
+			TextWait
+	elif flag[2848]:
+		if !flag[0]:
+			TextTalk char[0] {
+				昨天被破壞的閘門，
+				要準備新的似乎還會
+				花上一點時間。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				沒想到居然會以那種方式遭到破壞，
+				我完全沒想到呢……{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				看來短時間內
+				只能拜託警備隊進行警備了。{wait}
+			}
+			TextWait
+			FlagSet flag[0]
+		else:
+			TextTalk char[0] {
+				昨天被破壞的閘門，
+				要準備新的似乎還會
+				花上一點時間。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				看來短時間內
+				只能拜託警備隊進行警備了。{wait}
+			}
+			TextWait
+	elif flag[2842]:
+		if !flag[2944]:
+			TextTalk char[0] {
+				喔喔，是羅伊德你們啊。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				剛才我在學校內
+				聽到一聲巨響……
+				那究竟是什麼聲音？{wait}
+			}
+			TextWait
+			TextTalk name[0] {
+				#00000F……剛才我發現
+				學校的閘門被破壞了。
+				我想應該是那個聲音。{wait}
+			}
+			TextWait
+			Emote char[0] 0mm 2000mm 2 7 80ms 1
+			SoundPlay sound[28] 0 100 0
+			Sleep 1000ms
+			TextTalk char[0] {
+				你、你說什麼！？
+				那個特殊合金製的閘門被破壞……{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				莫非是《幻獸》……？
+				報告裡沒提到
+				幻獸有這種程度的力量啊？{wait}
+			}
+			TextWait
+			TextTalk name[2] {
+				#00200F我們也還無法下定論，
+				不過……{wait}
+			} {
+				幻獸過來這裡的
+				可能性絕對不是零。
+				……請務必充分保持警戒。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				啊、好……你們也要多小心。{wait}
+			}
+			TextWait
+			FlagSet flag[2944]
+		else:
+			TextTalk char[0] {
+				我們也會多加
+				警戒四周。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				你們……
+				千萬要小心喔。{wait}
+			}
+			TextWait
+	elif flag[2832]:
+		TextTalk char[0] {
+			今天在森林地帶
+			也沒有幻獸的目擊情報。{wait}
+		}
+		TextWait
+		TextTalk char[0] {
+			各位遊擊士今天似乎
+			也在調查其他地點。{wait}
+		}
+		TextWait
+	elif flag[2816]:
+		if !flag[0]:
+			TextTalk char[0] {
+				《幻獸》什麼的，
+				在諾克斯森林地帶
+				也有被目擊到。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				叫作林跟艾歐莉雅的
+				遊擊士雖然前往擊退，
+				不過似乎沒有成功的樣子。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				那邊畢竟是警備隊的演習地，
+				考慮到今後的事，
+				還是持續警戒會比較好吧。{wait}
+			}
+			TextWait
+			FlagSet flag[0]
+		else:
+			TextTalk char[0] {
+				《幻獸》什麼的，
+				在諾克斯森林地帶
+				也有被目擊到。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				雖然牠似乎逃走了，不過……
+				考慮到今後的事，
+				還是持續警戒會比較好吧。{wait}
+			}
+			TextWait
+	elif flag[2573]:
+		if !flag[0]:
+			TextTalk char[0] {
+				警察學校的訓練課程
+				會在半年內緊密進行。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				課程以講習和訓練為主，
+				畢業之後會根據能力
+				分配到各式各樣的部門。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				打個比方，就像教導雛鳥學習
+				如何第一次飛行的地方……{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				能夠在這裡服勤，
+				我感到非常榮幸。{wait}
+			}
+			TextWait
+			FlagSet flag[0]
+		else:
+			TextTalk char[0] {
+				就像教導雛鳥學習
+				如何第一次飛行的地方……{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				能夠在警察學校服勤，
+				我感到非常榮幸。{wait}
+			}
+			TextWait
+	elif flag[2564]:
+		if !flag[2686]:
+			TextTalk char[0] {
+				榮升警備隊副司令的道格拉斯，
+				有一段時間也在這裡擔任教官。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				他主要是負責訓練，
+				也很常出現在演習場。{wait}
+			}
+			TextWait
+			TextTalk name[0] {
+				#00000F哈哈……
+				他真的是很嚴格的人呢。{wait}
+			} {
+				#00008F在訓練過程中，學員一個接著一個
+				被淘汰的那幅地獄景象……{wait}
+			} {
+				#00006F就連現在回想起來
+				都還無法停止顫抖。{wait}
+			}
+			TextWait
+			TextTalk name[3] {
+				#00306F嗯，畢竟那位大哥
+				是會用爽朗笑容丟給你
+				百般難題的類型呢。{wait}
+			}
+			TextWait
+			TextTalk name[4] {
+				#10302F呵呵，這就是之前所說的
+				『魔鬼道格拉斯』的由來呢。{wait}
+			}
+			TextWait
+			TextTalk name[8] {
+				#10100F不過，能夠向警備隊的希望
+				學習到戰鬥技術，
+				我倒是很羨慕。{wait}
+			} {
+				#10104F可以的話，我也想在
+				新人時期跟他學習呢。{wait}
+			}
+			TextWait
+			TextTalk name[0] {
+				#00009F是、是沒錯，我很感謝他。
+				畢竟他教我的東西，
+				在實戰的時候幫過我好幾次。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				實際上，包含羅伊德在內，
+				托他的福，教出好幾位
+				優秀的警察呢。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				對警察學校來說，雖然是
+				無論如何都不想放手的人才，不過……{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				畢竟他原本就是出身警備隊，
+				而且又是索妮亞司令的請託，
+				這也無可奈何呢。{wait}
+			}
+			TextWait
+			FlagSet flag[2686]
+		else:
+			TextTalk char[0] {
+				道格拉斯對警察學校來說，
+				也是不想放手的人才呢。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				畢竟他原本就是出身警備隊，
+				而且又是索妮亞司令的請託，
+				這也無可奈何呢。{wait}
+			}
+			TextWait
+	elif flag[2560]:
+		if !flag[2685]:
+			TextTalk char[0] {
+				哎呀，是特務支援課的各位。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				我聽賽爾蓋說過，
+				你們每天都搭那輛新型導力車
+				四處奔波是吧。{wait}
+			}
+			TextWait
+			TextTalk name[0] {
+				#00000F哈哈，沒錯。
+				它在市外活動
+				也幫了我們很大的忙。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				嗯，開車時要確實
+				遵守交通規則喔。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				警察開車要是開出車禍……
+				這種事可是一點都不好笑喔。{wait}
+			}
+			TextWait
+			TextTalk name[4] {
+				#10300F呵呵，妳聽到了嗎？{wait}
+			}
+			TextWait
+			TextTalk name[8] {
+				#10105F我、我才不會
+				出車禍什麼的……！{wait}
+			}
+			TextWait
+			TextTalk name[3] {
+				#00300F嗯，諾艾兒
+				雖然不是飆車狂，
+				不過……{wait}
+			} {
+				#00304F因為太喜歡導力車，
+				所以也有可能會發生
+				鑽牛角尖的情況呢。{wait}
+			}
+			TextWait
+			TextTalk name[8] {
+				#10106F連、連學長都這麼說……{wait}
+			}
+			TextWait
+			TextTalk name[1] {
+				#00100F嗯，畢竟就連我們
+				都還沒有完全熟練……
+				大家一起留意吧。{wait}
+			}
+			TextWait
+			FlagSet flag[2685]
+		else:
+			TextTalk char[0] {
+				開車的時候要確實
+				遵守交通規則才行喔。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				警察開車要是開出車禍……
+				這種事可是一點都不好笑喔。{wait}
+			}
+			TextWait
+	elif flag[2353]:
+		if !flag[2509]:
+			TextTalk char[0] {
+				看來你們的講習結束了。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				接下來就要開始實務操作了吧？{wait}
+			}
+			TextWait
+			TextTalk name[0] {
+				#00000F哈哈，差不多吧。{wait}
+			}
+			TextWait
+			TextTalk name[4] {
+				#10304F不過，那位課長居然
+				還能擔任講習的教官，
+				我很驚訝呢。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				畢竟他也在
+				警察學校兼任
+				駕駛教官呢。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				呵呵，他的教法
+				很容易理解吧。{wait}
+			}
+			TextWait
+			TextTalk name[1] {
+				#00105F啊，這麼說來，
+				他以前有說過。{wait}
+			}
+			TextWait
+			TextTalk name[8] {
+				#10104F嗯，賽爾蓋課長
+				也是位充滿謎團的人呢。{wait}
+			} {
+				#10101F以我個人來說，
+				我很在意他跟索妮亞司令的關係。{wait}
+			}
+			TextWait
+			TextTalk name[0] {
+				#00003F嗯，畢竟他
+				不太喜歡說自己的事……{wait}
+			}
+			TextWait
+			FlagSet flag[2509]
+		else:
+			TextTalk char[0] {
+				先不說這個，賽爾蓋
+				不是在外面等你們嗎？{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				不要讓上司等太久。
+				快點過去吧。{wait}
+			}
+			TextWait
+	Call fn[0,8]
+	Return
+
+fn[6]:
+	var[1] = 0
+	if flag[4192]:
+		var[1] += 1
+	if flag[4193]:
+		var[1] += 1
+	if flag[4194]:
+		var[1] += 1
+	if flag[4195]:
+		var[1] += 1
+	if flag[4196]:
+		var[1] += 1
+	if flag[4197]:
+		var[1] += 1
+	if flag[4198]:
+		var[1] += 1
+	if flag[4199]:
+		var[1] += 1
+	if flag[4200]:
+		var[1] += 1
+	if flag[4201]:
+		var[1] += 1
+	if flag[4202]:
+		var[1] += 1
+	if flag[4203]:
+		var[1] += 1
+	if flag[4204]:
+		var[1] += 1
+	if flag[4205]:
+		var[1] += 1
+	if flag[4206]:
+		var[1] += 1
+	if flag[4207]:
+		var[1] += 1
+	if flag[4208]:
+		var[1] += 1
+	if flag[4209]:
+		var[1] += 1
+	if flag[4210]:
+		var[1] += 1
+	if flag[4211]:
+		var[1] += 1
+	if flag[4212]:
+		var[1] += 1
+	if flag[4213]:
+		var[1] += 1
+	if flag[4214]:
+		var[1] += 1
+	if flag[4215]:
+		var[1] += 1
+	Return
+
+fn[7]:
+	if var[1] == 0:
+		ED7MenuSetDisabled menu[1] 0
+	if var[1] == 1:
+		ED7MenuSetDisabled menu[1] 1
+	if var[1] == 2:
+		ED7MenuSetDisabled menu[1] 2
+	if var[1] == 3:
+		ED7MenuSetDisabled menu[1] 3
+	if var[1] == 4:
+		ED7MenuSetDisabled menu[1] 4
+	if var[1] == 5:
+		ED7MenuSetDisabled menu[1] 5
+	if var[1] == 6:
+		ED7MenuSetDisabled menu[1] 6
+	if var[1] == 7:
+		ED7MenuSetDisabled menu[1] 7
+	if var[1] == 8:
+		ED7MenuSetDisabled menu[1] 8
+	if var[1] == 9:
+		ED7MenuSetDisabled menu[1] 9
+	if var[1] == 10:
+		ED7MenuSetDisabled menu[1] 10
+	if var[1] == 11:
+		ED7MenuSetDisabled menu[1] 11
+	if var[1] == 12:
+		ED7MenuSetDisabled menu[1] 12
+	if var[1] == 13:
+		ED7MenuSetDisabled menu[1] 13
+	if var[1] == 14:
+		ED7MenuSetDisabled menu[1] 14
+	if var[1] == 15:
+		ED7MenuSetDisabled menu[1] 15
+	if var[1] == 16:
+		ED7MenuSetDisabled menu[1] 16
+	if var[1] == 17:
+		ED7MenuSetDisabled menu[1] 17
+	if var[1] == 18:
+		ED7MenuSetDisabled menu[1] 18
+	if var[1] == 19:
+		ED7MenuSetDisabled menu[1] 19
+	if var[1] == 20:
+		ED7MenuSetDisabled menu[1] 20
+	if var[1] == 21:
+		ED7MenuSetDisabled menu[1] 21
+	if var[1] == 22:
+		ED7MenuSetDisabled menu[1] 22
+	if var[1] == 23:
+		ED7MenuSetDisabled menu[1] 23
+	Return
+
+fn[8]:
+	if !flag[4216]:
+		Emote char[0] 0mm 2000mm 38 38 250ms 1
+		Sleep 1000ms
+		TextTalk char[0] {
+			先不說這個……
+			我知道這樣問很突然，
+			不過你們身上有『古怪料理』嗎？{wait}
+		}
+		TextWait
+		TextTalk name[0] {
+			#00005F『古怪料理』嗎……？{wait}
+		}
+		TextWait
+		TextTalk char[0] {
+			嗯，其實我正在尋找
+			可以用在鑑識班實習的樣本。{wait}
+		}
+		TextWait
+		TextTalk char[0] {
+			如果有很難推測成分的料理的話，
+			我會很感謝你們……{wait}
+		}
+		TextWait
+		TextTalk name[0] {
+			#00004F原來如此，鑑識用的樣本啊。{wait}
+		} {
+			#00005F不過……雖然說是古怪料理，
+			具體來說要是怎樣的料理
+			才可以呢？{wait}
+		}
+		TextWait
+		TextTalk name[1] {
+			#00100F這個嘛，說到
+			克洛斯貝爾警察的鑑識班，
+			是以高規格分析設備聞名……{wait}
+		} {
+			#00106F我們不是料理專家，
+			不曉得能不能幫上忙。{wait}
+		}
+		TextWait
+		if PartyPosition name[2] > -1:
+			TextTalk name[2] {
+				#00200F應該不需要想得太複雜吧？{wait}
+			} {
+				#00203F就算只是照常烹飪，
+				有時也做出連我們都
+				無法預期的莫名其妙料理。{wait}
+			}
+			TextWait
+		elif flag[3385]:
+			TextTalk name[4] {
+				#10404F呵呵，不需要想得太複雜吧？{wait}
+			} {
+				#10400F而且就算只是照常烹飪，
+				有時也做出完全
+				出乎預料的莫名其妙料理。{wait}
+			}
+			TextWait
+		else:
+			TextTalk name[4] {
+				#10304F呵呵，不需要想得太複雜吧？{wait}
+			} {
+				#10300F而且就算只是照常烹飪，
+				有時也做出完全
+				出乎預料的莫名其妙料理。{wait}
+			}
+			TextWait
+		if PartyPosition name[8] > -1:
+			TextTalk name[8] {
+				#10106F的、的確……
+				偶爾就是會發生像是
+				怪異的化學反應的狀況呢。{wait}
+			}
+			TextWait
+		else:
+			TextTalk name[3] {
+				#00306F啊，那個啊。
+				偶爾就是會發生像是怪異的
+				化學反應的狀況呢。{wait}
+			}
+			TextWait
+		TextTalk char[0] {
+			喔喔，看來你們似乎
+			有辦法準備樣本呢。{wait}
+		}
+		TextWait
+		TextTalk char[0] {
+			這樣的話，請你們務必要幫忙。{wait}
+		}
+		TextWait
+		TextTalk char[0] {
+			無論何時都可以，
+			如果你們獲得那種料理的話，
+			請拿到我這裡來。{wait}
+		}
+		TextWait
+		TextTalk name[0] {
+			#00000F好的，明白了。{wait}
+		}
+		TextWait
+		FlagSet flag[4216]
+		Emote char[0] 0mm 2000mm 38 38 250ms 1
+		Sleep 1000ms
+		TextTalk char[0] {
+			這個嘛。
+			說是交換也不太對……
+			總之這本書就給你們吧。{wait}
+		}
+		TextWait
+		TextSetPos -1 -1 -1 -1
+		FadeOut 300ms 0x00000000 100
+		SoundPlay sound[17] 0 100 0
+		TextSetName ""
+		TextMessage name[742] {
+			{color 0}已取得{item[750]}{color 0}。{wait}
+		}
+		TextWait
+		TextClose 0
+		FadeIn 300ms 0x00000000
+		ItemAdd item[750] 1
+		TextSetPos -1 280 60 3
+		TextTalk char[0] {
+			有空的時候可以看看書，
+			用書來療癒日常的疲勞吧。{wait}
+		}
+		TextWait
+		TextTalk name[0] {
+			#00002F哈哈，謝謝你。{wait}
+		}
+		TextWait
+		FlagSet flag[3136]
+	Return
+
+fn[9]:
+	TextStart self
+	if flag[3385]:
+		if !flag[1]:
+			Emote char[2] 0mm 2000mm 2 7 80ms 1
+			SoundPlay sound[28] 0 100 0
+			Sleep 800ms
+			TextTalk char[2] {
+				#17101F啊、大家都來了……！{wait}
+			} {
+				我聽說了喔，克洛斯貝爾市解放作戰
+				成功了的事情……{wait}
+			} {
+				#17103F也聽說了接下來大家要
+				為了真正解決問題──{wait}
+			} {
+				#17101F正打算前往那棵『大樹』，
+				試圖奪回琪雅的事。{wait}
+			}
+			TextWait
+			Emote field_party[0] 0mm 2000mm 2 7 80ms 1
+			SoundPlay sound[28] 0 100 0
+			Sleep 800ms
+			TextTalk name[0] {
+				#00003F這樣啊……{wait}
+			}
+			TextWait
+			TextTalk name[3] {
+				#00306F我猜應該是索妮亞司令
+				或是米蕾優那邊來的情報吧。{wait}
+			}
+			TextWait
+			TextTalk name[2] {
+				#00200F不過妳之前就知道
+				琪雅的事情了嗎？{wait}
+			}
+			TextWait
+			TextTalk char[2] {
+				#17100F是的，之前接送弟弟妹妹
+				上主日學校時認識的。{wait}
+			} {
+				#17103F接著就突然發生『國家獨立」的事情，
+				還有她莫名其妙地被拱成『御子』什麼的……{wait}
+			} {
+				#17101F──雖然詳細的事情我不是很清楚，
+				但我相信琪雅一定在等待前輩你們的。{wait}
+			} {
+				#17102F請大家一定要把她帶回來，
+				並給她一個溫暖的擁抱喔！{wait}
+			}
+			TextWait
+			if PartyPosition name[4] > -1:
+				TextTalk name[4] {
+					#10404F呵呵……{wait}
+				}
+				TextWait
+			if PartyPosition name[8] > -1:
+				TextTalk name[8] {
+					#10104F嗯……一點也沒錯。{wait}
+				}
+				TextWait
+			if PartyPosition name[5] > -1:
+				TextTalk name[5] {
+					#10704F（這也是只有支援課才能結下的緣份……）{wait}
+				}
+				TextWait
+			if PartyPosition name[9] > -1:
+				TextTalk name[9] {
+					#00604F（哼……
+					　似乎是個有值得期待之處的年輕人啊。）{wait}
+				}
+				TextWait
+			TextTalk name[1] {
+				#00109F……謝謝妳，悠娜。
+				妳的鼓勵給了我們很大的勇氣呢。{wait}
+			}
+			TextWait
+			TextTalk name[0] {
+				#00013F我們必須達成屬於我們的使命。
+				──妳也請用自己的方式努力吧！{wait}
+			}
+			TextWait
+			TextTalk char[2] {
+				#17101F是！我也會盡力做好
+				我現在做得到的事情！{wait}
+			}
+			TextWait
+			FlagSet flag[1]
+		else:
+			TextTalk char[2] {
+				#17100F其實之後，預定會以現場實習的名義，
+				進入市區內協助警察業務。{wait}
+			} {
+				#17101F我會盡力做好我現在做得到的事情──
+				前輩們也請加油！{wait}
+			}
+			TextWait
+	elif flag[3074]:
+		if !flag[1]:
+			Emote char[2] 0mm 2000mm 38 38 250ms 1
+			Sleep 500ms
+			TextTalk char[2] {
+				#17109F啊……是大家。
+				前輩們辛苦了。{wait}
+			}
+			TextWait
+			TextTalk name[0] {
+				#00005F悠娜……
+				妳的臉色看起來才真的是累了。{wait}
+			} {
+				#00008F這麼說來之前妳為了確認家人安危，
+				曾返回市內一趟對吧。{wait}
+			}
+			TextWait
+			TextTalk char[2] {
+				#17109F是的，家人都平安無事，
+				心上的大石頭雖然落了下來……{wait}
+			} {
+				#17110F……但市區的損害比傳聞中更加嚴重，
+				警察署還有彩虹劇場
+				都是一團混亂……{wait}
+			} {
+				#17110F克洛斯貝爾市……
+				……接下來會變成什麼樣子呢？{wait}
+			}
+			TextWait
+			TextTalk name[1] {
+				#00105F悠娜……{wait}
+			}
+			TextWait
+			TextTalk name[8] {
+				#10108F…………………………{wait}
+			}
+			TextWait
+			TextTalk name[0] {
+				#00003F……現在是得咬緊牙關的時候，
+				只能抱著希望向前進。{wait}
+			} {
+				#00001F我們大家是如此，其他的人也是如此。{wait}
+			}
+			TextWait
+			TextTalk char[2] {
+				#17103F！！……說得對。{wait}
+			} {
+				#17100F這種時候更要表現得和平常一樣──
+				訓練跟學科都要努力向上才行！{wait}
+			}
+			TextWait
+			FlagSet flag[1]
+		else:
+			TextTalk char[2] {
+				#17100F大家也請繼續加油完成
+				各種特務支援的活動喔！{wait}
+			} {
+				#17101F為了有朝一日能成為大家的助力，
+				我會更加努力的！{wait}
+			}
+			TextWait
+	elif flag[2848]:
+	elif flag[2842]:
+	elif flag[2832]:
+		Emote char[2] 0mm 1700mm 40 43 100ms 0
+		Sleep 200ms
+		TextTalk char[2] {
+			#17106F哇哇，要遲到了～！{wait}
+		} {
+			#17106F今天明明從早上開始就排滿了訓練……
+			要被教官修理了啦～！{wait}
+		}
+		TextWait
+		if !flag[1]:
+			TextTalk name[2] {
+				#00205F（啊，那個人是羅伊德之前鄰居，
+				　今年剛入學的新生對吧。）{wait}
+			}
+			TextWait
+			TextTalk name[0] {
+				#00000F（嗯，或許將來會成為
+				　我們的後輩也說不一定。）{wait}
+			} {
+				#00012F（……不過剛入學時
+				　身心容易緊張，
+				　反而容易出包呢。）{wait}
+			}
+			TextWait
+			TextTalk name[8] {
+				#10112F（是啊是啊，我當學生時也常常被罵。）{wait}
+			}
+			TextWait
+			FlagSet flag[1]
+		EmoteStop char[2]
+	elif flag[2816]:
+	elif flag[2573]:
+	elif flag[2564]:
+	elif flag[2560]:
+		if !flag[1]:
+			Emote char[2] 0mm 2000mm 2 7 80ms 1
+			SoundPlay sound[28] 0 100 0
+			Sleep 1000ms
+			CharSetName char[2] "粉紅頭髮的少女"
+			TextTalk char[2] {
+				#17106F啊，各位是……！{wait}
+			} {
+				#17106F羅伊德先生──
+				還有特務支援課的大家！？{wait}
+			}
+			TextWait
+			CharSetName char[2] "悠娜"
+			Emote field_party[0] 0mm 2000mm 38 38 250ms 1
+			Sleep 500ms
+			TextTalk name[1] {
+				#00102F（哎呀……）{wait}
+			}
+			TextWait
+			TextTalk name[8] {
+				#10100F（似乎是警察學校的新生呢。）{wait}
+			}
+			TextWait
+			TextTalk name[0] {
+				#00005F真是意外……妳是悠娜吧。{wait}
+			} {
+				#00000F好久不見啊，我有從莉娜阿姨那
+				聽說妳進警察學校就讀了。{wait}
+			}
+			TextWait
+			TextTalk char[2] {
+				#17100F嘿嘿嘿，從主日學校畢業後馬上就入學了，
+				沒辦法好好打聲招呼真是不好意思……{wait}
+			} {
+				#17108F之後也請您多多指教了！
+				羅伊德・班寧斯前輩！{wait}
+			}
+			TextWait
+			TextTalk name[0] {
+				#00002F哈哈，我才得請妳多指教，
+				悠娜・克勞福後輩！{wait}
+			}
+			TextWait
+			TextTalk name[3] {
+				#00309F喂等等，怎麼又跟可愛的小妹妹
+				熱烈地交談起來了。{wait}
+			}
+			TextWait
+			TextTalk name[4] {
+				#10300F聽起來像是羅伊德的鄰居？{wait}
+			}
+			TextWait
+			TextTalk name[0] {
+				#00000F嗯，之前住在同一棟公寓的
+				鄰居女兒。{wait}
+			}
+			TextWait
+			TextTalk char[2] {
+				#17100F嘿嘿嘿，從以前就受到
+				前輩跟賽西兒姊的很多照顧。{wait}
+			} {
+				#17101F──請容我正式自我介紹，我是
+				今年剛進警察學校的悠娜・克勞福！{wait}
+			} {
+				#17102F自從……看了克洛斯貝爾時代周刊
+				針對那個教團事件的報導，
+				就一直非常關心各位的種種活躍事蹟……{wait}
+			} {
+				#17108F能有機會跟大家說話真的是非常光榮！{wait}
+			}
+			TextWait
+			TextTalk name[1] {
+				#00109F呵呵，謝謝。
+				能夠認識妳我很高興喔，悠娜。{wait}
+			}
+			TextWait
+			TextTalk name[8] {
+				#10105F啊，這麼說來我好像也從
+				索妮亞司令那聽過妳的傳聞呢！{wait}
+			} {
+				#10102F說今年的新生中，有一位希望加入
+				特務支援課，前途有望的女生。{wait}
+			}
+			TextWait
+			Emote char[2] 0mm 2000mm 2 7 80ms 1
+			SoundPlay sound[28] 0 100 0
+			Sleep 800ms
+			TextTalk name[4] {
+				#10302F嘿……{wait}
+			}
+			TextWait
+			TextTalk name[3] {
+				#00300F哦？{wait}
+			}
+			TextWait
+			TextTalk char[2] {
+				#17107F為、為什麼會有人知道──
+				那個好像是寫在入學目標上的……{wait}
+			} {
+				#17107F關、關於這件事請大家不要記在心上！
+				實在是太過不自量力了！{wait}
+			} {
+				#17109F還有什麼前途有望的……
+				只是個連菜鳥都還稱不上的新生而已啦～！{wait}
+			}
+			TextWait
+			TextTalk name[8] {
+				#10112F呵呵，抱歉抱歉。
+				才剛入學應該很多事情，好好加油喔。{wait}
+			}
+			TextWait
+			TextTalk name[0] {
+				#00002F哈哈……下次有空時會再去跟
+				妳們家的人也打聲招呼的。{wait}
+			}
+			TextWait
+			TextTalk char[2] {
+				#17100F啊……
+				好的，謝謝！{wait}
+			}
+			TextWait
+			FlagSet flag[1]
+		else:
+			TextTalk char[2] {
+				#17100F我聽說了──特務支援課能重新開始活動，
+				真的是太恭喜大家了！{wait}
+			} {
+				#17104F我在這裡一邊磨練自己，
+				一邊衷心替各位的活躍加油喔！{wait}
+			}
+			TextWait
+	elif flag[2366]:
+	elif flag[2353]:
+	TextEnd self
+	Return
+
+fn[10]:
+	TextStart self
+	if flag[3385]:
+		TextTalk self {
+			這麼說來，我已經有段時間
+			沒有回家了呢……{wait}
+		}
+		TextWait
+		TextTalk self {
+			結界似乎已經消失了，
+			應該要回老家一趟比較好吧……{wait}
+		}
+		TextWait
+	elif flag[3074]:
+		TextTalk char[1] {
+			攻擊事件的時候，
+			警察總部似乎被扔炸彈……{wait}
+		}
+		TextWait
+		TextTalk char[1] {
+			（發抖……）我好害怕。
+			還是不要當警察了……{wait}
+		}
+		TextWait
+	elif flag[2848]:
+	elif flag[2842]:
+		TextTalk char[1] {
+			聽說發生了
+			列車意外……
+			究竟是怎麼回事？{wait}
+		}
+		TextWait
+	elif flag[2837]:
+	elif flag[2816]:
+		TextTalk char[1] {
+			這次的獨立提倡，對我們訓練生來說
+			也有莫大的意義。{wait}
+		}
+		TextWait
+		TextTalk char[1] {
+			為了警察組織日後的發展，
+			我也希望務必能夠實現呢。{wait}
+		}
+		TextWait
+	elif flag[2573]:
+	elif flag[2564]:
+		TextTalk char[1] {
+			今天要在這個會議室裡
+			上自治州法的課程。{wait}
+		}
+		TextWait
+		TextTalk char[1] {
+			畢竟對警察來說，
+			法律是無法割捨的存在。
+			一定要認真學習才行呢。{wait}
+		}
+		TextWait
+	elif flag[2560]:
+	elif flag[2366]:
+	elif flag[2353]:
+	TextEnd self
+	Return
+
+fn[11]:
+	TextStart self
+	if flag[3074]:
+	elif flag[2848]:
+		if !flag[2]:
+			TextTalk char[3] {
+				昨天的列車意外，似乎也在
+				訓練生之間造成了騷動。{wait}
+			}
+			TextWait
+			TextTalk char[3] {
+				不過，現在的他們就算
+				再怎麼慌張也無濟於事。{wait}
+			}
+			TextWait
+			TextTalk char[3] {
+				我得想辦法激勵他們，
+				讓大家專心進行訓練課程。{wait}
+			}
+			TextWait
+			FlagSet flag[2]
+		else:
+			TextTalk char[3] {
+				昨天的列車意外，
+				似乎也在訓練生之間造成了騷動，
+				不過這也無濟於事。{wait}
+			}
+			TextWait
+			TextTalk char[3] {
+				現在得讓他們專心上課，
+				為了面對將來不斷發生的事件，
+				非得讓他們成長不可。{wait}
+			}
+			TextWait
+	elif flag[2842]:
+	elif flag[2837]:
+	elif flag[2816]:
+	elif flag[2573]:
+		if !flag[2]:
+			TextTalk char[3] {
+				最近訓練生面對
+				訓練課程的態度
+				比以前更積極了。{wait}
+			}
+			TextWait
+			TextTalk char[3] {
+				由警察主導解決
+				教團事件這種大型事件，
+				對他們應該有帶來正面影響吧。{wait}
+			}
+			TextWait
+			TextTalk char[3] {
+				為了將來的學弟妹，
+				我非常希望現任警察能夠
+				保持活躍，給他們做榜樣呢。{wait}
+			}
+			TextWait
+			FlagSet flag[2]
+		else:
+			TextTalk char[3] {
+				由警察主導解決
+				教團事件這種大型事件，
+				對各位訓練生應該有帶來正面影響吧。{wait}
+			}
+			TextWait
+			TextTalk char[3] {
+				為了將來的學弟妹，
+				我非常希望現任警察能夠
+				保持活躍，給他們做榜樣呢。{wait}
+			}
+			TextWait
+	elif flag[2564]:
+	elif flag[2560]:
+	elif flag[2366]:
+		TextTalk char[3] {
+			今天警備隊也很努力
+			進行野戰訓練。{wait}
+		}
+		TextWait
+		TextTalk char[3] {
+			剛才我有去看訓練的模樣，
+			看樣子他們的狀態也恢復了不少吧。
+			哎呀，真是太好了。{wait}
+		}
+		TextWait
+	elif flag[2353]:
+	TextEnd self
+	Return
+
+fn[12]:
+	Call fn[0,13]
+	Return
+
+fn[13]:
+	TextStart char[4]
+	if !flag[3197]:
+		TextTalk char[4] {
+			各位，辛苦了。{wait}
+		}
+		TextWait
+		TextTalk char[4] {
+			謝謝你們
+			今天特地
+			過來這裡一趟。{wait}
+		}
+		TextWait
+		if flag[3196]:
+			TextTalk name[0] {
+				#00000F啊，不會……{wait}
+			} {
+				#00003F聽說暫時
+				要在這裡執行工作對吧？{wait}
+			}
+			TextWait
+		else:
+			TextTalk name[0] {
+				#00000F啊，不會……{wait}
+			} {
+				#00003F瑞貝卡小姐是從
+				警察學校那邊過來的對吧？{wait}
+			}
+			TextWait
+		TextTalk char[4] {
+			嗯，畢竟警察總部的
+			受理櫃檯目前的狀態
+			還無法重啟工作。{wait}
+		}
+		TextWait
+		TextTalk char[4] {
+			幸好，
+			這邊的終端機
+			有資料備份。{wait}
+		}
+		TextWait
+		TextTalk char[4] {
+			透過使用資料備份，
+			我才能重啟工作。{wait}
+		}
+		TextWait
+		TextTalk char[4] {
+			各位如果有事要找櫃檯，
+			請隨時跟我說喔。{wait}
+		}
+		TextWait
+		TextTalk name[1] {
+			#00100F原來如此，我明白了。{wait}
+		}
+		TextWait
+		TextTalk name[8] {
+			#10100F呃，瑞貝卡小姐。{wait}
+		} {
+			#10104F芙蘭清醒的時候，
+			真的很感謝妳
+			馬上就趕到她身邊。{wait}
+		} {
+			#10109F她也非常高興。{wait}
+		}
+		TextWait
+		Emote char[4] 0mm 2000mm 38 38 250ms 1
+		Sleep 1000ms
+		CharTurnToChar char[4] name[8] 500deg/s
+		TextTalk char[4] {
+			不會，你太客氣了……{wait}
+		}
+		TextWait
+		TextTalk char[4] {
+			真要說的話，
+			明明是我得鼓勵她才行，
+			結果反而讓她安慰了我……{wait}
+		}
+		TextWait
+		TextTalk char[4] {
+			不過，她能清醒過來
+			真的太好了。{wait}
+		}
+		TextWait
+		TextTalk name[8] {
+			#10104F嗯，就是說啊。{wait}
+		} {
+			#10100F妳方便的話，
+			可以再去探望她嗎？{wait}
+		}
+		TextWait
+		TextTalk char[4] {
+			嗯，當然可以。{wait}
+		}
+		TextWait
+		FlagSet flag[3197]
+		TextEnd char[4]
+		Return
+	if ItemHas item[820] 0:
+		if !flag[2393]:
+			Emote char[4] 0mm 2000mm 38 38 250ms 1
+			Sleep 1000ms
+			TextTalk char[4] {
+				哎呀呀，各位手上
+				拿的那個東西……{wait}
+			}
+			TextWait
+			TextTalk char[4] {
+				該不會是
+				『結晶碎片』吧？{wait}
+			}
+			TextWait
+			TextTalk name[0] {
+				#00005F呃，妳是說這個嗎？{wait}
+			} {
+				#00000F我們雖然得到了
+				這個東西，但卻搞不清楚
+				使用方法……{wait}
+			}
+			TextWait
+			TextSetName ""
+			TextMessage null {
+				{color 5}羅伊德把結晶碎片
+				拿給瑞貝卡看。{color 0}{wait}
+			}
+			TextWait
+			TextClose 0
+			_59
+			TextTalk char[4] {
+				哎呀，果然沒錯……！{wait}
+			}
+			TextWait
+			TextTalk char[4] {
+				這是鑑識課人員
+				一直在尋找的修復用程式，
+				可以用來修復毀損的記憶結晶資料。{wait}
+			}
+			TextWait
+			TextTalk char[4] {
+				有了這個東西，
+				應該就能分析出一部分的
+				教團終端機資料了。{wait}
+			}
+			TextWait
+			if system[10] != 255:
+				Emote field_party[0] 0mm 2000mm 2 7 80ms 1
+				SoundPlay sound[28] 0 100 0
+				Sleep 50ms
+			if system[11] != 255:
+				Emote field_party[1] 0mm 2000mm 2 7 80ms 1
+				SoundPlay sound[28] 0 100 0
+				Sleep 50ms
+			if system[12] != 255:
+				Emote field_party[2] 0mm 2000mm 2 7 80ms 1
+				SoundPlay sound[28] 0 100 0
+				Sleep 50ms
+			if system[13] != 255:
+				Emote field_party[3] 0mm 2000mm 2 7 80ms 1
+				SoundPlay sound[28] 0 100 0
+			Sleep 1000ms
+			TextTalk name[1] {
+				#00105F這、這樣一來……
+				就能解讀被約亞西姆・瓊塔
+				隱藏起來的文章了……！？{wait}
+			}
+			TextWait
+			TextTalk char[4] {
+				是的，雖然似乎
+				只能解讀出一部分……{wait}
+			}
+			TextWait
+			TextTalk char[4] {
+				我想很快就會有結果了，
+				可以把『結晶碎片』
+				交付給鑑識課嗎？{wait}
+			}
+			TextWait
+			Call fn[0,16]
+			TextEnd char[4]
+			Return
+	var[0] = 99
+	while var[0] == 99:
+		FadeOut 300ms 0x00000000 100
+		FlagUnset flag[5]
+		Call fn[0,15]
+		if flag[5]:
+			Menu menu[0] -1 -1 1
+				"交談" // 0
+				"出示戰鬥手冊" // 1
+				"檢視教團的終端機資料" // 2
+				"交付結晶碎片" // 3
+				"放棄" // 4
+			MenuWait var[0]
+		else:
+			Menu menu[0] -1 -1 1
+				"交談" // 0
+				"讓她看戰鬥手冊" // 1
+				"確認教團的終端機資料" // 2
+				"放棄" // 3
+			MenuWait var[0]
+			if var[0] == 3:
+				var[0] = 4
+		MenuClose menu[0]
+		FadeIn 300ms 0x00000000
+		FadeWait
+		if var[0] == 0:
+			var[0] = 99
+			Call fn[0,14]
+		elif var[0] == 1:
+			var[0] = 99
+			FlagUnset flag[7]
+			Call fn[0,23]
+		elif var[0] == 2:
+			var[0] = 99
+			Call fn[0,17]
+		elif var[0] == 3:
+			Call fn[0,16]
+	TextEnd char[4]
+	CharTurnTo char[4] 90deg 0deg/s
+	ForkFunc char[4] fork[0] fn[0,0]
+	Return
+
+fn[14]:
+	TextTalk char[4] {
+		無論如何……
+		芙蘭能夠清醒過來，
+		真的是太好了。{wait}
+	}
+	TextWait
+	TextTalk char[4] {
+		為了讓她打起精神，
+		我們也得努力才行呢。{wait}
+	}
+	TextWait
+	Return
+
+fn[15]:
+	if ItemHas item[820] 0:
+		FlagSet flag[5]
+	Return
+
+fn[16]:
+	if flag[2393]:
+		TextTalk char[4] {
+			哎呀呀，你們似乎帶了
+			『結晶碎片』過來呢。{wait}
+		}
+		TextWait
+		TextTalk char[4] {
+			為了分析教團的終端機資料，
+			可以把『結晶碎片』
+			交付給鑑識課嗎？{wait}
+		}
+		TextWait
+	TextTalk name[0] {
+		#00000F嗯，那就拜託妳了。{wait}
+	}
+	TextWait
+	TextTalk char[4] {
+		那麼，請稍待片刻。{wait}
+	}
+	TextWait
+	FlagSet flag[2393]
+	FadeOut 1000ms 0x00000000 255
+	FadeWait
+	while ItemHas item[820] 0 > 0:
+		if ItemHas item[820] 0:
+			global[2] += 1
+			ItemRemove item[820] 1
+			TextSetName ""
+			if global[2] == 1:
+				SoundPlay sound[9] 0 100 0
+				TextMessage null {
+					{color 5}第０１情報終端機資料
+					『關於教團』的頁面１分析完畢！{color 0}{wait}
+				}
+				TextWait
+				TextClose 0
+				_59
+			if global[2] == 2:
+				SoundPlay sound[9] 0 100 0
+				TextMessage null {
+					{color 5}第０１情報終端機資料
+					『關於教團』的頁面３分析完畢！{color 0}{wait}
+				}
+				TextWait
+				TextClose 0
+				_59
+			if global[2] == 3:
+				SoundPlay sound[9] 0 100 0
+				TextMessage null {
+					{color 5}第０２情報終端機資料
+					『關於真知』的頁面１分析完畢！{color 0}{wait}
+				}
+				TextWait
+				TextClose 0
+				_59
+			if global[2] == 4:
+				SoundPlay sound[9] 0 100 0
+				TextMessage null {
+					{color 5}第０２情報終端機資料
+					『關於真知』的頁面２分析完畢！{color 0}{wait}
+				}
+				TextWait
+				TextClose 0
+				_59
+			if global[2] == 5:
+				SoundPlay sound[9] 0 100 0
+				TextMessage null {
+					{color 5}第０１情報終端機資料
+					『關於教團』的頁面４分析完畢！{color 0}{wait}
+				}
+				TextWait
+				TextClose 0
+				_59
+				SoundPlay sound[9] 0 100 0
+				TextMessage null {
+					{color 5}第０１情報終端機資料
+					『關於教團』的分析結束了！{color 0}{wait}
+				}
+				TextWait
+				TextClose 0
+				_59
+				EventBegin 0
+				CamSetDistance 2310 1440 13000 0ms
+				ED7CamRotate 39deg 17deg 0deg 0ms
+				CamPers 400 0ms
+				CamZoom 21380 0ms
+				Call fn[0,22]
+				FadeIn 1000ms 0x00000000
+				FadeWait
+				TextTalk char[4] {
+					#5P第０１情報終端機的所有資料分析
+					全部都結束了。{wait}
+				}
+				TextWait
+				TextTalk char[4] {
+					#5P你們要馬上檢視嗎？{wait}
+				}
+				TextWait
+				TextTalk name[0] {
+					#12P#00001F嗯，麻煩妳了。{wait}
+				}
+				TextWait
+				SoundPlay sound[72] 0 100 0
+				Call fn[0,18]
+				TextTalk char[4] {
+					#5P……這份資料裡
+					記錄的似乎是
+					有關教團的概要呢。{wait}
+				}
+				TextWait
+				TextTalk char[4] {
+					#5P否定女神的教義……
+					真讓人不敢相信。{wait}
+				}
+				TextWait
+				TextTalk name[0] {
+					#12P#00003F嗯……
+					不過這與約亞西姆・瓊塔的
+					證詞相符。{wait}
+				} {
+					#00001F還有，這個叫作《Ｄ》的名詞……{wait}
+				}
+				TextWait
+				if PartyPosition name[4] > -1:
+					TextTalk name[2] {
+						#12P#00203F應該是指他們代替女神
+						所信仰的《真神》吧。{wait}
+					} {
+						#00201F我們已經查明，
+						Ｄ∴Ｇ教團名稱中的『Ｇ』指的是
+						《真知睿智#8RGnosis#》……{wait}
+					}
+					TextWait
+					if flag[3328]:
+						TextTalk name[4] {
+							#12P#10403F嗯，這樣總算可以說
+							搞懂『Ｄ∴Ｇ』的含意呢。{wait}
+						}
+						TextWait
+					else:
+						TextTalk name[4] {
+							#12P#10303F嗯，這樣總算可以說
+							搞懂『Ｄ∴Ｇ』的含意呢。{wait}
+						}
+						TextWait
+				else:
+					TextTalk name[2] {
+						#12P#00200F應該是指他們代替女神
+						所信仰的《真神》吧。{wait}
+					} {
+						#00201F我們已經查明，
+						Ｄ∴Ｇ教團名稱中的『Ｇ』指的是
+						《真知睿智#8RGnosis#》……{wait}
+					} {
+						嗯，這樣總算可以說
+						搞懂『Ｄ∴Ｇ』的含意呢。{wait}
+					}
+					TextWait
+				TextTalk name[1] {
+					#12P#00108F不過……我記得
+					約亞西姆教授的確說過，
+					琪雅是『要成為神的人物』對吧。{wait}
+				} {
+					這麼一來，
+					《Ｄ》也可以說是
+					指稱琪雅的名詞呢……{wait}
+				}
+				TextWait
+				if flag[2861] && !flag[3074]:
+					TextTalk name[8] {
+						#12P#10101F約亞西姆・瓊塔
+						究竟知道多少真相呢……{wait}
+					} {
+						……光靠這些還無法判斷呢。{wait}
+					}
+					TextWait
+				elif PartyPosition name[8] > -1:
+					TextTalk name[3] {
+						#12P#00301F約亞西姆那傢伙
+						究竟知道多少真相啊……{wait}
+					}
+					TextWait
+					TextTalk name[8] {
+						#12P#10101F……光靠這些還無法判斷呢。{wait}
+					}
+					TextWait
+				else:
+					TextTalk name[3] {
+						#12P#00301F約亞西姆那傢伙
+						究竟知道多少真相啊……{wait}
+					} {
+						……光靠這些還無法判斷呢。{wait}
+					}
+					TextWait
+				TextTalk name[0] {
+					#12P#00001F阿奈斯特似乎也沒有
+					從約亞西姆那邊
+					聽說所有的事情……{wait}
+				} {
+					#00003F要是能夠逮捕他的話……
+					我總是會這麼想。{wait}
+				}
+				TextWait
+				if ItemHas item[820] 0 < 1:
+					TextTalk char[4] {
+						#5P……總之，照這樣
+						繼續分析資料的話，
+						我想應該可以陸續查出許多事情。{wait}
+					}
+					TextWait
+				else:
+					TextTalk char[4] {
+						#5P……總之，照這樣
+						繼續分析資料的話，
+						我想應該可以陸續查出許多事情。{wait}
+					}
+					TextWait
+					TextTalk char[4] {
+						#5P把剩下的『結晶碎片』
+						也都拿去分析吧。{wait}
+					}
+					TextWait
+					FadeOut 1000ms 0x00000000 255
+					FadeWait
+			if global[2] == 6:
+				SoundPlay sound[9] 0 100 0
+				TextMessage null {
+					{color 5}第０２情報終端機資料
+					『關於真知』的頁面３分析完畢！{color 0}{wait}
+				}
+				TextWait
+				TextClose 0
+				_59
+			if global[2] == 7:
+				SoundPlay sound[9] 0 100 0
+				TextMessage null {
+					{color 5}第０３情報終端機資料
+					『關於御子』的頁面１分析完畢！{color 0}{wait}
+				}
+				TextWait
+				TextClose 0
+				_59
+			if global[2] == 8:
+				SoundPlay sound[9] 0 100 0
+				TextMessage null {
+					{color 5}第０２情報終端機資料
+					『關於真知』的頁面４分析完畢！{color 0}{wait}
+				}
+				TextWait
+				TextClose 0
+				_59
+				SoundPlay sound[9] 0 100 0
+				TextMessage null {
+					{color 5}第０２情報終端機資料
+					『關於真知』的資料分析完畢！{color 0}{wait}
+				}
+				TextWait
+				TextClose 0
+				_59
+				EventBegin 0
+				CamSetDistance 2310 1440 13000 0ms
+				ED7CamRotate 39deg 17deg 0deg 0ms
+				CamPers 400 0ms
+				CamZoom 21380 0ms
+				Call fn[0,22]
+				FadeIn 1000ms 0x00000000
+				FadeWait
+				TextTalk char[4] {
+					#5P第０２情報終端機的所有資料分析
+					全部都結束了。{wait}
+				}
+				TextWait
+				TextTalk char[4] {
+					#5P你們要馬上檢視嗎？{wait}
+				}
+				TextWait
+				TextTalk name[0] {
+					#12P#00001F嗯，麻煩妳了。{wait}
+				}
+				TextWait
+				SoundPlay sound[72] 0 100 0
+				Call fn[0,19]
+				TextTalk char[4] {
+					#5P……這份資料
+					似乎詳細記錄了
+					關於那個《真知》的事呢。{wait}
+				}
+				TextWait
+				TextTalk char[4] {
+					#5P可以提高體能
+					及感官，甚至能激發
+					潛在能力的藥物……{wait}
+				}
+				TextWait
+				TextTalk char[4] {
+					#5P『魔人化』的現象也是，
+					是充滿許多謎團的藥物呢。{wait}
+				}
+				TextWait
+				TextTalk name[0] {
+					#12P#00001F從做為原料使用的
+					《靈智之草》
+					叢生在濕地來看……{wait}
+				} {
+					約亞西姆似乎曾經前往
+					濕地為了採取材料，這件事
+					從狀況上來看應該是錯不了的。{wait}
+				}
+				TextWait
+				if PartyPosition name[8] > -1:
+					TextTalk name[1] {
+						#12P#00101F還有，在資料中，真知就是
+						他們所說的真神……{wait}
+					} {
+						也就是說，是為了讓《Ｄ》復活
+						而準備的藥物，像這樣的記載也是有的。{wait}
+					}
+					TextWait
+					TextTalk name[8] {
+						#12P#10108F老實說，雖然聽起來
+						很荒誕無稽，但是……{wait}
+					}
+					TextWait
+				else:
+					TextTalk name[1] {
+						#12P#00101F還有，在資料中，真知就是
+						他們所說的真神……{wait}
+					} {
+						也就是說，是為了讓《Ｄ》復活
+						而準備的藥物，像這樣的記載也是有的。{wait}
+					} {
+						#00108F老實說，雖然聽起來
+						很荒誕無稽，但是……{wait}
+					}
+					TextWait
+				TextTalk name[2] {
+					#12P#00201F即使如此，教團在五百年間
+					還是以『儀式』的形式
+					持續研究真知……{wait}
+				} {
+					#00203F……我雖然很幸運的
+					被蓋先生救了出來，不過到目前為止
+					似乎有非常多的犧牲者。{wait}
+				}
+				TextWait
+				TextTalk name[3] {
+					#12P#00301F畢竟他們把這些說成是
+					『些許的犧牲』呢……{wait}
+				} {
+					這群人真是無可救藥啊。{wait}
+				}
+				TextWait
+				if PartyPosition name[4] > -1:
+					if flag[3328]:
+						TextTalk name[4] {
+							#12P#10403F……還有，瓦魯多最近
+							也有服用過真知呢。{wait}
+						}
+						TextWait
+					else:
+						TextTalk name[4] {
+							#12P#10303F……還有，瓦魯多最近
+							也有服用過真知呢。{wait}
+						}
+						TextWait
+					TextTalk name[0] {
+						#12P#00001F嗯……雖說教團已經消滅，
+						不過可能還需要多加留意呢。{wait}
+					}
+					TextWait
+				else:
+					TextTalk name[0] {
+						#12P#00003F……還有，瓦魯多最近
+						也有使用真知呢。{wait}
+					} {
+						#00001F是啊……雖然教團已經消失，
+						但或許還是需要留意。{wait}
+					}
+					TextWait
+				TextTalk name[1] {
+					#12P#00101F嗯……就是說啊。{wait}
+				} {
+					不光是真知，
+					還有這種藥物，我們警察
+					也得嚴格取締才行。{wait}
+				}
+				TextWait
+				if ItemHas item[820] 0 < 1:
+					TextTalk char[4] {
+						#5P嗯，我也真的這麼覺得。{wait}
+					}
+					TextWait
+					TextTalk char[4] {
+						#5P……總之，關於真知的情報
+						大概就是這些吧。{wait}
+					}
+					TextWait
+				else:
+					TextTalk char[4] {
+						#5P嗯，我也真的這麼覺得。{wait}
+					}
+					TextWait
+					TextTalk char[4] {
+						#5P……總之，關於真知的情報
+						大概就是這些吧。{wait}
+					}
+					TextWait
+					TextTalk char[4] {
+						#5P把剩下的『結晶碎片』
+						也都拿去分析吧。{wait}
+					}
+					TextWait
+					FadeOut 1000ms 0x00000000 255
+					FadeWait
+			if global[2] == 9:
+				SoundPlay sound[9] 0 100 0
+				TextMessage null {
+					{color 5}０３情報終端機資料
+					『關於御子』的頁面２分析完畢！{color 0}{wait}
+				}
+				TextWait
+				TextClose 0
+				_59
+			if global[2] == 10:
+				SoundPlay sound[9] 0 100 0
+				TextMessage null {
+					{color 5}０３情報終端機資料
+					『關於御子』的頁面３分析完畢！{color 0}{wait}
+				}
+				TextWait
+				TextClose 0
+				_59
+				SoundPlay sound[9] 0 100 0
+				TextMessage null {
+					{color 5}０３情報終端機資料
+					『關於御子』的分析結束了！{color 0}{wait}
+				}
+				TextWait
+				TextClose 0
+				_59
+				EventBegin 0
+				CamSetDistance 2310 1440 13000 0ms
+				ED7CamRotate 39deg 17deg 0deg 0ms
+				CamPers 400 0ms
+				CamZoom 21380 0ms
+				Call fn[0,22]
+				FlagSet flag[2390]
+				FadeIn 1000ms 0x00000000
+				FadeWait
+				TextTalk char[4] {
+					#5P０３情報終端機的所有資料分析
+					全部都結束了。{wait}
+				}
+				TextWait
+				TextTalk char[4] {
+					#5P你們要馬上檢視嗎？{wait}
+				}
+				TextWait
+				TextTalk name[0] {
+					#12P#00001F嗯，麻煩妳了。{wait}
+				}
+				TextWait
+				SoundPlay sound[72] 0 100 0
+				Call fn[0,20]
+				TextTalk char[4] {
+					#5P這個內容，
+					是關於被支援課保護的
+					琪雅……？{wait}
+				}
+				TextWait
+				TextTalk name[0] {
+					#12P#00003F五百年前，庫羅伊斯家
+					創造出琪雅……並且把她
+					當成信仰對象送給了教團。{wait}
+				} {
+					將她視為長眠在《搖籃》中的
+					神明附身對象『御子』……{wait}
+				}
+				TextWait
+				TextTalk name[1] {
+					#12P#00101F……教團的人完全沒有
+					被告知真相吧。{wait}
+				}
+				TextWait
+				TextTalk name[2] {
+					#12P#00203F為了庫羅伊斯家真正的目的，
+					就連被暗中誘導也不知情，
+					一昧追求《真神》的幻想……{wait}
+				}
+				TextWait
+				if PartyPosition name[5] > -1:
+					TextTalk name[5] {
+						#12P#10708F……就某種意義來說，是一群可悲的人呢。{wait}
+					}
+					TextWait
+				elif PartyPosition name[8] > -1:
+					TextTalk name[8] {
+						#12P#10108F……就某種意義來說，是一群可悲的人呢。{wait}
+					}
+					TextWait
+				else:
+					TextTalk name[4] {
+						#12P#10408F……就某種意義來說，是一群可悲的人呢。{wait}
+					}
+					TextWait
+				if PartyPosition name[9] > -1:
+					TextTalk name[9] {
+						#12P#00603F考慮到他們幹的好事，
+						我完全無法同情他們。{wait}
+					}
+					TextWait
+				elif PartyPosition name[4] > -1:
+					TextTalk name[4] {
+						#12P#10403F考慮到他們做的事情，
+						我想沒有同情的餘地呢……{wait}
+					}
+					TextWait
+				else:
+					TextTalk name[8] {
+						#12P#10103F考慮到他們做的事情，
+						我想沒有同情的餘地呢……{wait}
+					}
+					TextWait
+				TextTalk name[0] {
+					#12P#00001F先不提教團……
+					琪雅應該完全是無辜的。{wait}
+				} {
+					#00003F就算她是為了庫羅伊斯家的目的
+					所被創造出來的存在……{wait}
+				} {
+					就算她擁有
+					不可思議的力量……
+					這些事都沒有任何關係。{wait}
+				} {
+					在我們眼前清醒過來的那個孩子，
+					毫無疑問只是個普通的女孩。{wait}
+				} {
+					#00001F但是，她卻好幾百年
+					都一個人被關在那種地方……{wait}
+				} {
+					現在，瑪利亞貝爾小姐跟
+					伊安律師
+					又打算利用她。{wait}
+				}
+				TextWait
+				TextTalk name[3] {
+					#12P#00301F……無論有什麼理由，
+					我都絕對不能允許這種事。{wait}
+				}
+				TextWait
+				TextTalk char[4] {
+					#5P……總之，教團的資料
+					到這裡就全部分析完畢了。{wait}
+				}
+				TextWait
+				TextTalk char[4] {
+					#5P雖然我不像各位對這次的事件
+					了解得這麼仔細，不過……{wait}
+				}
+				TextWait
+				TextTalk char[4] {
+					#5P對各位來說，
+					琪雅是非常重要的存在，
+					我能切身體會各位的心情。{wait}
+				}
+				TextWait
+				TextTalk char[4] {
+					#5P請各位……務必要努力。
+					我會在私底下為你們聲援的。{wait}
+				}
+				TextWait
+				TextTalk name[0] {
+					#12P#00001F謝謝妳，瑞貝卡小姐。{wait}
+				} {
+					我們一定會親手
+					把琪雅救回來。{wait}
+				} {
+					#00007F為了我們的寶貝琪雅……
+					為了讓她自己創造
+					可以用笑容度過的未來……！{wait}
+				}
+				TextWait
+				FadeOut 1000ms 0x00000000 255
+				FadeWait
+				CharSetPos field_party[0] (2840, 0, 12040) 180deg
+				if var[4] >= 5:
+					CharFlagsSet field_party[4] 0x0080
+					CharFlags2Set field_party[4] 0x8000
+				if var[4] >= 6:
+					CharFlagsSet field_party[5] 0x0080
+					CharFlags2Set field_party[5] 0x8000
+				ED7_Cam69 255 0
+				ED7_DE 9
+				ED7_DE 128
+				EventEnd 5
+	if !flag[2390]:
+		FadeIn 1000ms 0x00000000
+		FadeWait
+		TextTalk char[4] {
+			如果你們又獲得『結晶碎片』的話，
+			請再交給我。{wait}
+		}
+		TextWait
+		TextTalk char[4] {
+			想要確認分析完畢的資料的話，
+			也請跟我說一聲。{wait}
+		}
+		TextWait
+		TextTalk name[0] {
+			#00000F好的，非常感謝。{wait}
+		}
+		TextWait
+		FadeOut 1000ms 0x00000000 255
+		FadeWait
+		CharSetPos field_party[0] (2840, 0, 12040) 180deg
+		if var[4] >= 5:
+			CharFlagsSet field_party[4] 0x0080
+			CharFlags2Set field_party[4] 0x8000
+		if var[4] >= 6:
+			CharFlagsSet field_party[5] 0x0080
+			CharFlags2Set field_party[5] 0x8000
+		ED7_Cam69 255 0
+		EventEnd 5
+	Return
+
+fn[17]:
+	var[0] = 0
+	while var[0] != 255:
+		FadeOut 300ms 0x00000000 100
+		FadeWait
+		TextSetPos 173 40 -1 -1
+		TextSetName ""
+		Menu menu[0] -1 -1 1
+			"【關於教團】" // 0
+			"【關於真知】" // 1
+			"【關於御子】" // 2
+			"【什麼都不做】" // 3
+		MenuWait var[0]
+		MenuClose menu[0]
+		TextClose 0
+		FadeIn 300ms 0x00000000
+		FadeWait
+		TextSetPos -1 280 60 3
+		switch var[0]:
+			case 0:
+				SoundPlay sound[72] 0 100 0
+				Call fn[0,18]
+				break
+			case 1:
+				SoundPlay sound[72] 0 100 0
+				Call fn[0,19]
+				break
+			case 2:
+				SoundPlay sound[72] 0 100 0
+				Call fn[0,20]
+				break
+			case 3:
+				var[0] = 255
+				break
+			default:
+				var[0] = 255
+				break
+	Return
+
+fn[18]:
+	FadeOut 300ms 0x00000000 100
+	TextSetPos -1 -1 44 -1
+	if global[2] == 0:
+		TextSetName ""
+		TextMessage null {
+			{color 2}#2S『關於教團』
+
+			──我的名字是約亞西姆・瓊塔。
+			隸屬於《Ｄ∴Ｇ教團》的幹部祭司。
+			六年前，在包括遊擊士在內的
+			多方勢力攻擊下，我們教團陷入毀滅狀態。
+			但是只有我因故逃過一劫，
+			平安地逃到這塊■■之地。
+			在偉大的《■》引導下，
+			我為了成就教團的大願而活下來了。
+			為了終將到來的那個時刻──
+			做為記載新聖典所需的資料，
+			我將把資料記錄在各終端機當中。{color 0}{wait}
+		}
+		TextWait
+		TextClose 0
+	else:
+		TextSetName ""
+		TextMessage null {
+			{color 2}#2S『關於教團』
+
+			──我的名字是約亞西姆・瓊塔。
+			隸屬於《Ｄ∴Ｇ教團》的幹部祭司。
+			六年前，在包括遊擊士在內的
+			多方勢力攻擊下，我們教團陷入毀滅狀態。
+			但是只有我因故逃過一劫，
+			平安地逃到這塊起源之地。
+			在偉大的《Ｄ》引導下，
+			我為了成就教團的大願而活下來了。
+			為了終將到來的那個時刻──
+			做為記載新聖典所需的資料，
+			我將把資料記錄在各終端機當中。{color 0}{wait}
+		}
+		TextWait
+		TextClose 0
+	TextSetName ""
+	TextMessage null {
+		{color 2}#2S首先敘述關於我們教團的成立經過吧。
+		為此，我必須回顧這塊塞姆利亞大陸
+		所歷經的可恨歷史。
+
+		──在大約一千二百年前的《大崩壞》之後，
+		大陸失去了高度文明和秩序，
+		被戰爭和貧窮支配的《黑暗時代》來臨。
+		於是，疲憊至極的人們
+		犯下了一個大錯。
+
+		那就是被突然出現的
+		愚者們以甜言蜜語誘惑，
+		接受了他們制定的自私秩序。{color 0}{wait}
+	}
+	TextWait
+	TextClose 0
+	if global[2] < 2:
+		TextSetName ""
+		TextMessage null {
+			{color 2}#2S那就是──愚昧的■■■■與
+			其信仰象徵《■之■■》。
+			在他們的秩序之下，《黑暗時代》終結，
+			信仰迅速散播到大陸各地……
+
+			但是請各位仔細想一想。
+			假如真的有《■■》存在，
+			不是應該讓任何人平等地獲得救贖嗎？
+			但是階級概念至今仍未消失，
+			因災厄和不幸喪命之人也一再出現。
+
+			《■■》會挑選祂所要救贖的人嗎？
+			這未免也太愚蠢了。{color 0}{wait}
+		}
+		TextWait
+		TextClose 0
+	else:
+		TextSetName ""
+		TextMessage null {
+			{color 2}#2S那就是──愚昧的七耀教會與
+			其信仰象徵《空之女神》。
+			在他們的秩序之下，《黑暗時代》終結，
+			信仰迅速散播到大陸各地……
+
+			但是請各位仔細想一想。
+			假如真的有《女神》存在，
+			不是應該讓任何人平等地獲得救贖嗎？
+			但是階級概念至今仍未消失，
+			因災厄和不幸喪命之人也一再出現。
+
+			《女神》會挑選祂所要救贖的人嗎？
+			這未免也太愚蠢了。{color 0}{wait}
+		}
+		TextWait
+		TextClose 0
+	if global[2] < 5:
+		TextSetName ""
+		TextMessage null {
+			{color 2}#2S那終究只是■■■■為了獲得權威
+			而塑造出來的虛像罷了。
+			世界上不可能有《■■》存在。
+
+			我們的先人找到真理，於是為了
+			邂逅《■■》而踏上漫長的旅程。
+
+			而在時代進入中世紀時，
+			他們終於找到了。
+			在這塊大地深處■■■■■
+			■■■■■■■■■■■■■……
+
+			《■》──那就是祂的名號。{color 0}{wait}
+		}
+		TextWait
+		TextClose 0
+	else:
+		TextSetName ""
+		TextMessage null {
+			{color 2}#2S那終究只是七耀教會為了獲得權威
+			而塑造出來的虛像罷了。
+			世界上不可能有《女神》存在。
+
+			我們的先人找到真理，於是為了
+			邂逅《真神》而踏上漫長的旅程。
+
+			而在時代進入中世紀時，
+			他們終於找到了。
+			在這塊大地深處永久沉眠，
+			身上卻仍蘊藏巨大力量的存在……
+
+			《Ｄ》──那就是祂的名號。{color 0}{wait}
+		}
+		TextWait
+		TextClose 0
+	FadeIn 300ms 0x00000000
+	_59
+	TextSetPos -1 280 60 3
+	Return
+
+fn[19]:
+	FadeOut 300ms 0x00000000 100
+	TextSetPos -1 -1 44 -1
+	if global[2] < 3:
+		TextSetName ""
+		TextMessage null {
+			{color 2}#2S『關於真知』
+
+			《真知》……那是
+			■■■■■■■■■■■■■
+			《靈智之草》為原料的秘藥。
+
+			其調配方法■■■■■■■■■■，
+			服用後可以提高身體能力和感應力，
+			甚至還能激發潛在能力。
+			■■■■■■■■■■■■■■■■■。
+			■■■■■■■■■■■■■■■。
+			《真知》是用來讓■■■的
+			■■■■到《■》之■的藥。{color 0}{wait}
+		}
+		TextWait
+		TextClose 0
+	else:
+		TextSetName ""
+		TextMessage null {
+			{color 2}#2S『關於真知』
+
+			《真知》……那是
+			以傳說中綻放在七耀脈的植物
+			《靈智之草》為原料的秘藥。
+
+			其調配方法與《Ｄ》一同傳授下來，
+			服用後可以提高身體能力和感應力，
+			甚至還能激發潛在能力。
+			不過，那只是單純的布局罷了。
+			此藥另有真正的力量。
+			《真知》是用來讓服用者的精神
+			連結到《Ｄ》之心的藥。{color 0}{wait}
+		}
+		TextWait
+		TextClose 0
+	if global[2] < 4:
+		TextSetName ""
+		TextMessage null {
+			{color 2}#2S《■》擁有■■■■■的■■，
+			使其累積■■、■■的特性。
+			將來當那些■■達到《■■》之時，
+			《■》就會■■。
+
+			此外，《真知》
+			還留有改良空間。
+			■■■■■■■■■■■■■■■■■，
+			就能■■■■■■■給《■》。
+
+			在那之後■■■■■，我們教團
+			不斷研究效果更高的《真知》……
+			亦即反覆進行所謂的『儀式』。{color 0}{wait}
+		}
+		TextWait
+		TextClose 0
+	else:
+		TextSetName ""
+		TextMessage null {
+			{color 2}#2S《Ｄ》擁有整合服用者的精神，
+			使其累積知識、成長的特性。
+			將來當那些知識達到《睿智》之時，
+			《Ｄ》就會復活。
+
+			此外，《真知》
+			還留有改良空間。
+			只要能將服用者的能力激發到最大極限，
+			就能供給更多的知識給《Ｄ》。
+
+			在那之後的五百年間，我們教團
+			不斷研究效果更高的《真知》……
+			亦即反覆進行所謂的『儀式』。{color 0}{wait}
+		}
+		TextWait
+		TextClose 0
+	if global[2] < 6:
+		TextSetName ""
+		TextMessage null {
+			{color 2}#2S於是，《真知》以■■■■
+			■■■■完全無法相比的速度
+			接近完成，但卻在
+			只差一步的時候發生了失算。
+
+			因為擴大實驗規模的關係，
+			遊擊士及其他勢力察覺
+			我們的存在，最後導致各據點
+			以及教團本身毀滅。
+
+			不得不說這實在是愚蠢至極。
+			為了讓《■■》■■，
+			些許的犧牲明明是在所難免……{color 0}{wait}
+		}
+		TextWait
+		TextClose 0
+	else:
+		TextSetName ""
+		TextMessage null {
+			{color 2}#2S於是，《真知》以五百年前
+			剛開始時完全無法相比的速度
+			接近完成，但卻在
+			只差一步的時候發生了失算。
+
+			因為擴大實驗規模的關係，
+			遊擊士及其他勢力察覺
+			我們的存在，最後導致各據點
+			以及教團本身毀滅。
+
+			不得不說這實在是愚蠢至極。
+			為了讓《真神》復活，
+			些許的犧牲明明是在所難免……{color 0}{wait}
+		}
+		TextWait
+		TextClose 0
+	if global[2] < 8:
+		TextSetName ""
+		TextMessage null {
+			{color 2}#2S我從毀滅的據點
+			暗中回收了實驗資料，
+			來到這塊■■之地克洛斯貝爾。
+
+			《真知》的材料《靈智之草》
+			■■於■■■■■■■的
+			■■，因此■■■■■
+			不成問題。
+			另外，這座《太陽堡壘》的深層
+			是■■■■■■■■■的研究設施，
+			備有許多高級設備。
+			就這樣，我得到了理想的研究環境，
+			終於將此秘藥完成了──{color 0}{wait}
+		}
+		TextWait
+		TextClose 0
+	else:
+		TextSetName ""
+		TextMessage null {
+			{color 2}#2S我從毀滅的據點
+			暗中回收了實驗資料，
+			來到這塊起源之地克洛斯貝爾。
+
+			《真知》的材料《靈智之草》
+			簇生於克洛斯貝爾南部的
+			濕地，因此材料的籌措
+			不成問題。
+			另外，這座《太陽堡壘》的深層
+			是中世紀鍊金術師建造的研究設施，
+			備有許多高級設備。
+			就這樣，我得到了理想的研究環境，
+			終於將此秘藥完成了──{color 0}{wait}
+		}
+		TextWait
+		TextClose 0
+	FadeIn 300ms 0x00000000
+	_59
+	TextSetPos -1 280 60 3
+	Return
+
+fn[20]:
+	FadeOut 300ms 0x00000000 100
+	TextSetPos -1 -1 44 -1
+	if global[2] < 7:
+		TextSetName ""
+		TextMessage null {
+			{color 2}#2S『關於御子』
+
+			克洛斯貝爾是我們《Ｄ∴Ｇ教團》的■■■，
+			也被視為■■■■。
+			■■在於這裡是《御子》
+			■■■■■■■■■的地方。
+
+			《御子》是《■■》■■■■■，
+			■■■■■■《Ｄ∴Ｇ教團》■■■。
+			■■■《太陽堡壘》■■■■■■■
+			■■■■■■■■■■■，
+			■■■■■■《太陽堡壘》■
+			■■■■■■■■■。{color 0}{wait}
+		}
+		TextWait
+		TextClose 0
+	else:
+		TextSetName ""
+		TextMessage null {
+			{color 2}#2S『關於御子』
+
+			克洛斯貝爾是我們《Ｄ∴Ｇ教團》的根據地，
+			也被視為起源之地。
+			理由在於這裡是《御子》
+			自始祖開始傳承至今的地方。
+
+			《御子》是《真神》的附身對象，
+			也是象徵我們《Ｄ∴Ｇ教團》的存在。
+			沉眠於《太陽堡壘》地底的《御子》
+			外貌乍看之下是人類少女，
+			五百年來都在《太陽堡壘》的
+			祭壇上等待甦醒之時。{color 0}{wait}
+		}
+		TextWait
+		TextClose 0
+	if global[2] < 9:
+		TextSetName ""
+		TextMessage null {
+			{color 2}#2S居然有■■能■這麼長的■■，
+			對於俗世之人來說恐怕很難相信吧。
+
+			但是，我親眼看到了。
+			在被稱為『■■■■』的■■■
+			■■■■■■■──
+			那神聖的■■。
+
+			『■■■■』是以■■《古代遺物》的
+			■■■■之■■為基礎，
+			■■■■■■■■■■■■■■。
+			如此一來，這個■■■■■■■■■，
+			也就沒有什麼稀奇了吧。{color 0}{wait}
+		}
+		TextWait
+		TextClose 0
+	else:
+		TextSetName ""
+		TextMessage null {
+			{color 2}#2S居然有人類能活這麼長的時間，
+			對於俗世之人來說恐怕很難相信吧。
+
+			但是，我親眼看到了。
+			在被稱為『神聖搖籃』的球體中
+			持續熟睡的少女──
+			那神聖的模樣。
+
+			『神聖搖籃』是以研究《古代遺物》的
+			鍊金術師之技術為基礎，
+			由教團的先人們打造出來的東西。
+			如此一來，這個可以稱為奇蹟的現象，
+			也就沒有什麼稀奇了吧。{color 0}{wait}
+		}
+		TextWait
+		TextClose 0
+	if global[2] < 10:
+		TextSetName ""
+		TextMessage null {
+			{color 2}#2S據說《御子》從■■■■開始
+			就■■《真知》■■
+			■■■■■■■。
+
+			──■■■《■■》■，《御子》就會
+			■■■■■■《■》吧。
+			而■■■的■■與■■
+			將■■在《■》的麾下，將人們
+			從《■■》的咒縛當中解放。
+
+			那正是我們《Ｄ∴Ｇ教團》的先人所留下的
+			預言，也是必須達成的大願──{color 0}{wait}
+		}
+		TextWait
+		TextClose 0
+	else:
+		TextSetName ""
+		TextMessage null {
+			{color 2}#2S據說《御子》從誕生之時開始
+			就透過《真知》獲得
+			堪稱無限的知識。
+
+			──在達到《睿智》時，《御子》就會
+			甦醒成為真神《Ｄ》吧。
+			而全人類的意志與魂魄
+			將集結在《Ｄ》的麾下，將人們
+			從《女神》的咒縛當中解放。
+
+			那正是我們《Ｄ∴Ｇ教團》的先人所留下的
+			預言，也是必須達成的大願──{color 0}{wait}
+		}
+		TextWait
+		TextClose 0
+	FadeIn 300ms 0x00000000
+	_59
+	TextSetPos -1 280 60 3
+	Return
+
+fn[21]:
+	if var[4] == 0:
+		CharSetPos self (3220, 0, 12810) 0deg
+	elif var[4] == 1:
+		CharSetPos self (2220, 0, 12400) 0deg
+	elif var[4] == 2:
+		CharSetPos self (4050, 0, 12360) 0deg
+	elif var[4] == 3:
+		CharSetPos self (3080, 0, 11680) 0deg
+	elif var[4] == 4:
+		CharSetPos self (2430, 0, 10480) 0deg
+	elif var[4] == 5:
+		CharSetPos self (3790, 0, 10440) 0deg
+	var[4] = var[4] + 1
+	Return
+
+fn[22]:
+	var[4] = 0
+	if PartyPosition name[0] > -1:
+		ForkFunc name[0] fork[1] fn[0,21]
+	NextFrame
+	if PartyPosition name[1] > -1:
+		ForkFunc name[1] fork[1] fn[0,21]
+	NextFrame
+	if PartyPosition name[2] > -1:
+		ForkFunc name[2] fork[1] fn[0,21]
+	NextFrame
+	if PartyPosition name[3] > -1:
+		ForkFunc name[3] fork[1] fn[0,21]
+	NextFrame
+	if PartyPosition name[8] > -1:
+		ForkFunc name[8] fork[1] fn[0,21]
+	NextFrame
+	if PartyPosition name[4] > -1:
+		ForkFunc name[4] fork[1] fn[0,21]
+	NextFrame
+	if PartyPosition name[5] > -1:
+		ForkFunc name[5] fork[1] fn[0,21]
+	NextFrame
+	if PartyPosition name[9] > -1:
+		ForkFunc name[9] fork[1] fn[0,21]
+	NextFrame
+	if var[4] >= 5:
+		CharFlagsUnset field_party[4] 0x0080
+		CharFlags2Unset field_party[4] 0x8000
+	if var[4] >= 6:
+		CharFlagsUnset field_party[5] 0x0080
+		CharFlags2Unset field_party[5] 0x8000
+	Return
+
+fn[23]:
+	FlagUnset flag[7]
+	FlagUnset flag[8]
+	FlagUnset flag[9]
+	var[3] = 0
+	while 1:
+		if global[6] == 0 && ED7NoteBattleMonsterCount > 15:
+			global[6] += 1
+			var[3] += 1
+			FlagSet flag[7]
+		elif global[6] == 1 && ED7NoteBattleMonsterCount > 40:
+			global[6] += 1
+			var[3] += 1
+			FlagSet flag[7]
+		elif global[6] == 2 && ED7NoteBattleMonsterCount > 70:
+			global[6] += 1
+			var[3] += 1
+			FlagSet flag[7]
+		elif global[6] == 3 && ED7NoteBattleMonsterCount > 100:
+			global[6] += 1
+			var[3] += 1
+			FlagSet flag[7]
+		elif global[6] == 4 && ED7NoteBattleMonsterCount > 130:
+			global[6] += 1
+			var[3] += 1
+			FlagSet flag[7]
+		elif global[6] == 5 && ED7NoteBattleMonsterCount > 160:
+			global[6] += 1
+			var[3] += 1
+			FlagSet flag[7]
+		elif global[6] == 6 && ED7NoteBattleMonsterCount > 200:
+			global[6] += 1
+			var[3] += 1
+			FlagSet flag[7]
+		elif global[6] == 7 && ED7NoteBattleMonsterCount > 250:
+			global[6] += 1
+			var[3] += 1
+			FlagSet flag[7]
+		elif global[6] == 8 && ED7NoteBattleMonsterCount > 280:
+			global[6] += 1
+			var[3] += 1
+			FlagSet flag[7]
+			FlagSet flag[8]
+		elif global[6] == 9 && ED7NoteBattleMonsterCount >= 305:
+			global[6] += 1
+			var[3] += 1
+			FlagSet flag[7]
+			FlagSet flag[9]
+		else:
+			break
+	if flag[7]:
+		EventBegin 0
+		FadeOut 500ms 0x00000000 255
+		FadeWait
+		CamSetDistance 2310 1440 13000 0ms
+		ED7CamRotate 39deg 17deg 0deg 0ms
+		CamPers 400 0ms
+		CamZoom 21380 0ms
+		Call fn[0,22]
+		CharTurnTo char[4] 180deg 0deg/s
+		CharSetChipPattern char[4] 0
+		_Char4A char[4] 255
+		FadeIn 500ms 0x00000000
+		FadeWait
+		TextTalk char[4] {
+			哎呀呀，各位……
+			戰鬥手冊似乎
+			記錄了不少呢。{wait}
+		}
+		TextWait
+		TextTalk char[4] {
+			我想要記錄魔獸的情報，
+			可以讓我看一下各位的戰鬥手冊嗎？{wait}
+		}
+		TextWait
+		TextTalk name[0] {
+			#12P#0000F嗯，我很樂意。{wait}
+		}
+		TextWait
+		FadeOut 1000ms 0x00000000 255
+		FadeWait
+		Sleep 1800ms
+		FadeIn 1000ms 0x00000000
+		FadeWait
+		TextTalk char[4] {
+			非常感謝各位。
+			我把手冊還給各位喔。{wait}
+		}
+		TextWait
+		TextTalk char[4] {
+			這是本次的賞金。
+			請收下吧。{wait}
+		}
+		TextWait
+		FadeOut 300ms 0x00000000 100
+		TextSetPos -1 -1 -1 -1
+		TextSetName ""
+		SoundPlay sound[17] 0 100 0
+		if var[3] == 1:
+			TextMessage null {
+				已收下{color 2}５００米拉{color 0}。{wait}
+			}
+			MiraAdd 500
+			TextWait
+			SoundPlay sound[17] 0 100 0
+			TextMessage null {
+				已收下１個{item[910]}{color 0}。{wait}
+			}
+			ItemAdd item[910] 1
+		elif var[3] == 2:
+			TextMessage null {
+				已收下{color 2}１０００米拉{color 0}。{wait}
+			}
+			MiraAdd 1000
+			TextWait
+			SoundPlay sound[17] 0 100 0
+			TextMessage null {
+				已收下２個{item[910]}{color 0}。{wait}
+			}
+			ItemAdd item[910] 2
+		elif var[3] == 3:
+			TextMessage null {
+				已收下{color 2}１５００米拉{color 0}。{wait}
+			}
+			MiraAdd 1500
+			TextWait
+			SoundPlay sound[17] 0 100 0
+			TextMessage null {
+				已收下３個{item[910]}{color 0}。{wait}
+			}
+			ItemAdd item[910] 3
+		elif var[3] == 4:
+			TextMessage null {
+				已收下{color 2}２０００米拉{color 0}。{wait}
+			}
+			MiraAdd 2000
+			TextWait
+			SoundPlay sound[17] 0 100 0
+			TextMessage null {
+				已收下４個{item[910]}{color 0}。{wait}
+			}
+			ItemAdd item[910] 4
+		elif var[3] == 5:
+			TextMessage null {
+				已收下{color 2}２５００米拉{color 0}。{wait}
+			}
+			MiraAdd 2500
+			TextWait
+			SoundPlay sound[17] 0 100 0
+			TextMessage null {
+				已收下５個{item[910]}{color 0}。{wait}
+			}
+			ItemAdd item[910] 5
+		elif var[3] == 6:
+			TextMessage null {
+				已收下{color 2}３０００米拉{color 0}。{wait}
+			}
+			MiraAdd 3000
+			TextWait
+			SoundPlay sound[17] 0 100 0
+			TextMessage null {
+				已收下６個{item[910]}{color 0}。{wait}
+			}
+			ItemAdd item[910] 6
+		elif var[3] == 7:
+			TextMessage null {
+				已收下{color 2}３５００米拉{color 0}。{wait}
+			}
+			MiraAdd 3500
+			TextWait
+			SoundPlay sound[17] 0 100 0
+			TextMessage null {
+				已收下７個{item[910]}{color 0}。{wait}
+			}
+			ItemAdd item[910] 7
+		elif var[3] == 8:
+			TextMessage null {
+				已收下{color 2}４０００米拉{color 0}。{wait}
+			}
+			MiraAdd 4000
+			TextWait
+			SoundPlay sound[17] 0 100 0
+			TextMessage null {
+				已收下８個{item[910]}{color 0}。{wait}
+			}
+			ItemAdd item[910] 8
+		elif var[3] == 9:
+			TextMessage null {
+				已收下{color 2}４５００米拉{color 0}。{wait}
+			}
+			MiraAdd 4500
+			TextWait
+			SoundPlay sound[17] 0 100 0
+			TextMessage null {
+				已收下９個{item[910]}{color 0}。{wait}
+			}
+			ItemAdd item[910] 9
+		elif var[3] == 10:
+			TextMessage null {
+				已收下{color 2}５０００米拉{color 0}。{wait}
+			}
+			MiraAdd 5000
+			TextWait
+			SoundPlay sound[17] 0 100 0
+			TextMessage null {
+				已收下１０個{item[910]}{color 0}。{wait}
+			}
+			ItemAdd item[910] 10
+		TextWait
+		if flag[8] && flag[9]:
+			SoundPlay sound[17] 0 100 0
+			TextMessage null {
+				已收下２個{item[917]}{color 0}。{wait}
+			}
+			ItemAdd item[917] 2
+			TextWait
+		elif flag[8] | flag[9]:
+			SoundPlay sound[17] 0 100 0
+			TextMessage null {
+				已收下{item[917]}{color 0}。{wait}
+			}
+			ItemAdd item[917] 1
+			TextWait
+		TextClose 0
+		FadeIn 300ms 0x00000000
+		TextSetPos -1 280 60 3
+		_59
+		if global[6] < 10:
+			TextTalk char[4] {
+				如果又蒐集到魔獸情報，
+				請再來找我喔。{wait}
+			}
+			TextWait
+			TextTalk name[0] {
+				#12P#0000F是，那就麻煩你們了。{wait}
+			}
+			TextWait
+			if PartyPosition name[1] > -1:
+				TextTalk name[1] {
+					#12P#0100F我們改天再來打擾喔。{wait}
+				}
+				TextWait
+			elif PartyPosition name[2] > -1:
+				TextTalk name[2] {
+					#12P#0200F我們改天再來打擾。{wait}
+				}
+				TextWait
+			elif PartyPosition name[3] > -1:
+				TextTalk name[3] {
+					#12P#0300F我們改天再來打擾。{wait}
+				}
+				TextWait
+		else:
+			TextTalk char[4] {
+				新型魔獸的情報
+				似乎也蒐集足夠了呢。
+				非常感謝您。{wait}
+			}
+			TextWait
+			TextTalk char[4] {
+				這樣一來，今後應該就能研擬
+				更好的安全措施了。{wait}
+			}
+			TextWait
+			TextTalk name[0] {
+				#12P#0000F哈哈……很榮幸能幫上忙。{wait}
+			}
+			TextWait
+			TextTalk char[4] {
+				呵呵，真是受到
+				各位許多照顧呢。{wait}
+			}
+			TextWait
+			TextTalk char[4] {
+				那麼，這次也有
+				特別報酬要交給各位。
+				請務必收下。{wait}
+			}
+			TextWait
+			FadeOut 300ms 0x00000000 100
+			TextSetPos -1 -1 -1 -1
+			TextSetName ""
+			SoundPlay sound[17] 0 100 0
+			TextMessage null {
+				已收下{color 2}１００００米拉{color 0}。{wait}
+			}
+			TextWait
+			TextClose 0
+			FadeIn 300ms 0x00000000
+			TextSetPos -1 280 60 3
+			_59
+			MiraAdd 10000
+			TextTalk char[4] {
+				祝福各位今後
+				也有活躍的表現。{wait}
+			}
+			TextWait
+			TextTalk char[4] {
+				如果還有其他事情，
+				各位隨時都可以過來。{wait}
+			}
+			TextWait
+		FadeOut 500ms 0x00000000 255
+		FadeWait
+		if flag[6]:
+			FlagUnset flag[6]
+		if var[4] >= 5:
+			CharFlagsSet field_party[4] 0x0080
+			CharFlags2Set field_party[4] 0x8000
+		if var[4] >= 6:
+			CharFlagsSet field_party[5] 0x0080
+			CharFlags2Set field_party[5] 0x8000
+		_Char4B char[4] 255
+		CharSetPos field_party[0] (2470, 0, 12690) 0deg
+		EventEnd 5
+		TextStart char[4]
+	elif global[6] == 10:
+		TextTalk char[4] {
+			匯集到總部的情報也
+			已經足夠了，調查就
+			到這裡為止。{wait}
+		}
+		TextWait
+		TextTalk char[4] {
+			之後或許還有事情
+			要拜託各位。
+			到時候再麻煩各位了。{wait}
+		}
+		TextWait
+	else:
+		TextTalk char[4] {
+			戰鬥手冊的內容
+			似乎也累積了不少呢。{wait}
+		}
+		TextWait
+		TextTalk char[4] {
+			請再多累積一些情報，
+			然後讓我看看吧。
+			我會把情報記錄下來的。{wait}
+		}
+		TextWait
+	Return
+
+fn[24]:
+	TextStart self
+	if flag[3385]:
+		if !flag[3]:
+			TextTalk self {
+				哦，你們是賽爾蓋那邊的孩子們啊──{wait}
+			}
+			TextWait
+			TextTalk self {
+				其實因為人手不足，
+				所以我奉命負責警察學校
+				附近的警備任務呢──{wait}
+			}
+			TextWait
+			TextTalk self {
+				雖然是久違的現場指揮，
+				不過為了各位年輕警察，
+				我得想辦法達成任務才行。{wait}
+			}
+			TextWait
+			FlagSet flag[3]
+		else:
+			TextTalk self {
+				自從當上公共安全課的課長之後，
+				雖然文書工作比較多，不過……{wait}
+			}
+			TextWait
+			TextTalk self {
+				在這種非常時期，
+				為了各位年輕警察，
+				我得想辦法達成任務才行。{wait}
+			}
+			TextWait
+	TextEnd self
+	Return
+
+fn[25]:
+	TextStart self
+	if flag[3385]:
+		_Char4A char[5] 255
+		if !flag[4]:
+			TextTalk char[6] {
+				不安的情緒果然
+				在訓練生之間擴散開來了。{wait}
+			}
+			TextWait
+			TextTalk char[6] {
+				偶然來參加交通講習的市民，
+				在聽說結界消失之後，
+				也想回到城鎮裡。{wait}
+			}
+			TextWait
+			TextTalk char[5] {
+				嗯，看來還是得盡快
+				處理那邊的問題才行。{wait}
+			}
+			TextWait
+			TextTalk char[5] {
+				很好，我知道了，那邊就
+				由我跟女警們去處理吧。{wait}
+			}
+			TextWait
+			TextTalk char[5] {
+				麻煩你們繼續
+				留在這裡負責警備。{wait}
+			}
+			TextWait
+			TextTalk char[6] {
+				是！{wait}
+			}
+			TextWait
+			FlagSet flag[4]
+		else:
+			TextTalk char[5] {
+				那些訓練生和市民就
+				由我跟女警們去處理吧。{wait}
+			}
+			TextWait
+			TextTalk char[5] {
+				麻煩你們繼續
+				留在這裡負責警備。{wait}
+			}
+			TextWait
+			TextTalk char[6] {
+				是！{wait}
+			}
+			TextWait
+		_Char4B char[5] 255
+	TextEnd self
+	Return
+
+fn[26]:
+	EventBegin 0
+	FadeOut 0ms 0x00000000 255
+	ED7LoadChip "chr/ch02500.itc" chip[30]
+	ED7LoadChip "chr/ch00002.itc" chip[31]
+	ED7LoadChip "chr/ch00102.itc" chip[32]
+	ED7LoadChip "chr/ch02902.itc" chip[33]
+	ED7LoadChip "chr/ch03002.itc" chip[34]
+	VisShow vis[0] 0 8 480 264 0 0 512 256 0 0 480 256 0x00FFFFFF 0 "c_vis416.itp"
+	CamSetDistance 0 1000 15000 0ms
+	ED7CamRotate 45deg 25deg 0deg 0ms
+	CamPers 400 0ms
+	CamZoom 25000 0ms
+	CharSetPos name[0] (500, 0, 1000) 0deg
+	CharSetPos name[8] (-500, 0, 1000) 0deg
+	CharSetPos name[1] (500, 0, 0) 0deg
+	CharSetPos name[4] (-500, 0, 0) 0deg
+	CharSetChipBase char[7] chip[30]
+	CharSetChipPattern char[7] 0
+	CharFlagsUnset char[7] 0x0080
+	CharSetPos char[7] (750, 0, 10000) 270deg
+	CharFlagsUnset char[0] 0x0080
+	_Char4A char[0] 255
+	CharSetPos char[0] (-750, 0, 10000) 90deg
+	FadeIn 1000ms 0x00000000
+	CamSetDistance 0 1000 10000 6000ms
+	CamWait 121
+	FadeWait
+	Emote char[7] 0mm 2000mm 38 38 250ms 1
+	Sleep 1000ms
+	Fork char[7] fork[0]:
+		CharTurnTo char[7] 180deg 500deg/s
+	Sleep 50ms
+	Fork char[0] fork[0]:
+		CharTurnTo char[0] 180deg 500deg/s
+	Sleep 50ms
+	ForkWait char[7] fork[0]
+	ForkWait char[0] fork[0]
+	if QuestFlagsGet quest[105] 0x10:
+		TextTalk char[7] {
+			#1110100022V#01005F#5P哦，你們總算來啦。{wait}
+		}
+		TextWait
+		CamSetDistance 0 1000 9000 4000ms
+		Fork name[0] fork[0]:
+			_94 0 name[0] 0deg 7000 2000mm/s 0
+		Sleep 0ms
+		Fork name[1] fork[0]:
+			_94 0 name[1] 0deg 7000 2000mm/s 0
+		Sleep 0ms
+		Fork name[8] fork[0]:
+			_94 0 name[8] 0deg 7000 2000mm/s 0
+		Sleep 0ms
+		Fork name[4] fork[0]:
+			_94 0 name[4] 0deg 7000 2000mm/s 0
+		Sleep 0ms
+		ForkWait name[0] fork[0]
+		ForkWait name[1] fork[0]
+		ForkWait name[8] fork[0]
+		ForkWait name[4] fork[0]
+		CamWait 121
+		TextTalk char[0] {
+			#1112060001V#5P羅伊德、諾艾兒上士。
+			好一陣子沒見面了呢。{wait}
+		}
+		TextWait
+		TextTalk name[0] {
+			#1110000214V#00004F#11P非常抱歉，
+			我們來晚了。{wait}
+		}
+		TextWait
+		TextTalk char[7] {
+			#1110100023V#01000F#5P嗯，剛才我收到通知，
+			你們似乎協助
+			取締了飆車族對吧。{wait}
+		} {
+			#1110100024V#01004F嗯，既然如此，遲到的事情
+			我就睜一隻眼閉一隻眼吧。
+			……辛苦你們了。{wait}
+		}
+		TextWait
+		TextTalk name[0] {
+			#1110000215V#00012F#11P哈哈，謝謝你。{wait}
+		} {
+			#1110000216V#00002F還有胡安事務長，
+			別來無恙。{wait}
+		}
+		TextWait
+	else:
+		TextTalk char[7] {
+			#1110100022V#01005F#5P哦，你們總算來啦。{wait}
+		}
+		TextWait
+		CamSetDistance 0 1000 9000 4000ms
+		Fork name[0] fork[0]:
+			_94 0 name[0] 0deg 7000 2000mm/s 0
+		Sleep 0ms
+		Fork name[1] fork[0]:
+			_94 0 name[1] 0deg 7000 2000mm/s 0
+		Sleep 0ms
+		Fork name[8] fork[0]:
+			_94 0 name[8] 0deg 7000 2000mm/s 0
+		Sleep 0ms
+		Fork name[4] fork[0]:
+			_94 0 name[4] 0deg 7000 2000mm/s 0
+		Sleep 0ms
+		ForkWait name[0] fork[0]
+		ForkWait name[1] fork[0]
+		ForkWait name[8] fork[0]
+		ForkWait name[4] fork[0]
+		CamWait 121
+		TextTalk char[0] {
+			#1112060001V#5P羅伊德、諾艾兒上士。
+			好一陣子沒見面了呢。{wait}
+		}
+		TextWait
+		TextTalk name[0] {
+			#1110000217V#00004F#11P我回來了。{wait}
+		} {
+			#1110000218V#00002F胡安事務長，
+			別來無恙。{wait}
+		}
+		TextWait
+	TextTalk name[8] {
+		#1110050078V#10109F#12P看到你這麼有精神，真是太好了。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#1112060002V#5P哈哈，自從上次的
+		定期演習之後，就沒再見過諾艾兒了。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#1112060003V#5P羅伊德則是畢業以來，
+		應該有十個月不見了吧。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#1112060004V#5P哎呀，才一陣子不見，
+		你已經變得很了不起了呢。{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#1110000219V#00012F#11P哈哈……
+		我還是個菜鳥呢。{wait}
+	}
+	TextWait
+	TextTalk name[1] {
+		#1110010127V#00105F#12P呃……{wait}
+	}
+	TextWait
+	TextTalk name[4] {
+		#1110040092V#10300F#12P看來你應該是
+		警察學校的負責人對吧？{wait}
+	}
+	TextWait
+	TextTalk char[7] {
+		#1110100025V#01004F#5P嗯，他是負責管理
+		週邊設施事務的胡安事務長。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#1112060005V#5P不不不。
+		這沒什麼了不起的。{wait}
+	}
+	TextWait
+	CharTurnToChar char[0] char[7] 500deg/s
+	Sleep 300ms
+	TextTalk char[0] {
+		#1112060006V#6P那麼，賽爾蓋。
+		會議室就讓你
+		自由使用吧。{wait}
+	}
+	TextWait
+	CharTurnToChar char[7] char[0] 500deg/s
+	TextTalk char[7] {
+		#1110100026V#01002F#11P嗯，我會的。{wait}
+	}
+	TextWait
+	ForkFunc char[0] fork[3] fn[0,27]
+	Sleep 3000ms
+	CharTurnToChar char[7] name[0] 500deg/s
+	TextTalk char[7] {
+		#1110100027V#01003F#5P──那麼，時間寶貴。{wait}
+	} {
+		#1110100028V#01000F馬上開始吧，
+		你們可要跟上。{wait}
+	}
+	TextWait
+	CamSetDistance 1280 1000 9280 1500ms
+	CharTurnTo char[7] 90deg 500deg/s
+	Fork char[7] fork[1]:
+		_94 0 self 0deg 3000 2000mm/s 0
+	ForkLoop name[0] fork[2]:
+		CharTurnToChar self char[7] 500deg/s
+	ForkLoop name[1] fork[2]:
+		CharTurnToChar self char[7] 500deg/s
+	ForkLoop name[8] fork[2]:
+		CharTurnToChar self char[7] 500deg/s
+	ForkLoop name[4] fork[2]:
+		CharTurnToChar self char[7] 500deg/s
+	Emote name[0] 0mm 2000mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Sleep 1000ms
+	ForkQuit name[0] fork[2]
+	ForkQuit name[1] fork[2]
+	ForkQuit name[8] fork[2]
+	ForkQuit name[4] fork[2]
+	_Char4A char[7] 255
+	TextTalk name[1] {
+		#1110010128V#00105F#12P呃，賽爾蓋課長？{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#1110000220V#00001F#6P呃……
+		究竟是什麼事呢？{wait}
+	}
+	TextWait
+	Emote char[7] 0mm 2000mm 38 38 250ms 1
+	Sleep 1000ms
+	CharTurnToChar char[7] name[0] 500deg/s
+	TextTalk char[7] {
+		#1110100029V#01005F#11P什麼？你們還沒察覺嗎？{wait}
+	} {
+		#1110100030V#01004F我想應該有許多提示了……
+		呵呵，看來你們還是菜鳥呢。{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#1110000221V#00011F#6P唔……請、請等一下！{wait}
+	} {
+		#1110000222V#00003F許多提示……
+		找我們過來這裡的意義……{wait}
+	} {
+		#1110000223V#00000F該不會──{wait}
+	}
+	TextWait
+	FadeOut 300ms 0x00000000 100
+	FadeWait
+	TextSetPos -1 30 -1 -1
+	TextSetName ""
+	TextMessage null {
+		{color 5}{0x06}{0x18}#1K賽爾蓋找我們過來的目的是？{color 0}{wait}
+	}
+	Menu menu[0] -1 -1 0
+		"【搜查官考試的講習】" // 0
+		"【交通基本法的講習】" // 1
+		"【導力網路技術的講習】" // 2
+	MenuWait var[0]
+	MenuClose menu[0]
+	TextClose 0
+	FadeIn 300ms 0x00000000
+	FadeWait
+	switch var[0]:
+		case 0:
+			TextTalk char[7] {
+				#1110100031V#01006F#11P你已經擁有
+				搜查官資格了吧。{wait}
+			} {
+				#1110100032V#01003F以特務支援課的性質來說，
+				沒有必要全部成員
+				都擁有搜查官資格。{wait}
+			} {
+				#1110100033V#01000F答案是──
+				『交通基本法的講習』。{wait}
+			}
+			TextWait
+			TextTalk name[0] {
+				#1110000224V#00005F#6P啊……{wait}
+			}
+			TextWait
+			TextTalk name[1] {
+				#1110010129V#00102F#12P這麼說來，該不會……{wait}
+			}
+			TextWait
+			break
+		case 1:
+			QuestBonusBp quest[161] 1
+			TextTalk name[0] {
+				#1110000225V#00002F#6P這樣啊……
+				是『交通基本法的講習』對吧？{wait}
+			}
+			TextWait
+			TextTalk name[1] {
+				#1110010130V#00105F#12P啊……！{wait}
+			}
+			TextWait
+			TextTalk char[7] {
+				#1110100034V#01004F#11P呵呵，答對了。{wait}
+			}
+			TextWait
+			TextTalk name[8] {
+				#1110050079V#10105F#6P呃……
+				這該不會是？{wait}
+			}
+			TextWait
+			break
+		case 2:
+			TextTalk char[7] {
+				#1110100035V#01003F#11P雖然這裡的確也有
+				導力網路，不過……{wait}
+			} {
+				#1110100036V如果要操作的話，
+				會讓你們去財團的事務所吧。{wait}
+			} {
+				#1110100037V#01000F答案是──
+				『交通基本法的講習』。{wait}
+			}
+			TextWait
+			TextTalk name[0] {
+				#1110000226V#00005F#6P啊……{wait}
+			}
+			TextWait
+			TextTalk name[1] {
+				#1110010131V#00102F#12P這麼說來，該不會……{wait}
+			}
+			TextWait
+			break
+	TextTalk char[7] {
+		#1110100038V#01004F#11P嗯，之後會配給
+		特務支援課導力車。{wait}
+	} {
+		#1110100039V#01002F我打算藉此機會，
+		讓你們好好記住交通法規的內容。{wait}
+	}
+	TextWait
+	FadeOut 1000ms 0x00000000 255
+	FadeWait
+	ForkQuit char[0] fork[3]
+	CharSetPos char[0] (0, 0, 15500) 180deg
+	VisSet vis[0] 3 0xFFFFFFFF 500ms 0 0
+	VisWait vis[0] 3
+	Sleep 2000ms
+	VisSet vis[0] 3 0x00FFFFFF 500ms 0 0
+	VisWait vis[0] 3
+	CamSetDistance 65000 3000 16500 0ms
+	ED7CamRotate 51deg 15deg 0deg 0ms
+	CamPers 510 0ms
+	CamZoom 17000 0ms
+	CharSetChipBase name[0] chip[31]
+	CharSetChipPattern name[0] 2
+	CharSetChipBase name[1] chip[32]
+	CharSetChipPattern name[1] 1
+	CharSetChipBase name[8] chip[33]
+	CharSetChipPattern name[8] 2
+	CharSetChipBase name[4] chip[34]
+	CharSetChipPattern name[4] 1
+	CharFlagsSet name[0] 0x0004
+	CharFlagsSet name[1] 0x0004
+	CharFlagsSet name[8] 0x0004
+	CharFlagsSet name[4] 0x0004
+	CharSetPos name[0] (66840, 150, 16500) 270deg
+	CharSetPos name[1] (63210, 150, 16500) 90deg
+	CharSetPos name[8] (66800, 150, 13500) 270deg
+	CharSetPos name[4] (63230, 150, 13500) 90deg
+	CharSetPos char[7] (65000, 0, 20000) 0deg
+	FadeIn 1000ms 0x00000000
+	CamSetDistance 65000 1000 16500 3000ms
+	CamWait 121
+	FadeWait
+	Sleep 500ms
+	CharTurnTo char[7] 180deg 500deg/s
+	TextTalk char[7] {
+		#1110100040V#01003F#5P──以上就是要開導力車的時候，
+		需要記住最低限度的交通基本法。{wait}
+	} {
+		#1110100041V#01000F大致上都記住了嗎？{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#1110000227V#00006F#11P勉、勉強可以。{wait}
+	}
+	TextWait
+	TextTalk name[4] {
+		#1110040093V#10306F#12P真是的，沒想到
+		在這種地方居然要上課……{wait}
+	}
+	TextWait
+	if QuestFlagsGet quest[105] 0x10:
+		TextTalk name[1] {
+			#1110010132V#00100F#6P……不過，只有比我想像中
+			還要簡單的規則呢。{wait}
+		} {
+			#1110010133V#00103F就像剛才的狂飆車輛事件一樣，
+			雖然也有對外國人
+			罰則過輕的部分，不過……{wait}
+		} {
+			#1110010134V#00101F如果未來導力車
+			增加的話，我想光靠這些
+			應該無法應付……{wait}
+		}
+		TextWait
+		TextTalk char[7] {
+			#1110100042V#01006F#5P這就是今後的問題了呢。{wait}
+		} {
+			#1110100043V#01001F家用導力車開始普及之後
+			還不到十年。{wait}
+		} {
+			#1110100044V總有一天會需要
+			更加嚴密的規範吧。{wait}
+		} {
+			#1110100045V關於外國人的罰則也是。{wait}
+		}
+		TextWait
+	else:
+		TextTalk name[1] {
+			#1110010132V#00103F#6P……不過，只有比我想像中
+			還要簡單的規則呢。{wait}
+		} {
+			#1110010135V#00101F如果未來導力車
+			增加的話，我想光靠這些
+			應該無法應付……{wait}
+		}
+		TextWait
+		TextTalk char[7] {
+			#1110100046V#01006F#5P這就是今後的問題了呢。{wait}
+		} {
+			#1110100047V#01001F家用導力車開始普及之後
+			還不到十年。{wait}
+		} {
+			#1110100048V總有一天會需要
+			更加嚴密的規範吧。{wait}
+		}
+		TextWait
+	TextTalk name[8] {
+		#1110050080V#10103F#11P雖然目前只要
+		跟市公所申請，就能
+		輕鬆獲得駕照，不過……{wait}
+	} {
+		#1110050081V#10101F我記得也有在討論
+		要引入考試制度對吧？{wait}
+	}
+	TextWait
+	TextTalk char[7] {
+		#1110100049V#01003F#5P嗯，如果變成那樣的話，
+		各種講習也會加入
+		實務的測驗吧。{wait}
+	} {
+		#1110100050V#01000F總之今天先學習
+		基本的規則。{wait}
+	} {
+		#1110100051V實際開車的人──
+		諾艾兒，就交給妳吧。{wait}
+	}
+	TextWait
+	TextTalk name[8] {
+		#1110050082V#10102F#11P是，我瞭解了！{wait}
+	}
+	TextWait
+	CharSetChipPattern name[0] 1
+	Sleep 50ms
+	CharSetChipPattern name[1] 0
+	Sleep 50ms
+	CharSetChipPattern name[4] 0
+	TextTalk name[0] {
+		#1110000228V#00002F#5P對了，諾艾兒
+		肯定會開車呢。{wait}
+	}
+	TextWait
+	TextTalk name[1] {
+		#1110010136V#00109F#6P畢竟她可以自由自在
+		駕駛警備隊的車輛呢。{wait}
+	}
+	TextWait
+	TextTalk name[4] {
+		#1110040094V#10305F#6P哦？是嗎？{wait}
+	}
+	TextWait
+	CharSetChipPattern name[8] 0
+	Sleep 300ms
+	TextTalk name[8] {
+		#1110050083V#10112F#11P啊哈哈……自從加入警備隊以來，
+		我就被司令訓練過了。{wait}
+	}
+	TextWait
+	TextTalk char[7] {
+		#1110100052V#01003F#5P很好，那麼馬上就
+		配給你們導力車吧。{wait}
+	} {
+		#1110100053V#01000F已經準備好在外面了，你們跟我來。{wait}
+	}
+	TextWait
+	CamSetDistance 65000 1000 15350 6000ms
+	ForkFunc char[7] fork[3] fn[0,28]
+	ForkWait char[7] fork[3]
+	CamWait 121
+	CharFlagsSet char[7] 0x0080
+	SoundPlay sound[103] 0 100 0
+	Sleep 600ms
+	SoundPlay sound[104] 0 100 0
+	Sleep 600ms
+	TextTalk name[0] {
+		#1110000229V#00012F#5P哈哈……
+		真是個大驚喜呢。{wait}
+	}
+	TextWait
+	TextTalk name[1] {
+		#1110010137V#00102F#6P嗯，課長也很壞心眼呢。{wait}
+	}
+	TextWait
+	TextTalk name[4] {
+		#1110040095V#10304F#6P導力車啊。{wait}
+	} {
+		#1110040096V#10300F雖然我不太懂，
+		不過應該是烏爾努公司或
+		萊恩福爾特公司其中一間？{wait}
+	}
+	TextWait
+	TextTalk name[8] {
+		#1110050084V#10109F#11P嗯，說到家用導力車，
+		就只有這兩大廠商呢。{wait}
+	} {
+		#1110050085V#10102F其中，烏爾努因為是老字號，
+		所以導力車的種類也很豐富。{wait}
+	} {
+		#1110050086V從小型車到中型車，
+		就連巴士也都有販售。{wait}
+	}
+	TextWait
+	TextTalk name[1] {
+		#1110010138V#00100F#6P而萊恩福爾特公司生產的，
+		多半是運輸車跟禮車對吧？{wait}
+	}
+	TextWait
+	TextTalk name[8] {
+		#1110050087V#10104F#11P嗯，嚴格說起來的話，
+		既堅固又高級的款式很多呢。{wait}
+	} {
+		#1110050088V#10100F好像也有很多技術是來自
+		導力列車跟導力戰車。{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#1110000230V#00004F#5P嗯……
+		因為太突然，所以還沒有真實感，
+		不過我開始有點緊張了。{wait}
+	} {
+		#1110000231V#00000F很好，我們去看看吧。{wait}
+	}
+	TextWait
+	FadeOut 1000ms 0x00000000 255
+	FadeWait
+	VisHide vis[255] 0
+	CharSetChipBase name[0] chip[255]
+	CharSetChipPattern name[0] 0
+	CharSetChipBase name[1] chip[255]
+	CharSetChipPattern name[1] 0
+	CharSetChipBase name[8] chip[255]
+	CharSetChipPattern name[8] 0
+	CharSetChipBase name[4] chip[255]
+	CharSetChipPattern name[4] 0
+	CharFlagsUnset name[0] 0x0004
+	CharFlagsUnset name[1] 0x0004
+	CharFlagsUnset name[8] 0x0004
+	CharFlagsUnset name[4] 0x0004
+	UnloadChip chip[30]
+	UnloadChip chip[31]
+	UnloadChip chip[32]
+	UnloadChip chip[33]
+	UnloadChip chip[34]
+	CharSetPos field_party[0] (61500, 0, 18000) 180deg
+	FlagSet flag[2365]
+	QuestTaskSet quest[161] 8
+	EventEnd 5
+	Return
+
+fn[27]:
+	CharTurnTo self 315deg 500deg/s
+	CharWalkToPos self (-3000, 0, 13250) 2000mm/s 0
+	CharWalkToPos self (-6500, 0, 13250) 2000mm/s 0
+	Return
+
+fn[28]:
+	CharTurnTo self 225deg 500deg/s
+	CharWalkToPos self (61500, 0, 18500) 2500mm/s 0
+	CharWalkToPos self (61500, 0, 6500) 2500mm/s 0
+	Return
+
+fn[29]:
+	EventBegin 0
+	CrossFade 500ms
+	CamSetDistance -970 1400 13500 0ms
+	ED7CamRotate 42deg 20deg 0deg 0ms
+	CamPers 400 0ms
+	CamZoom 20360 0ms
+	CharSetPos name[0] (-600, 0, 13400) 0deg
+	CharSetPos name[1] (600, 0, 13400) 0deg
+	CharSetPos name[2] (-700, 0, 12200) 0deg
+	CharSetPos name[3] (700, 0, 12200) 0deg
+	CharSetPos custom[0] (-800, 0, 11000) 0deg
+	CharSetPos custom[1] (800, 0, 11000) 0deg
+	CharFlagsUnset field_party[4] 0x0080
+	CharFlags2Unset field_party[4] 0x8000
+	CharFlagsUnset field_party[5] 0x0080
+	CharFlags2Unset field_party[5] 0x8000
+	_Char4A char[0] 255
+	CharTurnTo char[0] 180deg 0deg/s
+	FadeWait
+	if !flag[3553]:
+		TextTalk char[0] {
+			哎呀，這不是
+			特務支援課的人嗎？{wait}
+		}
+		TextWait
+		TextTalk char[0] {
+			哎呀，太好了。
+			你們平安無事呢。{wait}
+		}
+		TextWait
+		TextTalk name[0] {
+			#12P#00000F胡安事務長……
+			你也平安無事，真是太好了。{wait}
+		}
+		TextWait
+		TextTalk name[1] {
+			#12P#00105F警官隊似乎有
+			過來這裡呢。{wait}
+		} {
+			#00103F這附近不是由
+			國防軍進行警備嗎……？{wait}
+		}
+		TextWait
+		TextTalk char[0] {
+			嗯，得知總統被捕後，
+			國防軍也撤退了呢。{wait}
+		}
+		TextWait
+		TextTalk char[0] {
+			為了處理
+			各地的混亂，國防軍
+			要好好努力才行呢。{wait}
+		}
+		TextWait
+		TextTalk char[0] {
+			警察總部接替他們來支援，
+			才將這裡的混亂處理完畢。{wait}
+		}
+		TextWait
+		TextTalk name[1] {
+			#12P#00100F原來如此……{wait}
+		}
+		TextWait
+		TextTalk name[3] {
+			#12P#00303F這麼說來……
+			加爾西亞大叔
+			最後怎樣了？{wait}
+		}
+		TextWait
+		if PartyPosition name[4] > -1:
+			TextTalk name[4] {
+				#12P#10402F我聽說他有協助羅伊德
+				逃出拘留所對吧。{wait}
+			}
+			TextWait
+		elif PartyPosition name[8] > -1:
+			TextTalk name[8] {
+				#12P#10100F我聽說他有協助羅伊德
+				逃出拘留所對吧。{wait}
+			}
+			TextWait
+		elif PartyPosition name[5] > -1:
+			TextTalk name[5] {
+				#12P#10702F我聽說他有協助羅伊德
+				逃出拘留所對吧。{wait}
+			}
+			TextWait
+		TextTalk name[0] {
+			#12P#00000F嗯……那個時候
+			真的多虧他幫忙。{wait}
+		} {
+			#00006F不過，在這種地方
+			說這種事不太好吧。{wait}
+		}
+		TextWait
+		TextTalk char[0] {
+			不，關於你被逮捕一事，
+			由於總統被捕，
+			所以也被認為是不妥的。{wait}
+		}
+		TextWait
+		TextTalk char[0] {
+			關於這部分，
+			我想事到如今就不用在意了吧。{wait}
+		}
+		TextWait
+		TextTalk char[0] {
+			至於加爾西亞……
+			他跟國防軍周旋了一陣子之後
+			又被逮捕了。{wait}
+		}
+		TextWait
+		TextTalk char[0] {
+			目前再度被囚禁於拘留所，
+			應該正在接受治療吧。{wait}
+		}
+		TextWait
+		Emote name[0] 0mm 2000mm 38 38 250ms 1
+		Sleep 50ms
+		Emote name[1] 0mm 2000mm 38 38 250ms 1
+		Sleep 50ms
+		Emote name[2] 0mm 2000mm 38 38 250ms 1
+		Sleep 50ms
+		Emote name[3] 0mm 2000mm 38 38 250ms 1
+		Sleep 50ms
+		Emote custom[0] 0mm 2000mm 38 38 250ms 1
+		Sleep 50ms
+		Emote custom[1] 0mm 2000mm 38 38 250ms 1
+		Sleep 1000ms
+		TextTalk name[2] {
+			#12P#00205F接受治療嗎……？{wait}
+		}
+		TextWait
+		if PartyPosition name[9] > -1:
+			TextTalk name[9] {
+				#12P#00603F畢竟他是獨自跟國防軍戰鬥。
+				應該可以推測得出有多消耗體力吧。{wait}
+			}
+			TextWait
+		elif PartyPosition name[5] > -1:
+			TextTalk name[5] {
+				#12P#10703F如果是獨自跟國防軍戰鬥的話……
+				肯定消耗了很多體力吧。{wait}
+			}
+			TextWait
+		elif PartyPosition name[8] > -1:
+			TextTalk name[8] {
+				#12P#10103F如果是獨自跟國防軍戰鬥的話……
+				果然還是會消耗很多體力吧。{wait}
+			}
+			TextWait
+		TextTalk char[0] {
+			嗯，是短時間內
+			無法行動的狀態。{wait}
+		}
+		TextWait
+		TextTalk char[0] {
+			不過，如果你們希望的話，
+			我也可以讓你們見他……{wait}
+		}
+		TextWait
+		TextTalk name[1] {
+			#12P#00100F羅伊德，該怎麼做呢？{wait}
+		}
+		TextWait
+		FlagSet flag[3553]
+	else:
+		TextTalk char[0] {
+			加爾西亞目前
+			再度被囚禁於拘留所，
+			應該正在接受治療吧。{wait}
+		}
+		TextWait
+		TextTalk char[0] {
+			如果你們希望的話，
+			我也可以讓你們見他……{wait}
+		}
+		TextWait
+	FadeOut 300ms 0x00000000 100
+	FadeWait
+	TextSetPos -1 30 -1 -1
+	TextSetName ""
+	Menu menu[0] -1 -1 0
+		"跟加爾西亞見面" // 0
+		"算了" // 1
+	MenuWait var[0]
+	MenuClose menu[0]
+	TextClose 0
+	TextSetPos -1 280 60 3
+	FadeIn 300ms 0x00000000
+	FadeWait
+	if var[0] == 0:
+		TextTalk name[0] {
+			#12P#00003F（關於那時的事情，
+			　得跟加爾西亞道謝才行……）{wait}
+		} {
+			#00000F……胡安事務長，那就拜託你了。{wait}
+		}
+		TextWait
+		TextTalk char[0] {
+			那就由梅爾賓帶路。
+			你們跟他一起過去吧。{wait}
+		}
+		TextWait
+		FadeOut 2000ms 0x00000000 255
+		FadeWait
+		FlagSet flag[273]
+		NewScene "scena/t6050.bin" 101 0 0
+		Hcf
+	else:
+		TextTalk name[0] {
+			#12P#00003F……現在先不要好了。{wait}
+		}
+		TextWait
+		TextTalk char[0] {
+			嗯，這樣啊？{wait}
+		}
+		TextWait
+		TextTalk char[0] {
+			嗯，如果你想見他的話，
+			再隨時來找我吧。{wait}
+		}
+		TextWait
+	ED7_Cam69 255 0
+	CharSetPos field_party[0] (0, 0, 13400) 0deg
+	CharFlagsSet field_party[4] 0x0080
+	CharFlags2Set field_party[4] 0x8000
+	CharFlagsSet field_party[5] 0x0080
+	CharFlags2Set field_party[5] 0x8000
+	_Char4B char[0] 255
+	EventEnd 5
+	Return
+
+fn[30]:
+	TextTalk name[0] {
+		#12P#00003F（關於那時的事情，
+		　得跟加爾西亞道謝才行……）{wait}
+	} {
+		#00000F……胡安事務長，那就拜託你了。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		那就由梅爾賓帶路。
+		你們跟他一起過去吧。{wait}
+	}
+	TextWait
+	FadeOut 2000ms 0x00000000 255
+	FadeWait
+	FlagSet flag[273]
+	NewScene "scena/t6050.bin" 101 0 0
+	Hcf
+	Return
+
+fn[31]:
+	EventBegin 2
+	SystemFlagsUnset 0x00000020
+	TextTalk name[0] {
+		#00000F不需要去其他樓層吧。
+		還是不要
+		到處閒逛吧。{wait}
+	}
+	TextWait
+	_59
+	EventEnd 3
+	Return
+
+fn[32]:
+	TextStart null
+	FadeOut 300ms 0x00000000 100
+	FadeWait
+	ShopOpen shop[250]
+	FadeIn 300ms 0x00000000
+	FadeWait
+	TextEnd null
+	Return

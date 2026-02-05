@@ -1,0 +1,2492 @@
+calmare ao_k scena
+scena:
+	name "e4300" "e4300" "e4300"
+	town town[0]
+	bgm bgm[0]
+	flags 0
+	item_use fn[0,255]
+	unk 0 255
+
+entry:
+	pos (0, 0, -1000)
+	unk1 0
+	cam_from (0, 0, 24000)
+	cam_pers 500
+	unk2 30
+	cam_deg 45deg
+	cam_limit 0deg 360deg
+	cam_at (0, 0, 0)
+	unk3 0
+	unk4 0
+	flags 0x0001
+	town town[1]
+	init fn[0,1]
+	reinit fn[0,2]
+
+npc char[0]:
+	name "梅爾卡巴伍號機"
+	pos (0, 0, 0)
+	angle 0deg
+	flags 0x00C5
+	unk2 0
+	chip chip[0]
+	init fn[255,255]
+	talk fn[255,255]
+	unk4 255
+
+npc char[1]:
+	name "梅爾卡巴玖號機"
+	pos (0, 0, 0)
+	angle 0deg
+	flags 0x00C5
+	unk2 0
+	chip chip[0]
+	init fn[255,255]
+	talk fn[255,255]
+	unk4 255
+
+npc char[2]:
+	name "共和國飛行艇"
+	pos (0, 0, 0)
+	angle 0deg
+	flags 0x00C5
+	unk2 0
+	chip chip[0]
+	init fn[255,255]
+	talk fn[255,255]
+	unk4 255
+
+npc char[3]:
+	name "共和國飛行艇"
+	pos (0, 0, 0)
+	angle 0deg
+	flags 0x00C5
+	unk2 0
+	chip chip[0]
+	init fn[255,255]
+	talk fn[255,255]
+	unk4 255
+
+npc char[4]:
+	name "共和國飛行艇"
+	pos (0, 0, 0)
+	angle 0deg
+	flags 0x00C5
+	unk2 0
+	chip chip[0]
+	init fn[255,255]
+	talk fn[255,255]
+	unk4 255
+
+npc char[5]:
+	name "共和國飛行艇"
+	pos (0, 0, 0)
+	angle 0deg
+	flags 0x00C5
+	unk2 0
+	chip chip[0]
+	init fn[255,255]
+	talk fn[255,255]
+	unk4 255
+
+npc char[6]:
+	name "共和國飛行艇"
+	pos (0, 0, 0)
+	angle 0deg
+	flags 0x00C5
+	unk2 0
+	chip chip[0]
+	init fn[255,255]
+	talk fn[255,255]
+	unk4 255
+
+npc char[7]:
+	name "永世２"
+	pos (0, 0, 0)
+	angle 0deg
+	flags 0x00C5
+	unk2 0
+	chip chip[0]
+	init fn[255,255]
+	talk fn[255,255]
+	unk4 255
+
+npc char[8]:
+	name "帕蒂爾瑪蒂爾"
+	pos (0, 0, 0)
+	angle 0deg
+	flags 0x00C5
+	unk2 0
+	chip chip[0]
+	init fn[255,255]
+	talk fn[255,255]
+	unk4 255
+
+npc char[9]:
+	name "蕾恩"
+	pos (0, 0, 0)
+	angle 0deg
+	flags 0x01C5
+	unk2 0
+	chip chip[0]
+	init fn[255,255]
+	talk fn[255,255]
+	unk4 255
+
+npc char[10]:
+	name "SE控制"
+	pos (0, 0, 0)
+	angle 0deg
+	flags 0x00C5
+	unk2 0
+	chip chip[0]
+	init fn[255,255]
+	talk fn[255,255]
+	unk4 255
+
+fn[0]:
+	ObjFlagsUnset object[8] 0x2000000
+	ObjFlagsUnset object[10] 0x2000000
+	ObjFlagsUnset object[0] 0x2000000
+	ObjFlagsUnset object[1] 0x2000000
+	ObjFlagsSet object[2] 0x2000000
+	ObjFlagsSet object[3] 0x2000000
+	ObjFlagsSet object[4] 0x2000000
+	ObjFlagsSet object[5] 0x2000000
+	ObjFlagsSet object[6] 0x2000000
+	ObjFlagsSet object[7] 0x2000000
+	ObjFlagsSet object[9] 0x2000000
+	ObjFlagsSet object[11] 0x2000000
+	ObjFlagsSet object[12] 0x2000000
+	ObjFlagsSet object[13] 0x2000000
+	ObjFlagsSet object[14] 0x2000000
+	ObjFlagsSet object[15] 0x2000000
+	if flag[291]:
+		ObjFlagsUnset object[2] 0x2000000
+		ObjFlagsUnset object[3] 0x2000000
+		ObjFlagsUnset object[4] 0x2000000
+		ObjFlagsUnset object[5] 0x2000000
+		ObjFlagsUnset object[6] 0x2000000
+		ObjFlagsUnset object[11] 0x2000000
+		ObjFlagsUnset object[12] 0x2000000
+		ObjFlagsUnset object[13] 0x2000000
+		ObjFlagsUnset object[14] 0x2000000
+		ObjFlagsUnset object[15] 0x2000000
+		ObjFlagsUnset object[7] 0x2000000
+	else:
+	if flag[292]:
+		ObjFlagsUnset object[9] 0x2000000
+	if flag[284] | flag[285]:
+		ObjFlagsUnset object[7] 0x2000000
+		ObjFlagsUnset object[10] 0x2000000
+	Return
+
+fn[1]:
+	if flag[272]:
+		FlagUnset flag[272]
+	elif flag[273]:
+		FlagUnset flag[273]
+		FlagSet flag[0]
+		Event fn[0,4]
+	elif flag[274]:
+		FlagUnset flag[274]
+	elif flag[275]:
+		FlagUnset flag[275]
+		FlagSet flag[0]
+		Event fn[0,7]
+	elif flag[276]:
+		FlagUnset flag[276]
+		FlagSet flag[0]
+		Event fn[0,8]
+	elif flag[277]:
+		FlagUnset flag[277]
+		FlagSet flag[0]
+		Event fn[0,9]
+	elif flag[278]:
+		FlagUnset flag[278]
+		FlagSet flag[0]
+		Event fn[0,10]
+	elif flag[279]:
+		FlagUnset flag[279]
+		FlagSet flag[0]
+		Event fn[0,11]
+	elif flag[280]:
+		FlagUnset flag[280]
+		FlagSet flag[0]
+		Event fn[0,12]
+	elif flag[281]:
+		FlagUnset flag[281]
+		Event fn[0,14]
+	elif flag[282]:
+		FlagUnset flag[282]
+	elif flag[283]:
+		FlagUnset flag[283]
+	elif flag[284]:
+		FlagUnset flag[284]
+		Event fn[0,22]
+	elif flag[285]:
+		FlagUnset flag[285]
+		Event fn[0,28]
+	elif flag[286]:
+		FlagUnset flag[286]
+		FlagSet flag[0]
+		Event fn[0,32]
+	elif flag[287]:
+		FlagUnset flag[287]
+	elif flag[288]:
+		FlagUnset flag[288]
+	elif flag[289]:
+		FlagUnset flag[289]
+	elif flag[290]:
+		FlagUnset flag[290]
+	elif flag[291]:
+		FlagUnset flag[291]
+		Event fn[0,33]
+	elif flag[292]:
+		FlagUnset flag[292]
+		Event fn[0,61]
+	elif flag[293]:
+		FlagUnset flag[293]
+	Return
+
+fn[2]:
+	system[81] = 4278397047
+	ED7_EE 1 2000
+	Ao_F3 100000
+	if flag[0]:
+		system[1] = 570
+		FlagUnset flag[0]
+	Return
+
+fn[3]:
+	CharFlagsSet field_party[0] 0x0080
+	CharFlagsSet field_party[1] 0x0080
+	CharFlagsSet field_party[2] 0x0080
+	CharFlagsSet field_party[3] 0x0080
+	Return
+
+fn[4]:
+	EventBegin 0
+	FadeOut 0ms 0x00000000 255
+	EffLoad eff[0] "event/ev17086.eff"
+	VisShow vis[0] 16 20 528 84 0 0 512 64 0 0 512 64 0x00FFFFFF 0 "c_vis508.itp"
+	VisShow vis[1] 280 60 792 124 0 0 512 64 0 0 512 64 0x00FFFFFF 0 "c_vis509.itp"
+	VisShow vis[2] 20 60 532 124 0 0 512 64 0 0 512 64 0x00FFFFFF 0 "c_vis510.itp"
+	SoundLoad sound[132]
+	SoundLoad sound[497]
+	CharFlagsUnset char[0] 0x0080
+	ED7_78 object[8] char[0]
+	NextFrame
+	ObjFlagsUnset object[8] 0x0004
+	ObjFlagsSet object[8] 0x1000
+	ED7ObjPlay object[8] 1 120 0 32
+	CharFlagsUnset char[1] 0x0080
+	ED7_78 object[0] char[1]
+	NextFrame
+	ObjFlagsUnset object[0] 0x0004
+	ObjFlagsSet object[0] 0x1000
+	ED7ObjPlay object[0] 1 120 0 32
+	Call fn[0,3]
+	Ao_F3 100000
+	ForkFunc char[10] fork[1] fn[0,5]
+	Sleep 2200ms
+	CharSetPos char[0] (7500, 0, -85000) 0deg
+	CharSetPos char[1] (-7500, 0, -65000) 0deg
+	Fork char[0] fork[1]:
+		_94 1 self 0deg 150000 50000mm/s 0
+	Fork char[1] fork[1]:
+		_94 1 self 0deg 150000 50000mm/s 0
+	CamSetDistance 0 1500 0 0ms
+	ED7CamRotate 180deg -10deg 0deg 0ms
+	CamPers 800 0ms
+	CamZoom 45000 0ms
+	EffPlay eff[0] eff_instance[0] char[0] 5 (-4250, 1750, -10250) 0 0 0 1000 1000 250 null (0, 0, 0) 0ms
+	EffPlay eff[0] eff_instance[1] char[0] 5 (4250, 1750, -10250) 0 0 0 1000 1000 250 null (0, 0, 0) 0ms
+	EffPlay eff[0] eff_instance[2] char[1] 5 (-4250, 1750, -10250) 0 0 0 1000 1000 250 null (0, 0, 0) 0ms
+	EffPlay eff[0] eff_instance[3] char[1] 5 (4250, 1750, -10250) 0 0 0 1000 1000 250 null (0, 0, 0) 0ms
+	FadeIn 1000ms 0x00000000
+	FadeWait
+	Sleep 300ms
+	BlurOn 500ms 0xBBFFFFFF 0 1 0
+	ForkWait char[0] fork[1]
+	ForkWait char[1] fork[1]
+	BlurOff 0ms
+	CrossFade 500ms
+	CharSetPos char[0] (7500, 0, -335000) 0deg
+	CharSetPos char[1] (-7500, 0, -315000) 0deg
+	Fork char[0] fork[1]:
+		_94 1 self 0deg 435000 55000mm/s 0
+	Fork char[1] fork[1]:
+		_94 1 self 0deg 415000 55000mm/s 0
+	CamSetDistance 0 2500 -250000 0ms
+	ED7CamRotate 40deg 25deg 5deg 0ms
+	CamZoom 80000 0ms
+	CamSetDistance 0 2500 0 7000ms
+	ED7CamRotate 10deg 5deg 5deg 7000ms
+	CamZoom 300000 7000ms
+	BlurOn 0ms 0x77FFFFFF 0 1 0
+	EffPlay eff[0] eff_instance[0] char[0] 5 (-4250, 1750, -10250) 0 0 0 1000 1000 1000 null (0, 0, 0) 0ms
+	EffPlay eff[0] eff_instance[1] char[0] 5 (4250, 1750, -10250) 0 0 0 1000 1000 1000 null (0, 0, 0) 0ms
+	EffPlay eff[0] eff_instance[2] char[1] 5 (-4250, 1750, -10250) 0 0 0 1000 1000 1000 null (0, 0, 0) 0ms
+	EffPlay eff[0] eff_instance[3] char[1] 5 (4250, 1750, -10250) 0 0 0 1000 1000 1000 null (0, 0, 0) 0ms
+	FadeWait
+	Sleep 4000ms
+	ED7_12 497 1900 90
+	Sleep 2000ms
+	ForkQuit char[0] fork[1]
+	ForkQuit char[1] fork[1]
+	CrossFade 500ms
+	ForkFunc char[10] fork[1] fn[0,6]
+	CharSetPos char[0] (7500, 20000, -10000) 0deg
+	CharSetPos char[1] (-7500, 20000, 10000) 0deg
+	EffPlay eff[0] eff_instance[0] char[0] 5 (-4250, 1750, -10250) 0 0 0 1000 1000 500 null (0, 0, 0) 0ms
+	EffPlay eff[0] eff_instance[1] char[0] 5 (4250, 1750, -10250) 0 0 0 1000 1000 500 null (0, 0, 0) 0ms
+	EffPlay eff[0] eff_instance[2] char[1] 5 (-4250, 1750, -10250) 0 0 0 1000 1000 500 null (0, 0, 0) 0ms
+	EffPlay eff[0] eff_instance[3] char[1] 5 (4250, 1750, -10250) 0 0 0 1000 1000 500 null (0, 0, 0) 0ms
+	CamSetDistance 0 22500 2500 0ms
+	ED7CamRotate 245deg 30deg 0deg 0ms
+	CamZoom 55000 0ms
+	CamSetDistance 0 22500 0 6000ms
+	CamZoom 50000 6000ms
+	FadeWait
+	VisSet vis[0] 3 0xFFFFFFFF 800ms 0 0
+	VisWait vis[0] 3
+	Sleep 3500ms
+	VisSet vis[0] 3 0x00FFFFFF 800ms 0 0
+	VisWait vis[0] 3
+	CrossFade 500ms
+	CharSetPos char[0] (10500, 20000, -25000) 0deg
+	CharSetPos char[1] (-10500, 20000, 10000) 0deg
+	CamSetDistance 10500 22500 -22500 0ms
+	ED7CamRotate 270deg 20deg 0deg 0ms
+	CamZoom 29000 0ms
+	CamSetDistance 10500 22500 -21500 6000ms
+	ED7CamRotate 240deg 25deg 0deg 6000ms
+	CamZoom 32000 6000ms
+	FadeWait
+	Sleep 500ms
+	VisSet vis[1] 3 0xFFFFFFFF 800ms 0 0
+	VisWait vis[1] 3
+	Sleep 3500ms
+	VisSet vis[1] 3 0x00FFFFFF 800ms 0 0
+	VisWait vis[1] 3
+	CamWait 121
+	CrossFade 500ms
+	CharSetPos char[0] (7500, 20000, -15000) 0deg
+	CharSetPos char[1] (-7500, 20000, 10000) 0deg
+	CamSetDistance -7500 22500 12000 0ms
+	ED7CamRotate 150deg 25deg 0deg 0ms
+	CamZoom 35000 0ms
+	CamSetDistance -7500 22500 13000 8000ms
+	ED7CamRotate 120deg 30deg 0deg 8000ms
+	CamZoom 29000 8000ms
+	FadeWait
+	Sleep 500ms
+	VisSet vis[2] 3 0xFFFFFFFF 800ms 0 0
+	VisWait vis[2] 3
+	Sleep 3500ms
+	VisSet vis[2] 3 0x00FFFFFF 800ms 0 0
+	VisWait vis[2] 3
+	Sleep 1500ms
+	CamZoom 24000 2000ms
+	FadeOut 2000ms 0x00000000 255
+	ED7_12 132 2000 100
+	ED7_12 497 2000 100
+	FadeWait
+	VisHide vis[255] 0
+	FlagSet flag[273]
+	NewScene "scena/e3020.bin" 0 0 0
+	Hcf
+	Return
+
+fn[5]:
+	SoundPlay sound[132] 2 20 0
+	SoundPlay sound[497] 2 20 0
+	Sleep 50ms
+	SoundSetVolume sound[132] 25
+	SoundSetVolume sound[497] 25
+	Sleep 50ms
+	SoundSetVolume sound[132] 30
+	SoundSetVolume sound[497] 30
+	Sleep 50ms
+	SoundSetVolume sound[132] 35
+	SoundSetVolume sound[497] 35
+	Sleep 50ms
+	SoundSetVolume sound[132] 40
+	SoundSetVolume sound[497] 40
+	Sleep 50ms
+	SoundSetVolume sound[132] 45
+	SoundSetVolume sound[497] 45
+	Sleep 50ms
+	SoundSetVolume sound[132] 50
+	SoundSetVolume sound[497] 50
+	Sleep 50ms
+	SoundSetVolume sound[132] 55
+	SoundSetVolume sound[497] 55
+	Sleep 50ms
+	SoundSetVolume sound[132] 60
+	SoundSetVolume sound[497] 60
+	Sleep 50ms
+	SoundSetVolume sound[132] 75
+	SoundSetVolume sound[497] 75
+	Sleep 50ms
+	SoundSetVolume sound[132] 80
+	SoundSetVolume sound[497] 80
+	Sleep 50ms
+	SoundSetVolume sound[132] 85
+	SoundSetVolume sound[497] 85
+	Sleep 50ms
+	SoundSetVolume sound[132] 90
+	SoundSetVolume sound[497] 90
+	Sleep 50ms
+	SoundSetVolume sound[132] 95
+	SoundSetVolume sound[497] 95
+	Sleep 50ms
+	SoundSetVolume sound[132] 100
+	SoundSetVolume sound[497] 100
+	Sleep 2200ms
+	SoundPlay sound[499] 0 80 0
+	Return
+
+fn[6]:
+	SoundPlay sound[497] 2 20 0
+	Sleep 50ms
+	SoundSetVolume sound[497] 25
+	Sleep 50ms
+	SoundSetVolume sound[497] 30
+	Sleep 50ms
+	SoundSetVolume sound[497] 35
+	Sleep 50ms
+	SoundSetVolume sound[497] 40
+	Sleep 50ms
+	SoundSetVolume sound[497] 45
+	Sleep 50ms
+	SoundSetVolume sound[497] 50
+	Sleep 50ms
+	SoundSetVolume sound[497] 55
+	Sleep 50ms
+	SoundSetVolume sound[497] 60
+	Sleep 50ms
+	SoundSetVolume sound[497] 75
+	Sleep 50ms
+	SoundSetVolume sound[497] 80
+	Sleep 50ms
+	SoundSetVolume sound[497] 85
+	Sleep 50ms
+	SoundSetVolume sound[497] 90
+	Sleep 50ms
+	SoundSetVolume sound[497] 95
+	Sleep 50ms
+	SoundSetVolume sound[497] 100
+	Return
+
+fn[7]:
+	EventBegin 0
+	FadeOut 0ms 0x00000000 255
+	EffLoad eff[0] "event/ev17086.eff"
+	SoundLoad sound[132]
+	SoundLoad sound[497]
+	CharFlagsUnset char[1] 0x0080
+	ED7_78 object[0] char[1]
+	NextFrame
+	ObjFlagsUnset object[0] 0x0004
+	ObjFlagsSet object[0] 0x1000
+	ED7ObjPlay object[0] 1 120 0 32
+	Call fn[0,3]
+	EffPlay eff[0] eff_instance[0] char[1] 5 (-4250, 1750, -10250) 0 0 0 1000 1000 250 null (0, 0, 0) 0ms
+	EffPlay eff[0] eff_instance[1] char[1] 5 (4250, 1750, -10250) 0 0 0 1000 1000 250 null (0, 0, 0) 0ms
+	CharSetPos char[1] (0, 0, 0) 0deg
+	CamSetDistance 0 1500 0 0ms
+	ED7CamRotate 280deg 15deg 0deg 0ms
+	CamPers 800 0ms
+	CamZoom 40000 0ms
+	CamSetDistance 0 1500 3000 6000ms
+	ED7CamRotate 230deg 20deg 0deg 6000ms
+	CamPers 800 6000ms
+	CamZoom 30000 6000ms
+	SoundPlay sound[132] 2 100 0
+	SoundPlay sound[497] 2 100 0
+	FadeIn 1000ms 0x00000000
+	FadeWait
+	Sleep 4000ms
+	ED7_12 132 1000 100
+	ED7_12 497 1000 100
+	FadeOut 1000ms 0x00000000 255
+	FadeWait
+	FlagSet flag[275]
+	NewScene "scena/e3020.bin" 0 0 0
+	Hcf
+	Return
+
+fn[8]:
+	EventBegin 0
+	FadeOut 0ms 0x00000000 255
+	EffLoad eff[0] "event/ev17086.eff"
+	SoundLoad sound[132]
+	SoundLoad sound[497]
+	CharFlagsUnset char[1] 0x0080
+	ED7_78 object[0] char[1]
+	NextFrame
+	ObjFlagsUnset object[0] 0x0004
+	ObjFlagsSet object[0] 0x1000
+	ED7ObjPlay object[0] 1 120 0 32
+	Call fn[0,3]
+	CharSetPos char[1] (0, 0, 0) 0deg
+	CamSetDistance 0 1500 3000 0ms
+	ED7CamRotate 150deg 30deg 0deg 0ms
+	CamPers 800 0ms
+	CamZoom 35000 0ms
+	CamSetDistance 0 1500 3000 6000ms
+	ED7CamRotate 125deg 15deg 0deg 6000ms
+	CamPers 800 6000ms
+	CamZoom 30000 6000ms
+	SoundPlay sound[132] 2 100 0
+	SoundPlay sound[497] 2 100 0
+	EffPlay eff[0] eff_instance[0] char[1] 5 (-4250, 1750, -10250) 0 0 0 1000 1000 250 null (0, 0, 0) 0ms
+	EffPlay eff[0] eff_instance[1] char[1] 5 (4250, 1750, -10250) 0 0 0 1000 1000 250 null (0, 0, 0) 0ms
+	FadeIn 1000ms 0x00000000
+	FadeWait
+	Sleep 4000ms
+	ED7_12 132 1000 100
+	ED7_12 497 1000 100
+	FadeOut 1000ms 0x00000000 255
+	FadeWait
+	FlagSet flag[276]
+	NewScene "scena/e3020.bin" 0 0 0
+	Hcf
+	Return
+
+fn[9]:
+	EventBegin 0
+	FadeOut 0ms 0x00000000 255
+	EffLoad eff[0] "event/ev17086.eff"
+	SoundLoad sound[132]
+	SoundLoad sound[497]
+	CharFlagsUnset char[1] 0x0080
+	ED7_78 object[0] char[1]
+	NextFrame
+	ObjFlagsUnset object[0] 0x0004
+	ObjFlagsSet object[0] 0x1000
+	ED7ObjPlay object[0] 1 120 0 32
+	Call fn[0,3]
+	CharSetPos char[1] (0, 0, 0) 0deg
+	CamSetDistance 0 1500 3000 0ms
+	ED7CamRotate 150deg 30deg 0deg 0ms
+	CamPers 800 0ms
+	CamZoom 35000 0ms
+	CamSetDistance 0 1500 3000 6000ms
+	ED7CamRotate 125deg 15deg 0deg 6000ms
+	CamPers 800 6000ms
+	CamZoom 30000 6000ms
+	SoundPlay sound[132] 2 100 0
+	SoundPlay sound[497] 2 100 0
+	EffPlay eff[0] eff_instance[0] char[1] 5 (-4250, 1750, -10250) 0 0 0 1000 1000 250 null (0, 0, 0) 0ms
+	EffPlay eff[0] eff_instance[1] char[1] 5 (4250, 1750, -10250) 0 0 0 1000 1000 250 null (0, 0, 0) 0ms
+	FadeIn 1000ms 0x00000000
+	FadeWait
+	Sleep 4000ms
+	ED7_12 132 1000 100
+	ED7_12 497 1000 100
+	FadeOut 1000ms 0x00000000 255
+	FadeWait
+	FlagSet flag[277]
+	NewScene "scena/e3020.bin" 0 0 0
+	Hcf
+	Return
+
+fn[10]:
+	EventBegin 0
+	FadeOut 0ms 0x00000000 255
+	EffLoad eff[0] "event/ev17086.eff"
+	SoundLoad sound[132]
+	SoundLoad sound[497]
+	CharFlagsUnset char[1] 0x0080
+	ED7_78 object[0] char[1]
+	NextFrame
+	ObjFlagsUnset object[0] 0x0004
+	ObjFlagsSet object[0] 0x1000
+	ED7ObjPlay object[0] 1 120 0 32
+	Call fn[0,3]
+	CharSetPos char[1] (0, 0, 0) 0deg
+	CamSetDistance 0 1500 0 0ms
+	ED7CamRotate 280deg 15deg 0deg 0ms
+	CamPers 800 0ms
+	CamZoom 40000 0ms
+	CamSetDistance 0 1500 3000 6000ms
+	ED7CamRotate 230deg 20deg 0deg 6000ms
+	CamPers 800 6000ms
+	CamZoom 30000 6000ms
+	SoundPlay sound[132] 2 100 0
+	SoundPlay sound[497] 2 100 0
+	EffPlay eff[0] eff_instance[0] char[1] 5 (-4250, 1750, -10250) 0 0 0 1000 1000 250 null (0, 0, 0) 0ms
+	EffPlay eff[0] eff_instance[1] char[1] 5 (4250, 1750, -10250) 0 0 0 1000 1000 250 null (0, 0, 0) 0ms
+	FadeIn 1000ms 0x00000000
+	FadeWait
+	Sleep 4000ms
+	ED7_12 132 1000 100
+	ED7_12 497 1000 100
+	FadeOut 1000ms 0x00000000 255
+	FadeWait
+	FlagSet flag[279]
+	NewScene "scena/e3020.bin" 0 0 0
+	Hcf
+	Return
+
+fn[11]:
+	EventBegin 0
+	FadeOut 0ms 0x00000000 255
+	EffLoad eff[0] "event/ev17086.eff"
+	SoundLoad sound[132]
+	SoundLoad sound[497]
+	CharFlagsUnset char[1] 0x0080
+	ED7_78 object[0] char[1]
+	NextFrame
+	ObjFlagsUnset object[0] 0x0004
+	ObjFlagsSet object[0] 0x1000
+	ED7ObjPlay object[0] 1 120 0 32
+	Call fn[0,3]
+	CharSetPos char[1] (0, 0, 0) 0deg
+	CamSetDistance 0 1500 0 0ms
+	ED7CamRotate 280deg 15deg 0deg 0ms
+	CamPers 800 0ms
+	CamZoom 40000 0ms
+	CamSetDistance 0 1500 3000 6000ms
+	ED7CamRotate 230deg 20deg 0deg 6000ms
+	CamPers 800 6000ms
+	CamZoom 30000 6000ms
+	SoundPlay sound[132] 2 100 0
+	SoundPlay sound[497] 2 100 0
+	EffPlay eff[0] eff_instance[0] char[1] 5 (-4250, 1750, -10250) 0 0 0 1000 1000 250 null (0, 0, 0) 0ms
+	EffPlay eff[0] eff_instance[1] char[1] 5 (4250, 1750, -10250) 0 0 0 1000 1000 250 null (0, 0, 0) 0ms
+	FadeIn 1000ms 0x00000000
+	FadeWait
+	Sleep 4000ms
+	ED7_12 132 1000 100
+	ED7_12 497 1000 100
+	FadeOut 1000ms 0x00000000 255
+	FadeWait
+	FlagSet flag[280]
+	NewScene "scena/e3020.bin" 0 0 0
+	Hcf
+	Return
+
+fn[12]:
+	EventBegin 0
+	FadeOut 0ms 0x00000000 255
+	VisShow vis[0] 16 20 528 84 0 0 512 64 0 0 512 64 0x00FFFFFF 0 "c_vis513.itp"
+	EffLoad eff[0] "event/ev17086.eff"
+	SoundLoad sound[132]
+	SoundLoad sound[497]
+	CharFlagsUnset char[1] 0x0080
+	ED7_78 object[0] char[1]
+	NextFrame
+	ObjFlagsUnset object[0] 0x0004
+	ObjFlagsSet object[0] 0x1000
+	ED7ObjPlay object[0] 1 120 0 32
+	Call fn[0,3]
+	SoundPlay sound[132] 2 100 0
+	SoundPlay sound[497] 2 100 0
+	Sleep 1500ms
+	CharSetPos char[1] (0, 0, -100000) 0deg
+	Sc_D1 char[1] 0 -20000 0 0ms
+	CamSetDistance 0 1500 0 0ms
+	ED7CamRotate 325deg -25deg 0deg 0ms
+	CamPers 800 0ms
+	CamZoom 45000 0ms
+	ED7CamRotate 0deg 5deg 0deg 10000ms
+	ForkFunc char[1] fork[1] fn[0,13]
+	EffPlay eff[0] eff_instance[0] char[1] 5 (-4250, 1750, -10250) 0 0 0 1000 1000 250 null (0, 0, 0) 0ms
+	EffPlay eff[0] eff_instance[1] char[1] 5 (4250, 1750, -10250) 0 0 0 1000 1000 250 null (0, 0, 0) 0ms
+	FadeIn 1000ms 0x00000000
+	FadeWait
+	VisSet vis[0] 3 0xFFFFFFFF 800ms 0 0
+	VisWait vis[0] 3
+	Sleep 3500ms
+	VisSet vis[0] 3 0x00FFFFFF 800ms 0 0
+	VisWait vis[0] 3
+	CamWait 121
+	CamZoom 40000 7000ms
+	Sleep 5000ms
+	ED7_12 132 1000 100
+	ED7_12 497 1000 100
+	FadeOut 1000ms 0x00000000 255
+	FadeWait
+	VisHide vis[255] 0
+	FlagSet flag[281]
+	NewScene "scena/e3020.bin" 0 0 0
+	Hcf
+	Return
+
+fn[13]:
+	CamZoom 60000 4500ms
+	CharPathNew self
+	CharPathAdd (0, 0, -100000)
+	CharPathAdd (-10000, 0, 40000)
+	CharPathAdd (-10000, 0, 80000)
+	CharPathAdd (0, 0, 100000)
+	CharPathAdd (15000, 0, 108000)
+	CharPathAdd (30000, 0, 108000)
+	CharPathAdd (45000, 0, 100000)
+	CharPathRun self 30000mm/s 6
+	CamZoom 45000 4500ms
+	CharPathNew self
+	CharPathAdd (45000, 0, 100000)
+	CharPathAdd (50000, 0, 80000)
+	CharPathAdd (50000, 0, 60000)
+	CharPathAdd (30000, 0, 30000)
+	CharPathAdd (20000, 0, 20000)
+	CharPathRun self 30000mm/s 6
+	CharWalkToPos self (10000, 0, 10000) 10000mm/s 0
+	CharWalkToPos self (7500, 0, 7500) 7500mm/s 0
+	CharWalkToPos self (5000, 0, 5000) 5000mm/s 0
+	CharWalkToPos self (0, 0, 0) 2500mm/s 0
+	Return
+
+fn[14]:
+	EventBegin 0
+	FadeOut 0ms 0x00000000 255
+	EffLoad eff[0] "event/ev17086.eff"
+	EffLoad eff[1] "event/ev17024.eff"
+	SoundLoad sound[132]
+	SoundLoad sound[497]
+	SoundLoad sound[496]
+	CharFlagsUnset char[0] 0x0080
+	ED7_78 object[8] char[0]
+	NextFrame
+	ObjFlagsSet object[8] 0x1000
+	ED7ObjPlay object[8] 1 120 0 32
+	CharFlagsUnset char[1] 0x0080
+	ED7_78 object[0] char[1]
+	NextFrame
+	ObjFlagsUnset object[0] 0x0004
+	ObjFlagsSet object[0] 0x1000
+	ED7ObjPlay object[0] 1 120 0 32
+	Call fn[0,3]
+	Ao_F3 100000
+	Sc_C4Set 2048
+	TextSetPos -1 -1 -1 -1
+	TextMessage null {
+		{0x18}#1K#30W隔天９：００──{wait}
+	}
+	Sleep 2500ms
+	TextClose 0
+	_59
+	TextSetPos -1 280 60 3
+	Sc_C4Unset 2048
+	EffPlay eff[0] eff_instance[2] char[1] 5 (-2120, 880, -5120) 0 0 0 1000 1000 1000 null (0, 0, 0) 0ms
+	EffPlay eff[0] eff_instance[3] char[1] 5 (2120, 880, -5120) 0 0 0 1000 1000 1000 null (0, 0, 0) 0ms
+	CharSetPos char[1] (0, 0, -100000) 0deg
+	Fork char[1] fork[1]:
+		_94 1 self 0deg 400000 25000mm/s 0
+	Ao_FF object[0] (500, 500, 500)
+	BlurOn 0ms 0x55FFFFFF 0 1 0
+	CamSetDistance 0 1500 0 0ms
+	ED7CamRotate 190deg 10deg 0deg 0ms
+	CamPers 1000 0ms
+	CamZoom 30000 0ms
+	ED7CamRotate 340deg 10deg 0deg 8500ms
+	system[76] = 0
+	SoundPlay sound[132] 2 100 0
+	ForkFunc char[10] fork[1] fn[0,20]
+	FadeIn 1000ms 0x00000000
+	FadeWait
+	Sleep 4000ms
+	ED7_12 497 3000 65
+	CamWait 121
+	CrossFade 500ms
+	ForkFunc char[10] fork[1] fn[0,21]
+	EffPlay eff[0] eff_instance[2] char[1] 5 (-4250, 1750, -10250) 0 0 0 1000 1000 1000 null (0, 0, 0) 0ms
+	EffPlay eff[0] eff_instance[3] char[1] 5 (4250, 1750, -10250) 0 0 0 1000 1000 1000 null (0, 0, 0) 0ms
+	ForkQuit char[1] fork[1]
+	CharSetPos char[1] (0, 0, 0) 0deg
+	Ao_FF object[0] (1000, 1000, 1000)
+	CamSetDistance 0 1500 3000 0ms
+	ED7CamRotate 150deg 30deg 0deg 0ms
+	CamPers 800 0ms
+	CamZoom 35000 0ms
+	CamSetDistance 0 1500 3000 6000ms
+	ED7CamRotate 125deg 15deg 0deg 6000ms
+	CamPers 800 6000ms
+	CamZoom 30000 6000ms
+	CamWait 121
+	CrossFade 500ms
+	ForkFunc char[10] fork[1] fn[0,19]
+	EffPlay eff[0] eff_instance[2] char[1] 5 (-4250, 1750, -10250) 0 0 0 1000 1000 1000 null (0, 0, 0) 0ms
+	EffPlay eff[0] eff_instance[3] char[1] 5 (4250, 1750, -10250) 0 0 0 1000 1000 1000 null (0, 0, 0) 0ms
+	EffPlay eff[0] eff_instance[0] char[0] 5 (-4250, 1750, -10250) 0 0 0 1000 1000 1000 null (0, 0, 0) 0ms
+	EffPlay eff[0] eff_instance[1] char[0] 5 (4250, 1750, -10250) 0 0 0 1000 1000 1000 null (0, 0, 0) 0ms
+	ObjFlagsUnset object[8] 0x0004
+	CharSetPos char[0] (-48500, 0, -121000) 0deg
+	Sc_D1 char[0] 0 30000 0 0ms
+	CharSetPos char[1] (7500, 0, -100000) 0deg
+	ForkFunc char[0] fork[1] fn[0,15]
+	ForkFunc char[1] fork[1] fn[0,17]
+	CamSetDistance 0 1500 -60000 0ms
+	ED7CamRotate 240deg 40deg 5deg 0ms
+	CamPers 800 0ms
+	CamZoom 90000 0ms
+	CamSetDistance 0 1500 0 10000ms
+	ED7CamRotate 220deg 35deg 5deg 10000ms
+	CamZoom 60000 10000ms
+	Sleep 7000ms
+	CrossFade 500ms
+	ForkQuit char[0] fork[1]
+	ForkQuit char[1] fork[1]
+	EffPlay eff[0] eff_instance[2] char[1] 5 (-4250, 1750, -10250) 0 0 0 1000 1000 250 null (0, 0, 0) 0ms
+	EffPlay eff[0] eff_instance[3] char[1] 5 (4250, 1750, -10250) 0 0 0 1000 1000 250 null (0, 0, 0) 0ms
+	EffPlay eff[0] eff_instance[0] char[0] 5 (-4250, 1750, -10250) 0 0 0 1000 1000 250 null (0, 0, 0) 0ms
+	EffPlay eff[0] eff_instance[1] char[0] 5 (4250, 1750, -10250) 0 0 0 1000 1000 250 null (0, 0, 0) 0ms
+	CharSetPos char[0] (-7500, 0, -50000) 0deg
+	Sc_D1 char[0] 0 0 0 0ms
+	CharSetPos char[1] (7500, 0, 0) 0deg
+	Sc_D1 char[1] 0 0 0 0ms
+	CamSetDistance 0 1500 0 0ms
+	ED7CamRotate 280deg 15deg 0deg 0ms
+	CamPers 800 0ms
+	CamZoom 30000 0ms
+	CamSetDistance 0 1500 3000 6000ms
+	ED7CamRotate 240deg 20deg 0deg 6000ms
+	CamPers 800 6000ms
+	CamZoom 45000 6000ms
+	CharWalkToPos2 char[0] (-7500, 0, 0) 15000mm/s 0
+	CharWalkToPos2 char[0] (-7500, 0, 2500) 7500mm/s 0
+	CharWalkToPos2 char[0] (-7500, 0, 5000) 2500mm/s 0
+	Sleep 1000ms
+	EffPlay eff[1] eff_instance[255] char[0] 5 (0, 6000, 1000) 0 0 0 2000 2000 2000 null (0, 0, 0) 0ms
+	Sleep 500ms
+	EffPlay eff[1] eff_instance[255] char[0] 5 (0, 6000, 1000) 0 0 0 2000 2000 2000 null (0, 0, 0) 0ms
+	Sleep 250ms
+	EffPlay eff[1] eff_instance[255] char[0] 5 (0, 6000, 1000) 0 0 0 2000 2000 2000 null (0, 0, 0) 0ms
+	Sleep 2000ms
+	EffPlay eff[1] eff_instance[255] char[1] 5 (0, 6000, 1000) 0 0 0 2000 2000 2000 null (0, 0, 0) 0ms
+	Sleep 250ms
+	EffPlay eff[1] eff_instance[255] char[1] 5 (0, 6000, 1000) 0 0 0 2000 2000 2000 null (0, 0, 0) 0ms
+	Sleep 500ms
+	EffPlay eff[1] eff_instance[255] char[1] 5 (0, 6000, 1000) 0 0 0 2000 2000 2000 null (0, 0, 0) 0ms
+	Sleep 2000ms
+	CamSetDistance 0 1500 50000 4000ms
+	ED7CamRotate 235deg 0deg 0deg 4000ms
+	CamPers 800 4000ms
+	CamZoom 56450 4000ms
+	EffPlay eff[0] eff_instance[0] char[0] 5 (-4250, 1750, -10250) 0 0 0 1000 1000 1000 null (0, 0, 0) 0ms
+	EffPlay eff[0] eff_instance[1] char[0] 5 (4250, 1750, -10250) 0 0 0 1000 1000 1000 null (0, 0, 0) 0ms
+	ForkFunc char[0] fork[1] fn[0,16]
+	Sleep 1000ms
+	EffPlay eff[0] eff_instance[2] char[1] 5 (-4250, 1750, -10250) 0 0 0 1000 1000 1000 null (0, 0, 0) 0ms
+	EffPlay eff[0] eff_instance[3] char[1] 5 (4250, 1750, -10250) 0 0 0 1000 1000 1000 null (0, 0, 0) 0ms
+	ForkFunc char[1] fork[1] fn[0,18]
+	Sleep 1000ms
+	ED7_12 496 1500 40
+	ForkWait char[0] fork[1]
+	ForkWait char[1] fork[1]
+	ED7_12 132 1000 100
+	ED7_12 497 1000 70
+	FadeOut 1000ms 0x00000000 255
+	FadeWait
+	ForkQuit char[0] fork[1]
+	ForkQuit char[1] fork[1]
+	FlagSet flag[272]
+	NewScene "scena/r2010.bin" 0 0 0
+	Hcf
+	Return
+
+fn[15]:
+	CharPathNew self
+	CharPathAdd (-47500, 0, -120000)
+	CharPathAdd (-37500, 0, -100000)
+	CharPathAdd (-15500, 0, -60000)
+	CharPathAdd (-9000, 0, -40000)
+	CharPathAdd (-8000, 0, -30000)
+	CharPathAdd (-7500, 0, 0)
+	CharPathRun self 13000mm/s 6
+	Return
+
+fn[16]:
+	_94 1 self 0deg 10000 10000mm/s 0
+	_94 1 self 0deg 100000 40000mm/s 0
+	Return
+
+fn[17]:
+	CharWalkToPos2 self (7500, 0, -5000) 13000mm/s 0
+	EffPlay eff[0] eff_instance[2] char[1] 5 (-4250, 1750, -10250) 0 0 0 1000 1000 250 null (0, 0, 0) 0ms
+	EffPlay eff[0] eff_instance[3] char[1] 5 (4250, 1750, -10250) 0 0 0 1000 1000 250 null (0, 0, 0) 0ms
+	CharWalkToPos2 self (7500, 0, -2500) 7500mm/s 0
+	CharWalkToPos2 self (7500, 0, 0) 2500mm/s 0
+	Return
+
+fn[18]:
+	_94 1 self 0deg 2500 10000mm/s 0
+	_94 1 self 0deg 2500 15000mm/s 0
+	_94 1 self 0deg 5000 20000mm/s 0
+	CharPathNew self
+	CharPathAdd (7500, 0, 20000)
+	CharPathAdd (20000, 0, 45000)
+	CharPathAdd (50000, 0, 65000)
+	CharPathRun self 40000mm/s 6
+	Return
+
+fn[19]:
+	SoundPlay sound[496] 2 0 0
+	Sleep 100ms
+	SoundSetVolume sound[496] 5
+	Sleep 200ms
+	SoundSetVolume sound[496] 10
+	Sleep 200ms
+	SoundSetVolume sound[496] 15
+	Sleep 200ms
+	SoundSetVolume sound[496] 20
+	Sleep 200ms
+	SoundSetVolume sound[496] 25
+	Sleep 200ms
+	SoundSetVolume sound[496] 30
+	Sleep 200ms
+	SoundSetVolume sound[496] 35
+	Sleep 200ms
+	SoundSetVolume sound[496] 40
+	Sleep 200ms
+	SoundSetVolume sound[496] 45
+	Sleep 200ms
+	SoundSetVolume sound[496] 50
+	Return
+
+fn[20]:
+	SoundPlay sound[497] 2 0 0
+	Sleep 200ms
+	SoundSetVolume sound[497] 5
+	Sleep 200ms
+	SoundSetVolume sound[497] 10
+	Sleep 200ms
+	SoundSetVolume sound[497] 15
+	Sleep 200ms
+	SoundSetVolume sound[497] 20
+	Sleep 200ms
+	SoundSetVolume sound[497] 25
+	Sleep 200ms
+	SoundSetVolume sound[497] 30
+	Sleep 200ms
+	SoundSetVolume sound[497] 35
+	Sleep 200ms
+	SoundSetVolume sound[497] 40
+	Sleep 200ms
+	SoundSetVolume sound[497] 45
+	Sleep 200ms
+	SoundSetVolume sound[497] 50
+	Sleep 200ms
+	SoundSetVolume sound[497] 55
+	Sleep 200ms
+	SoundSetVolume sound[497] 60
+	Sleep 200ms
+	SoundSetVolume sound[497] 65
+	Sleep 200ms
+	SoundSetVolume sound[497] 70
+	Return
+
+fn[21]:
+	SoundPlay sound[497] 2 40 0
+	Sleep 200ms
+	SoundSetVolume sound[497] 45
+	Sleep 200ms
+	SoundSetVolume sound[497] 50
+	Sleep 200ms
+	SoundSetVolume sound[497] 55
+	Sleep 200ms
+	SoundSetVolume sound[497] 60
+	Sleep 200ms
+	SoundSetVolume sound[497] 65
+	Sleep 200ms
+	SoundSetVolume sound[497] 70
+	Return
+
+fn[22]:
+	EventBegin 0
+	FadeOut 0ms 0x00000000 255
+	Ao_F3 200000
+	EffLoad eff[0] "event/eva03_01.eff"
+	EffLoad eff[1] "event/ev15056.eff"
+	EffLoad eff[2] "event/ev15057.eff"
+	EffLoad eff[3] "event/ev17086.eff"
+	EffLoad eff[4] "event/ev10017.eff"
+	EffLoad eff[5] "event/ev10009.eff"
+	EffLoad eff[6] "event/ev17102.eff"
+	EffLoad eff[7] "event/ev17022.eff"
+	EffLoad eff[8] "event/ev17019.eff"
+	EffLoad eff[9] "event/ev17106.eff"
+	EffLoad eff[10] "event/ev17030.eff"
+	SoundLoad sound[132]
+	SoundLoad sound[497]
+	SoundLoad sound[825]
+	SoundLoad sound[868]
+	SoundLoad sound[980]
+	CharFlagsUnset char[0] 0x0080
+	ED7_78 object[10] char[0]
+	NextFrame
+	ObjFlagsUnset object[10] 0x0004
+	ObjFlagsSet object[10] 0x1000
+	ED7ObjPlay object[10] 1 120 0 32
+	ED7_74 object[10] 0 30
+	EffPlay eff[6] eff_instance[6] char[0] 5 (3500, 1000, 5000) 0 0 0 1000 1200 1000 null (0, 0, 0) 500ms
+	EffPlay eff[6] eff_instance[7] char[0] 5 (-5500, 1000, -4500) 0 0 0 1000 1200 1000 null (0, 0, 0) 500ms
+	EffPlay eff[3] eff_instance[255] char[0] 5 (0, 0, -12630) 0 0 0 1200 1200 4400 null (0, 0, 0) 0ms
+	EffPlay eff[3] eff_instance[255] char[0] 5 (-4250, 1750, -10250) 0 0 0 1000 1000 2000 null (0, 0, 0) 0ms
+	EffPlay eff[3] eff_instance[255] char[0] 5 (4250, 1750, -10250) 0 0 0 1000 1000 2000 null (0, 0, 0) 0ms
+	CharFlagsUnset char[7] 0x0080
+	ED7_78 object[7] char[7]
+	ObjFlagsUnset object[7] 0x0004
+	ObjFlagsSet object[7] 0x1000
+	ED7_74 object[7] 0 30
+	ObjFrame object[7] 111
+	EffPlay2 eff[7] eff_instance[255] object[7] "Null_wing_r0 (66)" 7 (0, 0, 0) 0 0 0 500 500 500 0ms
+	EffPlay2 eff[7] eff_instance[255] object[7] "Null_wing_r1(67)" 7 (0, 0, 0) 0 0 0 500 500 500 0ms
+	EffPlay2 eff[7] eff_instance[255] object[7] "Null_wing_r2(68)" 7 (0, 0, 0) 0 0 0 500 500 500 0ms
+	EffPlay2 eff[7] eff_instance[255] object[7] "Null_wing_l0(69)" 7 (0, 0, 0) 0 0 0 500 500 500 0ms
+	EffPlay2 eff[7] eff_instance[255] object[7] "Null_wing_l1(70)" 7 (0, 0, 0) 0 0 0 500 500 500 0ms
+	EffPlay2 eff[7] eff_instance[255] object[7] "Null_wing_l2(71)" 7 (0, 0, 0) 0 0 0 500 500 500 0ms
+	Call fn[0,3]
+	Sleep 0ms
+	BgmPlay bgm[543] 0
+	system[76] = 543
+	SoundPlay sound[132] 2 100 0
+	SoundPlay sound[497] 2 70 0
+	SoundPlay sound[868] 2 30 0
+	SoundSetVolume sound[868] 30
+	SoundPlay sound[825] 2 50 0
+	CharSetPos char[0] (0, 0, 40000) 0deg
+	CharTurnTo char[0] 0deg 0deg/s
+	CharSetPos char[7] (0, 0, -120000) 0deg
+	CharTurnTo char[7] 0deg 0deg/s
+	EffPlay eff[6] eff_instance[6] char[0] 5 (3500, 1000, 5000) 0 0 0 1000 1200 1000 null (0, 0, 0) 500ms
+	EffPlay eff[6] eff_instance[7] char[0] 5 (-5500, 1000, -4500) 0 0 0 1000 1200 1000 null (0, 0, 0) 500ms
+	CamSetDistance -3530 2600 69480 0ms
+	ED7CamRotate 138deg 48deg -14deg 0ms
+	CamPers 800 0ms
+	CamZoom 100000 0ms
+	CrossFade 500ms
+	EffPlay eff[0] eff_instance[0] char[0] 1 (0, 0, 0) 0 180 0 5000 5000 5000 null (0, 0, 0) 0ms
+	CamSetDistance -2360 2600 24440 3000ms
+	ED7CamRotate 133deg 55deg 0deg 3000ms
+	CamZoom 75000 3000ms
+	Sleep 2800ms
+	CamSetDistance -4010 2600 61850 0ms
+	ED7CamRotate 116deg 12deg 0deg 0ms
+	CamPers 800 0ms
+	CamZoom 13770 0ms
+	CrossFade 500ms
+	BlurOn 1000ms 0x55FFFFFF 0 1 10
+	SoundSetVolume sound[497] 100
+	CamSetDistance -7540 2600 30020 2700ms
+	ED7CamRotate 96deg 5deg 0deg 2700ms
+	CamPers 800 2700ms
+	CamZoom 13770 2700ms
+	Sleep 1700ms
+	ForkFunc char[7] fork[3] fn[0,23]
+	Sleep 800ms
+	CamSetDistance -4280 4400 6070 2500ms
+	ED7CamRotate 44deg 12deg 0deg 2500ms
+	CamPers 800 2500ms
+	CamZoom 54580 2500ms
+	CamWait 121
+	CharSetPos char[0] (0, 0, 40000) 0deg
+	CharTurnTo char[0] 0deg 0deg/s
+	CharSetPos char[7] (0, 0, -40000) 0deg
+	CharTurnTo char[7] 0deg 0deg/s
+	SoundPlay sound[980] 2 50 0
+	CamSetDistance 0 1600 31820 0ms
+	ED7CamRotate 182deg 12deg 0deg 0ms
+	CamPers 800 0ms
+	CamZoom 48420 0ms
+	CrossFade 500ms
+	FadeWait
+	SoundPlay sound[1036] 0 70 0
+	EffPlay2 eff[1] eff_instance[255] object[7] "Null_bp_cannon(64)" 7 (0, 0, 0) 0 0 0 1000 1000 1000 0ms
+	CamSetDistance -380 1600 31820 700ms
+	ED7CamRotate 193deg 15deg 0deg 700ms
+	CamPers 800 700ms
+	CamZoom 64879 700ms
+	CamWait 121
+	ForkFunc char[7] fork[3] fn[0,24]
+	CamSetDistance -380 1600 31820 1200ms
+	ED7CamRotate 166deg 16deg 0deg 1200ms
+	CamPers 800 1200ms
+	CamZoom 64879 1200ms
+	CamWait 121
+	BlurOff 500ms
+	CamSetDistance -380 1600 31820 1700ms
+	ED7CamRotate 176deg 14deg 0deg 1700ms
+	CamPers 800 1700ms
+	CamZoom 49960 1700ms
+	CamWait 121
+	Sleep 700ms
+	ObjFlagsUnset object[10] 0x1000
+	CharSetPos char[0] (0, 0, 80000) 0deg
+	CharTurnTo char[0] 0deg 0deg/s
+	CharSetPos char[7] (0, 0, 0) 0deg
+	CharTurnTo char[7] 0deg 0deg/s
+	CamSetDistance 0 1600 4400 0ms
+	ED7CamRotate 186deg 39deg 0deg 0ms
+	CamPers 800 0ms
+	CamZoom 34890 0ms
+	CrossFade 500ms
+	SoundPlay sound[999] 0 100 0
+	SoundPlay sound[499] 0 100 0
+	SoundSetVolume sound[980] 100
+	CamSetDistance 0 5900 -8500 1500ms
+	ED7CamRotate 180deg -8deg 0deg 1500ms
+	CamPers 800 1500ms
+	CamZoom 21660 1500ms
+	FadeWait
+	EffPlay eff[4] eff_instance[2] char[7] 5 (0, 3000, 0) 0 0 0 1000 1000 1000 null (0, 0, 0) 0ms
+	SoundPlay sound[655] 0 50 0
+	EffPlay2 eff[10] eff_instance[255] object[7] "ch88650head:Layer1(11)" 7 (-50, 50, 200) 0 0 0 1150 1150 1150 0ms
+	CamWait 121
+	SoundPlay sound[1036] 0 100 0
+	EffPlay2 eff[1] eff_instance[1] object[7] "Null_bp_cannon(64)" 7 (0, 0, 0) 0 0 0 1000 1000 1000 0ms
+	BlurOn 500ms 0x77FFFFFF 0 1 10
+	Sleep 700ms
+	EffStop eff_instance[2] 2
+	BlurOff 500ms
+	CharSetPos char[0] (0, -5000, 70000) 0deg
+	CharTurnTo char[0] 0deg 0deg/s
+	SoundSetVolume sound[980] 50
+	CamSetDistance 0 3600 64500 1100ms
+	ED7CamRotate 181deg 14deg 0deg 1100ms
+	CamPers 800 1100ms
+	CamZoom 45000 1100ms
+	EffStop eff_instance[6] 2
+	EffStop eff_instance[7] 2
+	Sleep 300ms
+	SoundPlay sound[655] 0 50 0
+	ForkFunc char[0] fork[3] fn[0,25]
+	ForkWait char[0] fork[3]
+	CamWait 121
+	EffPlay eff[9] eff_instance[6] char[0] 5 (3500, 1000, 5000) 0 0 0 1000 1200 1000 null (0, 0, 0) 500ms
+	EffPlay eff[9] eff_instance[7] char[0] 5 (-5500, 1000, -4500) 0 0 0 1000 1200 1000 null (0, 0, 0) 500ms
+	Shake 500 200 3000 1500ms
+	Sleep 1500ms
+	Shake 200 500 3000 1500ms
+	Sleep 1500ms
+	Shake 500 200 3000 1500ms
+	Sleep 1500ms
+	Shake 200 200 3000 1500ms
+	Sleep 300ms
+	CamSetDistance 140 -5100 72160 0ms
+	ED7CamRotate 156deg 34deg 0deg 0ms
+	CamPers 800 0ms
+	CamZoom 33040 0ms
+	CrossFade 500ms
+	BlurOn 0ms 0x55FFFFFF 0 1 10
+	Sleep 1300ms
+	BlurOff 500ms
+	EffStop eff_instance[1] 0
+	CharSetPos char[0] (0, 0, 60000) 0deg
+	CharTurnTo char[0] 0deg 0deg/s
+	CharSetPos char[7] (0, 20000, -20000) 0deg
+	Sc_D1 char[7] 30000 0 0 0ms
+	CamSetDistance 480 3400 32880 0ms
+	ED7CamRotate 43deg 23deg 13deg 0ms
+	CamPers 800 0ms
+	CamZoom 120220 0ms
+	CrossFade 500ms
+	BlurOn 1000ms 0x55FFFFFF 0 1 10
+	ForkFunc char[10] fork[1] fn[0,26]
+	ForkFunc char[10] fork[2] fn[0,27]
+	SoundSetVolume sound[497] 50
+	CamSetDistance 0 3400 21500 4000ms
+	ED7CamRotate 39deg 23deg 10deg 4000ms
+	CamPers 800 4000ms
+	CamZoom 130000 4000ms
+	Sleep 3000ms
+	ED7_12 497 1000 50
+	ED7_12 132 1000 90
+	FadeOut 1000ms 0x00000000 255
+	FadeWait
+	FlagSet flag[285]
+	NewScene "scena/e3020.bin" 0 0 0
+	Hcf
+	Return
+
+fn[23]:
+	EffPlay eff[8] eff_instance[255] null 0 (-5000, 22000, -40000) 0 15 0 1000 1000 1000 null (0, 0, 0) 0ms
+	Sleep 300ms
+	SoundPlay sound[1014] 0 70 0
+	EffPlay eff[8] eff_instance[255] null 0 (-7000, 19000, -40000) 0 15 0 1000 1000 1000 null (0, 0, 0) 0ms
+	Sleep 300ms
+	SoundPlay sound[1014] 0 70 0
+	EffPlay eff[8] eff_instance[255] null 0 (5000, 25000, -40000) 0 15 0 1000 1000 1000 null (0, 0, 0) 0ms
+	Sleep 300ms
+	SoundPlay sound[1014] 0 70 0
+	EffPlay eff[8] eff_instance[255] null 0 (-7000, 21000, -40000) 0 15 0 1000 1000 1000 null (0, 0, 0) 0ms
+	Sleep 300ms
+	SoundPlay sound[1014] 0 70 0
+	EffPlay eff[8] eff_instance[255] null 0 (-5000, 17000, -40000) 0 15 0 1000 1000 1000 null (0, 0, 0) 0ms
+	Sleep 300ms
+	SoundPlay sound[1014] 0 70 0
+	EffPlay eff[8] eff_instance[255] null 0 (5000, 21000, -40000) 0 15 0 1000 1000 1000 null (0, 0, 0) 0ms
+	Sleep 300ms
+	SoundPlay sound[1014] 0 70 0
+	Return
+
+fn[24]:
+	EffPlay eff[8] eff_instance[255] null 0 (5000, 29000, -40000) 0 25 0 1000 1000 1000 null (0, 0, 0) 0ms
+	Sleep 300ms
+	SoundPlay sound[1014] 0 70 0
+	EffPlay eff[8] eff_instance[255] null 0 (-7000, 31000, -40000) 2 25 0 1000 1000 1000 null (0, 0, 0) 0ms
+	Sleep 300ms
+	SoundPlay sound[1014] 0 70 0
+	EffPlay eff[8] eff_instance[255] null 0 (6000, 28000, -40000) 4 25 0 1000 1000 1000 null (0, 0, 0) 0ms
+	Sleep 300ms
+	SoundPlay sound[1014] 0 70 0
+	EffPlay eff[8] eff_instance[255] null 0 (-5000, 25000, -40000) 6 25 0 1000 1000 1000 null (0, 0, 0) 0ms
+	Sleep 300ms
+	SoundPlay sound[1014] 0 70 0
+	EffPlay eff[8] eff_instance[255] null 0 (-6000, 32000, -40000) 8 25 0 1000 1000 1000 null (0, 0, 0) 0ms
+	Sleep 300ms
+	SoundPlay sound[1014] 0 70 0
+	EffPlay eff[8] eff_instance[255] null 0 (4000, 33000, -40000) 5 75 0 1000 1000 1000 null (0, 0, 0) 0ms
+	Sleep 300ms
+	SoundPlay sound[1014] 0 70 0
+	Return
+
+fn[25]:
+	EffPlay eff[2] eff_instance[255] self 5 (1000, 3000, 0) 0 0 0 1000 1000 1000 null (0, 0, 0) 0ms
+	Sleep 200ms
+	SoundPlay sound[1014] 0 70 0
+	EffPlay eff[2] eff_instance[255] self 5 (-3000, 3000, -2000) 0 0 0 1000 1000 1000 null (0, 0, 0) 0ms
+	Sleep 200ms
+	SoundPlay sound[1014] 0 70 0
+	EffPlay eff[2] eff_instance[255] self 5 (-2000, 3000, 2000) 0 0 0 1000 1000 1000 null (0, 0, 0) 0ms
+	Sleep 200ms
+	SoundPlay sound[1014] 0 70 0
+	EffPlay eff[2] eff_instance[255] self 5 (3000, 3000, 1000) 0 0 0 1000 1000 1000 null (0, 0, 0) 0ms
+	SoundPlay sound[200] 0 100 0
+	SoundSetVolume sound[868] 80
+	SoundSetVolume sound[825] 100
+	EffPlay eff[5] eff_instance[255] self 5 (1000, 3000, 0) 0 0 0 1000 1000 1000 null (0, 0, 0) 0ms
+	Sleep 200ms
+	SoundPlay sound[1014] 0 70 0
+	EffPlay eff[2] eff_instance[255] self 5 (2000, 3000, -1000) 0 0 0 1000 1000 1000 null (0, 0, 0) 0ms
+	EffPlay eff[5] eff_instance[255] self 5 (-3000, 3000, -2000) 0 0 0 1000 1000 1000 null (0, 0, 0) 0ms
+	Sleep 200ms
+	SoundPlay sound[1014] 0 70 0
+	EffPlay eff[2] eff_instance[255] self 5 (-1000, 3000, -3000) 0 0 0 1000 1000 1000 null (0, 0, 0) 0ms
+	SoundPlay sound[196] 0 100 0
+	SoundPlay sound[833] 0 100 0
+	EffPlay eff[5] eff_instance[255] self 5 (-2000, 3000, 2000) 0 0 0 1000 1000 1000 null (0, 0, 0) 0ms
+	Sleep 200ms
+	SoundPlay sound[1014] 0 70 0
+	SoundPlay sound[556] 0 100 0
+	EffPlay eff[5] eff_instance[255] self 5 (3000, 3000, 1000) 0 0 0 1000 1000 1000 null (0, 0, 0) 0ms
+	Sleep 200ms
+	SoundPlay sound[200] 0 100 0
+	SoundPlay sound[833] 0 100 0
+	EffPlay eff[5] eff_instance[255] self 5 (2000, 3000, -1000) 0 0 0 1000 1000 1000 null (0, 0, 0) 0ms
+	Sleep 200ms
+	EffPlay eff[5] eff_instance[255] self 5 (-1000, 3000, -3000) 0 0 0 1000 1000 1000 null (0, 0, 0) 0ms
+	Return
+
+fn[26]:
+	Sleep 1000ms
+	SoundSetVolume sound[980] 45
+	Sleep 350ms
+	SoundSetVolume sound[980] 40
+	Sleep 350ms
+	SoundSetVolume sound[980] 35
+	Sleep 350ms
+	SoundSetVolume sound[980] 30
+	Sleep 350ms
+	SoundSetVolume sound[980] 25
+	Sleep 350ms
+	SoundSetVolume sound[980] 20
+	Sleep 350ms
+	SoundSetVolume sound[980] 15
+	Sleep 350ms
+	SoundSetVolume sound[980] 10
+	Sleep 350ms
+	SoundSetVolume sound[980] 5
+	Sleep 350ms
+	SoundSetVolume sound[980] 0
+	Return
+
+fn[27]:
+	Sleep 2500ms
+	SoundSetVolume sound[868] 70
+	SoundSetVolume sound[825] 90
+	Sleep 100ms
+	SoundSetVolume sound[868] 65
+	SoundSetVolume sound[825] 85
+	Sleep 100ms
+	SoundSetVolume sound[868] 60
+	SoundSetVolume sound[825] 70
+	Sleep 100ms
+	SoundSetVolume sound[868] 55
+	SoundSetVolume sound[825] 65
+	Sleep 100ms
+	SoundSetVolume sound[868] 50
+	SoundSetVolume sound[825] 60
+	Sleep 100ms
+	SoundSetVolume sound[868] 45
+	SoundSetVolume sound[825] 55
+	Sleep 100ms
+	SoundSetVolume sound[868] 40
+	SoundSetVolume sound[825] 50
+	Sleep 100ms
+	SoundSetVolume sound[868] 35
+	SoundSetVolume sound[825] 45
+	Sleep 100ms
+	SoundSetVolume sound[868] 30
+	SoundSetVolume sound[825] 40
+	Sleep 100ms
+	SoundSetVolume sound[868] 25
+	SoundSetVolume sound[825] 35
+	Sleep 100ms
+	SoundSetVolume sound[868] 20
+	SoundSetVolume sound[825] 30
+	Sleep 100ms
+	SoundSetVolume sound[868] 15
+	SoundSetVolume sound[825] 25
+	Sleep 100ms
+	SoundSetVolume sound[868] 10
+	SoundSetVolume sound[825] 20
+	Sleep 100ms
+	SoundSetVolume sound[868] 5
+	SoundSetVolume sound[825] 15
+	Sleep 100ms
+	SoundSetVolume sound[868] 0
+	SoundSetVolume sound[825] 10
+	Sleep 100ms
+	SoundSetVolume sound[825] 5
+	Sleep 100ms
+	SoundSetVolume sound[825] 0
+	Return
+
+fn[28]:
+	EventBegin 0
+	FadeOut 0ms 0x00000000 255
+	Ao_F3 200000
+	EffLoad eff[0] "event/ev17035.eff"
+	EffLoad eff[1] "event/ev17036.eff"
+	EffLoad eff[2] "event/eva03_01.eff"
+	EffLoad eff[3] "event/ev17037.eff"
+	EffLoad eff[4] "event/ev17044.eff"
+	EffLoad eff[5] "event/ev17086.eff"
+	EffLoad eff[6] "event/ev17106.eff"
+	EffLoad eff[7] "event/ev17022.eff"
+	EffLoad eff[8] "event/eva03_01.eff"
+	EffLoad eff[10] "event/ev17047.eff"
+	SoundLoad sound[132]
+	SoundLoad sound[496]
+	SoundLoad sound[497]
+	SoundLoad sound[980]
+	SoundLoad sound[931]
+	CharFlagsUnset char[0] 0x0080
+	ED7_78 object[10] char[0]
+	NextFrame
+	ObjFlagsUnset object[10] 0x0004
+	ObjFlagsSet object[10] 0x1000
+	ED7ObjPlay object[10] 1 120 0 32
+	ED7_74 object[10] 0 30
+	EffPlay eff[5] eff_instance[255] null 0 (0, -45540, -26370) 0 -73 0 1200 1200 2400 null (0, 0, 0) 0ms
+	EffPlay eff[5] eff_instance[255] null 0 (-4250, -42636, -26200) 0 -73 0 1000 1000 1000 null (0, 0, 0) 0ms
+	EffPlay eff[5] eff_instance[255] null 0 (4250, -42636, -26200) 0 -73 0 1000 1000 1000 null (0, 0, 0) 0ms
+	CharFlagsUnset char[7] 0x0080
+	ED7_78 object[7] char[7]
+	ObjFlagsUnset object[7] 0x0004
+	ObjFlagsSet object[7] 0x1000
+	ED7_74 object[7] 0 30
+	ObjFrame object[7] 61
+	EffPlay2 eff[7] eff_instance[255] object[7] "Null_wing_r0 (66)" 7 (0, 0, 0) 0 0 0 500 500 500 0ms
+	EffPlay2 eff[7] eff_instance[255] object[7] "Null_wing_r1(67)" 7 (0, 0, 0) 0 0 0 500 500 500 0ms
+	EffPlay2 eff[7] eff_instance[255] object[7] "Null_wing_r2(68)" 7 (0, 0, 0) 0 0 0 500 500 500 0ms
+	EffPlay2 eff[7] eff_instance[255] object[7] "Null_wing_l0(69)" 7 (0, 0, 0) 0 0 0 500 500 500 0ms
+	EffPlay2 eff[7] eff_instance[255] object[7] "Null_wing_l1(70)" 7 (0, 0, 0) 0 0 0 500 500 500 0ms
+	EffPlay2 eff[7] eff_instance[255] object[7] "Null_wing_l2(71)" 7 (0, 0, 0) 0 0 0 500 500 500 0ms
+	Call fn[0,3]
+	CharSetPos char[0] (0, -34641, 20000) 0deg
+	Sc_D1 char[0] -60000 180000 0 0ms
+	CharSetPos char[7] (0, 34641, -20000) 0deg
+	Sc_D1 char[7] 60000 0 0 0ms
+	CamSetDistance 0 37500 -16500 0ms
+	ED7CamRotate 113deg -19deg 0deg 0ms
+	CamPers 800 0ms
+	CamZoom 28710 0ms
+	BlurOn 0ms 0x55FFFFFF 0 1 10
+	SoundPlay sound[132] 2 100 0
+	SoundPlay sound[980] 2 100 0
+	EffPlay eff[10] eff_instance[6] null 0 (0, 85282, -50000) 0 0 0 16000 16000 16000 null (0, 0, 0) 0ms
+	EffPlay eff[8] eff_instance[5] null 0 (0, 34641, -20000) 180 -60 0 3000 3000 3000 null (0, 0, 0) 0ms
+	FadeIn 1000ms 0x00000000
+	CamSetDistance 0 37500 -16500 2000ms
+	ED7CamRotate 156deg -30deg 0deg 2000ms
+	CamPers 800 2000ms
+	CamZoom 14660 2000ms
+	FadeWait
+	CamWait 121
+	MapColor 0x00969696 2000ms
+	SoundPlay sound[982] 0 100 0
+	ForkFunc char[7] fork[0] fn[0,29]
+	CamSetDistance 0 34900 -16500 1000ms
+	ED7CamRotate 174deg -52deg 0deg 1000ms
+	CamPers 800 1000ms
+	CamZoom 10080 1000ms
+	CamWait 121
+	ForkWait char[7] fork[0]
+	SoundPlay sound[983] 0 80 0
+	SoundPlay sound[931] 2 60 0
+	SoundPlay sound[825] 2 100 0
+	EffPlay2 eff[4] eff_instance[4] object[7] "Null_bp_cannon(64)" 7 (0, 0, 0) 0 0 0 1000 2000 2000 0ms
+	CamSetDistance 0 34900 -16500 3000ms
+	ED7CamRotate 171deg -49deg 0deg 3000ms
+	CamPers 800 3000ms
+	CamZoom 10080 3000ms
+	Sleep 500ms
+	BlurOn 1000ms 0x77FFFFFF 0 1 10
+	BlurOff 2500ms
+	SoundPlay sound[919] 0 70 0
+	CamWait 121
+	ED7_12 980 2000 90
+	ED7_12 931 2000 50
+	EffStop eff_instance[5] 0
+	EffStop eff_instance[6] 0
+	CharSetPos char[0] (0, -34641, -20000) 0deg
+	Sc_D1 char[0] -60000 0 0 0ms
+	CharSetPos char[7] (0, 34641, 20000) 0deg
+	Sc_D1 char[7] 60000 180000 0 0ms
+	MapColor 0x00FFFFFF 0ms
+	EffPlay eff[6] eff_instance[2] null 0 (3170, -28340, -18300) 0 -80 0 1000 1200 1000 null (0, 0, 0) 500ms
+	EffPlay eff[6] eff_instance[3] null 0 (-5930, -38840, -24290) 0 -80 60 1000 1200 1000 null (0, 0, 0) 500ms
+	EffPlay eff[8] eff_instance[5] null 0 (0, -34641, -20000) 180 60 0 3000 3000 3000 null (0, 0, 0) 0ms
+	SoundPlay sound[497] 2 100 0
+	SoundPlay sound[496] 2 100 0
+	CamSetDistance 0 -33340 -20000 0ms
+	ED7CamRotate 285deg 12deg 0deg 0ms
+	CamPers 800 0ms
+	CamZoom 58280 0ms
+	CrossFade 500ms
+	CamSetDistance 0 -33340 -20000 2000ms
+	ED7CamRotate 214deg 60deg 0deg 2000ms
+	CamPers 800 2000ms
+	CamZoom 40390 2000ms
+	CamWait 121
+	SoundPlay sound[1002] 0 100 0
+	EffPlay2 eff[0] eff_instance[255] object[10] "Null_can" 7 (0, 0, 0) 0 0 0 3000 3000 3000 0ms
+	CamSetDistance 0 -33340 -20000 3000ms
+	ED7CamRotate 214deg 60deg 0deg 3000ms
+	CamPers 800 3000ms
+	CamZoom 40540 3000ms
+	Sleep 500ms
+	BlurOn 1000ms 0x77FFFFFF 0 1 10
+	BlurOff 2500ms
+	SoundPlay sound[930] 0 100 0
+	Sleep 300ms
+	MapColor 0x00A5A5A5 1000ms
+	CamWait 121
+	EffStop eff_instance[5] 0
+	EffStop eff_instance[2] 0
+	EffStop eff_instance[3] 0
+	ObjFlagsSet object[10] 0x0004
+	ObjFlagsUnset object[7] 0x0004
+	BlurOn 0ms 0x55FFFFFF 0 1 10
+	CharSetPos char[0] (0, -34641, 20000) 0deg
+	Sc_D1 char[0] -60000 180000 0 0ms
+	CharSetPos char[7] (0, 34641, -20000) 0deg
+	Sc_D1 char[7] 60000 0 0 0ms
+	CamSetDistance 0 34600 -16500 0ms
+	ED7CamRotate 164deg -50deg 0deg 0ms
+	CamPers 800 0ms
+	CamZoom 7690 0ms
+	MapColor 0x00969696 0ms
+	CrossFade 500ms
+	ED7_12 497 2000 100
+	ED7_12 496 2000 100
+	EffPlay eff[10] eff_instance[6] null 0 (0, 88282, -50000) 0 0 0 13000 13000 13000 null (0, 0, 0) 0ms
+	SoundPlay sound[983] 0 70 0
+	SoundPlay sound[931] 2 70 0
+	EffPlay2 eff[3] eff_instance[3] object[7] "Null_bp_cannon(64)" 7 (0, 0, 0) 0 0 0 1000 1000 1000 1000ms
+	Sleep 500ms
+	EffStop eff_instance[6] 2
+	EffStop eff_instance[4] 2
+	Sleep 500ms
+	SoundPlay sound[984] 0 100 0
+	SoundPlay sound[833] 0 80 0
+	Shake 50 50 3000 200ms
+	BlurOn 0ms 0x77FFFFFF 0 1 10
+	CamSetDistance 5860 30800 -12600 700ms
+	ED7CamRotate 149deg -58deg 0deg 700ms
+	CamPers 800 700ms
+	CamZoom 69500 700ms
+	CamWait 121
+	BlurOff 500ms
+	Sleep 500ms
+	ObjFlagsUnset object[10] 0x0004
+	ObjFlagsSet object[7] 0x0004
+	CharSetPos char[0] (0, -34641, -20000) 0deg
+	Sc_D1 char[0] -60000 0 0 0ms
+	CharSetPos char[7] (0, 34641, 20000) 0deg
+	Sc_D1 char[7] 60000 180000 0 0ms
+	CamSetDistance 0 -33340 -20000 0ms
+	ED7CamRotate 214deg 60deg 0deg 0ms
+	CamPers 800 0ms
+	CamZoom 40390 0ms
+	MapColor 0x00AFAFAF 0ms
+	EffPlay eff[6] eff_instance[2] null 0 (3170, -28340, -18300) 0 -80 0 1000 1200 1000 null (0, 0, 0) 500ms
+	CrossFade 500ms
+	EffStop eff_instance[3] 0
+	Sleep 500ms
+	SoundPlay sound[984] 0 100 0
+	SoundPlay sound[833] 0 80 0
+	SoundSetVolume sound[931] 50
+	EffPlay2 eff[1] eff_instance[1] object[10] "Null_can" 7 (0, 0, 0) 0 0 0 1000 1000 1000 0ms
+	Sleep 200ms
+	Shake 50 50 3000 200ms
+	BlurOn 0ms 0x55FFFFFF 0 1 10
+	CamSetDistance -10950 -31440 -6360 700ms
+	ED7CamRotate 224deg 67deg 0deg 700ms
+	CamPers 800 700ms
+	CamZoom 101540 700ms
+	CamWait 121
+	Sleep 500ms
+	BlurOff 500ms
+	ObjFlagsUnset object[10] 0x0004
+	ObjFlagsUnset object[7] 0x0004
+	CharSetPos char[0] (0, -69282, -40000) 0deg
+	Sc_D1 char[0] -60000 0 0 0ms
+	CharSetPos char[7] (6000, 69282, 48000) 0deg
+	Sc_D1 char[7] 60000 180000 0 0ms
+	CamSetDistance -22130 5000 -9110 0ms
+	ED7CamRotate 240deg -32deg -44deg 0ms
+	CamPers 800 0ms
+	CamZoom 247140 0ms
+	CamZoom 270140 5000ms
+	BlurOn 0ms 0x55FFFFFF 0 1 10
+	MapColor 0x00D7D7D7 0ms
+	EffStop eff_instance[2] 0
+	EffPlay eff[6] eff_instance[2] null 0 (3170, -62981, -38300) 0 -80 0 1000 1200 1000 null (0, 0, 0) 500ms
+	EffPlay eff[6] eff_instance[255] null 0 (-5930, -73481, -44290) 0 -80 60 1000 1200 1000 null (0, 0, 0) 500ms
+	EffStop eff_instance[3] 0
+	EffPlay eff[3] eff_instance[3] null 0 (0, 69282, 40000) 180 60 0 1000 1000 1000 null (0, 0, 0) 0ms
+	CrossFade 500ms
+	ForkFunc char[0] fork[0] fn[0,30]
+	Sleep 1500ms
+	MapColor 0x00B9B9B9 1500ms
+	Sleep 1500ms
+	SoundPlay sound[833] 0 100 0
+	ED7_12 931 3000 40
+	ED7_12 132 3000 100
+	ForkFunc char[10] fork[1] fn[0,31]
+	FadeOut 1000ms 0x00FFFFFF 255
+	FadeWait
+	Sleep 2000ms
+	FlagSet flag[272]
+	NewScene "scena/e4212.bin" 0 0 0
+	Hcf
+	Return
+
+fn[29]:
+	ED7_74 object[7] 0 15
+	ED7ObjPlay object[7] 201 220 0 0
+	ObjWait object[7]
+	ED7ObjPlay object[7] 221 240 1 0
+	ObjWait object[7]
+	Return
+
+fn[30]:
+	Shake 200 200 3000 1500ms
+	Sleep 500ms
+	Shake 300 300 3000 1500ms
+	Sleep 500ms
+	Shake 400 400 3000 1500ms
+	Sleep 500ms
+	Return
+
+fn[31]:
+	SoundSetVolume sound[825] 95
+	Sleep 100ms
+	SoundSetVolume sound[825] 90
+	Sleep 100ms
+	SoundSetVolume sound[825] 85
+	Sleep 100ms
+	SoundSetVolume sound[825] 80
+	Sleep 100ms
+	SoundPlay sound[200] 0 100 0
+	SoundSetVolume sound[825] 75
+	Sleep 100ms
+	SoundSetVolume sound[825] 70
+	Sleep 100ms
+	SoundSetVolume sound[825] 65
+	Sleep 100ms
+	SoundSetVolume sound[825] 60
+	Sleep 100ms
+	SoundSetVolume sound[825] 55
+	Sleep 100ms
+	SoundSetVolume sound[825] 50
+	Sleep 100ms
+	SoundSetVolume sound[825] 45
+	Sleep 100ms
+	SoundSetVolume sound[825] 40
+	Sleep 100ms
+	SoundSetVolume sound[825] 35
+	Sleep 100ms
+	SoundSetVolume sound[825] 30
+	Sleep 100ms
+	SoundSetVolume sound[825] 25
+	Sleep 100ms
+	SoundSetVolume sound[825] 20
+	Sleep 100ms
+	SoundSetVolume sound[825] 15
+	Sleep 100ms
+	SoundSetVolume sound[825] 10
+	Sleep 100ms
+	SoundSetVolume sound[825] 5
+	Sleep 100ms
+	SoundSetVolume sound[825] 0
+	Return
+
+fn[32]:
+	EventBegin 0
+	FadeOut 0ms 0x00000000 255
+	EffLoad eff[0] "event/ev17086.eff"
+	SoundLoad sound[132]
+	SoundLoad sound[497]
+	CharFlagsUnset char[1] 0x0080
+	ED7_78 object[0] char[1]
+	NextFrame
+	ObjFlagsUnset object[0] 0x0004
+	ObjFlagsSet object[0] 0x1000
+	ED7ObjPlay object[0] 1 120 0 32
+	Call fn[0,3]
+	MapColor 0x00FFFFD7 0ms
+	CharSetPos char[1] (0, 0, 0) 0deg
+	CamSetDistance 0 1500 3000 0ms
+	ED7CamRotate 150deg 30deg 0deg 0ms
+	CamPers 800 0ms
+	CamZoom 35000 0ms
+	CamSetDistance 0 1500 3000 6000ms
+	ED7CamRotate 125deg 15deg 0deg 6000ms
+	CamPers 800 6000ms
+	CamZoom 30000 6000ms
+	SoundPlay sound[132] 2 100 0
+	SoundPlay sound[497] 2 100 0
+	EffPlay eff[0] eff_instance[0] char[1] 5 (-4250, 1750, -10250) 0 0 0 1000 1000 250 null (0, 0, 0) 0ms
+	EffPlay eff[0] eff_instance[1] char[1] 5 (4250, 1750, -10250) 0 0 0 1000 1000 250 null (0, 0, 0) 0ms
+	FadeIn 1000ms 0x00000000
+	FadeWait
+	Sleep 4000ms
+	ED7_12 132 1000 100
+	ED7_12 497 1000 100
+	FadeOut 1000ms 0x00000000 255
+	FadeWait
+	FlagSet flag[286]
+	NewScene "scena/e3020.bin" 0 0 0
+	Hcf
+	Return
+
+fn[33]:
+	EventBegin 0
+	FadeOut 0ms 0x00000000 255
+	Call fn[0,3]
+	EffLoad eff[0] "event/ev15055.eff"
+	EffLoad eff[1] "event/ev15076.eff"
+	EffLoad eff[2] "event/ev10009.eff"
+	EffLoad eff[3] "event/ev15075.eff"
+	EffLoad eff[4] "event/ev10013.eff"
+	EffLoad eff[5] "event/ev17095.eff"
+	EffLoad eff[6] "battle/btgun00.eff"
+	EffLoad eff[7] "event/ev17022.eff"
+	EffLoad eff[8] "event/ev15070.eff"
+	EffLoad eff[9] "event/eva03_01.eff"
+	SoundLoad sound[132]
+	SoundLoad sound[497]
+	SoundLoad sound[980]
+	ED7_EE 0 4
+	Ao_F3 200000
+	CharFlagsUnset char[7] 0x0080
+	ED7_74 object[7] 0 30
+	ObjFlagsUnset object[7] 0x0004
+	ED7_78 object[7] char[7]
+	CharSetPos char[7] (0, 0, 0) 0deg
+	CharTurnTo char[7] 180deg 0deg/s
+	EffPlay2 eff[7] eff_instance[255] object[7] "Null_wing_r0 (66)" 7 (0, 0, 0) 0 0 0 500 500 500 0ms
+	EffPlay2 eff[7] eff_instance[255] object[7] "Null_wing_r1(67)" 7 (0, 0, 0) 0 0 0 500 500 500 0ms
+	EffPlay2 eff[7] eff_instance[255] object[7] "Null_wing_r2(68)" 7 (0, 0, 0) 0 0 0 500 500 500 0ms
+	EffPlay2 eff[7] eff_instance[255] object[7] "Null_wing_l0(69)" 7 (0, 0, 0) 0 0 0 500 500 500 0ms
+	EffPlay2 eff[7] eff_instance[255] object[7] "Null_wing_l1(70)" 7 (0, 0, 0) 0 0 0 500 500 500 0ms
+	EffPlay2 eff[7] eff_instance[255] object[7] "Null_wing_l2(71)" 7 (0, 0, 0) 0 0 0 500 500 500 0ms
+	CharFlagsUnset char[2] 0x0080
+	ED7_74 object[2] 0 30
+	ObjFlagsUnset object[2] 0x0004
+	ED7_78 object[2] char[2]
+	CharSetPos char[2] (0, 0, 0) 0deg
+	CharTurnTo char[2] 0deg 0deg/s
+	CharFlagsUnset char[3] 0x0080
+	ED7_74 object[3] 0 30
+	ObjFlagsUnset object[3] 0x0004
+	ED7_78 object[3] char[3]
+	CharSetPos char[3] (0, 0, 0) 0deg
+	CharTurnTo char[3] 0deg 0deg/s
+	CharFlagsUnset char[4] 0x0080
+	ED7_74 object[4] 0 30
+	ObjFlagsUnset object[4] 0x0004
+	ED7_78 object[4] char[4]
+	CharSetPos char[4] (0, 0, 0) 0deg
+	CharTurnTo char[4] 0deg 0deg/s
+	CharFlagsUnset char[5] 0x0080
+	ED7_74 object[5] 0 30
+	ObjFlagsUnset object[5] 0x0004
+	ED7_78 object[5] char[5]
+	CharSetPos char[5] (0, 0, 0) 0deg
+	CharTurnTo char[5] 0deg 0deg/s
+	CharFlagsUnset char[6] 0x0080
+	ED7_74 object[6] 0 30
+	ObjFlagsUnset object[6] 0x0004
+	ED7_78 object[6] char[6]
+	CharSetPos char[6] (0, 0, 0) 0deg
+	CharTurnTo char[6] 0deg 0deg/s
+	ED7_74 object[11] 0 7
+	ObjFlagsUnset object[11] 0x0004
+	ED7_74 object[12] 0 7
+	ObjFlagsUnset object[12] 0x0004
+	ED7_74 object[13] 0 7
+	ObjFlagsUnset object[13] 0x0004
+	ED7_74 object[14] 0 7
+	ObjFlagsUnset object[14] 0x0004
+	ED7_74 object[15] 0 7
+	ObjFlagsUnset object[15] 0x0004
+	EffPlay eff[8] eff_instance[2] char[2] 5 (-6400, 1000, 250) 0 0 0 1000 1000 1000 null (0, 0, 0) 0ms
+	EffPlay eff[8] eff_instance[3] char[2] 5 (6400, 1000, 250) 0 0 0 1000 1000 1000 null (0, 0, 0) 0ms
+	EffPlay eff[8] eff_instance[4] char[3] 5 (-6400, 1000, 250) 0 0 0 1000 1000 1000 null (0, 0, 0) 0ms
+	EffPlay eff[8] eff_instance[5] char[3] 5 (6400, 1000, 250) 0 0 0 1000 1000 1000 null (0, 0, 0) 0ms
+	EffPlay eff[8] eff_instance[6] char[4] 5 (-6400, 1000, 250) 0 0 0 1000 1000 1000 null (0, 0, 0) 0ms
+	EffPlay eff[8] eff_instance[7] char[4] 5 (6400, 1000, 250) 0 0 0 1000 1000 1000 null (0, 0, 0) 0ms
+	CharSetPos char[7] (0, 10000, 400000) 180deg
+	CharSetPos char[2] (0, -11000, 70000) 0deg
+	CharSetPos char[3] (20000, -2000, 40000) 0deg
+	CharSetPos char[4] (-20000, 2000, 34000) 0deg
+	CharSetPos char[5] (15000, 0, -70000) 0deg
+	CharSetPos char[6] (-15000, -5000, -90000) 0deg
+	ForkFunc char[2] fork[0] fn[0,59]
+	ForkFunc char[3] fork[0] fn[0,59]
+	ForkFunc char[4] fork[0] fn[0,59]
+	ForkFunc char[5] fork[0] fn[0,59]
+	ForkFunc char[6] fork[0] fn[0,59]
+	ObjFlagsUnset object[7] 0x1000
+	ED7ObjPlay object[2] 61 120 0 32
+	ED7ObjPlay object[3] 61 120 0 32
+	ED7ObjPlay object[4] 61 120 0 32
+	ED7ObjPlay object[5] 61 120 0 32
+	ED7ObjPlay object[6] 61 120 0 32
+	SoundPlay sound[132] 2 100 0
+	SoundPlay sound[497] 2 80 0
+	FadeIn 1000ms 0x00000000
+	CamSetDistance 4500 -10900 20460 0ms
+	ED7CamRotate 158deg 13deg 0deg 0ms
+	CamPers 800 0ms
+	CamZoom 126140 0ms
+	ED7CamRotate 147deg 3deg 0deg 4500ms
+	CamZoom 121620 4500ms
+	FadeWait
+	CamWait 121
+	ED7ObjPlay object[7] 111 150 0 32
+	ObjFlagsSet object[7] 0x1000
+	CrossFade 500ms
+	CamSetDistance 810 1500 49990 0ms
+	ED7CamRotate 63deg -16deg 0deg 0ms
+	CamPers 800 0ms
+	CamZoom 80280 0ms
+	CamSetDistance 440 2200 97540 3000ms
+	ED7CamRotate 30deg -10deg 0deg 3000ms
+	CamPers 800 3000ms
+	CamZoom 134180 3000ms
+	FadeWait
+	ForkFunc char[7] fork[0] fn[0,39]
+	ForkWait char[7] fork[0]
+	CharSetPos char[7] (0, 0, 0) 0deg
+	CharTurnTo char[7] 0deg 0deg/s
+	CharSetPos char[2] (0, -1000000, 0) 0deg
+	CharSetPos char[3] (0, -1000000, 0) 0deg
+	CharSetPos char[4] (0, -1000000, 0) 0deg
+	CharSetPos char[5] (0, -1000000, 0) 0deg
+	CharSetPos char[6] (0, -1000000, 0) 0deg
+	ObjFlagsSet object[2] 0x0004
+	ObjFlagsSet object[3] 0x0004
+	ObjFlagsSet object[4] 0x0004
+	ObjFlagsSet object[5] 0x0004
+	ObjFlagsSet object[6] 0x0004
+	ForkQuit char[2] fork[0]
+	ForkQuit char[3] fork[0]
+	ForkQuit char[4] fork[0]
+	ForkQuit char[5] fork[0]
+	ForkQuit char[6] fork[0]
+	ED7_12 497 1000 70
+	SoundPlay sound[980] 2 80 0
+	CrossFade 500ms
+	CamSetDistance 0 3100 3000 0ms
+	ED7CamRotate 207deg 6deg 0deg 0ms
+	CamPers 800 0ms
+	CamZoom 33500 0ms
+	CamSetDistance 0 2900 -1250 5000ms
+	CamZoom 13000 5000ms
+	ED7CamRotate 244deg 18deg 0deg 2000ms
+	FadeWait
+	Sleep 1000ms
+	ED7CamRotate 225deg -14deg 0deg 1500ms
+	Sleep 500ms
+	ForkFunc char[7] fork[3] fn[0,40]
+	Sleep 1000ms
+	CamWait 121
+	ForkWait char[7] fork[3]
+	Sleep 600ms
+	CrossFade 300ms
+	CamSetDistance 0 2900 -950 700ms
+	ED7CamRotate 200deg 21deg 0deg 700ms
+	CamPers 800 700ms
+	CamZoom 15230 700ms
+	ForkFunc char[7] fork[3] fn[0,41]
+	CamWait 121
+	CamSetDistance 0 2900 100 700ms
+	ED7CamRotate 199deg 32deg 0deg 700ms
+	CamZoom 11250 700ms
+	ForkWait char[7] fork[3]
+	Sleep 700ms
+	Call fn[0,35]
+	BlurOn 0ms 0xBBFFFFFF 0 1 10
+	Shake 100 100 1500 500ms
+	CamZoom 16000 700ms
+	Sleep 100ms
+	BlurOff 3000ms
+	MapColor 0x00C3C3C3 700ms
+	Sleep 900ms
+	CamSetDistance 490 2000 2950 2400ms
+	ED7CamRotate 305deg 26deg 0deg 2400ms
+	CamPers 800 2400ms
+	CamZoom 18720 2400ms
+	Sleep 1000ms
+	MapColor 0x00FFFFFF 2000ms
+	Sleep 700ms
+	BlurOn 0ms 0xBBFFFFFF 0 1 10
+	Shake 800 800 1500 500ms
+	SoundSetVolume sound[980] 30
+	SoundPlay sound[998] 0 100 0
+	SoundPlay sound[499] 0 100 0
+	ForkFunc char[7] fork[0] fn[0,43]
+	ForkWait char[7] fork[0]
+	ObjFlagsUnset object[2] 0x0004
+	ObjFlagsUnset object[3] 0x0004
+	ObjFlagsUnset object[4] 0x0004
+	ObjFlagsSet object[5] 0x0004
+	ObjFlagsSet object[6] 0x0004
+	ObjFlagsSet object[2] 0x1000
+	ObjFlagsSet object[3] 0x1000
+	ObjFlagsSet object[4] 0x1000
+	ObjFlagsSet object[11] 0x1000
+	ObjFlagsSet object[12] 0x1000
+	ObjFlagsSet object[13] 0x1000
+	ForkFunc char[2] fork[0] fn[0,59]
+	ForkFunc char[3] fork[0] fn[0,59]
+	ForkFunc char[4] fork[0] fn[0,59]
+	ForkFunc char[5] fork[0] fn[0,59]
+	ForkFunc char[6] fork[0] fn[0,59]
+	CharSetPos char[7] (0, 1000, -85000) 0deg
+	CharSetPos char[2] (0, -4000, -24000) 0deg
+	CharSetPos char[3] (-15000, 2000, 9000) 0deg
+	CharSetPos char[4] (15000, 6000, 26000) 0deg
+	CharSetPos char[5] (0, -1000000, 0) 0deg
+	CharSetPos char[6] (0, -1000000, 0) 0deg
+	CharTurnTo char[2] 180deg 0deg/s
+	CharTurnTo char[3] 180deg 0deg/s
+	CharTurnTo char[4] 180deg 0deg/s
+	ForkQuit char[2] fork[0]
+	ForkQuit char[3] fork[0]
+	ForkQuit char[4] fork[0]
+	CamSetDistance 0 4300 -57500 0ms
+	ED7CamRotate 273deg 2deg 4deg 0ms
+	CamPers 800 0ms
+	CamZoom 36790 0ms
+	CamSetDistance 0 9300 42850 2500ms
+	ED7CamRotate 291deg 16deg 4deg 2500ms
+	CamPers 800 2500ms
+	CamZoom 63100 2500ms
+	ForkFunc char[7] fork[0] fn[0,44]
+	ForkFunc char[7] fork[1] fn[0,45]
+	ForkFunc char[7] fork[2] fn[0,46]
+	SoundPlay sound[497] 2 60 0
+	SoundPlay sound[998] 0 100 0
+	EffPlay eff[9] eff_instance[8] null 0 (3880, 6800, -890) 0 0 0 9000 1000 9000 null (0, 0, 0) 0ms
+	CrossFade 500ms
+	FadeWait
+	Sleep 200ms
+	SoundPlay sound[287] 0 80 0
+	BlurOff 500ms
+	Sleep 1100ms
+	ForkWait char[7] fork[0]
+	CamWait 121
+	ForkQuit char[7] fork[0]
+	ForkQuit char[7] fork[1]
+	CrossFade 500ms
+	EffStop eff_instance[8] 0
+	Shake 500 500 5000 2000ms
+	BlurOn 0ms 0xBBFFFFFF 0 1 30
+	CharSetPos char[7] (0, 0, 25000) 0deg
+	CamSetDistance 0 4600 32000 0ms
+	ED7CamRotate 180deg -9deg 4deg 0ms
+	CamPers 800 0ms
+	CamZoom 91910 0ms
+	CamSetDistance 0 4600 40870 5000ms
+	ED7CamRotate 177deg -26deg 4deg 5000ms
+	CamPers 800 5000ms
+	CamZoom 111910 5000ms
+	Sleep 1ms
+	BlurOff 2000ms
+	FadeWait
+	SoundPlay sound[999] 0 100 0
+	ED7_12 980 1000 30
+	ForkFunc char[7] fork[0] fn[0,47]
+	ForkFunc char[7] fork[1] fn[0,48]
+	ForkFunc char[10] fork[1] fn[0,60]
+	Sleep 300ms
+	Call fn[0,36]
+	CamWait 121
+	ForkQuit char[7] fork[0]
+	ForkQuit char[7] fork[1]
+	ObjFlagsSet object[2] 0x0004
+	ObjFlagsSet object[3] 0x0004
+	ObjFlagsSet object[4] 0x0004
+	ObjFlagsSet object[11] 0x0004
+	ObjFlagsSet object[12] 0x0004
+	ObjFlagsSet object[13] 0x0004
+	ObjFlagsUnset object[5] 0x0004
+	ObjFlagsUnset object[6] 0x0004
+	ObjFlagsSet object[5] 0x1000
+	ObjFlagsSet object[6] 0x1000
+	ForkQuit char[7] fork[0]
+	ForkQuit char[7] fork[1]
+	ForkQuit char[5] fork[0]
+	ForkQuit char[6] fork[0]
+	EffPlay eff[8] eff_instance[2] char[5] 5 (-6400, 1000, 250) 0 0 0 1000 1000 1000 null (0, 0, 0) 0ms
+	EffPlay eff[8] eff_instance[3] char[5] 5 (6400, 1000, 250) 0 0 0 1000 1000 1000 null (0, 0, 0) 0ms
+	EffPlay eff[8] eff_instance[4] char[6] 5 (-6400, 1000, 250) 0 0 0 1000 1000 1000 null (0, 0, 0) 0ms
+	EffPlay eff[8] eff_instance[5] char[6] 5 (6400, 1000, 250) 0 0 0 1000 1000 1000 null (0, 0, 0) 0ms
+	ObjFlagsSet object[7] 0x0004
+	CharSetPos char[7] (-200810, -20000, -240990) -58deg
+	CharSetPos char[5] (-36600, 10690, 1100) 19deg
+	CharSetPos char[6] (32060, -10110, -1340) 16deg
+	CharTurnTo char[5] 19deg 0deg/s
+	CharTurnTo char[6] 16deg 0deg/s
+	CrossFade 500ms
+	CamSetDistance 32310 -5900 3530 0ms
+	ED7CamRotate 267deg -12deg 0deg 0ms
+	CamPers 800 0ms
+	CamZoom 19810 0ms
+	Shake 50 50 5000 3000ms
+	SoundPlay sound[865] 2 80 0
+	SoundPlay sound[861] 2 80 0
+	ForkFunc char[5] fork[3] fn[0,37]
+	ForkFunc char[6] fork[3] fn[0,38]
+	ED7CamRotate 247deg -11deg 0deg 2700ms
+	CamZoom 17880 2700ms
+	Sleep 800ms
+	Fork char[5] fork[2]:
+		CharTurnTo self 79deg 20deg/s
+	FadeWait
+	Sleep 200ms
+	Fork char[6] fork[2]:
+		CharTurnTo self 46deg 10deg/s
+	CamWait 121
+	ForkQuit char[5] fork[2]
+	ForkQuit char[6] fork[2]
+	ForkQuit char[5] fork[3]
+	ForkQuit char[6] fork[3]
+	SoundPlay sound[499] 0 80 0
+	SoundPlay sound[998] 0 100 0
+	ObjFlagsUnset object[7] 0x0004
+	ObjFrame object[7] 252
+	ObjFlagsSet object[5] 0x0004
+	ObjFlagsSet object[6] 0x0004
+	CharSetPos char[7] (50000, 0, 0) 180deg
+	ForkFunc char[7] fork[0] fn[0,54]
+	CharTurnTo char[5] 119deg 0deg/s
+	CharTurnTo char[6] 86deg 0deg/s
+	ForkFunc char[5] fork[0] fn[0,59]
+	ForkFunc char[6] fork[0] fn[0,59]
+	CamSetDistance 0 0 0 0ms
+	ED7CamRotate 131deg -3deg 0deg 0ms
+	CamPers 800 0ms
+	CamZoom 16020 0ms
+	SoundPlay sound[980] 2 50 0
+	CrossFade 500ms
+	BlurOn 0ms 0xBBFFFFFF 0 0 0
+	CamSetDistance 0 0 0 2700ms
+	ED7CamRotate 293deg -9deg 0deg 2700ms
+	CamZoom 76330 3000ms
+	ForkLoop char[5] fork[2]:
+		CharTurnToChar self char[7] 30deg/s
+	ForkLoop char[6] fork[2]:
+		CharTurnToChar self char[7] 30deg/s
+	ForkFunc char[6] fork[3] fn[0,34]
+	FadeWait
+	BlurOff 1000ms
+	Sleep 300ms
+	ObjFlagsUnset object[5] 0x0004
+	ObjFlagsUnset object[6] 0x0004
+	ObjFlagsSet object[14] 0x1000
+	ObjFlagsSet object[15] 0x1000
+	Sleep 1000ms
+	ForkWait char[7] fork[0]
+	CamWait 121
+	Call fn[0,35]
+	ForkFunc char[7] fork[0] fn[0,55]
+	ForkFunc char[7] fork[1] fn[0,56]
+	CamSetDistance 36570 -10400 -4670 2000ms
+	ED7CamRotate 304deg -33deg 0deg 2000ms
+	CamPers 800 2000ms
+	CamZoom 56510 2000ms
+	SoundPlay sound[999] 0 50 0
+	Sleep 630ms
+	BlurOn 500ms 0xBBFFFFFF 0 0 0
+	Shake 500 500 3000 1500ms
+	SoundPlay sound[287] 0 70 0
+	ForkQuit char[5] fork[0]
+	ForkQuit char[5] fork[2]
+	SoundPlay sound[200] 0 90 0
+	SoundPlay sound[833] 0 100 0
+	EffPlay eff[3] eff_instance[255] char[5] 0 (0, 3000, 0) 0 0 0 6000 6000 6000 null (0, 0, 0) 0ms
+	ForkQuit char[5] fork[2]
+	ObjFlagsSet object[5] 0x0004
+	ObjFlagsUnset object[14] 0x0004
+	ED7_78 object[14] char[5]
+	Sc_D1 char[5] 0 169980 0 0ms
+	ED7ObjPlay object[14] 0 1 0 0
+	EffStop eff_instance[2] 2
+	EffStop eff_instance[3] 2
+	EffStop eff_instance[6] 2
+	Sleep 930ms
+	BlurOff 1500ms
+	ForkQuit char[6] fork[0]
+	ForkQuit char[6] fork[2]
+	SoundPlay sound[196] 0 90 0
+	ED7_12 865 500 70
+	ED7_12 861 500 70
+	EffPlay eff[3] eff_instance[255] char[6] 0 (0, 3000, 0) 0 0 0 6000 6000 6000 null (0, 0, 0) 0ms
+	ForkQuit char[6] fork[2]
+	ObjFlagsSet object[6] 0x0004
+	ObjFlagsUnset object[15] 0x0004
+	ED7_78 object[15] char[6]
+	Sc_D1 char[6] 0 220010 0 0ms
+	ED7ObjPlay object[15] 0 1 0 0
+	EffStop eff_instance[4] 2
+	EffStop eff_instance[5] 2
+	EffStop eff_instance[6] 2
+	ForkWait char[7] fork[0]
+	CharSetPos char[7] (0, 0, 0) 0deg
+	CharSetPos char[5] (-1000, 29500, -255500) 60deg
+	CharSetPos char[6] (-3500, 10500, -192000) 130deg
+	CharTurnTo char[7] 0deg 0deg/s
+	CharTurnTo char[5] 60deg 0deg/s
+	CharTurnTo char[6] 130deg 0deg/s
+	CamSetDistance 0 3700 1000 0ms
+	ED7CamRotate 200deg -1deg 0deg 0ms
+	CamPers 800 0ms
+	CamZoom 24000 0ms
+	ObjFrame object[7] 221
+	CrossFade 500ms
+	BlurOn 0ms 0xBBFFFFFF 0 1 30
+	CamSetDistance 2490 3700 680 2000ms
+	ED7CamRotate 200deg 2deg 0deg 2000ms
+	CamPers 800 2000ms
+	CamZoom 14750 2000ms
+	Sleep 300ms
+	BlurOff 750ms
+	SoundSetVolume sound[980] 60
+	ED7_12 497 1000 50
+	ForkFunc char[7] fork[1] fn[0,58]
+	ForkWait char[7] fork[1]
+	Call fn[0,36]
+	FadeWait
+	ForkFunc char[7] fork[3] fn[0,42]
+	ForkWait char[7] fork[3]
+	Sleep 500ms
+	ObjFlagsSet object[5] 0x0004
+	ObjFlagsUnset object[14] 0x0004
+	ForkFunc char[5] fork[3] fn[0,52]
+	Sleep 500ms
+	ObjFlagsSet object[6] 0x0004
+	ObjFlagsUnset object[15] 0x0004
+	ForkFunc char[6] fork[3] fn[0,53]
+	Sleep 1500ms
+	ED7CamRotate 315deg 17deg 0deg 3000ms
+	CamZoom 15250 3000ms
+	Sleep 3500ms
+	ForkFunc char[7] fork[3] fn[0,41]
+	ForkWait char[7] fork[3]
+	ED7_12 980 2000 70
+	CamSetDistance 0 3700 1000 3500ms
+	ED7CamRotate 345deg 19deg 0deg 3500ms
+	Sleep 1000ms
+	CamZoom 14500 2500ms
+	EffStop eff_instance[2] 0
+	EffStop eff_instance[3] 0
+	SoundPlay sound[998] 0 100 0
+	SoundPlay sound[499] 0 100 0
+	BlurOn 0ms 0xBBFFFFFF 0 1 10
+	Shake 500 500 1500 500ms
+	ForkFunc char[7] fork[3] fn[0,57]
+	Sleep 1500ms
+	BlurOff 1000ms
+	ED7_12 132 1000 100
+	FadeOut 1000ms 0x00000000 255
+	FadeWait
+	SoundStop sound[132]
+	SoundStop sound[497]
+	SoundStop sound[980]
+	FlagSet flag[272]
+	NewScene "scena/r0040.bin" 0 0 0
+	Hcf
+	Return
+
+fn[34]:
+	Sleep 200ms
+	EffPlay eff[5] eff_instance[6] null 0 (-6700, -5000, 7030) 290 25 0 5000 5000 5000 null (0, 0, 0) 0ms
+	Sleep 200ms
+	EffPlay eff[5] eff_instance[7] null 0 (-6700, -5000, 7030) 310 15 0 5000 5000 5000 null (0, 0, 0) 0ms
+	Sleep 100ms
+	Sleep 100ms
+	EffPlay eff[5] eff_instance[6] null 0 (-6700, -5000, 7030) 330 10 0 5000 5000 5000 null (0, 0, 0) 0ms
+	Sleep 100ms
+	Sleep 100ms
+	EffPlay eff[5] eff_instance[7] null 0 (-6700, -5000, 7030) 345 20 0 5000 5000 5000 null (0, 0, 0) 0ms
+	Sleep 100ms
+	Sleep 100ms
+	EffStop eff_instance[6] 2
+	Sleep 100ms
+	Sleep 100ms
+	EffStop eff_instance[7] 2
+	Sleep 100ms
+	Sleep 100ms
+	EffPlay2 eff[5] eff_instance[6] object[5] "Null_gun" 7 (0, 0, 0) 0 0 0 2000 2000 5000 0ms
+	EffPlay2 eff[5] eff_instance[7] object[6] "Null_gun" 7 (0, 0, 0) 0 0 0 2000 2000 5000 0ms
+	Return
+
+fn[35]:
+	SoundPlay sound[276] 0 100 0
+	EffPlay2 eff[6] eff_instance[255] object[7] "Null_bp_hou(16)" 5 (-1000, 350, 0) 0 0 0 1000 1000 1000 0ms
+	EffPlay2 eff[0] eff_instance[0] object[7] "Null_bp_hou(16)" 5 (0, 350, 0) 0 0 0 2000 1000 1000 0ms
+	EffPlay2 eff[0] eff_instance[1] object[7] "Null_bp_hou(16)" 5 (0, 50, 0) 0 0 0 2000 1000 1000 0ms
+	Return
+
+fn[36]:
+	EffStop eff_instance[0] 2
+	EffStop eff_instance[1] 2
+	Return
+
+fn[37]:
+	while 1:
+		EffPlay2 eff[4] eff_instance[4] object[5] "Null_gun" 7 (0, 0, 0) 0 0 0 2000 2000 2000 0ms
+		Sleep 150ms
+	Return
+
+fn[38]:
+	Sleep 50ms
+	while 1:
+		EffPlay2 eff[4] eff_instance[5] object[6] "Null_gun" 7 (0, 0, 0) 0 0 0 2000 2000 2000 0ms
+		Sleep 150ms
+	Return
+
+fn[39]:
+	Sleep 2000ms
+	_94 1 self 0deg 160000 100000mm/s 1
+	_94 1 self 0deg 32000 80000mm/s 1
+	_94 1 self 0deg 16000 60000mm/s 1
+	_94 1 self 0deg 8000 40000mm/s 1
+	Return
+
+fn[40]:
+	ObjFlagsUnset object[7] 0x0020
+	ObjWait object[7]
+	ED7_74 object[7] 0 15
+	ED7ObjPlay object[7] 151 160 0 0
+	ObjWait object[7]
+	ED7_74 object[7] 0 15
+	ObjFrame object[7] 11
+	Return
+
+fn[41]:
+	ObjFlagsUnset object[7] 0x0020
+	ObjWait object[7]
+	SoundPlay sound[982] 0 100 0
+	ED7_74 object[7] 0 15
+	ED7ObjPlay object[7] 201 220 0 0
+	ObjWait object[7]
+	ED7_74 object[7] 0 30
+	ObjFrame object[7] 221
+	Return
+
+fn[42]:
+	ObjFlagsUnset object[7] 0x0020
+	ObjWait object[7]
+	ObjWait object[7]
+	SoundPlay sound[982] 0 100 0
+	ED7_74 object[7] 0 15
+	ED7ObjPlay object[7] 261 280 0 0
+	ObjWait object[7]
+	ObjFrame object[7] 11
+	Return
+
+fn[43]:
+	_94 1 self 0deg 1000 4000mm/s 1
+	_94 1 self 0deg 1000 8000mm/s 1
+	_94 1 self 0deg 1000 12000mm/s 1
+	_94 1 self 0deg 35000 50000mm/s 1
+	Return
+
+fn[44]:
+	_94 1 self 0deg 195000 80000mm/s 1
+	Return
+
+fn[45]:
+	Return
+
+fn[46]:
+	Sleep 700ms
+	SoundPlay sound[200] 0 90 0
+	SoundPlay sound[833] 0 100 0
+	Shake 100 100 3000 300ms
+	EffPlay eff[3] eff_instance[255] char[2] 0 (0, 3000, 0) 0 0 0 6000 6000 6000 null (0, 0, 0) 0ms
+	ObjFlagsSet object[2] 0x0004
+	ObjFlagsUnset object[11] 0x0004
+	ED7_78 object[11] char[2]
+	Sc_D1 char[2] 0 180000 0 0ms
+	ED7ObjPlay object[11] 1 1 0 0
+	EffStop eff_instance[2] 0
+	EffStop eff_instance[3] 0
+	Sleep 400ms
+	SoundPlay sound[196] 0 80 0
+	Shake 100 100 3000 300ms
+	EffPlay eff[3] eff_instance[255] char[3] 0 (0, 3000, 0) 0 0 0 6000 6000 6000 null (0, 0, 0) 0ms
+	ObjFlagsSet object[3] 0x0004
+	ObjFlagsUnset object[12] 0x0004
+	ED7_78 object[12] char[3]
+	Sc_D1 char[3] 0 180000 0 0ms
+	ED7ObjPlay object[12] 1 1 0 0
+	EffStop eff_instance[4] 0
+	EffStop eff_instance[5] 0
+	Sleep 400ms
+	SoundPlay sound[556] 0 80 0
+	Shake 100 100 3000 300ms
+	EffPlay eff[3] eff_instance[255] char[4] 0 (0, 3000, 0) 0 0 0 6000 6000 6000 null (0, 0, 0) 0ms
+	ObjFlagsSet object[4] 0x0004
+	ObjFlagsUnset object[13] 0x0004
+	ED7_78 object[13] char[4]
+	Sc_D1 char[4] 0 180000 0 0ms
+	ED7ObjPlay object[13] 0 1 0 0
+	EffStop eff_instance[6] 0
+	EffStop eff_instance[7] 0
+	Return
+
+fn[47]:
+	_94 1 self 0deg 100000 55000mm/s 1
+	Return
+
+fn[48]:
+	Sleep 450ms
+	ForkFunc char[2] fork[3] fn[0,49]
+	Sleep 250ms
+	ForkFunc char[3] fork[3] fn[0,50]
+	Sleep 250ms
+	ForkFunc char[4] fork[3] fn[0,51]
+	Sleep 350ms
+	Return
+
+fn[49]:
+	ED7ObjPlay object[11] 1 60 0 0
+	EffPlay eff[2] eff_instance[255] char[2] 0 (0, 0, 0) 0 0 0 3000 3000 3000 null (0, 0, 0) 0ms
+	EffPlay eff[1] eff_instance[2] char[2] 0 (0, 0, 0) 0 0 0 1000 1000 1000 null (0, 0, 0) 0ms
+	Sleep 900ms
+	EffStop eff_instance[2] 2
+	Return
+
+fn[50]:
+	ED7ObjPlay object[12] 1 60 0 0
+	EffPlay eff[2] eff_instance[255] char[3] 0 (0, 0, 0) 0 0 0 3000 3000 3000 null (0, 0, 0) 0ms
+	EffPlay eff[1] eff_instance[3] char[3] 0 (0, 0, 0) 0 0 0 1000 1000 1000 null (0, 0, 0) 0ms
+	Fork char[3] fork[2]:
+		Sc_D1 self 0 90000 0 1500ms
+	Sleep 900ms
+	EffStop eff_instance[3] 2
+	Return
+
+fn[51]:
+	ED7ObjPlay object[13] 1 60 0 0
+	EffPlay eff[2] eff_instance[255] char[4] 0 (0, 0, 0) 0 0 0 3000 3000 3000 null (0, 0, 0) 0ms
+	EffPlay eff[1] eff_instance[4] char[4] 0 (0, 0, 0) 0 0 0 1000 1000 1000 null (0, 0, 0) 0ms
+	Fork char[4] fork[2]:
+		Sc_D1 self 0 -60000 0 1500ms
+	Sleep 900ms
+	EffStop eff_instance[4] 2
+	Return
+
+fn[52]:
+	SoundPlay sound[200] 0 80 0
+	SoundPlay sound[833] 0 100 0
+	ED7ObjPlay object[14] 1 60 0 0
+	EffPlay eff[2] eff_instance[255] char[5] 0 (0, 0, 0) 0 0 0 3000 3000 3000 null (0, 0, 0) 0ms
+	EffPlay eff[1] eff_instance[2] char[5] 0 (0, 0, 0) 0 0 0 1000 1000 1000 null (0, 0, 0) 0ms
+	Fork char[5] fork[2]:
+		Sc_D1 self 0 -40000 0 1500ms
+	Sleep 900ms
+	EffStop eff_instance[2] 2
+	Return
+
+fn[53]:
+	SoundPlay sound[196] 0 80 0
+	ED7ObjPlay object[15] 1 60 0 0
+	EffPlay eff[2] eff_instance[255] char[6] 0 (0, 0, 0) 0 0 0 3000 3000 3000 null (0, 0, 0) 0ms
+	EffPlay eff[1] eff_instance[3] char[6] 0 (0, 0, 0) 0 0 0 1000 1000 1000 null (0, 0, 0) 0ms
+	Fork char[6] fork[2]:
+		Sc_D1 self 0 40000 0 1500ms
+	Sleep 900ms
+	EffStop eff_instance[3] 2
+	Return
+
+fn[54]:
+	CharSetPos self (50000, 0, 0) 180deg
+	CharPathNew self
+	CharPathAdd (40000, 4000, -25000)
+	CharPathAdd (25000, -4000, -40000)
+	CharPathAdd (-10000, 4000, -45000)
+	CharPathAdd (-65000, -4000, -35000)
+	CharPathAdd (-85000, 18000, -25000)
+	CharPathRun self 80000mm/s 2
+	Return
+
+fn[55]:
+	CharPathNew self
+	CharPathAdd (-27000, 12000, -3000)
+	CharPathAdd (72000, -20000, -2000)
+	CharPathRun self 80000mm/s 7
+	Return
+
+fn[56]:
+	Sleep 500ms
+	ED7ObjPlay object[7] 252 260 0 0
+	ObjWait object[7]
+	Sleep 500ms
+	ED7ObjPlay object[7] 260 251 0 0
+	ObjWait object[7]
+	Sleep 1300ms
+	Return
+
+fn[57]:
+	CharSetPos self (0, 0, 0) 0deg
+	CharPathNew self
+	CharPathAdd (0, -50000, 200000)
+	CharPathRun self 100000mm/s 2
+	Return
+
+fn[58]:
+	ObjFlagsUnset object[7] 0x0020
+	ObjWait object[7]
+	ObjFrame object[7] 221
+	Sleep 450ms
+	Return
+
+fn[59]:
+	while 1:
+		if random % 100 < 80:
+			Sleep 200ms
+		elif random % 100 < 70:
+			Sleep 400ms
+		elif random % 100 < 60:
+			Sleep 600ms
+		elif random % 100 < 50:
+			Sleep 800ms
+		else:
+			Sleep 1000ms
+		_Char91 self 0 -2500 0 300 1
+		if random % 100 < 80:
+			Sleep 200ms
+		elif random % 100 < 70:
+			Sleep 400ms
+		elif random % 100 < 60:
+			Sleep 600ms
+		elif random % 100 < 50:
+			Sleep 800ms
+		else:
+			Sleep 1000ms
+		_Char91 self 0 2500 0 300 1
+	Return
+
+fn[60]:
+	Sleep 800ms
+	SoundPlay sound[833] 0 100 0
+	SoundPlay sound[200] 0 80 0
+	Sleep 500ms
+	SoundPlay sound[196] 0 70 0
+	Sleep 500ms
+	SoundPlay sound[556] 0 70 0
+	Return
+
+fn[61]:
+	EventBegin 0
+	FadeOut 0ms 0x00000000 255
+	CharFlagsSet field_party[0] 0x0080
+	CharFlagsSet field_party[1] 0x0080
+	CharFlagsSet field_party[2] 0x0080
+	CharFlagsSet field_party[3] 0x0080
+	EffLoad eff[0] "event/ev600_01.eff"
+	EffLoad eff[1] "event/ev601_01.eff"
+	ED7LoadChip "chr/ch09500.itc" chip[32]
+	SoundLoad sound[825]
+	SoundLoad sound[933]
+	Call fn[0,62]
+	CharSetPos char[8] (0, -50000, 0) 0deg
+	ObjFlagsUnset object[9] 0x0004
+	ObjFlagsUnset object[9] 0x1000
+	CamSetDistance 0 -51500 0 0ms
+	ED7CamRotate 180deg -45deg 0deg 0ms
+	CamPers 800 0ms
+	CamZoom 57000 0ms
+	SoundPlay sound[825] 2 100 0
+	SoundPlay sound[993] 2 100 0
+	FadeIn 1000ms 0x00000000
+	CamSetDistance 0 -45000 0 4000ms
+	ED7CamRotate 180deg -22deg 0deg 4000ms
+	CamPers 800 4000ms
+	CamZoom 9250 4000ms
+	FadeWait
+	SoundPlay sound[990] 0 100 0
+	Sleep 1000ms
+	SoundPlay sound[994] 0 100 0
+	Sleep 2000ms
+	FadeOut 1000ms 0x00000000 255
+	Sleep 500ms
+	ED7_12 825 500 100
+	ED7_12 993 500 100
+	FadeWait
+	FlagSet flag[273]
+	NewScene "scena/e4211.bin" 0 0 0
+	Hcf
+	Return
+
+fn[62]:
+	CharFlagsUnset char[8] 0x0080
+	CharSetPos char[8] (0, 0, 0) 0deg
+	ED7_74 object[9] 0 30
+	ED7_78 object[9] char[8]
+	CharTurnTo char[8] 0deg 0deg/s
+	CharFlagsSet char[8] 0x0004
+	CharFlagsSet char[8] 0x8000
+	CharSetChipBase char[9] chip[32]
+	CharSetChipPattern char[9] 0
+	CharFlagsUnset char[9] 0x0080
+	char[9].36 = 165
+	CharFlagsSet char[9] 0x8000
+	CharSetPos char[9] (0, 0, 0) 0deg
+	Sc_CF char[9] 9 "Null_ren(52)"
+	EffPlay2 eff[1] eff_instance[0] object[9] "Null_S_jet_r0(63)" 7 (0, 0, 0) 0 0 0 1000 1000 1000 0ms
+	EffPlay2 eff[1] eff_instance[1] object[9] "Null_S_jet_r2(64)" 7 (0, 0, 0) 0 0 0 1000 1000 1000 0ms
+	EffPlay2 eff[1] eff_instance[2] object[9] "Null_S_jet_l0(66)" 7 (0, 0, 0) 0 0 0 1000 1000 1000 0ms
+	EffPlay2 eff[1] eff_instance[3] object[9] "Null_S_jet_l2(65)" 7 (0, 0, 0) 0 0 0 1000 1000 1000 0ms
+	EffPlay2 eff[0] eff_instance[4] object[9] "Null_S_jet_r1(61)" 7 (0, 0, 0) 0 0 0 1000 1000 1000 0ms
+	EffPlay2 eff[0] eff_instance[5] object[9] "Null_S_jet_l1(62)" 7 (0, 0, 0) 0 0 0 1000 1000 1000 0ms
+	EffPlay2 eff[0] eff_instance[6] object[9] "Null_kata_jet_r(53)" 7 (0, 0, 0) 0 0 0 1000 1000 1000 0ms
+	EffPlay2 eff[0] eff_instance[7] object[9] "Null_kata_jet_l(54)" 7 (0, 0, 0) 0 0 0 1000 1000 1000 0ms
+	ED7ObjPlay object[9] 241 260 1 32
+	Return

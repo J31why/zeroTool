@@ -1,0 +1,977 @@
+//ao
+//as90001
+
+Header:
+	table = loc:2
+	fn[0] = loc:11E
+	fn[1] = loc:11E
+	fn[2] = loc:11E
+	fn[3] = loc:11E
+	fn[4] = loc:11E
+	fn[5] = loc:11E
+	fn[6] = loc:11E
+	fn[7] = loc:11E
+	fn[8] = loc:11E
+	fn[9] = loc:11E
+	fn[10] = loc:11E
+	fn[11] = loc:11E
+	fn[12] = loc:11E
+	fn[13] = loc:11E
+	fn[14] = loc:11E
+	fn[15] = loc:11E
+	fn[16] = loc:11E
+	fn[17] = loc:11E
+	fn[18] = loc:11E
+	fn[19] = loc:11E
+	fn[20] = loc:11E
+	fn[21] = loc:11E
+	fn[22] = loc:11E
+	fn[23] = loc:196
+	fn[24] = loc:11E
+	fn[25] = loc:11E
+	fn[26] = loc:237
+	fn[27] = loc:11E
+	fn[28] = loc:11E
+	fn[29] = loc:2DE
+	fn[30] = loc:11E
+	fn[31] = loc:11E
+	fn[32] = loc:11E
+	fn[33] = loc:11E
+	fn[34] = loc:11E
+	fn[35] = loc:11E
+	fn[36] = loc:11E
+	fn[37] = loc:11E
+	fn[38] = loc:11E
+	fn[39] = loc:11E
+	fn[40] = loc:11E
+	fn[41] = loc:37D
+	fn[42] = loc:11E
+	fn[43] = loc:11E
+	fn[44] = loc:49A
+	fn[45] = loc:11E
+	fn[46] = loc:11E
+	fn[47] = loc:11E
+	fn[48] = loc:11E
+	fn[49] = loc:11E
+	fn[50] = loc:11E
+	fn[51] = loc:11E
+	fn[52] = loc:11E
+	fn[53] = loc:11E
+	fn[54] = loc:11E
+	fn[55] = loc:11E
+	fn[56] = loc:523
+	fn[57] = loc:11E
+	fn[58] = loc:11E
+	fn[59] = loc:424
+	fn[60] = loc:11E
+	fn[61] = loc:11E
+	fn[62] = loc:11E
+	fn[63] = loc:11E
+	fn[64] = loc:11E
+	fn[65] = loc:11E
+	fn[66] = loc:11E
+	fn[67] = loc:11E
+	fn[68] = loc:11E
+	fn[69] = loc:11E
+	fn[70] = loc:11E
+	fn[71] = loc:11E
+	fn[72] = loc:5A3
+	fn[73] = loc:5A3
+	fn[74] = loc:661
+	fn[75] = loc:661
+	fn[76] = loc:661
+	fn[77] = loc:661
+	fn[78] = loc:661
+	fn[79] = loc:661
+	fn[80] = loc:661
+	fn[81] = loc:661
+	fn[82] = loc:661
+	fn[83] = loc:661
+	fn[84] = loc:661
+	fn[85] = loc:661
+	fn[86] = loc:661
+	fn[87] = loc:661
+	fn[88] = loc:661
+	fn[89] = loc:661
+	fn[90] = loc:661
+	fn[91] = loc:661
+	fn[92] = loc:661
+	fn[93] = loc:661
+	fn[94] = loc:661
+	fn[95] = loc:661
+	fn[96] = loc:661
+	fn[97] = loc:661
+	fn[98] = loc:661
+	fn[99] = loc:661
+	fn[100] = loc:661
+	fn[101] = loc:6DF
+	fn[102] = loc:76D
+	fn[103] = loc:83F
+	fn[104] = loc:919
+	fn[105] = loc:919
+	fn[106] = loc:919
+	fn[107] = loc:9A7
+	fn[108] = loc:9A7
+	fn[109] = loc:9A7
+	fn[110] = loc:A35
+	fn[111] = loc:A35
+	fn[112] = loc:ACB
+	fn[113] = loc:ACB
+	fn[114] = loc:ACB
+	fn[115] = loc:ACB
+	fn[116] = loc:ACB
+	fn[117] = loc:ACB
+	fn[118] = loc:ACB
+	fn[119] = loc:ACB
+	fn[120] = loc:ACB
+	fn[121] = loc:ACB
+	fn[122] = loc:ACB
+	fn[123] = loc:ACB
+	fn[124] = loc:B61
+	fn[125] = loc:BED
+	fn[126] = loc:C93
+	fn[127] = loc:661
+	fn[128] = loc:661
+	fn[129] = loc:6DF
+	fn[130] = loc:76D
+	fn[131] = loc:76D
+	fn[132] = loc:76D
+	fn[133] = loc:6DF
+	fn[134] = loc:661
+	fn[135] = loc:661
+	fn[136] = loc:661
+	fn[137] = loc:661
+
+Func:
+	OP_6D(61076D07)
+	Sleep(661)
+loc:11E:
+	id = "AF-90-01"
+	ResetLoopTarget
+	OP_78(1)
+	AddEff(0, "battle/it002_00.eff")
+	OP_78(0)
+	OP_31(12, 12C)
+	Sleep(12C)
+	Update
+	SeEx(EB, 0)
+loc:148:
+	LoopTargetBegin(loc:159)
+	BeginThread(FE, 1, loc:177, 0)
+	Sleep(64)
+	Update
+	LoopTargetEnd
+	Goto(loc:148)
+loc:159:
+	Sleep(3E8)
+	Update
+	SeEx(8, 0)
+	ResetLoopTarget
+loc:162:
+	LoopTargetBegin(loc:172)
+	WaitThread(FE, 1)
+	Damage(FE)
+	Sleep(64)
+	Update
+	LoopTargetEnd
+	Goto(loc:162)
+loc:172:
+	WaitEff(0)
+	ReleaseEff(0)
+	Return
+loc:177:
+	ShowEff(FF, FF, 0, 0, 0, 64, 0, 0, 0, 0, 3E8, 3E8, 3E8, FF)
+	Return
+loc:196:
+	id = "AF-A7-01"
+	ResetLoopTarget
+	SortTarget(0)
+	OP_78(1)
+	AddEff(0, "battle/it003_00.eff")
+	OP_78(0)
+	OP_95
+	SetAngleTarget(FF, "", 0)
+	MoveAngle(64, 1E14)
+	Sleep(7D)
+	Update
+	ShowEff(FF, F9, 0, 5, 0, C8, 0, 0, 0, 0, 3E8, 3E8, 3E8, FF)
+	OP_95
+	SetAngleTarget(FC, "", 0)
+	MoveAngle(12C, 1E14)
+	Sleep(64)
+	Update
+	SeEx(B8, 0)
+	Sleep(C8)
+	Update
+loc:1F8:
+	LoopTargetBegin(loc:230)
+	ShakeScreen(64, 64, 64, 64)
+	ShowEff(FF, FE, 13, 0, 0, 2BC, 0, 0, 0, 0, 3E8, 3E8, 3E8, FF)
+	DamageAnime(FE, 1, 32)
+	Damage(FE)
+	Sleep(32)
+	Update
+	LoopTargetEnd
+	Goto(loc:1F8)
+loc:230:
+	OP_8F(0)
+	WaitEff(0)
+	ReleaseEff(0)
+	Return
+loc:237:
+	id = "AF-AA-01"
+	ResetLoopTarget
+	OP_78(1)
+	AddEff(0, "battle/it004_00.eff")
+	OP_78(0)
+	OP_95
+	SetAngleTarget(FF, "", 0)
+	MoveAngle(64, 1E14)
+	Sleep(7D)
+	Update
+	ShowEff(FF, FF, 0, 5, 0, 0, 0, 0, 0, 0, 3E8, 3E8, 3E8, FF)
+	Sleep(FA)
+	Update
+	SeEx(C3, 0)
+	OP_95
+	SetAngleTarget(FC, "", 0)
+	MoveAngle(1F4, 1E14)
+	Sleep(41A)
+	Update
+	SeEx(C4, 0)
+	ShakeScreen(C8, C8, C8, 2BC)
+	Sleep(C8)
+	Update
+loc:2A8:
+	LoopTargetBegin(loc:2D7)
+	ShowEff(FF, F8, 13, 0, 0, 0, 0, 0, 0, 0, 3E8, 3E8, 3E8, FF)
+	DamageAnime(FE, 1, 32)
+	Damage(FE)
+	Sleep(32)
+	Update
+	LoopTargetEnd
+	Goto(loc:2A8)
+loc:2D7:
+	OP_8F(0)
+	WaitEff(0)
+	ReleaseEff(0)
+	Return
+loc:2DE:
+	id = "AF-AD-01"
+	ResetLoopTarget
+	OP_78(1)
+	AddEff(0, "battle/it005_00.eff")
+	OP_78(0)
+	OP_95
+	SetAngleTarget(FF, "", 0)
+	MoveAngle(64, 1E14)
+	Sleep(7D)
+	Update
+	ShowEff(FF, FF, 0, 5, 0, 0, 15E, 0, 0, 0, 3E8, 3E8, 3E8, FF)
+	SeEx(F2, 0)
+	OP_95
+	SetAngleTarget(FC, "", 0)
+	MoveAngle(1F4, 1E14)
+	Sleep(2EE)
+	Update
+	SeEx(F3, 0)
+	ShakeScreen(64, 64, 64, 2BC)
+loc:347:
+	LoopTargetBegin(loc:376)
+	ShowEff(FF, F8, 13, 0, 0, 0, 0, 0, 0, 0, 3E8, 3E8, 3E8, FF)
+	DamageAnime(FE, 1, 32)
+	Damage(FE)
+	Sleep(32)
+	Update
+	LoopTargetEnd
+	Goto(loc:347)
+loc:376:
+	OP_8F(0)
+	WaitEff(0)
+	ReleaseEff(0)
+	Return
+loc:37D:
+	id = "AF-B9-01"
+	ResetLoopTarget
+	OP_78(1)
+	AddEff(0, "battle/it006_00.eff")
+	OP_78(0)
+	OP_95
+	SetAngleTarget(FF, "", 0)
+	MoveAngle(64, 1E14)
+	Sleep(7D)
+	Update
+	ShowEff(FF, FF, 0, 5, 0, 0, 0, 0, 0, 0, 3E8, 3E8, 3E8, FF)
+	Sleep(FA)
+	Update
+	SeEx(F1, 0)
+	OP_95
+	SetAngleTarget(FC, "", 0)
+	MoveAngle(1F4, 1E14)
+	Sleep(3B6)
+	Update
+	SeEx(C4, 0)
+	ShakeScreen(64, 64, 64, 4B0)
+	Sleep(2BC)
+	Update
+loc:3EE:
+	LoopTargetBegin(loc:41D)
+	ShowEff(FF, F8, 13, 0, 0, 0, 0, 0, 0, 0, 3E8, 3E8, 3E8, FF)
+	DamageAnime(FE, 1, 32)
+	Damage(FE)
+	Sleep(32)
+	Update
+	LoopTargetEnd
+	Goto(loc:3EE)
+loc:41D:
+	OP_8F(0)
+	WaitEff(0)
+	ReleaseEff(0)
+	Return
+loc:424:
+	id = "AF-CB-01"
+	ResetLoopTarget
+	OP_78(1)
+	AddEff(0, "battle\mg121_00.eff")
+	OP_78(0)
+	OP_31(12, 12C)
+	Sleep(12C)
+	Update
+	SeEx(EE, 0)
+loc:44E:
+	LoopTargetBegin(loc:45F)
+	BeginThread(FE, 1, loc:47B, 0)
+	Sleep(64)
+	Update
+	LoopTargetEnd
+	Goto(loc:44E)
+loc:45F:
+	Sleep(258)
+	Update
+	ResetLoopTarget
+loc:464:
+	LoopTargetBegin(loc:474)
+	WaitThread(FE, 1)
+	Damage(FE)
+	Sleep(64)
+	Update
+	LoopTargetEnd
+	Goto(loc:464)
+loc:474:
+	OP_8F(0)
+	WaitEff(0)
+	ReleaseEff(0)
+	Return
+loc:47B:
+	ShowEff(FF, FF, 0, 0, 0, 0, 0, 0, 0, 0, 3E8, 3E8, 3E8, FF)
+	Return
+loc:49A:
+	id = "AF-BC-01"
+	ResetLoopTarget
+	OP_78(1)
+	AddEff(0, "battle/it002_00.eff")
+	OP_78(0)
+	OP_31(12, 12C)
+	Sleep(12C)
+	Update
+	SeEx(EB, 0)
+loc:4C4:
+	LoopTargetBegin(loc:4D5)
+	BeginThread(FE, 1, loc:177, 0)
+	Sleep(64)
+	Update
+	LoopTargetEnd
+	Goto(loc:4C4)
+loc:4D5:
+	Sleep(3E8)
+	Update
+	SeEx(8, 0)
+	ResetLoopTarget
+loc:4DE:
+	LoopTargetBegin(loc:4EE)
+	WaitThread(FE, 1)
+	Damage(FE)
+	Sleep(64)
+	Update
+	LoopTargetEnd
+	Goto(loc:4DE)
+loc:4EE:
+	WaitEff(0)
+	ReleaseEff(0)
+	Return
+	ShowEff(FF, FF, 0, 0, 0, 0, 0, 0, 0, 0, 3E8, 3E8, 3E8, FF)
+	Return
+	SeEx(AD, 0)
+	SeEx(B6, 0)
+	Sleep(7D0)
+	Update
+	SeEx(BE, 0)
+	Return
+loc:523:
+	id = "AF-C8-01"
+	ResetLoopTarget
+	OP_78(1)
+	AddEff(0, "battle/it002_00.eff")
+	OP_78(0)
+	OP_31(12, 12C)
+	Sleep(12C)
+	Update
+	SeEx(EB, 0)
+loc:54D:
+	LoopTargetBegin(loc:55E)
+	BeginThread(FE, 1, loc:177, 0)
+	Sleep(64)
+	Update
+	LoopTargetEnd
+	Goto(loc:54D)
+loc:55E:
+	Sleep(3E8)
+	Update
+	SeEx(8, 0)
+	ResetLoopTarget
+loc:567:
+	LoopTargetBegin(loc:577)
+	WaitThread(FE, 1)
+	Damage(FE)
+	Sleep(64)
+	Update
+	LoopTargetEnd
+	Goto(loc:567)
+loc:577:
+	WaitEff(0)
+	ReleaseEff(0)
+	Return
+	ShowEff(FF, FF, 0, 0, 0, 0, 0, 0, 0, 0, 3E8, 3E8, 3E8, FF)
+	SeEx(B5, 0)
+	Sleep(7D0)
+	Update
+	Return
+loc:5A3:
+	id = "AF-D8-01"
+	ResetLoopTarget
+	OP_78(1)
+	AddEff(0, "battle/it008_00.eff")
+	AddEff(1, "battle/it002_00.eff")
+	OP_78(0)
+	Sleep(7D)
+	Update
+	OP_95
+	SetAngleTarget(FC, "", 0)
+loc:5E0:
+	LoopTargetBegin(loc:614)
+	ShowEff(FF, FF, 0, 5, 0, 0, 0, 0, 0, 0, 3E8, 3E8, 3E8, FF)
+	BeginThread(FE, 1, loc:62E, 0)
+	Sleep(FA)
+	Update
+	MoveAngle(384, 1E14)
+	LoopTargetEnd
+	Goto(loc:5E0)
+loc:614:
+	ResetLoopTarget
+loc:615:
+	LoopTargetBegin(loc:625)
+	WaitThread(FE, 1)
+	Damage(FE)
+	Sleep(64)
+	Update
+	LoopTargetEnd
+	Goto(loc:615)
+loc:625:
+	WaitEff(0)
+	WaitEff(1)
+	ReleaseEff(0)
+	ReleaseEff(1)
+	Return
+loc:62E:
+	Sleep(FA)
+	Update
+	SeEx(F1, 0)
+	Sleep(3B6)
+	Update
+	ShowEff(FF, FF, 1, 0, 0, 64, 0, 0, 0, 0, 3E8, 3E8, 3E8, FF)
+	SeEx(EB, 0)
+	Sleep(1F4)
+	Update
+	Return
+loc:661:
+	id = "AF-F4-01"
+	ResetLoopTarget
+	OP_78(1)
+	AddEff(0, "battle/mg128_00.eff")
+	OP_78(0)
+	OP_31(12, 12C)
+	Sleep(12C)
+	Update
+	SeEx(E2, 0)
+loc:68B:
+	LoopTargetBegin(loc:69C)
+	BeginThread(FE, 1, loc:6BC, 0)
+	Sleep(64)
+	Update
+	LoopTargetEnd
+	Goto(loc:68B)
+loc:69C:
+	Sleep(5DC)
+	Update
+	SeEx(8, 0)
+	ResetLoopTarget
+loc:6A5:
+	LoopTargetBegin(loc:6B5)
+	WaitThread(FE, 1)
+	Damage(FE)
+	Sleep(64)
+	Update
+	LoopTargetEnd
+	Goto(loc:6A5)
+loc:6B5:
+	OP_8F(0)
+	WaitEff(0)
+	ReleaseEff(0)
+	Return
+loc:6BC:
+	ShowEff(FF, FF, 0, 0, 0, 0, 0, 0, 0, 0, 3E8, 3E8, 3E8, FF)
+	Sleep(514)
+	Update
+	Return
+loc:6DF:
+	id = "AF-F5-01"
+	ResetLoopTarget
+	OP_78(1)
+	AddEff(0, "battle/mg129_00.eff")
+	OP_78(0)
+	OP_31(12, 12C)
+	Sleep(12C)
+	Update
+	BeginThread(FF, 2, loc:760, 0)
+loc:70B:
+	LoopTargetBegin(loc:71C)
+	BeginThread(FE, 1, loc:73D, 0)
+	Sleep(64)
+	Update
+	LoopTargetEnd
+	Goto(loc:70B)
+loc:71C:
+	Sleep(7D0)
+	Update
+	SeEx(8, 0)
+	ResetLoopTarget
+loc:725:
+	LoopTargetBegin(loc:735)
+	WaitThread(FE, 1)
+	Damage(FE)
+	Sleep(64)
+	Update
+	LoopTargetEnd
+	Goto(loc:725)
+loc:735:
+	WaitThread(FF, 2)
+	WaitEff(0)
+	ReleaseEff(0)
+	Return
+loc:73D:
+	ShowEff(FF, F9, 0, 0, 0, 0, 0, 0, 0, 0, 3E8, 3E8, 3E8, FF)
+	Sleep(708)
+	Update
+	Return
+loc:760:
+	SeEx(E2, 0)
+	Sleep(96)
+	Update
+	SeEx(DD, 0)
+	Return
+loc:76D:
+	id = "AF-F6-01"
+	ResetLoopTarget
+	OP_78(1)
+	AddEff(0, "battle/mg130_00.eff")
+	AddEff(1, "battle/mg130_01.eff")
+	OP_78(0)
+	OP_31(12, 12C)
+	Sleep(12C)
+	Update
+	BeginThread(FF, 2, loc:82A, 0)
+loc:7AF:
+	LoopTargetBegin(loc:7C0)
+	BeginThread(FE, 1, loc:7E5, 0)
+	Sleep(64)
+	Update
+	LoopTargetEnd
+	Goto(loc:7AF)
+loc:7C0:
+	Sleep(7D0)
+	Update
+	SeEx(8, 0)
+	ResetLoopTarget
+loc:7C9:
+	LoopTargetBegin(loc:7D9)
+	WaitThread(FE, 1)
+	Damage(FE)
+	Sleep(64)
+	Update
+	LoopTargetEnd
+	Goto(loc:7C9)
+loc:7D9:
+	WaitThread(FF, 2)
+	WaitEff(0)
+	WaitEff(1)
+	ReleaseEff(0)
+	ReleaseEff(1)
+	Return
+loc:7E5:
+	ShowEff(FF, F9, 0, 0, 0, 0, 0, 0, 0, 0, 3E8, 3E8, 3E8, FF)
+	Sleep(460)
+	Update
+	ShowEff(FF, F9, 1, 0, 0, 0, 0, 0, 0, 0, 3E8, 3E8, 3E8, FF)
+	Sleep(1F4)
+	Update
+	Return
+loc:82A:
+	SeEx(E3, 0)
+	Sleep(190)
+	Update
+	SeEx(E2, 0)
+	Sleep(2BC)
+	Update
+	SeEx(E4, 0)
+	Return
+loc:83F:
+	id = "AF-F7-01"
+	ResetLoopTarget
+	OP_78(1)
+	AddEff(0, "battle/mg130_00.eff")
+	AddEff(0, "battle\mg135_00.eff")
+	OP_78(0)
+	OP_31(12, 12C)
+	Sleep(12C)
+	Update
+	BeginThread(FF, 2, loc:8FC, 0)
+loc:881:
+	LoopTargetBegin(loc:892)
+	BeginThread(FE, 1, loc:8B7, 0)
+	Sleep(64)
+	Update
+	LoopTargetEnd
+	Goto(loc:881)
+loc:892:
+	Sleep(7D0)
+	Update
+	SeEx(8, 0)
+	ResetLoopTarget
+loc:89B:
+	LoopTargetBegin(loc:8AB)
+	WaitThread(FE, 1)
+	Damage(FE)
+	Sleep(64)
+	Update
+	LoopTargetEnd
+	Goto(loc:89B)
+loc:8AB:
+	WaitThread(FF, 2)
+	WaitEff(0)
+	WaitEff(1)
+	ReleaseEff(0)
+	ReleaseEff(1)
+	Return
+loc:8B7:
+	ShowEff(FF, FF, 0, 0, 0, 64, 0, 0, 0, 0, 3E8, 3E8, 3E8, FF)
+	Sleep(460)
+	Update
+	ShowEff(FF, FF, 1, 0, 0, 64, 0, 0, 0, 0, 3E8, 3E8, 3E8, FF)
+	Sleep(1F4)
+	Update
+	Return
+loc:8FC:
+	SeEx(B7, 0)
+	Sleep(64)
+	Update
+	SeEx(E2, 0)
+	Sleep(41A)
+	Update
+	SeEx(B2, 0)
+	Sleep(96)
+	Update
+	SeEx(E4, 0)
+	Return
+loc:919:
+	id = "AF-F8-01"
+	ResetLoopTarget
+	OP_78(1)
+	AddEff(0, "battle/it000_00.eff")
+	OP_78(0)
+	OP_31(12, 12C)
+	Sleep(12C)
+	Update
+	BeginThread(FF, 2, loc:992, 0)
+loc:945:
+	LoopTargetBegin(loc:956)
+	BeginThread(FE, 1, loc:973, 0)
+	Sleep(64)
+	Update
+	LoopTargetEnd
+	Goto(loc:945)
+loc:956:
+	Sleep(3E8)
+	Update
+	ResetLoopTarget
+loc:95B:
+	LoopTargetBegin(loc:96B)
+	WaitThread(FE, 1)
+	Damage(FE)
+	Sleep(64)
+	Update
+	LoopTargetEnd
+	Goto(loc:95B)
+loc:96B:
+	WaitThread(FF, 2)
+	WaitEff(0)
+	ReleaseEff(0)
+	Return
+loc:973:
+	ShowEff(FF, FF, 0, 0, 0, 0, 0, 0, 0, 0, 3E8, 3E8, 3E8, FF)
+	Return
+loc:992:
+	Sleep(64)
+	Update
+	SeEx(225, 0)
+	Sleep(C8)
+	Update
+	SeEx(F0, 0)
+	Sleep(12C)
+	Update
+	Return
+loc:9A7:
+	id = "AF-FB-01"
+	ResetLoopTarget
+	OP_78(1)
+	AddEff(0, "battle/mg134_00.eff")
+	OP_78(0)
+	OP_31(12, 12C)
+	Sleep(12C)
+	Update
+	BeginThread(FF, 2, loc:A24, 0)
+loc:9D3:
+	LoopTargetBegin(loc:9E4)
+	BeginThread(FE, 1, loc:A05, 0)
+	Sleep(64)
+	Update
+	LoopTargetEnd
+	Goto(loc:9D3)
+loc:9E4:
+	Sleep(BB8)
+	Update
+	SeEx(8, 0)
+	ResetLoopTarget
+loc:9ED:
+	LoopTargetBegin(loc:9FD)
+	WaitThread(FE, 1)
+	Damage(FE)
+	Sleep(64)
+	Update
+	LoopTargetEnd
+	Goto(loc:9ED)
+loc:9FD:
+	WaitThread(FF, 2)
+	WaitEff(0)
+	ReleaseEff(0)
+	Return
+loc:A05:
+	ShowEff(FF, F9, 0, 0, 0, 0, 0, 0, 0, 0, 3E8, 3E8, 3E8, FF)
+	Return
+loc:A24:
+	SeEx(B7, 0)
+	SeEx(BA, 0)
+	Sleep(708)
+	Update
+	SeEx(E6, 0)
+	Return
+loc:A35:
+	id = "AF-FC-01"
+	ResetLoopTarget
+	OP_78(1)
+	AddEff(0, "battle/mg133_00.eff")
+	OP_78(0)
+	OP_31(12, 12C)
+	Sleep(12C)
+	Update
+	BeginThread(FF, 2, loc:ABA, 0)
+loc:A61:
+	LoopTargetBegin(loc:A72)
+	BeginThread(FE, 1, loc:A93, 0)
+	Sleep(64)
+	Update
+	LoopTargetEnd
+	Goto(loc:A61)
+loc:A72:
+	Sleep(BB8)
+	Update
+	SeEx(8, 0)
+	ResetLoopTarget
+loc:A7B:
+	LoopTargetBegin(loc:A8B)
+	WaitThread(FE, 1)
+	Damage(FE)
+	Sleep(64)
+	Update
+	LoopTargetEnd
+	Goto(loc:A7B)
+loc:A8B:
+	WaitThread(FF, 2)
+	WaitEff(0)
+	ReleaseEff(0)
+	Return
+loc:A93:
+	ShowEff(FF, F9, 0, 0, 0, 0, 0, 0, 0, 0, 3E8, 3E8, 3E8, FF)
+	Sleep(898)
+	Update
+	SeEx(8, 0)
+	Return
+loc:ABA:
+	SeEx(225, 0)
+	SeEx(E3, 0)
+	Sleep(834)
+	Update
+	SeEx(E6, 0)
+	Return
+loc:ACB:
+	id = "AF-00-02"
+	ResetLoopTarget
+	OP_78(1)
+	AddEff(0, "battle/it001_00.eff")
+	OP_78(0)
+	OP_31(12, 12C)
+	Sleep(12C)
+	Update
+	BeginThread(FF, 2, loc:B44, 0)
+loc:AF7:
+	LoopTargetBegin(loc:B08)
+	BeginThread(FE, 1, loc:B25, 0)
+	Sleep(64)
+	Update
+	LoopTargetEnd
+	Goto(loc:AF7)
+loc:B08:
+	Sleep(7D0)
+	Update
+	ResetLoopTarget
+loc:B0D:
+	LoopTargetBegin(loc:B1D)
+	WaitThread(FE, 1)
+	Damage(FE)
+	Sleep(64)
+	Update
+	LoopTargetEnd
+	Goto(loc:B0D)
+loc:B1D:
+	WaitThread(FF, 2)
+	WaitEff(0)
+	ReleaseEff(0)
+	Return
+loc:B25:
+	ShowEff(FF, FF, 0, 0, 0, 64, 0, 0, 0, 0, 3E8, 3E8, 3E8, FF)
+	Return
+loc:B44:
+	Sleep(96)
+	Update
+	SeEx(225, 0)
+	Sleep(226)
+	Update
+	SeEx(BB, 0)
+	Sleep(1C2)
+	Update
+	SeEx(EB, 0)
+	Sleep(2EE)
+	Update
+	Return
+loc:B61:
+	id = "AF-0C-02"
+	ResetLoopTarget
+	OP_78(1)
+	AddEff(0, "battle/it010_00.eff")
+	OP_78(0)
+	Sleep(7D)
+	Update
+	OP_95
+	SetAngleTarget(FC, "", 0)
+	MoveAngle(12C, 1E14)
+	Sleep(258)
+	Update
+	ShowEff(FF, F4, 0, 0, 0, 64, 0, 0, 0, 0, 3E8, 3E8, 3E8, 2)
+	SeEx(227, 0)
+	Sleep(1F4)
+	Update
+	SeEx(FC, 0)
+	Blur(0, BBFFFFFF, 0, 1, 5)
+	Sleep(28A)
+	Update
+	SeEx(AE, 0)
+	OP_8D(44, 0, 0, 0, 0)
+	OP_80(3E8)
+	Sleep(3E8)
+	Update
+	WaitEff(0)
+	ReleaseEff(0)
+	Return
+loc:BED:
+	id = "AF-0D-02"
+	ResetLoopTarget
+	OP_78(1)
+	AddEff(0, "battle/it009_00.eff")
+	OP_78(0)
+	Sleep(7D)
+	Update
+	ShowEff(FF, FF, 0, 0, 0, 0, 0, 0, 0, 0, 3E8, 3E8, 3E8, FF)
+	OP_95
+	Sleep(FA)
+	Update
+	SeEx(F1, 0)
+	KeepAngle(FB, 0, 0, 0, 28A)
+	Sleep(28A)
+	Update
+	ShakeScreen(64, 64, 64, 64)
+	SeEx(22C, 0)
+	Sleep(7D0)
+	Update
+	WaitEff(0)
+	ReleaseEff(0)
+	OP_8D(4E, 0, 0, 0, 0)
+	Rand(11, 1, 1, loc:C7D)
+	Goto(loc:C92)
+loc:C7D:
+	TalkText(FD, "沒有效果……", 7D0)
+	OP_29(FF)
+loc:C92:
+	Return
+loc:C93:
+	id = "AF-0E-02"
+	OP_6D(8000)
+	ResetLoopTarget
+	OP_78(1)
+	AddEff(0, "battle/cr002001.eff")
+	OP_78(0)
+	Sleep(7D)
+	Update
+	OP_5A(0, D002, 7)
+	OP_95
+	SetAngleTarget(FE, "", 0)
+	MoveAngle(64, 1E14)
+	ShowEff(FF, F8, 0, 0, 0, 0, 0, 0, 0, 0, 320, 320, 320, FF)
+	Sleep(320)
+	Update
+	Sleep(3E8)
+	Update
+	Sleep(3E8)
+	Update
+	Rand(27, 1, 0, loc:D12)
+	TalkText(FD, "取得情報！", 7D0)
+	OP_29(FF)
+	Goto(loc:D12)
+loc:D12:
+	Damage(FE)
+	Sleep(3E8)
+	Update
+	OP_5B(3E8)
+	WaitEff(0)
+	ReleaseEff(0)
+	OP_6E(8000)
+	OP_8D(4A, 0, 0, 0, 0)
+	Return

@@ -1,0 +1,1726 @@
+calmare zero_k scena
+scena:
+	name "r0000" "r0000" "r0000_1"
+	town town[94]
+	bgm bgm[204]
+	flags 0
+	item_use fn[0,255]
+	unk 255 255
+
+// NB: the first five sepith sets are seemingly junk data.
+sepith[0] 100 1 2 3 70 89 99 0
+sepith[1] 100 5 1 5 1 5 1 0
+sepith[2] 100 5 1 5 1 5 1 0
+sepith[3] 100 5 0 5 0 5 0 0
+sepith[4] 100 5 0 5 0 5 0 0
+
+at_roll[0]: none 100
+at_roll[1]: none 100; hp10 5; hp50 1; ep10 5; ep50 1; cp10 5; cp50 1; unk1 5; unk2 5; unk6 1
+at_roll[2]: none 100; hp10 5; hp50 1; ep10 5; ep50 1; cp10 5; cp50 1; unk1 5; unk2 5; unk3 5; unk4 5; unk5 5; unk6 5
+at_roll[3]: none 100; hp10 5; ep10 5; cp10 5; unk1 2; unk2 5; unk6 2
+at_roll[4]: none 100; hp10 5; ep10 5; cp10 5; unk2 5
+
+placement[0]:
+	pos 7 9 180deg
+	pos 11 10 180deg
+	pos 10 13 180deg
+	pos 5 11 180deg
+	pos 12 12 180deg
+	pos 4 14 180deg
+	pos 14 14 180deg
+	pos 2 13 180deg
+
+placement[1]:
+	pos 8 8 180deg
+	pos 5 9 180deg
+	pos 11 10 180deg
+	pos 6 12 180deg
+	pos 10 12 180deg
+	pos 13 13 180deg
+	pos 4 14 180deg
+	pos 8 14 180deg
+
+placement[2]:
+	pos 7 8 180deg
+	pos 9 9 180deg
+	pos 6 10 180deg
+	pos 10 11 180deg
+	pos 6 12 180deg
+	pos 10 13 180deg
+	pos 7 14 180deg
+	pos 9 15 180deg
+
+placement[3]:
+	pos 8 8 180deg
+	pos 6 9 180deg
+	pos 10 10 180deg
+	pos 7 11 180deg
+	pos 10 12 180deg
+	pos 8 14 180deg
+	pos 10 14 180deg
+	pos 6 15 180deg
+
+placement[4]:
+	pos 7 4 0deg
+	pos 10 11 225deg
+	pos 4 7 90deg
+	pos 12 7 270deg
+	pos 4 11 135deg
+	pos 11 4 315deg
+	pos 7 12 180deg
+	pos 5 5 45deg
+
+fn[0]:
+	TextSetName ""
+	TextMessage null {
+		{color 5}發現物品了。{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	var[0] = random
+	if flag[495] && system[4] >= 7 && random % 4 == 0:
+		Call fn[1,5]
+	elif flag[494] && system[4] >= 4 && random % 4 == 0:
+		Call fn[1,4]
+	elif flag[493] && random % 4 == 0:
+		Call fn[1,3]
+	else:
+		Call fn[1,2]
+	Return
+
+fn[1]:
+	var[0] = random
+	if system[4] >= 7 && random % 2 == 0:
+		Call fn[1,5]
+	elif system[4] >= 4 && random % 2 == 0:
+		Call fn[1,4]
+	else:
+		Call fn[1,3]
+	Return
+
+fn[2]:
+	if (random & 3) == 0:
+		switch var[0] % 10:
+			case 0:
+				TextSetPos -1 -1 -1 -1
+				FadeOut 300ms 0x00000000 100
+				SoundPlay sound[17] 0 100 0
+				TextSetName ""
+				TextMessage name[742] {
+					{color 0}已撿拾{item[512]}{color 0}。{wait}
+				}
+				TextWait
+				TextClose 0
+				FadeIn 300ms 0x00000000
+				ItemAdd item[512] 1
+				TextSetPos -1 280 60 3
+				break
+			case 1:
+				TextSetPos -1 -1 -1 -1
+				FadeOut 300ms 0x00000000 100
+				SoundPlay sound[17] 0 100 0
+				TextSetName ""
+				TextMessage name[742] {
+					{color 0}已撿拾{item[513]}{color 0}。{wait}
+				}
+				TextWait
+				TextClose 0
+				FadeIn 300ms 0x00000000
+				ItemAdd item[513] 1
+				TextSetPos -1 280 60 3
+				break
+			case 2:
+				TextSetPos -1 -1 -1 -1
+				FadeOut 300ms 0x00000000 100
+				SoundPlay sound[17] 0 100 0
+				TextSetName ""
+				TextMessage name[742] {
+					{color 0}已撿拾{item[514]}{color 0}。{wait}
+				}
+				TextWait
+				TextClose 0
+				FadeIn 300ms 0x00000000
+				ItemAdd item[514] 1
+				TextSetPos -1 280 60 3
+				break
+			case 3:
+				TextSetPos -1 -1 -1 -1
+				FadeOut 300ms 0x00000000 100
+				SoundPlay sound[17] 0 100 0
+				TextSetName ""
+				TextMessage name[742] {
+					{color 0}已撿拾{item[515]}{color 0}。{wait}
+				}
+				TextWait
+				TextClose 0
+				FadeIn 300ms 0x00000000
+				ItemAdd item[515] 1
+				TextSetPos -1 280 60 3
+				break
+			case 4:
+				TextSetPos -1 -1 -1 -1
+				FadeOut 300ms 0x00000000 100
+				SoundPlay sound[17] 0 100 0
+				TextSetName ""
+				TextMessage name[742] {
+					{color 0}已撿拾{item[516]}{color 0}。{wait}
+				}
+				TextWait
+				TextClose 0
+				FadeIn 300ms 0x00000000
+				ItemAdd item[516] 1
+				TextSetPos -1 280 60 3
+				break
+			case 5:
+				TextSetPos -1 -1 -1 -1
+				FadeOut 300ms 0x00000000 100
+				SoundPlay sound[17] 0 100 0
+				TextSetName ""
+				TextMessage name[742] {
+					{color 0}已撿拾{item[517]}{color 0}。{wait}
+				}
+				TextWait
+				TextClose 0
+				FadeIn 300ms 0x00000000
+				ItemAdd item[517] 1
+				TextSetPos -1 280 60 3
+				break
+			case 6:
+				TextSetPos -1 -1 -1 -1
+				FadeOut 300ms 0x00000000 100
+				SoundPlay sound[17] 0 100 0
+				TextSetName ""
+				TextMessage name[742] {
+					{color 0}已撿拾{item[518]}{color 0}。{wait}
+				}
+				TextWait
+				TextClose 0
+				FadeIn 300ms 0x00000000
+				ItemAdd item[518] 1
+				TextSetPos -1 280 60 3
+				break
+			case 7:
+				TextSetPos -1 -1 -1 -1
+				FadeOut 300ms 0x00000000 100
+				SoundPlay sound[17] 0 100 0
+				TextSetName ""
+				TextMessage name[742] {
+					{color 0}已撿拾{item[519]}{color 0}。{wait}
+				}
+				TextWait
+				TextClose 0
+				FadeIn 300ms 0x00000000
+				ItemAdd item[519] 1
+				TextSetPos -1 280 60 3
+				break
+			case 8:
+				TextSetPos -1 -1 -1 -1
+				FadeOut 300ms 0x00000000 100
+				SoundPlay sound[17] 0 100 0
+				TextSetName ""
+				TextMessage name[742] {
+					{color 0}已撿拾{item[520]}{color 0}。{wait}
+				}
+				TextWait
+				TextClose 0
+				FadeIn 300ms 0x00000000
+				ItemAdd item[520] 1
+				TextSetPos -1 280 60 3
+				break
+			case 9:
+				TextSetPos -1 -1 -1 -1
+				FadeOut 300ms 0x00000000 100
+				SoundPlay sound[17] 0 100 0
+				TextSetName ""
+				TextMessage name[742] {
+					{color 0}已撿拾{item[521]}{color 0}。{wait}
+				}
+				TextWait
+				TextClose 0
+				FadeIn 300ms 0x00000000
+				ItemAdd item[521] 1
+				TextSetPos -1 280 60 3
+				break
+			default:
+				TextSetPos -1 -1 -1 -1
+				FadeOut 300ms 0x00000000 100
+				SoundPlay sound[17] 0 100 0
+				TextSetName ""
+				TextMessage name[742] {
+					{color 0}已撿拾{item[500]}{color 0}。{wait}
+				}
+				TextWait
+				TextClose 0
+				FadeIn 300ms 0x00000000
+				ItemAdd item[500] 1
+				TextSetPos -1 280 60 3
+				break
+	else:
+		switch var[0] % 31:
+			case 0:
+			case 18:
+			case 25:
+				TextSetPos -1 -1 -1 -1
+				FadeOut 300ms 0x00000000 100
+				SoundPlay sound[17] 0 100 0
+				TextSetName ""
+				TextMessage name[742] {
+					{color 0}撿拾了１０個#56I{color 2}地之耀晶石{color 0}。{wait}
+				}
+				TextWait
+				TextClose 0
+				FadeIn 300ms 0x00000000
+				SepithAdd 0 10
+				TextSetPos -1 280 60 3
+				break
+			case 1:
+			case 19:
+			case 26:
+				TextSetPos -1 -1 -1 -1
+				FadeOut 300ms 0x00000000 100
+				SoundPlay sound[17] 0 100 0
+				TextSetName ""
+				TextMessage name[742] {
+					{color 0}撿拾了１０個#57I{color 2}水之耀晶石{color 0}。{wait}
+				}
+				TextWait
+				TextClose 0
+				FadeIn 300ms 0x00000000
+				SepithAdd 1 10
+				TextSetPos -1 280 60 3
+				break
+			case 2:
+			case 20:
+			case 27:
+				TextSetPos -1 -1 -1 -1
+				FadeOut 300ms 0x00000000 100
+				SoundPlay sound[17] 0 100 0
+				TextSetName ""
+				TextMessage name[742] {
+					{color 0}撿拾了１０個#58I{color 2}火之耀晶石{color 0}。{wait}
+				}
+				TextWait
+				TextClose 0
+				FadeIn 300ms 0x00000000
+				SepithAdd 2 10
+				TextSetPos -1 280 60 3
+				break
+			case 3:
+			case 21:
+			case 28:
+				TextSetPos -1 -1 -1 -1
+				FadeOut 300ms 0x00000000 100
+				SoundPlay sound[17] 0 100 0
+				TextSetName ""
+				TextMessage name[742] {
+					{color 0}撿拾了１０個#59I{color 2}風之耀晶石{color 0}。{wait}
+				}
+				TextWait
+				TextClose 0
+				FadeIn 300ms 0x00000000
+				SepithAdd 3 10
+				TextSetPos -1 280 60 3
+				break
+			case 4:
+			case 22:
+			case 29:
+				TextSetPos -1 -1 -1 -1
+				FadeOut 300ms 0x00000000 100
+				SoundPlay sound[17] 0 100 0
+				TextSetName ""
+				TextMessage name[742] {
+					{color 0}撿拾了１０個#60I{color 2}時之耀晶石{color 0}。{wait}
+				}
+				TextWait
+				TextClose 0
+				FadeIn 300ms 0x00000000
+				SepithAdd 4 10
+				TextSetPos -1 280 60 3
+				break
+			case 5:
+			case 23:
+			case 30:
+				TextSetPos -1 -1 -1 -1
+				FadeOut 300ms 0x00000000 100
+				SoundPlay sound[17] 0 100 0
+				TextSetName ""
+				TextMessage name[742] {
+					{color 0}撿拾了１０個#61I{color 2}空之耀晶石{color 0}。{wait}
+				}
+				TextWait
+				TextClose 0
+				FadeIn 300ms 0x00000000
+				SepithAdd 5 10
+				TextSetPos -1 280 60 3
+				break
+			case 6:
+			case 24:
+			case 31:
+				TextSetPos -1 -1 -1 -1
+				FadeOut 300ms 0x00000000 100
+				SoundPlay sound[17] 0 100 0
+				TextSetName ""
+				TextMessage name[742] {
+					{color 0}撿拾了１０個#62I{color 2}幻之耀晶石{color 0}。{wait}
+				}
+				TextWait
+				TextClose 0
+				FadeIn 300ms 0x00000000
+				SepithAdd 6 10
+				TextSetPos -1 280 60 3
+				break
+			case 7:
+				TextSetPos -1 -1 -1 -1
+				FadeOut 300ms 0x00000000 100
+				SoundPlay sound[17] 0 100 0
+				TextSetName ""
+				TextMessage name[742] {
+					{color 0}撿拾了２個{item[390]}{color 0}。{wait}
+				}
+				TextWait
+				TextClose 0
+				FadeIn 300ms 0x00000000
+				ItemAdd item[390] 2
+				TextSetPos -1 280 60 3
+				break
+			case 8:
+				TextSetPos -1 -1 -1 -1
+				FadeOut 300ms 0x00000000 100
+				SoundPlay sound[17] 0 100 0
+				TextSetName ""
+				TextMessage name[742] {
+					{color 0}撿拾了２個{item[391]}{color 0}。{wait}
+				}
+				TextWait
+				TextClose 0
+				FadeIn 300ms 0x00000000
+				ItemAdd item[391] 2
+				TextSetPos -1 280 60 3
+				break
+			case 9:
+				TextSetPos -1 -1 -1 -1
+				FadeOut 300ms 0x00000000 100
+				SoundPlay sound[17] 0 100 0
+				TextSetName ""
+				TextMessage name[742] {
+					{color 0}撿拾了２個{item[392]}{color 0}。{wait}
+				}
+				TextWait
+				TextClose 0
+				FadeIn 300ms 0x00000000
+				ItemAdd item[392] 2
+				TextSetPos -1 280 60 3
+				break
+			case 10:
+				TextSetPos -1 -1 -1 -1
+				FadeOut 300ms 0x00000000 100
+				SoundPlay sound[17] 0 100 0
+				TextSetName ""
+				TextMessage name[742] {
+					{color 0}撿拾了２個{item[393]}{color 0}。{wait}
+				}
+				TextWait
+				TextClose 0
+				FadeIn 300ms 0x00000000
+				ItemAdd item[393] 2
+				TextSetPos -1 280 60 3
+				break
+			case 11:
+				TextSetPos -1 -1 -1 -1
+				FadeOut 300ms 0x00000000 100
+				SoundPlay sound[17] 0 100 0
+				TextSetName ""
+				TextMessage name[742] {
+					{color 0}撿拾了２個{item[300]}{color 0}。{wait}
+				}
+				TextWait
+				TextClose 0
+				FadeIn 300ms 0x00000000
+				ItemAdd item[300] 2
+				TextSetPos -1 280 60 3
+				break
+			case 12:
+				TextSetPos -1 -1 -1 -1
+				FadeOut 300ms 0x00000000 100
+				SoundPlay sound[17] 0 100 0
+				TextSetName ""
+				TextMessage name[742] {
+					{color 0}撿拾了２個{item[301]}{color 0}。{wait}
+				}
+				TextWait
+				TextClose 0
+				FadeIn 300ms 0x00000000
+				ItemAdd item[301] 2
+				TextSetPos -1 280 60 3
+				break
+			case 13:
+				TextSetPos -1 -1 -1 -1
+				FadeOut 300ms 0x00000000 100
+				SoundPlay sound[17] 0 100 0
+				TextSetName ""
+				TextMessage name[742] {
+					{color 0}撿拾了２個{item[302]}{color 0}。{wait}
+				}
+				TextWait
+				TextClose 0
+				FadeIn 300ms 0x00000000
+				ItemAdd item[302] 2
+				TextSetPos -1 280 60 3
+				break
+			case 14:
+				TextSetPos -1 -1 -1 -1
+				FadeOut 300ms 0x00000000 100
+				SoundPlay sound[17] 0 100 0
+				TextSetName ""
+				TextMessage name[742] {
+					{color 0}撿拾了２個{item[303]}{color 0}。{wait}
+				}
+				TextWait
+				TextClose 0
+				FadeIn 300ms 0x00000000
+				ItemAdd item[303] 2
+				TextSetPos -1 280 60 3
+				break
+			case 15:
+				TextSetPos -1 -1 -1 -1
+				FadeOut 300ms 0x00000000 100
+				SoundPlay sound[17] 0 100 0
+				TextSetName ""
+				TextMessage name[742] {
+					{color 0}撿拾了２個{item[304]}{color 0}。{wait}
+				}
+				TextWait
+				TextClose 0
+				FadeIn 300ms 0x00000000
+				ItemAdd item[304] 2
+				TextSetPos -1 280 60 3
+				break
+			case 16:
+				TextSetPos -1 -1 -1 -1
+				FadeOut 300ms 0x00000000 100
+				SoundPlay sound[17] 0 100 0
+				TextSetName ""
+				TextMessage name[742] {
+					{color 0}撿拾了２個{item[305]}{color 0}。{wait}
+				}
+				TextWait
+				TextClose 0
+				FadeIn 300ms 0x00000000
+				ItemAdd item[305] 2
+				TextSetPos -1 280 60 3
+				break
+			case 17:
+				TextSetPos -1 -1 -1 -1
+				FadeOut 300ms 0x00000000 100
+				SoundPlay sound[17] 0 100 0
+				TextSetName ""
+				TextMessage name[742] {
+					{color 0}撿拾了２個{item[306]}{color 0}。{wait}
+				}
+				TextWait
+				TextClose 0
+				FadeIn 300ms 0x00000000
+				ItemAdd item[306] 2
+				TextSetPos -1 280 60 3
+				break
+			default:
+				TextSetPos -1 -1 -1 -1
+				FadeOut 300ms 0x00000000 100
+				SoundPlay sound[17] 0 100 0
+				TextSetName ""
+				TextMessage name[742] {
+					{color 0}已撿拾{item[500]}{color 0}。{wait}
+				}
+				TextWait
+				TextClose 0
+				FadeIn 300ms 0x00000000
+				ItemAdd item[500] 1
+				TextSetPos -1 280 60 3
+				break
+	Return
+
+fn[3]:
+	switch var[0] % 23:
+		case 0:
+			TextSetPos -1 -1 -1 -1
+			FadeOut 300ms 0x00000000 100
+			SoundPlay sound[17] 0 100 0
+			TextSetName ""
+			TextMessage name[742] {
+				{color 0}已撿拾{item[100]}{color 0}。{wait}
+			}
+			TextWait
+			TextClose 0
+			FadeIn 300ms 0x00000000
+			ItemAdd item[100] 1
+			TextSetPos -1 280 60 3
+			break
+		case 1:
+			TextSetPos -1 -1 -1 -1
+			FadeOut 300ms 0x00000000 100
+			SoundPlay sound[17] 0 100 0
+			TextSetName ""
+			TextMessage name[742] {
+				{color 0}已撿拾{item[104]}{color 0}。{wait}
+			}
+			TextWait
+			TextClose 0
+			FadeIn 300ms 0x00000000
+			ItemAdd item[104] 1
+			TextSetPos -1 280 60 3
+			break
+		case 2:
+			TextSetPos -1 -1 -1 -1
+			FadeOut 300ms 0x00000000 100
+			SoundPlay sound[17] 0 100 0
+			TextSetName ""
+			TextMessage name[742] {
+				{color 0}已撿拾{item[108]}{color 0}。{wait}
+			}
+			TextWait
+			TextClose 0
+			FadeIn 300ms 0x00000000
+			ItemAdd item[108] 1
+			TextSetPos -1 280 60 3
+			break
+		case 3:
+			TextSetPos -1 -1 -1 -1
+			FadeOut 300ms 0x00000000 100
+			SoundPlay sound[17] 0 100 0
+			TextSetName ""
+			TextMessage name[742] {
+				{color 0}已撿拾{item[112]}{color 0}。{wait}
+			}
+			TextWait
+			TextClose 0
+			FadeIn 300ms 0x00000000
+			ItemAdd item[112] 1
+			TextSetPos -1 280 60 3
+			break
+		case 4:
+			TextSetPos -1 -1 -1 -1
+			FadeOut 300ms 0x00000000 100
+			SoundPlay sound[17] 0 100 0
+			TextSetName ""
+			TextMessage name[742] {
+				{color 0}已撿拾{item[116]}{color 0}。{wait}
+			}
+			TextWait
+			TextClose 0
+			FadeIn 300ms 0x00000000
+			ItemAdd item[116] 1
+			TextSetPos -1 280 60 3
+			break
+		case 5:
+			TextSetPos -1 -1 -1 -1
+			FadeOut 300ms 0x00000000 100
+			SoundPlay sound[17] 0 100 0
+			TextSetName ""
+			TextMessage name[742] {
+				{color 0}已撿拾{item[120]}{color 0}。{wait}
+			}
+			TextWait
+			TextClose 0
+			FadeIn 300ms 0x00000000
+			ItemAdd item[120] 1
+			TextSetPos -1 280 60 3
+			break
+		case 6:
+			TextSetPos -1 -1 -1 -1
+			FadeOut 300ms 0x00000000 100
+			SoundPlay sound[17] 0 100 0
+			TextSetName ""
+			TextMessage name[742] {
+				{color 0}已撿拾{item[124]}{color 0}。{wait}
+			}
+			TextWait
+			TextClose 0
+			FadeIn 300ms 0x00000000
+			ItemAdd item[124] 1
+			TextSetPos -1 280 60 3
+			break
+		case 7:
+			TextSetPos -1 -1 -1 -1
+			FadeOut 300ms 0x00000000 100
+			SoundPlay sound[17] 0 100 0
+			TextSetName ""
+			TextMessage name[742] {
+				{color 0}已撿拾{item[128]}{color 0}。{wait}
+			}
+			TextWait
+			TextClose 0
+			FadeIn 300ms 0x00000000
+			ItemAdd item[128] 1
+			TextSetPos -1 280 60 3
+			break
+		case 8:
+			TextSetPos -1 -1 -1 -1
+			FadeOut 300ms 0x00000000 100
+			SoundPlay sound[17] 0 100 0
+			TextSetName ""
+			TextMessage name[742] {
+				{color 0}已撿拾{item[132]}{color 0}。{wait}
+			}
+			TextWait
+			TextClose 0
+			FadeIn 300ms 0x00000000
+			ItemAdd item[132] 1
+			TextSetPos -1 280 60 3
+			break
+		case 9:
+			TextSetPos -1 -1 -1 -1
+			FadeOut 300ms 0x00000000 100
+			SoundPlay sound[17] 0 100 0
+			TextSetName ""
+			TextMessage name[742] {
+				{color 0}已撿拾{item[136]}{color 0}。{wait}
+			}
+			TextWait
+			TextClose 0
+			FadeIn 300ms 0x00000000
+			ItemAdd item[136] 1
+			TextSetPos -1 280 60 3
+			break
+		case 10:
+			TextSetPos -1 -1 -1 -1
+			FadeOut 300ms 0x00000000 100
+			SoundPlay sound[17] 0 100 0
+			TextSetName ""
+			TextMessage name[742] {
+				{color 0}已撿拾{item[140]}{color 0}。{wait}
+			}
+			TextWait
+			TextClose 0
+			FadeIn 300ms 0x00000000
+			ItemAdd item[140] 1
+			TextSetPos -1 280 60 3
+			break
+		case 11:
+			TextSetPos -1 -1 -1 -1
+			FadeOut 300ms 0x00000000 100
+			SoundPlay sound[17] 0 100 0
+			TextSetName ""
+			TextMessage name[742] {
+				{color 0}已撿拾{item[146]}{color 0}。{wait}
+			}
+			TextWait
+			TextClose 0
+			FadeIn 300ms 0x00000000
+			ItemAdd item[146] 1
+			TextSetPos -1 280 60 3
+			break
+		case 12:
+			TextSetPos -1 -1 -1 -1
+			FadeOut 300ms 0x00000000 100
+			SoundPlay sound[17] 0 100 0
+			TextSetName ""
+			TextMessage name[742] {
+				{color 0}已撿拾{item[60]}{color 0}。{wait}
+			}
+			TextWait
+			TextClose 0
+			FadeIn 300ms 0x00000000
+			ItemAdd item[60] 1
+			TextSetPos -1 280 60 3
+			break
+		case 13:
+			TextSetPos -1 -1 -1 -1
+			FadeOut 300ms 0x00000000 100
+			SoundPlay sound[17] 0 100 0
+			TextSetName ""
+			TextMessage name[742] {
+				{color 0}已撿拾{item[61]}{color 0}。{wait}
+			}
+			TextWait
+			TextClose 0
+			FadeIn 300ms 0x00000000
+			ItemAdd item[61] 1
+			TextSetPos -1 280 60 3
+			break
+		case 14:
+			TextSetPos -1 -1 -1 -1
+			FadeOut 300ms 0x00000000 100
+			SoundPlay sound[17] 0 100 0
+			TextSetName ""
+			TextMessage name[742] {
+				{color 0}已撿拾{item[62]}{color 0}。{wait}
+			}
+			TextWait
+			TextClose 0
+			FadeIn 300ms 0x00000000
+			ItemAdd item[62] 1
+			TextSetPos -1 280 60 3
+			break
+		case 15:
+			TextSetPos -1 -1 -1 -1
+			FadeOut 300ms 0x00000000 100
+			SoundPlay sound[17] 0 100 0
+			TextSetName ""
+			TextMessage name[742] {
+				{color 0}已撿拾{item[63]}{color 0}。{wait}
+			}
+			TextWait
+			TextClose 0
+			FadeIn 300ms 0x00000000
+			ItemAdd item[63] 1
+			TextSetPos -1 280 60 3
+			break
+		case 16:
+			TextSetPos -1 -1 -1 -1
+			FadeOut 300ms 0x00000000 100
+			SoundPlay sound[17] 0 100 0
+			TextSetName ""
+			TextMessage name[742] {
+				{color 0}已撿拾{item[64]}{color 0}。{wait}
+			}
+			TextWait
+			TextClose 0
+			FadeIn 300ms 0x00000000
+			ItemAdd item[64] 1
+			TextSetPos -1 280 60 3
+			break
+		case 17:
+			TextSetPos -1 -1 -1 -1
+			FadeOut 300ms 0x00000000 100
+			SoundPlay sound[17] 0 100 0
+			TextSetName ""
+			TextMessage name[742] {
+				{color 0}已撿拾{item[65]}{color 0}。{wait}
+			}
+			TextWait
+			TextClose 0
+			FadeIn 300ms 0x00000000
+			ItemAdd item[65] 1
+			TextSetPos -1 280 60 3
+			break
+		case 18:
+			TextSetPos -1 -1 -1 -1
+			FadeOut 300ms 0x00000000 100
+			SoundPlay sound[17] 0 100 0
+			TextSetName ""
+			TextMessage name[742] {
+				{color 0}已撿拾{item[66]}{color 0}。{wait}
+			}
+			TextWait
+			TextClose 0
+			FadeIn 300ms 0x00000000
+			ItemAdd item[66] 1
+			TextSetPos -1 280 60 3
+			break
+		case 19:
+			TextSetPos -1 -1 -1 -1
+			FadeOut 300ms 0x00000000 100
+			SoundPlay sound[17] 0 100 0
+			TextSetName ""
+			TextMessage name[742] {
+				{color 0}已撿拾{item[67]}{color 0}。{wait}
+			}
+			TextWait
+			TextClose 0
+			FadeIn 300ms 0x00000000
+			ItemAdd item[67] 1
+			TextSetPos -1 280 60 3
+			break
+		case 20:
+			TextSetPos -1 -1 -1 -1
+			FadeOut 300ms 0x00000000 100
+			SoundPlay sound[17] 0 100 0
+			TextSetName ""
+			TextMessage name[742] {
+				{color 0}已撿拾{item[68]}{color 0}。{wait}
+			}
+			TextWait
+			TextClose 0
+			FadeIn 300ms 0x00000000
+			ItemAdd item[68] 1
+			TextSetPos -1 280 60 3
+			break
+		case 21:
+			TextSetPos -1 -1 -1 -1
+			FadeOut 300ms 0x00000000 100
+			SoundPlay sound[17] 0 100 0
+			TextSetName ""
+			TextMessage name[742] {
+				{color 0}已撿拾{item[69]}{color 0}。{wait}
+			}
+			TextWait
+			TextClose 0
+			FadeIn 300ms 0x00000000
+			ItemAdd item[69] 1
+			TextSetPos -1 280 60 3
+			break
+		case 22:
+			TextSetPos -1 -1 -1 -1
+			FadeOut 300ms 0x00000000 100
+			SoundPlay sound[17] 0 100 0
+			TextSetName ""
+			TextMessage name[742] {
+				{color 0}已撿拾{item[70]}{color 0}。{wait}
+			}
+			TextWait
+			TextClose 0
+			FadeIn 300ms 0x00000000
+			ItemAdd item[70] 1
+			TextSetPos -1 280 60 3
+			break
+	Return
+
+fn[4]:
+	switch var[0] % 12:
+		case 0:
+			TextSetPos -1 -1 -1 -1
+			FadeOut 300ms 0x00000000 100
+			SoundPlay sound[17] 0 100 0
+			TextSetName ""
+			TextMessage name[742] {
+				{color 0}已撿拾{item[101]}{color 0}。{wait}
+			}
+			TextWait
+			TextClose 0
+			FadeIn 300ms 0x00000000
+			ItemAdd item[101] 1
+			TextSetPos -1 280 60 3
+			break
+		case 1:
+			TextSetPos -1 -1 -1 -1
+			FadeOut 300ms 0x00000000 100
+			SoundPlay sound[17] 0 100 0
+			TextSetName ""
+			TextMessage name[742] {
+				{color 0}已撿拾{item[105]}{color 0}。{wait}
+			}
+			TextWait
+			TextClose 0
+			FadeIn 300ms 0x00000000
+			ItemAdd item[105] 1
+			TextSetPos -1 280 60 3
+			break
+		case 2:
+			TextSetPos -1 -1 -1 -1
+			FadeOut 300ms 0x00000000 100
+			SoundPlay sound[17] 0 100 0
+			TextSetName ""
+			TextMessage name[742] {
+				{color 0}已撿拾{item[109]}{color 0}。{wait}
+			}
+			TextWait
+			TextClose 0
+			FadeIn 300ms 0x00000000
+			ItemAdd item[109] 1
+			TextSetPos -1 280 60 3
+			break
+		case 3:
+			TextSetPos -1 -1 -1 -1
+			FadeOut 300ms 0x00000000 100
+			SoundPlay sound[17] 0 100 0
+			TextSetName ""
+			TextMessage name[742] {
+				{color 0}已撿拾{item[113]}{color 0}。{wait}
+			}
+			TextWait
+			TextClose 0
+			FadeIn 300ms 0x00000000
+			ItemAdd item[113] 1
+			TextSetPos -1 280 60 3
+			break
+		case 4:
+			TextSetPos -1 -1 -1 -1
+			FadeOut 300ms 0x00000000 100
+			SoundPlay sound[17] 0 100 0
+			TextSetName ""
+			TextMessage name[742] {
+				{color 0}已撿拾{item[117]}{color 0}。{wait}
+			}
+			TextWait
+			TextClose 0
+			FadeIn 300ms 0x00000000
+			ItemAdd item[117] 1
+			TextSetPos -1 280 60 3
+			break
+		case 5:
+			TextSetPos -1 -1 -1 -1
+			FadeOut 300ms 0x00000000 100
+			SoundPlay sound[17] 0 100 0
+			TextSetName ""
+			TextMessage name[742] {
+				{color 0}已撿拾{item[121]}{color 0}。{wait}
+			}
+			TextWait
+			TextClose 0
+			FadeIn 300ms 0x00000000
+			ItemAdd item[121] 1
+			TextSetPos -1 280 60 3
+			break
+		case 6:
+			TextSetPos -1 -1 -1 -1
+			FadeOut 300ms 0x00000000 100
+			SoundPlay sound[17] 0 100 0
+			TextSetName ""
+			TextMessage name[742] {
+				{color 0}已撿拾{item[125]}{color 0}。{wait}
+			}
+			TextWait
+			TextClose 0
+			FadeIn 300ms 0x00000000
+			ItemAdd item[125] 1
+			TextSetPos -1 280 60 3
+			break
+		case 7:
+			TextSetPos -1 -1 -1 -1
+			FadeOut 300ms 0x00000000 100
+			SoundPlay sound[17] 0 100 0
+			TextSetName ""
+			TextMessage name[742] {
+				{color 0}已撿拾{item[129]}{color 0}。{wait}
+			}
+			TextWait
+			TextClose 0
+			FadeIn 300ms 0x00000000
+			ItemAdd item[129] 1
+			TextSetPos -1 280 60 3
+			break
+		case 8:
+			TextSetPos -1 -1 -1 -1
+			FadeOut 300ms 0x00000000 100
+			SoundPlay sound[17] 0 100 0
+			TextSetName ""
+			TextMessage name[742] {
+				{color 0}已撿拾{item[133]}{color 0}。{wait}
+			}
+			TextWait
+			TextClose 0
+			FadeIn 300ms 0x00000000
+			ItemAdd item[133] 1
+			TextSetPos -1 280 60 3
+			break
+		case 9:
+			TextSetPos -1 -1 -1 -1
+			FadeOut 300ms 0x00000000 100
+			SoundPlay sound[17] 0 100 0
+			TextSetName ""
+			TextMessage name[742] {
+				{color 0}已撿拾{item[137]}{color 0}。{wait}
+			}
+			TextWait
+			TextClose 0
+			FadeIn 300ms 0x00000000
+			ItemAdd item[137] 1
+			TextSetPos -1 280 60 3
+			break
+		case 10:
+			TextSetPos -1 -1 -1 -1
+			FadeOut 300ms 0x00000000 100
+			SoundPlay sound[17] 0 100 0
+			TextSetName ""
+			TextMessage name[742] {
+				{color 0}已撿拾{item[141]}{color 0}。{wait}
+			}
+			TextWait
+			TextClose 0
+			FadeIn 300ms 0x00000000
+			ItemAdd item[141] 1
+			TextSetPos -1 280 60 3
+			break
+		case 11:
+			TextSetPos -1 -1 -1 -1
+			FadeOut 300ms 0x00000000 100
+			SoundPlay sound[17] 0 100 0
+			TextSetName ""
+			TextMessage name[742] {
+				{color 0}已撿拾{item[147]}{color 0}。{wait}
+			}
+			TextWait
+			TextClose 0
+			FadeIn 300ms 0x00000000
+			ItemAdd item[147] 1
+			TextSetPos -1 280 60 3
+			break
+	Return
+
+fn[5]:
+	switch var[0] % 10:
+		case 0:
+			TextSetPos -1 -1 -1 -1
+			FadeOut 300ms 0x00000000 100
+			SoundPlay sound[17] 0 100 0
+			TextSetName ""
+			TextMessage name[742] {
+				{color 0}已撿拾{item[102]}{color 0}。{wait}
+			}
+			TextWait
+			TextClose 0
+			FadeIn 300ms 0x00000000
+			ItemAdd item[102] 1
+			TextSetPos -1 280 60 3
+			break
+		case 1:
+			TextSetPos -1 -1 -1 -1
+			FadeOut 300ms 0x00000000 100
+			SoundPlay sound[17] 0 100 0
+			TextSetName ""
+			TextMessage name[742] {
+				{color 0}已撿拾{item[106]}{color 0}。{wait}
+			}
+			TextWait
+			TextClose 0
+			FadeIn 300ms 0x00000000
+			ItemAdd item[106] 1
+			TextSetPos -1 280 60 3
+			break
+		case 2:
+			TextSetPos -1 -1 -1 -1
+			FadeOut 300ms 0x00000000 100
+			SoundPlay sound[17] 0 100 0
+			TextSetName ""
+			TextMessage name[742] {
+				{color 0}已撿拾{item[110]}{color 0}。{wait}
+			}
+			TextWait
+			TextClose 0
+			FadeIn 300ms 0x00000000
+			ItemAdd item[110] 1
+			TextSetPos -1 280 60 3
+			break
+		case 3:
+			TextSetPos -1 -1 -1 -1
+			FadeOut 300ms 0x00000000 100
+			SoundPlay sound[17] 0 100 0
+			TextSetName ""
+			TextMessage name[742] {
+				{color 0}已撿拾{item[114]}{color 0}。{wait}
+			}
+			TextWait
+			TextClose 0
+			FadeIn 300ms 0x00000000
+			ItemAdd item[114] 1
+			TextSetPos -1 280 60 3
+			break
+		case 4:
+			TextSetPos -1 -1 -1 -1
+			FadeOut 300ms 0x00000000 100
+			SoundPlay sound[17] 0 100 0
+			TextSetName ""
+			TextMessage name[742] {
+				{color 0}已撿拾{item[118]}{color 0}。{wait}
+			}
+			TextWait
+			TextClose 0
+			FadeIn 300ms 0x00000000
+			ItemAdd item[118] 1
+			TextSetPos -1 280 60 3
+			break
+		case 5:
+			TextSetPos -1 -1 -1 -1
+			FadeOut 300ms 0x00000000 100
+			SoundPlay sound[17] 0 100 0
+			TextSetName ""
+			TextMessage name[742] {
+				{color 0}已撿拾{item[122]}{color 0}。{wait}
+			}
+			TextWait
+			TextClose 0
+			FadeIn 300ms 0x00000000
+			ItemAdd item[122] 1
+			TextSetPos -1 280 60 3
+			break
+		case 6:
+			TextSetPos -1 -1 -1 -1
+			FadeOut 300ms 0x00000000 100
+			SoundPlay sound[17] 0 100 0
+			TextSetName ""
+			TextMessage name[742] {
+				{color 0}已撿拾{item[126]}{color 0}。{wait}
+			}
+			TextWait
+			TextClose 0
+			FadeIn 300ms 0x00000000
+			ItemAdd item[126] 1
+			TextSetPos -1 280 60 3
+			break
+		case 7:
+			TextSetPos -1 -1 -1 -1
+			FadeOut 300ms 0x00000000 100
+			SoundPlay sound[17] 0 100 0
+			TextSetName ""
+			TextMessage name[742] {
+				{color 0}已撿拾{item[130]}{color 0}。{wait}
+			}
+			TextWait
+			TextClose 0
+			FadeIn 300ms 0x00000000
+			ItemAdd item[130] 1
+			TextSetPos -1 280 60 3
+			break
+		case 8:
+			TextSetPos -1 -1 -1 -1
+			FadeOut 300ms 0x00000000 100
+			SoundPlay sound[17] 0 100 0
+			TextSetName ""
+			TextMessage name[742] {
+				{color 0}已撿拾{item[138]}{color 0}。{wait}
+			}
+			TextWait
+			TextClose 0
+			FadeIn 300ms 0x00000000
+			ItemAdd item[138] 1
+			TextSetPos -1 280 60 3
+			break
+		case 9:
+			TextSetPos -1 -1 -1 -1
+			FadeOut 300ms 0x00000000 100
+			SoundPlay sound[17] 0 100 0
+			TextSetName ""
+			TextMessage name[742] {
+				{color 0}已撿拾{item[148]}{color 0}。{wait}
+			}
+			TextWait
+			TextClose 0
+			FadeIn 300ms 0x00000000
+			ItemAdd item[148] 1
+			TextSetPos -1 280 60 3
+			break
+	Return
+
+fn[6]:
+	SystemFlagsSet 0x00000080
+	SystemFlagsSet 0x08000000
+	TextStart null
+	TextSetName ""
+	TextMessage null {
+		{color 5}發現物品了。{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	var[0] = random
+	Call fn[1,7]
+	TextEnd null
+	SystemFlagsUnset 0x00000080
+	SystemFlagsUnset 0x08000000
+	Return
+
+fn[7]:
+	if random % 2 == 0:
+		switch var[0] % 12:
+			case 0:
+				TextSetPos -1 -1 -1 -1
+				FadeOut 300ms 0x00000000 100
+				SoundPlay sound[17] 0 100 0
+				TextSetName ""
+				TextMessage name[742] {
+					{color 0}撿拾了２個{item[390]}{color 0}。{wait}
+				}
+				TextWait
+				TextClose 0
+				FadeIn 300ms 0x00000000
+				ItemAdd item[390] 2
+				TextSetPos -1 280 60 3
+				break
+			case 1:
+				TextSetPos -1 -1 -1 -1
+				FadeOut 300ms 0x00000000 100
+				SoundPlay sound[17] 0 100 0
+				TextSetName ""
+				TextMessage name[742] {
+					{color 0}撿拾了２個{item[391]}{color 0}。{wait}
+				}
+				TextWait
+				TextClose 0
+				FadeIn 300ms 0x00000000
+				ItemAdd item[391] 2
+				TextSetPos -1 280 60 3
+				break
+			case 2:
+				TextSetPos -1 -1 -1 -1
+				FadeOut 300ms 0x00000000 100
+				SoundPlay sound[17] 0 100 0
+				TextSetName ""
+				TextMessage name[742] {
+					{color 0}撿拾了２個{item[392]}{color 0}。{wait}
+				}
+				TextWait
+				TextClose 0
+				FadeIn 300ms 0x00000000
+				ItemAdd item[392] 2
+				TextSetPos -1 280 60 3
+				break
+			case 3:
+				TextSetPos -1 -1 -1 -1
+				FadeOut 300ms 0x00000000 100
+				SoundPlay sound[17] 0 100 0
+				TextSetName ""
+				TextMessage name[742] {
+					{color 0}撿拾了２個{item[393]}{color 0}。{wait}
+				}
+				TextWait
+				TextClose 0
+				FadeIn 300ms 0x00000000
+				ItemAdd item[393] 2
+				TextSetPos -1 280 60 3
+				break
+			case 4:
+				TextSetPos -1 -1 -1 -1
+				FadeOut 300ms 0x00000000 100
+				SoundPlay sound[17] 0 100 0
+				TextSetName ""
+				TextMessage name[742] {
+					{color 0}撿拾了２個{item[394]}{color 0}。{wait}
+				}
+				TextWait
+				TextClose 0
+				FadeIn 300ms 0x00000000
+				ItemAdd item[394] 2
+				TextSetPos -1 280 60 3
+				break
+			case 5:
+				TextSetPos -1 -1 -1 -1
+				FadeOut 300ms 0x00000000 100
+				SoundPlay sound[17] 0 100 0
+				TextSetName ""
+				TextMessage name[742] {
+					{color 0}已撿拾{item[300]}{color 0}。{wait}
+				}
+				TextWait
+				TextClose 0
+				FadeIn 300ms 0x00000000
+				ItemAdd item[300] 1
+				TextSetPos -1 280 60 3
+				break
+			case 6:
+				TextSetPos -1 -1 -1 -1
+				FadeOut 300ms 0x00000000 100
+				SoundPlay sound[17] 0 100 0
+				TextSetName ""
+				TextMessage name[742] {
+					{color 0}已撿拾{item[301]}{color 0}。{wait}
+				}
+				TextWait
+				TextClose 0
+				FadeIn 300ms 0x00000000
+				ItemAdd item[301] 1
+				TextSetPos -1 280 60 3
+				break
+			case 7:
+				TextSetPos -1 -1 -1 -1
+				FadeOut 300ms 0x00000000 100
+				SoundPlay sound[17] 0 100 0
+				TextSetName ""
+				TextMessage name[742] {
+					{color 0}已撿拾{item[302]}{color 0}。{wait}
+				}
+				TextWait
+				TextClose 0
+				FadeIn 300ms 0x00000000
+				ItemAdd item[302] 1
+				TextSetPos -1 280 60 3
+				break
+			case 8:
+				TextSetPos -1 -1 -1 -1
+				FadeOut 300ms 0x00000000 100
+				SoundPlay sound[17] 0 100 0
+				TextSetName ""
+				TextMessage name[742] {
+					{color 0}已撿拾{item[303]}{color 0}。{wait}
+				}
+				TextWait
+				TextClose 0
+				FadeIn 300ms 0x00000000
+				ItemAdd item[303] 1
+				TextSetPos -1 280 60 3
+				break
+			case 9:
+				TextSetPos -1 -1 -1 -1
+				FadeOut 300ms 0x00000000 100
+				SoundPlay sound[17] 0 100 0
+				TextSetName ""
+				TextMessage name[742] {
+					{color 0}已撿拾{item[304]}{color 0}。{wait}
+				}
+				TextWait
+				TextClose 0
+				FadeIn 300ms 0x00000000
+				ItemAdd item[304] 1
+				TextSetPos -1 280 60 3
+				break
+			case 10:
+				TextSetPos -1 -1 -1 -1
+				FadeOut 300ms 0x00000000 100
+				SoundPlay sound[17] 0 100 0
+				TextSetName ""
+				TextMessage name[742] {
+					{color 0}已撿拾{item[305]}{color 0}。{wait}
+				}
+				TextWait
+				TextClose 0
+				FadeIn 300ms 0x00000000
+				ItemAdd item[305] 1
+				TextSetPos -1 280 60 3
+				break
+			case 11:
+				TextSetPos -1 -1 -1 -1
+				FadeOut 300ms 0x00000000 100
+				SoundPlay sound[17] 0 100 0
+				TextSetName ""
+				TextMessage name[742] {
+					{color 0}已撿拾{item[306]}{color 0}。{wait}
+				}
+				TextWait
+				TextClose 0
+				FadeIn 300ms 0x00000000
+				ItemAdd item[306] 1
+				TextSetPos -1 280 60 3
+				break
+			default:
+				TextSetPos -1 -1 -1 -1
+				FadeOut 300ms 0x00000000 100
+				SoundPlay sound[17] 0 100 0
+				TextSetName ""
+				TextMessage name[742] {
+					{color 0}已撿拾{item[300]}{color 0}。{wait}
+				}
+				TextWait
+				TextClose 0
+				FadeIn 300ms 0x00000000
+				ItemAdd item[300] 1
+				TextSetPos -1 280 60 3
+				break
+	else:
+		switch var[0] % 23:
+			case 0:
+				TextSetPos -1 -1 -1 -1
+				FadeOut 300ms 0x00000000 100
+				SoundPlay sound[17] 0 100 0
+				TextSetName ""
+				TextMessage name[742] {
+					{color 0}撿拾了２個{item[308]}{color 0}。{wait}
+				}
+				TextWait
+				TextClose 0
+				FadeIn 300ms 0x00000000
+				ItemAdd item[308] 2
+				TextSetPos -1 280 60 3
+				break
+			case 1:
+				TextSetPos -1 -1 -1 -1
+				FadeOut 300ms 0x00000000 100
+				SoundPlay sound[17] 0 100 0
+				TextSetName ""
+				TextMessage name[742] {
+					{color 0}撿拾了２個{item[309]}{color 0}。{wait}
+				}
+				TextWait
+				TextClose 0
+				FadeIn 300ms 0x00000000
+				ItemAdd item[309] 2
+				TextSetPos -1 280 60 3
+				break
+			case 2:
+				TextSetPos -1 -1 -1 -1
+				FadeOut 300ms 0x00000000 100
+				SoundPlay sound[17] 0 100 0
+				TextSetName ""
+				TextMessage name[742] {
+					{color 0}撿拾了２個{item[310]}{color 0}。{wait}
+				}
+				TextWait
+				TextClose 0
+				FadeIn 300ms 0x00000000
+				ItemAdd item[310] 2
+				TextSetPos -1 280 60 3
+				break
+			case 3:
+				TextSetPos -1 -1 -1 -1
+				FadeOut 300ms 0x00000000 100
+				SoundPlay sound[17] 0 100 0
+				TextSetName ""
+				TextMessage name[742] {
+					{color 0}撿拾了５個{item[311]}{color 0}。{wait}
+				}
+				TextWait
+				TextClose 0
+				FadeIn 300ms 0x00000000
+				ItemAdd item[311] 5
+				TextSetPos -1 280 60 3
+				break
+			case 4:
+				TextSetPos -1 -1 -1 -1
+				FadeOut 300ms 0x00000000 100
+				SoundPlay sound[17] 0 100 0
+				TextSetName ""
+				TextMessage name[742] {
+					{color 0}撿拾了５個{item[312]}{color 0}。{wait}
+				}
+				TextWait
+				TextClose 0
+				FadeIn 300ms 0x00000000
+				ItemAdd item[312] 5
+				TextSetPos -1 280 60 3
+				break
+			case 5:
+				TextSetPos -1 -1 -1 -1
+				FadeOut 300ms 0x00000000 100
+				SoundPlay sound[17] 0 100 0
+				TextSetName ""
+				TextMessage name[742] {
+					{color 0}撿拾了８個{item[313]}{color 0}。{wait}
+				}
+				TextWait
+				TextClose 0
+				FadeIn 300ms 0x00000000
+				ItemAdd item[313] 8
+				TextSetPos -1 280 60 3
+				break
+			case 6:
+				TextSetPos -1 -1 -1 -1
+				FadeOut 300ms 0x00000000 100
+				SoundPlay sound[17] 0 100 0
+				TextSetName ""
+				TextMessage name[742] {
+					{color 0}撿拾了８個{item[314]}{color 0}。{wait}
+				}
+				TextWait
+				TextClose 0
+				FadeIn 300ms 0x00000000
+				ItemAdd item[314] 8
+				TextSetPos -1 280 60 3
+				break
+			case 7:
+				TextSetPos -1 -1 -1 -1
+				FadeOut 300ms 0x00000000 100
+				SoundPlay sound[17] 0 100 0
+				TextSetName ""
+				TextMessage name[742] {
+					{color 0}撿拾了８個{item[315]}{color 0}。{wait}
+				}
+				TextWait
+				TextClose 0
+				FadeIn 300ms 0x00000000
+				ItemAdd item[315] 8
+				TextSetPos -1 280 60 3
+				break
+			case 8:
+				TextSetPos -1 -1 -1 -1
+				FadeOut 300ms 0x00000000 100
+				SoundPlay sound[17] 0 100 0
+				TextSetName ""
+				TextMessage name[742] {
+					{color 0}撿拾了８個{item[316]}{color 0}。{wait}
+				}
+				TextWait
+				TextClose 0
+				FadeIn 300ms 0x00000000
+				ItemAdd item[316] 8
+				TextSetPos -1 280 60 3
+				break
+			case 9:
+				TextSetPos -1 -1 -1 -1
+				FadeOut 300ms 0x00000000 100
+				SoundPlay sound[17] 0 100 0
+				TextSetName ""
+				TextMessage name[742] {
+					{color 0}撿拾了８個{item[317]}{color 0}。{wait}
+				}
+				TextWait
+				TextClose 0
+				FadeIn 300ms 0x00000000
+				ItemAdd item[317] 8
+				TextSetPos -1 280 60 3
+				break
+			case 10:
+				TextSetPos -1 -1 -1 -1
+				FadeOut 300ms 0x00000000 100
+				SoundPlay sound[17] 0 100 0
+				TextSetName ""
+				TextMessage name[742] {
+					{color 0}撿拾了８個{item[318]}{color 0}。{wait}
+				}
+				TextWait
+				TextClose 0
+				FadeIn 300ms 0x00000000
+				ItemAdd item[318] 8
+				TextSetPos -1 280 60 3
+				break
+			case 11:
+				TextSetPos -1 -1 -1 -1
+				FadeOut 300ms 0x00000000 100
+				SoundPlay sound[17] 0 100 0
+				TextSetName ""
+				TextMessage name[742] {
+					{color 0}撿拾了４個{item[319]}{color 0}。{wait}
+				}
+				TextWait
+				TextClose 0
+				FadeIn 300ms 0x00000000
+				ItemAdd item[319] 4
+				TextSetPos -1 280 60 3
+				break
+			case 12:
+				TextSetPos -1 -1 -1 -1
+				FadeOut 300ms 0x00000000 100
+				SoundPlay sound[17] 0 100 0
+				TextSetName ""
+				TextMessage name[742] {
+					{color 0}撿拾了４個{item[320]}{color 0}。{wait}
+				}
+				TextWait
+				TextClose 0
+				FadeIn 300ms 0x00000000
+				ItemAdd item[320] 4
+				TextSetPos -1 280 60 3
+				break
+			case 13:
+				TextSetPos -1 -1 -1 -1
+				FadeOut 300ms 0x00000000 100
+				SoundPlay sound[17] 0 100 0
+				TextSetName ""
+				TextMessage name[742] {
+					{color 0}撿拾了４個{item[321]}{color 0}。{wait}
+				}
+				TextWait
+				TextClose 0
+				FadeIn 300ms 0x00000000
+				ItemAdd item[321] 4
+				TextSetPos -1 280 60 3
+				break
+			case 14:
+				TextSetPos -1 -1 -1 -1
+				FadeOut 300ms 0x00000000 100
+				SoundPlay sound[17] 0 100 0
+				TextSetName ""
+				TextMessage name[742] {
+					{color 0}撿拾了３個{item[322]}{color 0}。{wait}
+				}
+				TextWait
+				TextClose 0
+				FadeIn 300ms 0x00000000
+				ItemAdd item[322] 3
+				TextSetPos -1 280 60 3
+				break
+			case 15:
+				TextSetPos -1 -1 -1 -1
+				FadeOut 300ms 0x00000000 100
+				SoundPlay sound[17] 0 100 0
+				TextSetName ""
+				TextMessage name[742] {
+					{color 0}撿拾了３個{item[323]}{color 0}。{wait}
+				}
+				TextWait
+				TextClose 0
+				FadeIn 300ms 0x00000000
+				ItemAdd item[323] 3
+				TextSetPos -1 280 60 3
+				break
+			case 16:
+				TextSetPos -1 -1 -1 -1
+				FadeOut 300ms 0x00000000 100
+				SoundPlay sound[17] 0 100 0
+				TextSetName ""
+				TextMessage name[742] {
+					{color 0}撿拾了３個{item[324]}{color 0}。{wait}
+				}
+				TextWait
+				TextClose 0
+				FadeIn 300ms 0x00000000
+				ItemAdd item[324] 3
+				TextSetPos -1 280 60 3
+				break
+			case 17:
+				TextSetPos -1 -1 -1 -1
+				FadeOut 300ms 0x00000000 100
+				SoundPlay sound[17] 0 100 0
+				TextSetName ""
+				TextMessage name[742] {
+					{color 0}撿拾了５個{item[325]}{color 0}。{wait}
+				}
+				TextWait
+				TextClose 0
+				FadeIn 300ms 0x00000000
+				ItemAdd item[325] 5
+				TextSetPos -1 280 60 3
+				break
+			case 18:
+				TextSetPos -1 -1 -1 -1
+				FadeOut 300ms 0x00000000 100
+				SoundPlay sound[17] 0 100 0
+				TextSetName ""
+				TextMessage name[742] {
+					{color 0}撿拾了５個{item[326]}{color 0}。{wait}
+				}
+				TextWait
+				TextClose 0
+				FadeIn 300ms 0x00000000
+				ItemAdd item[326] 5
+				TextSetPos -1 280 60 3
+				break
+			case 19:
+				TextSetPos -1 -1 -1 -1
+				FadeOut 300ms 0x00000000 100
+				SoundPlay sound[17] 0 100 0
+				TextSetName ""
+				TextMessage name[742] {
+					{color 0}撿拾了５個{item[327]}{color 0}。{wait}
+				}
+				TextWait
+				TextClose 0
+				FadeIn 300ms 0x00000000
+				ItemAdd item[327] 5
+				TextSetPos -1 280 60 3
+				break
+			case 20:
+				TextSetPos -1 -1 -1 -1
+				FadeOut 300ms 0x00000000 100
+				SoundPlay sound[17] 0 100 0
+				TextSetName ""
+				TextMessage name[742] {
+					{color 0}撿拾了２個{item[328]}{color 0}。{wait}
+				}
+				TextWait
+				TextClose 0
+				FadeIn 300ms 0x00000000
+				ItemAdd item[328] 2
+				TextSetPos -1 280 60 3
+				break
+			case 21:
+				TextSetPos -1 -1 -1 -1
+				FadeOut 300ms 0x00000000 100
+				SoundPlay sound[17] 0 100 0
+				TextSetName ""
+				TextMessage name[742] {
+					{color 0}撿拾了２個{item[329]}{color 0}。{wait}
+				}
+				TextWait
+				TextClose 0
+				FadeIn 300ms 0x00000000
+				ItemAdd item[329] 2
+				TextSetPos -1 280 60 3
+				break
+			case 22:
+				TextSetPos -1 -1 -1 -1
+				FadeOut 300ms 0x00000000 100
+				SoundPlay sound[17] 0 100 0
+				TextSetName ""
+				TextMessage name[742] {
+					{color 0}撿拾了２個{item[330]}{color 0}。{wait}
+				}
+				TextWait
+				TextClose 0
+				FadeIn 300ms 0x00000000
+				ItemAdd item[330] 2
+				TextSetPos -1 280 60 3
+				break
+			default:
+				TextSetPos -1 -1 -1 -1
+				FadeOut 300ms 0x00000000 100
+				SoundPlay sound[17] 0 100 0
+				TextSetName ""
+				TextMessage name[742] {
+					{color 0}撿拾了２個{item[330]}{color 0}。{wait}
+				}
+				TextWait
+				TextClose 0
+				FadeIn 300ms 0x00000000
+				ItemAdd item[330] 2
+				TextSetPos -1 280 60 3
+				break
+	Return

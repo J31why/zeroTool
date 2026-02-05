@@ -1,0 +1,2190 @@
+calmare ao_k scena
+scena:
+	name "t1110" "t1110" "t1110"
+	town town[0]
+	bgm bgm[0]
+	flags 0
+	item_use fn[0,255]
+	unk 255 26
+
+entry:
+	pos (0, 0, -1000)
+	unk1 0
+	cam_from (0, 0, 24000)
+	cam_pers 500
+	unk2 30
+	cam_deg 45deg
+	cam_limit 0deg 360deg
+	cam_at (0, 0, 0)
+	unk3 0
+	unk4 0
+	flags 0x0001
+	town town[1]
+	init fn[0,0]
+	reinit fn[0,1]
+
+npc char[0]:
+	name "聲音"
+	pos (0, 0, 0)
+	angle 0deg
+	flags 0x01C5
+	unk2 0
+	chip chip[0]
+	init fn[255,255]
+	talk fn[255,255]
+	unk4 255
+
+npc char[1]:
+	name "聲音"
+	pos (0, 0, 0)
+	angle 0deg
+	flags 0x01C5
+	unk2 0
+	chip chip[0]
+	init fn[255,255]
+	talk fn[255,255]
+	unk4 255
+
+npc char[2]:
+	name "聲音"
+	pos (0, 0, 0)
+	angle 0deg
+	flags 0x01C5
+	unk2 0
+	chip chip[0]
+	init fn[255,255]
+	talk fn[255,255]
+	unk4 255
+
+npc char[3]:
+	name "艾莉"
+	pos (0, 0, 0)
+	angle 0deg
+	flags 0x01C5
+	unk2 0
+	chip chip[0]
+	init fn[255,255]
+	talk fn[255,255]
+	unk4 255
+
+npc char[4]:
+	name "麥克道爾議長"
+	pos (0, 0, 0)
+	angle 0deg
+	flags 0x01C5
+	unk2 0
+	chip chip[0]
+	init fn[255,255]
+	talk fn[255,255]
+	unk4 255
+
+npc char[5]:
+	name "約納"
+	pos (0, 0, 0)
+	angle 0deg
+	flags 0x01C5
+	unk2 0
+	chip chip[0]
+	init fn[255,255]
+	talk fn[255,255]
+	unk4 255
+
+npc char[6]:
+	name "SE控制"
+	pos (0, 0, 0)
+	angle 0deg
+	flags 0x00C5
+	unk2 0
+	chip chip[0]
+	init fn[255,255]
+	talk fn[255,255]
+	unk4 255
+
+// NB: the first five sepith sets are seemingly junk data.
+sepith[0] 100 1 2 3 70 89 99 0
+sepith[1] 100 5 1 5 1 5 1 0
+sepith[2] 100 5 1 5 1 5 1 0
+sepith[3] 100 5 0 5 0 5 0 0
+sepith[4] 100 5 0 5 0 5 0 0
+
+at_roll[0]: none 100
+at_roll[1]: none 100; hp10 5; hp50 1; ep10 5; ep50 1; cp10 5; cp50 1; unk1 5; unk2 5; unk6 1
+at_roll[2]: none 100; hp10 5; hp50 1; ep10 5; ep50 1; cp10 5; cp50 1; unk1 5; unk2 5; unk3 5; unk4 5; unk5 5; unk6 5
+at_roll[3]: none 100; hp10 5; ep10 5; cp10 5; unk1 2; unk2 5; unk6 2
+at_roll[4]: none 100; hp10 5; ep10 5; cp10 5; unk2 5
+
+placement[0]:
+	pos 7 9 180deg
+	pos 11 10 180deg
+	pos 10 13 180deg
+	pos 5 11 180deg
+	pos 12 12 180deg
+	pos 4 14 180deg
+	pos 14 14 180deg
+	pos 2 13 180deg
+
+placement[1]:
+	pos 8 8 180deg
+	pos 5 9 180deg
+	pos 11 10 180deg
+	pos 6 12 180deg
+	pos 10 12 180deg
+	pos 13 13 180deg
+	pos 4 14 180deg
+	pos 8 14 180deg
+
+placement[2]:
+	pos 7 8 180deg
+	pos 9 9 180deg
+	pos 6 10 180deg
+	pos 10 11 180deg
+	pos 6 12 180deg
+	pos 10 13 180deg
+	pos 7 14 180deg
+	pos 9 15 180deg
+
+placement[3]:
+	pos 8 8 180deg
+	pos 6 9 180deg
+	pos 10 10 180deg
+	pos 7 11 180deg
+	pos 10 12 180deg
+	pos 8 14 180deg
+	pos 10 14 180deg
+	pos 6 15 180deg
+
+placement[4]:
+	pos 7 4 0deg
+	pos 10 11 225deg
+	pos 4 7 90deg
+	pos 12 7 270deg
+	pos 4 11 135deg
+	pos 11 4 315deg
+	pos 7 12 180deg
+	pos 5 5 45deg
+
+placement[5]:
+	pos 8 13 180deg
+	pos 3 10 180deg
+	pos 13 10 180deg
+	pos 3 12 180deg
+	pos 13 12 180deg
+	pos 6 14 180deg
+	pos 10 14 180deg
+	pos 8 10 180deg
+
+battle[0]:
+	flags 82
+	level 255
+	unk1 6
+	vision_range 45
+	move_range 3
+	can_move 3
+	move_speed 30
+	unk2 0
+	battlefield "bt1110"
+	sepith null
+	setup 100:
+		enemies "ms84000.dat" "ms84500.dat" "ms84500.dat" null null null "ms84500.dat" null
+		placement placement[5] placement[4]
+		bgm bgm[451] bgm[453]
+		at_roll at_roll[3]
+
+fn[0]:
+	if flag[3360] && !flag[3361]:
+		Event fn[0,2]
+	if flag[272]:
+		FlagUnset flag[272]
+		Event fn[0,11]
+	Return
+
+fn[1]:
+	if flag[3355]:
+		system[1] = 251
+	SoundPlay sound[124] 1 50 0
+	Return
+
+fn[2]:
+	EventBegin 0
+	FadeOut 0ms 0x00000000 255
+	ED7LoadChip "chr/ch00050.itc" chip[30]
+	ED7LoadChip "chr/ch00250.itc" chip[31]
+	ED7LoadChip "chr/ch00350.itc" chip[32]
+	ED7LoadChip "chr/ch02950.itc" chip[33]
+	ED7LoadChip "chr/ch03150.itc" chip[34]
+	ED7LoadChip "chr/ch03250.itc" chip[35]
+	ED7LoadChip "monster/ch84050.itc" chip[36]
+	ED7LoadChip "monster/ch84051.itc" chip[37]
+	ED7LoadChip "monster/ch84052.itc" chip[38]
+	ED7LoadChip "monster/ch84550.itc" chip[39]
+	EffLoad eff[0] "event\\ev502_00.eff"
+	SoundLoad sound[950]
+	SoundLoad sound[825]
+	CharFlagsUnset field_party[4] 0x0080
+	CharFlags2Unset field_party[4] 0x8000
+	CharFlagsUnset field_party[5] 0x0080
+	CharFlags2Unset field_party[5] 0x8000
+	CharSetPos name[0] (-500, 500, 13500) 0deg
+	CharSetPos name[3] (500, 500, 13500) 0deg
+	CharSetPos name[2] (-500, 500, 12000) 0deg
+	CharSetPos name[4] (500, 500, 12000) 0deg
+	CharSetPos name[5] (-1500, 500, 12750) 0deg
+	CharSetPos name[8] (1500, 500, 13050) 0deg
+	CharFlagsUnset char[0] 0x0080
+	CharSetChipBase char[0] chip[36]
+	CharSetChipPattern char[0] 0
+	char[0].36 = 228
+	CharFlagsSet char[0] 0x8000
+	CharSetPos char[0] (0, 1500, 23000) 180deg
+	CharColor char[0] 0x00FFFFFF 0ms
+	CharFlagsUnset char[0] 0x0001
+	char[0].7 = 2800
+	CharFlagsUnset char[1] 0x0080
+	CharSetChipBase char[1] chip[39]
+	CharSetChipPattern char[1] 0
+	CharFlagsSet char[1] 0x8000
+	CharSetPos char[1] (-4000, 500, 21000) 135deg
+	CharColor char[1] 0x00FFFFFF 0ms
+	CharFlagsUnset char[2] 0x0080
+	CharSetChipBase char[2] chip[39]
+	CharSetChipPattern char[2] 0
+	CharFlagsSet char[2] 0x8000
+	CharSetPos char[2] (4000, 500, 21000) 225deg
+	CharColor char[2] 0x00FFFFFF 0ms
+	CamSetDistance 320 2500 18250 0ms
+	ED7CamRotate 45deg 25deg 0deg 0ms
+	CamPers 600 0ms
+	CamZoom 21500 0ms
+	FadeIn 1000ms 0x00000000
+	CamSetDistance 320 1500 18250 4000ms
+	Fork name[0] fork[0]:
+		_94 0 name[0] 0deg 5000 2000mm/s 0
+	Sleep 30ms
+	Fork name[2] fork[0]:
+		_94 0 name[2] 0deg 5000 2000mm/s 0
+	Sleep 30ms
+	Fork name[3] fork[0]:
+		_94 0 name[3] 0deg 5000 2000mm/s 0
+	Sleep 30ms
+	Fork name[4] fork[0]:
+		_94 0 name[4] 0deg 5000 2000mm/s 0
+	Sleep 30ms
+	Fork name[8] fork[0]:
+		_94 0 name[8] 0deg 5000 2000mm/s 0
+	Sleep 30ms
+	Fork name[5] fork[0]:
+		_94 0 name[5] 0deg 5000 2000mm/s 0
+	ForkWait name[0] fork[0]
+	ForkWait name[2] fork[0]
+	ForkWait name[3] fork[0]
+	ForkWait name[4] fork[0]
+	ForkWait name[8] fork[0]
+	ForkWait name[5] fork[0]
+	CamWait 121
+	FadeWait
+	CrossFade 1000ms
+	CamSetDistance 320 1500 18250 0ms
+	ED7CamRotate 45deg 25deg 0deg 0ms
+	CamPers 600 0ms
+	CamZoom 14000 0ms
+	FadeWait
+	TextTalk name[0] {
+		#1510000386V#00008F#11P沒有人在……？{wait}
+	}
+	TextWait
+	TextTalk name[5] {
+		#1510180104V#10708F#12P不……
+		我感覺到有東西在附近。{wait}
+	}
+	TextWait
+	TextTalk name[4] {
+		#1510040191V#10401F#12P嗯，不是魔獸
+		之類的玩意就是了。{wait}
+	}
+	TextWait
+	BgmStop 5000ms
+	ED7_B8 251 65535
+	ED7_B8 565 65535
+	CamSetDistance 0 3300 21000 1500ms
+	ED7CamRotate 45deg 15deg 0deg 1500ms
+	CamPers 600 1500ms
+	CamZoom 15000 1500ms
+	CamWait 121
+	SoundPlay sound[903] 0 100 0
+	TextSetPos 70 60 -1 -1
+	TextMessage char[0] {
+		{color 5}#1512850001VＰ──發現入侵者。{color 0}{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	TextSetPos -1 280 60 3
+	Emote name[0] 0mm 2000mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Sleep 50ms
+	Emote name[2] 0mm 2000mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Emote name[3] 0mm 2000mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Sleep 50ms
+	Emote name[8] 0mm 2000mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Emote name[4] 0mm 2000mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Sleep 50ms
+	Emote name[5] 0mm 2000mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Sleep 500ms
+	ForkFunc char[0] fork[0] fn[0,3]
+	SoundPlay sound[825] 2 30 0
+	Sleep 500ms
+	TextTalk name[2] {
+		#1510020164V#00207F#11P正面有反應！{wait}
+	}
+	TextWait
+	TextTalk name[3] {
+		#1510030081V#00310F#11P嘖……
+		所謂的那些傢伙#4R・　・#就是他們啊！？{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	BgmWait
+	Sleep 10ms
+	BgmPlay bgm[451] 0
+	CrossFade 500ms
+	BlurOn 0ms 0xBBFFFFFF 0 1 10
+	CamZoom 14000 500ms
+	ForkFunc char[0] fork[3] fn[0,4]
+	SoundPlay sound[950] 2 100 0
+	CamWait 121
+	BlurOff 500ms
+	FadeWait
+	ForkQuit char[0] fork[3]
+	EffStop eff_instance[0] 2
+	ForkFunc char[0] fork[3] fn[0,5]
+	ForkWait char[0] fork[3]
+	CamWait 121
+	BlurOff 500ms
+	FadeWait
+	Sleep 1500ms
+	CrossFade 500ms
+	CamSetDistance 390 2600 19220 0ms
+	ED7CamRotate 331deg 20deg 0deg 0ms
+	ED7CamRotate 0deg 15deg 0deg 10000ms
+	CamPers 600 0ms
+	CamZoom 12220 0ms
+	FadeWait
+	Sleep 500ms
+	CrossFade 250ms
+	SoundPlay sound[805] 0 100 0
+	SoundPlay sound[531] 0 100 0
+	SoundPlay sound[541] 0 30 0
+	CharSetChipBase name[0] chip[30]
+	CharSetChipPattern name[0] 0
+	CharSetChipBase name[2] chip[31]
+	CharSetChipPattern name[2] 0
+	CharSetChipBase name[3] chip[32]
+	CharSetChipPattern name[3] 0
+	CharSetChipBase name[8] chip[33]
+	CharSetChipPattern name[8] 0
+	CharSetChipBase name[4] chip[34]
+	CharSetChipPattern name[4] 0
+	CharSetChipBase name[5] chip[35]
+	CharSetChipPattern name[5] 0
+	FadeWait
+	SoundPlay sound[903] 0 100 0
+	TextSetPos 270 90 -1 -1
+	TextMessage char[0] {
+		{color 5}#1512850002V對象人物６名──{wait}
+	}
+	TextWait
+	TextMessage char[0] {
+		{color 5}#1512850003V確認包含特務支援課３名，
+		以及國防軍希卡少尉。{wait}
+	}
+	TextWait
+	TextMessage char[0] {
+		{color 5}#1512850004V另２名身分不明──但估計
+		戰鬥力為Ａ級以上。{color 0}{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	TextSetPos -1 280 60 3
+	TextTalk name[4] {
+		#1510040192V#10407F#12P#N唔……！？{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	TextTalk name[5] {
+		#1510180105V#10707F#6P#N機器竟然有辦法判斷……！{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	CrossFade 500ms
+	CamSetDistance -590 2300 19970 0ms
+	ED7CamRotate 41deg 15deg 0deg 0ms
+	CamPers 600 0ms
+	CamZoom 13440 0ms
+	CamSetDistance -590 2300 19970 0ms
+	ED7CamRotate 41deg 15deg 0deg 0ms
+	CamPers 600 0ms
+	CamZoom 13000 0ms
+	CamZoom 14000 1500ms
+	ForkFunc char[0] fork[3] fn[0,3]
+	ForkFunc char[1] fork[3] fn[0,6]
+	ForkFunc char[2] fork[3] fn[0,7]
+	SoundPlay sound[825] 2 30 0
+	CamWait 121
+	Emote name[0] 0mm 2000mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Sleep 50ms
+	Emote name[2] 0mm 2000mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Emote name[3] 0mm 2000mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Sleep 50ms
+	Emote name[8] 0mm 2000mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Emote name[4] 0mm 2000mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Sleep 50ms
+	Emote name[5] 0mm 2000mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Sleep 1000ms
+	ForkWait char[1] fork[3]
+	ForkWait char[2] fork[3]
+	ForkQuit char[0] fork[3]
+	SoundPlay sound[903] 0 100 0
+	TextSetPos 50 100 -1 -1
+	TextMessage char[0] {
+		{color 5}#1512850005V展開《十六夜》。{wait}
+	}
+	TextWait
+	TextMessage char[0] {
+		{color 5}#1512850006V紅色電磁傲武者Ⅱ型、
+		《村正》──{wait}
+	}
+	TextWait
+	TextMessage char[0] {
+		{color 5}#1512850007V開始執行殲滅行動。{color 0}{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	TextSetPos -1 280 60 3
+	TextTalk name[0] {
+		#1510000387V#00010F#12P#N要來了……！{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	TextTalk name[8] {
+		#1510050051V#10107F#12P#N開始迎擊！{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	ForkQuit char[0] fork[0]
+	SoundPlay sound[905] 0 100 0
+	ED7_12 825 1000 30
+	CharSetChipBase char[0] chip[38]
+	CharSetChipPattern char[0] 0
+	char[0].7 = 2800
+	ED7CharAnimation char[0] 1000ms 0 1
+	Sleep 750ms
+	SoundPlay sound[951] 0 100 0
+	BlurOn 0ms 0xBBFFFFFF 0 0 0
+	CamSetDistance -610 2300 19190 500ms
+	CamZoom 9500 500ms
+	CharSetChipPattern char[0] 2
+	CharFlagsSet char[0] 0x0020
+	CharFlagsSet char[1] 0x0020
+	CharFlagsSet char[2] 0x0020
+	CharFlagsSet char[0] 0x1000
+	CharFlagsSet char[1] 0x1000
+	CharFlagsSet char[2] 0x1000
+	Sc_7D_0 char[0] 100 500
+	Sc_7D_0 char[1] 100 500
+	Sc_7D_0 char[2] 100 500
+	Fork char[0] fork[1]:
+		_94 1 self 0deg 3000 5000mm/s 0
+	Fork char[1] fork[1]:
+		_94 1 self 0deg 3000 5000mm/s 0
+	Fork char[2] fork[1]:
+		_94 1 self 0deg 3000 5000mm/s 0
+	Sleep 500ms
+	ForkQuit char[0] fork[1]
+	ForkQuit char[1] fork[1]
+	ForkQuit char[2] fork[1]
+	ForkQuit char[1] fork[0]
+	ForkQuit char[2] fork[0]
+	Sc_7D_1 char[0] 0 0
+	Sc_7D_1 char[1] 0 0
+	Sc_7D_1 char[2] 0 0
+	SoundStop sound[950]
+	SoundStop sound[825]
+	ED7Battle battle[0] null 0 256 0 null
+	FadeOut 0ms 0x00000000 255
+	Call fn[0,11]
+	Return
+
+fn[3]:
+	while 1:
+		Shake 0 30 5000 1000ms
+		Sleep 1000ms
+	Return
+
+fn[4]:
+	while 1:
+		EffPlay eff[0] eff_instance[0] self 1 (0, 1500, 0) 0 0 0 1000 1000 1000 null (0, 0, 0) 0ms
+		CharColor self 0x96FFFFFF 750ms
+		CharColor self 0xC8FFFFFF 750ms
+		EffStop eff_instance[0] 2
+	Return
+
+fn[5]:
+	CamZoom 15000 4000ms
+	EffPlay eff[0] eff_instance[0] self 1 (0, 1500, 0) 0 0 0 1000 1000 1000 null (0, 0, 0) 0ms
+	CharColor self 0x96FFFFFF 0ms
+	CharColor self 0xFFFFFFFF 2500ms
+	Sleep 500ms
+	ForkQuit char[0] fork[0]
+	ED7_12 825 1000 30
+	CrossFade 700ms
+	CamSetDistance 0 2300 21500 300ms
+	CharFlagsSet self 0x0001
+	self.40 = 13
+	_Char91 self 0 -1000 0 3500 0
+	self.40 = 9
+	ForkFunc self fork[0] fn[0,8]
+	ED7_12 950 1000 100
+	BlurOn 0ms 0xBBFFFFFF 0 0 0
+	Shake 300 500 5000 1000ms
+	SoundPlay sound[902] 0 100 0
+	SoundPlay sound[833] 0 50 0
+	Sleep 1000ms
+	BlurOff 500ms
+	FadeWait
+	Return
+
+fn[6]:
+	SoundPlay sound[950] 2 100 0
+	EffPlay eff[0] eff_instance[1] self 1 (0, 1000, 0) 0 0 0 500 500 500 null (0, 0, 0) 0ms
+	CharColor self 0xFFFFFFFF 3000ms
+	EffStop eff_instance[1] 2
+	ED7_12 950 1000 100
+	ForkFunc self fork[0] fn[0,10]
+	Sleep 1000ms
+	Return
+
+fn[7]:
+	EffPlay eff[0] eff_instance[2] self 1 (0, 1000, 0) 0 0 0 500 500 500 null (0, 0, 0) 0ms
+	CharColor self 0xFFFFFFFF 3000ms
+	EffStop eff_instance[2] 2
+	ForkFunc self fork[0] fn[0,10]
+	Sleep 1000ms
+	Return
+
+fn[8]:
+	while 1:
+		ED7CharAnimation self 1500ms 0 1 2 3 4 3 2 1
+	Return
+
+fn[9]:
+	while 1:
+		ED7CharAnimation self 1000ms 0 1 2 3 4
+	Return
+
+fn[10]:
+	while 1:
+		ED7CharAnimation self 1500ms 0 1 2 3 4
+	Return
+
+fn[11]:
+	EventBegin 0
+	FadeOut 0ms 0x00000000 255
+	ED7LoadChip "chr/ch00100.itc" chip[30]
+	ED7LoadChip "chr/ch05800.itc" chip[31]
+	ED7LoadChip "chr/ch06100.itc" chip[32]
+	ED7LoadChip "chr/ch00050.itc" chip[33]
+	ED7LoadChip "chr/ch00051.itc" chip[34]
+	ED7LoadChip "chr/ch00250.itc" chip[35]
+	ED7LoadChip "chr/ch00251.itc" chip[36]
+	ED7LoadChip "chr/ch00350.itc" chip[37]
+	ED7LoadChip "chr/ch00351.itc" chip[38]
+	ED7LoadChip "chr/ch02950.itc" chip[39]
+	ED7LoadChip "chr/ch02951.itc" chip[40]
+	ED7LoadChip "chr/ch03150.itc" chip[41]
+	ED7LoadChip "chr/ch03151.itc" chip[42]
+	ED7LoadChip "chr/ch03250.itc" chip[43]
+	ED7LoadChip "chr/ch03251.itc" chip[44]
+	ED7LoadChip "chr/ch00056.itc" chip[45]
+	ED7LoadChip "chr/ch00256.itc" chip[46]
+	ED7LoadChip "chr/ch00356.itc" chip[47]
+	ED7LoadChip "chr/ch0295f.itc" chip[48]
+	ED7LoadChip "chr/ch0315f.itc" chip[49]
+	ED7LoadChip "chr/ch0325a.itc" chip[50]
+	ED7LoadChip "chr/ch00053.itc" chip[51]
+	ED7LoadChip "chr/ch00352.itc" chip[52]
+	ED7LoadChip "chr/ch03252.itc" chip[53]
+	ED7LoadChip "chr/ch00150.itc" chip[54]
+	ED7LoadChip "monster/ch84050.itc" chip[55]
+	ED7LoadChip "monster/ch84051.itc" chip[56]
+	ED7LoadChip "monster/ch84052.itc" chip[57]
+	ED7LoadChip "apl/ch51767.itc" chip[58]
+	ED7LoadChip "chr/ch02952.itc" chip[59]
+	ED7LoadChip "chr/ch00101.itc" chip[60]
+	ED7LoadChip "apl/ch51713.itc" chip[61]
+	EffLoad eff[0] "battle/ms00001.eff"
+	EffLoad eff[1] "event\\ev10008.eff"
+	EffLoad eff[3] "battle/cr001000.eff"
+	EffLoad eff[4] "event/ev17029.eff"
+	EffLoad eff[5] "event\\ev15010.eff"
+	EffLoad eff[6] "event\\ev14002.eff"
+	EffLoad eff[7] "event\\ev17030.eff"
+	EffLoad eff[8] "event\\\\eva04_00.eff"
+	EffLoad eff[9] "event\\\\ev17034.eff"
+	VisShow vis[0] 234 0 490 256 0 0 512 512 0 0 512 512 0x00FFFFFF 0 "bu00102.itp"
+	SoundLoad sound[3403]
+	SoundLoad sound[3404]
+	SoundLoad sound[3405]
+	SoundLoad sound[3406]
+	SoundLoad sound[904]
+	SoundLoad sound[579]
+	CharFlagsUnset field_party[4] 0x0080
+	CharFlags2Unset field_party[4] 0x8000
+	CharFlagsUnset field_party[5] 0x0080
+	CharFlags2Unset field_party[5] 0x8000
+	CharSetPos name[0] (0, 500, 20500) 0deg
+	CharSetPos name[3] (-900, 500, 19200) 0deg
+	CharSetPos name[8] (850, 500, 19650) 0deg
+	CharSetPos name[4] (150, 500, 18550) 0deg
+	CharSetPos name[2] (950, 500, 18000) 0deg
+	CharSetPos name[5] (-1200, 500, 17900) 0deg
+	CharSetChipBase name[0] chip[33]
+	CharSetChipPattern name[0] 0
+	CharSetChipBase name[2] chip[35]
+	CharSetChipPattern name[2] 0
+	CharSetChipBase name[3] chip[37]
+	CharSetChipPattern name[3] 0
+	CharSetChipBase name[8] chip[39]
+	CharSetChipPattern name[8] 0
+	CharSetChipBase name[4] chip[41]
+	CharSetChipPattern name[4] 0
+	CharSetChipBase name[5] chip[43]
+	CharSetChipPattern name[5] 0
+	CharFlagsUnset char[0] 0x0080
+	CharSetChipBase char[0] chip[58]
+	CharSetChipPattern char[0] 3
+	char[0].36 = 228
+	CharFlagsSet char[0] 0x8000
+	CharSetPos char[0] (0, 500, 24000) 180deg
+	char[0].7 = 2800
+	CharFlagsUnset char[3] 0x0080
+	CharSetChipBase char[3] chip[54]
+	CharSetChipPattern char[3] 0
+	CharFlagsSet char[3] 0x8000
+	CharSetPos char[3] (11000, 500, 20000) 270deg
+	CharFlagsSet char[3] 0x0008
+	CharFlagsUnset char[4] 0x0080
+	CharSetChipBase char[4] chip[31]
+	CharSetChipPattern char[4] 0
+	CharFlagsSet char[4] 0x8000
+	CharSetPos char[4] (16500, 1000, 20500) 270deg
+	CharColor char[4] 0x00FFFFFF 0ms
+	CharFlagsUnset char[5] 0x0080
+	CharSetChipBase char[5] chip[32]
+	CharSetChipPattern char[5] 0
+	CharFlagsSet char[5] 0x8000
+	CharSetPos char[5] (16500, 1000, 19500) 270deg
+	CharColor char[5] 0x00FFFFFF 0ms
+	CharFlagsSet char[1] 0x0080
+	CharFlagsSet char[2] 0x0080
+	CamSetDistance 0 1500 24000 0ms
+	ED7CamRotate 50deg 25deg 0deg 0ms
+	CamPers 600 0ms
+	CamZoom 16000 0ms
+	EffPlay eff[4] eff_instance[0] char[0] 5 (0, 1500, 0) 0 0 0 1000 1000 1000 null (0, 0, 0) 0ms
+	ForkFunc char[6] fork[1] fn[0,40]
+	FadeIn 1000ms 0x00000000
+	CamZoom 15000 4000ms
+	ForkFunc char[0] fork[3] fn[0,12]
+	ForkWait char[0] fork[3]
+	EffStop eff_instance[0] 2
+	ForkQuit char[6] fork[1]
+	CamWait 121
+	FadeWait
+	CamSetDistance 0 1500 21000 2500ms
+	CamWait 121
+	CrossFade 500ms
+	Fork name[0] fork[2]:
+		CharShake self 0 50 500 3000ms
+	Sleep 50ms
+	Fork name[2] fork[2]:
+		CharShake self 0 50 500 3000ms
+	Sleep 50ms
+	Fork name[3] fork[2]:
+		CharShake self 0 50 500 3000ms
+	Sleep 50ms
+	Fork name[8] fork[2]:
+		CharShake self 0 50 500 3000ms
+	Sleep 50ms
+	Fork name[4] fork[2]:
+		CharShake self 0 50 500 3000ms
+	Sleep 50ms
+	Fork name[5] fork[2]:
+		CharShake self 0 50 500 3000ms
+	SoundPlay sound[898] 0 100 0
+	CharSetChipBase name[0] chip[45]
+	CharSetChipPattern name[0] 0
+	Sleep 50ms
+	CharSetChipBase name[2] chip[46]
+	CharSetChipPattern name[2] 0
+	Sleep 50ms
+	SoundPlay sound[514] 0 40 0
+	CharSetChipBase name[3] chip[47]
+	CharSetChipPattern name[3] 0
+	Sleep 50ms
+	CharSetChipBase name[8] chip[48]
+	CharSetChipPattern name[8] 0
+	Sleep 50ms
+	CharSetChipBase name[4] chip[49]
+	CharSetChipPattern name[4] 0
+	Sleep 50ms
+	CharSetChipBase name[5] chip[50]
+	CharSetChipPattern name[5] 0
+	ForkWait name[0] fork[2]
+	ForkWait name[2] fork[2]
+	ForkWait name[3] fork[2]
+	ForkWait name[8] fork[2]
+	ForkWait name[4] fork[2]
+	ForkWait name[5] fork[2]
+	FadeWait
+	TextTalk name[0] {
+		#1510000388V#00015F#12P唔……
+		這玩意真厲害啊。{wait}
+	}
+	TextWait
+	TextTalk name[5] {
+		#1510180106V#10708F#12P#N《結社》真是個
+		恐怖的組織……{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	TextTalk name[3] {
+		#1510030082V#00306F#12P是啊，那紅色的武士人偶
+		竟然被強化到這種程度……{wait}
+	}
+	TextWait
+	TextTalk name[2] {
+		#1510020165V#00211F#12P……所以說
+		是那位博士改造的……？{wait}
+	}
+	TextWait
+	TextTalk name[4] {
+		#1510040193V#10406F#12P可能性蠻高的……{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	CrossFade 1000ms
+	CamSetDistance 0 1500 19500 0ms
+	ED7CamRotate 135deg 25deg 0deg 0ms
+	CamPers 600 0ms
+	CamZoom 14000 0ms
+	CamZoom 14500 1500ms
+	ED7_EE 0 40
+	CamWait 121
+	FadeWait
+	CrossFade 250ms
+	Fork name[0] fork[2]:
+		CharShake self 0 50 500 3000ms
+	CharSetChipBase name[0] chip[33]
+	CharSetChipPattern name[0] 0
+	SoundPlay sound[812] 0 100 0
+	ForkWait name[0] fork[2]
+	FadeWait
+	CrossFade 500ms
+	Fork name[2] fork[2]:
+		CharShake self 0 50 500 3000ms
+	Sleep 50ms
+	Fork name[3] fork[2]:
+		CharShake self 0 50 500 3000ms
+	Sleep 50ms
+	Fork name[8] fork[2]:
+		CharShake self 0 50 500 3000ms
+	Sleep 50ms
+	Fork name[4] fork[2]:
+		CharShake self 0 50 500 3000ms
+	Sleep 50ms
+	Fork name[5] fork[2]:
+		CharShake self 0 50 500 3000ms
+	SoundPlay sound[812] 0 100 0
+	CharSetChipBase name[2] chip[35]
+	CharSetChipPattern name[2] 0
+	Sleep 50ms
+	CharSetChipBase name[3] chip[37]
+	CharSetChipPattern name[3] 0
+	Sleep 50ms
+	CharSetChipBase name[8] chip[39]
+	CharSetChipPattern name[8] 0
+	Sleep 50ms
+	CharSetChipBase name[4] chip[41]
+	CharSetChipPattern name[4] 0
+	Sleep 50ms
+	CharSetChipBase name[5] chip[43]
+	CharSetChipPattern name[5] 2
+	ForkWait name[2] fork[2]
+	ForkWait name[3] fork[2]
+	ForkWait name[8] fork[2]
+	ForkWait name[4] fork[2]
+	ForkWait name[5] fork[2]
+	FadeWait
+	CamZoom 17000 5000ms
+	ED7CamRotate 120deg 25deg 0deg 5000ms
+	ForkFunc name[0] fork[3] fn[0,13]
+	Sleep 150ms
+	ForkFunc name[2] fork[3] fn[0,14]
+	Sleep 150ms
+	ForkFunc name[3] fork[3] fn[0,15]
+	Sleep 150ms
+	ForkFunc name[8] fork[3] fn[0,16]
+	Sleep 150ms
+	ForkFunc name[4] fork[3] fn[0,17]
+	Sleep 150ms
+	ForkFunc name[5] fork[3] fn[0,18]
+	CamWait 121
+	CrossFade 1000ms
+	CamSetDistance 0 1500 21500 0ms
+	ED7CamRotate 0deg 25deg 0deg 0ms
+	CamPers 600 0ms
+	CamZoom 15500 0ms
+	CamZoom 15000 2000ms
+	ED7_EE 0 10
+	CamWait 121
+	FadeWait
+	CrossFade 250ms
+	SoundPlay sound[812] 0 100 0
+	CharSetChipBase name[0] chip[255]
+	CharSetChipPattern name[0] 0
+	FadeWait
+	CharTurnTo name[0] 180deg 500deg/s
+	Fork name[2] fork[0]:
+		CharTurnTo name[2] 0deg 500deg/s
+	Sleep 50ms
+	Fork name[3] fork[0]:
+		CharTurnTo name[3] 0deg 500deg/s
+	Sleep 50ms
+	Fork name[8] fork[0]:
+		CharTurnTo name[8] 0deg 500deg/s
+	Sleep 50ms
+	Fork name[4] fork[0]:
+		CharTurnTo name[4] 0deg 500deg/s
+	Sleep 50ms
+	Fork name[5] fork[0]:
+		CharTurnTo name[5] 0deg 500deg/s
+	Sleep 50ms
+	ForkWait name[2] fork[0]
+	ForkWait name[3] fork[0]
+	ForkWait name[8] fork[0]
+	ForkWait name[4] fork[0]
+	ForkWait name[5] fork[0]
+	TextTalk name[0] {
+		#1510000389V#00004F#5P好，這樣一來
+		障礙應該全都排除掉了。{wait}
+	} {
+		#1510000390V#00000F我們搜查一下宅邸，
+		把艾莉和議長他們──{wait}
+	}
+	TextWait
+	BgmStop 2000ms
+	CamSetDistance 0 2000 23000 1000ms
+	ED7CamRotate 0deg 33deg 0deg 1000ms
+	CamWait 121
+	SoundPlay sound[140] 0 100 0
+	EffPlay eff[7] eff_instance[0] char[0] 5 (50, 1700, 0) 0 0 0 1000 1000 1000 null (0, 0, 0) 0ms
+	Sleep 50ms
+	SoundPlay sound[655] 0 50 0
+	Sleep 950ms
+	CrossFade 500ms
+	Fork char[0] fork[2]:
+		CharShake self 0 50 1000 3000ms
+	ED7CharAnimation char[0] 1000ms 1 2 3
+	CharSetChipBase char[0] chip[55]
+	CharSetChipPattern char[0] 0
+	SoundPlay sound[951] 0 100 0
+	char[0].7 = 2800
+	ForkFunc char[6] fork[1] fn[0,41]
+	EffPlay eff[4] eff_instance[7] char[0] 5 (0, 1500, 0) 0 0 0 1000 1000 1000 null (0, 0, 0) 0ms
+	ForkFunc char[0] fork[0] fn[0,8]
+	ForkWait char[0] fork[2]
+	FadeWait
+	Emote name[0] 0mm 2000mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Sleep 1000ms
+	CharTurnTo name[0] 0deg 500deg/s
+	TextTalk name[0] {
+		#1510000391V#00011F#6P什麼……！？{wait}
+	}
+	TextWait
+	BgmWait
+	Sleep 10ms
+	BgmPlay bgm[455] 0
+	ForkQuit char[0] fork[0]
+	ForkFunc char[0] fork[0] fn[0,21]
+	ForkFunc char[0] fork[3] fn[0,19]
+	ForkWait char[0] fork[3]
+	CamSetDistance 750 2000 20800 750ms
+	ED7CamRotate 0deg 20deg 0deg 750ms
+	CamPers 600 750ms
+	CamZoom 15000 750ms
+	CamWait 121
+	CrossFade 250ms
+	SoundPlay sound[531] 0 100 0
+	CharSetChipBase name[8] chip[59]
+	CharSetChipPattern name[8] 0
+	ED7CharAnimation name[8] 1500ms 0 1 2 3 4
+	FadeWait
+	TextTalk name[8] {
+		#1510050052V#10110F#12P可惡……！{wait}
+	}
+	TextWait
+	ForkFunc char[0] fork[3] fn[0,23]
+	ForkWait char[0] fork[3]
+	Fork name[2] fork[0]:
+		CharTurnToChar name[2] name[0] 500deg/s
+	Sleep 50ms
+	Fork name[3] fork[0]:
+		CharTurnToChar name[3] name[0] 500deg/s
+	Sleep 50ms
+	Fork name[4] fork[0]:
+		CharTurnToChar name[4] name[0] 500deg/s
+	Sleep 50ms
+	Fork name[8] fork[0]:
+		CharTurnToChar name[8] name[0] 500deg/s
+	Sleep 50ms
+	Fork name[5] fork[0]:
+		CharTurnToChar name[5] name[0] 500deg/s
+	Sleep 50ms
+	ForkWait name[2] fork[0]
+	ForkWait name[3] fork[0]
+	ForkWait name[4] fork[0]
+	ForkWait name[8] fork[0]
+	ForkWait name[5] fork[0]
+	Emote name[0] 0mm 1700mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Sleep 1000ms
+	TextTalk name[0] {
+		#1510000392V#00010F#6P#N糟糕──{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	CrossFade 500ms
+	Fork name[2] fork[2]:
+		CharShake self 0 50 500 3000ms
+	Sleep 50ms
+	Fork name[3] fork[2]:
+		CharShake self 0 50 500 3000ms
+	Sleep 50ms
+	Fork name[8] fork[2]:
+		CharShake self 0 50 500 3000ms
+	Sleep 50ms
+	Fork name[4] fork[2]:
+		CharShake self 0 50 500 3000ms
+	Sleep 50ms
+	Fork name[5] fork[2]:
+		CharShake self 0 50 500 3000ms
+	SoundPlay sound[812] 0 100 0
+	CharSetChipBase name[2] chip[35]
+	CharSetChipPattern name[2] 0
+	Sleep 50ms
+	CharSetChipBase name[3] chip[37]
+	CharSetChipPattern name[3] 0
+	Sleep 50ms
+	CharSetChipBase name[8] chip[39]
+	CharSetChipPattern name[8] 0
+	Sleep 50ms
+	CharSetChipBase name[4] chip[41]
+	CharSetChipPattern name[4] 0
+	Sleep 50ms
+	CharSetChipBase name[5] chip[43]
+	CharSetChipPattern name[5] 2
+	ForkWait name[2] fork[2]
+	ForkWait name[3] fork[2]
+	ForkWait name[8] fork[2]
+	ForkWait name[4] fork[2]
+	ForkWait name[5] fork[2]
+	FadeWait
+	TextTalk name[8] {
+		#1510050053V#10107F#5P羅伊德……！{wait}
+	}
+	TextWait
+	CamSetDistance 3550 2300 21350 1000ms
+	ED7CamRotate 315deg 26deg 0deg 1000ms
+	CamPers 600 1000ms
+	CamZoom 13700 1000ms
+	CamWait 121
+	CrossFade 350ms
+	SoundPlay sound[951] 0 100 0
+	CharSetChipBase char[0] chip[57]
+	CharSetChipPattern char[0] 0
+	char[0].7 = 2800
+	FadeWait
+	BgmStop 3000ms
+	Sc_C4Set 2147483648
+	TextTalkNamed char[3] "女孩的聲音" {
+		#1510010001V#1P#10A休想得逞──！{wait}
+	}
+	TextWait
+	Sc_C4Unset 2147483648
+	ForkFunc char[0] fork[3] fn[0,34]
+	ForkWait char[0] fork[3]
+	TextTalk name[0] {
+		#1510000393V#00005F#5P#N#8A咦──{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	CrossFade 250ms
+	CamSetDistance -2850 1700 21800 0ms
+	CamSetDistance -4350 1700 21800 500ms
+	ED7CamRotate 23deg 18deg 0deg 0ms
+	CamPers 600 0ms
+	CamZoom 15500 0ms
+	CharTurnToChar name[2] char[0] 0deg/s
+	CharTurnToChar name[3] char[0] 0deg/s
+	CharTurnToChar name[4] char[0] 0deg/s
+	CharTurnToChar name[8] char[0] 0deg/s
+	CharTurnToChar name[5] char[0] 0deg/s
+	CamWait 121
+	FadeWait
+	ForkFunc name[5] fork[3] fn[0,36]
+	Sleep 150ms
+	ForkFunc name[3] fork[3] fn[0,35]
+	ForkWait name[3] fork[3]
+	ForkWait name[5] fork[3]
+	TextWait
+	_59
+	CharFlagsSet char[0] 0x0080
+	Sleep 1000ms
+	CrossFade 500ms
+	Shake 125 125 5000 1000ms
+	CamSetDistance -1000 1500 21000 0ms
+	CamSetDistance -1500 1500 20000 2000ms
+	ED7CamRotate 35deg 26deg 0deg 0ms
+	CamPers 600 0ms
+	CamZoom 16000 0ms
+	CamWait 121
+	CrossFade 250ms
+	SoundPlay sound[805] 0 80 0
+	SoundPlay sound[531] 0 80 0
+	SoundPlay sound[540] 0 40 0
+	CharSetChipBase name[2] chip[255]
+	CharSetChipPattern name[2] 0
+	CharSetChipBase name[3] chip[255]
+	CharSetChipPattern name[3] 0
+	CharSetChipBase name[8] chip[255]
+	CharSetChipPattern name[8] 0
+	CharSetChipBase name[4] chip[255]
+	CharSetChipPattern name[4] 0
+	CharSetChipBase name[5] chip[255]
+	CharSetChipPattern name[5] 0
+	FadeWait
+	Fork name[2] fork[0]:
+		CharTurnTo name[2] 90deg 500deg/s
+	Sleep 50ms
+	Fork name[3] fork[0]:
+		CharTurnTo name[3] 90deg 500deg/s
+	Sleep 50ms
+	Fork name[8] fork[0]:
+		CharTurnTo name[8] 90deg 500deg/s
+	Sleep 50ms
+	Fork name[4] fork[0]:
+		CharTurnTo name[4] 90deg 500deg/s
+	Sleep 50ms
+	Fork name[5] fork[0]:
+		CharTurnTo name[5] 90deg 500deg/s
+	Sleep 50ms
+	ForkWait name[2] fork[0]
+	ForkWait name[3] fork[0]
+	ForkWait name[8] fork[0]
+	ForkWait name[4] fork[0]
+	ForkWait name[5] fork[0]
+	CamSetDistance 1000 1500 20000 1500ms
+	CamZoom 13500 1500ms
+	Fork name[5] fork[1]:
+		_94 1 self 30deg 3000 4000mm/s 0
+	Sleep 50ms
+	Fork name[8] fork[1]:
+		_94 1 self -25deg 4000 4000mm/s 0
+	Sleep 50ms
+	Fork name[2] fork[1]:
+		_94 1 self -38deg 3000 4000mm/s 0
+	Sleep 50ms
+	Fork name[3] fork[1]:
+		_94 1 self 33deg 3000 4000mm/s 0
+	Sleep 50ms
+	Fork name[4] fork[1]:
+		_94 1 self -30deg 4000 4000mm/s 0
+	Sleep 50ms
+	ForkWait name[2] fork[1]
+	ForkWait name[3] fork[1]
+	ForkWait name[8] fork[1]
+	ForkWait name[4] fork[1]
+	ForkWait name[5] fork[1]
+	CamWait 121
+	TextTalk name[2] {
+		#1510020167V#00206F#6P#6P呼……{wait}
+	}
+	TextWait
+	TextTalk name[4] {
+		#1510040195V#10406F#6P……真是有驚無險啊。{wait}
+	}
+	TextWait
+	CharFlagsUnset char[3] 0x0008
+	CamSetDistance 11000 1500 20000 2200ms
+	ED7CamRotate 60deg 25deg 0deg 2200ms
+	CamPers 600 2200ms
+	CamZoom 14500 2200ms
+	CamWait 121
+	CharSetPos name[0] (700, 500, 20000) 90deg
+	TextTalk name[0] {
+		#1510000394V#00002F#6P#N艾莉……{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	CharSetPos name[0] (4700, 500, 20000) 90deg
+	TextTalk name[2] {
+		#1510020168V#00202F#6P#N……艾莉前輩。{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	TextTalk name[3] {
+		#1510030085V#00309F#6P#N哈哈，妳沒事啊。{wait}
+	}
+	TextWait
+	Sleep 300ms
+	CrossFade 250ms
+	SoundPlay sound[531] 0 50 0
+	CharSetChipBase char[3] chip[30]
+	CharSetChipPattern char[3] 0
+	FadeWait
+	CamSetDistance 9000 1500 20000 1500ms
+	ED7CamRotate 60deg 18deg 0deg 1500ms
+	CamZoom 15500 1500ms
+	CamWait 121
+	TextTalk char[3] {
+		#1510010002V#00106F#40W#11P…………{wait}
+	}
+	TextWait
+	Fork name[0] fork[2]:
+		CharShake self 0 50 500 3000ms
+	Sleep 250ms
+	CrossFade 250ms
+	SoundPlay sound[812] 0 100 0
+	CharSetChipBase name[0] chip[255]
+	CharSetChipPattern name[0] 0
+	ForkWait name[0] fork[2]
+	FadeWait
+	Sleep 800ms
+	_94 0 name[0] 0deg 500 1000mm/s 0
+	TextTalk name[0] {
+		#1510000395V#00012F#6P呃……
+		我不知道該說什麼。{wait}
+	} {
+		#1510000396V#00004F──總之，
+		謝謝妳，艾莉。{wait}
+	} {
+		#1510000397V#00002F多虧有妳，我得救了。{wait}
+	}
+	TextWait
+	TextTalk char[3] {
+		#1510010003V#00101F#11P……唔……！{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	BgmWait
+	Sleep 10ms
+	BgmPlay bgm[523] 0
+	CrossFade 250ms
+	CharSetChipBase char[3] chip[30]
+	CharSetChipPattern char[3] 0
+	FadeWait
+	CamSetDistance 5300 1500 20000 1400ms
+	ED7CamRotate 45deg 18deg 0deg 1400ms
+	CamZoom 12000 1400ms
+	CharSetChipBase char[3] chip[60]
+	CharSetChipPattern char[3] 0
+	CharWalkToPos char[3] (5800, 500, 20000) 5000mm/s 0
+	CrossFade 250ms
+	SoundPlay sound[898] 0 100 0
+	SoundPlay sound[811] 0 20 0
+	Fork name[0] fork[2]:
+		CharShake self 0 30 300 3000ms
+	CharFlagsSet char[3] 0x0002
+	CharSetChipBase char[3] chip[61]
+	CharSetChipPattern char[3] 0
+	CharFlagsSet name[0] 0x0002
+	CharSetChipBase name[0] chip[61]
+	CharSetChipPattern name[0] 8
+	ForkWait name[0] fork[2]
+	CamWait 121
+	CamZoom 11000 20000ms
+	FadeWait
+	Emote name[2] 0mm 2000mm 38 38 250ms 1
+	Emote name[3] 0mm 2000mm 38 38 250ms 1
+	Sleep 50ms
+	Emote name[8] 0mm 2000mm 38 38 250ms 1
+	Emote name[4] 0mm 2000mm 38 38 250ms 1
+	Sleep 50ms
+	Emote name[5] 0mm 2000mm 38 38 250ms 1
+	Sleep 1000ms
+	TextTalk name[0] {
+		#1510000398V#00011F#6P#10A哇哇……！？{wait}
+	}
+	TextWait
+	Sleep 300ms
+	VisSet vis[0] 3 0xFFFFFFFF 500ms 0 0
+	VisSet vis[0] 0 -10000 0 500ms 0
+	VisWait vis[0] 3
+	VisWait vis[0] 0
+	TextSetPos -1 280 35 3
+	Sleep 500ms
+	Sc_C4Set 2147483648
+	TextMessage char[3] {
+		#1510010004V#40W#40A太好了……
+		……真的太好了……{wait}
+	} {
+		#1510010005V#40A幸好你沒事……
+		……我們能像這樣再相會……{wait}
+	} {
+		#1510010006V#40A我還以為……
+		再也見不到你了……{wait}
+	}
+	TextWait
+	Sc_C4Unset 2147483648
+	TextClose 0
+	_59
+	TextSetPos -1 280 60 3
+	VisSet vis[0] 3 0x00FFFFFF 500ms 0 0
+	VisSet vis[0] 0 0 0 500ms 0
+	VisWait vis[0] 3
+	VisWait vis[0] 0
+	Sleep 300ms
+	TextTalk name[0] {
+		#1510000399V#00002F#6P艾莉……{wait}
+	}
+	TextWait
+	CamSetDistance 3000 1500 20000 2000ms
+	CamZoom 14000 2000ms
+	Sleep 1500ms
+	Emote name[2] 0mm 2000mm 16 19 250ms 1
+	SoundPlay sound[23] 0 100 0
+	Emote name[3] 0mm 2000mm 16 19 250ms 1
+	SoundPlay sound[23] 0 100 0
+	Emote name[8] 0mm 2000mm 16 19 250ms 1
+	SoundPlay sound[23] 0 100 0
+	Emote name[4] 0mm 2000mm 16 19 250ms 1
+	SoundPlay sound[23] 0 100 0
+	Emote name[5] 0mm 2000mm 16 19 250ms 1
+	SoundPlay sound[23] 0 100 0
+	Sleep 1000ms
+	TextTalk name[3] {
+		#1510030086V#00309F#6P（呃──該怎麼說呢……）{wait}
+	}
+	TextWait
+	TextTalk name[8] {
+		#1510050054V#10114F#6P（呃，現在是不是
+		　不方便打斷他們……？）{wait}
+	}
+	TextWait
+	TextTalk name[5] {
+		#1510180108V#10706F#6P（傷、傷腦筋……）{wait}
+	}
+	TextWait
+	TextTalk name[4] {
+		#1510040196V#10402F#6P（不過，跟妳那次一樣，
+		　他還真是有女人緣啊。）{wait}
+	}
+	TextWait
+	TextTalk name[2] {
+		#1510020169V#00211F#6P（……我記憶裡沒這回事。）{wait}
+	}
+	TextWait
+	CamSetDistance 3700 1500 20000 1500ms
+	Sleep 1000ms
+	Emote name[0] 0mm 2000mm 38 38 250ms 1
+	Sleep 50ms
+	Emote char[3] 0mm 2000mm 38 38 250ms 1
+	Sleep 1000ms
+	TextTalk char[3] {
+		#00105F#11P#1510010007V哎呀呀……？{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#1510000400V#00012F#6P哈哈……{wait}
+	} {
+		#1510000401V……雖然我很高興，
+		不過其他人的眼神
+		實在有點刺刺的啦……{wait}
+	}
+	TextWait
+	Emote char[3] 0mm 2000mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Sleep 1000ms
+	CrossFade 250ms
+	SoundPlay sound[802] 0 50 0
+	CharSetChipPattern char[3] 1
+	CharSetChipPattern name[0] 9
+	CharSetPos char[3] (6000, 500, 20000) 270deg
+	FadeWait
+	CharSetChipBase char[3] chip[30]
+	CharSetChipPattern char[3] 0
+	CharFlagsUnset char[3] 0x0002
+	CharSetChipBase name[0] chip[255]
+	CharSetChipPattern name[0] 0
+	CharFlagsUnset name[0] 0x0002
+	CamSetDistance 3840 1500 19790 2000ms
+	SoundPlay sound[2177] 255 80 0
+	CharWalkToPos2 char[3] (6000, 500, 19200) 2000mm/s 0
+	CharTurnTo name[0] 270deg 500deg/s
+	Emote char[3] 0mm 2000mm 40 43 100ms 3
+	CharFlagsSet char[3] 0x0002
+	CharSetChipBase char[3] chip[61]
+	ED7CharAnimation char[3] 1300ms 2 3 4 3 2 3 4 3
+	ED7CharAnimation char[3] 1300ms 2 3 4 3
+	TextTalk char[3] {
+		#1510010008V#00112F#11P不、不是這樣的！{wait}
+	} {
+		#1510010009V剛剛是因為
+		羅伊德碰到危險，
+		所以我才有些激動……！{wait}
+	}
+	TextWait
+	TextTalk name[4] {
+		#1510040197V#10402F#6P是喔──（語氣敷衍）{wait}
+	}
+	TextWait
+	TextTalk name[3] {
+		#1510030087V#00309F#6P這樣啊──（奸笑）{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	SoundPlay sound[2183] 255 100 0
+	CrossFade 250ms
+	CharSetChipBase char[3] chip[30]
+	CharSetChipPattern char[3] 0
+	CharFlagsUnset char[3] 0x0002
+	FadeWait
+	Sleep 800ms
+	Shake 100 0 3000 300ms
+	TextTalk char[3] {
+		#1510010010V#00115F#11P#4S哎唷！不是啦！{wait}
+	} {
+		#1510010011V#00112F#3S緹歐、諾艾兒！
+		妳們也別誤會好嗎！？{wait}
+	}
+	TextWait
+	TextTalk name[8] {
+		#1510050055V#10112F#6P呃、喔，好……{wait}
+	}
+	TextWait
+	TextTalk name[2] {
+		#1510020170V#00204F#6P#N我會努力試試看。{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	TextTalk char[3] {
+		#1510010012V#00113F#11P嗚嗚！既然這樣，
+		那莉夏小姐妳──{wait}
+	}
+	TextWait
+	Emote char[3] 0mm 2000mm 38 38 250ms 1
+	Sleep 1000ms
+	TextTalk char[3] {
+		#1510010013V#00105F#11P#30W……哎呀呀……？{wait}
+	} {
+		#1510010014V為、為什麼
+		莉夏也和你們一起？{wait}
+	} {
+		#1510010015V#00108F而且連諾艾兒也在，
+		瓦奇還打扮成那樣……{wait}
+	} {
+		#1510010016V#00105F？？？？？{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#1510000402V#00012F#11P哈哈……{wait}
+	}
+	TextWait
+	TextTalk name[5] {
+		#1510180109V#10710F#6P呃……一言難盡啊。{wait}
+	}
+	TextWait
+	TextTalkNamed char[4] "老先生的聲音" {
+		#1510250001V#3P#2S呵呵……
+		看來真的是一言難盡啊。{wait}
+	}
+	TextWait
+	Emote name[0] 0mm 2000mm 38 38 250ms 1
+	Emote name[2] 0mm 2000mm 38 38 250ms 1
+	Sleep 50ms
+	Emote name[3] 0mm 2000mm 38 38 250ms 1
+	Emote name[8] 0mm 2000mm 38 38 250ms 1
+	Sleep 50ms
+	Emote name[4] 0mm 2000mm 38 38 250ms 1
+	Emote name[5] 0mm 2000mm 38 38 250ms 1
+	Sleep 1000ms
+	CrossFade 500ms
+	CamSetDistance 16500 1500 20000 0ms
+	CamSetDistance 3500 1500 20000 6000ms
+	ForkLoop name[0] fork[2]:
+		CharTurnToChar self char[4] 500deg/s
+	ForkLoop char[3] fork[2]:
+		CharTurnToChar self char[5] 500deg/s
+	ForkFunc char[4] fork[3] fn[0,38]
+	Sleep 300ms
+	ForkFunc char[5] fork[3] fn[0,39]
+	Sleep 3000ms
+	Fork name[0] fork[1]:
+		_Char91 self -300 0 1700 1000 0
+	Fork char[3] fork[1]:
+		_Char91 self -500 0 -500 1000 0
+	ForkWait char[4] fork[3]
+	ForkWait char[5] fork[3]
+	ForkWait name[0] fork[1]
+	ForkWait char[3] fork[1]
+	ForkQuit name[0] fork[2]
+	ForkQuit char[3] fork[2]
+	CharTurnTo name[0] 225deg 500deg/s
+	CharTurnTo char[3] 270deg 500deg/s
+	CamWait 121
+	TextTalk name[0] {
+		#1510000403V#00002F#5P議長，您平安沒事啊。{wait}
+	}
+	TextWait
+	TextTalk name[2] {
+		#1510020171V#00205F#6P#N還有……約納！？{wait}
+	}
+	TextWait
+	TextTalk char[5] {
+		#1510230001V#02309F#11P嗨，你們好啊。
+		真是好久不見啦。{wait}
+	} {
+		#1510230002V#02302F哎呀～真的要感謝你們啦！{wait}
+	}
+	TextWait
+	TextTalk char[3] {
+		#1510010017V#00100F#11P呃，他是在我們之後
+		被貝爾給帶來的。{wait}
+	} {
+		#1510010018V#00106F聽說他一直想駭入
+		蘭花塔的中樞系統。{wait}
+	}
+	TextWait
+	TextTalk char[5] {
+		#1510230003V#02310F#11P那女的真是個惡魔！{wait}
+	} {
+		#1510230004V竟然偏偏把我關在
+		這個沒有導力網路的
+		大房子裡！{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#1510000404V#00012F#5P原、原來如此……{wait}
+	}
+	TextWait
+	TextTalk name[2] {
+		#1510020172V#00204F#6P#N這對你來說
+		的確是最嚴重的懲罰。{wait}
+	}
+	TextWait
+	TextTalk char[4] {
+		#1510250002V#02503F#11P好，閒話家常待會再聊。{wait}
+	} {
+		#1510250003V#02500F看來各位是來
+		救我們的吧？{wait}
+	}
+	TextWait
+	Emote name[0] 0mm 2000mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Emote name[2] 0mm 2000mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Sleep 50ms
+	Emote name[3] 0mm 2000mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Emote name[8] 0mm 2000mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Sleep 50ms
+	Emote name[4] 0mm 2000mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Emote name[5] 0mm 2000mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Sleep 1000ms
+	TextTalk name[0] {
+		#1510000405V#00013F#5P是……！
+		我們來迎接您了！{wait}
+	}
+	TextWait
+	TextTalk name[4] {
+		#1510040198V#10400F#6P如果沒其他問題的話，
+		我們能不能現在就離開這裡？{wait}
+	}
+	TextWait
+	TextTalk char[4] {
+		#1510250004V#02503F#11P那當然。{wait}
+	} {
+		#1510250005V#02501F能夠清閒度日的狀況
+		早就一去不復返囉。{wait}
+	}
+	TextWait
+	TextTalk char[3] {
+		#1510010019V#00106F#11P是的……{wait}
+	}
+	TextWait
+	TextTalk name[3] {
+		#1510030088V#00301F#6P好，在叔叔他們的援軍趕來之前，
+		我們快點離開吧！{wait}
+	}
+	TextWait
+	TextTalk name[8] {
+		#1510050056V#10101F#6P一邊確保逃脫路線，
+		一邊回梅爾卡巴吧！{wait}
+	}
+	TextWait
+	FadeOut 1000ms 0x00000000 255
+	ED7_12 124 1000 40
+	CamZoom 14300 1000ms
+	CamWait 121
+	FadeWait
+	BgmStop 4000ms
+	BgmWait
+	TextSetName ""
+	TextMessage null {
+		{color 5}在那之後，羅伊德一行人
+		和執行誘敵任務的賽特會合，
+		回到梅爾卡巴……{wait}
+	} {
+		在《紅色星座》的援軍抵達前，
+		成功逃離了米修拉姆。{wait}
+	} {
+		然後──{color 0}{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	TextSetPos -1 280 60 3
+	SoundStop sound[904]
+	SoundStop sound[579]
+	VisHide vis[255] 0
+	FlagSet flag[279]
+	NewScene "scena/e4300.bin" 0 0 0
+	Hcf
+	Return
+
+fn[12]:
+	Fork self fork[2]:
+		CharShake self 0 20 2000 3000ms
+	ForkWait self fork[2]
+	SoundPlay sound[905] 0 70 0
+	SoundPlay sound[954] 0 100 0
+	Fork self fork[2]:
+		CharShake self 0 30 500 3000ms
+	ED7CharAnimation self 1000ms 3 2 1 0
+	Shake 100 100 5000 500ms
+	SoundPlay sound[902] 0 50 0
+	ForkWait self fork[2]
+	Return
+
+fn[13]:
+	CharTurnTo self 45deg 500deg/s
+	Sleep 500ms
+	CharTurnTo self 0deg 500deg/s
+	Sleep 500ms
+	CharSetChipBase self chip[34]
+	CharSetChipPattern self 0
+	_94 0 self 0deg 1500 1000mm/s 0
+	CharSetChipBase self chip[33]
+	CharSetChipPattern self 0
+	Sleep 200ms
+	SoundPlay sound[812] 0 100 0
+	CharSetChipBase self chip[45]
+	CharSetChipPattern self 0
+	Return
+
+fn[14]:
+	CharTurnTo self 45deg 500deg/s
+	Sleep 500ms
+	CharTurnTo self 90deg 500deg/s
+	Sleep 500ms
+	CharSetChipBase self chip[36]
+	CharSetChipPattern self 0
+	_94 0 self 0deg 500 1000mm/s 0
+	CharSetChipBase self chip[35]
+	CharSetChipPattern self 0
+	Sleep 300ms
+	CharTurnTo self 135deg 500deg/s
+	Return
+
+fn[15]:
+	CharTurnTo self 270deg 500deg/s
+	Sleep 500ms
+	CharSetChipBase self chip[38]
+	CharSetChipPattern self 0
+	_94 0 self 0deg 1000 1000mm/s 0
+	CharSetChipBase self chip[37]
+	CharSetChipPattern self 0
+	Return
+
+fn[16]:
+	CharTurnTo self 90deg 500deg/s
+	Sleep 750ms
+	CharTurnTo self 135deg 500deg/s
+	Sleep 750ms
+	CharTurnTo self 45deg 500deg/s
+	Return
+
+fn[17]:
+	CharTurnTo self 45deg 500deg/s
+	Sleep 1000ms
+	CharTurnTo self 90deg 500deg/s
+	Return
+
+fn[18]:
+	CharTurnTo self 270deg 500deg/s
+	Sleep 500ms
+	CharTurnTo self 180deg 500deg/s
+	Return
+
+fn[19]:
+	SoundPlay sound[905] 0 100 0
+	CrossFade 500ms
+	CamZoom 14000 500ms
+	SoundPlay sound[904] 2 100 0
+	CharSetChipBase self chip[57]
+	CharSetChipPattern self 0
+	char[0].7 = 2800
+	CamWait 121
+	FadeWait
+	Sleep 300ms
+	SoundPlay sound[951] 0 100 0
+	CharSetChipPattern self 1
+	Sleep 50ms
+	CharSetChipPattern self 2
+	Sleep 50ms
+	CharSetChipPattern self 3
+	BlurOn 0ms 0xBBFFFFFF 0 0 0
+	CamSetDistance 2000 2000 21000 500ms
+	ED7CamRotate 345deg 21deg 0deg 500ms
+	CamPers 600 500ms
+	CamZoom 15000 500ms
+	EffPlay eff[0] eff_instance[255] null 0 (0, 2000, 22000) 0 0 0 1500 1500 1500 null (0, 0, 0) 0ms
+	Shake 500 500 5000 300ms
+	SoundPlay sound[833] 0 100 0
+	SoundPlay sound[902] 0 100 0
+	SoundPlay sound[2030] 255 100 0
+	ForkFunc name[0] fork[3] fn[0,20]
+	Sleep 50ms
+	CharSetChipPattern self 4
+	ForkWait name[0] fork[3]
+	CamWait 121
+	BlurOff 500ms
+	Return
+
+fn[20]:
+	CharTurnTo self 315deg 0deg/s
+	CharSetChipBase self chip[51]
+	CharSetChipPattern self 0
+	CharFlagsSet self 0x0020
+	CharFlagsSet self 0x1000
+	Sc_7D_0 self 30 300
+	Fork self fork[1]:
+		_Char96 self (4700, 500, 20000) 1000 4500
+	ForkWait self fork[1]
+	CharFlagsUnset self 0x0020
+	CharFlagsUnset self 0x1000
+	ED7CharAnimation self 1500ms 2 3
+	SoundPlay sound[514] 0 100 0
+	Sleep 500ms
+	Sc_7D_1 self 0 0
+	Return
+
+fn[21]:
+	while 1:
+		CharShake char[0] 30 30 500 5000ms
+	Return
+
+fn[22]:
+	while 1:
+		EffPlay eff[8] eff_instance[255] char[0] 0 (0, -300, -500) 0 0 0 4000 4000 4000 null (0, 0, 0) 0ms
+		Sleep 200ms
+	Return
+
+fn[23]:
+	CamSetDistance 0 2000 22500 500ms
+	SoundPlay sound[905] 0 100 0
+	CharSetChipPattern self 2
+	Sleep 100ms
+	ForkFunc char[0] fork[2] fn[0,22]
+	CharSetChipBase self chip[58]
+	CharSetChipPattern self 4
+	char[0].7 = 2800
+	CamWait 121
+	CamSetDistance 1000 2000 14450 1000ms
+	ED7CamRotate 330deg 20deg 0deg 1000ms
+	CamPers 600 1000ms
+	CamZoom 15000 1000ms
+	CharFlagsSet self 0x0020
+	CharFlagsSet self 0x1000
+	Sc_7D_0 self 150 700
+	SoundPlay sound[579] 2 100 0
+	Fork self fork[1]:
+		_94 0 self -20deg 11500 10000mm/s 0
+	ForkLoop name[2] fork[2]:
+		CharTurnToChar self char[0] 500deg/s
+	ForkLoop name[3] fork[2]:
+		CharTurnToChar self char[0] 500deg/s
+	ForkLoop name[8] fork[2]:
+		CharTurnToChar self char[0] 500deg/s
+	ForkLoop name[4] fork[2]:
+		CharTurnToChar self char[0] 500deg/s
+	ForkLoop name[5] fork[2]:
+		CharTurnToChar self char[0] 500deg/s
+	Sleep 100ms
+	SoundPlay sound[844] 0 100 0
+	ForkFunc name[8] fork[3] fn[0,26]
+	Sleep 50ms
+	ForkFunc name[2] fork[3] fn[0,24]
+	Sleep 50ms
+	ForkFunc name[4] fork[3] fn[0,27]
+	Sleep 50ms
+	ForkFunc name[3] fork[3] fn[0,25]
+	Sleep 50ms
+	ForkFunc name[5] fork[3] fn[0,28]
+	ForkWait name[2] fork[3]
+	ForkWait name[3] fork[3]
+	ForkWait name[8] fork[3]
+	ForkWait name[4] fork[3]
+	ForkWait name[5] fork[3]
+	ForkWait self fork[1]
+	SoundStop sound[579]
+	EffPlay eff[1] eff_instance[255] self 5 (0, 0, 0) 0 0 0 1250 1250 1250 null (0, 0, 0) 0ms
+	BlurOn 0ms 0xBBFFFFFF 0 0 0
+	Shake 500 500 5000 300ms
+	SoundPlay sound[833] 0 70 0
+	SoundPlay sound[902] 0 100 0
+	Sleep 500ms
+	BlurOff 500ms
+	Sc_7D_1 self 0 0
+	ForkQuit name[2] fork[2]
+	ForkQuit name[3] fork[2]
+	ForkQuit name[8] fork[2]
+	ForkQuit name[4] fork[2]
+	ForkQuit name[5] fork[2]
+	CamWait 121
+	TextWait
+	_59
+	Sc_C4Set 2147483648
+	TextTalk name[3] {
+		#00310F#5P#N#1510030083V嘖……
+		失控了嗎！？{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	Sc_C4Unset 2147483648
+	CharTurnTo self 318deg 500deg/s
+	CamSetDistance -5550 2000 23200 1200ms
+	ED7CamRotate 315deg 26deg 0deg 1200ms
+	CamPers 600 1200ms
+	CamZoom 19000 1200ms
+	Sc_7D_0 self 150 700
+	SoundPlay sound[579] 2 100 0
+	Fork self fork[1]:
+		_94 0 self 0deg 14000 10000mm/s 0
+	ForkLoop name[2] fork[2]:
+		CharTurnToChar self char[0] 500deg/s
+	ForkLoop name[3] fork[2]:
+		CharTurnToChar self char[0] 500deg/s
+	ForkLoop name[8] fork[2]:
+		CharTurnToChar self char[0] 500deg/s
+	ForkLoop name[4] fork[2]:
+		CharTurnToChar self char[0] 500deg/s
+	ForkLoop name[5] fork[2]:
+		CharTurnToChar self char[0] 500deg/s
+	Sleep 350ms
+	ForkFunc name[2] fork[3] fn[0,29]
+	Sleep 50ms
+	ForkFunc name[4] fork[3] fn[0,32]
+	Sleep 50ms
+	ForkFunc name[8] fork[3] fn[0,31]
+	Sleep 50ms
+	ForkFunc name[3] fork[3] fn[0,30]
+	Sleep 50ms
+	ForkFunc name[5] fork[3] fn[0,33]
+	ForkWait name[2] fork[3]
+	ForkWait name[3] fork[3]
+	ForkWait name[8] fork[3]
+	ForkWait name[4] fork[3]
+	ForkWait name[5] fork[3]
+	ForkWait self fork[1]
+	SoundStop sound[579]
+	EffPlay eff[1] eff_instance[255] self 5 (0, 0, 0) 0 0 0 1250 1250 1250 null (0, 0, 0) 0ms
+	BlurOn 0ms 0xBBFFFFFF 0 0 0
+	Shake 500 500 5000 300ms
+	SoundPlay sound[833] 0 70 0
+	SoundPlay sound[902] 0 100 0
+	Sleep 500ms
+	BlurOff 500ms
+	Sc_7D_1 self 0 0
+	ForkQuit name[2] fork[2]
+	ForkQuit name[3] fork[2]
+	ForkQuit name[8] fork[2]
+	ForkQuit name[4] fork[2]
+	ForkQuit name[5] fork[2]
+	CamWait 121
+	CharTurnTo self 120deg 500deg/s
+	CamSetDistance 3150 2300 19400 1000ms
+	ED7CamRotate 300deg 20deg 0deg 1000ms
+	CamPers 600 1000ms
+	CamZoom 14700 1000ms
+	Sc_7D_0 self 150 700
+	SoundPlay sound[844] 0 100 0
+	CharFlagsUnset self 0x0001
+	Fork self fork[1]:
+		_Char96 self (2700, 500, 22200) 3000 4500
+	ForkLoop name[2] fork[2]:
+		CharTurnToChar self char[0] 500deg/s
+	ForkLoop name[3] fork[2]:
+		CharTurnToChar self char[0] 500deg/s
+	ForkLoop name[8] fork[2]:
+		CharTurnToChar self char[0] 500deg/s
+	ForkLoop name[4] fork[2]:
+		CharTurnToChar self char[0] 500deg/s
+	ForkLoop name[5] fork[2]:
+		CharTurnToChar self char[0] 500deg/s
+	ForkWait self fork[1]
+	CharFlagsSet self 0x0001
+	CharSetChipPattern self 2
+	ForkQuit char[0] fork[2]
+	EffPlay eff[1] eff_instance[255] self 5 (0, 0, 0) 0 0 0 1000 1000 1000 null (0, 0, 0) 0ms
+	BlurOn 0ms 0xBBFFFFFF 0 0 0
+	Shake 500 500 5000 300ms
+	SoundPlay sound[833] 0 70 0
+	SoundPlay sound[902] 0 100 0
+	Sleep 500ms
+	BlurOff 500ms
+	Sc_7D_1 self 0 0
+	CharTurnToChar self name[0] 500deg/s
+	ForkQuit name[2] fork[2]
+	ForkQuit name[3] fork[2]
+	ForkQuit name[8] fork[2]
+	ForkQuit name[4] fork[2]
+	ForkQuit name[5] fork[2]
+	Fork name[2] fork[0]:
+		CharTurnToChar name[2] name[0] 500deg/s
+	Sleep 50ms
+	Fork name[3] fork[0]:
+		CharTurnToChar name[3] name[0] 500deg/s
+	Sleep 50ms
+	Fork name[4] fork[0]:
+		CharTurnToChar name[4] name[0] 500deg/s
+	Sleep 50ms
+	Fork name[8] fork[0]:
+		CharTurnToChar name[8] name[0] 500deg/s
+	Sleep 50ms
+	Fork name[5] fork[0]:
+		CharTurnToChar name[5] name[0] 500deg/s
+	Sleep 50ms
+	ForkWait name[2] fork[0]
+	ForkWait name[3] fork[0]
+	ForkWait name[4] fork[0]
+	ForkWait name[8] fork[0]
+	ForkWait name[5] fork[0]
+	CamWait 121
+	Return
+
+fn[24]:
+	Sc_C4Set 2147483648
+	TextTalk name[2] {
+		#00210F#6P呀啊……！？{0x05}{wait}
+	}
+	Sc_C4Unset 2147483648
+	CharSetChipBase self chip[46]
+	CharSetChipPattern self 2
+	_Char96 self (-100, 500, 16550) 1000 5000
+	CharSetChipBase self chip[35]
+	CharSetChipPattern self 0
+	Return
+
+fn[25]:
+	CharSetChipBase self chip[47]
+	CharSetChipPattern self 2
+	_Char96 self (-3540, 500, 18870) 1000 5000
+	CharSetChipBase self chip[37]
+	CharSetChipPattern self 0
+	Return
+
+fn[26]:
+	CharSetChipBase self chip[48]
+	CharSetChipPattern self 2
+	_Char96 self (-1190, 500, 18840) 1000 5000
+	CharSetChipBase self chip[39]
+	CharSetChipPattern self 0
+	Return
+
+fn[27]:
+	CharSetChipBase self chip[49]
+	CharSetChipPattern self 2
+	_Char96 self (-1090, 500, 17270) 1000 5000
+	CharSetChipBase self chip[41]
+	CharSetChipPattern self 0
+	TextTalk name[4] {
+		#10410F#5P#1510020166V唔……！{0x05}{wait}
+	}
+	Return
+
+fn[28]:
+	CharSetChipBase self chip[50]
+	CharSetChipPattern self 2
+	_Char96 self (-2600, 500, 17070) 1000 5000
+	CharSetChipBase self chip[43]
+	CharSetChipPattern self 0
+	Return
+
+fn[29]:
+	SoundPlay sound[501] 0 70 0
+	EffPlay eff[0] eff_instance[255] self 0 (0, 1000, 0) 0 0 0 1000 1000 1000 null (0, 0, 0) 0ms
+	CharSetChipBase self chip[46]
+	CharSetChipPattern self 2
+	_Char96 self (-1080, 500, 15800) 1000 5000
+	CharSetChipPattern self 0
+	Return
+
+fn[30]:
+	SoundPlay sound[501] 0 70 0
+	EffPlay eff[0] eff_instance[255] self 0 (0, 1000, 0) 0 0 0 1000 1000 1000 null (0, 0, 0) 0ms
+	CharSetChipBase self chip[47]
+	CharSetChipPattern self 2
+	_Char96 self (-5830, 500, 20500) 1000 5000
+	CharSetChipPattern self 0
+	Return
+
+fn[31]:
+	SoundPlay sound[501] 0 70 0
+	EffPlay eff[0] eff_instance[255] self 0 (0, 1000, 0) 0 0 0 1000 1000 1000 null (0, 0, 0) 0ms
+	CharSetChipBase self chip[48]
+	CharSetChipPattern self 2
+	_Char96 self (-2910, 500, 17880) 1000 5000
+	CharSetChipPattern self 0
+	Return
+
+fn[32]:
+	SoundPlay sound[501] 0 70 0
+	EffPlay eff[0] eff_instance[255] self 0 (0, 1000, 0) 0 0 0 1000 1000 1000 null (0, 0, 0) 0ms
+	CharSetChipBase self chip[49]
+	CharSetChipPattern self 2
+	_Char96 self (-2950, 500, 16350) 1000 5000
+	CharSetChipPattern self 0
+	Return
+
+fn[33]:
+	SoundPlay sound[501] 0 70 0
+	EffPlay eff[0] eff_instance[255] self 0 (0, 1000, 0) 0 0 0 1000 1000 1000 null (0, 0, 0) 0ms
+	CharSetChipBase self chip[50]
+	CharSetChipPattern self 2
+	_Char96 self (-5420, 500, 18690) 1000 5000
+	CharSetChipPattern self 0
+	Return
+
+fn[34]:
+	SoundPlay sound[530] 0 100 0
+	SoundPlay sound[566] 0 50 0
+	EffPlay eff[9] eff_instance[255] null 0 (15000, 2500, 20000) 282 0 0 1000 1000 1000 null (0, 0, 0) 0ms
+	Sleep 150ms
+	SoundPlay sound[902] 0 100 0
+	EffPlay eff[3] eff_instance[255] self 1 (0, 2000, 0) 270 0 0 500 500 500 null (0, 0, 0) 0ms
+	Fork self fork[2]:
+		CharShake self 0 75 500 5000ms
+	CharSetChipBase self chip[58]
+	CharSetChipPattern self 3
+	char[0].7 = 2800
+	CamSetDistance 2600 2300 22500 150ms
+	Shake 300 300 5000 300ms
+	Fork self fork[1]:
+		CharWalkToPos2 self (1950, 500, 23150) 10000mm/s 0
+	ForkWait self fork[1]
+	ForkWait self fork[2]
+	CamWait 121
+	Sleep 800ms
+	SoundPlay sound[530] 0 100 0
+	SoundPlay sound[566] 0 50 0
+	EffPlay eff[9] eff_instance[255] null 0 (15000, 2500, 20000) 283 0 0 1000 1000 1000 null (0, 0, 0) 0ms
+	Sleep 150ms
+	SoundPlay sound[902] 0 100 0
+	EffPlay eff[3] eff_instance[255] self 1 (0, 2000, 0) 270 0 0 500 500 500 null (0, 0, 0) 0ms
+	Fork self fork[2]:
+		CharShake self 0 75 500 5000ms
+	CharSetChipPattern self 2
+	CamSetDistance 1150 2300 22050 150ms
+	Shake 300 300 5000 300ms
+	Fork self fork[1]:
+		CharWalkToPos2 self (600, 500, 22550) 10000mm/s 0
+	ForkWait self fork[1]
+	ForkWait self fork[2]
+	CamWait 121
+	SoundPlay sound[530] 0 100 0
+	SoundPlay sound[566] 0 50 0
+	EffPlay eff[9] eff_instance[255] null 0 (15000, 2500, 20000) 278 0 0 1000 1000 1000 null (0, 0, 0) 0ms
+	Sleep 150ms
+	SoundPlay sound[902] 0 100 0
+	EffPlay eff[3] eff_instance[255] self 1 (0, 2000, 0) 270 0 0 500 500 500 null (0, 0, 0) 0ms
+	Fork self fork[2]:
+		CharShake self 0 75 500 5000ms
+	CharSetChipPattern self 1
+	CamSetDistance 850 2300 23100 150ms
+	Shake 300 300 5000 300ms
+	Fork self fork[1]:
+		CharWalkToPos2 self (0, 500, 24000) 10000mm/s 0
+	ForkWait self fork[1]
+	ForkWait self fork[2]
+	CamWait 121
+	Return
+
+fn[35]:
+	CamSetDistance -1500 2300 22700 500ms
+	ED7CamRotate 45deg 27deg 0deg 500ms
+	CamPers 600 500ms
+	CamZoom 11000 500ms
+	CharSetChipBase self chip[47]
+	CharSetChipPattern self 1
+	Sc_7D_0 self 30 300
+	SoundPlay sound[844] 0 100 0
+	_Char96 self (-1550, 500, 23600) 1000 5000
+	Sc_7D_1 self 0 0
+	CharSetChipBase self chip[37]
+	CharSetChipPattern self 0
+	CamWait 121
+	TextTalk name[3] {
+		#1510030084V#00307F#3P喝啊啊啊！{0x05}{wait}
+	}
+	SoundPlay sound[532] 0 100 0
+	CharSetChipBase self chip[52]
+	ED7CharAnimation self 1500ms 0 1 2
+	ForkFunc char[0] fork[3] fn[0,37]
+	ED7CharAnimation self 1500ms 3 4 5
+	ForkWait char[0] fork[3]
+	ForkQuit char[0] fork[0]
+	Return
+
+fn[36]:
+	CharSetChipBase self chip[50]
+	CharSetChipPattern self 1
+	Sc_7D_0 self 30 300
+	_Char96 self (-1150, 500, 22460) 1000 5000
+	Sc_7D_1 self 0 0
+	CharSetChipBase self chip[43]
+	CharSetChipPattern self 0
+	Sleep 250ms
+	TextTalk name[5] {
+		#1510030084V#10707F#4P喝啊……！{0x05}{wait}
+	}
+	SoundPlay sound[538] 0 100 0
+	CharSetChipBase self chip[53]
+	ED7CharAnimation self 1500ms 0 1 2
+	ED7CharAnimation self 1500ms 3 4 5
+	Return
+
+fn[37]:
+	CharTurnTo self 225deg 0deg/s
+	CharSetChipPattern self 0
+	SoundPlay sound[196] 0 100 0
+	EffPlay eff[0] eff_instance[255] null 0 (-670, 2000, 23530) 0 0 0 1500 1500 1500 null (0, 0, 0) 0ms
+	Shake 500 500 3000 1000ms
+	BlurOn 0ms 0xBBFFFFFF 0 0 0
+	Sleep 50ms
+	CamSetDistance 2170 2400 26370 500ms
+	CharWalkToPos2 self (2580, 500, 26780) 15000mm/s 0
+	EffPlay eff[5] eff_instance[255] self 5 (0, 0, 0) 0 0 0 1000 1000 1000 null (0, 0, 0) 0ms
+	BlurOff 500ms
+	Sleep 500ms
+	CamWait 121
+	SoundPlay sound[546] 0 100 0
+	EffStop eff_instance[7] 2
+	EffPlay eff[4] eff_instance[0] null 0 (2020, 2500, 26630) 0 0 0 1000 1000 1000 null (0, 0, 0) 0ms
+	EffPlay eff[4] eff_instance[1] null 0 (2820, 1750, 25760) 0 0 0 500 500 500 null (0, 0, 0) 0ms
+	EffPlay eff[4] eff_instance[2] null 0 (1260, 2000, 27380) 0 0 0 1000 1000 1000 null (0, 0, 0) 0ms
+	EffPlay eff[4] eff_instance[3] null 0 (2410, 3000, 26190) 0 0 0 500 500 500 null (0, 0, 0) 0ms
+	CamZoom 10000 2500ms
+	Sleep 1500ms
+	SoundPlay sound[546] 0 100 0
+	CamWait 121
+	CrossFade 250ms
+	BlurOn 0ms 0xBBFFFFFF 0 0 0
+	CamZoom 8000 250ms
+	CamWait 121
+	FadeWait
+	Shake 300 300 5000 2000ms
+	CamZoom 23500 500ms
+	SoundPlay sound[200] 0 100 0
+	SoundPlay sound[833] 0 100 0
+	EffPlay eff[6] eff_instance[255] null 0 (2580, 500, 26780) 0 0 0 1500 1500 1500 null (0, 0, 0) 0ms
+	EffStop eff_instance[0] 2
+	EffStop eff_instance[1] 2
+	EffStop eff_instance[2] 2
+	EffStop eff_instance[3] 2
+	ForkQuit char[6] fork[1]
+	ED7_12 904 500 100
+	CharColor char[0] 0x00FFFFFF 1000ms
+	CamWait 121
+	BlurOff 2000ms
+	Return
+
+fn[38]:
+	CharFlagsUnset self 0x0004
+	Fork self fork[1]:
+		_94 0 self 0deg 12000 2000mm/s 0
+	CharColor self 0xFFFFFFFF 500ms
+	ForkWait self fork[1]
+	CharFlagsSet self 0x0004
+	Return
+
+fn[39]:
+	CharFlagsUnset self 0x0004
+	Fork self fork[1]:
+		_94 0 self 0deg 12000 2000mm/s 0
+	CharColor self 0xFFFFFFFF 500ms
+	ForkWait self fork[1]
+	CharFlagsSet self 0x0004
+	Return
+
+fn[40]:
+	SoundPlay sound[203] 0 60 0
+	Sleep 900ms
+	SoundPlay sound[203] 0 70 0
+	Sleep 1100ms
+	SoundPlay sound[203] 0 60 0
+	Return
+
+fn[41]:
+	while 1:
+		SoundPlay sound[203] 0 60 0
+		Sleep 900ms
+		SoundPlay sound[203] 0 70 0
+		Sleep 1100ms
+		SoundPlay sound[203] 0 60 0
+		Sleep 800ms
+		SoundPlay sound[203] 0 50 0
+		Sleep 1000ms
+	Return
