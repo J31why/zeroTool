@@ -1,0 +1,1282 @@
+calmare zero_k scena
+scena:
+	name "c131b" "c131b" "c131b"
+	town town[28]
+	bgm bgm[513]
+	flags 8192
+	item_use fn[0,255]
+	unk 255 0
+
+entry:
+	pos (0, 0, -1000)
+	unk1 0
+	cam_from (0, 0, 34000)
+	cam_pers 262
+	unk2 30
+	cam_deg 45deg
+	cam_limit 0deg 360deg
+	cam_at (0, 0, 0)
+	unk3 0
+	unk4 0
+	flags 0x0001
+	town town[28]
+	init fn[0,1]
+	reinit fn[0,3]
+
+chip[0] "chr/ch28600.itc"
+chip[1] "chr/ch27900.itc"
+chip[2] "chr/ch30500.itc"
+chip[3] "chr/ch02708.itc"
+chip[4] "chr/ch00302.itc"
+chip[5] "chr/ch26400.itc"
+chip[6] "chr/ch02702.itc"
+
+npc char[0]:
+	name "接待小姐蘭菲"
+	pos (0, 300, 31700)
+	angle 180deg
+	flags 0x0105
+	unk2 0
+	chip chip[1]
+	init fn[0,0]
+	talk fn[0,7]
+	unk4 255
+
+npc char[1]:
+	name "警備員比爾斯"
+	pos (1190, 300, 4789)
+	angle 270deg
+	flags 0x0105
+	unk2 0
+	chip chip[0]
+	init fn[0,0]
+	talk fn[0,5]
+	unk4 255
+
+npc char[2]:
+	name "接待小姐柯琳娜"
+	pos (7110, 300, 32759)
+	angle 180deg
+	flags 0x0105
+	unk2 0
+	chip chip[2]
+	init fn[0,0]
+	talk fn[0,9]
+	unk4 255
+
+npc char[3]:
+	name "賽特"
+	pos (-7300, 0, 23299)
+	angle 180deg
+	flags 0x0115
+	unk2 0
+	chip chip[3]
+	init fn[0,0]
+	talk fn[0,10]
+	unk4 255
+
+npc char[4]:
+	name "蘭迪"
+	pos (-5710, 0, 23809)
+	angle 180deg
+	flags 0x0115
+	unk2 0
+	chip chip[4]
+	init fn[255,255]
+	talk fn[0,11]
+	unk4 255
+
+npc char[5]:
+	name "基約姆師傅"
+	pos (7150, 0, 20149)
+	angle 270deg
+	flags 0x0105
+	unk2 0
+	chip chip[5]
+	init fn[0,0]
+	talk fn[0,12]
+	unk4 255
+
+trigger[0]:
+	pos (9500.0, 16000.0, -500.0)
+	radius 9000.0
+	transform
+		0.5 -0.0 0.0 -4.75
+		-0.0 0.33333334 -0.0 -5.3333335
+		0.0 -0.0 0.20000002 0.10000001
+		0.0 0.0 0.0 1.0
+		// translate (9.5, 16.0, -0.5)
+		// rotate (1.0, 0.0, 0.0) 0.0deg
+		// scale (2.0, 2.9999998, 4.999999)
+	unk1 0
+	unk2 0
+	function fn[0,15]
+	unk3 0
+	unk4 0
+	unk5 0
+	unk6 0
+
+look_point[0]:
+	pos (0, 300, 30300)
+	radius 1500
+	bubble_pos (0, 1800, 31700)
+	unk1 126
+	unk2 0
+	function fn[0,6]
+	unk3 0
+	unk4 0
+
+look_point[1]:
+	pos (6650, 300, 31080)
+	radius 1500
+	bubble_pos (7110, 1800, 32759)
+	unk1 126
+	unk2 0
+	function fn[0,8]
+	unk3 0
+	unk4 0
+
+look_point[2]:
+	pos (7670, 0, 13360)
+	radius 1500
+	bubble_pos (7670, 1400, 13360)
+	unk1 124
+	unk2 0
+	function fn[0,4]
+	unk3 0
+	unk4 0
+
+fn[0]:
+	var[3] = random % 8
+	switch var[3]:
+		case 0:
+			ED7_A0 self 1450ms 0 251
+			break
+		case 1:
+			ED7_A0 self 1550ms 0 251
+			break
+		case 2:
+			ED7_A0 self 1600ms 0 251
+			break
+		case 3:
+			ED7_A0 self 1400ms 0 251
+			break
+		case 4:
+			ED7_A0 self 1650ms 0 251
+			break
+		case 5:
+			ED7_A0 self 1350ms 0 251
+			break
+		case 6:
+			ED7_A0 self 1500ms 0 251
+			break
+		default:
+			ED7_A0 self 1500ms 0 251
+			break
+	while 1:
+		ED7_A0 self 1500ms 0 251
+	Return
+
+fn[1]:
+	if system[0] == 101 && flag[761]:
+		FlagUnset flag[761]
+		CharSetPos field_party[0] (7670, 0, 16000) 270deg
+		CharSetPos field_party[1] (7670, 0, 16000) 270deg
+		CharSetPos field_party[2] (7670, 0, 16000) 270deg
+		CharSetPos field_party[3] (7670, 0, 16000) 270deg
+		Event fn[0,2]
+	if ED7_DA 65 == 3 && !flag[1852]:
+		CharFlagsSet char[4] 0x0080
+	if flag[1853]:
+		CharFlagsSet char[4] 0x0080
+		CharSetPos char[3] (-1330, 300, 17250) 135deg
+		CharSetPos char[5] (1180, 300, 11650) 270deg
+		CharSetPos char[1] (-1440, 300, 5330) 180deg
+	if flag[1853]:
+		CharSetChipBase char[3] chip[6]
+		CharSetChipPattern char[3] 0
+	Return
+
+fn[2]:
+	SoundPlay sound[160] 0 100 0
+	Return
+
+fn[3]:
+	if !flag[1853]:
+		char[3].45 = 1050
+		char[3].46 = 1050
+		char[3].47 = 1050
+	else:
+		char[3].7 = 1500
+		char[3].52 = 1500
+	EntranceSetFunc entrance[0] fn[255,65535]
+	TriggerFlagsSet trigger[0] 0x0080
+	if flag[525] && !flag[1853]:
+		EntranceSetFunc entrance[0] fn[0,14]
+	if flag[1853]:
+		TriggerFlagsUnset trigger[0] 0x0080
+		ObjFlagsUnset object[0] 0x0010
+	Return
+
+fn[4]:
+	ED7_F2 2
+	FadeOut 300ms 0x00000000 100
+	TextMessage name[742] {
+		{color 5}設有可回復導力器的裝置。{color 0}{wait}
+	}
+	Menu menu[0] -1 -1 1
+		"在此地休息" // 0
+		"放棄" // 1
+	MenuWait var[0]
+	MenuClose menu[0]
+	TextClose 0
+	if var[0] == 0:
+		FadeIn 100ms 0x00000000
+		Sleep 500ms
+		SoundLoad sound[13]
+		ED7_74 object[1] 0 30
+		SoundPlay sound[7] 0 100 0
+		ObjFrame object[1] 0
+		ED7ObjPlay object[1] 0 30 0 0
+		ObjWait object[1]
+		ED7ObjPlay object[1] 31 390 0 32
+		Sleep 1000ms
+		BgmStop 3000ms
+		FadeOut 1000ms 0x00000000 255
+		Sleep 700ms
+		SoundPlay sound[13] 0 100 0
+		FadeWait
+		PartySetAttr name[255] 254 0
+		CamLookChar field_party[0] 0ms
+		ED7_31 1
+		Sleep 3500ms
+		ObjFrame object[1] 0
+		BgmResume
+		FadeIn 1000ms 0x00000000
+		TextClose 0
+		TextEnd null
+		Return
+	elif var[0] != 0:
+		FadeIn 300ms 0x00000000
+		TextEnd null
+		Return
+	Return
+	Return
+
+fn[5]:
+	TextStart self
+	if flag[1853]:
+		TextTalk self {
+			門前的那些傢伙
+			安置了導力炸彈一類的東西。{wait}
+		}
+		TextWait
+		TextTalk self {
+			你們將其擊退之後，
+			就由我們來負責拆除炸彈！{wait}
+		}
+		TextWait
+		TextTalk self {
+			……一定要十分小心啊，
+			願女神保佑你們！{wait}
+		}
+		TextWait
+	elif !flag[0]:
+		TextTalk self {
+			你們來的這一路似乎也歷經磨難呢……{wait}
+		}
+		TextWait
+		TextTalk self {
+			這裡就交給我們
+			保全人員好了。{wait}
+		}
+		TextWait
+		TextTalk self {
+			只要待在ＩＢＣ裡，就保證絕對
+			沒人能碰你們一根手指頭！{wait}
+		}
+		TextWait
+		FlagSet flag[0]
+	else:
+		TextTalk self {
+			外面有保全人員在，
+			已經做好萬全的警備了。{wait}
+		}
+		TextWait
+		TextTalk self {
+			不用擔心，
+			這裡就交給我們！{wait}
+		}
+		TextWait
+	TextEnd self
+	Return
+
+fn[6]:
+	Call fn[0,7]
+	Return
+
+fn[7]:
+	if !flag[1905]:
+		TextStart char[0]
+		TextTalk char[0] {
+			是羅伊德警官啊……
+			事情的全部經過都聽總裁說過了。{wait}
+		}
+		TextWait
+		TextTalk char[0] {
+			今天真是發生了
+			不得了的事情啊。{wait}
+		}
+		TextWait
+		TextTalk name[0] {
+			#0006F實在抱歉，
+			把這裡的人們也捲進來了。{wait}
+		}
+		TextWait
+		TextTalk char[0] {
+			不不，請不必
+			在意我們。{wait}
+		}
+		TextWait
+		TextTalk char[0] {
+			而且，對庫羅伊斯總裁來說，
+			面對如此事態，肯定
+			也是無法置之不理的。{wait}
+		}
+		TextWait
+		TextTalk char[0] {
+			總之，就請讓我們
+			也進行協助吧。{wait}
+		}
+		TextWait
+		FlagSet flag[1905]
+		global[2] = global[2] + 1
+		TextEnd char[0]
+	else:
+		TextStart char[0]
+		var[0] = 99
+		while var[0] == 99:
+			FadeOut 300ms 0x00000000 100
+			Menu menu[0] -1 -1 1
+				"對話" // 0
+				"購物（裝備）" // 1
+				"購物（消耗品）" // 2
+				"放棄" // 3
+			MenuWait var[0]
+			if var[0] < 1 | var[0] > 2:
+				MenuClose menu[0]
+				FadeIn 300ms 0x00000000
+				FadeWait
+			if var[0] == 1:
+				ShopOpen shop[184]
+				var[0] = 99
+			elif var[0] == 2:
+				ShopOpen shop[185]
+				var[0] = 99
+			elif var[0] != 0:
+			elif var[0] == 0:
+				var[0] = 99
+				if flag[1853]:
+					TextTalk char[0] {
+						沒想到事態竟然會
+						演變至此啊……{wait}
+					}
+					TextWait
+					TextTalk char[0] {
+						各位，請一定要小心啊，
+						祈禱你們旗開得勝。{wait}
+					}
+					TextWait
+				else:
+					TextTalk char[0] {
+						對庫羅伊斯總裁來說，
+						面對如此事態，肯定
+						也是無法置之不理的。{wait}
+					}
+					TextWait
+					TextTalk char[0] {
+						總之，請讓我們這些職員
+						也盡己所能地協助各位吧。{wait}
+					}
+					TextWait
+		TextEnd char[0]
+	Return
+
+fn[8]:
+	Call fn[0,9]
+	Return
+
+fn[9]:
+	TextStart char[2]
+	if !flag[1906]:
+		TextTalk char[2] {
+			操縱警備隊……這種事
+			還真是詭異至極啊……{wait}
+		}
+		TextWait
+		TextTalk char[2] {
+			但可以肯定一點──各位都很幸運啊。{wait}
+		}
+		TextWait
+		TextTalk char[2] {
+			因為這裡可是天下聞名的
+			ＩＢＣ大樓呢～{wait}
+		}
+		TextWait
+		TextTalk name[0] {
+			#0002F哈哈，說得也是呢。{wait}
+		} {
+			#0004F（確實，能順利藏身在
+			　ＩＢＣ大樓之內，
+			　真是非常幸運呢。）{wait}
+		} {
+			#0008F（……必須要趁此機會，
+			　盡可能地整理一下
+			　身上的裝備。）{wait}
+		}
+		TextWait
+		FlagSet flag[1906]
+		global[2] = global[2] + 1
+	else:
+		var[0] = 99
+		while var[0] == 99:
+			FadeOut 300ms 0x00000000 100
+			Menu menu[0] -1 -1 1
+				"對話" // 0
+				"交換（裝備）" // 1
+				"交換（結晶迴路）" // 2
+				"交換（其它）" // 3
+				"放棄" // 4
+			MenuWait var[0]
+			if var[0] < 1 | var[0] > 3:
+				MenuClose menu[0]
+				FadeIn 300ms 0x00000000
+				FadeWait
+			if var[0] == 1:
+				ShopOpen shop[186]
+				var[0] = 99
+			elif var[0] == 2:
+				ShopOpen shop[187]
+				var[0] = 99
+			elif var[0] == 3:
+				ShopOpen shop[188]
+				var[0] = 99
+			elif var[0] != 0:
+			elif var[0] == 0:
+				var[0] = 99
+				if flag[1853]:
+					TextTalk char[2] {
+						竟然都攻到了
+						ＩＢＣ大樓前……{wait}
+					}
+					TextWait
+					TextTalk char[2] {
+						………………………………{wait}
+					}
+					TextWait
+					TextTalk char[2] {
+						實在抱歉，
+						我們的命運，
+						就託付給各位了。{wait}
+					}
+					TextWait
+				else:
+					TextTalk char[2] {
+						操縱警備隊……這種事
+						還真是詭異至極啊……{wait}
+					}
+					TextWait
+					TextTalk char[2] {
+						但可以肯定一點──各位都很幸運啊。{wait}
+					}
+					TextWait
+					TextTalk char[2] {
+						因為這裡可是天下聞名的
+						ＩＢＣ大樓呢～{wait}
+					}
+					TextWait
+	TextEnd char[2]
+	Return
+
+fn[10]:
+	TextStart self
+	if flag[1853]:
+		TextTalk char[3] {
+			#1201F嗚嚕嚕嚕嚕………！{wait}
+		}
+		TextWait
+		TextTalk name[0] {
+			#0002F賽特……
+			看守大樓的工作就交給你了。{wait}
+		}
+		TextWait
+		TextTalk char[3] {
+			#1200F嗚嚕嚕嚕……！{wait}
+		}
+		TextWait
+	elif flag[1828]:
+		TextTalk char[3] {
+			#1201F嗚嚕嚕嚕嚕嚕嚕……{wait}
+		}
+		TextWait
+		TextTalk name[0] {
+			#0005F（賽特……？
+			　牠的情緒好像很激昂呢……）{wait}
+		}
+		TextWait
+	else:
+		TextTalk char[3] {
+			#1200F嗚嚕嚕嚕嚕嚕……{wait}
+		}
+		TextWait
+		TextTalk name[0] {
+			#0000F賽特……
+			這裡就交給你了！{wait}
+		}
+		TextWait
+	TextEnd self
+	Return
+
+fn[11]:
+	field_party[0].5 = self.4
+	self.5 = self.4
+	TextStart self
+	CharFlagsUnset self 0x0010
+	CharTurnToChar self field_party[0] 0deg/s
+	self.4 = (self.4 + 360) % 360
+	self.4 = self.4 + 360 - self.5
+	self.5 = self.4 / 180
+	if self.4 <= 45 | self.4 >= 315 && self.4 <= 405 | self.4 >= 675:
+	elif self.5 < 1:
+		self.8 = 2
+	elif self.5 > 2:
+		self.8 = 1
+	else:
+		self.8 = self.5
+	self.4 = field_party[0].5
+	field_party[0].5 = 0
+	self.5 = 0
+	CharFlagsSet self 0x0010
+	if flag[1852]:
+		if !flag[1827]:
+			_Char4A char[3] 255
+			TextTalk name[0] {
+				#0001F蘭迪，外面的情況如何？{wait}
+			}
+			TextWait
+			TextTalk char[4] {
+				#0306F嗯，現在還沒有動靜。{wait}
+			} {
+				#0301F不過，他們差不多也該
+				循著味道追過來了。{wait}
+			} {
+				那輛豪華的高級轎車
+				是銀行老闆的愛車，
+				他們肯定會注意到這點吧。{wait}
+			}
+			TextWait
+			TextTalk name[0] {
+				#0003F……確實。{wait}
+			} {
+				#0000F賽特，不好意思，
+				這裡就拜託你啦。{wait}
+			}
+			TextWait
+			TextTalk char[3] {
+				#1200F嗚～{wait}
+			}
+			TextWait
+			TextTalk char[4] {
+				#0309F哈哈……
+				這傢伙還是和以前一樣囂張呢。{wait}
+			} {
+				#0304F──好啦，既然都到了這一步，
+				就不得不堅定決心，做好最壞打算啦。{wait}
+			} {
+				#0300F如果警備隊向這裡發起進攻，
+				多半將會是一波接一波的連續攻擊。{wait}
+			} {
+				到時說不定要進行連續戰鬥，
+				最好趁現在做好補給工作。{wait}
+			}
+			TextWait
+			TextTalk name[0] {
+				#0000F嗯，瞭解。{wait}
+			}
+			TextWait
+			_Char4B char[3] 255
+			FlagSet flag[1827]
+			global[2] = global[2] + 1
+		else:
+			TextTalk char[4] {
+				#0303F如果警備隊向這裡發起進攻，
+				多半將會是一波接一波的連續攻擊。{wait}
+			} {
+				#0300F到時說不定要進行連續戰鬥，
+				最好趁現在做好補給工作。{wait}
+			}
+			TextWait
+	elif !flag[1827]:
+		_Char4A char[3] 255
+		TextTalk name[0] {
+			#0001F蘭迪，外面的情況如何？{wait}
+		}
+		TextWait
+		TextTalk char[4] {
+			#0304F嗯，目前還沒什麼問題。{wait}
+		} {
+			#0300F不愧是高檔名車，速度好快，
+			已經把那些傢伙完全甩開了。{wait}
+		}
+		TextWait
+		TextTalk name[0] {
+			#0002F是嗎……而且賽特也在，
+			我們可以暫時安心了。{wait}
+		}
+		TextWait
+		TextTalk char[3] {
+			#1200F嗚～{wait}
+		}
+		TextWait
+		TextTalk char[4] {
+			#0306F哈，事態已經發展至此，
+			不管發生什麼狀況也都
+			不足為奇啦。{wait}
+		} {
+			#0300F……羅伊德，
+			補給工作一定要做好哦。{wait}
+		}
+		TextWait
+		TextTalk name[0] {
+			#0000F嗯，我明白。{wait}
+		}
+		TextWait
+		FlagSet flag[1827]
+		global[2] = global[2] + 1
+		_Char4B char[3] 255
+	else:
+		TextTalk char[4] {
+			#0303F這裡的警備員們似乎
+			正在外面巡邏呢。{wait}
+		} {
+			#0300F稍微休息一下之後，我們
+			就冷靜下來，好好考慮一下今後的對策吧。{wait}
+		}
+		TextWait
+	CharSetChipPattern self 0
+	TextEnd self
+	Return
+
+fn[12]:
+	TextStart char[5]
+	if flag[1853] && !flag[1932]:
+		TextTalk self {
+			噢，我都聽說啦，
+			你們要出戰了吧。{wait}
+		}
+		TextWait
+		TextTalk self {
+			……已經做好萬全的準備了嗎？
+			裝備和隊列都要好好檢查一下啊。{wait}
+		}
+		TextWait
+		TextTalk self {
+			好好加油啊，特務支援課！{wait}
+		}
+		TextWait
+		FlagSet flag[1932]
+	elif !flag[1910]:
+		TextTalk char[5] {
+			喲……
+			情況好像變得
+			十分不得了啊？{wait}
+		}
+		TextWait
+		Emote name[0] 0mm 2000mm 38 38 250ms 1
+		Sleep 1000ms
+		if flag[1900]:
+			TextTalk name[0] {
+				#0005F修理店的師傅……{wait}
+			} {
+				#0000F說起來，
+				您好像說過今天要去
+				財團分部露個面呢。{wait}
+			}
+			TextWait
+			TextTalk char[5] {
+				噢，是啊。
+				在那之後，我就來到了位於
+				這座大樓五層的分部。{wait}
+			}
+			TextWait
+			TextTalk char[5] {
+				和羅伯茲那傢伙
+				聊了聊發明方面的創意……{wait}
+			}
+			TextWait
+			TextTalk char[5] {
+				真沒想到，居然會發生
+				這樣的事情啊。{wait}
+			}
+			TextWait
+		else:
+			TextTalk name[0] {
+				#0005F您是舊市街修理店的……{wait}
+			} {
+				#0005F基約姆師傅，您怎麼在這裡啊？{wait}
+			}
+			TextWait
+			TextTalk char[5] {
+				啊，那個嘛，今天我正好
+				到財團分部來拜訪啦。{wait}
+			}
+			TextWait
+			TextTalk char[5] {
+				和羅伯茲那傢伙
+				聊了聊發明方面的創意，
+				不知不覺就耗到這麼晚。{wait}
+			}
+			TextWait
+			TextTalk char[5] {
+				但真是沒想到，
+				居然會發生這樣的事情啊。{wait}
+			}
+			TextWait
+		TextTalk name[0] {
+			#0003F實在抱歉，把您也給捲進來了，
+			這都是我們的錯。{wait}
+		}
+		TextWait
+		TextTalk char[5] {
+			啊哈哈，用不著介意！
+			這並不是你們的錯啊。{wait}
+		}
+		TextWait
+		TextTalk char[5] {
+			話說回來，我這種大叔
+			好像也能發揮一些作用啊，
+			我會盡全力協助你們的。{wait}
+		}
+		TextWait
+		TextTalk char[5] {
+			工房道具準備得一應俱全哦。{wait}
+		}
+		TextWait
+		TextTalk char[5] {
+			想改造導力器也好，
+			想強化武器也好，
+			不管有什麼需求，儘管來和我說就是了！{wait}
+		}
+		TextWait
+		TextTalk name[0] {
+			#0000F非常感謝，我一定會
+			充分利用這個機會的。{wait}
+		} {
+			#0003F（對了……連同裝備的調整，
+			　把導力器也好好檢查一下吧。）{wait}
+		} {
+			（畢竟還不知道接下來
+			　將會出現怎樣的狀況呢。）{wait}
+		}
+		TextWait
+		if !flag[628]:
+			SoundPlay sound[828] 0 100 0
+			FadeOut 300ms 0x00000000 100
+			TextMessage null {
+				{color 5}※與基約姆師傅對話，並選擇『委託改造』後，
+				　便能調出可改造物品一覽表。
+				　如果擁有改造所需的素材，就可以進行改造。{color 0}{wait}
+			}
+			TextWait
+			TextMessage null {
+				{color 5}※經過改造的武器與防具都是
+				　無法在武器商會等地取得的強力裝備，
+				　特別是有些武器還會附帶特殊效果。{color 0}{wait}
+			}
+			TextWait
+			TextMessage null {
+				{color 5}※改造所需的『素材』
+				　主要都是魔獸掉落的。{color 0}{wait}
+			}
+			TextWait
+			TextClose 0
+			_59
+			FadeIn 300ms 0x00000000
+		FlagSet flag[1910]
+		global[2] = global[2] + 1
+		TextEnd char[5]
+		Return
+	if ItemHas item[918] 0 && !flag[1853] && !flag[1919]:
+		TextTalk self {
+			話說回來，那東西……
+			不是『塞姆利亞石』嗎！？{wait}
+		}
+		TextWait
+		TextTalk self {
+			你帶著相當寶貴的東西啊！
+			究竟是在哪裡得到的！？{wait}
+		}
+		TextWait
+		TextTalk name[0] {
+			#0005F那個，這塊石頭莫非是
+			如此珍貴的物品嗎？{wait}
+		}
+		TextWait
+		TextTalk self {
+			是啊，這種石頭可是被
+			稱為古代文明遺物的東西呢，
+			有著無與倫比的硬度喔。{wait}
+		}
+		TextWait
+		TextTalk self {
+			不過……就在去年，終於聽到了傳聞，
+			說是已經發現了加工方法，
+			我也從財團那裡打聽到了具體方法。{wait}
+		}
+		TextWait
+		TextTalk self {
+			如果是用這種材料打造出的武器……
+			一定會擁有最強的威力。{wait}
+		}
+		TextWait
+		TextTalk name[0] {
+			#0005F這、這原來是如此驚人的東西啊！{wait}
+		} {
+			#0003F不過，最強的武器嗎……
+			在如今這種狀況下，
+			正需要那種東西呢……{wait}
+		}
+		TextWait
+		TextTalk self {
+			嘿嘿，正好我這裡也有
+			不少最新的
+			武器設計圖呢。{wait}
+		}
+		TextWait
+		TextTalk self {
+			如果願意的話，
+			就用你手上的塞姆利亞石
+			來打造好啦。{wait}
+		}
+		TextWait
+		TextTalk self {
+			……使用一塊石頭，
+			我想應該夠打造出一人份的武器吧……
+			如何，要試試看嗎？{wait}
+		}
+		TextWait
+		FlagSet flag[1919]
+		Call fn[0,13]
+		TextEnd char[5]
+		Return
+	if QuestTaskGet quest[49] 0 && !QuestFlagsGet quest[49] 0x10 && !QuestFlagsGet quest[49] 0x40 && !QuestTaskGet quest[49] 3 && ItemHas item[919] 0 > 0 && QuestTaskGet quest[49] 2:
+		var[0] = 99
+		while var[0] == 99:
+			FadeOut 300ms 0x00000000 100
+			ED7MenuNew menu[0]
+			ED7MenuAdd menu[0] "對話"
+			ED7MenuAdd menu[0] "改造・合成（導力器）"
+			ED7MenuAdd menu[0] "委託改造（裝備）"
+			ED7MenuAdd menu[0] "升級依賴"
+			if ItemHas item[918] 0 && !flag[1853]:
+				ED7MenuAdd menu[0] "製造最強武器"
+			ED7MenuAdd menu[0] "放棄"
+			ED7MenuShow menu[0] 65535 65535 1
+			MenuWait var[0]
+			if ItemHas item[918] 0 && var[0] > 4:
+				var[0] += 1
+			if var[0] < 1 | var[0] > 2:
+				MenuClose menu[0]
+				FadeIn 300ms 0x00000000
+				FadeWait
+			if var[0] == 1:
+				if !flag[1739]:
+					MenuClose menu[0]
+					FadeIn 300ms 0x00000000
+					FadeWait
+					TextTalk char[5] {
+						對了，你們知道
+						『插槽的強化』嗎？{wait}
+					}
+					TextWait
+					SoundPlay sound[828] 0 100 0
+					FadeOut 300ms 0x00000000 100
+					TextMessage null {
+						{color 5}※關於插槽的強化。{wait}
+					}
+					TextWait
+					TextMessage null {
+						{color 5}※開啟［ＳＬＯＴ］後
+						　選擇已解鎖插槽，
+						　便可進行插槽等級的強化。{wait}
+					}
+					TextWait
+					TextMessage null {
+						{color 5}※進行強化之後，插槽不僅可以鑲嵌
+						　高級結晶迴路，最大ＥＰ量也會
+						　進一步得到提升。{color 0}{wait}
+					}
+					TextWait
+					TextClose 0
+					_59
+					FlagSet flag[1739]
+					Sc_C4Unset 128
+				ShopOpen shop[175]
+				var[0] = 99
+			elif var[0] == 2:
+				ShopOpen shop[174]
+				var[0] = 99
+			elif var[0] == 3:
+				TextTalk char[5] {
+					噢，要改造那個魔導杖嗎。{wait}
+				}
+				TextWait
+				TextTalk char[5] {
+					我已經全部準備好啦。
+					要使用材料
+					來進行改造嗎？{wait}
+				}
+				TextWait
+				var[1] = 0
+				Menu menu[1] -1 -1 1
+					"【是的】" // 0
+					"【放棄】" // 1
+				MenuWait var[1]
+				MenuClose menu[1]
+				if var[1] == 0:
+					TextTalk name[0] {
+						#0000F嗯，拜託了。{wait}
+					}
+					TextWait
+					TextTalk char[5] {
+						好，那麼，
+						就去和羅伯茲那傢伙
+						說一聲吧。{wait}
+					}
+					TextWait
+					TextTalk name[0] {
+						#0000F說得也是呢。
+						順便也去和緹歐
+						說一聲吧。{wait}
+					}
+					TextWait
+					_59
+					FadeOut 1000ms 0x00000000 255
+					FadeWait
+					FlagSet flag[737]
+					NewScene "scena/c1320.bin" 0 0 0
+					Hcf
+					Return
+				else:
+					TextTalk char[5] {
+						是嗎，那以後如果想要進行升級，
+						就再來和我說吧。{wait}
+					}
+					TextWait
+					TextTalk char[5] {
+						我這裡已經準備充分了。{wait}
+					}
+					TextWait
+					var[0] = 99
+			elif var[0] == 4:
+				if ItemHas item[918] 0 && !flag[1853]:
+					Call fn[0,13]
+					TextEnd char[5]
+					Return
+			elif var[0] != 0:
+			elif var[0] == 0:
+				var[0] = 99
+				if flag[1853]:
+					TextTalk self {
+						我都聽說啦，
+						你們要出戰了吧。{wait}
+					}
+					TextWait
+					TextTalk self {
+						……已經做好萬全的準備了嗎？{wait}
+					}
+					TextWait
+					TextTalk self {
+						好好加油啊，特務支援課！{wait}
+					}
+					TextWait
+				else:
+					TextTalk char[5] {
+						愛普斯泰恩財團的分部
+						也在這棟大樓裡呢，
+						設備方面完全沒問題哦。{wait}
+					}
+					TextWait
+					TextTalk char[5] {
+						如果有什麼需要的話，
+						請不必客氣，儘管和我說。
+						我會盡心對待的！{wait}
+					}
+					TextWait
+	else:
+		var[0] = 99
+		while var[0] == 99:
+			FadeOut 300ms 0x00000000 100
+			ED7MenuNew menu[0]
+			ED7MenuAdd menu[0] "對話"
+			ED7MenuAdd menu[0] "改造・合成（導力器）"
+			ED7MenuAdd menu[0] "委託改造（裝備）"
+			if ItemHas item[918] 0 && !flag[1853]:
+				ED7MenuAdd menu[0] "製造最強武器"
+			ED7MenuAdd menu[0] "放棄"
+			ED7MenuShow menu[0] 65535 65535 1
+			MenuWait var[0]
+			if ItemHas item[918] 0 && var[0] > 3:
+				var[0] += 1
+			if var[0] < 1 | var[0] > 2:
+				MenuClose menu[0]
+				FadeIn 300ms 0x00000000
+				FadeWait
+			if var[0] == 1:
+				if !flag[1739]:
+					MenuClose menu[0]
+					FadeIn 300ms 0x00000000
+					FadeWait
+					TextTalk char[5] {
+						對了，你們知道
+						『插槽的強化』嗎？{wait}
+					}
+					TextWait
+					SoundPlay sound[828] 0 100 0
+					FadeOut 300ms 0x00000000 100
+					TextMessage null {
+						{color 5}※關於插槽的強化。{wait}
+					}
+					TextWait
+					TextMessage null {
+						{color 5}※開啟［ＳＬＯＴ］後
+						　選擇已解鎖插槽，
+						　便可進行插槽等級的強化。{wait}
+					}
+					TextWait
+					TextMessage null {
+						{color 5}※進行強化之後，插槽不僅可以鑲嵌
+						　高級結晶迴路，最大ＥＰ量也會
+						　進一步得到提升。{color 0}{wait}
+					}
+					TextWait
+					TextClose 0
+					_59
+					FlagSet flag[1739]
+					Sc_C4Unset 128
+				ShopOpen shop[175]
+				var[0] = 99
+			elif var[0] == 2:
+				ShopOpen shop[174]
+				var[0] = 99
+			elif var[0] == 3:
+				if ItemHas item[918] 0 && !flag[1853]:
+					Call fn[0,13]
+					TextEnd char[5]
+					Return
+			elif var[0] != 0:
+			elif var[0] == 0:
+				var[0] = 99
+				if flag[1853]:
+					TextTalk self {
+						我都聽說啦，
+						你們要出戰了吧。{wait}
+					}
+					TextWait
+					TextTalk self {
+						……已經做好萬全的準備了嗎？
+						裝備和隊列都要好好檢查一下啊。{wait}
+					}
+					TextWait
+					TextTalk self {
+						好好加油啊，特務支援課！{wait}
+					}
+					TextWait
+				else:
+					TextTalk char[5] {
+						愛普斯泰恩財團的分部
+						也在這棟大樓裡呢，
+						設備方面完全沒問題哦。{wait}
+					}
+					TextWait
+					TextTalk char[5] {
+						如果有什麼需要的話，
+						請不必客氣，儘管和我說。
+						我會盡心對待的！{wait}
+					}
+					TextWait
+	TextEnd char[5]
+	Return
+
+fn[13]:
+	var[1] = 99
+	FadeOut 300ms 0x00000000 100
+	Menu menu[1] -1 -1 1
+		"【委託打造羅伊德的武器】" // 0
+		"【委託打造艾莉的武器】" // 1
+		"【委託打造緹歐的武器】" // 2
+		"【委託打造蘭迪的武器】" // 3
+		"【放棄】" // 4
+	MenuWait var[1]
+	MenuClose menu[1]
+	FadeIn 300ms 0x00000000
+	_59
+	if var[1] >= 0 && var[1] < 4:
+		if !flag[1920]:
+			TextTalk self {
+				很好，那我也要拿出
+				全部本領啦！{wait}
+			}
+			TextWait
+			TextTalk self {
+				要使用這塞姆利亞石
+				打造出我的最高傑作！{wait}
+			}
+			TextWait
+		else:
+			TextTalk self {
+				好！就請
+				稍等片刻吧！{wait}
+			}
+			TextWait
+		FadeOut 1000ms 0x00000000 255
+		FadeWait
+		EventBegin 0
+		_Char4A char[5] 255
+		CamSetDistance 6020 1500 19170 0ms
+		ED7CamRotate 45deg 14deg 0deg 0ms
+		CamPers 590 0ms
+		CamZoom 17100 0ms
+		CharFlagsSet char[2] 0x8000
+		CharSetPos name[0] (5670, 0, 19810) 90deg
+		CharTurnTo char[5] 270deg 0deg/s
+		Sleep 1500ms
+		FadeIn 2000ms 0x00000000
+		FadeWait
+		TextTalk self {
+			#2P#40W嗯，最後調整大概就是這樣了……{wait}
+		}
+		TextWait
+		TextTalk self {
+			#2P……好，完成了。
+			收下吧！{wait}
+		}
+		TextWait
+		FadeOut 300ms 0x00000000 100
+		TextSetPos -1 -1 -1 -1
+		TextSetName ""
+		SoundPlay sound[17] 0 100 0
+		if var[1] == 0:
+			TextMessage null {
+				獲得了{item[1012]}{color 0}。{wait}
+			}
+			TextWait
+			ItemAdd item[1012] 1
+		elif var[1] == 1:
+			TextMessage null {
+				獲得了{item[1032]}{color 0}。{wait}
+			}
+			TextWait
+			ItemAdd item[1032] 1
+		elif var[1] == 2:
+			TextMessage null {
+				獲得了{item[1052]}{color 0}。{wait}
+			}
+			TextWait
+			ItemAdd item[1052] 1
+		elif var[1] == 3:
+			TextMessage null {
+				獲得了{item[1072]}{color 0}。{wait}
+			}
+			TextWait
+			ItemAdd item[1072] 1
+		TextClose 0
+		FadeIn 300ms 0x00000000
+		TextSetPos -1 280 60 3
+		_59
+		ItemRemove item[918] 1
+		ED7_DE 24
+		if !flag[1920]:
+			TextTalk name[0] {
+				#0005F真的完成了啊……{wait}
+			} {
+				#0005F基約姆師傅，太謝謝您了。{wait}
+			}
+			TextWait
+			TextTalk self {
+				#2P沒什麼啦，能用上這樣珍貴的
+				材料，對身為技師的我來說，
+				也算是上輩子修來的福份呢。{wait}
+			}
+			TextWait
+			TextTalk self {
+				#2P如果還有什麼需要，
+				請不必客氣，儘管開口啊！{wait}
+			}
+			TextWait
+			TextTalk name[0] {
+				#0000F好的，那就拜託您了。{wait}
+			}
+			TextWait
+		else:
+			TextTalk self {
+				#2P正是在這種特殊時期，
+				它才能派上用場吧……{wait}
+			}
+			TextWait
+			TextTalk self {
+				#2P所以呢，就請加油吧！{wait}
+			}
+			TextWait
+			TextTalk name[0] {
+				#0000F是的，我們一定會
+				好好使用它的。{wait}
+			}
+			TextWait
+		_59
+		FlagSet flag[1920]
+		_Char4B char[5] 255
+		CharFlagsUnset char[2] 0x8000
+		EventEnd 5
+	else:
+		TextTalk self {
+			是嗎，好，如果還有什麼需要，
+			儘管來和我說就是了。{wait}
+		}
+		TextWait
+		TextTalk self {
+			只要是能做到的事情，
+			我一定會拼盡全力來完成！{wait}
+		}
+		TextWait
+	Return
+
+fn[14]:
+	EventBegin 1
+	TextTalk name[0] {
+		#0003F警備人員正在
+		外面巡邏呢……{wait}
+	} {
+		#0001F趁此機會，還是先去進行補給，
+		順便休息一下吧。{wait}
+	}
+	TextWait
+	Sleep 50ms
+	CharSetPos field_party[0] (-460, 300, 4950) 0deg
+	EventEnd 4
+	Return
+
+fn[15]:
+	EventBegin 1
+	TextTalk name[0] {
+		#0003F必須要拆除門前的導力炸彈，
+		並阻止警備隊員的入侵啊。{wait}
+	} {
+		#0001F……沒時間猶豫了。
+		正面迎擊吧！{wait}
+	}
+	TextWait
+	Sleep 50ms
+	CharSetPos field_party[0] (6280, 0, 15970) 270deg
+	EventEnd 4
+	Return

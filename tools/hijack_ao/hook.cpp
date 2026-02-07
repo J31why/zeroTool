@@ -15,7 +15,7 @@ namespace hook {
     string loadNoteHelpKey_posMap_addr_pattern = "48 89 5C 24 ?? 48 89 4C 24 ?? 55 56 57 41 54 41 55 41 56 41 57 48 8D AC 24 ?? ?? FF FF 48 81 EC ?? ?? 00 00 48 8d 05 ?? ?? ?? 00";
     string WebMPlayerOpen_addr_pattern = "72 03 48 8B 16 48 8B CB FF 15";
     string TextWidthScalefactor_addr_pattern = "F3 0F 59 D1 F3 41 0F 59 D0 F3 0F 58 C2 F3 41 0F 59 C0";
-    string DialogBoxHeight_addr_pattern = "66 0F 6E C8 0F 5B C9 F3 0F 58 C8 F3 0F 2C C1 89 83 8C 01 00 00 48 8B 47 40";
+    string DialogBoxHeight_addr_pattern = "66 0F 6E C8 0F 5B C9 F3 0F 58 C8 F3 0F 2C C1 89 83 8C";
 
     string main_sjis_byte_valid_addr_pattern = "80 ?? 7F 76";
     string ui_sjis_byte_valid_addr_pattern = "3C 3F 77";
@@ -37,7 +37,11 @@ namespace hook {
     uintptr_t loadNoteHelpKey_posMap_addr = 0x1400beb80;
     uintptr_t WebMPlayerOpen_addr = 0x14041AEC0;
     uintptr_t TextWidthScalefactor_addr = 0x14046b260;
-    uintptr_t DialogBoxHeight_addr = 0x140232A58;
+    uintptr_t DialogBoxHeight_addr[] =
+    {
+        0x140232A58,
+        0x1402332D2
+    };
 
     uintptr_t main_sjis_byte_valid_addr[] = 
     { 
@@ -170,8 +174,9 @@ namespace hook {
             matchedAddrCount++;
         }
 
-        if (SearchModuleMemory(DialogBoxHeight_addr_pattern, matchResults) && matchResults.size() == 1) {
-            DialogBoxHeight_addr = matchResults[0];
+        if (SearchModuleMemory(DialogBoxHeight_addr_pattern, matchResults) && matchResults.size() == 2) {
+            DialogBoxHeight_addr[0] = matchResults[0];
+            DialogBoxHeight_addr[1] = matchResults[1];
             cout << "DialogBoxHeight_addr : 0x" << hex << DialogBoxHeight_addr << endl;
             matchedAddrCount++;
         }
@@ -405,7 +410,8 @@ namespace hook {
             fix_TextWidthScalefactor(TextWidthScalefactor_addr);
 
             cout << "[INFO]fix text height scale factor" << endl;
-            fix_DialogBoxHeight(DialogBoxHeight_addr);
+            for (size_t i = 0; i < size(DialogBoxHeight_addr); i++)
+                fix_DialogBoxHeight(DialogBoxHeight_addr[i]);
 
             cout << "[INFO]fix main_sjis_byte_valid" << endl;
             for (size_t i = 0; i < size(main_sjis_byte_valid_addr); i++)

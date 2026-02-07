@@ -1,0 +1,816 @@
+calmare zero_k scena
+scena:
+	name "c101c" "c101c" "c101c"
+	town town[19]
+	bgm bgm[100]
+	flags 8192
+	item_use fn[0,255]
+	unk 255 0
+
+entry:
+	pos (0, 0, -1000)
+	unk1 0
+	cam_from (0, 0, 34000)
+	cam_pers 262
+	unk2 30
+	cam_deg 45deg
+	cam_limit 0deg 360deg
+	cam_at (0, 0, 0)
+	unk3 0
+	unk4 0
+	flags 0x0001
+	town town[19]
+	init fn[0,1]
+	reinit fn[0,2]
+
+chip[0] "chr/ch09100.itc"
+chip[1] "chr/ch02400.itc"
+chip[2] "chr/ch27200.itc"
+chip[3] "chr/ch27300.itc"
+chip[4] "chr/ch32002.itc"
+chip[5] "chr/ch32102.itc"
+chip[6] null
+chip[7] null
+chip[8] null
+chip[9] null
+chip[10] null
+chip[11] null
+chip[12] null
+chip[13] null
+chip[14] null
+chip[15] null
+chip[16] null
+chip[17] null
+chip[18] null
+chip[19] null
+chip[20] null
+chip[21] null
+chip[22] null
+chip[23] null
+chip[24] null
+chip[25] null
+chip[26] null
+chip[27] null
+chip[28] null
+chip[29] null
+
+npc char[0]:
+	name "接待員蜜雪兒"
+	pos (1000, 0, 12819)
+	angle 180deg
+	flags 0x0105
+	unk2 0
+	chip chip[0]
+	init fn[0,0]
+	talk fn[0,4]
+	unk4 255
+
+npc char[1]:
+	name "亞里歐斯"
+	pos (970, 0, 10300)
+	angle 0deg
+	flags 0x0195
+	unk2 0
+	chip chip[1]
+	init fn[0,0]
+	talk fn[0,5]
+	unk4 255
+
+npc char[2]:
+	name "遊擊士斯克特"
+	pos (-10729, 0, 51650)
+	angle 270deg
+	flags 0x0195
+	unk2 0
+	chip chip[2]
+	init fn[0,0]
+	talk fn[0,6]
+	unk4 255
+
+npc char[3]:
+	name "遊擊士溫蔡爾"
+	pos (-12170, 0, 51490)
+	angle 90deg
+	flags 0x0195
+	unk2 0
+	chip chip[3]
+	init fn[0,0]
+	talk fn[0,7]
+	unk4 255
+
+npc char[4]:
+	name "遊擊士林"
+	pos (-5929, 150, 43069)
+	angle 180deg
+	flags 0x01D5
+	unk2 0
+	chip chip[4]
+	init fn[255,255]
+	talk fn[0,8]
+	unk4 255
+
+npc char[5]:
+	name "遊擊士艾歐莉雅"
+	pos (-5869, 150, 40840)
+	angle 0deg
+	flags 0x01D5
+	unk2 0
+	chip chip[5]
+	init fn[255,255]
+	talk fn[0,9]
+	unk4 255
+
+look_point[0]:
+	pos (5500, 0, 6000)
+	radius 1200
+	bubble_pos (5500, 1500, 6000)
+	unk1 124
+	unk2 0
+	function fn[0,10]
+	unk3 0
+	unk4 0
+
+look_point[1]:
+	pos (8000, 0, 6000)
+	radius 1200
+	bubble_pos (8000, 1500, 6000)
+	unk1 124
+	unk2 0
+	function fn[0,11]
+	unk3 0
+	unk4 0
+
+look_point[2]:
+	pos (5500, 0, 2500)
+	radius 1200
+	bubble_pos (5500, 1500, 2500)
+	unk1 124
+	unk2 0
+	function fn[0,11]
+	unk3 0
+	unk4 0
+
+look_point[3]:
+	pos (8000, 0, 2500)
+	radius 1200
+	bubble_pos (8000, 1500, 2500)
+	unk1 124
+	unk2 0
+	function fn[0,11]
+	unk3 0
+	unk4 0
+
+look_point[4]:
+	pos (680, 0, 11370)
+	radius 1700
+	bubble_pos (1000, 1500, 12820)
+	unk1 126
+	unk2 0
+	function fn[0,3]
+	unk3 0
+	unk4 0
+
+fn[0]:
+	var[2] = random % 8
+	switch var[2]:
+		case 0:
+			ED7_A0 self 1450ms 0 251
+			break
+		case 1:
+			ED7_A0 self 1550ms 0 251
+			break
+		case 2:
+			ED7_A0 self 1600ms 0 251
+			break
+		case 3:
+			ED7_A0 self 1400ms 0 251
+			break
+		case 4:
+			ED7_A0 self 1650ms 0 251
+			break
+		case 5:
+			ED7_A0 self 1350ms 0 251
+			break
+		case 6:
+			ED7_A0 self 1500ms 0 251
+			break
+		default:
+			ED7_A0 self 1500ms 0 251
+			break
+	while 1:
+		ED7_A0 self 1500ms 0 251
+	Return
+
+fn[1]:
+	if flag[1307]:
+		CharFlagsUnset char[2] 0x0080
+		CharFlagsUnset char[3] 0x0080
+	elif flag[1362]:
+		CharFlagsUnset char[1] 0x0080
+		CharFlagsUnset char[4] 0x0080
+		CharFlagsUnset char[5] 0x0080
+		CharFlagsSet char[0] 0x0010
+	elif flag[1292]:
+	elif flag[1282]:
+	elif flag[1280]:
+	Return
+
+fn[2]:
+	Return
+
+fn[3]:
+	Call fn[0,4]
+	Return
+
+fn[4]:
+	TextStart char[0]
+	if flag[1307]:
+		if !flag[0]:
+			TextTalk char[0] {
+				啊，是你們幾個啊。
+				又要出遠門了吧？{wait}
+			}
+			TextWait
+			TextTalk name[0] {
+				#0012F嗯，有些工作……{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				是嗎……{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				……算啦。
+				人家並沒有打算插手
+				你們警察內部的事情。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				雖然不知道你們要去哪裡，
+				但要努力做好自己分內的事哦。{wait}
+			}
+			TextWait
+			TextTalk name[0] {
+				#0001F……是。{wait}
+			}
+			TextWait
+			TextTalk name[2] {
+				#0203F（似乎隱隱被察覺到什麼了呢……）{wait}
+			}
+			TextWait
+			TextTalk name[3] {
+				#0301F（呼，還真是敏銳啊……）{wait}
+			}
+			TextWait
+			FlagSet flag[0]
+		else:
+			TextTalk char[0] {
+				算啦，警察局內部也有很多隱情，
+				人家沒有隨便插嘴的立場。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				總之就好好努力吧。
+				只是，一定不要忘記自己的責任呀。{wait}
+			}
+			TextWait
+	elif flag[1362]:
+		if !flag[0]:
+			Call fn[0,5]
+		else:
+			TextTalk char[0] {
+				哎呀呀，其實是想讓亞里歐斯
+				多休息一下的。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				……小滴她，
+				是不是覺得很寂寞呢？{wait}
+			}
+			TextWait
+	elif flag[1292]:
+		if !flag[0]:
+			TextTalk char[0] {
+				差不多也該到遊客們
+				前往市外的時候了。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				我們派艾絲蒂爾他們
+				去烏爾斯拉醫院那邊了。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				呵，你們幾個也請
+				多加小心吧。{wait}
+			}
+			TextWait
+			FlagSet flag[0]
+		else:
+			TextTalk char[0] {
+				亞里歐斯正在對付通緝魔獸……{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				那遊行方面就交給
+				林她們吧……{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				至於那件事就拜託斯克特來處理，
+				讓溫蔡爾留守待命……{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				啊啊，真是的！
+				真希望人手能加倍啊。{wait}
+			}
+			TextWait
+	elif flag[1282]:
+		if !flag[1437]:
+			TextTalk char[0] {
+				你們幾個，昨天好像
+				相當出風頭啊？{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				竟然比艾絲蒂爾他們還領先一步，
+				還真是出人意料的大冷門呢。{wait}
+			}
+			TextWait
+			TextTalk name[0] {
+				#0000F哈哈……
+				其實我們也有同感。{wait}
+			}
+			TextWait
+			TextTalk name[3] {
+				#0306F畢竟稍微用上了一點
+				犯規手段嘛。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				呵呵，就保持這種勢頭，繼續成長，
+				然後減輕我們的負擔吧。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				對了……
+				昨天晚上，亞里歐斯終於
+				出差回來了。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				市政廳那邊傳來了請求，
+				所以已經拜託他立刻去進行
+				研討會的警備工作了。{wait}
+			}
+			TextWait
+			Emote name[0] 0mm 2000mm 38 38 250ms 1
+			Sleep 500ms
+			TextTalk name[0] {
+				#0005F哎，研討會的警備工作
+				不是由警察來負責的嗎……{wait}
+			}
+			TextWait
+			TextTalk name[2] {
+				#0200F是啊，搜查一課應該也
+				接到了這個任務才對。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				呵，反正就是合作警備啦。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				因為外國的ＶＩＰ也會參加那個會議，
+				所以要盡可能地保障會場安全，
+				不是嗎？{wait}
+			}
+			TextWait
+			TextTalk name[0] {
+				#0000F原、原來如此……{wait}
+			}
+			TextWait
+			TextTalk name[3] {
+				#0300F是啊，如果有『風之劍聖』在場，
+				那還真是絕對萬無一失了。{wait}
+			}
+			TextWait
+			TextTalk name[1] {
+				#0100F在這樣的場合下，
+				警察和協會也會聯手合作呢。{wait}
+			}
+			TextWait
+			FlagSet flag[1437]
+		elif !flag[0]:
+			TextTalk char[0] {
+				說起來……
+				艾絲蒂爾他們說是
+				有些私事要辦。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				好像是去了某些
+				比較偏遠的地方呢……{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				算啦，反正亞里歐斯已經回來了，
+				就讓他們稍微放鬆一下吧。{wait}
+			}
+			TextWait
+			FlagSet flag[0]
+		else:
+			TextTalk char[0] {
+				亞里歐斯負責市政廳，
+				艾絲蒂爾他們有私事……{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				斯克特負責ＩＢＣ，
+				林她們是負責大教堂呢……{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				……呼，掌握成員們的行動
+				也並不是一件輕鬆的工作呢。{wait}
+			}
+			TextWait
+	elif flag[1280]:
+		if !flag[0]:
+			TextTalk char[0] {
+				啊，小朋友們，辛苦啦。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				應總部請求出差在外的亞里歐斯
+				推遲了回國日期啊。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				最後，都沒能趕上
+				紀念慶典的第一天呢……{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				人家也免不了要對總部的人
+				大發牢騷啊。{wait}
+			}
+			TextWait
+			FlagSet flag[0]
+		else:
+			TextTalk char[0] {
+				在紀念慶典期間，需要出差的任務
+				基本上都會被取消，我們的慣例是
+				傾全員之力處理慶典期間的委託。{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				真是的……總部偏偏在這時候
+				獨佔了亞里歐斯，人家可必須要
+				好好對他們抱怨一番才行。{wait}
+			}
+			TextWait
+	TextEnd char[0]
+	Return
+
+fn[5]:
+	TextStart self
+	if flag[1362]:
+		if !flag[0]:
+			_Char4A char[0] 255
+			_Char4A char[1] 255
+			TextTalk char[0] {
+				雖然剛回來就讓你這麼辛苦，真是不好意思，
+				但能否稍微佔用你一點時間呢？{wait}
+			}
+			TextWait
+			TextTalk char[0] {
+				雷米菲利亞分部就在不久前
+				發來了聯絡……{wait}
+			}
+			TextWait
+			TextTalk char[1] {
+				#1403F是關於那件事嗎……{wait}
+			} {
+				#1400F……明白了。
+				將詳細情況告訴我吧。{wait}
+			}
+			TextWait
+			_Char4B char[0] 255
+			_Char4B char[1] 255
+			CharFlagsUnset char[0] 0x0010
+			CharFlagsUnset char[1] 0x0010
+			FlagSet flag[0]
+		else:
+			TextTalk char[1] {
+				#1403F……不用在意之前的事情。{wait}
+			} {
+				#1400F你們還有工作在身吧？
+				按照自己的步調去努力就好了。{wait}
+			}
+			TextWait
+	TextEnd self
+	Return
+
+fn[6]:
+	TextStart self
+	if flag[1307]:
+		if !flag[2]:
+			_Char4A char[2] 255
+			_Char4A char[3] 255
+			TextTalk char[2] {
+				如果能趁現在將接到的工作順利完成，
+				下周你就可以不用出差了──
+				蜜雪兒是這麼說的哦。{wait}
+			}
+			TextWait
+			TextTalk char[2] {
+				溫蔡爾，莫非你……{wait}
+			}
+			TextWait
+			TextTalk char[3] {
+				偶爾也想一個人出趟差……
+				我只是提出了這樣的請求而已。{wait}
+			}
+			TextWait
+			TextTalk char[3] {
+				紀念慶典中最忙的時期也已經結束了。
+				……你偶爾也要和未婚妻在一起度過嘛。{wait}
+			}
+			TextWait
+			TextTalk char[2] {
+				……多謝了，搭檔。{wait}
+			}
+			TextWait
+			CharFlagsUnset char[2] 0x0010
+			CharFlagsUnset char[3] 0x0010
+			_Char4B char[2] 255
+			_Char4B char[3] 255
+			FlagSet flag[2]
+		else:
+			TextTalk self {
+				下周就像溫蔡爾說的那樣……
+				和帕爾在一起度過好啦。{wait}
+			}
+			TextWait
+			TextTalk self {
+				……也必須要儘早確認一下
+				她那邊的日程啊。{wait}
+			}
+			TextWait
+			TextTalk self {
+				已經好久沒見面了，
+				真有些緊張呢……{wait}
+			}
+			TextWait
+	TextEnd self
+	Return
+
+fn[7]:
+	TextStart self
+	if flag[1307]:
+		if !flag[2]:
+			Call fn[0,6]
+		else:
+			TextTalk self {
+				斯克特對工作太過拼命了，
+				都已經好久沒有見過未婚妻了。{wait}
+			}
+			TextWait
+			TextTalk self {
+				偶爾創造一些只屬於兩個人的
+				時間也是很重要的啊。{wait}
+			}
+			TextWait
+	TextEnd self
+	Return
+
+fn[8]:
+	field_party[0].5 = self.4
+	self.5 = self.4
+	TextStart self
+	CharFlagsUnset self 0x0010
+	CharTurnToChar self field_party[0] 0deg/s
+	self.4 = (self.4 + 360) % 360
+	self.4 = self.4 + 360 - self.5
+	self.5 = self.4 / 180
+	if self.4 <= 45 | self.4 >= 315 && self.4 <= 405 | self.4 >= 675:
+	elif self.5 < 1:
+		self.8 = 2
+	elif self.5 > 2:
+		self.8 = 1
+	else:
+		self.8 = self.5
+	self.4 = field_party[0].5
+	field_party[0].5 = 0
+	self.5 = 0
+	CharFlagsSet self 0x0010
+	if flag[1362]:
+		if !flag[3]:
+			TextTalk self {
+				遊行的警備工作
+				終於結束了啊。{wait}
+			}
+			TextWait
+			TextTalk self {
+				在人山人海中工作，
+				實在是累得要死啊。{wait}
+			}
+			TextWait
+			TextTalk name[3] {
+				#0300F噢噢……真是辛苦啦。{wait}
+			}
+			TextWait
+			TextTalk self {
+				嗯，謝謝。
+				總之，我得先好好休息一下。{wait}
+			}
+			TextWait
+			FlagSet flag[3]
+		else:
+			TextTalk self {
+				說起來，在人潮之中，
+				似乎看到過一張有些印象的面孔……{wait}
+			}
+			TextWait
+			TextTalk self {
+				不，大概只是我的錯覺吧。
+				因為並沒有收到聯絡說
+				那個人要來克洛斯貝爾啊……{wait}
+			}
+			TextWait
+	CharSetChipPattern self 0
+	TextEnd self
+	Return
+
+fn[9]:
+	field_party[0].5 = self.4
+	self.5 = self.4
+	TextStart self
+	CharFlagsUnset self 0x0010
+	CharTurnToChar self field_party[0] 0deg/s
+	self.4 = (self.4 + 360) % 360
+	self.4 = self.4 + 360 - self.5
+	self.5 = self.4 / 180
+	if self.4 <= 45 | self.4 >= 315 && self.4 <= 405 | self.4 >= 675:
+	elif self.5 < 1:
+		self.8 = 2
+	elif self.5 > 2:
+		self.8 = 1
+	else:
+		self.8 = self.5
+	self.4 = field_party[0].5
+	field_party[0].5 = 0
+	self.5 = 0
+	CharFlagsSet self 0x0010
+	if flag[1362]:
+		if !flag[4]:
+			TextTalk self {
+				……啊，那不是小緹歐嗎！
+				果然好可愛好可愛啊……！！{wait}
+			}
+			TextWait
+			TextTalk self {
+				姊姊我工作得好累呢。
+				能不能來給我治癒一下呀？{wait}
+			}
+			TextWait
+			TextTalk name[2] {
+				#0211F……可我並不清楚具體方法。{wait}
+			}
+			TextWait
+			TextTalk self {
+				只要讓我緊緊～地
+				抱一抱就好啦！㈱{wait}
+			}
+			TextWait
+			TextTalk name[2] {
+				#0203F容我拒絕。{wait}
+			}
+			TextWait
+			TextTalk self {
+				（打擊）{wait}
+			}
+			TextWait
+			FlagSet flag[4]
+		else:
+			TextTalk self {
+				唉，好遺憾……
+				沒辦法，我受到的心靈創傷
+				就用外出買午餐吃來撫平吧。{wait}
+			}
+			TextWait
+			TextTalk self {
+				最近很喜歡『摩爾吉』的
+				漢堡呢。{wait}
+			}
+			TextWait
+	CharSetChipPattern self 0
+	TextEnd self
+	Return
+
+fn[10]:
+	TextStart null
+	TextSetName ""
+	TextMessage null {
+		{color 5}張貼著遊擊士們的輪值表。{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	FadeOut 300ms 0x00000000 100
+	TextSetPos -1 -1 -1 -1
+	if flag[1307]:
+		TextSetName ""
+		TextMessage null {
+			{0x06}　　　　　　　　　　動向　　　
+			━━━━━━━━━━━━━━━━
+			{} 　亞里歐斯　：　 雷米菲利亞公國
+			{} 　 斯克特 　： 　　『待命中』
+			{} 　 溫蔡爾 　： 　　『待命中』
+			{} 　　 林 　　： ※休息（龍老飯店）
+			{} 　艾歐莉雅　： ※休息（麵包咖啡館）
+			{} 　艾絲蒂爾　： 　　　大教堂
+			{} 　 約書亞 　： 　　　大教堂{wait}
+		}
+		TextWait
+		TextClose 0
+	elif flag[1362]:
+		TextSetName ""
+		TextMessage null {
+			{0x06}　　　　　　　　　　動向　　　
+			━━━━━━━━━━━━━━━━
+			{} 　亞里歐斯　：　　 『待命中』
+			{} 　 斯克特 　： ※休息（龍老飯店）
+			{} 　 溫蔡爾 　： ※休息（龍老飯店）
+			{} 　　 林 　　：　　 『待命中』
+			{} 　艾歐莉雅　：　　 『待命中』
+			{} 　艾絲蒂爾　： 　　烏爾斯拉醫院
+			{} 　 約書亞 　： 　　烏爾斯拉醫院{wait}
+		}
+		TextWait
+		TextClose 0
+	elif flag[1292]:
+		TextSetName ""
+		TextMessage null {
+			{0x06}　　　　　　　　　　動向　　　
+			━━━━━━━━━━━━━━━━
+			{} 　亞里歐斯　：　　　市外巡邏
+			{} 　 斯克特 　： 　　 市外巡邏
+			{} 　 溫蔡爾 　： 　　 武器商會
+			{} 　　 林 　　：　　　 行政區
+			{} 　艾歐莉雅　：　　　 行政區
+			{} 　艾絲蒂爾　： 　　烏爾斯拉醫院
+			{} 　 約書亞 　： 　　烏爾斯拉醫院{wait}
+		}
+		TextWait
+		TextClose 0
+	elif flag[1282]:
+		TextSetName ""
+		TextMessage null {
+			{0x06}　　　　　　　　　　動向　　　
+			━━━━━━━━━━━━━━━━
+			{} 　亞里歐斯　：　　　 市政廳
+			{} 　 斯克特 　： 　　　ＩＢＣ
+			{} 　 溫蔡爾 　： 　　　ＩＢＣ
+			{} 　　 林 　　：　　　 大教堂
+			{} 　艾歐莉雅　：　　　 大教堂
+			{} 　艾絲蒂爾　： 　※私事（山道一帶）
+			{} 　 約書亞 　： 　※私事（山道一帶）{wait}
+		}
+		TextWait
+		TextClose 0
+	else:
+		TextSetName ""
+		TextMessage null {
+			{0x06}　　　　　　　　　　動向　　　
+			━━━━━━━━━━━━━━━━
+			{} 　亞里歐斯　：　　　列曼總部
+			{} 　 斯克特 　： 　　唐古拉姆門
+			{} 　 溫蔡爾 　： 　　唐古拉姆門
+			{} 　　 林 　　：　　阿爾摩利卡村
+			{} 　艾歐莉雅　：　　阿爾摩利卡村
+			{} 　艾絲蒂爾　： 　　　行政區
+			{} 　 約書亞 　： 　　　行政區{wait}
+		}
+		TextWait
+		TextClose 0
+	FadeIn 300ms 0x00000000
+	TextSetPos -1 280 60 3
+	_59
+	TextEnd null
+	Return
+
+fn[11]:
+	TextStart null
+	TextSetName ""
+	TextMessage null {
+		{color 5}張貼著很多交付給
+		遊擊士協會的委託。{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	TextEnd null
+	Return

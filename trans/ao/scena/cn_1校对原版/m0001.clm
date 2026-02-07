@@ -1,0 +1,187 @@
+calmare ao_k scena
+scena:
+	name "m0001" "m0001" "m0001"
+	town town[0]
+	bgm bgm[0]
+	flags 0
+	item_use fn[0,255]
+	unk 255 0
+
+entry:
+	pos (0, 0, -1000)
+	unk1 0
+	cam_from (0, 0, 24000)
+	cam_pers 500
+	unk2 30
+	cam_deg 45deg
+	cam_limit 0deg 360deg
+	cam_at (0, 0, 0)
+	unk3 0
+	unk4 0
+	flags 0x0001
+	town town[1]
+	init fn[0,0]
+	reinit fn[0,1]
+
+npc char[0]:
+	name "聲音"
+	pos (0, 0, 0)
+	angle 0deg
+	flags 0x01C5
+	unk2 0
+	chip chip[0]
+	init fn[255,255]
+	talk fn[255,255]
+	unk4 255
+
+fn[0]:
+	if flag[272]:
+		FlagUnset flag[272]
+		Event fn[0,2]
+	Return
+
+fn[1]:
+	Return
+
+fn[2]:
+	EventBegin 0
+	FadeOut 0ms 0x00000000 255
+	Sleep 1000ms
+	ED7LoadChip "apl/ch51400.itc" chip[30]
+	ED7LoadChip "apl/ch51401.itc" chip[31]
+	EffLoad eff[0] "map/mpcave2.eff"
+	VisShow vis[0] 0 8 480 264 0 0 512 256 0 0 480 256 0x00FFFFFF 0 "c_vis416.itp"
+	SoundLoad sound[803]
+	CamSetDistance 199890 1100 199470 0ms
+	ED7CamRotate 55deg 21deg 0deg 0ms
+	CamPers 600 0ms
+	CamZoom 18000 0ms
+	CharSetChipBase char[0] chip[30]
+	CharSetChipPattern char[0] 0
+	CharFlagsUnset char[0] 0x0080
+	CharFlagsSet char[0] 0x8000
+	CharFlagsSet char[0] 0x0010
+	CharFlagsSet char[0] 0x0002
+	CharFlagsSet char[0] 0x0020
+	CharSetPos char[0] (199500, 150, 199500) 270deg
+	char[0].40 = 13
+	CharColor char[0] 0xFF5A5A5A 0ms
+	MapColor 0x00D2D2EB 0ms
+	EffPlay eff[0] eff_instance[7] null 0 (0, 0, 0) 0 0 0 1000 1000 1000 null (0, 0, 0) 1000ms
+	SoundPlay sound[945] 0 50 0
+	Sleep 1600ms
+	SoundPlay sound[945] 0 30 0
+	Sleep 1200ms
+	BgmPlay bgm[571] 0
+	CamZoom 15000 7000ms
+	BlurOn 0ms 0xBBFFFFFF 0 0 0
+	FadeIn 2000ms 0x00000000
+	FadeWait
+	SoundPlay sound[3577] 255 50 0
+	CamWait 121
+	CamZoom 13000 50000ms
+	TextTalk char[0] {
+		{color 2}#1310160001V#50W#11P……這真是太好了……
+		……棒極了……{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	TextTalk char[0] {
+		{color 2}#1310160002V#50W#11P呵呵……這樣一定可以……{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	TextTalk char[0] {
+		{color 2}#1310160003V#50W#11P一定可以把『那傢伙』給──！{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	SoundPlay sound[803] 2 100 0
+	Sleep 1000ms
+	TextTalk char[0] {
+		{color 2}#1310160004V#11P嘖……！{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	CrossFade 250ms
+	SoundPlay sound[802] 0 100 0
+	SoundPlay sound[804] 0 100 0
+	SoundStop sound[803]
+	CamSetDistance 199050 1000 199350 800ms
+	CharSetChipPattern char[0] 1
+	CharSetPos char[0] (199000, 0, 199500) 270deg
+	FadeWait
+	CharSetChipPattern char[0] 2
+	SoundPlay sound[812] 0 100 0
+	Sleep 300ms
+	CharSetChipPattern char[0] 3
+	Sleep 500ms
+	TextTalk char[0] {
+		{color 2}#1310160005V#40W#11P啊……是你啊……{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	TextTalk char[0] {
+		{color 2}#1310160006V#40W#11P…………{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	TextTalk char[0] {
+		{color 2}#1310160007V#40W#11P……啊……嗯……{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	TextTalk char[0] {
+		{color 2}#1310160008V#40W#11P沒問題……
+		哼哼……隨時可以過去……{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	CrossFade 500ms
+	CamSetDistance 199000 1500 199500 7000ms
+	Shake 20 20 3000 7000ms
+	CharSetChipBase char[0] chip[31]
+	CharSetChipPattern char[0] 0
+	char[0].36 = 218
+	Fork char[0] fork[2]:
+		ED7_A0 self 900ms 0 31
+	SoundPlay sound[889] 0 40 0
+	Sleep 3000ms
+	FadeOut 4000ms 0x00000000 255
+	FadeWait
+	Sleep 500ms
+	TextSetPos -1 -1 -1 -1
+	TextSetName "聲音"
+	TextMessage char[0] {
+		{color 2}#1310160009V#40W#11P……只不過……
+		做法必須由我來決定！{color 0}{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	TextSetPos -1 280 60 3
+	BgmStop 4000ms
+	BgmWait
+	SoundStop sound[803]
+	SoundPlay sound[13] 0 100 0
+	Sleep 4000ms
+	VisSet vis[0] 3 0xFFFFFFFF 500ms 0 0
+	VisWait vis[0] 3
+	Sleep 2000ms
+	VisSet vis[0] 3 0x00FFFFFF 500ms 0 0
+	VisWait vis[0] 3
+	ED7_B8 65535 65535
+	VisHide vis[255] 0
+	Sleep 1000ms
+	FlagSet flag[280]
+	NewScene "scena/c0100.bin" 0 0 0
+	Hcf
+	Return

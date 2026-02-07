@@ -1,0 +1,1025 @@
+calmare ao_k scena
+scena:
+	name "c1160" "c1160" "c1160"
+	town town[24]
+	bgm bgm[111]
+	flags 8192
+	item_use fn[0,255]
+	unk 255 0
+
+entry:
+	pos (0, 0, -1000)
+	unk1 0
+	cam_from (0, 0, 24000)
+	cam_pers 500
+	unk2 30
+	cam_deg 45deg
+	cam_limit 0deg 360deg
+	cam_at (0, 0, 0)
+	unk3 0
+	unk4 0
+	flags 0x0001
+	town town[24]
+	init fn[0,0]
+	reinit fn[0,1]
+
+chip[0] "chr/ch06402.itc"
+chip[1] "chr/ch06400.itc"
+
+npc char[0]:
+	name "皮埃爾副局長"
+	pos (0, 0, 0)
+	angle 0deg
+	flags 0x01C5
+	unk2 0
+	chip chip[0]
+	init fn[255,255]
+	talk fn[255,255]
+	unk4 255
+
+anim[0] 204ms
+
+fn[0]:
+	if flag[272]:
+		FlagUnset flag[272]
+		Event fn[0,2]
+	elif flag[273]:
+		FlagUnset flag[273]
+		Event fn[0,3]
+	elif flag[274]:
+		FlagUnset flag[274]
+		Event fn[0,4]
+	Return
+
+fn[1]:
+	if flag[2848] && !flag[2858] | flag[2369] && system[4] == 1:
+		ED7_76_0 object[255] "ylight_add" 1
+		SoundPlay sound[128] 1 50 0
+	if !flag[3385] && flag[3370]:
+		MapColor 0x00E6D2D2 0ms
+		ED7_76_0 object[255] "ylight_add" 1
+	Return
+
+fn[2]:
+	EventBegin 0
+	FadeOut 0ms 0x00000000 255
+	CamSetDistance 40930 1200 -590 0ms
+	ED7CamRotate 42deg 24deg 0deg 0ms
+	CamPers 400 0ms
+	CamZoom 24070 0ms
+	CharSetPos name[0] (40570, 0, -1240) 0deg
+	CharSetPos name[1] (42040, 0, -1210) 0deg
+	CharSetPos name[2] (40600, 0, -2730) 0deg
+	CharSetPos name[3] (42020, 0, -2750) 0deg
+	CharSetPos name[8] (40570, 0, -4150) 0deg
+	CharSetPos name[4] (42000, 0, -4170) 0deg
+	CharFlagsUnset field_party[4] 0x0080
+	CharFlags2Unset field_party[4] 0x8000
+	CharFlagsUnset field_party[5] 0x0080
+	CharFlags2Unset field_party[5] 0x8000
+	CharSetChipBase char[0] chip[0]
+	CharSetChipPattern char[0] 0
+	CharSetPos char[0] (41100, 200, 1700) 180deg
+	CharFlagsUnset char[0] 0x0080
+	CharFlags2Unset char[0] 0x8000
+	Sleep 1500ms
+	TextTalk name[0] {
+		#1P#N#00005F尊夫人在與男公關幽會……？{wait}
+	}
+	TextWait
+	Sleep 500ms
+	FadeIn 1000ms 0x00000000
+	FadeWait
+	TextTalk char[0] {
+		#08303F#3P呃、嗯……{wait}
+	} {
+		#08301F#3P最近她似乎經常前往
+		那樣的俱樂部。{wait}
+	} {
+		#08301F#3P她好像在和不知道
+		從哪裡來的男公關幽會。{wait}
+	}
+	TextWait
+	TextTalk name[1] {
+		#00101F可、可是並不能肯定她會面的
+		對象就是男公關吧？{wait}
+	}
+	TextWait
+	TextTalk name[8] {
+		#10101F就是啊，您應該相信您的夫人……{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#08301F#3P我抱著必死的決心
+		趁她不注意時檢查她的包包，
+		發現了確切證據！{wait}
+	} {
+		#08301F#3P她的行事曆上寫滿了
+		與一個名叫『克萊德』的
+		男人見面的約定！{wait}
+	} {
+		#08307F#3P身為家庭主婦的她會認識這種男人，
+		除了在男公關俱樂部以外，
+		沒有其他可能了吧！？{wait}
+	}
+	TextWait
+	Emote name[0] 0mm 2000mm 16 19 250ms 1
+	SoundPlay sound[23] 0 100 0
+	Emote name[1] 0mm 2000mm 16 19 250ms 1
+	SoundPlay sound[23] 0 100 0
+	Emote name[2] 0mm 2000mm 16 19 250ms 1
+	SoundPlay sound[23] 0 100 0
+	Emote name[3] 0mm 2000mm 16 19 250ms 1
+	SoundPlay sound[23] 0 100 0
+	Emote name[8] 0mm 2000mm 16 19 250ms 1
+	SoundPlay sound[23] 0 100 0
+	Emote name[4] 0mm 2000mm 16 19 250ms 1
+	SoundPlay sound[23] 0 100 0
+	Sleep 1000ms
+	TextTalk name[2] {
+		#00206F（可以理解他的想法，可是……）{wait}
+	}
+	TextWait
+	TextTalk name[3] {
+		#00303F（是啊，感覺得到他很激動。）{wait}
+	}
+	TextWait
+	TextTalk name[4] {
+		#10303F……嗯，不過……
+		男公關『克萊德』啊。{wait}
+	} {
+		#10300F不好意思，這個名字
+		我連一次都沒有聽過啊。{wait}
+	}
+	TextWait
+	Emote char[0] 0mm 2000mm 38 38 250ms 1
+	Emote name[0] 0mm 2000mm 38 38 250ms 1
+	Emote name[1] 0mm 2000mm 38 38 250ms 1
+	Emote name[2] 0mm 2000mm 38 38 250ms 1
+	Emote name[3] 0mm 2000mm 38 38 250ms 1
+	Emote name[8] 0mm 2000mm 38 38 250ms 1
+	Sleep 1000ms
+	Fork name[0] fork[1]:
+		CharTurnToChar name[0] name[4] 500deg/s
+	Sleep 50ms
+	Fork name[1] fork[1]:
+		CharTurnToChar name[1] name[4] 500deg/s
+	Sleep 50ms
+	Fork name[2] fork[1]:
+		CharTurnToChar name[2] name[4] 500deg/s
+	Sleep 50ms
+	Fork name[3] fork[1]:
+		CharTurnToChar name[3] name[4] 500deg/s
+	Sleep 50ms
+	Fork name[8] fork[1]:
+		CharTurnToChar name[8] name[4] 500deg/s
+	TextTalk char[0] {
+		#08305F#3P什、什麼……？{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#00005F是嗎？{wait}
+	}
+	TextWait
+	TextTalk name[4] {
+		#10302F嗯，歡樂街的俱樂部旗下的
+		男公關叫什麼名字，
+		我大致上都很清楚。{wait}
+	} {
+		當然也不排除他是新人，
+		所以我沒有掌握到情報的可能。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#08303F#3P慢、慢著。
+		你怎麼知道得這麼清楚……{wait}
+	} {
+		#08301F#3P難道說，謠言裡
+		那個臨時加入支援課
+		成員的現役男公關……{wait}
+	}
+	TextWait
+	TextTalk name[4] {
+		#10309F啊，那就是我。{wait}
+	}
+	TextWait
+	Emote char[0] 0mm 2000mm 12 13 250ms 2
+	SoundPlay sound[23] 0 100 0
+	Sleep 1000ms
+	TextTalk char[0] {
+		#08307F#3P你、你竟然！！{wait}
+	} {
+		#08307F#3P你好歹也是個警察，
+		竟然從事男公關
+		這種不正派的工作……！！{wait}
+	}
+	TextWait
+	Fork name[0] fork[1]:
+		CharTurnTo name[0] 0deg 500deg/s
+	TextTalk name[0] {
+		#00006F息、息怒息怒……
+		請您冷靜一下。{wait}
+	} {
+		#00001F總之，現在
+		要先確認夫人處於
+		什麼樣的情況才行。{wait}
+	}
+	TextWait
+	Fork name[1] fork[1]:
+		CharTurnTo name[1] 0deg 500deg/s
+	Sleep 50ms
+	Fork name[2] fork[1]:
+		CharTurnTo name[2] 0deg 500deg/s
+	Sleep 50ms
+	Fork name[3] fork[1]:
+		CharTurnTo name[3] 0deg 500deg/s
+	Sleep 50ms
+	Fork name[8] fork[1]:
+		CharTurnTo name[8] 0deg 500deg/s
+	TextTalk name[8] {
+		#10101F說、說的也是……{wait}
+	} {
+		#10106F至於瓦奇，
+		我認為這個時候
+		教訓他也沒有用。{wait}
+	}
+	TextWait
+	TextTalk name[4] {
+		#10304F呵呵，就是這樣。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#08311F#3P唔……！{wait}
+	}
+	TextWait
+	TextTalk name[1] {
+		#00100F剛才您說您偷看了
+		夫人的包包……{wait}
+	} {
+		有沒有找到
+		什麼可能成為搜查
+		線索的東西呢？{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#08303F#3P呃、嗯，這個嘛……{wait}
+	}
+	TextWait
+	Emote char[0] 0mm 2000mm 24 27 250ms 0
+	Sleep 2000ms
+	EmoteStop char[0]
+	Emote char[0] 0mm 2000mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Sleep 1000ms
+	TextTalk char[0] {
+		#08301F#3P對、對了，我想起來了！{wait}
+	} {
+		#08303F#3P我在看行事曆的時候，
+		發現上面也有記錄目的地……{wait}
+	} {
+		#08301F#3P他們最近
+		好像經常在白天去
+		中央廣場的餐廳。{wait}
+	}
+	TextWait
+	TextTalk name[2] {
+		#00203F中央廣場的餐廳，
+		是《溫賽特》嗎……{wait}
+	} {
+		#00200F可是，假設對方
+		真的是男公關，那在白天見面
+		不是很奇怪嗎？{wait}
+	}
+	TextWait
+	TextTalk name[4] {
+		#10304F有可能是在丈夫
+		外出工作的時段……
+		趁他不注意時幽會啊。{wait}
+	} {
+		#10302F呵呵，男公關和客人
+		如果要私下見面，
+		多半會約在白天吧。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#08305F#3P果、果然如此……！？{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#00006F請、請你冷靜下來。
+		……還有，瓦奇你也別煽風點火啊。{wait}
+	}
+	TextWait
+	TextTalk name[4] {
+		#10304F呵呵，失禮了。{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#00003F嗯哼，總之情況
+		我們已經明白了。{wait}
+	} {
+		#00000F搜查就交給我們
+		來進行，可以嗎？{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#08303F#3P呃、嗯。
+		一切交給你們處理吧。{wait}
+	} {
+		#08307F#3P請你們無論如何
+		都要為我揭發真相！{wait}
+	} {
+		#08311F#3P只不過，這件事請千萬要保密。
+		……知道了吧！？{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#00006F我、我瞭解了。
+		……那麼，告辭了。{wait}
+	}
+	TextWait
+	FadeOut 1000ms 0x00000000 255
+	FadeWait
+	FlagSet flag[275]
+	NewScene "scena/c1150.bin" 101 0 0
+	Hcf
+	Return
+
+fn[3]:
+	EventBegin 0
+	SoundLoad sound[812]
+	FadeOut 0ms 0x00000000 255
+	TextSetName ""
+	TextMessage null {
+		{color 5}在那之後，羅伊德一行人
+		和跟蹤夫人的艾莉等人
+		取得聯繫……{color 0}{wait}
+	}
+	TextWait
+	TextMessage null {
+		{color 5}來到皮埃爾副局長所在的
+		警察總部整理情報。{color 0}{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	TextSetPos -1 280 60 3
+	CamSetDistance 40930 1200 -590 0ms
+	ED7CamRotate 42deg 24deg 0deg 0ms
+	CamPers 400 0ms
+	CamZoom 24070 0ms
+	CharSetPos name[0] (40570, 0, -1240) 0deg
+	CharSetPos name[1] (42040, 0, -1210) 0deg
+	CharSetPos name[2] (40600, 0, -2730) 0deg
+	CharSetPos name[3] (42020, 0, -2750) 0deg
+	CharSetPos name[8] (40570, 0, -4150) 0deg
+	CharSetPos name[4] (42000, 0, -4170) 0deg
+	CharFlagsUnset field_party[4] 0x0080
+	CharFlags2Unset field_party[4] 0x8000
+	CharFlagsUnset field_party[5] 0x0080
+	CharFlags2Unset field_party[5] 0x8000
+	CharSetChipBase char[0] chip[0]
+	CharSetChipPattern char[0] 0
+	CharSetPos char[0] (41100, 200, 1700) 180deg
+	CharFlagsUnset char[0] 0x0080
+	CharFlags2Unset char[0] 0x8000
+	Sleep 1500ms
+	Sleep 10ms
+	BgmPlay bgm[516] 0
+	FadeIn 1000ms 0x00000000
+	FadeWait
+	TextTalk char[0] {
+		#08305F#3P那、那麼……
+		調查結果怎麼樣了！？{wait}
+	} {
+		#08311F#3P我的老婆果然是在
+		跟男公關幽會……！？{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#00003F呃，副局長……
+		請您務必保持冷靜。{wait}
+	}
+	TextWait
+	CharTurnToChar name[0] name[1] 500deg/s
+	Sleep 50ms
+	TextTalk name[0] {
+		#00000F在那之前……艾莉，
+		妳們跟蹤夫人的結果如何？{wait}
+	}
+	TextWait
+	CharTurnToChar name[1] name[0] 500deg/s
+	Sleep 100ms
+	TextTalk name[1] {
+		#00100F嗯，我們觀察得非常仔細……
+		不過她並沒有做什麼可疑的事。{wait}
+	} {
+		她好像已經回到位在
+		住宅區方向的住家了。{wait}
+	}
+	TextWait
+	CharTurnToChar name[0] name[2] 500deg/s
+	Sleep 50ms
+	TextTalk name[8] {
+		#10100F而且也沒有
+		與任何人見面。{wait}
+	}
+	TextWait
+	TextTalk name[2] {
+		#00200F不過，之後她好像跟那個
+		名叫克萊德的男子
+		約在《新・布朗》見面……{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#08305F#3P妳、妳說什麼！？{wait}
+	}
+	TextWait
+	Fork name[0] fork[1]:
+		CharTurnToChar self char[0] 500deg/s
+	Sleep 100ms
+	Fork name[1] fork[1]:
+		CharTurnToChar self char[0] 500deg/s
+	Sleep 100ms
+	TextTalk char[0] {
+		#08301F#3P可惡，他把我的老婆
+		帶去那種不正派的地方，
+		到底想做什麼！？{wait}
+	} {
+		#08307F#3P既、既然如此，我就編組警官隊，
+		取締整間《新・布朗》……！{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#00006F我、我就說
+		請您冷靜一點了！{wait}
+	}
+	TextWait
+	TextTalk name[3] {
+		#00303F而且對上那些人，
+		也只會自討沒趣吧。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#08305F#3P但、但是……
+		這要叫我怎麼冷靜下來！？{wait}
+	} {
+		#08311F#3P我在這裡浪費時間的時候，
+		我的老婆可能遭到男公關下毒手……{wait}
+	}
+	TextWait
+	TextTalk name[4] {
+		#10304F呵呵，我想這點您不用擔心。{wait}
+	} {
+		#10302F至少不用擔心那位夫人
+		遭到『男公關』下毒手。{wait}
+	}
+	TextWait
+	Emote char[0] 0mm 2000mm 38 38 250ms 1
+	Sleep 50ms
+	Emote name[1] 0mm 2000mm 38 38 250ms 1
+	Sleep 50ms
+	Emote name[2] 0mm 2000mm 38 38 250ms 1
+	Sleep 50ms
+	Emote name[3] 0mm 2000mm 38 38 250ms 1
+	Sleep 50ms
+	Emote name[8] 0mm 2000mm 38 38 250ms 1
+	Sleep 1000ms
+	TextTalk char[0] {
+		#08305F#3P這、這是什麼意思……？{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#00003F瓦奇一開始
+		就說過了……{wait}
+	} {
+		#00001F我想那個名叫克萊德的男子
+		的確不是男公關。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#08311F#3P什、什麼……！？{wait}
+	} {
+		#08305F#3P那麼……
+		他到底是什麼人！？{wait}
+	}
+	TextWait
+	FlagUnset flag[0]
+	var[3] = 0
+	while !flag[0]:
+		TextSetPos -1 30 -1 -1
+		TextSetName ""
+		TextMessage null {
+			{color 5}{0x06}{0x18}#1K克萊德的真面目是？{color 0}{wait}
+		}
+		Menu menu[0] -1 -1 0
+			"【男公關】" // 0
+			"【詐欺犯】" // 1
+			"【推銷員】" // 2
+		MenuWait var[0]
+		MenuClose menu[0]
+		TextSetPos -1 280 60 3
+		switch var[0]:
+			case 0:
+				var[3] += 1
+				TextTalk name[0] {
+					#00006F（……慢著，我自己
+					　不是才剛說過
+					　他不是男公關嗎？）{wait}
+				} {
+					#00001F（冷靜下來思考吧。
+					　那個名叫克萊德的男人的身分是……）{wait}
+				}
+				TextWait
+				break
+			case 1:
+				var[3] += 1
+				TextTalk name[0] {
+					#00003F（不……嚴格說起來並不是。）{wait}
+				} {
+					#00001F（冷靜下來思考吧。
+					　那個名叫克萊德的男人的身分是……）{wait}
+				}
+				TextWait
+				break
+			case 2:
+				TextTalk name[0] {
+					#00001F那個名叫克萊德的男人，
+					他的真實身分應該是……
+					『推銷員』。{wait}
+				}
+				TextWait
+				FlagSet flag[0]
+				if var[3] == 0:
+					QuestBonusBp quest[132] 1
+				break
+	TextTalk name[8] {
+		#10105F推銷員……嗎？{wait}
+	}
+	TextWait
+	TextTalk name[3] {
+		#00300F的確，他謙恭的說話口氣，
+		與其說是男公關，
+		感覺更像是商人……{wait}
+	}
+	TextWait
+	TextTalk name[4] {
+		#10304F呵呵，不過也有證據可以
+		顯示他並不是男公關。{wait}
+	} {
+		#10302F我們的存在是為了讓
+		寂寞的貴婦們夢見短暫的美夢……{wait}
+	} {
+		一流的男公關
+		會細心呵護女性，
+		但是絕對不會過度謙卑。{wait}
+	}
+	TextWait
+	Emote name[0] 0mm 2000mm 16 19 250ms 1
+	SoundPlay sound[23] 0 100 0
+	Sleep 1000ms
+	TextTalk name[0] {
+		#00006F以瓦奇的角度來說，
+		有這種觀點或許也很正常……
+		不過我的推測也與他類似。{wait}
+	} {
+		#00001F那個名叫克萊德的男子與尊夫人，
+		看起來實在不像是
+		『正在幽會的男公關與客人』。{wait}
+	} {
+		真要說的話……
+		給人的印象比較像是
+		『商人』與『顧客』。{wait}
+	} {
+		至於他們會多次見面，
+		設想成是為了做生意而
+		進行交涉也比較自然吧。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#08305F#3P但、但如果真是這樣……
+		他到底想說服我的老婆
+		買什麼東西！？{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#00003F這點只要推理出克萊德
+		這名男子是隸屬於
+		哪裡的推銷員就知道了。{wait}
+	} {
+		#00001F那名男子應該是……{wait}
+	}
+	TextWait
+	FlagUnset flag[0]
+	var[3] = 0
+	while !flag[0]:
+		TextSetPos -1 30 -1 -1
+		TextSetName ""
+		TextMessage null {
+			{color 5}{0x06}{0x18}#1K克萊德是哪裡的推銷員？{color 0}{wait}
+		}
+		Menu menu[0] -1 -1 0
+			"【珠寶店】" // 0
+			"【不動產業者】" // 1
+			"【證券公司】" // 2
+		MenuWait var[0]
+		MenuClose menu[0]
+		TextSetPos -1 280 60 3
+		switch var[0]:
+			case 0:
+				var[3] += 1
+				TextTalk name[0] {
+					#00003F（不……這個可能性不大。）{wait}
+				} {
+					#00001F（他們在餐廳的談話，
+					　還有跟蹤期間看到的景象……
+					　綜合考量這些因素的話……）{wait}
+				}
+				TextWait
+				break
+			case 1:
+				TextTalk name[0] {
+					#00001F我推測……
+					應該是銷售不動產的
+					推銷員。{wait}
+				}
+				TextWait
+				FlagSet flag[0]
+				if var[3] == 0:
+					QuestBonusBp quest[132] 1
+				break
+			case 2:
+				var[3] += 1
+				TextTalk name[0] {
+					#00003F（不……這個可能性不大。）{wait}
+				} {
+					#00001F（他們在餐廳的談話，
+					　還有跟蹤期間看到的景象……
+					　綜合考量這些因素的話……）{wait}
+				}
+				TextWait
+				break
+	CharTurnToChar name[1] name[0] 500deg/s
+	Sleep 100ms
+	TextTalk name[1] {
+		#00103F不動產……{wait}
+	} {
+		#00100F這麼說來，他們在餐廳談話時提到了
+		米修拉姆的話題呢。{wait}
+	} {
+		一開始我還以為是在聊旅遊，
+		不過他們說到的『簡介』……{wait}
+	}
+	TextWait
+	CharTurnToChar name[0] name[1] 500deg/s
+	Sleep 100ms
+	TextTalk name[0] {
+		#00000F我想應該是米修拉姆高級別墅的
+		房屋資訊宣傳簡介吧。{wait}
+	} {
+		另外，我們繼續跟蹤到港灣區，
+		看見那個名叫克萊德的男子
+		從穿西裝的男子手上拿了一些東西。{wait}
+	}
+	TextWait
+	TextTalk name[4] {
+		#10304F從講話口吻來看，
+		那個穿西裝的男子應該是克萊德的上司。{wait}
+	} {
+		#10300F他拿的大概是契約書
+		之類的重要文件吧。{wait}
+	}
+	TextWait
+	CharTurnToChar name[0] char[0] 500deg/s
+	Sleep 50ms
+	CharTurnToChar name[1] char[0] 500deg/s
+	Sleep 100ms
+	TextTalk name[0] {
+		#00000F那個名叫克萊德的男子
+		是不動產業的推銷員，
+		正在和尊夫人交涉買賣房屋。{wait}
+	} {
+		尊夫人也接受他的善意，
+		還去了米修拉姆看房子，
+		順利地進行交涉。{wait}
+	} {
+		尊夫人與那個男人見面就是為此，
+		這樣思考比較自然。{wait}
+	}
+	TextWait
+	TextTalk name[3] {
+		#00302F原來如此……
+		感覺一切都說得通啊。{wait}
+	}
+	TextWait
+	TextTalk name[4] {
+		#10302F而在今天交涉過後，
+		事情大致底定……{wait}
+	} {
+		他們很快就要在《新・布朗》
+		進行最後一次交涉了。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#08303F#3P呃、嗯，原來如此……{wait}
+	}
+	TextWait
+	Emote char[0] 0mm 2000mm 40 43 100ms 0
+	Sleep 1000ms
+	EmoteStop char[0]
+	TextTalk char[0] {
+		#08305F#3P不、不對，先等一下！{wait}
+	} {
+		#08305F#3P瑪格莉特打算瞞著我
+		買下米修拉姆的房屋。
+		……是這個意思嗎！？{wait}
+	} {
+		#08311F#3P但、但是……我家完全沒有
+		這麼多財產啊！？{wait}
+	} {
+		#08307F#3P她到底打算怎麼
+		籌出那麼多米拉！？{wait}
+	}
+	TextWait
+	TextTalk name[8] {
+		#10108F該、該不會是……
+		借錢之類的吧……？{wait}
+	}
+	TextWait
+	TextTalk name[2] {
+		#00203F……這個可能性很大啊。{wait}
+	} {
+		#00200F克萊德說不定企圖誘使尊夫人
+		申請根本無力償還的貸款。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#08306F#3P怎、怎麼會……{wait}
+	}
+	TextWait
+	Emote char[0] 0mm 2000mm 24 27 250ms 0
+	Sleep 2000ms
+	EmoteStop char[0]
+	FadeWait
+	CrossFade 500ms
+	CharSetChipBase char[0] chip[1]
+	CharSetChipPattern char[0] 0
+	SoundPlay sound[812] 0 100 0
+	CharSetPos char[0] (42100, 0, 1700) 90deg
+	FadeWait
+	CharTurnToChar name[0] char[0] 500deg/s
+	Sleep 500ms
+	CharTurnToChar char[0] name[0] 500deg/s
+	Sleep 100ms
+	TextTalk char[0] {
+		#08303F#3P決、決定了……我還是
+		要闖進《新・布朗》！{wait}
+	} {
+		#08301F#3P聽到這裡，
+		我不能再眼睜睜看著
+		我的老婆遭人欺騙！！{wait}
+	} {
+		#08307F#3P我要去那裡罵那個叫克萊德的小伙子，
+		即使是打我老婆一巴掌也要帶她回來！！{wait}
+	}
+	TextWait
+	TextTalk name[2] {
+		#00205F（……這個怕老婆的人豁出去了呢。）{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#00006F（或者該說，他好像被開啟了
+		　奇怪的開關啊……）{wait}
+	}
+	TextWait
+	TextTalk name[4] {
+		#10302F呵呵，機會難得，
+		我們也來幫忙吧。{wait}
+	} {
+		#10309F畢竟也不能放著不管，
+		任憑他一個人
+		闖進《新・布朗》啊。{wait}
+	}
+	TextWait
+	Emote name[0] 0mm 2000mm 16 19 250ms 1
+	SoundPlay sound[23] 0 100 0
+	Emote name[1] 0mm 2000mm 16 19 250ms 1
+	SoundPlay sound[23] 0 100 0
+	Emote name[2] 0mm 2000mm 16 19 250ms 1
+	SoundPlay sound[23] 0 100 0
+	Emote name[3] 0mm 2000mm 16 19 250ms 1
+	SoundPlay sound[23] 0 100 0
+	Emote name[8] 0mm 2000mm 16 19 250ms 1
+	SoundPlay sound[23] 0 100 0
+	Sleep 1000ms
+	Fork name[0] fork[1]:
+		CharTurnToChar name[0] name[4] 500deg/s
+	Sleep 50ms
+	Fork name[1] fork[1]:
+		CharTurnToChar name[1] name[4] 500deg/s
+	Sleep 50ms
+	Fork name[2] fork[1]:
+		CharTurnToChar name[2] name[4] 500deg/s
+	Sleep 50ms
+	Fork name[3] fork[1]:
+		CharTurnToChar name[3] name[4] 500deg/s
+	Sleep 50ms
+	Fork name[8] fork[1]:
+		CharTurnToChar name[8] name[4] 500deg/s
+	TextTalk name[0] {
+		#00006F這話說得
+		或許有點道理，但是……{wait}
+	}
+	TextWait
+	TextTalk name[8] {
+		#10106F……瓦奇，你怎麼好像越來越
+		樂在其中了？{wait}
+	}
+	TextWait
+	TextTalk name[4] {
+		#10304F呵呵，妳在說些什麼呀？{wait}
+	}
+	TextWait
+	TextTalk name[1] {
+		#00108F不過看來能阻止他的
+		好像只有我們……{wait}
+	}
+	TextWait
+	TextTalk name[3] {
+		#00306F沒辦法了，雖然不是很樂意，
+		不過《新・布朗》那邊
+		就由我來周旋看看吧。{wait}
+	} {
+		#00300F我的熟人札克斯應該
+		在那裡當守衛。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#08307F#3P夠了，你們還在
+		嘀嘀咕咕地商量什麼！？{wait}
+	}
+	TextWait
+	Fork name[0] fork[1]:
+		CharTurnToChar name[0] char[0] 500deg/s
+	Sleep 50ms
+	Fork name[1] fork[1]:
+		CharTurnToChar name[1] char[0] 500deg/s
+	Sleep 50ms
+	Fork name[2] fork[1]:
+		CharTurnToChar name[2] char[0] 500deg/s
+	Sleep 50ms
+	Fork name[3] fork[1]:
+		CharTurnToChar name[3] char[0] 500deg/s
+	Sleep 50ms
+	Fork name[8] fork[1]:
+		CharTurnToChar name[8] char[0] 500deg/s
+	TextTalk char[0] {
+		#08307F#3P走吧，立刻前往
+		《新・布朗》！！
+		你們也跟我一起來！{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#00005F我、我瞭解了……！{wait}
+	}
+	TextWait
+	FadeOut 1000ms 0x00000000 255
+	FadeWait
+	BgmStop 3000ms
+	BgmWait
+	Sleep 10ms
+	system[76] = 65535
+	FlagSet flag[273]
+	NewScene "scena/c0490.bin" 100 0 0
+	Hcf
+	Return
+
+fn[4]:
+	EventBegin 0
+	FadeOut 0ms 0x00000000 255
+	CamSetDistance 40930 1200 -590 0ms
+	ED7CamRotate 42deg 24deg 0deg 0ms
+	CamPers 400 0ms
+	CamZoom 24070 0ms
+	CharSetPos name[0] (40570, 0, -1240) 0deg
+	CharSetPos name[1] (42040, 0, -1210) 0deg
+	CharSetPos name[2] (40600, 0, -2730) 0deg
+	CharSetPos name[3] (42020, 0, -2750) 0deg
+	CharSetPos name[8] (40570, 0, -4150) 0deg
+	CharSetPos name[4] (42000, 0, -4170) 0deg
+	CharFlagsUnset field_party[4] 0x0080
+	CharFlags2Unset field_party[4] 0x8000
+	CharFlagsUnset field_party[5] 0x0080
+	CharFlags2Unset field_party[5] 0x8000
+	CharSetChipBase char[0] chip[0]
+	CharSetChipPattern char[0] 0
+	CharSetPos char[0] (41100, 200, 1700) 180deg
+	CharFlagsUnset char[0] 0x0080
+	CharFlags2Unset char[0] 0x8000
+	Sleep 1500ms
+	FadeIn 1000ms 0x00000000
+	FadeWait
+	TextTalk char[0] {
+		#08303F#3P……嗯哼。
+		總之，辛苦了啊，
+		特務支援課的各位。{wait}
+	}
+	TextWait
+	TextTalk name[1] {
+		#00102F瞭解事情始末之後，
+		我們也暫且放心了。{wait}
+	} {
+		尊夫人並沒有被騙，
+		真是太好了呢。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#08306F#3P是、是啊，雖然
+		最後別墅好像
+		還是要買下來。{wait}
+	} {
+		#08312F#3P不過分居的事已經解決了，
+		所以大概會是我們夫妻倆
+		在週末時過去小住吧。{wait}
+	}
+	TextWait
+	TextTalk name[8] {
+		#10100F啊哈哈……
+		畢竟尊夫人好像也相當
+		喜歡那間別墅。{wait}
+	}
+	TextWait
+	TextTalk name[3] {
+		#00309F嗯，這種程度的
+		小事就不必再
+		追究了吧？{wait}
+	}
+	TextWait
+	TextTalk name[4] {
+		#10302F呵呵，反正購屋資金也是
+		尊夫人靠買賣股票賺來的。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#08311F#3P呃、嗯……
+		不過這件事也很令人頭痛啊。{wait}
+	} {
+		#08306F#3P唉，這次的事情讓我
+		在老婆面前更抬不起頭了……{wait}
+	}
+	TextWait
+	Emote name[0] 0mm 2000mm 16 19 250ms 1
+	SoundPlay sound[23] 0 100 0
+	Emote name[1] 0mm 2000mm 16 19 250ms 1
+	SoundPlay sound[23] 0 100 0
+	Emote name[2] 0mm 2000mm 16 19 250ms 1
+	SoundPlay sound[23] 0 100 0
+	Emote name[3] 0mm 2000mm 16 19 250ms 1
+	SoundPlay sound[23] 0 100 0
+	Emote name[8] 0mm 2000mm 16 19 250ms 1
+	SoundPlay sound[23] 0 100 0
+	Emote name[4] 0mm 2000mm 16 19 250ms 1
+	SoundPlay sound[23] 0 100 0
+	Sleep 1000ms
+	TextTalk name[2] {
+		#00211F（……這算是自作自受吧。）{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#08304F#3P不過，無論如何……
+		至少是避免演變成離婚
+		這個最糟的局勢了。{wait}
+	} {
+		#08300F#3P請容我由衷地
+		向各位致謝。{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#00002F哈哈，如果又發生事情的話，
+		歡迎隨時找我們商量。{wait}
+	} {
+		#00004F……那麼，我們告辭了。{wait}
+	}
+	TextWait
+	FadeOut 1000ms 0x00000000 255
+	FadeWait
+	SoundPlay sound[9] 0 100 0
+	TextSetPos -1 -1 -1 -1
+	TextSetName ""
+	TextMessage null {
+		達成{color 2}委託【副局長的委託】{color 0}了！{wait}
+	}
+	TextWait
+	TextClose 0
+	TextSetPos -1 280 60 3
+	FadeOut 1000ms 0x00000000 255
+	FadeWait
+	QuestTaskSet quest[132] 1
+	QuestTaskSet quest[132] 2
+	QuestFlagsSet quest[132] 0x10
+	system[105] += 2
+	EventEnd 5
+	FlagSet flag[276]
+	NewScene "scena/c1150.bin" 0 0 0
+	Hcf
+	Return

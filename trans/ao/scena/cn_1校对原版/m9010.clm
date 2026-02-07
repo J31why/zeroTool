@@ -1,0 +1,426 @@
+calmare ao_k scena
+scena:
+	name "m9010" "m9010" "m9010"
+	town town[0]
+	bgm bgm[353]
+	flags 0
+	item_use fn[0,255]
+	unk 255 42
+
+entry:
+	pos (0, 0, -1000)
+	unk1 0
+	cam_from (0, 0, 24000)
+	cam_pers 500
+	unk2 30
+	cam_deg 45deg
+	cam_limit 0deg 360deg
+	cam_at (0, 0, 0)
+	unk3 0
+	unk4 0
+	flags 0x0001
+	town town[1]
+	init fn[0,0]
+	reinit fn[0,1]
+
+npc char[0]:
+	name "昇降機"
+	pos (0, 0, 0)
+	angle 0deg
+	flags 0x01FC
+	unk2 0
+	chip chip[0]
+	init fn[255,255]
+	talk fn[255,255]
+	unk4 255
+
+npc char[1]:
+	name "SE控制"
+	pos (0, 0, 0)
+	angle 0deg
+	flags 0x00C5
+	unk2 0
+	chip chip[0]
+	init fn[255,255]
+	talk fn[255,255]
+	unk4 255
+
+fn[0]:
+	if flag[272]:
+		FlagUnset flag[272]
+		Event fn[0,2]
+	Return
+
+fn[1]:
+	ED7_EE 1 800
+	Return
+
+fn[2]:
+	EventBegin 0
+	FadeOut 0ms 0x00000000 255
+	SoundLoad sound[1032]
+	EffLoad eff[0] "event/ev17066.eff"
+	EffLoad eff[1] "event/ev17065.eff"
+	CharSetPos name[0] (-900, 0, 1500) 315deg
+	CharSetPos name[1] (900, 0, 1500) 45deg
+	CharSetPos name[2] (-1600, 0, 0) 270deg
+	CharSetPos name[3] (1600, 0, 0) 90deg
+	CharSetPos custom[0] (-900, 0, -1500) 225deg
+	CharSetPos custom[1] (900, 0, -1500) 135deg
+	CharFlagsUnset field_party[4] 0x0080
+	CharFlags2Unset field_party[4] 0x8000
+	CharFlagsUnset field_party[5] 0x0080
+	CharFlags2Unset field_party[5] 0x8000
+	CamSetDistance 0 1550 0 0ms
+	ED7CamRotate 245deg 51deg 0deg 0ms
+	CamPers 1000 0ms
+	CamZoom 34950 0ms
+	CamSetDistance 0 1550 0 8000ms
+	ED7CamRotate 325deg 21deg 0deg 8000ms
+	CamPers 1000 8000ms
+	CamZoom 9870 8000ms
+	ED7_78 object[0] char[0]
+	CharSetPos char[0] (0, 0, 0) 0deg
+	CharFlagsSet char[0] 0x0004
+	SoundPlay sound[1032] 2 100 0
+	SoundPlay sound[112] 2 30 0
+	EffPlay eff[1] eff_instance[255] field_party[0] 0 (0, 0, 0) 0 0 0 1000 1000 1000 null (0, 0, 0) 0ms
+	FadeIn 1000ms 0x00000000
+	FadeWait
+	CamWait 121
+	ED7CamRotate 350deg 21deg 0deg 30000ms
+	Sleep 1000ms
+	TextTalk name[1] {
+		#1540010079V#00105F#6P#40W這、這是……？{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	if PartyPosition name[8] > -1:
+		if Ao_FB 244 2048 > -1:
+			Ao_FC 12
+		else:
+			Ao_FC 6
+		TextTalk name[8] {
+			#1540050050V#10105F#13P#40W克洛斯貝爾各地的狀況……？{wait}
+		}
+		TextWait
+	elif PartyPosition name[5] > -1:
+		if Ao_FB 244 1280 > -1:
+			Ao_FC 12
+		else:
+			Ao_FC 6
+		TextTalk name[5] {
+			#1540180096V#10712F#13P#40W克洛斯貝爾各地的狀況……？{wait}
+		}
+		TextWait
+	elif PartyPosition name[9] > -1:
+		if Ao_FB 244 2304 > -1:
+			Ao_FC 12
+		else:
+			Ao_FC 6
+		TextTalk name[9] {
+			#1540060053V#00605F#13P#40W克洛斯貝爾各地的狀況嗎……？{wait}
+		}
+		TextWait
+	TextClose 0
+	_59
+	TextTalk name[3] {
+		#1540030115V#00306F#6P#40W不……不只如此而已。{wait}
+	} {
+		#1540030116V#00301F好像還混進了一些看起來
+		像是過去的事件的事喔……！{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	TextTalk name[2] {
+		#1540020073V#00208F#12P#40W現實世界的碎片……{wait}
+	} {
+		#1540020074V#00201F超脫時空
+		而不斷環環相扣的因果……？{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	if PartyPosition name[4] > -1:
+		if Ao_FB 244 1024 > -1:
+			Ao_FC 12
+		else:
+			Ao_FC 6
+		TextTalk name[4] {
+			#1540040099V#10406F#13P#40W……好像也不能說
+			完全不可能吧。{wait}
+		}
+		TextWait
+	elif PartyPosition name[9] > -1:
+		if Ao_FB 244 2304 > -1:
+			Ao_FC 12
+		else:
+			Ao_FC 6
+		TextTalk name[9] {
+			#1540060054V#00606F#13P#40W好像……也不能說
+			完全不可能吧。{wait}
+		}
+		TextWait
+	elif PartyPosition name[5] > -1:
+		if Ao_FB 244 1280 > -1:
+			Ao_FC 12
+		else:
+			Ao_FC 6
+		TextTalk name[5] {
+			#1540180097V#10706F#13P#40W……好像也不能說
+			完全不可能吧……{wait}
+		}
+		TextWait
+	TextClose 0
+	_59
+	TextTalk name[0] {
+		#1540000178V#00003F#6P#40W……《零之至寶》……{wait}
+	} {
+		#1540000179V#00001F《碧之大樹》
+		是其完全型態……{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	CamSetDistance 10 1650 1300 3000ms
+	ED7CamRotate 357deg 13deg 0deg 3000ms
+	CamPers 1000 3000ms
+	CamZoom 9000 3000ms
+	Sleep 1500ms
+	EffPlay eff[0] eff_instance[255] field_party[0] 0 (0, 0, 0) 0 0 0 1000 1000 1000 null (0, 0, 0) 0ms
+	Sleep 400ms
+	SoundPlay sound[921] 0 100 0
+	CamWait 121
+	SoundPlay sound[934] 0 100 0
+	SoundPlay sound[928] 0 50 0
+	Emote name[0] 0mm 2000mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Sleep 50ms
+	Emote name[3] 0mm 2000mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Sleep 50ms
+	Emote name[1] 0mm 2000mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Sleep 50ms
+	Emote name[2] 0mm 2000mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Sleep 1000ms
+	Fork name[0] fork[0]:
+		CharTurnTo name[0] 0deg 500deg/s
+	Sleep 50ms
+	Fork name[1] fork[0]:
+		CharTurnTo name[1] 0deg 500deg/s
+	Sleep 50ms
+	Fork name[2] fork[0]:
+		CharTurnTo name[2] 0deg 500deg/s
+	Sleep 50ms
+	Fork name[3] fork[0]:
+		CharTurnTo name[3] 0deg 500deg/s
+	Sleep 50ms
+	ForkWait name[0] fork[0]
+	ForkWait name[1] fork[0]
+	ForkWait name[2] fork[0]
+	ForkWait name[3] fork[0]
+	SoundPlay sound[829] 0 100 0
+	CamZoom 8000 2000ms
+	ED7_12 1032 2000 90
+	ED7_12 112 2000 20
+	BgmVolume 70 1000ms
+	FadeOut 2000ms 0x00FFFFFF 255
+	FadeWait
+	Sleep 300ms
+	SoundPlay sound[824] 0 50 0
+	VisShow vis[0] 0 8 480 264 0 0 512 256 0 0 480 256 0x00FFFFFF 0 "c_vis293.itp"
+	VisSet vis[0] 4 0 0 0 0
+	VisSet vis[0] 3 0xFFFFFFFF 500ms 0 0
+	VisWait vis[0] 3
+	Sleep 800ms
+	SoundPlay sound[824] 0 50 0
+	VisShow vis[1] 0 8 480 264 0 0 512 256 0 0 480 256 0x00FFFFFF 0 "c_vis294.itp"
+	VisSet vis[1] 4 0 0 0 0
+	VisSet vis[1] 3 0xFFFFFFFF 500ms 0 0
+	VisWait vis[1] 3
+	VisSet vis[0] 3 0x00FFFFFF 0ms 0 0
+	VisHide vis[0] 0
+	Sleep 800ms
+	SoundPlay sound[824] 0 50 0
+	VisShow vis[0] 0 8 480 264 0 0 512 256 0 0 480 256 0x00FFFFFF 0 "c_vis295.itp"
+	VisSet vis[0] 4 0 0 0 0
+	VisSet vis[0] 3 0xFFFFFFFF 500ms 0 0
+	VisWait vis[0] 3
+	VisSet vis[1] 3 0x00FFFFFF 0ms 0 0
+	VisHide vis[1] 0
+	Sleep 800ms
+	SoundPlay sound[824] 0 50 0
+	VisShow vis[1] 0 8 480 264 0 0 512 256 0 0 480 256 0x00FFFFFF 0 "c_vis333.itp"
+	VisSet vis[1] 4 0 0 0 0
+	VisSet vis[1] 3 0xFFFFFFFF 500ms 0 0
+	VisWait vis[1] 3
+	VisSet vis[0] 3 0x00FFFFFF 0ms 0 0
+	VisHide vis[0] 0
+	Sleep 800ms
+	SoundPlay sound[824] 0 50 0
+	VisShow vis[0] 0 8 480 264 0 0 512 256 0 0 480 256 0x00FFFFFF 0 "c_vis334.itp"
+	VisSet vis[0] 4 0 0 0 0
+	VisSet vis[0] 3 0xFFFFFFFF 500ms 0 0
+	VisWait vis[0] 3
+	VisSet vis[1] 3 0x00FFFFFF 0ms 0 0
+	VisHide vis[1] 0
+	Sleep 800ms
+	SoundPlay sound[824] 0 100 0
+	VisShow vis[1] 0 8 480 264 0 0 512 256 0 0 480 256 0x00FFFFFF 0 "c_vis346.itp"
+	VisSet vis[1] 4 0 0 0 0
+	VisSet vis[1] 3 0xFFFFFFFF 500ms 0 0
+	VisWait vis[1] 3
+	VisSet vis[0] 3 0x00FFFFFF 0ms 0 0
+	VisHide vis[0] 0
+	Sleep 800ms
+	SoundPlay sound[829] 0 100 0
+	VisSet vis[1] 3 0x00FFFFFF 500ms 0 0
+	VisWait vis[1] 3
+	VisHide vis[255] 0
+	SoundPlay sound[1032] 2 100 0
+	SoundPlay sound[112] 2 30 0
+	CamZoom 9000 2000ms
+	FadeIn 2000ms 0x00FFFFFF
+	BgmVolume 100 1000ms
+	Sleep 1500ms
+	Emote name[0] 0mm 2000mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Sleep 50ms
+	Emote name[3] 0mm 2000mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Sleep 50ms
+	Emote name[1] 0mm 2000mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Sleep 50ms
+	Emote name[2] 0mm 2000mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Sleep 1000ms
+	Shake 100 0 3000 300ms
+	TextTalk name[0] {
+		#1540000180V#00007F#6P#4S……！{wait}
+	}
+	TextWait
+	TextTalk name[3] {
+		#1540030117V#00310F#12P怎、怎麼回事？{wait}
+	}
+	TextWait
+	Fork custom[0] fork[0]:
+		CharTurnTo custom[0] 0deg 500deg/s
+	Sleep 50ms
+	Fork custom[1] fork[0]:
+		CharTurnTo custom[1] 0deg 500deg/s
+	Sleep 50ms
+	ForkWait custom[0] fork[0]
+	ForkWait custom[1] fork[0]
+	TextTalk name[1] {
+		#1540010080V#00108F#12P剛才那是《太陽堡壘》
+		進到地下時的……！？{wait}
+	}
+	TextWait
+	TextTalk name[2] {
+		#1540020075V#00201F#6P不，艾絲蒂爾小姐他們
+		並沒有跟我們在一起……{wait}
+	} {
+		#1540020076V#00208F……而且……{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#1540000181V#00013F#6P…………{wait}
+	}
+	TextWait
+	Emote custom[0] 0mm 2000mm 0 1 250ms 2
+	SoundPlay sound[29] 0 100 0
+	Emote custom[1] 0mm 2000mm 0 1 250ms 2
+	SoundPlay sound[29] 0 100 0
+	Sleep 1000ms
+	if PartyPosition name[9] > -1:
+		if Ao_FB 244 2304 > -1:
+			Ao_FC 65530
+		else:
+			Ao_FC 65524
+		TextTalk name[9] {
+			#1540060055V#00601F#13P什麼……怎麼了？{wait}
+		}
+		TextWait
+	elif PartyPosition name[8] > -1:
+		if Ao_FB 244 2048 > -1:
+			Ao_FC 65530
+		else:
+			Ao_FC 65524
+		TextTalk name[8] {
+			#1540050051V#10101F#13P怎、怎麼了？{wait}
+		}
+		TextWait
+	elif PartyPosition name[5] > -1:
+		if Ao_FB 244 1280 > -1:
+			Ao_FC 65530
+		else:
+			Ao_FC 65524
+		TextTalk name[5] {
+			#1540180098V#10701F#13P怎麼了……？{wait}
+		}
+		TextWait
+	if PartyPosition name[4] > -1:
+		if Ao_FB 244 1024 > -1:
+			Ao_FC 65530
+		else:
+			Ao_FC 65524
+		TextTalk name[4] {
+			#1540040100V#10401F#13P……看來你們似乎看到了我們
+			看不到的東西啊？{wait}
+		}
+		TextWait
+	elif PartyPosition name[5] > -1:
+		if Ao_FB 244 1280 > -1:
+			Ao_FC 65530
+		else:
+			Ao_FC 65524
+		TextTalk name[5] {
+			#1540180099V#10701F#13P你們是看到了我們
+			看不到的東西嗎……？{wait}
+		}
+		TextWait
+	elif PartyPosition name[8] > -1:
+		if Ao_FB 244 2048 > -1:
+			Ao_FC 65530
+		else:
+			Ao_FC 65524
+		TextTalk name[8] {
+			#1540050052V#10101F#13P你們是看到了我們
+			看不到的東西嗎……？{wait}
+		}
+		TextWait
+	TextClose 0
+	_59
+	TextTalk name[0] {
+		#1540000182V#00006F#5P……嗯，不過只有一瞬間。{wait}
+	} {
+		#1540000183V#00008F雖然很模糊……
+		但我好像知道
+		琪雅真正的力量是什麼了。{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	CrossFade 500ms
+	CamSetDistance 0 1550 0 0ms
+	ED7CamRotate 0deg 25deg 0deg 0ms
+	CamPers 1000 0ms
+	CamZoom 13000 0ms
+	FadeWait
+	CamSetDistance 0 -8750 0 3000ms
+	Sleep 1000ms
+	ED7_12 1032 2000 90
+	ED7_12 112 2000 20
+	FadeOut 1000ms 0x00000000 255
+	FadeWait
+	CamSetDistance 0 -8750 0 0ms
+	Sleep 1000ms
+	FlagSet flag[272]
+	NewScene "scena/m9011.bin" 0 0 0
+	Hcf
+	Return

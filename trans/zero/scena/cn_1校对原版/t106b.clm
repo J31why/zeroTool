@@ -1,0 +1,208 @@
+calmare zero_k scena
+scena:
+	name "t106b" "t106b" "t106b"
+	town town[67]
+	bgm bgm[513]
+	flags 8192
+	item_use fn[0,255]
+	unk 255 0
+
+entry:
+	pos (0, 0, -1000)
+	unk1 0
+	cam_from (0, 0, 34000)
+	cam_pers 262
+	unk2 30
+	cam_deg 45deg
+	cam_limit 0deg 360deg
+	cam_at (0, 0, 0)
+	unk3 0
+	unk4 0
+	flags 0x0001
+	town town[67]
+	init fn[0,2]
+	reinit fn[0,3]
+
+chip[0] "chr/ch24202.itc"
+chip[1] "chr/ch37500.itc"
+chip[2] "chr/ch32202.itc"
+
+npc char[0]:
+	name "彼得"
+	pos (-102470, 150, 2529)
+	angle 90deg
+	flags 0x0155
+	unk2 0
+	chip chip[0]
+	init fn[255,255]
+	talk fn[0,4]
+	unk4 255
+
+npc char[1]:
+	name "特級釣師羅伊德"
+	pos (-100779, 0, -490)
+	angle 90deg
+	flags 0x0105
+	unk2 0
+	chip chip[1]
+	init fn[0,1]
+	talk fn[0,5]
+	unk4 255
+
+npc char[2]:
+	name "遊客"
+	pos (100470, 150, 2609)
+	angle 90deg
+	flags 0x0155
+	unk2 0
+	chip chip[2]
+	init fn[255,255]
+	talk fn[0,6]
+	unk4 255
+
+fn[0]:
+	var[2] = random % 8
+	switch var[2]:
+		case 0:
+			ED7_A0 self 1450ms 0 251
+			break
+		case 1:
+			ED7_A0 self 1550ms 0 251
+			break
+		case 2:
+			ED7_A0 self 1600ms 0 251
+			break
+		case 3:
+			ED7_A0 self 1400ms 0 251
+			break
+		case 4:
+			ED7_A0 self 1650ms 0 251
+			break
+		case 5:
+			ED7_A0 self 1350ms 0 251
+			break
+		case 6:
+			ED7_A0 self 1500ms 0 251
+			break
+		default:
+			ED7_A0 self 1500ms 0 251
+			break
+	while 1:
+		ED7_A0 self 1500ms 0 251
+	Return
+
+fn[1]:
+	while 1:
+		CharIdle self (-102950, null, 290) (-98970, null, -1820) 1000mm/s
+		Sleep 400ms
+	Return
+
+fn[2]:
+	Return
+
+fn[3]:
+	Return
+
+fn[4]:
+	field_party[0].5 = self.4
+	self.5 = self.4
+	TextStart self
+	CharFlagsUnset self 0x0010
+	CharTurnToChar self field_party[0] 0deg/s
+	self.4 = (self.4 + 360) % 360
+	self.4 = self.4 + 360 - self.5
+	self.5 = self.4 / 180
+	if self.4 <= 45 | self.4 >= 315 && self.4 <= 405 | self.4 >= 675:
+	elif self.5 < 1:
+		self.8 = 2
+	elif self.5 > 2:
+		self.8 = 1
+	else:
+		self.8 = self.5
+	self.4 = field_party[0].5
+	field_party[0].5 = 0
+	self.5 = 0
+	CharFlagsSet self 0x0010
+	if !flag[0]:
+		TextTalk self {
+			塞爾當分部長特意
+			給我們訂了一個房間呢。{wait}
+		}
+		TextWait
+		TextTalk self {
+			呵呵，分部長其實是個
+			相當有錢的人呢。{wait}
+		}
+		TextWait
+		FlagSet flag[0]
+	else:
+		TextTalk self {
+			但是……三個人的房間，
+			真是讓人有些惶恐呢。{wait}
+		}
+		TextWait
+		TextTalk self {
+			呵呵，羅伊德團員，
+			如果想住下來的話，
+			就請開口哦。{wait}
+		}
+		TextWait
+	CharSetChipPattern self 0
+	TextEnd self
+	Return
+
+fn[5]:
+	TextStart self
+	if !flag[1]:
+		TextTalk self {
+			這飯店可真是夠豪華的啊……{wait}
+		}
+		TextWait
+		TextTalk self {
+			哎呀，真是一直承蒙克洛斯貝爾的
+			同伴們照顧呢。{wait}
+		}
+		TextWait
+		FlagSet flag[1]
+	else:
+		TextTalk self {
+			垂釣很快樂，
+			料理也很美味。{wait}
+		}
+		TextWait
+		TextTalk self {
+			回到利貝爾之後，
+			必須要大力宣傳一番。{wait}
+		}
+		TextWait
+	TextEnd self
+	Return
+
+fn[6]:
+	field_party[0].5 = self.4
+	self.5 = self.4
+	TextStart self
+	CharFlagsUnset self 0x0010
+	CharTurnToChar self field_party[0] 0deg/s
+	self.4 = (self.4 + 360) % 360
+	self.4 = self.4 + 360 - self.5
+	self.5 = self.4 / 180
+	if self.4 <= 45 | self.4 >= 315 && self.4 <= 405 | self.4 >= 675:
+	elif self.5 < 1:
+		self.8 = 2
+	elif self.5 > 2:
+		self.8 = 1
+	else:
+		self.8 = self.5
+	self.4 = field_party[0].5
+	field_party[0].5 = 0
+	self.5 = 0
+	CharFlagsSet self 0x0010
+	TextTalk self {
+		唔……真是累壞了。
+		時間還早，但已經想要休息了。{wait}
+	}
+	TextWait
+	CharSetChipPattern self 0
+	TextEnd self
+	Return

@@ -1,0 +1,2611 @@
+calmare zero_k scena
+scena:
+	name "m0013" "m0013" "m0013"
+	town town[103]
+	bgm bgm[300]
+	flags 0
+	item_use fn[0,255]
+	unk 255 0
+
+entry:
+	pos (0, 0, -1000)
+	unk1 0
+	cam_from (0, 2500, 34000)
+	cam_pers 262
+	unk2 30
+	cam_deg 45deg
+	cam_limit 0deg 360deg
+	cam_at (0, 0, 0)
+	unk3 0
+	unk4 0
+	flags 0x0001
+	town town[103]
+	init fn[0,3]
+	reinit fn[0,4]
+
+chip[0] null
+chip[1] null
+chip[2] null
+chip[3] null
+chip[4] null
+chip[5] null
+chip[6] null
+chip[7] null
+chip[8] null
+chip[9] null
+chip[10] null
+chip[11] null
+chip[12] null
+chip[13] null
+chip[14] null
+chip[15] null
+chip[16] "monster/ch66150.itc"
+chip[17] "monster/ch66150.itc"
+
+npc char[0]:
+	name "BOSS"
+	pos (0, 0, 0)
+	angle 0deg
+	flags 0x01C5
+	unk2 0
+	chip chip[0]
+	init fn[0,0]
+	talk fn[255,255]
+	unk4 255
+
+npc char[1]:
+	name "約納的聲音"
+	pos (0, 0, 0)
+	angle 0deg
+	flags 0x01F6
+	unk2 0
+	chip chip[0]
+	init fn[255,255]
+	talk fn[255,255]
+	unk4 255
+
+npc char[2]:
+	name "約納的聲音"
+	pos (0, 0, 0)
+	angle 0deg
+	flags 0x00C4
+	unk2 0
+	chip chip[0]
+	init fn[255,255]
+	talk fn[255,255]
+	unk4 255
+
+monster char[3]:
+	pos (0, 750, 0)
+	angle 180
+	flags 0x0185
+	battle battle[1]
+	flag flag[0]
+	chip chip[16]
+	unk2 65535
+	stand_anim anim[0]
+	walk_anim anim[1]
+
+trigger[0]:
+	pos (0.0, -7500.0, -1000.0)
+	radius 56250.0
+	transform
+		0.2 -0.0 0.0 -0.0
+		-0.0 0.33333334 -0.0 2.5
+		0.0 -0.0 0.2 0.2
+		0.0 0.0 0.0 1.0
+		// translate (-0.0, -7.4999995, -1.0)
+		// rotate (1.0, 0.0, 0.0) 0.0deg
+		// scale (4.9999995, 3.0, 4.9999995)
+	unk1 0
+	unk2 0
+	function fn[0,6]
+	unk3 0
+	unk4 0
+	unk5 0
+	unk6 0
+
+trigger[1]:
+	pos (0.0, 0.0, -1000.0)
+	radius 16000.0
+	transform
+		0.125 -0.0 0.0 -0.0
+		-0.0 0.125 -0.0 -0.0
+		0.0 -0.0 0.25 0.25
+		0.0 0.0 0.0 1.0
+		// translate (-0.0, 0.0, -1.0)
+		// rotate (1.0, 0.0, 0.0) 0.0deg
+		// scale (8.0, 8.0, 4.0)
+	unk1 64
+	unk2 0
+	function fn[0,5]
+	unk3 0
+	unk4 0
+	unk5 0
+	unk6 0
+
+trigger[2]:
+	pos (0.0, 9500.0, -1000.0)
+	radius 64000.0
+	transform
+		0.125 -0.0 0.0 -0.0
+		-0.0 0.5 -0.0 -4.75
+		0.0 -0.0 0.2 0.2
+		0.0 0.0 0.0 1.0
+		// translate (-0.0, 9.5, -1.0)
+		// rotate (1.0, 0.0, 0.0) 0.0deg
+		// scale (8.0, 2.0, 5.0)
+	unk1 0
+	unk2 0
+	function fn[0,15]
+	unk3 0
+	unk4 0
+	unk5 0
+	unk6 0
+
+trigger[3]:
+	pos (0.0, -10500.0, -1500.0)
+	radius 64000.0
+	transform
+		0.125 -0.0 0.0 -0.0
+		-0.0 0.5 -0.0 5.25
+		0.0 -0.0 0.2 0.3
+		0.0 0.0 0.0 1.0
+		// translate (-0.0, -10.500001, -1.5)
+		// rotate (1.0, 0.0, 0.0) 0.0deg
+		// scale (8.0, 2.0, 5.0)
+	unk1 0
+	unk2 0
+	function fn[0,16]
+	unk3 0
+	unk4 0
+	unk5 0
+	unk6 0
+
+look_point[0]:
+	pos (102770, 200, -60)
+	radius 1200
+	bubble_pos (102770, 1700, -60)
+	unk1 124
+	unk2 0
+	function fn[0,17]
+	unk3 0
+	unk4 0
+
+anim[0] 1000ms 0 1 2 3 4 3 2 1
+anim[1] 1000ms 0 1 2 3
+
+// NB: the first five sepith sets are seemingly junk data.
+sepith[0] 100 1 2 3 70 89 99 0
+sepith[1] 100 5 1 5 1 5 1 0
+sepith[2] 100 5 1 5 1 5 1 0
+sepith[3] 100 5 0 5 0 5 0 0
+sepith[4] 100 5 0 5 0 5 0 0
+
+at_roll[0]: none 100
+at_roll[1]: none 100; hp10 5; hp50 1; ep10 5; ep50 1; cp10 5; cp50 1; unk1 5; unk2 5; unk6 1
+at_roll[2]: none 100; hp10 5; hp50 1; ep10 5; ep50 1; cp10 5; cp50 1; unk1 5; unk2 5; unk3 5; unk4 5; unk5 5; unk6 5
+at_roll[3]: none 100; hp10 5; ep10 5; cp10 5; unk1 5; unk2 5; unk6 2
+at_roll[4]: none 100; hp10 5; ep10 5; cp10 5; unk2 5; unk6 2
+
+placement[0]:
+	pos 7 9 180deg
+	pos 11 10 180deg
+	pos 10 13 180deg
+	pos 5 11 180deg
+	pos 12 12 180deg
+	pos 4 14 180deg
+	pos 14 14 180deg
+	pos 2 13 180deg
+
+placement[1]:
+	pos 8 8 180deg
+	pos 5 9 180deg
+	pos 11 10 180deg
+	pos 6 12 180deg
+	pos 10 12 180deg
+	pos 13 13 180deg
+	pos 4 14 180deg
+	pos 8 14 180deg
+
+placement[2]:
+	pos 7 8 180deg
+	pos 9 9 180deg
+	pos 6 10 180deg
+	pos 10 11 180deg
+	pos 6 12 180deg
+	pos 10 13 180deg
+	pos 7 14 180deg
+	pos 9 15 180deg
+
+placement[3]:
+	pos 8 8 180deg
+	pos 6 9 180deg
+	pos 10 10 180deg
+	pos 7 11 180deg
+	pos 10 12 180deg
+	pos 8 14 180deg
+	pos 10 14 180deg
+	pos 6 15 180deg
+
+placement[4]:
+	pos 7 4 0deg
+	pos 10 11 225deg
+	pos 4 7 90deg
+	pos 12 7 270deg
+	pos 4 11 135deg
+	pos 11 4 315deg
+	pos 7 12 180deg
+	pos 5 5 45deg
+
+placement[5]:
+	pos 8 9 180deg
+	pos 6 8 180deg
+	pos 10 8 180deg
+	pos 4 10 180deg
+	pos 12 10 180deg
+	pos 6 12 180deg
+	pos 10 12 180deg
+	pos 8 14 180deg
+
+placement[6]:
+	pos 8 8 180deg
+	pos 0 0 180deg
+	pos 0 0 180deg
+	pos 0 0 180deg
+	pos 0 0 180deg
+	pos 0 0 180deg
+	pos 0 0 180deg
+	pos 0 0 180deg
+
+battle[0]:
+	flags 18
+	level 22
+	unk1 6
+	vision_range 0
+	move_range 0
+	can_move 1
+	move_speed 0
+	unk2 0
+	battlefield "bm0012"
+	sepith null
+	setup 100:
+		enemies "ms77600.dat" null null null null null "ms67001.dat" null
+		placement placement[5] placement[4]
+		bgm bgm[402] bgm[403]
+		at_roll at_roll[3]
+
+battle[1]:
+	flags 3072
+	level 255
+	unk1 6
+	vision_range 0
+	move_range 0
+	can_move 0
+	move_speed 0
+	unk2 0
+	battlefield "bm0012"
+	sepith null
+	setup 100:
+		enemies "ms66100.dat" null null null null null null null
+		placement placement[6] placement[4]
+		bgm bgm[401] bgm[403]
+		at_roll at_roll[3]
+
+fn[0]:
+	while 1:
+		ED7CharAnimation self 1000ms 0 1 2 3 4
+	Return
+
+fn[1]:
+	while 1:
+		ED7CharAnimation self 1000ms 0 1 2 3 4 3 2 1
+	Return
+
+fn[2]:
+	while 1:
+		ED7CharAnimation self 1000ms 0 1 2 3 4 3 2 1
+	Return
+
+fn[3]:
+	if system[0] == 101 && flag[1290] && !flag[1291]:
+		Event fn[0,9]
+	if flag[736]:
+		FlagUnset flag[736]
+		Event fn[0,8]
+	Return
+
+fn[4]:
+	TriggerFlagsSet trigger[0] 0x0080
+	if flag[1289] && !flag[1290]:
+		TriggerFlagsUnset trigger[0] 0x0080
+	if system[4] != 4 | !flag[1342]:
+		CharFlagsSet char[3] 0x0080
+		TriggerFlagsSet trigger[1] 0x0080
+	elif !flag[968]:
+		CharFlagsUnset char[3] 0x0080
+		TriggerFlagsUnset trigger[1] 0x0080
+	char[3].40 = 8
+	CharFlags2Unset char[3] 0x0100
+	char[3].7 = 2500
+	ED7_76_0 object[0] "sign01" 1
+	ED7_76_0 object[0] "light01" 1
+	ED7_76_0 object[1] "sign01" 1
+	ED7_76_0 object[1] "light01" 1
+	ED7_76_0 object[2] "sign01" 1
+	ED7_76_0 object[2] "light01" 1
+	if system[0] == 101:
+		SystemFlagsSet 0x00002000
+		SystemFlagsSet 0x08000000
+		ED7_E0 2
+	else:
+		SystemFlagsUnset 0x00002000
+		SystemFlagsUnset 0x08000000
+	TriggerFlagsSet trigger[2] 0x0080
+	if !flag[1291]:
+		TriggerFlagsUnset trigger[2] 0x0080
+	TriggerFlagsSet trigger[3] 0x0080
+	if flag[1291] && !flag[705]:
+		TriggerFlagsUnset trigger[3] 0x0080
+	Return
+
+fn[5]:
+	if flag[968]:
+		Return
+	EventBegin 1
+	field_party[0].11 = 0
+	field_party[1].11 = 0
+	field_party[2].11 = 0
+	field_party[3].11 = 0
+	field_party[4].11 = 0
+	field_party[5].11 = 0
+	field_party[6].11 = 0
+	field_party[7].11 = 0
+	CharSetChipPattern field_party[0] 0
+	CharSetChipPattern field_party[1] 0
+	CharSetChipPattern field_party[2] 0
+	CharSetChipPattern field_party[3] 0
+	CharSetChipPattern field_party[4] 0
+	CharSetChipPattern field_party[5] 0
+	CharSetChipPattern field_party[6] 0
+	CharSetChipPattern field_party[7] 0
+	TextSetName ""
+	TextMessage name[742] {
+		{color 5}有大型魔獸在徘徊。{wait}
+	}
+	Menu menu[0] -1 -1 0
+		"【動手擊退】" // 0
+		"【放棄】" // 1
+	MenuWait var[0]
+	MenuClose menu[0]
+	TextClose 0
+	switch var[0]:
+		case 1:
+			Sleep 500ms
+			CharSetPos2 field_party[0] (200, 0, -8530) 0deg
+			EventEnd 5
+			Return
+	ED7Battle battle[1] null 0 256 0 null
+	ED7_E0 2
+	EventBegin 1
+	CamSetDistance 200 1000 -8530 0ms
+	CharSetPos2 field_party[0] (200, 0, -8530) 0deg
+	CharSetPos2 field_party[1] (200, 0, -8530) 0deg
+	CharSetPos2 field_party[2] (200, 0, -8530) 0deg
+	CharSetPos2 field_party[3] (200, 0, -8530) 0deg
+	CharSetPos2 field_party[4] (200, 0, -8530) 0deg
+	CharSetPos2 field_party[5] (200, 0, -8530) 0deg
+	CharSetPos2 field_party[6] (200, 0, -8530) 0deg
+	CharSetPos2 field_party[7] (200, 0, -8530) 0deg
+	switch system[3]:
+		case 2:
+			EventEnd 5
+			Return
+		case 1:
+			ReturnToTitle 0
+			Return
+	EventBegin 1
+	CharFlagsSet char[3] 0x0080
+	TriggerFlagsSet trigger[1] 0x0080
+	FadeWait
+	Sleep 400ms
+	SoundPlay sound[9] 0 100 0
+	TextSetPos -1 -1 -1 -1
+	FadeOut 300ms 0x00000000 100
+	TextSetName ""
+	TextMessage name[742] {
+		{color 5}消滅了通緝魔獸！{wait}
+	}
+	TextWait
+	TextClose 0
+	FlagSet flag[968]
+	QuestFlagsSet quest[37] 0x10
+	QuestFlagsSet quest[37] 0x02
+	QuestTaskSet quest[37] 0
+	FadeIn 300ms 0x00000000
+	TextSetPos -1 280 60 3
+	EventEnd 5
+	Return
+
+fn[6]:
+	EventBegin 0
+	FadeOut 0ms 0xFFFFFFFF 0
+	FadeOut 500ms 0x00000000 255
+	FadeWait
+	FadeIn 0ms 0xFFFFFFFF
+	ED7_E0 1
+	ED7LoadChip "chr/ch00050.itc" chip[30]
+	ED7LoadChip "chr/ch00051.itc" chip[31]
+	ED7LoadChip "chr/ch00250.itc" chip[32]
+	ED7LoadChip "chr/ch00251.itc" chip[33]
+	ED7LoadChip "monster/ch77650.itc" chip[34]
+	ED7LoadChip "chr/ch00056.itc" chip[35]
+	ED7LoadChip "chr/ch00256.itc" chip[36]
+	EffLoad eff[0] "event\\eva04_00.eff"
+	CamSetDistance 0 700 -1000 0ms
+	ED7CamRotate 45deg 25deg 0deg 0ms
+	CamPers 500 0ms
+	CamZoom 21500 0ms
+	CharSetPos name[0] (-700, 0, -7300) 0deg
+	CharSetPos name[2] (700, 0, -7000) 0deg
+	CharSetChipBase char[0] chip[34]
+	CharSetChipPattern char[0] 0
+	CharFlagsSet char[0] 0x8000
+	CharSetPos char[0] (0, 6000, 0) 180deg
+	char[0].36 = 216
+	char[0].7 = 2500
+	char[0].52 = 2500
+	char[0].45 = 1150
+	char[0].46 = 1150
+	char[0].47 = 1150
+	char[0].40 = 13
+	_Char4A char[0] 255
+	Fork name[2] fork[1]:
+		CharWalkToPos2 self (700, 0, -2000) 2000mm/s 0
+	Sleep 50ms
+	Fork name[0] fork[1]:
+		CharWalkToPos2 self (-700, 0, -2300) 2000mm/s 0
+	CamZoom 20000 2500ms
+	FadeIn 1000ms 0x00000000
+	FadeWait
+	ForkWait name[2] fork[1]
+	ForkWait name[0] fork[1]
+	CamWait 16
+	TextTalk name[0] {
+		#13300302V#12P#0000F這裡是……{wait}
+	}
+	TextWait
+	TextTalk name[2] {
+		#13300303V#0204F#12P……看來已經到終點了呢。{wait}
+	} {
+		#13300304V#0202F第３控制終端所在的房間
+		多半就在這附近──{wait}
+	}
+	TextWait
+	Fork name[2] fork[1]:
+		CharWalkToPos2 self (700, 0, -1000) 1000mm/s 0
+	Emote name[0] 0mm 2000mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Sleep 1000ms
+	ForkWait name[2] fork[1]
+	CrossFade 250ms
+	CharSetChipBase name[0] chip[30]
+	CharSetChipPattern name[0] 0
+	SoundPlay sound[808] 0 80 0
+	SoundPlay sound[804] 0 100 0
+	FadeWait
+	Shake 300 0 3000 300ms
+	TextTalk name[0] {
+		#13300305V#12P#4S#0007F緹歐！{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	BgmStop 2000ms
+	CrossFade 250ms
+	CamSetDistance 0 1700 -1000 0ms
+	ED7CamRotate 50deg 33deg 0deg 0ms
+	CamPers 600 0ms
+	CamZoom 13500 0ms
+	CharSetChipBase name[0] chip[35]
+	CharSetChipPattern name[0] 1
+	Fork name[0] fork[1]:
+		_Char96 self (300, 0, -600) 300 2000
+	SoundPlay sound[814] 0 100 0
+	SoundPlay sound[1011] 255 100 0
+	ForkWait name[0] fork[1]
+	CharFlagsUnset char[0] 0x0080
+	CharFlags2Unset char[0] 0x8000
+	ForkFunc char[0] fork[3] fn[0,7]
+	CamSetDistance 0 1500 -3000 500ms
+	ED7CamRotate 40deg 13deg 0deg 500ms
+	CamZoom 14500 500ms
+	CharSetChipBase name[0] chip[35]
+	CharSetChipPattern name[0] 2
+	Fork name[0] fork[1]:
+		_Char96 self (0, 0, -4600) 500 2000
+	SoundPlay sound[854] 0 100 0
+	CharSetChipBase name[2] chip[36]
+	CharSetChipPattern name[2] 2
+	Fork name[2] fork[1]:
+		_Char96 self (700, 0, -5000) 500 2000
+	ForkWait name[0] fork[1]
+	CharSetChipBase name[0] chip[30]
+	CharSetChipPattern name[0] 0
+	SoundPlay sound[42] 0 100 0
+	SoundPlay sound[31] 0 100 0
+	ForkWait name[2] fork[1]
+	CharSetChipBase name[2] chip[36]
+	CharSetChipPattern name[2] 0
+	ForkWait char[0] fork[3]
+	CamWait 121
+	BgmWait
+	Sleep 10ms
+	BgmPlay bgm[402] 0
+	Sleep 500ms
+	TextTalk name[2] {
+		#13300306V#0207F#12P這是……{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#13300307V#0013F#6P可惡……
+		是下層區塊魔獸的首領嗎！{wait}
+	} {
+		#13300308V#0007F緹歐，只能想辦法應戰了，可以嗎！？{wait}
+	}
+	TextWait
+	TextTalk name[2] {
+		#13300309V#0205F#12P啊……{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	CrossFade 250ms
+	CharSetChipBase name[2] chip[32]
+	CharSetChipPattern name[2] 0
+	CharSetPos name[2] (900, 0, -5000) 0deg
+	SoundPlay sound[804] 0 100 0
+	FadeWait
+	TextTalk name[2] {
+		#13300310V#0201F#12P是……沒問題！{wait}
+	}
+	TextWait
+	BlurOn 500ms 0xBBFFFFFF 0 0 0
+	Fork name[0] fork[1]:
+		_94 0 self 0deg 3000 5000mm/s 0
+	Sleep 50ms
+	Fork name[2] fork[1]:
+		_94 0 self 0deg 3000 5000mm/s 0
+	Sleep 500ms
+	ED7Battle battle[0] null 0 0 0 null
+	FadeOut 0ms 0x00000000 255
+	ForkQuit name[0] fork[1]
+	ForkQuit name[2] fork[1]
+	Call fn[0,8]
+	Return
+
+fn[7]:
+	Sc_7D_0 char[0] 30 300
+	Fork char[0] fork[1]:
+		_Char96 self (0, 0, 0) 0 1000
+	SoundPlay sound[812] 0 100 0
+	ForkWait char[0] fork[1]
+	BlurOn 300ms 0xBBFFFFFF 0 1 10
+	EffPlay eff[0] eff_instance[255] char[0] 0 (0, 0, 0) 0 0 0 2000 2000 2000 null (0, 0, 0) 0ms
+	_Char4B char[0] 255
+	Sc_7D_1 char[0] 0 0
+	char[0].40 = 9
+	Shake 0 500 3000 1000ms
+	SoundPlay sound[813] 0 100 0
+	Sleep 1000ms
+	BlurOff 0ms
+	Return
+
+fn[8]:
+	EventBegin 0
+	FadeOut 0ms 0x00000000 255
+	ED7_E0 1
+	ED7LoadChip "chr/ch00050.itc" chip[30]
+	ED7LoadChip "chr/ch00051.itc" chip[31]
+	ED7LoadChip "chr/ch00250.itc" chip[32]
+	ED7LoadChip "chr/ch00251.itc" chip[33]
+	ED7LoadChip "monster/ch77650.itc" chip[34]
+	ED7LoadChip "chr/ch00056.itc" chip[35]
+	ED7LoadChip "chr/ch00256.itc" chip[36]
+	CamSetDistance 0 1000 -4000 0ms
+	ED7CamRotate 45deg 19deg 0deg 0ms
+	CamPers 550 0ms
+	CamZoom 17000 0ms
+	CharSetChipBase name[0] chip[30]
+	CharSetChipPattern name[0] 0
+	CharSetChipBase name[2] chip[32]
+	CharSetChipPattern name[2] 0
+	CharSetPos name[0] (-800, 0, -4000) 0deg
+	CharSetPos name[2] (700, 0, -4200) 0deg
+	CharFlagsSet char[0] 0x0080
+	CharFlags2Set char[0] 0x8000
+	CamZoom 16000 2000ms
+	FadeIn 2000ms 0x00000000
+	FadeWait
+	CamWait 16
+	TextTalk name[0] {
+		#13300311V#12P#0006F呼，總算是擊退了嗎。{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	CrossFade 250ms
+	CharSetChipBase name[0] chip[255]
+	CharSetChipPattern name[0] 0
+	CharSetChipBase name[2] chip[255]
+	CharSetChipPattern name[2] 0
+	SoundPlay sound[804] 0 100 0
+	SoundPlay sound[808] 0 100 0
+	FadeWait
+	Sleep 300ms
+	CharTurnToChar name[0] name[2] 500deg/s
+	TextTalk name[0] {
+		#13300312V#6P#0001F緹歐，沒事嗎？
+		剛才那場戰鬥真是辛苦啊。{wait}
+	}
+	TextWait
+	CharTurnToChar name[2] name[0] 500deg/s
+	TextTalk name[2] {
+		#13300313V#0204F#11P嗯……沒問題的。{wait}
+	} {
+		#13300314V#0202F羅伊德前輩也沒事吧？{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#13300315V#6P#0004F哈哈，沒事，蘭迪说过
+		羅伊德最值得自豪的地方
+		也只有防禦技巧高超，皮厚耐打了。{wait}
+	} {
+		#13300316V#0001F不過，要是蘭迪和艾莉也在，
+		戰鬥大概就能更有效率了吧。{wait}
+	} {
+		#13300317V#0006F平日裡，確實受到他們兩人太多幫助了，
+		現在真是發自內心地體會到了啊。{wait}
+	}
+	TextWait
+	TextTalk name[2] {
+		#13300318V#0202F#11P……呵呵………{wait}
+	}
+	TextWait
+	Emote name[0] 0mm 2000mm 38 38 250ms 1
+	Sleep 1000ms
+	TextTalk name[0] {
+		#13300319V#6P#0011F我、我說了什麼奇怪的話嗎？{wait}
+	}
+	TextWait
+	TextTalk name[2] {
+		#13300320V#0204F#11P……沒有，
+		只是我自己的問題而已。{wait}
+	}
+	TextWait
+	CharTurnTo name[2] 90deg 500deg/s
+	Sleep 300ms
+	TextTalk name[2] {
+		#13300321V#0202F#5P我想，『第３控制終端』
+		應該就在右邊的門內。{wait}
+	} {
+		#13300322V趕快去將其啟動，
+		然後利用導力通訊與約納聯絡吧。{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#13300323V#6P#0000F嗯……就這麼辦。{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	UnloadChip chip[30]
+	UnloadChip chip[31]
+	UnloadChip chip[32]
+	UnloadChip chip[33]
+	UnloadChip chip[34]
+	UnloadChip chip[35]
+	UnloadChip chip[36]
+	ED7_37
+	TriggerFlagsSet trigger[0] 0x0080
+	CharSetPos field_party[0] (0, 0, -4000) 0deg
+	FlagSet flag[1290]
+	ED7_E0 2
+	EventEnd 5
+	Return
+
+fn[9]:
+	EventBegin 0
+	FadeOut 0ms 0x00000000 255
+	ED7LoadChip "chr/ch00202.itc" chip[30]
+	ED7LoadChip "apl/ch50092.itc" chip[31]
+	ED7LoadChip "apl/ch50011.itc" chip[32]
+	ED7LoadChip "apl/ch50324.itc" chip[33]
+	ED7LoadChip "apl/ch50326.itc" chip[34]
+	ED7LoadChip "apl/ch50218.itc" chip[35]
+	EffLoad eff[0] "event\\eva06_00.eff"
+	SoundLoad sound[806]
+	SoundLoad sound[840]
+	SoundLoad sound[905]
+	CamSetDistance 101500 1000 0 0ms
+	ED7CamRotate 45deg 20deg 0deg 0ms
+	CamPers 440 0ms
+	CamZoom 22500 0ms
+	CharSetPos name[0] (92000, 150, -300) 90deg
+	CharSetPos name[2] (92000, 150, 300) 90deg
+	CharColor name[0] 0x00FFFFFF 0ms
+	CharColor name[2] 0x00FFFFFF 0ms
+	CharSetChipBase char[1] chip[31]
+	CharSetChipPattern char[1] 19
+	CharFlagsSet char[1] 0x8000
+	VisShow vis[0] 180 0 436 256 0 0 256 256 0 0 256 256 0x00FFFFFF 1 "c_vis007.itp"
+	VisShow vis[1] 112 8 368 264 0 0 256 256 0 0 256 256 0x00FFFFFF 1 "c_vis041.itp"
+	VisShow vis[2] 0 8 480 264 0 0 512 256 0 0 480 256 0x00FFFFFF 1 "c_vis042.itp"
+	VisShow vis[3] 0 8 480 264 0 0 512 256 0 0 480 256 0x00FFFFFF 1 "c_vis020.itp"
+	CamSetDistance 97500 1000 0 4000ms
+	FadeIn 1000ms 0x00000000
+	FadeWait
+	Sleep 500ms
+	Fork name[0] fork[1]:
+		CharWalkToPos2 self (95500, 0, -700) 2000mm/s 0
+	Fork name[0] fork[2]:
+		CharColor self 0xFFFFFFFF 500ms
+	Sleep 400ms
+	Fork name[2] fork[1]:
+		CharWalkToPos2 self (95500, 0, 700) 2000mm/s 0
+	Fork name[2] fork[2]:
+		CharColor self 0xFFFFFFFF 500ms
+	ForkWait name[0] fork[1]
+	ForkWait name[2] fork[1]
+	CamWait 1
+	TextTalk name[0] {
+		#13300324V#0005F#6P這個終端……{wait}
+	}
+	TextWait
+	TextTalk name[2] {
+		#13300325V#0202F就是『第３控制終端』了呢。{wait}
+	} {
+		#13300326V這裡，再加上約納擅自使用的
+		『第８控制終端』……我們打算從這
+		兩個地方來展開駭客行動。{wait}
+	}
+	TextWait
+	CharTurnToChar name[0] name[2] 500deg/s
+	TextTalk name[0] {
+		#13300327V#12P#0004F原來如此。{wait}
+	} {
+		#13300328V#0000F那麼，現在就和約納取得聯絡嗎？{wait}
+	}
+	TextWait
+	CharTurnToChar name[2] name[0] 500deg/s
+	TextTalk name[2] {
+		#13300329V#0203F是的，拜託了。{wait}
+	} {
+		#13300330V#0200F艾莉前輩和蘭迪前輩說不定
+		也會需要與我們聯絡，所以
+		現在先使用我的ＥＮＩＧＭＡ吧。{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#13300331V#12P#0000F好的，知道了。{wait}
+	}
+	TextWait
+	FadeOut 300ms 0x00000000 100
+	TextSetName ""
+	TextMessage null {
+		{color 5}羅伊德接過了緹歐的ＥＮＩＧＭＡ。{color 0}{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	FadeIn 300ms 0x00000000
+	CamSetDistance 103000 1000 0 3000ms
+	ED7CamRotate 55deg 15deg 0deg 3000ms
+	CamZoom 21000 3000ms
+	CharTurnTo name[2] 90deg 500deg/s
+	Fork name[2] fork[1]:
+		CharWalkToPos self (102000, 0, 800) 2000mm/s 0
+	Sleep 200ms
+	CharTurnTo name[0] 90deg 500deg/s
+	Fork name[0] fork[1]:
+		CharWalkToPos self (101200, 0, -1700) 2000mm/s 0
+	ForkWait name[2] fork[1]
+	CrossFade 250ms
+	CharSetChipBase name[2] chip[30]
+	CharSetChipPattern name[2] 0
+	CharFlagsSet name[2] 0x0004
+	CharSetPos name[2] (102300, 250, 0) 90deg
+	SoundPlay sound[820] 0 100 0
+	FadeWait
+	Sleep 300ms
+	ED7_76_2 object[3] "m00gim02" "open"
+	SoundPlay sound[72] 0 100 0
+	CamWait 121
+	Sleep 800ms
+	ForkWait name[0] fork[1]
+	CharTurnTo name[0] 90deg 500deg/s
+	CrossFade 250ms
+	CharFlagsSet name[0] 0x0020
+	CharFlagsSet name[0] 0x0002
+	CharSetChipBase name[0] chip[32]
+	CharSetChipPattern name[0] 4
+	SoundPlay sound[804] 0 100 0
+	Sleep 500ms
+	CharSetChipPattern name[0] 5
+	SoundPlay sound[807] 0 100 0
+	Sleep 300ms
+	VisSet vis[0] 3 0xFFFFFFFF 500ms 0 0
+	FadeOut 500ms 0x00000000 100
+	FadeWait
+	VisWait vis[0] 3
+	SoundPlay sound[902] 0 100 0
+	Sleep 2800ms
+	TextSetPos 90 130 -1 -1
+	TextMessage name[0] {
+		#13300332V#0000F約納？
+		我是羅伊德。{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	TextSetPos 170 50 -1 -1
+	TextSetName "約納的聲音"
+	TextMessage null {
+		{color 5}#13300333V是你啊，
+		已經到了嗎？{color 0}{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	TextSetPos 90 130 -1 -1
+	TextMessage name[0] {
+		#13300334V#0000F嗯，緹歐目前
+		正在啟動終端呢。{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	TextSetPos 170 50 -1 -1
+	TextSetName "約納的聲音"
+	TextMessage null {
+		{color 5}#13300335VＯＫ，ＯＫ。
+		那麼，我這邊也要開始了。{wait}
+	} {
+		#13300336V哦，對了，
+		你把ＥＮＩＧＭＡ通訊模式中的
+		揚聲器設置為ＯＮ吧。{color 0}{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	TextSetPos 90 130 -1 -1
+	TextMessage name[0] {
+		#13300337V#0005F把揚聲器設置為ＯＮ……？{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	CharSetChipPattern name[2] 2
+	Sleep 300ms
+	TextSetPos 120 30 -1 -1
+	TextMessage name[2] {
+		#13300338V#0200F請按一下ＥＮＩＧＭＡ內側的
+		那個紅色開關。{wait}
+	} {
+		#13300339V那樣的話，其他人也能聽到
+		通訊對象的聲音了。{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	TextSetPos 90 130 -1 -1
+	TextMessage name[0] {
+		#13300340V#0000F是這樣嗎……{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	TextSetPos -1 280 60 3
+	VisSet vis[0] 3 0x00FFFFFF 500ms 0 0
+	FadeIn 500ms 0x00000000
+	FadeWait
+	VisWait vis[0] 3
+	CharSetChipBase name[0] chip[33]
+	CharSetChipPattern name[0] 0
+	SoundPlay sound[807] 0 100 0
+	Sleep 500ms
+	FadeOut 300ms 0x00000000 100
+	TextSetName ""
+	TextMessage null {
+		{color 5}羅伊德按照緹歐所說的進行操作，
+		然後把ＥＮＩＧＭＡ放在了終端旁邊。{color 0}{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	FadeIn 300ms 0x00000000
+	CrossFade 250ms
+	CharFlagsUnset name[0] 0x0020
+	CharFlagsUnset name[0] 0x0002
+	CharSetChipBase name[0] chip[255]
+	CharSetChipPattern name[0] 0
+	CharSetPos char[1] (102600, 700, -1500) 0deg
+	CharSetPos char[2] (102600, -500, -1500) 0deg
+	CharFlagsUnset char[1] 0x0080
+	CharFlags2Unset char[1] 0x8000
+	CharFlagsSet char[2] 0x0008
+	CharFlagsUnset char[2] 0x0080
+	CharFlags2Unset char[2] 0x8000
+	SoundPlay sound[31] 0 100 0
+	SoundPlay sound[42] 0 100 0
+	Sleep 800ms
+	TextTalk char[2] {
+		{color 5}#13300341V#2P──哈，
+		可以聽到我的聲音了吧？{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#13300342V#6P#0000F原來如此……{wait}
+	}
+	TextWait
+	TextTalk name[2] {
+		#13300343V#0203F#5P因為這項功能會消耗很多ＥＰ，
+		所以一般並不推薦使用。
+		不過目前還是暫時維持這個狀態吧。{wait}
+	} {
+		#13300344V#0200F──約納，
+		我這邊已經準備完畢了。{wait}
+	} {
+		#13300345V下一步是什麼？{wait}
+	}
+	TextWait
+	TextTalk char[2] {
+		{color 5}#13300346V#2P哦，我這邊已經盡可能
+		佈置好足夠多的誘餌了。{wait}
+	}
+	TextWait
+	TextTalk char[2] {
+		{color 5}#13300347V#2P『小貓#4RKitty#』一旦出現，我就會聯絡你們，
+		到時可要好好應對啊。{wait}
+	}
+	TextWait
+	TextTalk name[2] {
+		{color 0}#13300348V#0200F#5P瞭解，
+		在那之前，我們就先行待命了。{wait}
+	}
+	TextWait
+	TextTalk char[2] {
+		{color 5}#13300349V#2P拜託了！{wait}
+	}
+	TextWait
+	SoundPlay sound[825] 0 80 0
+	BgmStop 8000ms
+	Emote name[0] 0mm 2000mm 24 27 250ms 0
+	Emote name[2] 0mm 1700mm 24 27 250ms 0
+	Sleep 2000ms
+	EmoteStop name[0]
+	EmoteStop name[2]
+	CharTurnToChar name[0] name[2] 500deg/s
+	Sleep 300ms
+	TextTalk name[0] {
+		#13300350V#12P#0005F──那個……
+		這樣就算準備完畢了嗎？{wait}
+	}
+	TextWait
+	TextTalk name[2] {
+		#13300351V#0204F#5P嗯，接下來就只剩下等待了。{wait}
+	} {
+		#13300352V在開始駭客行動之後，
+		也只需我一個人就足夠了……{wait}
+	} {
+		#13300353V#0211F……現在你能明白我說要
+		一個人行動的理由了吧？{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#13300354V#12P#0006F原、原來如此。{wait}
+	} {
+		#13300355V#0000F不過，說句實話，
+		來這裡的一路上相當艱難……{wait}
+	} {
+		#13300356V就結果來說，一切順利不是很好嘛。{wait}
+	}
+	TextWait
+	TextTalk name[2] {
+		#13300357V#0203F#5P…………………………………{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#13300358V#12P#0012F那個，哈哈……
+		（真糟糕啊，都沒有話題可聊。）{wait}
+	}
+	TextWait
+	Emote name[0] 0mm 2000mm 38 38 250ms 1
+	Sleep 1000ms
+	CharTurnTo name[0] 90deg 400deg/s
+	BgmWait
+	Sleep 10ms
+	BgmPlay bgm[515] 0
+	TextTalk name[0] {
+		#13300359V#6P#0005F說起來……
+		這是『咪西』吧？{wait}
+	}
+	TextWait
+	VisSet vis[1] 3 0xFFFFFFFF 500ms 0 0
+	VisSet vis[1] 0 0 -10000 500ms 0
+	VisWait vis[1] 3
+	VisWait vis[1] 0
+	Sleep 500ms
+	TextMessage name[0] {
+		#13300360V#0002F妳好像很喜歡它呢，
+		還給導力器掛上了它的吊飾。{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	TextMessage name[2] {
+		#13300361V#0204F嗯……
+		或許吧。{wait}
+	} {
+		#13300362V雖然以我一貫的性格來說，
+		對物品並不會有太多執著……{wait}
+	} {
+		#13300363V#0202F但不可思議的是，
+		我一直都把這個帶在身邊呢。{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	VisSet vis[1] 3 0x00FFFFFF 500ms 0 0
+	VisSet vis[1] 0 0 0 500ms 0
+	VisWait vis[1] 3
+	VisWait vis[1] 0
+	Emote name[0] 0mm 2000mm 0 1 250ms 2
+	SoundPlay sound[29] 0 100 0
+	Sleep 1200ms
+	CharTurnToChar name[0] name[2] 500deg/s
+	TextTalk name[0] {
+		#13300364V#12P#0005F這個不是來到這裡
+		之後才買的嗎？{wait}
+	} {
+		#13300365V沒記錯的話，它好像是
+		克洛斯貝爾當地特有的吉祥物吧？{wait}
+	}
+	TextWait
+	TextTalk name[2] {
+		#13300366V#0204F#5P這是別人送給我的東西。{wait}
+	} {
+		#13300367V大約是在五年前，從蓋先生那裡收到的。{wait}
+	}
+	TextWait
+	Emote name[0] 0mm 2000mm 24 27 250ms 0
+	Sleep 2000ms
+	EmoteStop name[0]
+	Sleep 500ms
+	Shake 100 0 3000 200ms
+	TextTalk name[0] {
+		#13300368V#12P#0011F#4S───哎？{wait}
+	}
+	TextWait
+	TextTalk name[2] {
+		#13300369V#0203F#5P蓋・班寧斯……{wait}
+	} {
+		#13300370V#0202F是羅伊德前輩的哥哥吧？{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#13300371V#12P#0008F哎、嗯，那個……
+		……當然了，不過……{wait}
+	} {
+		#13300372V#0011F緹歐妳──
+		曾經見過我的大哥嗎！？{wait}
+	}
+	TextWait
+	TextTalk name[2] {
+		#13300373V#0204F#5P是的。{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#13300374V#12P#0006F我、我一直都不知道呢……{wait}
+	} {
+		#13300375V#0002F什麼啊，既然如此，
+		早點告訴我不就好了嘛！{wait}
+	} {
+		#13300376V#0005F不過，緹歐好像是
+		從列曼自治州來的吧？{wait}
+	} {
+		#13300377V為什麼會和大哥──{wait}
+	}
+	TextWait
+	Sc_C4Set 2048
+	FadeOut 800ms 0x00000000 255
+	VisSet vis[3] 3 0xAAFFFFFF 800ms 0 0
+	VisWait vis[3] 3
+	Sleep 300ms
+	Sc_C4Set 2048
+	TextSetPos 50 150 -1 -1
+	TextSetName ""
+	TextMessage null {
+		{0x18}{color 12}#13300378V說什麼要出趟遠門……
+		這也太突然了吧。{wait}
+	} {
+		#13300379V你究竟要去哪裡啊？{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	TextSetPos 250 110 -1 -1
+	TextSetName ""
+	TextMessage null {
+		{0x18}{color 12}#13300380V雷米菲利亞公國。{wait}
+	} {
+		#13300381V不過呢，雖說是出趟『遠門』，
+		大概也只要兩個月左右就能回來了吧。{wait}
+	} {
+		#13300382V其實……
+		我要護送一位特別可愛的女孩，
+		和她一起去旅行啦。{color 0}{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	if flag[798]:
+		VisSet vis[3] 3 0x00FFFFFF 800ms 0 0
+		VisSet vis[2] 3 0xAAFFFFFF 800ms 0 0
+		VisWait vis[2] 3
+		Sleep 300ms
+		TextSetPos 100 50 -1 -1
+		TextSetName ""
+		TextMessage null {
+			{0x18}{color 13}#13300383V緹歐……
+			你以前曾在這裡住過院？{wait}
+		}
+		TextWait
+		TextClose 0
+		_59
+		TextSetPos 190 130 -1 -1
+		TextSetName ""
+		TextMessage null {
+			{0x18}{color 13}#13300384V……嗯。{wait}
+		} {
+			#13300385V大約是在六年之前。{wait}
+		} {
+			#13300386V關於這點，其實我並沒
+			打算刻意向大家隱瞞……{color 0}{wait}
+		}
+		TextWait
+		TextClose 0
+		_59
+		FadeIn 1000ms 0x00000000
+		VisSet vis[2] 3 0x00FFFFFF 800ms 0 0
+		VisWait vis[2] 3
+	else:
+		FadeIn 1000ms 0x00000000
+		VisSet vis[3] 3 0x00FFFFFF 800ms 0 0
+		VisWait vis[3] 3
+	TextSetPos -1 280 60 3
+	Sc_C4Unset 2048
+	FadeWait
+	Emote name[0] 0mm 2000mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Sleep 1000ms
+	TextTalk name[0] {
+		#13300387V#12P#0005F那個女孩子難道……
+		就是緹歐嗎……！{wait}
+	}
+	TextWait
+	TextTalk name[2] {
+		#13300388V#0203F#5P多半是吧。{wait}
+	} {
+		#13300389V#0202F那是在我九歲的時候……{wait}
+	} {
+		#13300390V當時，我被蓋先生
+		送回了位於雷米菲利亞的家中。{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#13300391V#12P#0002F雷米菲利亞……{wait}
+	} {
+		#13300392V緹歐是在那裡出生的啊。{wait}
+	}
+	TextWait
+	TextTalk name[2] {
+		#13300393V#0202F#5P是的。{wait}
+	} {
+		#13300394V#0204F話雖如此，對我來說，那裡也
+		算不上什麼有著深厚感情的故鄉……{wait}
+	} {
+		#13300395V只是一個幾乎已經
+		完全捨棄的地方而已。{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#13300396V#12P#0005F哎……{wait}
+	} {
+		#13300397V#0001F那個，那緹歐的父母現在如何呢？{wait}
+	}
+	TextWait
+	TextTalk name[2] {
+		#13300398V#0206F#5P我想，他們應該過得還好吧……{wait}
+	} {
+		#13300399V雖然自從我三年前離開家之後，
+		就基本沒有再和他們聯絡過了。{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#13300400V#12P#0001F…………………………………{wait}
+	}
+	TextWait
+	TextTalk name[2] {
+		#13300401V#0203F#5P──出於某些原因，
+		我從五歲左右開始，
+		就一直被認定為下落不明。{wait}
+	} {
+		#13300402V之後得到了蓋先生的保護……
+		身體衰弱的我，在烏爾斯拉
+		醫院中住了半年左右的院。{wait}
+	} {
+		#13300403V#0202F接著，等到身體康復以後……
+		就被送回家了。{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#13300404V#12P#0003F是……這樣啊……{wait}
+	} {
+		#13300405V#0008F可是……好不容易回去了，
+		為什麼要再次離家呢？{wait}
+	}
+	TextWait
+	TextTalk name[2] {
+		#13300406V#0204F#5P呵呵……{wait}
+	}
+	TextWait
+	CharFlagsSet name[2] 0x0020
+	Fork name[2] fork[1]:
+		CharWalkToPos2 self (102100, 250, -200) 1000mm/s 0
+	Fork name[2] fork[2]:
+		CharTurnTo self 135deg 300deg/s
+	ForkWait name[2] fork[1]
+	ForkWait name[2] fork[2]
+	CharSetChipPattern name[2] 2
+	CharFlagsUnset name[2] 0x0020
+	Sleep 500ms
+	TextTalk name[2] {
+		#13300407V#0204F#5P──羅伊德前輩。{wait}
+	} {
+		#13300408V#0202F相對普通人來說，我可以算是個異類。
+		你應該也明白吧？{wait}
+	}
+	TextWait
+	Emote name[0] 0mm 2000mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Sleep 1000ms
+	TextTalk name[0] {
+		#13300409V#12P#0007F異、異類……！{wait}
+	}
+	TextWait
+	TextTalk name[2] {
+		#13300410V#0202F#5P沒關係，這是事實。{wait}
+	} {
+		#13300411V#0203F對外界的事物與現象……
+		我擁有比普通人
+		強出數倍的感應能力。{wait}
+	} {
+		#13300412V普通人聽不見的微弱聲音。{wait}
+	} {
+		#13300413V普通人看不到的導力波流向。{wait}
+	} {
+		#13300414V普通人無法感覺到的屬性氣息。{wait}
+	} {
+		#13300415V#0208F#40W還有……連人的感情與內心波動都……{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#13300416V#12P#0005F啊……{wait}
+	}
+	TextWait
+	TextTalk name[2] {
+		#13300417V#0208F#5P即使去主日學校上課……
+		我也永遠都是孤單一人。{wait}
+	} {
+		#13300418V我眼中的萬物，所感知的世界，
+		都和周圍的孩子們不盡相同……{wait}
+	} {
+		#13300419V而且，就連根本看不到的惡意與好奇心，
+		我也能清楚地感應到……{wait}
+	} {
+		#13300420V#0206F父母雖然都很愛我，
+		……但終究也是有限度的吧。{wait}
+	} {
+		#13300421V於是，家中的氣氛日益緊張……
+		而我也終於察覺到了他們內心的真實想法……{wait}
+	} {
+		#13300422V#0202F『啊──
+		　要是她沒有回來就好了。』{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#13300423V#12P#0013F唔……！{wait}
+	}
+	TextWait
+	TextTalk name[2] {
+		#13300424V#0204F#5P等回過神來……
+		我就已經乘上了列車。{wait}
+	} {
+		#13300425V乘上了那輛經過共和國，
+		開往克洛斯貝爾的列車。{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#13300426V#12P#0006F是嗎……{wait}
+	} {
+		#13300427V#0008F緹歐妳……
+		是想來見我大哥的吧？{wait}
+	}
+	TextWait
+	TextTalk name[2] {
+		#13300428V#0208F#5P……或許吧。{wait}
+	} {
+		#13300429V#0206F在把那個吉祥物當作
+		禮物送給我的時候，
+		蓋先生曾經這樣說過。{wait}
+	} {
+		#13300430V#0202F『──放心吧，
+		　妳一定會得到幸福的。』{wait}
+	} {
+		#13300431V『如果沒能如此，
+		　隨時都可以把我叫來。』{wait}
+	} {
+		#13300432V#0204F『我一定會將那些
+		　使妳不幸的原因全部打飛的！』{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#13300433V#12P#0012F哈哈，這還真是很像
+		大哥會說的話呢……{wait}
+	} {
+		#13300434V#0008F……可是……
+		大哥剛好就在那個時候……{wait}
+	}
+	TextWait
+	TextTalk name[2] {
+		#13300435V#0203F#5P……………………（面色一沉）{wait}
+	}
+	TextWait
+	CharFlagsSet name[2] 0x0020
+	Fork name[2] fork[1]:
+		CharWalkToPos2 self (102300, 250, 0) 1000mm/s 0
+	Fork name[2] fork[2]:
+		CharTurnTo self 90deg 300deg/s
+	ForkWait name[2] fork[1]
+	ForkWait name[2] fork[2]
+	CharSetChipPattern name[2] 0
+	CharFlagsUnset name[2] 0x0020
+	Sleep 500ms
+	TextTalk name[2] {
+		#13300436V#0208F#5P──徹底迷失方向的我，
+		結識了愛普斯泰恩財團的人……{wait}
+	} {
+		#13300437V我的感應能力被他們所看中，
+		在他們的招攬之下，就加入了
+		當時剛剛成立的魔導杖開發小組中。{wait}
+	} {
+		#13300438V#0204F隨後，就去了列曼自治州，
+		在財團的研究所中度過了三年時間……{wait}
+	} {
+		#13300439V#0202F然後，就在三個月前，
+		再次回到了克洛斯貝爾。{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#13300440V#12P#0001F………緹歐……………{wait}
+	}
+	TextWait
+	Emote name[0] 0mm 2000mm 24 27 250ms 0
+	Sleep 2000ms
+	EmoteStop name[0]
+	CrossFade 500ms
+	CamSetDistance 202400 1000 0 0ms
+	ED7CamRotate 310deg 23deg 0deg 0ms
+	CamPers 440 0ms
+	CamZoom 20500 0ms
+	CharSetPos name[0] (202200, 0, -1700) 0deg
+	CharSetPos name[2] (202400, 250, 0) 90deg
+	CharFlagsSet name[2] 0x0020
+	CharFlagsSet name[2] 0x0002
+	CharSetChipBase name[2] chip[34]
+	CharSetChipPattern name[2] 0
+	CharSetPos char[1] (203100, 750, -1300) 0deg
+	CamZoom 19000 1500ms
+	CharFlagsSet name[0] 0x0004
+	Fork name[0] fork[1]:
+		CharWalkToPos self (202200, 100, -400) 1000mm/s 0
+	Sleep 800ms
+	CharSetChipPattern name[2] 6
+	Sleep 150ms
+	CharSetChipPattern name[2] 7
+	ForkWait name[0] fork[1]
+	CamWait 16
+	CrossFade 250ms
+	CharFlagsSet name[0] 0x0008
+	CharSetChipPattern name[2] 10
+	FadeWait
+	CharSetChipPattern name[2] 11
+	Sleep 100ms
+	CharSetChipPattern name[2] 12
+	Sleep 100ms
+	CharSetChipPattern name[2] 13
+	Sleep 100ms
+	SoundPlay sound[820] 0 100 0
+	CharSetChipPattern name[2] 14
+	Sleep 100ms
+	CharSetChipPattern name[2] 13
+	Sleep 100ms
+	CharSetChipPattern name[2] 12
+	Sleep 500ms
+	TextTalk name[2] {
+		#13300441V#0205F#5P#40W……啊………{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#13300442V#6P#0006F……抱歉啊。
+		那個笨蛋大哥，竟然那麼
+		突然地說走就走……{wait}
+	} {
+		#13300443V#0008F對女孩子許諾下的約定都沒能遵守，
+		真是……一點都不像大哥的作風……{wait}
+	}
+	TextWait
+	TextTalk name[2] {
+		#13300444V#0208F#5P#40W………羅伊德前輩……………{wait}
+	}
+	TextWait
+	Sleep 300ms
+	SoundPlay sound[806] 2 100 0
+	Sleep 500ms
+	BgmStop 2000ms
+	Emote name[0] 0mm 2000mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Sleep 50ms
+	Emote name[2] 0mm 1700mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Sleep 1000ms
+	CrossFade 500ms
+	CharFlagsUnset name[0] 0x0008
+	CharSetChipPattern name[2] 6
+	FadeWait
+	Fork name[0] fork[1]:
+		CharTurnTo self 135deg 500deg/s
+	Sleep 150ms
+	CharSetChipPattern name[2] 7
+	Sleep 300ms
+	TextTalk name[0] {
+		#13300445V#0005F#5P啊……{wait}
+	}
+	TextWait
+	TextTalk name[2] {
+		#13300446V#0200F#5P……好像是約納。{wait}
+	}
+	TextWait
+	SoundStop sound[806]
+	SoundPlay sound[807] 0 100 0
+	BgmWait
+	Sleep 10ms
+	BgmPlay bgm[524] 0
+	Sleep 300ms
+	TextTalk char[1] {
+		{color 5}#13300447V#6P『小貓#4RKitty#』出現了……！{wait}
+	}
+	TextWait
+	TextTalk char[1] {
+		{color 5}#13300448V#6P對方剛剛發現了
+		我準備的誘餌！{wait}
+	}
+	TextWait
+	TextTalk char[1] {
+		{color 5}#13300449V#6P現在就要進行追蹤堵截了，
+		開始援助我！{wait}
+	}
+	TextWait
+	TextTalk name[2] {
+		#13300450V#0203F#5P明白了。{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#13300451V#0003F#5P……我就只能站在一邊看著了嗎……{wait}
+	}
+	TextWait
+	CharTurnToChar name[0] name[2] 500deg/s
+	Sleep 300ms
+	TextTalk name[0] {
+		#13300452V#6P#0001F──緹歐，
+		一定不要太勉強啊。{wait}
+	}
+	TextWait
+	TextTalk name[2] {
+		#13300453V#0202F#11P是的……不用擔心。{wait}
+	}
+	TextWait
+	CharSetChipPattern name[2] 6
+	Sleep 100ms
+	CharSetChipPattern name[2] 5
+	Sleep 100ms
+	CharSetChipPattern name[2] 4
+	Sleep 100ms
+	CharSetChipPattern name[2] 3
+	Sleep 1000ms
+	CharSetChipPattern name[2] 4
+	Sleep 100ms
+	CharSetChipPattern name[2] 5
+	SoundPlay sound[1278] 255 100 0
+	Sleep 1000ms
+	SoundPlay sound[1280] 255 100 0
+	Sleep 1500ms
+	CamZoom 18500 3000ms
+	EffPlay eff[0] eff_instance[0] name[2] 320 (0, 1250, 0) 0 0 0 1000 1000 1000 null (0, 0, 0) 0ms
+	SoundPlay sound[840] 2 100 0
+	ForkFunc name[2] fork[3] fn[0,10]
+	SoundPlay sound[850] 0 100 0
+	Sleep 2000ms
+	FadeOut 1000ms 0x00000000 255
+	FadeWait
+	SoundStop sound[840]
+	VisShow vis[0] 0 8 480 264 0 0 512 256 0 0 480 256 0x00FFFFFF 1 "c_vis122.itp"
+	VisShow vis[1] 0 8 480 264 0 0 512 256 0 0 480 256 0x00FFFFFF 1 "c_vis043.itp"
+	VisShow vis[2] 0 8 480 264 0 0 512 256 0 0 480 256 0x00FFFFFF 1 "c_vis044.itp"
+	VisShow vis[3] 0 8 480 264 0 0 512 256 0 0 480 256 0x00FFFFFF 1 "c_vis045.itp"
+	VisSet vis[0] 3 0xFFFFFFFF 500ms 0 0
+	VisWait vis[0] 3
+	CamSetDistance 302400 1000 0 0ms
+	ED7CamRotate 310deg 23deg 0deg 0ms
+	CamPers 440 0ms
+	CamZoom 19000 0ms
+	FadeIn 0ms 0x00000000
+	ForkQuit name[2] fork[3]
+	CharSetChipPattern name[2] 0
+	Sleep 500ms
+	TextMessage name[2] {
+		#13300456V#0203F我這就開始在網路資源的
+		第二境界領域進行潛伏。{wait}
+	} {
+		#13300457V#0200F等待『小貓#4RKitty#』的到來。{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	TextSetName "約納的聲音"
+	TextMessage null {
+		{color 5}#13300458V明白了，長官。{wait}
+	} {
+		#13300459V嗯──喂喂，真的假的啊！？{wait}
+	} {
+		#13300460V『小貓#4RKitty#』那傢伙……
+		已經把保護程式破解掉了！{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	SoundPlay sound[905] 2 100 0
+	SoundPlay sound[903] 0 100 0
+	VisSet vis[1] 0 -260000 -30000 0ms 0
+	VisSet vis[1] 1 2000 2000 0ms 0
+	VisSet vis[1] 2 0 0 0ms 0
+	VisWait vis[255] 0
+	VisSet vis[1] 0 0 0 1500ms 0
+	VisSet vis[1] 1 1000 1000 1500ms 0
+	VisSet vis[1] 3 0xFFFFFFFF 1500ms 0 0
+	VisWait vis[255] 0
+	TextSetName "約納的聲音"
+	TextMessage null {
+		{color 5}#13300461V嗚哇啊啊，我精心準備的
+		美味情報誘餌竟然在一瞬間就被……！{wait}
+	} {
+		#13300462V難、難以置信……！
+		這究竟是怎麼做到的啊！？{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	TextMessage name[2] {
+		{color 0}#13300463V#0201F冷靜一點，約納。{wait}
+	} {
+		#13300464V對方恐怕只是憑藉壓倒性的
+		處理能力來發起強行突破而已。{wait}
+	} {
+		#13300465V#0203F不要著急，請做出領先對方兩步的預測，
+		努力將其誘導到這邊來。{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	TextSetName "約納的聲音"
+	TextMessage null {
+		{color 5}#13300466V可惡，妳說得倒是輕鬆！{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	SoundPlay sound[904] 0 100 0
+	VisSet vis[2] 0 -430000 -70000 0ms 0
+	VisSet vis[2] 1 2000 2000 0ms 0
+	VisSet vis[2] 2 0 0 0ms 0
+	VisWait vis[255] 0
+	VisSet vis[2] 0 0 0 1500ms 0
+	VisSet vis[2] 1 1000 1000 1500ms 0
+	VisSet vis[2] 3 0xFFFFFFFF 1500ms 0 0
+	VisWait vis[255] 0
+	TextSetPos 250 110 -1 -1
+	TextSetName "約納的聲音"
+	TextMessage null {
+		{color 5}#13300467V第４終端、第１７終端，
+		已經通過了市政廳的主終端……{wait}
+	}
+	TextWait
+	TextMessage null {
+		{color 5}#13300468V已經將其逼至第２５終端了……！{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	TextSetPos -1 280 60 3
+	SoundPlay sound[906] 0 100 0
+	VisSet vis[3] 3 0xFFFFFFFF 1000ms 0 0
+	VisWait vis[3] 3
+	VisShow vis[0] 0 8 480 264 0 0 512 256 0 0 480 256 0x00FFFFFF 1 "c_vis046.itp"
+	VisShow vis[1] 0 8 480 264 0 0 512 256 0 0 480 256 0x00FFFFFF 1 "c_vis047.itp"
+	VisShow vis[2] 0 8 480 264 0 0 512 256 0 0 480 256 0x00FFFFFF 1 "c_vis047.itp"
+	TextSetPos 250 110 -1 -1
+	TextSetName "約納的聲音"
+	TextMessage null {
+		{color 5}#13300469V已經前往妳那邊的領域了！{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	TextSetPos -1 280 60 3
+	TextMessage name[2] {
+		{color 0}#13300470V#0202F──確認完畢。{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	SoundPlay sound[904] 0 100 0
+	VisSet vis[0] 0 -130000 -120000 0ms 0
+	VisSet vis[0] 1 2000 2000 0ms 0
+	VisSet vis[0] 2 0 0 0ms 0
+	VisWait vis[255] 0
+	VisSet vis[0] 0 0 0 1500ms 0
+	VisSet vis[0] 1 1000 1000 1500ms 0
+	VisSet vis[0] 3 0xFFFFFFFF 1500ms 0 0
+	VisWait vis[255] 0
+	Sleep 500ms
+	TextSetPos 300 140 -1 -1
+	TextMessage name[2] {
+		#13300471V#0205F這就是『小貓#4RKitty#』……{wait}
+	} {
+		#13300472V動作確實很快……實在太快了……！{wait}
+	} {
+		#13300473V#0201F解鎖『永恆系統』！
+		開始進行複數同時平行計算……！{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	TextSetPos -1 280 60 3
+	SoundPlay sound[1203] 255 100 0
+	Sleep 800ms
+	VisShow vis[3] 0 0 480 16 0 0 512 256 0 0 480 16 0x00FFFFFF 1 "c_vis163.itp"
+	VisSet vis[1] 0 -430000 -240000 0ms 0
+	VisSet vis[1] 1 2000 2000 0ms 0
+	VisSet vis[1] 2 0 0 0ms 0
+	VisSet vis[2] 1 2000 2000 0ms 0
+	VisSet vis[2] 2 0 0 0ms 0
+	VisWait vis[255] 0
+	SoundPlay sound[907] 0 100 0
+	VisSet vis[1] 3 0xFFFFFFFF 1000ms 0 0
+	VisWait vis[1] 3
+	VisShow vis[0] 0 256 480 272 0 0 512 256 0 0 480 16 0x00FFFFFF 1 "c_vis163.itp"
+	VisSet vis[2] 0 -460000 -35000 0ms 0
+	VisSet vis[2] 3 0xFFFFFFFF 1000ms 0 0
+	VisWait vis[2] 3
+	VisSet vis[1] 3 0x00FFFFFF 0ms 0 0
+	VisSet vis[1] 4 0 0 0 0
+	VisSet vis[1] 0 -60000 -170000 0ms 0
+	VisWait vis[255] 0
+	VisSet vis[1] 3 0xFFFFFFFF 1500ms 0 0
+	VisSet vis[1] 0 0 0 1500ms 0
+	VisSet vis[1] 1 1000 1000 1500ms 0
+	VisSet vis[0] 3 0xFFFFFFFF 1000ms 0 0
+	VisSet vis[3] 3 0xFFFFFFFF 1000ms 0 0
+	VisWait vis[255] 0
+	VisShow vis[2] 0 8 480 264 0 0 512 256 0 0 480 256 0x00FFFFFF 1 "c_vis117.itp"
+	VisSet vis[0] 3 0x00FFFFFF 0ms 0 0
+	VisSet vis[3] 3 0x00FFFFFF 0ms 0 0
+	VisShow vis[3] 0 8 480 264 0 0 512 256 0 0 480 256 0x00FFFFFF 1 "c_vis048.itp"
+	Sleep 500ms
+	TextSetName "約納的聲音"
+	TextMessage null {
+		{color 5}#13300475V這邊也已經確認了──
+		哦哦！形勢還不錯嘛！{wait}
+	} {
+		#13300476V照這樣進展下去，僅靠妳那邊
+		就已經可以抓到『小貓#4RKitty#』了吧！？{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	TextSetPos 250 150 -1 -1
+	TextMessage name[2] {
+		{color 0}#13300477V#0206F不……和你跟『小貓#4RKitty#』不一樣，
+		我並不是純粹的駭客。{wait}
+	} {
+		#13300478V『永恆』一旦癱瘓，
+		我恐怕就無法再追上去了。{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	TextSetPos -1 280 60 3
+	TextSetName "約納的聲音"
+	TextMessage null {
+		{color 5}#13300479V可惡，那該怎麼辦啊！？{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	TextSetPos 250 150 -1 -1
+	TextMessage name[2] {
+		{color 0}#13300480V#0203F──做好系統癱瘓的準備，將處理速度提高到極限，
+		把『小貓#4RKitty#』的一切退路徹底堵死。{wait}
+	} {
+		#13300481V#0201F之後，『小貓#4RKitty#』恐怕會
+		再次跳轉到你那邊的領域。{wait}
+	} {
+		#13300482V請抓準時機，爭取在
+		0.1秒之內將其捕獲。{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	TextSetPos -1 280 60 3
+	TextSetName "約納的聲音"
+	TextMessage null {
+		{color 5}#13300483V啊啊，真是的……
+		明白了，我試試總行了吧！{wait}
+	}
+	TextWait
+	TextSetPos 230 90 -1 -1
+	TextMessage name[2] {
+		{color 0}#13300484V#0204F那麼……{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	TextSetPos -1 280 60 3
+	SoundPlay sound[1281] 255 100 0
+	SoundPlay sound[831] 0 100 0
+	SoundPlay sound[506] 0 100 0
+	TextSetPos 230 90 -1 -1
+	TextMessage name[2] {
+		{color 0}#0207F《永恒系统》──
+		#4S限制解除！{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	TextSetPos -1 280 60 3
+	SoundPlay sound[908] 0 100 0
+	FadeOut 0ms 0x00FFFFFF 255
+	FadeWait
+	VisSet vis[1] 3 0x00FFFFFF 1000ms 0 0
+	VisWait vis[1] 3
+	VisSet vis[0] 4 0 0 0 0
+	VisShow vis[1] 0 0 480 16 0 0 512 256 0 0 480 16 0x00FFFFFF 1 "c_vis163.itp"
+	Sleep 1000ms
+	VisSet vis[2] 0 -240000 -25000 0ms 0
+	VisSet vis[2] 1 1500 1500 0ms 0
+	VisSet vis[3] 0 -240000 -25000 0ms 0
+	VisSet vis[3] 1 1500 1500 0ms 0
+	VisWait vis[255] 0
+	VisSet vis[2] 3 0xFFFFFFFF 1000ms 0 0
+	VisWait vis[2] 3
+	VisSet vis[2] 0 -90000 -110000 1500ms 0
+	VisSet vis[3] 0 0 0 1500ms 0
+	VisSet vis[3] 1 1000 1000 1500ms 0
+	VisSet vis[3] 3 0xFFFFFFFF 1500ms 0 0
+	VisSet vis[0] 3 0xFFFFFFFF 1000ms 0 0
+	VisSet vis[1] 3 0xFFFFFFFF 1000ms 0 0
+	VisWait vis[255] 0
+	Sleep 1000ms
+	FadeIn 0ms 0x00FFFFFF
+	FadeWait
+	VisShow vis[2] 0 8 480 264 0 0 512 256 0 0 480 256 0x00FFFFFF 1 "c_vis049.itp"
+	SoundPlay sound[903] 0 100 0
+	VisSet vis[2] 3 0xFFFFFFFF 1000ms 0 0
+	VisWait vis[2] 3
+	TextSetPos 200 170 -1 -1
+	TextMessage name[2] {
+		#13300486V#0201F#4S──就是現在！{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	TextSetPos -1 280 60 3
+	SoundPlay sound[907] 0 100 0
+	VisShow vis[1] 0 8 480 264 0 0 512 256 0 0 480 256 0x00FFFFFF 1 "c_vis118.itp"
+	VisShow vis[0] 0 8 480 264 0 0 512 256 0 0 480 256 0x00FFFFFF 1 "c_vis116.itp"
+	VisSet vis[1] 0 -480000 -190000 0ms 0
+	VisSet vis[1] 1 2000 2000 0ms 0
+	VisSet vis[1] 3 0xFFFFFFFF 500ms 0 0
+	VisWait vis[1] 3
+	VisShow vis[2] 0 0 480 16 0 0 512 256 0 0 480 16 0x00FFFFFF 1 "c_vis163.itp"
+	VisShow vis[3] 0 256 480 272 0 0 512 256 0 0 480 16 0x00FFFFFF 1 "c_vis163.itp"
+	TextSetPos 250 150 -1 -1
+	TextSetName "約納的聲音"
+	TextMessage null {
+		{color 5}{0x18}#13300487V#4S#1K在那裡──！！{wait}
+	}
+	Sleep 1600ms
+	TextClose 0
+	_59
+	TextSetPos -1 280 60 3
+	SoundPlay sound[906] 0 100 0
+	SoundPlay sound[813] 0 100 0
+	SoundStop sound[905]
+	VisSet vis[0] 0 -480000 -190000 0ms 0
+	VisSet vis[0] 1 2000 2000 0ms 0
+	VisWait vis[255] 0
+	VisSet vis[0] 3 0xFFFFFFFF 1000ms 0 0
+	VisSet vis[0] 1 1000 1000 1000ms 0
+	VisSet vis[0] 0 0 0 1000ms 0
+	VisSet vis[2] 3 0xFFFFFFFF 500ms 0 0
+	VisSet vis[3] 3 0xFFFFFFFF 500ms 0 0
+	VisWait vis[0] 0
+	VisSet vis[1] 3 0x00FFFFFF 0ms 0 0
+	VisWait vis[255] 0
+	VisSet vis[0] 0 -9000 0 80ms 0
+	VisWait vis[0] 0
+	VisSet vis[0] 0 9000 0 80ms 0
+	VisWait vis[0] 0
+	VisSet vis[0] 0 -8000 0 80ms 0
+	VisWait vis[0] 0
+	VisSet vis[0] 0 8000 0 80ms 0
+	VisWait vis[0] 0
+	VisSet vis[0] 0 -7000 0 80ms 0
+	VisWait vis[0] 0
+	VisSet vis[0] 0 7000 0 80ms 0
+	VisWait vis[0] 0
+	VisSet vis[0] 0 -5000 0 80ms 0
+	VisWait vis[0] 0
+	VisSet vis[0] 0 5000 0 80ms 0
+	VisWait vis[0] 0
+	VisSet vis[0] 0 0 0 80ms 0
+	VisWait vis[0] 0
+	VisWait vis[0] 3
+	VisSet vis[2] 3 0x00FFFFFF 0ms 0 0
+	VisSet vis[3] 3 0x00FFFFFF 0ms 0 0
+	TextSetPos 250 10 -1 -1
+	TextSetName "約納的聲音"
+	TextMessage null {
+		{color 5}#13300488V好哇──！
+		抓住啦────！{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	TextSetPos -1 280 60 3
+	CamSetDistance 202400 1000 0 0ms
+	ED7CamRotate 310deg 23deg 0deg 0ms
+	CamPers 440 0ms
+	CamZoom 19000 0ms
+	CharSetPos name[0] (202200, 0, -1700) 45deg
+	Sleep 300ms
+	VisSet vis[0] 3 0x00FFFFFF 500ms 0 0
+	VisWait vis[0] 3
+	SoundPlay sound[840] 2 100 0
+	BgmStop 6000ms
+	TextTalk name[0] {
+		#13300489V#6P#0005F成、成功了嗎……？{wait}
+	}
+	TextWait
+	TextTalk name[2] {
+		#13300490V#0204F#5P#30W嗯……看起來，似乎是呢。{wait}
+	} {
+		#13300491V#0208F#40W啊──{wait}
+	}
+	TextWait
+	EffStop eff_instance[0] 2
+	SoundPlay sound[820] 0 100 0
+	SoundStop sound[840]
+	CharSetChipPattern name[2] 17
+	Sleep 150ms
+	CharSetChipPattern name[2] 18
+	Sleep 150ms
+	CharSetChipPattern name[2] 19
+	Emote name[0] 0mm 2000mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Sleep 1000ms
+	Fork name[0] fork[1]:
+		CharWalkToPos self (202200, 100, -400) 4000mm/s 0
+	ForkWait name[0] fork[1]
+	CrossFade 250ms
+	CharFlagsSet name[0] 0x0008
+	CharSetChipPattern name[2] 20
+	SoundPlay sound[804] 0 100 0
+	FadeWait
+	Sleep 100ms
+	CharSetChipPattern name[2] 21
+	TextTalk name[0] {
+		#13300492V#6P#0007F沒、沒事吧！？{wait}
+	}
+	TextWait
+	Sleep 300ms
+	Sleep 1000ms
+	TextTalk name[2] {
+		#13300493V#5P#0206F#40W是、是的……{wait}
+	} {
+		#13300494V可能是因為將處理能力提升得
+		稍微過了頭，感覺有些頭暈……{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#13300495V#6P#0006F真是的……
+		都說過不要太勉強了嘛。{wait}
+	}
+	TextWait
+	Emote name[0] 0mm 2000mm 24 27 250ms 0
+	Sleep 2000ms
+	EmoteStop name[0]
+	BgmWait
+	Sleep 10ms
+	BgmPlay bgm[514] 0
+	CharSetChipPattern name[2] 22
+	Sleep 130ms
+	CharSetChipPattern name[2] 23
+	Sleep 130ms
+	CharSetChipPattern name[2] 24
+	Sleep 130ms
+	CharSetChipPattern name[2] 25
+	Sleep 130ms
+	CharSetChipPattern name[2] 24
+	Sleep 130ms
+	SoundPlay sound[820] 0 100 0
+	CharSetChipPattern name[2] 23
+	Sleep 130ms
+	CharSetChipPattern name[2] 24
+	Sleep 130ms
+	CharSetChipPattern name[2] 25
+	Sleep 130ms
+	CharSetChipPattern name[2] 24
+	Sleep 130ms
+	CharSetChipPattern name[2] 23
+	Sleep 300ms
+	CharSetChipPattern name[2] 29
+	Sleep 100ms
+	CharSetChipPattern name[2] 30
+	Sleep 300ms
+	TextTalk name[2] {
+		#13300496V#5P#0205F#30W啊……{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#13300497V#6P#0003F──那個，緹歐。{wait}
+	} {
+		#13300498V#0000F大哥和妳做出的約定……
+		可不可以讓我來繼承呢？{wait}
+	}
+	TextWait
+	Emote name[2] 0mm 1700mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Sleep 1000ms
+	TextTalk name[2] {
+		#13300499V#5P#0200F#30W咦──{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#13300500V#6P#0008F『如果妳沒能得到幸福，
+		　隨時都可以把我叫來……』{wait}
+	} {
+		#13300501V『我會將那些使妳不幸的原因
+		　全部打飛……』{wait}
+	} {
+		#13300502V#0006F……雖然有些不甘心，但大哥確實很了不起。{wait}
+	} {
+		#13300503V實力也好，行動力也好，都很驚人。
+		而我卻難以望其項背。{wait}
+	} {
+		#13300504V#0000F──可是我……一定會努力的。{wait}
+	} {
+		#13300505V努力成為一名可靠的男子漢，
+		至少要把這條約定遵守下去。{wait}
+	} {
+		#13300506V所以……{wait}
+	}
+	TextWait
+	CharSetChipPattern name[2] 30
+	Sleep 100ms
+	CharSetChipPattern name[2] 29
+	Sleep 100ms
+	CharSetChipPattern name[2] 28
+	Sleep 500ms
+	TextTalk name[2] {
+		#13300507V#5P#0204F#30W……………………………………{wait}
+	} {
+		#13300508V呵呵……真是不可思議呢。{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#13300509V#6P#0005F哎……{wait}
+	}
+	TextWait
+	TextTalk name[2] {
+		#13300510V#5P#0204F羅伊德前輩和蓋先生
+		明明一點都不像……{wait}
+	} {
+		#13300511V可是，卻總感覺你們
+		的某些地方又很相似。{wait}
+	} {
+		#13300512V該說是靈魂的本質很相似嗎……
+		還是該說，你們都在注視同一個方向呢……{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#13300513V#6P#0005F我和……大哥嗎……？{wait}
+	}
+	TextWait
+	CharSetChipPattern name[2] 28
+	Sleep 100ms
+	CharSetChipPattern name[2] 29
+	Sleep 100ms
+	CharSetChipPattern name[2] 30
+	Sleep 300ms
+	TextTalk name[2] {
+		#13300514V#5P#0202F是的。{wait}
+	} {
+		#13300515V#0204F不過──你們果然還是不同的。{wait}
+	} {
+		#13300516V羅伊德前輩就是羅伊德前輩，
+		和蓋先生並不一樣。{wait}
+	} {
+		#13300517V#0201F關於這一點，羅伊德前輩
+		自己應該最清楚不過了吧？{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#13300518V#6P#0008F……這個………{wait}
+	}
+	TextWait
+	TextTalk name[2] {
+		#13300519V#5P#0204F──所以說。{wait}
+	} {
+		#13300520V如果一定要做個約定，
+		內容也換成不同的比較好。{wait}
+	}
+	TextWait
+	Emote name[0] 0mm 2000mm 38 38 250ms 1
+	Sleep 1000ms
+	TextTalk name[0] {
+		#13300521V#6P#0005F哎……{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	Fork name[0] fork[2]:
+		CharTurnTo self 0deg 0deg/s
+	CrossFade 250ms
+	CharSetChipPattern name[2] 10
+	FadeWait
+	Sleep 500ms
+	TextTalk name[2] {
+		#13300522V#11P#0202F這個約定……
+		並不一定要馬上做出。{wait}
+	} {
+		#13300523V但前輩與我約定的內容，
+		一定要是自己想出來的……{wait}
+	} {
+		#13300524V#0204F等你想到之後，再做約定也不遲。{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#13300525V#6P#0002F緹歐……{wait}
+	}
+	TextWait
+	TextTalk name[2] {
+		#13300526V#11P#0206F還有……
+		我已經不是小孩子了。{wait}
+	} {
+		#13300527V我不喜歡被單方面保護，
+		也討厭一味向別人索取。{wait}
+	} {
+		#13300528V#0201F我……
+		也和大家一樣，是支援課的一員吧？{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#13300529V#6P#0002F……是啊。{wait}
+	} {
+		#13300530V#0014F哈哈，確實如妳所說。{wait}
+	}
+	TextWait
+	TextTalk name[2] {
+		#13300531V#11P#0209F……呵呵………{wait}
+	}
+	TextWait
+	Emote name[0] 0mm 2000mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Sleep 1000ms
+	TextTalk name[0] {
+		#13300532V#6P#0005F啊……{wait}
+	}
+	TextWait
+	TextTalk name[2] {
+		#13300533V#11P#0205F？？？{wait}
+	} {
+		#13300534V怎麼了……？{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#13300535V#6P#0011F沒什麼，那個……{wait}
+	} {
+		#13300536V#0012F只是在想，好像還是第一次
+		看到妳露出如此發自內心的笑容呢。{wait}
+	}
+	TextWait
+	Emote name[2] 0mm 1700mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Sleep 1000ms
+	Emote name[2] 0mm 1700mm 40 43 100ms 0
+	Sleep 1000ms
+	EmoteStop name[2]
+	TextTalk name[2] {
+		#13300537V#11P#0206F我、我才沒有笑……！{wait}
+	} {
+		#13300538V#0208F這只是，那個……
+		只是因為鬆了一口氣而已……{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#13300539V#6P#0004F哈哈，不用害羞啊。{wait}
+	} {
+		#13300540V#0002F嗯～不過，還真是可惜呢。{wait}
+	} {
+		#13300541V緹歐本來就非常可愛，如果平時能
+		多笑一笑，大概會很受歡迎吧。{wait}
+	}
+	TextWait
+	TextTalk name[2] {
+		#13300542V#11P#0205F非、非常可愛……{wait}
+	} {
+		#13300543V#0211F……～～～！～～……！{wait}
+	}
+	TextWait
+	Sleep 300ms
+	TextTalk char[1] {
+		{color 5}#13300544V#6P那個～咳咳。{wait}
+	}
+	TextWait
+	Emote name[2] 0mm 1700mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Emote name[0] 0mm 2000mm 38 38 250ms 1
+	Sleep 1000ms
+	CharFlagsUnset name[0] 0x0008
+	CharSetChipPattern name[2] 6
+	Fork name[0] fork[2]:
+		CharTurnTo self 135deg 500deg/s
+	CharSetChipPattern name[2] 7
+	Sleep 300ms
+	TextTalk name[0] {
+		#13300545V#0005F#5P啊……{wait}
+	}
+	TextWait
+	TextTalk name[2] {
+		#13300546V#11P#0205F約、約納！？{wait}
+	} {
+		#13300547V#0201F你、你、你從什麼時候
+		就開始偷聽了！？{wait}
+	}
+	TextWait
+	TextTalk char[1] {
+		{color 5}#13300548V#6P那個，好像是從什麼第一次露出笑臉～
+		之類的地方開始的吧……{wait}
+	}
+	TextWait
+	TextTalk char[1] {
+		{color 5}#13300549V#6P哈哈，好像無意中聽到了些
+		稀罕的內容呢～{wait}
+	}
+	TextWait
+	TextTalk char[1] {
+		{color 5}#13300550V#6P真沒想到，妳竟然
+		也會那樣慌張害羞啊。{wait}
+	}
+	TextWait
+	TextTalk name[2] {
+		{color 0}#13300551V#11P#0211F……如果再敢繼續說這些廢話，
+		下次玩『波姆碰！』的時候就賞你四十連擊。{wait}
+	}
+	TextWait
+	TextTalk char[1] {
+		{color 5}#13300552V#6P那根本就不可能做得到吧！{wait}
+	}
+	TextWait
+	TextTalk char[1] {
+		{color 5}#13300553V#6P不過話說回來，如果是妳的話，
+		說不定還真能做到……{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	ForkFunc name[0] fork[3] fn[0,11]
+	ForkWait name[0] fork[3]
+	CrossFade 500ms
+	CamSetDistance 103000 1000 0 0ms
+	ED7CamRotate 55deg 15deg 0deg 0ms
+	CamPers 440 0ms
+	CamZoom 21000 0ms
+	CharSetPos name[0] (101200, 0, -1700) 90deg
+	CharSetPos name[2] (102300, 250, 0) 90deg
+	CharFlagsUnset name[2] 0x0020
+	CharFlagsUnset name[2] 0x0002
+	CharSetChipBase name[2] chip[30]
+	CharSetChipPattern name[2] 2
+	CharSetPos char[1] (102600, 700, -1500) 0deg
+	FadeWait
+	TextTalk name[0] {
+		#13300554V#6P#0001F那麼，約納。{wait}
+	} {
+		#13300555V『小貓#4RKitty#』的真實身份，
+		已經查明了嗎？{wait}
+	}
+	TextWait
+	TextTalk char[2] {
+		{color 5}#13300556V#2P哈，你以為
+		本少爺是誰啊～{wait}
+	}
+	TextWait
+	TextTalk char[2] {
+		{color 5}#13300557V#2P早就順利掌握到對方的入侵地址了，
+		現在立刻就把情報發送給你們。{wait}
+	}
+	TextWait
+	Sleep 500ms
+	SoundPlay sound[824] 0 100 0
+	Sleep 500ms
+	Emote name[2] 0mm 1700mm 38 38 250ms 1
+	Sleep 1000ms
+	CharSetChipPattern name[2] 0
+	Fork name[0] fork[2]:
+		CharTurnTo self 45deg 500deg/s
+	Sleep 500ms
+	TextTalk name[2] {
+		{color 0}#13300558V#6P#0205F#6P……？{wait}
+	} {
+		#13300559V好像還帶著奇怪
+		的附加檔案呢……{wait}
+	}
+	TextWait
+	TextTalk char[2] {
+		{color 5}#13300560V#2P附加檔案～？
+		──那是什麼東西啊！{wait}
+	}
+	TextWait
+	TextTalk char[2] {
+		{color 5}#13300561V#2P我發過去的只是含有對方位址的進程記錄而已，
+		為什麼會多了那種東西……{wait}
+	}
+	TextWait
+	TextTalk name[2] {
+		{color 0}#13300562V#6P#0201F打開看看吧。{wait}
+	}
+	TextWait
+	SoundPlay sound[850] 0 100 0
+	CharSetChipBase name[2] chip[35]
+	CharSetChipPattern name[2] 0
+	ForkFunc name[2] fork[3] fn[0,10]
+	Sleep 1200ms
+	ForkQuit name[2] fork[3]
+	CharSetChipPattern name[2] 0
+	Sleep 300ms
+	Emote name[0] 0mm 2000mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Sleep 50ms
+	Emote name[2] 0mm 1700mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Sleep 1000ms
+	TextTalk name[2] {
+		#13300563V#6P#0205F哎……{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#13300564V#6P#0013F這是……！？{wait}
+	}
+	TextWait
+	VisShow vis[0] 0 8 480 264 0 0 512 256 0 0 480 256 0x00FFFFFF 1 "c_vis123.itp"
+	VisShow vis[1] 112 64 368 192 0 0 256 128 0 0 256 128 0x00FFFFFF 1 "c_vis050.itp"
+	VisSet vis[0] 3 0xFFFFFFFF 500ms 0 0
+	VisWait vis[0] 3
+	Sleep 500ms
+	VisSet vis[1] 3 0xFFFFFFFF 500ms 0 0
+	VisWait vis[1] 3
+	Sleep 500ms
+	TextSetName "約納的聲音"
+	TextMessage null {
+		{color 5}#13300565V這、這、這東西是什麼啊～！？{wait}
+	} {
+		#13300566V稍、稍等一下！{wait}
+	} {
+		#13300567V這個……莫非是……{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	TextMessage name[2] {
+		{color 0}#13300568V#0206F我們好像遭到了入侵攻擊呢，大概是
+		對方被查到位址之後，對這邊做出的回敬吧。{wait}
+	} {
+		#13300569V#0208F不……也許……
+		我們從一開始就被對方玩弄於股掌。{wait}
+	} {
+		#13300570V#0201F那麼，我們掌握到的
+		很有可能只是假情報而已。{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	TextSetName "約納的聲音"
+	TextMessage null {
+		{color 5}#13300571V嗚……{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	ForkFunc name[2] fork[3] fn[0,14]
+	SoundPlay sound[819] 0 90 0
+	SoundPlay sound[514] 0 70 0
+	Sleep 1000ms
+	CharSetChipPattern name[2] 2
+	VisSet vis[1] 3 0x00FFFFFF 500ms 0 0
+	VisSet vis[0] 3 0x00FFFFFF 500ms 0 0
+	VisWait vis[1] 3
+	VisWait vis[0] 3
+	Emote name[0] 0mm 2000mm 16 19 250ms 1
+	SoundPlay sound[23] 0 100 0
+	Sleep 1000ms
+	CharTurnTo name[0] 90deg 500deg/s
+	TextTalk name[0] {
+		#13300572V#6P#0011F喂，你沒事吧？{wait}
+	}
+	TextWait
+	TextTalk char[2] {
+		{color 5}#13300573V#2P#2S嗚……
+		在那種情況下還能對位址進行偽造，
+		這種事再怎麼說也不可能做到啊……{wait}
+	}
+	TextWait
+	TextTalk char[2] {
+		{color 5}#13300574V#2P#2S既然如此，只要對位址進行解析，
+		總能把對方的連結點給……{wait}
+	}
+	TextWait
+	TextTalk char[2] {
+		{color 5}#13300575V#2P#2S……不，但是……（自言自語）……{wait}
+	}
+	TextWait
+	Emote name[0] 0mm 2000mm 16 19 250ms 1
+	SoundPlay sound[23] 0 100 0
+	Sleep 1000ms
+	TextTalk name[0] {
+		#13300576V#6P#0012F喂……{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	Sleep 500ms
+	ED7_76_2 object[3] "m00gim02" "close"
+	SoundPlay sound[73] 0 100 0
+	Sleep 800ms
+	CrossFade 250ms
+	CharSetChipBase name[2] chip[255]
+	CharSetChipPattern name[2] 0
+	CharFlagsUnset name[2] 0x0004
+	CharSetPos name[2] (101800, 0, 800) 90deg
+	SoundPlay sound[820] 0 100 0
+	FadeWait
+	CharTurnToChar name[2] name[0] 400deg/s
+	TextTalk name[2] {
+		#13300577V#0206F#5P算了，不用管他。
+		我們先回他那裡再說吧。{wait}
+	} {
+		#13300578V#0202F還要去收取作為報酬的
+		記錄結晶呢。{wait}
+	}
+	TextWait
+	CharTurnToChar name[0] name[2] 500deg/s
+	TextTalk name[0] {
+		#13300579V#12P#0000F啊……對了，當時還說過這個呢。{wait}
+	} {
+		#13300580V結果發生了這麼多的事情，
+		我完全都忘了……{wait}
+	}
+	TextWait
+	TextTalk name[2] {
+		#13300581V#0204F#5P呵呵……{wait}
+	} {
+		#13300582V#0202F這附近應該有通向出口位置的
+		緊急升降機。{wait}
+	} {
+		#13300583V將它啟動，然後回去吧。{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#13300584V#12P#0002F嗯，就這麼辦。{wait}
+	}
+	TextWait
+	CamZoom 21500 2000ms
+	FadeOut 2000ms 0x00000000 255
+	FadeWait
+	BgmStop 4000ms
+	BgmWait
+	CharFlagsSet char[1] 0x0080
+	CharFlags2Set char[1] 0x8000
+	CharFlagsSet char[2] 0x0080
+	CharFlags2Set char[2] 0x8000
+	NextFrame
+	VisHide vis[255] 0
+	UnloadChip chip[30]
+	UnloadChip chip[31]
+	UnloadChip chip[32]
+	UnloadChip chip[33]
+	UnloadChip chip[34]
+	UnloadChip chip[35]
+	CamSetDistance 100000 2000 0 0ms
+	ED7CamRotate 45deg 30deg 0deg 0ms
+	CamPers 400 0ms
+	CamZoom 30000 0ms
+	CharSetPos field_party[0] (100000, 0, 0) 270deg
+	CharSetPos field_party[1] (100000, 0, 0) 270deg
+	FlagSet flag[1291]
+	QuestTaskSet quest[69] 4
+	BgmWait
+	Sleep 10ms
+	BgmPlay bgm[300] 0
+	SoundStop sound[806]
+	SoundStop sound[840]
+	SoundStop sound[905]
+	EventEnd 5
+	Return
+
+fn[10]:
+	while 1:
+		CharSetChipPattern name[2] 0
+		Sleep 70ms
+		CharSetChipPattern name[2] 1
+		Sleep 70ms
+		CharSetChipPattern name[2] 2
+		Sleep 70ms
+		CharSetChipPattern name[2] 1
+		Sleep 70ms
+	Return
+
+fn[11]:
+	Fork name[0] fork[1]:
+		CharWalkToPos self (202200, 0, -1700) 1500mm/s 0
+	ForkWait name[0] fork[1]
+	CharTurnTo name[0] 90deg 400deg/s
+	CharFlagsUnset name[0] 0x0004
+	Return
+
+fn[12]:
+	Sleep 1000ms
+	VisSet vis[3] 0 1200 -1100 1ms 0
+	Sleep 1ms
+	VisSet vis[3] 0 -1300 1200 1ms 0
+	Sleep 1ms
+	VisSet vis[3] 0 -1000 -1500 1ms 0
+	Sleep 1ms
+	VisSet vis[3] 0 1600 -1200 1ms 0
+	Sleep 1ms
+	VisSet vis[3] 0 0 0 1ms 0
+	VisWait vis[255] 0
+	Return
+
+fn[13]:
+	Sleep 300ms
+	VisSet vis[2] 0 1200 -1100 1ms 0
+	Sleep 1ms
+	VisSet vis[2] 0 -1300 1200 1ms 0
+	Sleep 1ms
+	VisSet vis[2] 0 -1000 -1500 1ms 0
+	Sleep 1ms
+	VisSet vis[2] 0 1600 -1200 1ms 0
+	Sleep 1ms
+	VisSet vis[2] 0 0 0 1ms 0
+	VisWait vis[255] 0
+	Return
+
+fn[14]:
+	Sleep 300ms
+	VisSet vis[0] 0 1200 -1100 1ms 0
+	VisSet vis[1] 0 1200 -1100 1ms 0
+	Sleep 1ms
+	VisSet vis[0] 0 -1300 1200 1ms 0
+	VisSet vis[1] 0 -1300 1200 1ms 0
+	Sleep 1ms
+	VisSet vis[0] 0 -1300 1200 1ms 0
+	VisSet vis[1] 0 -1300 1200 1ms 0
+	Sleep 1ms
+	VisSet vis[0] 0 1600 -1200 1ms 0
+	VisSet vis[1] 0 1600 -1200 1ms 0
+	Sleep 1ms
+	VisSet vis[0] 0 0 0 1ms 0
+	VisSet vis[1] 0 0 0 1ms 0
+	VisWait vis[255] 0
+	Return
+
+fn[15]:
+	EventBegin 1
+	if system[10] == 0:
+		TextTalk name[2] {
+			#0200F羅伊德前輩，
+			『第３控制終端』在右邊的門內。{wait}
+		} {
+			快點將它啟動，
+			然後在原地待命吧。{wait}
+		}
+		TextWait
+		TextTalk name[0] {
+			#0005F啊，說得也是呢。{wait}
+		}
+		TextWait
+	else:
+		TextTalk name[2] {
+			#0203F……『第３控制終端』是在
+			右邊的門內吧。{wait}
+		} {
+			#0200F必須要快點啟動它，
+			然後在原地待命。{wait}
+		}
+		TextWait
+	Sleep 50ms
+	CharSetPos field_party[0] (0, 0, 6540) 180deg
+	EventEnd 4
+	Return
+
+fn[16]:
+	EventBegin 1
+	if system[10] == 0:
+		TextTalk name[0] {
+			#0005F啊……這附近應該
+			有一部緊急升降機呢。{wait}
+		} {
+			#0000F還是乘它離開吧。{wait}
+		}
+		TextWait
+	else:
+		TextTalk name[2] {
+			#0203F……附近應該有一部
+			通向出口位置的緊急升降機。{wait}
+		} {
+			#0200F還是去乘坐那個吧。{wait}
+		}
+		TextWait
+	Sleep 50ms
+	CamSetDistance 0 0 -8290 0ms
+	ED7CamRotate 45deg 30deg 0deg 0ms
+	CamPers 400 0ms
+	CamZoom 48000 0ms
+	CharSetPos field_party[0] (0, 0, -8290) 0deg
+	EventEnd 4
+	Return
+
+fn[17]:
+	TextStart null
+	TextSetName ""
+	TextMessage null {
+		{color 5}終端的導力已經停止了。{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	TextEnd null
+	Return

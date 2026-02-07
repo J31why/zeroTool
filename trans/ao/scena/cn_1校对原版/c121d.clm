@@ -1,0 +1,800 @@
+calmare ao_k scena
+scena:
+	name "c121d" "c121d" "c121d"
+	town town[33]
+	bgm bgm[0]
+	flags 8192
+	item_use fn[0,255]
+	unk 255 0
+
+entry:
+	pos (0, 0, -1000)
+	unk1 0
+	cam_from (0, 0, 24000)
+	cam_pers 500
+	unk2 30
+	cam_deg 45deg
+	cam_limit 0deg 360deg
+	cam_at (0, 0, 0)
+	unk3 0
+	unk4 0
+	flags 0x0001
+	town town[1]
+	init fn[0,0]
+	reinit fn[0,1]
+
+npc char[0]:
+	name "獵兵"
+	pos (0, 0, 0)
+	angle 0deg
+	flags 0x01C5
+	unk2 0
+	chip chip[0]
+	init fn[255,255]
+	talk fn[255,255]
+	unk4 255
+
+npc char[1]:
+	name "獵兵"
+	pos (0, 0, 0)
+	angle 0deg
+	flags 0x01C5
+	unk2 0
+	chip chip[0]
+	init fn[255,255]
+	talk fn[255,255]
+	unk4 255
+
+npc char[2]:
+	name "戰鬼西格蒙特"
+	pos (0, 0, 0)
+	angle 0deg
+	flags 0x01C5
+	unk2 0
+	chip chip[0]
+	init fn[255,255]
+	talk fn[255,255]
+	unk4 255
+
+npc char[3]:
+	name "成員"
+	pos (0, 0, 0)
+	angle 0deg
+	flags 0x01C5
+	unk2 0
+	chip chip[0]
+	init fn[255,255]
+	talk fn[255,255]
+	unk4 255
+
+npc char[4]:
+	name "成員"
+	pos (0, 0, 0)
+	angle 0deg
+	flags 0x01C5
+	unk2 0
+	chip chip[0]
+	init fn[255,255]
+	talk fn[255,255]
+	unk4 255
+
+npc char[5]:
+	name "曹"
+	pos (0, 0, 0)
+	angle 0deg
+	flags 0x01C5
+	unk2 0
+	chip chip[0]
+	init fn[255,255]
+	talk fn[255,255]
+	unk4 255
+
+npc char[6]:
+	name "偃月輪"
+	pos (0, 0, 0)
+	angle 0deg
+	flags 0x01C5
+	unk2 0
+	chip chip[0]
+	init fn[255,255]
+	talk fn[255,255]
+	unk4 255
+
+npc char[7]:
+	name "SE控制"
+	pos (0, 0, 0)
+	angle 0deg
+	flags 0x00C5
+	unk2 0
+	chip chip[0]
+	init fn[255,255]
+	talk fn[255,255]
+	unk4 255
+
+fn[0]:
+	if flag[272]:
+		FlagUnset flag[272]
+		Event fn[0,2]
+	Return
+
+fn[1]:
+	Return
+
+fn[2]:
+	EventBegin 0
+	FadeOut 0ms 0x00000000 255
+	VisShow vis[0] 234 0 490 256 0 0 512 512 0 0 512 512 0x00FFFFFF 0 "bu03200.itp"
+	ED7LoadChip "apl/ch51535.itc" chip[35]
+	ED7LoadChip "chr/ch03350.itc" chip[36]
+	ED7LoadChip "chr/ch03352.itc" chip[37]
+	ED7LoadChip "chr/ch03356.itc" chip[38]
+	ED7LoadChip "chr/ch41950.itc" chip[40]
+	ED7LoadChip "chr/ch41951.itc" chip[41]
+	ED7LoadChip "chr/ch06300.itc" chip[45]
+	ED7LoadChip "apl/ch51515.itc" chip[46]
+	ED7LoadChip "chr/ch31500.itc" chip[50]
+	ED7LoadChip "chr/ch31551.itc" chip[51]
+	ED7LoadChip "chr/ch31552.itc" chip[52]
+	ED7LoadChip "chr/ch31553.itc" chip[53]
+	ED7LoadChip "chr/ch31556.itc" chip[54]
+	ED7LoadChip "chr/ch12500.itc" chip[55]
+	ED7LoadChip "chr/ch12551.itc" chip[56]
+	ED7LoadChip "chr/ch12552.itc" chip[57]
+	ED7LoadChip "chr/ch12553.itc" chip[58]
+	ED7LoadChip "chr/ch12556.itc" chip[59]
+	EffLoad eff[0] "event/ev15036.eff"
+	EffLoad eff[1] "event/ev15040.eff"
+	EffLoad eff[2] "event/eva01_01.eff"
+	EffLoad eff[3] "event/ev15037.eff"
+	EffLoad eff[4] "battle/ms00001.eff"
+	EffLoad eff[5] "battle/cr033000.eff"
+	EffLoad eff[6] "event/ev15038.eff"
+	EffLoad eff[7] "event/ev15039.eff"
+	EffLoad eff[8] "event\\ev307_00.eff"
+	SoundLoad sound[868]
+	SoundLoad sound[926]
+	CharSetChipBase char[2] chip[35]
+	CharSetChipPattern char[2] 0
+	CharFlagsUnset char[2] 0x0080
+	CharFlagsSet char[2] 0x8000
+	CharSetChipBase char[0] chip[41]
+	CharSetChipPattern char[0] 0
+	CharFlagsSet char[0] 0x8000
+	CharSetChipBase char[1] chip[41]
+	CharSetChipPattern char[1] 0
+	CharFlagsSet char[1] 0x8000
+	CharSetChipBase char[5] chip[45]
+	CharSetChipPattern char[5] 0
+	CharFlagsSet char[5] 0x8000
+	CharSetChipBase char[3] chip[54]
+	CharSetChipPattern char[3] 1
+	CharFlagsUnset char[3] 0x0080
+	CharFlagsSet char[3] 0x8000
+	char[3].40 = 13
+	CharSetChipBase char[4] chip[57]
+	CharSetChipPattern char[4] 0
+	CharFlagsUnset char[4] 0x0080
+	CharFlagsSet char[4] 0x8000
+	char[4].40 = 13
+	CharFlagsUnset char[6] 0x0080
+	CharFlagsSet char[6] 0x8000
+	CharFlagsSet char[6] 0x0002
+	CharFlagsSet char[6] 0x0020
+	CharSetChipBase char[6] chip[54]
+	CharSetChipPattern char[6] 16
+	ED7_76_0 object[255] "ato_yuka01" 1
+	ED7_76_0 object[255] "ato_yuka02" 1
+	ED7_76_0 object[255] "ato_yuka03" 1
+	ED7_76_0 object[255] "ato_mado" 1
+	ED7_76_0 object[255] "ato_tukue" 1
+	ED7_76_0 object[255] "ato_nuki03" 1
+	ED7_76_0 object[255] "kage03" 1
+	ED7_76_0 object[255] "kage04" 1
+	CharFlagsSet field_party[0] 0x0080
+	CharFlagsSet field_party[1] 0x0080
+	CharFlagsSet field_party[2] 0x0080
+	CharFlagsSet field_party[3] 0x0080
+	CharSetPos char[3] (-73500, 0, 600) 180deg
+	CharSetPos char[4] (-74350, 0, 1750) 180deg
+	CharSetPos char[6] (-74350, 0, 1750) 180deg
+	CharSetPos char[2] (-74150, -4000, -9450) 0deg
+	CharColor char[2] 0x00FFFFFF 0ms
+	Fork char[2] fork[1]:
+		CharWalkToPos self (-74000, -4000, -6450) 2000mm/s 0
+	Fork char[2] fork[3]:
+		CharColor self 0xFFFFFFFF 500ms
+	CamSetDistance -74150 -3000 -9450 0ms
+	ED7CamRotate 45deg 25deg 0deg 0ms
+	CamPers 350 0ms
+	CamZoom 25000 0ms
+	CamSetDistance -74150 -3000 -6450 1750ms
+	CamZoom 22000 1750ms
+	SoundPlay sound[868] 2 20 0
+	MapColor 0x00B4BEFF 3000ms
+	FadeIn 1000ms 0x00000000
+	FadeWait
+	CamWait 121
+	ForkWait char[2] fork[1]
+	ForkWait char[2] fork[3]
+	CharSetChipBase char[2] chip[37]
+	CharSetChipPattern char[2] 5
+	SoundPlay sound[531] 0 80 0
+	SoundPlay sound[538] 0 80 0
+	ForkFunc char[6] fork[1] fn[0,4]
+	ForkFunc char[3] fork[1] fn[0,5]
+	ForkWait char[6] fork[1]
+	ForkWait char[3] fork[1]
+	TextTalk char[2] {
+		#1410450008V#04512F#12P沒用的。{wait}
+	}
+	TextWait
+	CamSetDistance -74150 -500 -2390 500ms
+	ED7CamRotate 51deg 12deg 5deg 500ms
+	CamPers 300 500ms
+	CamZoom 37250 500ms
+	CamWait 121
+	SoundPlay sound[4132] 255 100 0
+	SoundPlay sound[893] 0 100 0
+	SoundPlay sound[538] 0 100 0
+	SoundPlay sound[926] 2 100 0
+	ED7CharAnimation char[2] 2500ms 0 0 0 1
+	CharSetChipBase char[2] chip[38]
+	CharSetChipPattern char[2] 0
+	EffPlay eff[3] eff_instance[255] char[2] 0 (0, -700, 0) 0 -45 180 1000 1000 1000 null (0, 0, 0) 0ms
+	Sleep 50ms
+	CharSetChipPattern char[2] 1
+	Sleep 50ms
+	EffPlay eff[3] eff_instance[255] char[2] 0 (0, 700, 0) 0 -45 0 1000 1000 1000 null (0, 0, 0) 0ms
+	CharSetChipPattern char[2] 2
+	Sleep 100ms
+	CharSetChipBase char[3] chip[53]
+	SoundPlay sound[501] 0 100 0
+	ForkFunc char[3] fork[0] fn[0,10]
+	SoundPlay sound[809] 0 100 0
+	Fork char[3] fork[1]:
+		_Char96 self (-73500, 0, 1600) 250 4000
+	Sc_C4Set 2147483648
+	SoundPlay sound[1414240004] 255 100 0
+	TextTalk char[3] {
+		#5P#10A啊……{wait}
+	}
+	Sc_C4Unset 2147483648
+	Sleep 100ms
+	CharSetChipBase char[4] chip[58]
+	SoundPlay sound[501] 0 100 0
+	ForkFunc char[4] fork[0] fn[0,10]
+	Fork char[4] fork[1]:
+		_Char96 self (-74350, 0, 2750) 250 4000
+	Sc_C4Set 2147483648
+	SoundPlay sound[1414250004] 255 100 1
+	TextTalk char[4] {
+		#6P#10A……唔……{wait}
+	}
+	Sc_C4Unset 2147483648
+	Sleep 1900ms
+	CharSetChipPattern char[2] 3
+	SoundStop sound[926]
+	SoundPlay sound[308] 0 100 0
+	SoundPlay sound[538] 0 100 0
+	Sleep 500ms
+	SoundPlay sound[531] 0 100 0
+	SoundPlay sound[358] 0 100 0
+	CharSetChipBase char[2] chip[35]
+	CharFlagsUnset char[2] 0x0004
+	Fork char[2] fork[1]:
+		_94 0 self 0deg 5000 2000mm/s 0
+	ED7CamRotate 40deg 7deg 5deg 3000ms
+	CamZoom 34250 3000ms
+	Sleep 1000ms
+	FadeOut 1000ms 0x00000000 255
+	FadeWait
+	ForkQuit char[2] fork[1]
+	CharFlagsSet char[2] 0x0004
+	CharSetChipBase char[3] chip[52]
+	CharSetChipPattern char[3] 0
+	CharSetChipBase char[4] chip[57]
+	CharSetChipPattern char[4] 0
+	CharSetPos char[3] (-38800, 0, 5500) 180deg
+	CharSetPos char[4] (-35600, 0, 3900) 225deg
+	CharSetPos char[2] (-38800, -1550, -1700) 0deg
+	CharFlagsUnset char[2] 0x0004
+	Fork char[2] fork[1]:
+		CharWalkToPos self (-38800, 0, 1000) 2000mm/s 0
+	CamSetDistance -38800 -1000 -1500 0ms
+	ED7CamRotate 50deg 30deg 0deg 0ms
+	CamPers 300 0ms
+	CamZoom 26300 0ms
+	CamSetDistance -38800 800 1000 1000ms
+	ED7CamRotate 45deg 25deg 0deg 1000ms
+	CamZoom 24300 1000ms
+	ObjFlagsSet object[0] 0x0100
+	FadeIn 1000ms 0x00000000
+	FadeWait
+	ForkFunc char[3] fork[0] fn[0,6]
+	ForkFunc char[4] fork[0] fn[0,8]
+	ForkWait char[2] fork[1]
+	CharFlagsSet char[2] 0x0004
+	CharSetChipBase char[2] chip[37]
+	CharSetChipPattern char[2] 3
+	Sleep 200ms
+	CharSetChipPattern char[2] 4
+	Shake 100 0 3000 500ms
+	SoundPlay sound[893] 0 100 0
+	EffPlay eff[5] eff_instance[255] char[2] 5 (0, 750, 500) 0 0 0 1000 1000 1000 null (0, 0, 0) 0ms
+	CamSetDistance -37350 800 4900 500ms
+	ED7CamRotate 45deg 23deg -5deg 500ms
+	CamZoom 26500 500ms
+	ForkQuit char[3] fork[0]
+	ForkFunc char[3] fork[0] fn[0,7]
+	Sc_C4Set 2147483648
+	SoundPlay sound[1414260004] 255 100 0
+	TextTalk char[3] {
+		#5P#10A呀……！{wait}
+	}
+	Sc_C4Unset 2147483648
+	Sleep 100ms
+	ForkQuit char[4] fork[0]
+	ForkFunc char[4] fork[0] fn[0,9]
+	ForkWait char[4] fork[0]
+	Sc_C4Set 2147483648
+	SoundPlay sound[1414240005] 255 100 1
+	TextTalk char[4] {
+		#5P我、我好恨……{wait}
+	}
+	TextWait
+	Sc_C4Unset 2147483648
+	CharSetChipPattern char[2] 5
+	Sleep 100ms
+	CharSetChipBase char[2] chip[36]
+	CharSetChipPattern char[2] 0
+	Sleep 500ms
+	CamSetDistance -34500 1000 0 2500ms
+	ED7CamRotate 45deg 30deg -5deg 2500ms
+	CamZoom 24000 2500ms
+	CharSetChipBase char[2] chip[35]
+	CharWalkToPos char[2] (-36150, 0, 1000) 2000mm/s 0
+	CharWalkToPos char[2] (-34950, 0, 0) 2000mm/s 0
+	CharTurnTo char[2] 90deg 500deg/s
+	SoundPlay sound[893] 0 100 0
+	CharSetChipBase char[2] chip[37]
+	ED7CharAnimation char[2] 2000ms 0 0 0 1
+	Sleep 50ms
+	CharSetChipPattern char[2] 2
+	EffPlay eff[5] eff_instance[255] char[2] 5 (-1500, 0, 500) 0 10 270 1000 1000 1000 null (0, 0, 0) 0ms
+	ObjFlagsUnset object[0] 0x0100
+	Shake 100 0 3000 500ms
+	SoundPlay sound[880] 0 100 0
+	SoundPlay sound[165] 0 100 0
+	SoundPlay sound[196] 0 80 0
+	ED7_76_2 object[0] "c12dor52:Layer1(1)" "アニメ"
+	ED7_76_2 object[0] "c12dor52:Layer2(2)" "アニメ"
+	ED7_76_2 object[0] "c12dor52:Layer3(3)" "アニメ"
+	ED7_76_2 object[0] "c12dor52:Layer4(4)" "アニメ"
+	Sleep 1000ms
+	CamZoom 23000 2000ms
+	CharSetChipBase char[2] chip[35]
+	Fork char[2] fork[1]:
+		_94 0 self 0deg 2000 2000mm/s 0
+	Fork char[2] fork[3]:
+		CharColor self 0x00FFFFFF 500ms
+	FadeOut 1000ms 0x00000000 255
+	FadeWait
+	ForkQuit char[2] fork[1]
+	ForkQuit char[2] fork[3]
+	CharFlagsSet char[3] 0x0080
+	CharFlagsSet char[4] 0x0080
+	CharSetPos char[2] (-5000, 0, 0) 90deg
+	CharColor char[2] 0x00FFFFFF 0ms
+	CharSetPos char[5] (5500, 0, 0) 270deg
+	CharFlagsUnset char[5] 0x0080
+	CamSetDistance -5000 1000 0 0ms
+	ED7CamRotate 45deg 25deg 0deg 0ms
+	CamPers 350 0ms
+	CamZoom 23000 0ms
+	Fork char[2] fork[1]:
+		CharWalkToPos self (1750, 0, 0) 2000mm/s 0
+	Fork char[2] fork[3]:
+		CharColor self 0xFFFFFFFF 500ms
+	CamSetDistance 4250 1000 0 4000ms
+	CamZoom 25000 4000ms
+	FadeIn 1000ms 0x00000000
+	FadeWait
+	ForkWait char[2] fork[1]
+	ForkWait char[2] fork[3]
+	CharSetChipBase char[2] chip[36]
+	CharSetChipPattern char[2] 0
+	CamWait 121
+	VisSet vis[0] 3 0xFFFFFFFF 500ms 0 0
+	VisSet vis[0] 0 -10000 0 500ms 0
+	VisWait vis[0] 3
+	VisWait vis[0] 0
+	TextSetPos -1 280 35 3
+	Sleep 500ms
+	TextMessage char[5] {
+		#1410320001V傷腦筋，我還希望你們
+		來拜訪時能安靜一點。{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	TextSetPos -1 280 60 3
+	VisSet vis[0] 3 0x00FFFFFF 500ms 0 0
+	VisSet vis[0] 0 0 0 500ms 0
+	VisWait vis[0] 3
+	VisWait vis[0] 0
+	TextTalk char[2] {
+		#1410450009V#04504F#6P呵呵，畢竟我們之後
+		還有一點事情要忙啊。{wait}
+	} {
+		#1410450010V#04500F──不過，《白蘭龍》。
+		你果然名不虛傳。{wait}
+	} {
+		#1410450011V社員這麼少……想必是
+		早就料到我們會來襲吧？{wait}
+	}
+	TextWait
+	TextTalk char[5] {
+		#1410320002V#03203F#11P嗯，算是吧。{wait}
+	} {
+		#1410320003V#03200F我可沒那麼莽撞，
+		所以不會跟你們這些
+		好戰之徒正面衝突。{wait}
+	}
+	TextWait
+	TextTalk char[2] {
+		#1410450012V#04502F#6P呵呵，即使如此，你也沒逃走，
+		乖乖等在這裡……{wait}
+	} {
+		#1410450013V莫非是想跟我這『戰鬼』
+		一較高下？{wait}
+	}
+	TextWait
+	TextTalk char[5] {
+		#1410320004V#03204F#11P哈哈，那是不可能的。{wait}
+	} {
+		#1410320005V要跟你交手，就算是《銀》大人
+		都還嫌不夠格呢。{wait}
+	} {
+		#1410320006V#03210F我在這裡等你，
+		只是想確認一些事情罷了。{wait}
+	}
+	TextWait
+	TextTalk char[2] {
+		#1410450014V#04505F#6P哦？你想確認什麼事？{wait}
+	}
+	TextWait
+	TextTalk char[5] {
+		#1410320007V#03209F#11P沒什麼大不了的，是個很簡單的事。{wait}
+	} {
+		#1410320008V#03202F──你們現在的#6R・　・　・#契約對象
+		到底是誰呢？{wait}
+	}
+	TextWait
+	TextTalk char[2] {
+		#1410450015V#04504F#6P呵呵……哈哈哈……{wait}
+	} {
+		#1410450016V#04512F──看來你這傢伙
+		確實是不容小覷啊。{wait}
+	}
+	TextWait
+	char[5].40 = 13
+	ForkFunc char[2] fork[3] fn[0,11]
+	ForkFunc char[5] fork[1] fn[0,13]
+	CamSetDistance 4750 1000 0 500ms
+	ED7CamRotate 35deg 30deg 0deg 500ms
+	CamZoom 22500 500ms
+	Sleep 500ms
+	Shake 400 0 3000 400ms
+	TextTalk char[2] {
+		#1410450017V#04507F#6P#5S#10A喝啊啊啊！{wait}
+	}
+	TextWait
+	ForkWait char[2] fork[3]
+	ForkWait char[5] fork[1]
+	CamWait 121
+	ForkFunc char[2] fork[3] fn[0,12]
+	ForkFunc char[5] fork[1] fn[0,14]
+	CamSetDistance 7250 1000 0 500ms
+	Shake 100 0 3000 200ms
+	TextTalk char[5] {
+		#1410320009V#03201F#7A哈……！{wait}
+	}
+	ForkWait char[2] fork[3]
+	ForkWait char[5] fork[1]
+	CharFlagsSet char[5] 0x0002
+	CharSetChipBase char[5] chip[46]
+	CharSetChipPattern char[5] 0
+	Sc_7D_0 char[5] 50 300
+	SoundPlay sound[844] 0 100 0
+	Fork char[5] fork[1]:
+		_Char96 self (10000, -5000, -100) 1500 4000
+	Sleep 50ms
+	BlurOn 0ms 0xBBFFFFFF 0 1 1
+	BlurOff 500ms
+	Shake 100 0 3000 200ms
+	SoundPlay sound[991] 0 100 0
+	SoundPlay sound[833] 0 50 0
+	EffPlay eff[8] eff_instance[255] null 0 (7900, 900, 0) 90 0 0 1000 1000 1000 null (0, 0, 0) 0ms
+	ED7_76_0 object[255] "mae_mado" 1
+	ED7_76_1 object[255] "ato_mado" 1
+	ForkWait char[5] fork[1]
+	Sc_7D_1 char[5] 0 0
+	CharFlagsSet char[5] 0x0080
+	CamWait 121
+	ForkFunc char[7] fork[1] fn[0,15]
+	CamSetDistance 7450 1000 -100 1000ms
+	CharSetChipBase char[2] chip[35]
+	CharWalkToPos char[2] (7450, 0, -100) 2000mm/s 0
+	CharTurnTo char[2] 90deg 500deg/s
+	CharSetChipBase char[2] chip[36]
+	CharSetChipPattern char[2] 0
+	CamWait 121
+	Sleep 500ms
+	TextTalk char[2] {
+		#1410450018V#04504F#5P哼！逃走了嗎？{wait}
+	}
+	TextWait
+	CharSetPos char[0] (-3750, 0, 500) 90deg
+	CharSetPos char[1] (-3000, 0, -500) 90deg
+	CharFlagsUnset char[0] 0x0080
+	CharFlagsUnset char[1] 0x0080
+	TextTalkNamed char[0] "聲音" {
+		#1414210003V──西格蒙特大人！{wait}
+	}
+	TextWait
+	CamSetDistance 5000 1000 0 2000ms
+	ED7CamRotate 45deg 18deg 0deg 2000ms
+	CamPers 400 2000ms
+	CamZoom 23500 2000ms
+	Fork char[1] fork[1]:
+		CharWalkToPos self (1750, 0, -500) 4000mm/s 0
+	Sleep 100ms
+	Fork char[0] fork[1]:
+		CharWalkToPos self (1000, 0, 500) 4000mm/s 0
+	ForkWait char[0] fork[1]
+	CharSetChipBase char[0] chip[40]
+	CharSetChipPattern char[0] 0
+	ForkWait char[1] fork[1]
+	CharSetChipBase char[1] chip[40]
+	CharSetChipPattern char[1] 0
+	CamWait 121
+	TextTalk char[2] {
+		#1410450019V#04500F#5P曹的部下呢？{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#1414220003V#6P非常抱歉。
+		雖然設法傷了對方，但是……{wait}
+	}
+	TextWait
+	TextTalk char[2] {
+		#1410450020V#04504F#5P呵呵，被他們逃掉了嗎？{wait}
+	} {
+		#1410450021V#04500F算了，就讓他們躲在暗處，
+		把牙齒磨利一點再來吧。{wait}
+	}
+	TextWait
+	CharTurnTo char[2] 270deg 500deg/s
+	Sleep 300ms
+	TextTalk char[2] {
+		#1410450022V#04502F#11P──好。
+		開始進行『最後的步驟』。{wait}
+	} {
+		#1410450023V爆破這裡之後，
+		就前往ＩＢＣ大樓。{wait}
+	}
+	TextWait
+	Sleep 300ms
+	Sc_C4Set 2147483648
+	Shake 100 0 3000 200ms
+	TextSetPos 80 50 -1 -1
+	TextSetName "獵兵們"
+	SoundPlay sound[1414210004] 255 100 0
+	SoundPlay sound[1414220004] 255 100 1
+	TextMessage null {
+		#4S瞭解#4RＪａ#！{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	TextSetPos -1 280 60 3
+	Sc_C4Unset 2147483648
+	ED7_12 868 1000 20
+	FadeOut 1000ms 0x00000000 255
+	FadeWait
+	VisHide vis[255] 0
+	FlagSet flag[272]
+	NewScene "scena/c030b.bin" 0 0 0
+	Hcf
+	Return
+
+fn[3]:
+	while 1:
+		ED7_A0 self 5000ms 16 23
+	Return
+
+fn[4]:
+	ForkFunc char[6] fork[0] fn[0,3]
+	SoundPlay sound[637] 0 100 0
+	EffPlay eff[0] eff_instance[0] self 1 (0, 1000, 0) 0 0 0 600 600 600 null (0, 0, 0) 0ms
+	CharWalkToChar2 self char[2] 500mm 15000mm/s 0
+	EffStop eff_instance[0] 0
+	ForkQuit char[6] fork[0]
+	SoundPlay sound[532] 0 100 0
+	Shake 100 0 3000 500ms
+	SoundPlay sound[566] 0 60 0
+	SoundPlay sound[196] 0 100 0
+	EffPlay eff[2] eff_instance[255] char[2] 4 (0, 700, 500) 0 0 0 1000 1000 1000 null (0, 0, 0) 0ms
+	CharWalkToPos2 self (-74400, -4500, -4400) 15000mm/s 0
+	Return
+
+fn[5]:
+	SoundPlay sound[241] 0 100 0
+	EffPlay eff[1] eff_instance[255] null 0 (-73850, -1800, -2000) 180 0 0 1000 1000 1000 char[2] (0, 1000, 0) 0ms
+	Sleep 100ms
+	SoundPlay sound[241] 0 100 0
+	EffPlay eff[1] eff_instance[255] null 0 (-73850, -1800, -2000) 180 0 0 1000 1000 1000 char[2] (0, 1000, 0) 0ms
+	Sleep 100ms
+	SoundPlay sound[241] 0 100 0
+	EffPlay eff[1] eff_instance[255] null 0 (-73850, -1800, -2000) 180 0 0 1000 1000 1000 char[2] (0, 1000, 0) 0ms
+	Sleep 200ms
+	Shake 100 0 3000 500ms
+	EffPlay eff[2] eff_instance[255] char[2] 4 (1000, 700, 500) 0 0 0 1000 1000 1000 null (0, 0, 0) 0ms
+	Sleep 100ms
+	Shake 100 0 3000 500ms
+	EffPlay eff[2] eff_instance[255] char[2] 4 (0, 700, 500) 0 0 0 1000 1000 1000 null (0, 0, 0) 0ms
+	Sleep 100ms
+	Shake 100 0 3000 500ms
+	EffPlay eff[2] eff_instance[255] char[2] 4 (-1000, 700, 500) 0 0 0 1000 1000 1000 null (0, 0, 0) 0ms
+	Return
+
+fn[6]:
+	Sleep 500ms
+	CharSetChipBase self chip[52]
+	CharSetChipPattern self 2
+	SoundPlay sound[844] 0 100 0
+	_Char96 self (-38800, 500, 1000) 750 3000
+	Return
+
+fn[7]:
+	CharFlagsSet self 0x0020
+	CharSetChipBase self chip[53]
+	CharSetChipPattern self 0
+	SoundPlay sound[501] 0 100 0
+	EffPlay eff[4] eff_instance[255] self 1 (0, 1000, 0) 0 0 0 300 300 300 null (0, 0, 0) 0ms
+	Fork self fork[3]:
+		CharShake self 0 50 500 3000ms
+	_Char96 self (-39200, 1000, 7000) 1200 5000
+	ForkQuit self fork[3]
+	SoundPlay sound[196] 0 80 0
+	SoundPlay sound[815] 0 100 0
+	Fork self fork[3]:
+		CharShake self 0 50 500 3000ms
+	CharWalkToPos2 self (-39200, 0, 7000) 3000mm/s 0
+	CharSetChipPattern self 1
+	SoundPlay sound[514] 0 100 0
+	Return
+
+fn[8]:
+	CharFlagsUnset self 0x0020
+	CharSetChipBase self chip[56]
+	CharWalkToPos2 self (-38800, 0, 1000) 5000mm/s 0
+	SoundPlay sound[533] 0 100 0
+	CharSetChipBase self chip[57]
+	CharSetChipPattern self 0
+	Return
+
+fn[9]:
+	CharFlagsSet self 0x0020
+	CharSetChipBase self chip[58]
+	CharSetChipPattern self 0
+	EffPlay eff[4] eff_instance[255] self 1 (0, 1000, 0) 0 0 0 300 300 300 null (0, 0, 0) 0ms
+	Fork self fork[3]:
+		CharShake self 0 50 500 3000ms
+	_Char96 self (-34350, 1000, 4800) 1200 5000
+	ForkQuit self fork[3]
+	SoundPlay sound[501] 0 100 0
+	Fork self fork[3]:
+		CharShake self 0 50 500 3000ms
+	CharWalkToPos2 self (-34350, 0, 4800) 3000mm/s 0
+	CharSetChipPattern self 1
+	SoundPlay sound[514] 0 100 0
+	Return
+
+fn[10]:
+	CharFlagsSet self 0x0020
+	CharSetChipPattern self 0
+	EffPlay eff[4] eff_instance[255] self 0 (0, 1000, 0) 0 0 0 300 300 300 null (0, 0, 0) 0ms
+	CharShake self 0 50 500 3000ms
+	CharSetChipPattern self 1
+	Return
+
+fn[11]:
+	CharFlagsSet self 0x0020
+	SoundPlay sound[893] 0 100 0
+	Fork char[2] fork[1]:
+		_94 0 self 0deg 750 4000mm/s 0
+	CharSetChipBase char[2] chip[37]
+	ED7CharAnimation char[2] 2000ms 0 1
+	EffPlay eff[5] eff_instance[255] char[2] 5 (-1500, 0, 500) 0 10 270 1000 1000 1000 null (0, 0, 0) 0ms
+	Sleep 50ms
+	SoundPlay sound[196] 0 80 0
+	SoundPlay sound[165] 0 100 0
+	SoundPlay sound[992] 0 100 0
+	EffPlay eff[6] eff_instance[255] self 4 (0, 0, 2000) 0 0 0 1000 1000 1000 null (0, 0, 0) 0ms
+	BlurOn 0ms 0xBBFFFFFF 0 1 1
+	BlurOff 500ms
+	CharSetChipPattern char[2] 2
+	ED7_76_1 object[255] "ato_yuka01" 1
+	ED7_76_1 object[255] "ato_yuka02" 1
+	ED7_76_1 object[255] "kage03" 1
+	ED7_76_1 object[255] "ato_tukue" 1
+	ED7_76_0 object[255] "hane" 1
+	ED7_76_0 object[255] "mae_tukue" 1
+	ED7_76_0 object[255] "kage02" 1
+	Shake 100 0 3000 500ms
+	ForkWait char[2] fork[1]
+	CharFlagsUnset self 0x0020
+	Return
+
+fn[12]:
+	CharFlagsSet self 0x0020
+	Fork char[2] fork[1]:
+		_94 0 self 0deg 2500 10000mm/s 0
+	CharSetChipBase char[2] chip[37]
+	CharSetChipPattern char[2] 3
+	SoundPlay sound[538] 0 100 0
+	SoundPlay sound[4134] 255 100 0
+	EffPlay eff[5] eff_instance[255] char[2] 5 (0, 750, 500) 0 0 0 1000 1000 1000 null (0, 0, 0) 0ms
+	Sleep 50ms
+	SoundPlay sound[833] 0 100 0
+	SoundPlay sound[196] 0 80 0
+	SoundPlay sound[165] 0 100 0
+	SoundPlay sound[992] 0 100 0
+	EffPlay eff[7] eff_instance[255] self 4 (0, 0, 1000) 0 0 0 1000 1000 1000 null (0, 0, 0) 0ms
+	BlurOn 0ms 0xBBFFFFFF 0 1 1
+	BlurOff 500ms
+	CharSetChipPattern char[2] 4
+	ED7_76_1 object[255] "ato_yuka03" 1
+	ED7_76_1 object[255] "ato_nuki03" 1
+	ED7_76_1 object[255] "kage04" 1
+	ED7_76_0 object[255] "ato_yuka02" 1
+	ED7_76_0 object[255] "ato_tukue" 1
+	ED7_76_0 object[255] "kage01" 1
+	ED7_76_0 object[255] "kage03" 1
+	ED7_76_0 object[255] "mae_isu" 1
+	Shake 100 0 3000 500ms
+	ForkWait char[2] fork[1]
+	CharFlagsUnset self 0x0020
+	Return
+
+fn[13]:
+	CharFlagsSet char[5] 0x0002
+	CharSetChipBase char[5] chip[46]
+	CharSetChipPattern char[5] 0
+	Sc_7D_0 char[5] 50 300
+	SoundPlay sound[250] 0 100 0
+	_Char96 self (6550, 0, -600) 500 4000
+	Sc_7D_1 char[5] 0 0
+	CharFlagsUnset char[5] 0x0002
+	CharSetChipBase char[5] chip[45]
+	CharSetChipPattern char[5] 0
+	Return
+
+fn[14]:
+	CharFlagsSet char[5] 0x0002
+	CharSetChipBase char[5] chip[46]
+	CharSetChipPattern char[5] 0
+	Sc_7D_0 char[5] 50 300
+	SoundPlay sound[250] 0 100 0
+	_Char96 self (7450, 0, -100) 500 4000
+	Sc_7D_1 char[5] 0 0
+	CharFlagsUnset char[5] 0x0002
+	CharSetChipBase char[5] chip[45]
+	CharSetChipPattern char[5] 0
+	Return
+
+fn[15]:
+	Sleep 700ms
+	SoundPlay sound[976] 0 70 0
+	Return

@@ -1,0 +1,190 @@
+calmare zero_k scena
+scena:
+	name "c018b" "c018b" "c018b"
+	town town[5]
+	bgm bgm[513]
+	flags 8192
+	item_use fn[0,255]
+	unk 255 0
+
+entry:
+	pos (0, 0, -1000)
+	unk1 0
+	cam_from (0, 0, 24000)
+	cam_pers 500
+	unk2 30
+	cam_deg 45deg
+	cam_limit 0deg 360deg
+	cam_at (0, 0, 0)
+	unk3 0
+	unk4 0
+	flags 0x0001
+	town town[1]
+	init fn[0,1]
+	reinit fn[0,2]
+
+chip[0] "chr/ch33100.itc"
+chip[1] "chr/ch33200.itc"
+chip[2] "chr/ch24500.itc"
+chip[3] "chr/ch22100.itc"
+
+npc char[0]:
+	name "觀光客"
+	pos (-6880, -200, 4840)
+	angle 0deg
+	flags 0x0185
+	unk2 0
+	chip chip[0]
+	init fn[0,0]
+	talk fn[0,3]
+	unk4 255
+
+npc char[1]:
+	name "觀光客"
+	pos (-5970, -200, 5070)
+	angle 0deg
+	flags 0x0185
+	unk2 0
+	chip chip[1]
+	init fn[0,0]
+	talk fn[0,4]
+	unk4 255
+
+npc char[2]:
+	name "市民"
+	pos (-14200, -200, 6070)
+	angle 0deg
+	flags 0x0185
+	unk2 0
+	chip chip[2]
+	init fn[0,0]
+	talk fn[0,5]
+	unk4 255
+
+npc char[3]:
+	name "市民"
+	pos (-13100, -200, 5980)
+	angle 0deg
+	flags 0x0185
+	unk2 0
+	chip chip[3]
+	init fn[0,0]
+	talk fn[0,6]
+	unk4 255
+
+fn[0]:
+	switch random % 8:
+		case 0:
+			ED7_A0 self 1450ms 0 251
+			break
+		case 1:
+			ED7_A0 self 1550ms 0 251
+			break
+		case 2:
+			ED7_A0 self 1600ms 0 251
+			break
+		case 3:
+			ED7_A0 self 1400ms 0 251
+			break
+		case 4:
+			ED7_A0 self 1650ms 0 251
+			break
+		case 5:
+			ED7_A0 self 1350ms 0 251
+			break
+		case 6:
+			ED7_A0 self 1500ms 0 251
+			break
+		default:
+			ED7_A0 self 1500ms 0 251
+			break
+	while 1:
+		ED7_A0 self 1500ms 0 251
+	Return
+
+fn[1]:
+	CharFlagsUnset char[0] 0x0080
+	CharFlagsUnset char[1] 0x0080
+	CharFlagsUnset char[2] 0x0080
+	CharFlagsUnset char[3] 0x0080
+	CharFlagsSet char[0] 0x0010
+	CharFlagsSet char[1] 0x0010
+	CharFlagsSet char[2] 0x0010
+	CharFlagsSet char[3] 0x0010
+	Return
+
+fn[2]:
+	Return
+
+fn[3]:
+	TextStart self
+	TextTalk self {
+		這就是夜晚的蘭花塔啊……
+		這景色真是難以言喻呢。{wait}
+	}
+	TextWait
+	TextEnd self
+	Return
+
+fn[4]:
+	TextStart self
+	TextTalk self {
+		哦呵呵，真的是非常棒的夜景呢。{wait}
+	}
+	TextWait
+	TextEnd self
+	Return
+
+fn[5]:
+	TextStart self
+	TextTalk self {
+		夜景確實是
+		相當漂亮，不過……{wait}
+	}
+	TextWait
+	TextTalk self {
+		像這種景色，我還是
+		想和喜歡的人一起欣賞呢。{wait}
+	}
+	TextWait
+	TextEnd self
+	Return
+
+fn[6]:
+	TextStart self
+	if !flag[0]:
+		TextTalk self {
+			嗯，我好想要男朋友喔……
+			──不對啦！{wait}
+		}
+		TextWait
+		Emote char[3] 0mm 2000mm 40 43 100ms 0
+		Sleep 1000ms
+		CharTurnToChar char[3] char[2] 500deg/s
+		Sleep 300ms
+		TextTalk self {
+			我已經很努力地
+			不去想這件事情了。
+			不要再對我說那些多餘的話了。{wait}
+		}
+		TextWait
+		EmoteStop char[3]
+		CharTurnTo char[3] 0deg 500deg/s
+		FlagSet flag[0]
+	else:
+		TextTalk self {
+			蘭花塔很漂亮，
+			蘭花塔很漂亮……{wait}
+		}
+		TextWait
+		Emote field_party[0] 0mm 2000mm 16 19 250ms 1
+		SoundPlay sound[23] 0 100 0
+		Emote field_party[1] 0mm 2000mm 16 19 250ms 1
+		SoundPlay sound[23] 0 100 0
+		Emote field_party[2] 0mm 2000mm 16 19 250ms 1
+		SoundPlay sound[23] 0 100 0
+		Emote field_party[3] 0mm 2000mm 16 19 250ms 1
+		SoundPlay sound[23] 0 100 0
+		Sleep 1000ms
+	TextEnd self
+	Return

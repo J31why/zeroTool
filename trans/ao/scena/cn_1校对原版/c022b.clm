@@ -1,0 +1,213 @@
+calmare zero_k scena
+scena:
+	name "c022b" "c022b" "c022b"
+	town town[13]
+	bgm bgm[513]
+	flags 8192
+	item_use fn[0,255]
+	unk 255 0
+
+entry:
+	pos (0, 0, -1000)
+	unk1 0
+	cam_from (0, 0, 24000)
+	cam_pers 500
+	unk2 30
+	cam_deg 45deg
+	cam_limit 0deg 360deg
+	cam_at (0, 0, 0)
+	unk3 0
+	unk4 0
+	flags 0x0001
+	town town[1]
+	init fn[0,1]
+	reinit fn[0,2]
+
+chip[0] "chr/ch05900.itc"
+chip[1] "chr/ch05902.itc"
+chip[2] "chr/ch22200.itc"
+
+npc char[0]:
+	name "伊安律師"
+	pos (4510, 1170, 15780)
+	angle 180deg
+	flags 0x0105
+	unk2 0
+	chip chip[0]
+	init fn[0,0]
+	talk fn[0,3]
+	unk4 255
+
+npc char[1]:
+	name "彼特"
+	pos (12870, 1000, 4810)
+	angle 90deg
+	flags 0x0105
+	unk2 0
+	chip chip[2]
+	init fn[0,0]
+	talk fn[0,4]
+	unk4 255
+
+look_point[0]:
+	pos (14350, 1000, -70)
+	radius 2000
+	bubble_pos (14350, 2500, -70)
+	unk1 124
+	unk2 0
+	function fn[0,5]
+	unk3 0
+	unk4 0
+
+fn[0]:
+	switch random % 8:
+		case 0:
+			ED7_A0 self 1450ms 0 251
+			break
+		case 1:
+			ED7_A0 self 1550ms 0 251
+			break
+		case 2:
+			ED7_A0 self 1600ms 0 251
+			break
+		case 3:
+			ED7_A0 self 1400ms 0 251
+			break
+		case 4:
+			ED7_A0 self 1650ms 0 251
+			break
+		case 5:
+			ED7_A0 self 1350ms 0 251
+			break
+		case 6:
+			ED7_A0 self 1500ms 0 251
+			break
+		default:
+			ED7_A0 self 1500ms 0 251
+			break
+	while 1:
+		ED7_A0 self 1500ms 0 251
+	Return
+
+fn[1]:
+	CharSetChipBase char[0] chip[1]
+	CharSetChipPattern char[0] 0
+	ForkQuit char[0] fork[0]
+	CharFlags2Set char[0] 0x0004
+	if flag[3139]:
+		CharFlagsSet char[1] 0x0010
+	Return
+
+fn[2]:
+	ObjFlagsUnset object[0] 0x0010
+	Return
+
+fn[3]:
+	TextStart self
+	if !flag[0]:
+		TextTalk self {
+			#02200F哎呀，是你們啊。
+			難得這麼晚了還來找我呢。{wait}
+		} {
+			達德利也在一起，也就是說……
+			關於明天的正式會議
+			出了什麼問題嗎？{wait}
+		}
+		TextWait
+		TextTalk name[9] {
+			#00603F我們現在
+			正要去確認這件事。{wait}
+		} {
+			#00600F為了做好充分準備，
+			事前排除掉不確定因素
+			才是上策。{wait}
+		}
+		TextWait
+		TextTalk self {
+			#02200F嗯，正所謂
+			小心駛得萬年船。{wait}
+		} {
+			雖然我不知道詳情，不過……
+			請你們務必要努力。{wait}
+		}
+		TextWait
+		FlagSet flag[0]
+	else:
+		TextTalk self {
+			#02200F好……
+			這樣就準備得差不多了吧。{wait}
+		} {
+			我今天就先早點休息，
+			為明天養精蓄銳吧。{wait}
+		}
+		TextWait
+	TextEnd self
+	Return
+
+fn[4]:
+	TextStart self
+	if !flag[3139]:
+		TextTalk self {
+			我在整理文件的時候，
+			翻出了我以前負責留守時
+			會看的書。{wait}
+		}
+		TextWait
+		TextTalk self {
+			這本書裡出現的『影丸』……
+			我喜歡他勝過於咪西。{wait}
+		}
+		TextWait
+		TextTalk self {
+			只要是看過一次的書，
+			我就不太會再看一次……{wait}
+		}
+		TextWait
+		TextTalk self {
+			機會難得，各位要不要
+			也讀讀看這本書呢？{wait}
+		}
+		TextWait
+		TextSetPos -1 -1 -1 -1
+		FadeOut 300ms 0x00000000 100
+		SoundPlay sound[17] 0 100 0
+		TextSetName ""
+		TextMessage name[742] {
+			{color 0}已取得{item[753]}{color 0}。{wait}
+		}
+		TextWait
+		TextClose 0
+		FadeIn 300ms 0x00000000
+		ItemAdd item[753] 1
+		TextSetPos -1 280 60 3
+		FlagSet flag[3139]
+		TextEnd self
+		CharFlagsSet char[1] 0x0010
+		Return
+	else:
+		TextTalk self {
+			咦？這個檔案……
+			收錯地方了。{wait}
+		}
+		TextWait
+		TextTalk self {
+			伊安律師真是的，
+			像這種地方就很馬虎……{wait}
+		}
+		TextWait
+	TextEnd self
+	Return
+
+fn[5]:
+	EventBegin 2
+	SystemFlagsUnset 0x00000020
+	SoundPlay sound[807] 0 100 0
+	TextSetName ""
+	TextMessage null {
+		{color 5}門上鎖了。{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	EventEnd 3
+	Return

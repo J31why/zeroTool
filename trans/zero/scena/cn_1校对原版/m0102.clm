@@ -1,0 +1,729 @@
+calmare zero_k scena
+scena:
+	name "m0102" "m0102" "m0102"
+	town town[104]
+	bgm bgm[300]
+	flags 0
+	item_use fn[0,255]
+	unk 255 0
+
+entry:
+	pos (0, 0, -1000)
+	unk1 0
+	cam_from (0, 2500, 34000)
+	cam_pers 262
+	unk2 30
+	cam_deg 45deg
+	cam_limit 0deg 360deg
+	cam_at (0, 0, 0)
+	unk3 0
+	unk4 0
+	flags 0x0001
+	town town[104]
+	init fn[0,3]
+	reinit fn[0,4]
+
+chip[0] null
+chip[1] null
+chip[2] null
+chip[3] null
+chip[4] null
+chip[5] null
+chip[6] null
+chip[7] null
+chip[8] null
+chip[9] null
+chip[10] null
+chip[11] null
+chip[12] null
+chip[13] null
+chip[14] null
+chip[15] null
+chip[16] "monster/ch60550.itc"
+chip[17] "monster/ch60550.itc"
+chip[18] "monster/ch62350.itc"
+chip[19] "monster/ch62350.itc"
+
+npc char[0]:
+	name "故障機體Ｂ"
+	pos (0, 0, 0)
+	angle 0deg
+	flags 0x01C5
+	unk2 0
+	chip chip[0]
+	init fn[0,1]
+	talk fn[255,255]
+	unk4 255
+
+npc char[1]:
+	name "故障機體Ｂ"
+	pos (0, 0, 0)
+	angle 0deg
+	flags 0x01C5
+	unk2 0
+	chip chip[0]
+	init fn[0,1]
+	talk fn[255,255]
+	unk4 255
+
+npc char[2]:
+	name "故障機體Ｂ"
+	pos (0, 0, 0)
+	angle 0deg
+	flags 0x01C5
+	unk2 0
+	chip chip[0]
+	init fn[0,1]
+	talk fn[255,255]
+	unk4 255
+
+npc char[3]:
+	name "故障機體Ｂ"
+	pos (0, 0, 0)
+	angle 0deg
+	flags 0x01C5
+	unk2 0
+	chip chip[0]
+	init fn[0,1]
+	talk fn[255,255]
+	unk4 255
+
+npc char[4]:
+	name "故障機體ＤＸ"
+	pos (0, 0, 0)
+	angle 0deg
+	flags 0x01C5
+	unk2 0
+	chip chip[0]
+	init fn[0,1]
+	talk fn[255,255]
+	unk4 255
+
+monster char[5]:
+	pos (0, 750, 0)
+	angle 270
+	flags 0x0185
+	battle battle[1]
+	flag flag[0]
+	chip chip[18]
+	unk2 65535
+	stand_anim anim[0]
+	walk_anim anim[1]
+
+trigger[0]:
+	pos (-7000.0, 0.0, -1000.0)
+	radius 144000.0
+	transform
+		0.33333334 -0.0 0.0 2.3333335
+		-0.0 0.125 -0.0 -0.0
+		0.0 -0.0 0.20000002 0.20000002
+		0.0 0.0 0.0 1.0
+		// translate (-6.9999995, 0.0, -1.0)
+		// rotate (1.0, 0.0, 0.0) 0.0deg
+		// scale (2.9999998, 8.0, 4.999999)
+	unk1 0
+	unk2 0
+	function fn[0,6]
+	unk3 0
+	unk4 0
+	unk5 0
+	unk6 0
+
+trigger[1]:
+	pos (0.0, 0.0, -1000.0)
+	radius 16000.0
+	transform
+		0.125 -0.0 0.0 -0.0
+		-0.0 0.125 -0.0 -0.0
+		0.0 -0.0 0.25 0.25
+		0.0 0.0 0.0 1.0
+		// translate (-0.0, 0.0, -1.0)
+		// rotate (1.0, 0.0, 0.0) 0.0deg
+		// scale (8.0, 8.0, 4.0)
+	unk1 64
+	unk2 0
+	function fn[0,5]
+	unk3 0
+	unk4 0
+	unk5 0
+	unk6 0
+
+look_point[0]:
+	pos (-8000, 0, -4500)
+	radius 1200
+	bubble_pos (-10500, -8800, -2750)
+	unk1 124
+	unk2 0
+	function fn[0,11]
+	unk3 0
+	unk4 0
+
+anim[0] 1000ms 0 1 2 3 4 5
+anim[1] 1000ms 0 1 2 3 4 5
+
+// NB: the first five sepith sets are seemingly junk data.
+sepith[0] 100 1 2 3 70 89 99 0
+sepith[1] 100 5 1 5 1 5 1 0
+sepith[2] 100 5 1 5 1 5 1 0
+sepith[3] 100 5 0 5 0 5 0 0
+sepith[4] 100 5 0 5 0 5 0 0
+
+at_roll[0]: none 100
+at_roll[1]: none 100; hp10 5; hp50 1; ep10 5; ep50 1; cp10 5; cp50 1; unk1 5; unk2 5; unk6 1
+at_roll[2]: none 100; hp10 5; hp50 1; ep10 5; ep50 1; cp10 5; cp50 1; unk1 5; unk2 5; unk3 5; unk4 5; unk5 5; unk6 5
+at_roll[3]: none 100; hp10 5; ep10 5; cp10 5; unk1 5; unk2 5; unk6 2
+at_roll[4]: none 100; hp10 5; ep10 5; cp10 5; unk2 5; unk6 2
+
+placement[0]:
+	pos 7 9 180deg
+	pos 11 10 180deg
+	pos 10 13 180deg
+	pos 5 11 180deg
+	pos 12 12 180deg
+	pos 4 14 180deg
+	pos 14 14 180deg
+	pos 2 13 180deg
+
+placement[1]:
+	pos 8 8 180deg
+	pos 5 9 180deg
+	pos 11 10 180deg
+	pos 6 12 180deg
+	pos 10 12 180deg
+	pos 13 13 180deg
+	pos 4 14 180deg
+	pos 8 14 180deg
+
+placement[2]:
+	pos 7 8 180deg
+	pos 9 9 180deg
+	pos 6 10 180deg
+	pos 10 11 180deg
+	pos 6 12 180deg
+	pos 10 13 180deg
+	pos 7 14 180deg
+	pos 9 15 180deg
+
+placement[3]:
+	pos 8 8 180deg
+	pos 6 9 180deg
+	pos 10 10 180deg
+	pos 7 11 180deg
+	pos 10 12 180deg
+	pos 8 14 180deg
+	pos 10 14 180deg
+	pos 6 15 180deg
+
+placement[4]:
+	pos 7 4 0deg
+	pos 10 11 225deg
+	pos 4 7 90deg
+	pos 12 7 270deg
+	pos 4 11 135deg
+	pos 11 4 315deg
+	pos 7 12 180deg
+	pos 5 5 45deg
+
+placement[5]:
+	pos 8 12 180deg
+	pos 5 15 180deg
+	pos 11 15 180deg
+	pos 6 0 0deg
+	pos 10 0 0deg
+	pos 0 0 180deg
+	pos 0 0 180deg
+	pos 0 0 180deg
+
+placement[6]:
+	pos 8 8 180deg
+	pos 4 13 180deg
+	pos 12 13 180deg
+	pos 2 3 90deg
+	pos 14 3 270deg
+	pos 0 0 180deg
+	pos 0 0 180deg
+	pos 0 0 180deg
+
+battle[0]:
+	flags 2
+	level 5
+	unk1 6
+	vision_range 0
+	move_range 0
+	can_move 1
+	move_speed 0
+	unk2 0
+	battlefield "bm0102"
+	sepith null
+	setup 100:
+		enemies "ms61200.dat" "ms60500.dat" "ms60500.dat" "ms60500.dat" "ms60500.dat" null null null
+		placement placement[5] placement[5]
+		bgm bgm[401] bgm[403]
+		at_roll at_roll[1]
+
+battle[1]:
+	flags 3088
+	level 255
+	unk1 6
+	vision_range 0
+	move_range 0
+	can_move 0
+	move_speed 0
+	unk2 0
+	battlefield "bm0102"
+	sepith null
+	setup 100:
+		enemies "ms62300.dat" "ms60401.dat" "ms60401.dat" "ms60401.dat" "ms60401.dat" null "ms60401.dat" null
+		placement placement[6] placement[4]
+		bgm bgm[401] bgm[403]
+		at_roll at_roll[3]
+
+fn[0]:
+	while 1:
+		ED7CharAnimation self 2000ms 0 1 2 3 4 3 2 1
+	Return
+
+fn[1]:
+	while 1:
+		ED7CharAnimation self 1000ms 0 1 2 3 4 3 2 1
+	Return
+
+fn[2]:
+	while 1:
+		ED7CharAnimation self 1000ms 0 1 2 3 4 5
+	Return
+
+fn[3]:
+	Return
+
+fn[4]:
+	if system[0] == 101:
+		BgmVolume 100 100ms
+	TriggerFlagsSet trigger[0] 0x0080
+	if flag[1051] && !flag[1052]:
+		TriggerFlagsUnset trigger[0] 0x0080
+	if system[4] != 3 | !flag[1280]:
+		CharFlagsSet char[5] 0x0080
+		TriggerFlagsSet trigger[1] 0x0080
+	elif !flag[964]:
+		CharFlagsUnset char[5] 0x0080
+		TriggerFlagsUnset trigger[1] 0x0080
+	char[5].40 = 8
+	CharFlags2Unset char[5] 0x0100
+	char[5].7 = 2500
+	ED7_76_0 object[0] "sign01" 1
+	ED7_76_0 object[0] "light01" 1
+	SoundPlay sound[122] 1 100 0
+	EffLoad eff[8] "eff\\mgm03_02.eff"
+	EffPlay eff[8] eff_instance[8] null 0 (-10500, -8800, -2750) 0 0 0 1000 1000 1000 null (0, 0, 0) 0ms
+	Return
+
+fn[5]:
+	if flag[964]:
+		Return
+	EventBegin 1
+	field_party[0].11 = 0
+	field_party[1].11 = 0
+	field_party[2].11 = 0
+	field_party[3].11 = 0
+	field_party[4].11 = 0
+	field_party[5].11 = 0
+	field_party[6].11 = 0
+	field_party[7].11 = 0
+	CharSetChipPattern field_party[0] 0
+	CharSetChipPattern field_party[1] 0
+	CharSetChipPattern field_party[2] 0
+	CharSetChipPattern field_party[3] 0
+	CharSetChipPattern field_party[4] 0
+	CharSetChipPattern field_party[5] 0
+	CharSetChipPattern field_party[6] 0
+	CharSetChipPattern field_party[7] 0
+	TextSetName ""
+	TextMessage name[742] {
+		{color 5}有大型魔獸在徘徊。{wait}
+	}
+	Menu menu[0] -1 -1 0
+		"【動手擊退】" // 0
+		"【放棄】" // 1
+	MenuWait var[0]
+	MenuClose menu[0]
+	TextClose 0
+	switch var[0]:
+		case 1:
+			Sleep 500ms
+			CharSetPos2 field_party[0] (-7900, 0, -400) 90deg
+			EventEnd 5
+			Return
+	ED7Battle battle[1] null 0 256 0 null
+	ED7_E0 2
+	EventBegin 1
+	CamSetDistance -7900 1000 -400 0ms
+	CharSetPos2 field_party[0] (-7900, 0, -400) 90deg
+	CharSetPos2 field_party[1] (-7900, 0, -400) 90deg
+	CharSetPos2 field_party[2] (-7900, 0, -400) 90deg
+	CharSetPos2 field_party[3] (-7900, 0, -400) 90deg
+	CharSetPos2 field_party[4] (-7900, 0, -400) 90deg
+	CharSetPos2 field_party[5] (-7900, 0, -400) 90deg
+	CharSetPos2 field_party[6] (-7900, 0, -400) 90deg
+	CharSetPos2 field_party[7] (-7900, 0, -400) 90deg
+	switch system[3]:
+		case 2:
+			EventEnd 5
+			Return
+		case 1:
+			ReturnToTitle 0
+			Return
+	EventBegin 1
+	CharFlagsSet char[5] 0x0080
+	TriggerFlagsSet trigger[1] 0x0080
+	FadeWait
+	Sleep 400ms
+	SoundPlay sound[9] 0 100 0
+	TextSetPos -1 -1 -1 -1
+	FadeOut 300ms 0x00000000 100
+	TextSetName ""
+	TextMessage name[742] {
+		{color 5}消滅了通緝魔獸！{wait}
+	}
+	TextWait
+	TextClose 0
+	FlagSet flag[964]
+	QuestFlagsSet quest[26] 0x10
+	QuestFlagsSet quest[26] 0x02
+	QuestTaskSet quest[26] 0
+	FadeIn 300ms 0x00000000
+	TextSetPos -1 280 60 3
+	EventEnd 5
+	Return
+
+fn[6]:
+	EventBegin 0
+	FadeOut 0ms 0xFFFFFFFF 0
+	FadeOut 500ms 0x00000000 255
+	FadeWait
+	FadeIn 0ms 0xFFFFFFFF
+	ED7_E0 1
+	ED7LoadChip "monster/ch60550.itc" chip[30]
+	ED7LoadChip "chr/ch00050.itc" chip[31]
+	ED7LoadChip "chr/ch00150.itc" chip[32]
+	ED7LoadChip "chr/ch00250.itc" chip[33]
+	ED7LoadChip "chr/ch00350.itc" chip[34]
+	ED7LoadChip "monster/ch61250.itc" chip[35]
+	ED7LoadChip "monster/ch61253.itc" chip[36]
+	EffLoad eff[0] "event\\eva04_00.eff"
+	SoundLoad sound[865]
+	CamSetDistance -4000 800 0 0ms
+	ED7CamRotate 50deg 30deg 0deg 0ms
+	CamPers 500 0ms
+	CamZoom 21000 0ms
+	CharSetPos name[0] (-5800, 0, 800) 90deg
+	CharSetPos name[1] (-5800, 0, -800) 90deg
+	CharSetPos name[2] (-7400, 0, -800) 90deg
+	CharSetPos name[3] (-7400, 0, 800) 90deg
+	CharSetChipBase char[0] chip[30]
+	CharSetChipPattern char[0] 0
+	CharSetChipBase char[1] chip[30]
+	CharSetChipPattern char[1] 0
+	CharSetChipBase char[2] chip[30]
+	CharSetChipPattern char[2] 0
+	CharSetChipBase char[3] chip[30]
+	CharSetChipPattern char[3] 0
+	CharSetChipBase char[4] chip[35]
+	CharSetChipPattern char[4] 0
+	CharFlagsUnset char[0] 0x0004
+	CharFlagsSet char[0] 0x8000
+	CharFlagsUnset char[1] 0x0004
+	CharFlagsSet char[1] 0x8000
+	CharFlagsUnset char[2] 0x0004
+	CharFlagsSet char[2] 0x8000
+	CharFlagsUnset char[3] 0x0004
+	CharFlagsSet char[3] 0x8000
+	CharFlagsUnset char[4] 0x0004
+	CharFlagsSet char[4] 0x8000
+	Fork name[0] fork[1]:
+		CharWalkToPos2 self (800, 0, 800) 2000mm/s 0
+	Sleep 50ms
+	Fork name[1] fork[1]:
+		CharWalkToPos2 self (800, 0, -800) 2000mm/s 0
+	Sleep 50ms
+	Fork name[3] fork[1]:
+		CharWalkToPos2 self (-800, 0, 800) 2000mm/s 0
+	Sleep 50ms
+	Fork name[2] fork[1]:
+		CharWalkToPos2 self (-800, 0, -800) 2000mm/s 0
+	CamSetDistance 0 800 0 3500ms
+	FadeIn 1000ms 0x00000000
+	FadeWait
+	ForkWait name[0] fork[1]
+	ForkWait name[1] fork[1]
+	ForkWait name[3] fork[1]
+	ForkWait name[2] fork[1]
+	Emote name[0] 0mm 2000mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Sleep 50ms
+	Emote name[1] 0mm 2000mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Sleep 50ms
+	Emote name[2] 0mm 2000mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Sleep 50ms
+	Emote name[3] 0mm 2000mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Sleep 1000ms
+	CrossFade 250ms
+	CharSetChipBase name[0] chip[31]
+	CharSetChipPattern name[0] 0
+	CharSetChipBase name[1] chip[32]
+	CharSetChipPattern name[1] 0
+	CharSetChipBase name[2] chip[33]
+	CharSetChipPattern name[2] 0
+	CharSetChipBase name[3] chip[34]
+	CharSetChipPattern name[3] 0
+	SoundPlay sound[808] 0 100 0
+	SoundPlay sound[531] 0 100 0
+	FadeWait
+	CharFlagsUnset char[0] 0x0080
+	CharFlags2Unset char[0] 0x8000
+	CharFlagsUnset char[1] 0x0080
+	CharFlags2Unset char[1] 0x8000
+	CharFlagsUnset char[2] 0x0080
+	CharFlags2Unset char[2] 0x8000
+	CharFlagsUnset char[3] 0x0080
+	CharFlags2Unset char[3] 0x8000
+	CharSetPos2 char[0] (15200, 3100, 900) 270deg
+	CharSetPos2 char[1] (16000, 3500, -900) 270deg
+	CharSetPos2 char[2] (-15200, -3100, 900) 90deg
+	CharSetPos2 char[3] (-15000, -3500, -900) 90deg
+	CamSetDistance 9500 1800 0 1000ms
+	CamZoom 20000 1000ms
+	Sleep 500ms
+	ForkFunc char[0] fork[3] fn[0,7]
+	ForkFunc char[1] fork[3] fn[0,8]
+	SoundPlay sound[865] 2 100 0
+	Sleep 1000ms
+	_Char4A char[0] 255
+	_Char4A char[1] 255
+	CrossFade 500ms
+	CamSetDistance -9500 -200 0 0ms
+	FadeWait
+	ForkFunc char[2] fork[3] fn[0,9]
+	ForkFunc char[3] fork[3] fn[0,10]
+	Sleep 1000ms
+	CrossFade 500ms
+	CamSetDistance 0 700 0 0ms
+	ED7CamRotate 25deg 22deg 0deg 0ms
+	CamPers 700 0ms
+	CamZoom 14000 0ms
+	_Char4B char[0] 255
+	_Char4B char[1] 255
+	ED7CamRotate 35deg 22deg 0deg 1000ms
+	CamZoom 17000 1000ms
+	FadeWait
+	Fork name[0] fork[2]:
+		CharTurnTo self 45deg 500deg/s
+	Fork name[1] fork[2]:
+		CharTurnTo self 135deg 500deg/s
+	Fork name[2] fork[2]:
+		CharTurnTo self 225deg 500deg/s
+	Fork name[3] fork[2]:
+		CharTurnTo self 315deg 500deg/s
+	ForkWait char[0] fork[3]
+	ForkWait char[1] fork[3]
+	ForkWait char[2] fork[3]
+	ForkWait char[3] fork[3]
+	SoundStop sound[865]
+	Sleep 1000ms
+	CrossFade 500ms
+	CamSetDistance 10000 4700 0 0ms
+	ED7CamRotate 55deg -2deg 0deg 0ms
+	CamPers 700 0ms
+	CamZoom 16500 0ms
+	CamSetDistance 5500 1300 0 1500ms
+	ED7CamRotate 50deg 19deg 0deg 1500ms
+	CamZoom 12500 1500ms
+	CharFlagsUnset char[4] 0x0080
+	CharFlags2Unset char[4] 0x8000
+	CharSetPos2 char[4] (16200, 3600, 0) 270deg
+	char[4].36 = 216
+	char[4].7 = 1700
+	char[4].52 = 1700
+	_Char4A char[4] 255
+	Sc_7D_0 char[4] 30 500
+	CharSetChipBase char[4] chip[36]
+	CharSetChipPattern char[4] 0
+	Fork char[4] fork[1]:
+		_Char96 self (5500, 0, 0) 3000 2500
+	SoundPlay sound[812] 0 100 0
+	SoundPlay sound[814] 0 100 0
+	ForkWait char[4] fork[1]
+	CharSetChipPattern char[4] 1
+	EffPlay eff[0] eff_instance[255] char[4] 0 (0, 0, 0) 0 0 0 2000 2000 2000 null (0, 0, 0) 0ms
+	SoundPlay sound[813] 0 100 0
+	Shake 0 500 3000 1000ms
+	Sleep 1000ms
+	Sc_7D_1 char[4] 0 0
+	_Char4B char[4] 255
+	CharSetChipBase char[4] chip[35]
+	CharSetChipPattern char[4] 0
+	char[4].7 = 1700
+	char[4].52 = 1700
+	CamWait 121
+	CamSetDistance 0 700 0 1500ms
+	ED7CamRotate 35deg 22deg 0deg 1500ms
+	CamZoom 17000 1500ms
+	CamWait 121
+	Sleep 300ms
+	SoundPlay sound[865] 2 100 0
+	CamZoom 14000 300ms
+	BlurOn 300ms 0xBBFFFFFF 0 0 0
+	Fork char[0] fork[1]:
+		CharWalkToChar2 self name[0] 1000mm 5000mm/s 0
+	Fork char[1] fork[1]:
+		CharWalkToChar2 self name[1] 1000mm 5000mm/s 0
+	Fork char[2] fork[1]:
+		CharWalkToChar2 self name[2] 1000mm 5000mm/s 0
+	Fork char[3] fork[1]:
+		CharWalkToChar2 self name[3] 1000mm 5000mm/s 0
+	Sleep 50ms
+	Fork char[4] fork[1]:
+		CharWalkToPos2 self (0, 0, 0) 5000mm/s 0
+	Sleep 250ms
+	SoundStop sound[865]
+	ED7Battle battle[0] null 1 0 0 null
+	FadeOut 0ms 0x00000000 255
+	ForkQuit char[0] fork[255]
+	ForkQuit char[1] fork[255]
+	ForkQuit char[2] fork[255]
+	ForkQuit char[3] fork[255]
+	ForkQuit char[4] fork[255]
+	CharFlagsSet char[0] 0x0004
+	CharFlagsUnset char[0] 0x8000
+	CharFlagsSet char[1] 0x0004
+	CharFlagsUnset char[1] 0x8000
+	CharFlagsSet char[2] 0x0004
+	CharFlagsUnset char[2] 0x8000
+	CharFlagsSet char[3] 0x0004
+	CharFlagsUnset char[3] 0x8000
+	CharFlagsSet char[4] 0x0004
+	CharFlagsUnset char[4] 0x8000
+	CharFlagsSet char[0] 0x0080
+	CharFlags2Set char[0] 0x8000
+	CharFlagsSet char[1] 0x0080
+	CharFlags2Set char[1] 0x8000
+	CharFlagsSet char[2] 0x0080
+	CharFlags2Set char[2] 0x8000
+	CharFlagsSet char[3] 0x0080
+	CharFlags2Set char[3] 0x8000
+	CharFlagsSet char[4] 0x0080
+	CharFlags2Set char[4] 0x8000
+	CharSetChipBase name[0] chip[255]
+	CharSetChipPattern name[0] 0
+	CharSetChipBase name[1] chip[255]
+	CharSetChipPattern name[1] 0
+	CharSetChipBase name[2] chip[255]
+	CharSetChipPattern name[2] 0
+	CharSetChipBase name[3] chip[255]
+	CharSetChipPattern name[3] 0
+	NextFrame
+	ED7_37
+	CamSetDistance 0 0 0 0ms
+	ED7CamRotate 50deg 30deg 0deg 0ms
+	CamPers 500 0ms
+	CamZoom 44000 0ms
+	CharSetPos field_party[0] (0, 0, 0) 90deg
+	CharSetPos field_party[1] (0, 0, 0) 90deg
+	CharSetPos field_party[2] (0, 0, 0) 90deg
+	CharSetPos field_party[3] (0, 0, 0) 90deg
+	TriggerFlagsSet trigger[0] 0x0080
+	FlagSet flag[1052]
+	SoundStop sound[865]
+	ED7_E0 2
+	EventEnd 5
+	Return
+
+fn[7]:
+	Sc_7D_0 self 100 500
+	ForkFunc self fork[0] fn[0,0]
+	Fork char[0] fork[1]:
+		CharWalkToPos2 self (6000, 0, 900) 6000mm/s 0
+	ForkWait char[0] fork[1]
+	Fork char[0] fork[1]:
+		CharWalkToPos2 self (4000, 0, 2700) 6000mm/s 0
+	ForkWait char[0] fork[1]
+	CharTurnTo char[0] 225deg 500deg/s
+	ForkFunc self fork[0] fn[0,1]
+	Sc_7D_1 self 0 0
+	Return
+
+fn[8]:
+	Sc_7D_0 self 100 500
+	ForkFunc self fork[0] fn[0,0]
+	Fork char[1] fork[1]:
+		CharWalkToPos2 self (6000, 0, -900) 6000mm/s 0
+	ForkWait char[1] fork[1]
+	Fork char[1] fork[1]:
+		CharWalkToPos2 self (4000, 0, -2700) 6000mm/s 0
+	ForkWait char[1] fork[1]
+	CharTurnTo char[1] 315deg 500deg/s
+	ForkFunc self fork[0] fn[0,1]
+	Sc_7D_1 self 0 0
+	Return
+
+fn[9]:
+	Sc_7D_0 self 100 500
+	ForkFunc self fork[0] fn[0,0]
+	Fork char[2] fork[1]:
+		CharWalkToPos2 self (-6000, 0, 900) 6000mm/s 0
+	ForkWait char[2] fork[1]
+	Fork char[2] fork[1]:
+		CharWalkToPos2 self (-4000, 0, 2700) 6000mm/s 0
+	ForkWait char[2] fork[1]
+	CharTurnTo char[2] 135deg 500deg/s
+	ForkFunc self fork[0] fn[0,1]
+	Sc_7D_1 self 0 0
+	Return
+
+fn[10]:
+	Sc_7D_0 self 100 500
+	ForkFunc self fork[0] fn[0,0]
+	Fork char[3] fork[1]:
+		CharWalkToPos2 self (-6000, 0, -900) 6000mm/s 0
+	ForkWait char[3] fork[1]
+	Fork char[3] fork[1]:
+		CharWalkToPos2 self (-4000, 0, -2700) 6000mm/s 0
+	ForkWait char[3] fork[1]
+	CharTurnTo char[3] 45deg 500deg/s
+	ForkFunc self fork[0] fn[0,1]
+	Sc_7D_1 self 0 0
+	Return
+
+fn[11]:
+	EventBegin 1
+	SoundPlay sound[1094] 255 100 0
+	TextTalk name[0] {
+		#0000F這裡的話似乎可以釣到魚。{wait}
+	}
+	TextWait
+	CamSetDistance -10250 -3100 -4000 1500ms
+	ED7CamRotate 45deg 27deg 0deg 1500ms
+	CamPers 500 1500ms
+	CamZoom 32000 1500ms
+	Sleep 1000ms
+	TextSetName ""
+	TextMessage null {
+		{color 5}要釣魚嗎？{color 0}{wait}
+	}
+	Menu menu[0] -1 -1 1
+		"釣魚" // 0
+		"放棄" // 1
+	MenuWait var[0]
+	MenuClose menu[0]
+	TextClose 0
+	_59
+	CamWait 1
+	if var[0] == 0:
+		ED7_E0 2
+		Minigame 6 2 -8000 0 -4500 275 -10500 -8800 -2750
+	ED7_E0 2
+	EventEnd 4
+	Return

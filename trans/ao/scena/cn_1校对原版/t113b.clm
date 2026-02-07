@@ -1,0 +1,639 @@
+calmare ao_k scena
+scena:
+	name "t113b" "t113b" "t113b"
+	town town[73]
+	bgm bgm[0]
+	flags 0
+	item_use fn[0,255]
+	unk 255 26
+
+entry:
+	pos (0, 0, -1000)
+	unk1 0
+	cam_from (0, 0, 24000)
+	cam_pers 500
+	unk2 30
+	cam_deg 45deg
+	cam_limit 0deg 360deg
+	cam_at (0, 0, 0)
+	unk3 0
+	unk4 0
+	flags 0x0001
+	town town[73]
+	init fn[0,0]
+	reinit fn[0,1]
+
+npc char[0]:
+	name "琪雅"
+	pos (0, 0, 0)
+	angle 0deg
+	flags 0x01C5
+	unk2 0
+	chip chip[0]
+	init fn[255,255]
+	talk fn[255,255]
+	unk4 255
+
+npc char[1]:
+	name "芙蘭"
+	pos (0, 0, 0)
+	angle 0deg
+	flags 0x01C5
+	unk2 0
+	chip chip[0]
+	init fn[255,255]
+	talk fn[255,255]
+	unk4 255
+
+npc char[2]:
+	name "賽西兒"
+	pos (0, 0, 0)
+	angle 0deg
+	flags 0x01C5
+	unk2 0
+	chip chip[0]
+	init fn[255,255]
+	talk fn[255,255]
+	unk4 255
+
+npc char[3]:
+	name "伊莉雅"
+	pos (0, 0, 0)
+	angle 0deg
+	flags 0x01C5
+	unk2 0
+	chip chip[0]
+	init fn[255,255]
+	talk fn[255,255]
+	unk4 255
+
+npc char[4]:
+	name "莉夏"
+	pos (0, 0, 0)
+	angle 0deg
+	flags 0x01C5
+	unk2 0
+	chip chip[0]
+	init fn[255,255]
+	talk fn[255,255]
+	unk4 255
+
+npc char[5]:
+	name "修莉"
+	pos (0, 0, 0)
+	angle 0deg
+	flags 0x01C5
+	unk2 0
+	chip chip[0]
+	init fn[255,255]
+	talk fn[255,255]
+	unk4 255
+
+npc char[6]:
+	name "瑪利亞貝爾"
+	pos (0, 0, 0)
+	angle 0deg
+	flags 0x01C5
+	unk2 0
+	chip chip[0]
+	init fn[255,255]
+	talk fn[255,255]
+	unk4 255
+
+npc char[7]:
+	name "迪塔市長"
+	pos (0, 0, 0)
+	angle 0deg
+	flags 0x01C5
+	unk2 0
+	chip chip[0]
+	init fn[255,255]
+	talk fn[255,255]
+	unk4 255
+
+npc char[8]:
+	name "艾莉"
+	pos (0, 0, 0)
+	angle 0deg
+	flags 0x01C5
+	unk2 0
+	chip chip[0]
+	init fn[255,255]
+	talk fn[255,255]
+	unk4 255
+
+npc char[9]:
+	name "緹歐"
+	pos (0, 0, 0)
+	angle 0deg
+	flags 0x01C5
+	unk2 0
+	chip chip[0]
+	init fn[255,255]
+	talk fn[255,255]
+	unk4 255
+
+npc char[10]:
+	name "蘭迪"
+	pos (0, 0, 0)
+	angle 0deg
+	flags 0x01C5
+	unk2 0
+	chip chip[0]
+	init fn[255,255]
+	talk fn[255,255]
+	unk4 255
+
+npc char[11]:
+	name "諾艾兒"
+	pos (0, 0, 0)
+	angle 0deg
+	flags 0x01C5
+	unk2 0
+	chip chip[0]
+	init fn[255,255]
+	talk fn[255,255]
+	unk4 255
+
+npc char[12]:
+	name "瓦奇"
+	pos (0, 0, 0)
+	angle 0deg
+	flags 0x01C5
+	unk2 0
+	chip chip[0]
+	init fn[255,255]
+	talk fn[255,255]
+	unk4 255
+
+fn[0]:
+	if flag[272]:
+		FlagUnset flag[272]
+		Event fn[0,2]
+	Return
+
+fn[1]:
+	Return
+
+fn[2]:
+	EventBegin 0
+	FadeOut 0ms 0x00000000 255
+	if flag[2618]:
+		PartyRemove name[1] 255
+	elif flag[2619]:
+		PartyRemove name[2] 255
+	elif flag[2620]:
+		PartyRemove name[3] 255
+	elif flag[2621]:
+		PartyRemove name[8] 255
+	elif flag[2622]:
+		PartyRemove name[4] 255
+	ED7LoadChip "chr/ch08202.itc" chip[30]
+	ED7LoadChip "chr/ch08502.itc" chip[31]
+	ED7LoadChip "chr/ch05202.itc" chip[32]
+	ED7LoadChip "chr/ch05102.itc" chip[33]
+	ED7LoadChip "chr/ch07502.itc" chip[34]
+	ED7LoadChip "chr/ch10002.itc" chip[35]
+	ED7LoadChip "chr/ch05502.itc" chip[36]
+	ED7LoadChip "chr/ch05602.itc" chip[37]
+	ED7LoadChip "chr/ch00102.itc" chip[38]
+	ED7LoadChip "chr/ch00202.itc" chip[39]
+	ED7LoadChip "chr/ch00302.itc" chip[40]
+	ED7LoadChip "chr/ch02902.itc" chip[41]
+	ED7LoadChip "chr/ch03002.itc" chip[42]
+	ED7LoadChip "chr/ch00002.itc" chip[43]
+	VisShow vis[0] 234 0 490 256 0 0 512 512 0 0 512 512 0x00FFFFFF 0 "bu02800.itp"
+	CamSetDistance 2100 3100 -8280 0ms
+	ED7CamRotate 28deg 11deg 0deg 0ms
+	CamPers 440 0ms
+	CamZoom 26140 0ms
+	CharFlagsSet name[0] 0x0004
+	CharSetChipBase name[0] chip[43]
+	CharSetChipPattern name[0] 1
+	CharSetPos name[0] (-2000, 180, -4900) 90deg
+	CharSetChipBase char[0] chip[30]
+	CharSetChipPattern char[0] 1
+	CharFlagsUnset char[0] 0x0080
+	CharFlagsSet char[0] 0x8000
+	CharSetPos char[0] (-2000, 180, -8900) 90deg
+	CharSetChipBase char[1] chip[31]
+	CharSetChipPattern char[1] 2
+	CharFlagsUnset char[1] 0x0080
+	CharFlagsSet char[1] 0x8000
+	CharSetPos char[1] (2000, 180, -16900) 270deg
+	CharSetChipBase char[4] chip[32]
+	CharSetChipPattern char[4] 2
+	CharFlagsUnset char[4] 0x0080
+	CharFlagsSet char[4] 0x8000
+	CharSetPos char[4] (2000, 180, -8900) 270deg
+	CharSetChipBase char[3] chip[33]
+	CharSetChipPattern char[3] 2
+	CharFlagsUnset char[3] 0x0080
+	CharFlagsSet char[3] 0x8000
+	CharSetPos char[3] (2000, 180, -6900) 270deg
+	CharSetChipBase char[2] chip[34]
+	CharSetChipPattern char[2] 2
+	CharFlagsUnset char[2] 0x0080
+	CharFlagsSet char[2] 0x8000
+	CharSetPos char[2] (2000, 180, -12900) 270deg
+	CharSetChipBase char[5] chip[35]
+	CharSetChipPattern char[5] 2
+	CharFlagsUnset char[5] 0x0080
+	CharFlagsSet char[5] 0x8000
+	CharSetPos char[5] (2000, 180, -10900) 270deg
+	CharSetChipBase char[6] chip[36]
+	CharSetChipPattern char[6] 2
+	CharFlagsUnset char[6] 0x0080
+	CharFlagsSet char[6] 0x8000
+	CharSetPos char[6] (2000, 180, -4900) 270deg
+	CharSetChipBase char[7] chip[37]
+	CharSetChipPattern char[7] 0
+	CharFlagsUnset char[7] 0x0080
+	CharFlagsSet char[7] 0x8000
+	CharSetPos char[7] (0, 180, -1500) 180deg
+	CharSetChipBase char[8] chip[38]
+	CharSetChipPattern char[8] 1
+	CharFlagsUnset char[8] 0x0080
+	CharFlagsSet char[8] 0x8000
+	CharSetPos char[8] (-2000, 180, -6900) 90deg
+	CharSetChipBase char[9] chip[39]
+	CharSetChipPattern char[9] 1
+	CharFlagsUnset char[9] 0x0080
+	CharFlagsSet char[9] 0x8000
+	CharSetPos char[9] (-2000, 180, -10900) 90deg
+	CharSetChipBase char[10] chip[40]
+	CharSetChipPattern char[10] 1
+	CharFlagsUnset char[10] 0x0080
+	CharFlagsSet char[10] 0x8000
+	CharSetPos char[10] (-2000, 180, -12900) 90deg
+	CharSetChipBase char[11] chip[41]
+	CharSetChipPattern char[11] 2
+	CharFlagsUnset char[11] 0x0080
+	CharFlagsSet char[11] 0x8000
+	CharSetPos char[11] (2000, 180, -14900) 270deg
+	CharSetChipBase char[12] chip[42]
+	CharSetChipPattern char[12] 1
+	CharFlagsUnset char[12] 0x0080
+	CharFlagsSet char[12] 0x8000
+	CharSetPos char[12] (-2000, 180, -14900) 90deg
+	TextSetName ""
+	TextMessage null {
+		{color 5}很快地，羅伊德一行人全聚集到
+		迎賓館的《接待室》……{wait}
+	} {
+		沒過多久，迪塔市長和
+		他的女兒瑪利亞貝爾也到場。{wait}
+	} {
+		然後在迪塔市長致詞，
+		為遲到道歉後……{wait}
+	} {
+		豪華又溫暖舒適的
+		晚宴就此揭幕。{color 0}{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	BgmPlay bgm[162] 0
+	CamSetDistance 2100 1100 -8280 4000ms
+	FadeIn 1000ms 0x00000000
+	FadeWait
+	CamWait 121
+	ED7CamRotate 32deg 11deg 0deg 100000ms
+	VisSet vis[0] 3 0xFFFFFFFF 500ms 0 0
+	VisSet vis[0] 0 -10000 0 500ms 0
+	VisWait vis[0] 3
+	VisWait vis[0] 0
+	TextSetPos -1 280 35 3
+	Sleep 500ms
+	TextMessage char[7] {
+		#1240280001V唉呀唉呀，我遲到了，
+		真的很抱歉。{wait}
+	} {
+		#1240280002V身為邀請各位來參加的主持者
+		本來是不該遲到的。{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	TextSetPos -1 280 60 3
+	VisSet vis[0] 3 0x00FFFFFF 500ms 0 0
+	VisSet vis[0] 0 0 0 500ms 0
+	VisWait vis[0] 3
+	VisWait vis[0] 0
+	TextTalk name[0] {
+		#1240000408V#00004F#6P不，我們都明白
+		市長您很忙碌。{wait}
+	}
+	TextWait
+	TextTalk char[9] {
+		#1240020083V#00202F#6P辛苦您了。{wait}
+	}
+	TextWait
+	TextTalk char[6] {
+		#1240290036V#02904F#11P但以爸爸的情況來說，
+		他會很忙是自作自受。{wait}
+	}
+	TextWait
+	TextTalk char[7] {
+		#1240280003V#02809F#5P哈、哈、哈！
+		妳說得沒錯。{wait}
+	}
+	TextWait
+	TextTalk char[8] {
+		#1240010078V#00106F#6P哎唷，貝爾妳真是的……{wait}
+	}
+	TextWait
+	TextTalk char[3] {
+		#1240170017V#01703F#11P我忙於練習與公演，
+		不清楚詳情……{wait}
+	} {
+		#1240170018V#01700F你似乎提出了一個
+		相當大膽的提議呀？{wait}
+	}
+	TextWait
+	TextTalk char[7] {
+		#1240280004V#02804F#5P哈哈，其實那是我從上任當初
+		就有的想法。{wait}
+	} {
+		#1240280005V其實我本來並沒有打算
+		在那個時機提出……
+		但也無法考慮那麼多了。{wait}
+	} {
+		#1240280006V#02800F因此就大膽地
+		孤注一擲。{wait}
+	}
+	TextWait
+	TextTalk char[3] {
+		#1240170019V#01704F#11P呵呵，原來如此。{wait}
+	} {
+		#1240170020V#01702F在已揭幕的舞台上，
+		必須持續舞蹈到最後一刻……{wait}
+	}
+	TextWait
+	TextTalk char[7] {
+		#1240280007V#02803F#5P沒錯。{wait}
+	} {
+		#1240280008V#02800F聽說彩虹劇團
+		要挑戰改編版
+		『金之太陽、銀之月』吧。{wait}
+	} {
+		#1240280009V其實目前已決定在該劇首演的下一週，
+		針對是否贊成國家獨立的議題
+		實施公民投票。{wait}
+	} {
+		#1240280010V#02804F這也是個緣分，
+		因此邀請各位到此。{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#1240000409V#00005F#6P原來是這樣啊……{wait}
+	}
+	TextWait
+	TextTalk char[3] {
+		#1240170021V#01709F#11P呵呵，托您的福，
+		我們度過了很愉快的休假。{wait}
+	}
+	TextWait
+	TextTalk char[4] {
+		#1240180028V#01804F#11P非常感謝。{wait}
+	}
+	TextWait
+	TextTalk char[5] {
+		#1240420028V#04203F#11P……謝謝。{wait}
+	}
+	TextWait
+	TextTalk char[2] {
+		#1240130018V#05902F#11P呵呵，我是局外人，
+		所以有點過意不去就是了……{wait}
+	}
+	TextWait
+	TextTalk char[7] {
+		#1240280011V#02805F#5P不不不，別那麼客氣。{wait}
+	} {
+		#1240280012V#02800F我經常從烏爾斯拉醫院的相關人士口中
+		聽到關於妳的傳聞。{wait}
+	} {
+		#1240280013V據說妳十分勤奮，
+		堪稱聖女烏爾斯拉再世。{wait}
+	} {
+		#1240280014V#02809F我很榮幸能見到妳。{wait}
+	}
+	TextWait
+	TextTalk char[2] {
+		#1240130019V#05905F#11P那、那實在是
+		過獎了……{wait}
+	} {
+		#1240130020V#05904F但能聽到您這麼說是我的榮幸。{wait}
+	}
+	TextWait
+	TextTalk char[6] {
+		#1240290037V#02906F#11P哎唷，爸爸真是的。
+		從剛才就一直在
+		讚美年輕的女性……{wait}
+	} {
+		#1240290038V#02900F也要稍微慰勞一下
+		羅伊德先生他們吧？{wait}
+	}
+	TextWait
+	TextTalk char[7] {
+		#1240280015V#02805F#5P喔，不好意思。{wait}
+	} {
+		#1240280016V#02809F哎呀，因為有很多漂亮的小姐，
+		我雖然一把年紀，還是忍不住開心起來了。{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#1240000410V#00012F#6P哈哈……{wait}
+	}
+	TextWait
+	TextTalk char[10] {
+		#1240030138V#00309F#6P不過，真的很感謝
+		市長的邀請。{wait}
+	}
+	TextWait
+	TextTalk char[12] {
+		#1240040083V#10304F#6P#N是啊。
+		是很棒的散心機會。{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	TextTalk char[11] {
+		#1240050058V#10109F#11P謝謝市長。{wait}
+	}
+	TextWait
+	TextTalk char[1] {
+		#1240190022V#06409F#11P我們玩得非常開心！{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#1240110088V#01109F#6P琪雅也很開心～{wait}
+	}
+	TextWait
+	TextTalk char[7] {
+		#1240280017V#02804F#5P哈哈，那就太好了。{wait}
+	}
+	TextWait
+	Emote char[7] 0mm 1700mm 24 27 250ms 0
+	Sleep 2000ms
+	EmoteStop char[7]
+	TextTalk char[7] {
+		#1240280018V#02803F#5P──抱歉要舊事重提，
+		那真的是一場不幸的事件。{wait}
+	} {
+		#1240280019V#02801F即使是企圖對塔進行爆破的
+		恐怖份子……{wait}
+	} {
+		#1240280020V我也不認為他們
+		有罪惡深重到必須
+		以那種形式喪命。{wait}
+	} {
+		#1240280021V#02803F我會盡最大的努力，
+		不讓那種事件再次發生。{wait}
+	} {
+		#1240280022V#02800F這也是為了讓大家相信這世界
+		真的存在《正義》。{wait}
+	}
+	TextWait
+	TextTalk char[11] {
+		#1240050059V#10108F#11P啊……{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#1240000411V#00008F#6P迪塔市長……{wait}
+	}
+	TextWait
+	TextTalk char[8] {
+		#1240010079V#00104F#6P……聽到您這麼說，
+		我心裡就感覺如釋重負。{wait}
+	}
+	TextWait
+	TextTalk char[9] {
+		#1240020084V#00203F#6P不過，關於那個調查獨立意願的
+		公民投票……{wait}
+	} {
+		#1240020085V#00200F假如贊成者居多，
+		就真的能夠獨立嗎？{wait}
+	}
+	TextWait
+	TextTalk char[7] {
+		#1240280023V#02806F#5P不，公民投票本身
+		並不具有實現獨立的力量。{wait}
+	} {
+		#1240280024V#02804F但，投票結果必會成為
+		對諸國的意志展現。{wait}
+	} {
+		#1240280025V像這樣慢慢影響國際輿論，
+		逐步想辦法從兩大國手中
+		爭取『獨立』……{wait}
+	} {
+		#1240280026V#02800F這就是我的劇本。{wait}
+	}
+	TextWait
+	TextTalk char[10] {
+		#1240030139V#00303F#6P原來如此……{wait}
+	}
+	TextWait
+	TextTalk char[12] {
+		#1240040084V#10302F#6P#N雖然這樣講有點不留情，
+		那條路走起來相當艱難吧？{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	TextTalk char[11] {
+		#1240050060V#10101F#11P瓦、瓦奇……！{wait}
+	}
+	TextWait
+	TextTalk char[7] {
+		#1240280027V#02803F#5P不，你說得對。{wait}
+	} {
+		#1240280028V#02801F克洛斯貝爾要成為獨立國家，
+		從地政學的觀點來說，
+		也處於相當困難的狀況……{wait}
+	} {
+		#1240280029V#02800F但，我認為
+		人類並非只會
+		順著局勢走的生物。{wait}
+	} {
+		#1240280030V縱使處於困境，仍願意追求理想、
+		追求榮耀與尊嚴……{wait}
+	} {
+		#1240280031V#02804F我覺得人類蘊含著
+		這樣的力量與可能性。{wait}
+	}
+	TextWait
+	TextTalk char[8] {
+		#1240010080V#00102F#6P……叔叔……{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#1240000412V#00003F#6P追求榮耀與尊嚴的
+		力量與可能性啊……{wait}
+	}
+	TextWait
+	TextTalk char[4] {
+		#1240180029V#01808F#11P…………………………{wait}
+	}
+	TextWait
+	TextTalk char[3] {
+		#1240170022V#01704F#11P嗯……原來如此。{wait}
+	}
+	TextWait
+	TextTalk char[7] {
+		#1240280032V#02803F#5P今後克洛斯貝爾要走的路
+		想必很艱難……{wait}
+	} {
+		#1240280033V我們大人當然會
+		不辭辛勞地
+		努力開闢那條路。{wait}
+	} {
+		#1240280034V#02800F但，我認為追隨前人腳步
+		朝頂點邁進是
+		你們年輕人的任務。{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	FadeOut 300ms 0x00000000 100
+	TextSetName ""
+	TextMessage null {
+		{color 5}迪塔市長環顧各個座位，
+		深深一鞠躬。{color 0}{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	FadeIn 300ms 0x00000000
+	TextTalk char[7] {
+		#1240280035V#02804F#5P請你們也……
+		用你們自己的方式
+		為克洛斯貝爾的未來效力。{wait}
+	}
+	TextWait
+	CamSetDistance 2100 1350 -8280 2000ms
+	FadeOut 2000ms 0x00000000 255
+	FadeWait
+	CharFlagsUnset name[0] 0x0004
+	CharSetChipBase name[0] chip[255]
+	CharSetChipPattern name[0] 0
+	BgmStop 4000ms
+	BgmWait
+	TextSetName ""
+	TextMessage null {
+		{color 5}之後，晚宴結束，
+		回到飯店３Ｆ後……{wait}
+	} {
+		羅伊德一行人雖感覺到
+		不可思議的亢奮感，但在疲勞感的
+		驅使下，各自皆提早就寢。{wait}
+	} {
+		然後──{color 0}{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	FlagSet flag[273]
+	NewScene "scena/e430b.bin" 0 0 0
+	Hcf
+	Return

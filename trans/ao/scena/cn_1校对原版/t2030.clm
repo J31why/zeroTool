@@ -1,0 +1,1359 @@
+calmare ao_k scena
+scena:
+	name "t2030" "t2030" "t2030"
+	town town[89]
+	bgm bgm[126]
+	flags 8192
+	item_use fn[0,255]
+	unk 255 28
+
+entry:
+	pos (0, 0, -1000)
+	unk1 0
+	cam_from (0, 0, 24000)
+	cam_pers 500
+	unk2 30
+	cam_deg 45deg
+	cam_limit 0deg 360deg
+	cam_at (0, 0, 0)
+	unk3 0
+	unk4 0
+	flags 0x0001
+	town town[89]
+	init fn[0,0]
+	reinit fn[0,1]
+
+npc char[0]:
+	name "諾艾兒少尉"
+	pos (0, 0, 0)
+	angle 0deg
+	flags 0x01C5
+	unk2 0
+	chip chip[0]
+	init fn[255,255]
+	talk fn[255,255]
+	unk4 255
+
+npc char[1]:
+	name "索妮亞司令"
+	pos (0, 0, 0)
+	angle 0deg
+	flags 0x01C5
+	unk2 0
+	chip chip[0]
+	init fn[255,255]
+	talk fn[255,255]
+	unk4 255
+
+npc char[2]:
+	name "人偶"
+	pos (0, 0, 0)
+	angle 0deg
+	flags 0x01F6
+	unk2 0
+	chip chip[0]
+	init fn[255,255]
+	talk fn[255,255]
+	unk4 255
+
+npc char[3]:
+	name "Dummy"
+	pos (0, 0, 0)
+	angle 0deg
+	flags 0x00C5
+	unk2 0
+	chip chip[0]
+	init fn[255,255]
+	talk fn[255,255]
+	unk4 255
+
+trigger[0]:
+	pos (-18000.0, -4000.0, -1000.0)
+	radius 56250.0
+	transform
+		0.33333334 -0.0 0.0 6.0
+		-0.0 0.2 -0.0 0.8
+		0.0 -0.0 0.2 0.2
+		0.0 0.0 0.0 1.0
+		// translate (-17.999998, -4.0, -1.0)
+		// rotate (1.0, 0.0, 0.0) 0.0deg
+		// scale (3.0, 4.9999995, 4.9999995)
+	unk1 0
+	unk2 0
+	function fn[0,4]
+	unk3 0
+	unk4 0
+	unk5 0
+	unk6 0
+
+trigger[1]:
+	pos (-37630.0, -14710.0, -3220.0)
+	radius 900000.0
+	transform
+		0.33333334 -0.0 0.0 12.543334
+		-0.0 0.05 -0.0 0.73550004
+		0.0 -0.0 0.2 0.644
+		0.0 0.0 0.0 1.0
+		// translate (-37.629997, -14.710001, -3.22)
+		// rotate (1.0, 0.0, 0.0) 0.0deg
+		// scale (3.0, 19.999998, 4.9999995)
+	unk1 0
+	unk2 0
+	function fn[0,8]
+	unk3 0
+	unk4 0
+	unk5 0
+	unk6 0
+
+look_point[0]:
+	pos (21160, -580, -4620)
+	radius 1200
+	bubble_pos (23230, 500, -5230)
+	unk1 124
+	unk2 0
+	function fn[0,7]
+	unk3 0
+	unk4 0
+
+look_point[1]:
+	pos (16000, 0, -29500)
+	radius 1200
+	bubble_pos (16000, 1500, -29500)
+	unk1 124
+	unk2 0
+	function fn[0,2]
+	unk3 0
+	unk4 0
+
+// NB: the first five sepith sets are seemingly junk data.
+sepith[0] 100 1 2 3 70 89 99 0
+sepith[1] 100 5 1 5 1 5 1 0
+sepith[2] 100 5 1 5 1 5 1 0
+sepith[3] 100 5 0 5 0 5 0 0
+sepith[4] 100 5 0 5 0 5 0 0
+
+at_roll[0]: none 100
+at_roll[1]: none 100; hp10 5; hp50 1; ep10 5; ep50 1; cp10 5; cp50 1; unk1 5; unk2 5; unk6 1
+at_roll[2]: none 100; hp10 5; hp50 1; ep10 5; ep50 1; cp10 5; cp50 1; unk1 5; unk2 5; unk3 5; unk4 5; unk5 5; unk6 5
+at_roll[3]: none 100; hp10 5; ep10 5; cp10 5; unk1 2; unk2 5; unk6 2
+at_roll[4]: none 100; hp10 5; ep10 5; cp10 5; unk2 5
+
+placement[0]:
+	pos 7 9 180deg
+	pos 11 10 180deg
+	pos 10 13 180deg
+	pos 5 11 180deg
+	pos 12 12 180deg
+	pos 4 14 180deg
+	pos 14 14 180deg
+	pos 2 13 180deg
+
+placement[1]:
+	pos 8 8 180deg
+	pos 5 9 180deg
+	pos 11 10 180deg
+	pos 6 12 180deg
+	pos 10 12 180deg
+	pos 13 13 180deg
+	pos 4 14 180deg
+	pos 8 14 180deg
+
+placement[2]:
+	pos 7 8 180deg
+	pos 9 9 180deg
+	pos 6 10 180deg
+	pos 10 11 180deg
+	pos 6 12 180deg
+	pos 10 13 180deg
+	pos 7 14 180deg
+	pos 9 15 180deg
+
+placement[3]:
+	pos 8 8 180deg
+	pos 6 9 180deg
+	pos 10 10 180deg
+	pos 7 11 180deg
+	pos 10 12 180deg
+	pos 8 14 180deg
+	pos 10 14 180deg
+	pos 6 15 180deg
+
+placement[4]:
+	pos 7 4 0deg
+	pos 10 11 225deg
+	pos 4 7 90deg
+	pos 12 7 270deg
+	pos 4 11 135deg
+	pos 11 4 315deg
+	pos 7 12 180deg
+	pos 5 5 45deg
+
+placement[5]:
+	pos 8 12 180deg
+	pos 0 0 180deg
+	pos 0 0 180deg
+	pos 0 0 180deg
+	pos 0 0 180deg
+	pos 0 0 180deg
+	pos 0 0 180deg
+	pos 0 0 180deg
+
+battle[0]:
+	flags 66
+	level 3
+	unk1 6
+	vision_range 45
+	move_range 3
+	can_move 3
+	move_speed 30
+	unk2 0
+	battlefield "bt2030"
+	sepith null
+	setup 100:
+		enemies "ms03900.dat" null null null null null null null
+		placement placement[5] placement[4]
+		bgm bgm[452] bgm[452]
+		at_roll at_roll[0]
+
+fn[0]:
+	if flag[272]:
+		FlagUnset flag[272]
+		Event fn[0,3]
+	elif flag[273]:
+		FlagUnset flag[273]
+		Event fn[0,5]
+	Return
+
+fn[1]:
+	if flag[3074] && !flag[3355]:
+		system[1] = 151
+	elif flag[3355]:
+		system[1] = 566
+	TriggerFlagsSet trigger[0] 0x0080
+	if flag[3354] && !flag[3355]:
+		TriggerFlagsUnset trigger[0] 0x0080
+	LookPointFlagsSet look_point[0] 0x0001
+	if QuestFlagsGet quest[122] 0x02 && !QuestFlagsGet quest[122] 0x10 && !QuestFlagsGet quest[122] 0x40 && flag[2747] && !flag[2748]:
+		LookPointFlagsUnset look_point[0] 0x0001
+		ObjFlagsUnset object[1] 0x0004
+	if !flag[3328]:
+		EntranceSetFunc entrance[3] fn[0,9]
+	LookPointFlagsSet look_point[1] 0x0001
+	ObjFlagsSet object[0] 0x0004
+	if flag[3328]:
+		LookPointFlagsUnset look_point[1] 0x0001
+		ObjFlagsUnset object[0] 0x0004
+	Return
+
+fn[2]:
+	TextSetName ""
+	TextMessage null {
+		{color 5}有一本『熱門雞尾酒　新手指南』。{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	TextSetPos -1 280 60 3
+	if ItemHas item[2] 0:
+		if !RecipeLearn 24:
+			FadeOut 300ms 0x00000000 100
+			SoundPlay sound[17] 0 100 0
+			TextSetPos -1 -1 -1 -1
+			TextSetName ""
+			TextMessage null {
+				記住了{color 2}『粉紅玫瑰』{color 0}的食譜。{wait}
+			}
+			TextWait
+			TextClose 0
+			FadeIn 300ms 0x00000000
+			FadeWait
+			_59
+			TextSetPos -1 280 60 3
+	TextEnd null
+	Return
+
+fn[3]:
+	EventBegin 0
+	FadeOut 0ms 0x00000000 255
+	CharFlagsUnset field_party[4] 0x0080
+	CharFlags2Unset field_party[4] 0x8000
+	CharFlagsUnset field_party[5] 0x0080
+	CharFlags2Unset field_party[5] 0x8000
+	CharSetPos name[0] (29000, -2220, -10000) 270deg
+	CharSetPos name[5] (30500, -2220, -10680) 270deg
+	CharSetPos name[2] (29960, -2220, -9450) 270deg
+	CharSetPos name[3] (31060, -2220, -9070) 270deg
+	CharSetPos name[6] (32970, -2220, -9240) 270deg
+	CharSetPos name[4] (31580, -2220, -10100) 270deg
+	CharFlagsSet name[0] 0x0008
+	CharFlagsSet name[5] 0x0008
+	CharFlagsSet name[2] 0x0008
+	CharFlagsSet name[3] 0x0008
+	CharFlagsSet name[6] 0x0008
+	CharFlagsSet name[4] 0x0008
+	VisShow vis[0] 16 20 528 84 0 10 512 64 0 0 512 64 0x00FFFFFF 0 "c_vis512.itp"
+	CamSetDistance -3050 -700 -11150 0ms
+	ED7CamRotate 318deg 10deg 0deg 0ms
+	CamPers 600 0ms
+	CamZoom 34300 0ms
+	FadeIn 1000ms 0x00000000
+	CamSetDistance 10100 -700 -13000 9000ms
+	ED7CamRotate 312deg 10deg 0deg 9000ms
+	Sleep 2500ms
+	VisSet vis[0] 3 0xFFFFFFFF 500ms 0 0
+	VisWait vis[0] 3
+	Sleep 3500ms
+	VisSet vis[0] 3 0x00FFFFFF 500ms 0 0
+	VisWait vis[0] 3
+	CamWait 121
+	CrossFade 1000ms
+	CamSetDistance 23250 -700 -10100 0ms
+	ED7CamRotate 305deg 23deg 0deg 0ms
+	CamPers 600 0ms
+	CamZoom 20000 0ms
+	CamZoom 15750 2500ms
+	CharFlagsUnset name[0] 0x0008
+	CharFlagsUnset name[5] 0x0008
+	CharFlagsUnset name[2] 0x0008
+	CharFlagsUnset name[3] 0x0008
+	CharFlagsUnset name[6] 0x0008
+	CharFlagsUnset name[4] 0x0008
+	Fork name[0] fork[0]:
+		_94 0 name[0] 0deg 7000 4000mm/s 0
+	Sleep 50ms
+	Fork name[2] fork[0]:
+		_94 0 name[2] 0deg 7000 4000mm/s 0
+	Sleep 50ms
+	Fork name[3] fork[0]:
+		_94 0 name[3] 0deg 7000 4000mm/s 0
+	Sleep 50ms
+	Fork name[4] fork[0]:
+		_94 0 name[4] 0deg 7000 4000mm/s 0
+	Sleep 50ms
+	Fork name[5] fork[0]:
+		_94 0 name[5] 0deg 7000 4000mm/s 0
+	Sleep 50ms
+	Fork name[6] fork[0]:
+		_94 0 name[6] 0deg 7000 4000mm/s 0
+	ForkWait name[0] fork[0]
+	ForkWait name[2] fork[0]
+	ForkWait name[3] fork[0]
+	ForkWait name[4] fork[0]
+	ForkWait name[5] fork[0]
+	ForkWait name[6] fork[0]
+	CharSetChipPattern name[6] 5
+	CamWait 121
+	FadeWait
+	if flag[2748]:
+		TextTalk name[0] {
+			#1510000321V#00003F#11P貨物月台……
+			真是好久沒來了。{wait}
+		} {
+			#1510000322V#00001F幸好，看來沒有
+			其他人的蹤影……{wait}
+		}
+		TextWait
+		TextTalk name[3] {
+			#1510030050V#00306F#12P嗯，大陸橫斷鐵路
+			似乎也停駛了。{wait}
+		} {
+			#1510030051V#00300F所以沒派太多
+			人手到這裡吧。{wait}
+		}
+		TextWait
+	else:
+		TextTalk name[0] {
+			#1510000323V#00005F#11P這裡是……{wait}
+		}
+		TextWait
+		TextTalk name[3] {
+			#1510030052V#00303F#12P嗯，是貝爾加德門的
+			貨物月台。{wait}
+		} {
+			#1510030053V#00300F因為大陸橫斷鐵路停駛了，
+			所以似乎沒派太多人來。{wait}
+		}
+		TextWait
+	TextTalk name[2] {
+		#1510020140V#00204F#12P是啊……
+		我想是潛入的好機會。{wait}
+	}
+	TextWait
+	TextTalk name[4] {
+		#1510040173V#10408F#12P如果索妮亞司令在的話，
+		應該是在三樓的司令室吧。{wait}
+	} {
+		#1510040174V#10401F要是能在不被人發現的
+		情況下抵達就好了。{wait}
+	}
+	TextWait
+	TextTalk name[5] {
+		#1510180090V#10703F#12P萬一被發現的話，
+		就由我來誘敵吸引注意吧。{wait}
+	} {
+		#1510180091V#10701F總之先往上走吧。{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#1510000324V#00001F#11P我知道了……
+		不過，不要逞強喔。{wait}
+	}
+	TextWait
+	TextTalk name[6] {
+		#1510120201V#01200F#3C#12P嗯……開始往上走吧。{wait}
+	}
+	TextWait
+	FadeOut 1000ms 0x00000000 255
+	FadeWait
+	VisHide vis[255] 0
+	CharSetPos field_party[0] (22000, -2220, -10000) 270deg
+	CharFlagsSet field_party[4] 0x0080
+	CharFlags2Set field_party[4] 0x8000
+	CharFlagsSet field_party[5] 0x0080
+	CharFlags2Set field_party[5] 0x8000
+	ED7_Cam69 255 0
+	FlagSet flag[3354]
+	TriggerFlagsUnset trigger[0] 0x0080
+	EventEnd 5
+	Return
+
+fn[4]:
+	EventBegin 0
+	FadeOut 0ms 0xFFFFFFFF 0
+	FadeOut 500ms 0x00000000 255
+	FadeWait
+	FadeIn 0ms 0xFFFFFFFF
+	PartyClear
+	PartyAdd name[0] null 255
+	PartyAdd name[2] null 255
+	PartyAdd name[3] null 255
+	PartyAdd name[4] null 255
+	PartyAdd name[5] null 255
+	PartyAdd name[6] null 255
+	ED7LoadChip "chr/ch03900.itc" chip[30]
+	ED7LoadChip "chr/ch03950.itc" chip[31]
+	ED7LoadChip "chr/ch03951.itc" chip[32]
+	ED7LoadChip "chr/ch03952.itc" chip[33]
+	ED7LoadChip "chr/ch00050.itc" chip[34]
+	ED7LoadChip "chr/ch00051.itc" chip[35]
+	VisShow vis[0] 234 0 490 256 0 0 512 512 0 0 512 512 0x00FFFFFF 0 "bu10200.itp"
+	SoundLoad sound[3526]
+	SoundLoad sound[3527]
+	SoundLoad sound[3528]
+	SoundLoad sound[3529]
+	SoundLoad sound[3530]
+	SoundLoad sound[4116]
+	CharFlagsUnset field_party[4] 0x0080
+	CharFlags2Unset field_party[4] 0x8000
+	CharFlagsUnset field_party[5] 0x0080
+	CharFlags2Unset field_party[5] 0x8000
+	CharSetPos name[0] (-17000, 0, -4000) 90deg
+	CharSetPos name[5] (-17810, 0, -3210) 90deg
+	CharSetPos name[2] (-18390, 0, -4720) 90deg
+	CharSetPos name[3] (-18930, 0, -3660) 90deg
+	CharSetPos name[6] (-19460, 0, -2370) 90deg
+	CharSetPos name[4] (-19650, 0, -4890) 90deg
+	CharFlagsUnset char[0] 0x0080
+	CharSetChipBase char[0] chip[30]
+	CharSetChipPattern char[0] 0
+	CharFlagsSet char[0] 0x8000
+	CharSetPos char[0] (-4800, 0, -3800) 270deg
+	CharFlagsSet char[0] 0x0008
+	PartySetAttr name[255] 249 0
+	CamSetDistance -13000 1200 -4000 0ms
+	ED7CamRotate 315deg 25deg 0deg 0ms
+	CamPers 600 0ms
+	CamZoom 17500 0ms
+	FadeIn 1000ms 0x00000000
+	CamZoom 16000 2500ms
+	Fork name[0] fork[0]:
+		_94 0 name[0] 0deg 4000 2000mm/s 0
+	Sleep 30ms
+	Fork name[2] fork[0]:
+		_94 0 name[2] 0deg 4000 2000mm/s 0
+	Sleep 30ms
+	Fork name[3] fork[0]:
+		_94 0 name[3] 0deg 4000 2000mm/s 0
+	Sleep 30ms
+	Fork name[4] fork[0]:
+		_94 0 name[4] 0deg 4000 2000mm/s 0
+	Sleep 30ms
+	Fork name[5] fork[0]:
+		_94 0 name[5] 0deg 4000 2000mm/s 0
+	Sleep 30ms
+	Fork name[6] fork[0]:
+		_94 0 name[6] 0deg 4000 2000mm/s 0
+	Sleep 1500ms
+	BgmStop 4000ms
+	Sc_C4Set 2147483648
+	TextTalkNamed char[0] "女孩的聲音" {
+		#1510050001V#1P#12A#30W──請止步。{wait}
+	}
+	TextWait
+	Sc_C4Unset 2147483648
+	Emote name[0] 0mm 2000mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Emote name[2] 0mm 2000mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Sleep 50ms
+	Emote name[3] 0mm 2000mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Emote name[5] 0mm 2000mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Sleep 50ms
+	Emote name[4] 0mm 2000mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Sleep 1000ms
+	CrossFade 500ms
+	CamSetDistance -12500 1000 -4000 0ms
+	ED7CamRotate 48deg 18deg 0deg 0ms
+	CamPers 600 0ms
+	CamZoom 16000 0ms
+	CamSetDistance -11500 1000 -4000 2500ms
+	CamZoom 15200 2500ms
+	CharSetChipPattern name[6] 5
+	CharFlagsUnset char[0] 0x0008
+	_94 0 char[0] 0deg 4000 2000mm/s 0
+	CamWait 121
+	FadeWait
+	TextTalk name[0] {
+		#1510000325V#00005F#6P諾艾兒……！？{wait}
+	}
+	TextWait
+	TextTalk name[2] {
+		#1510020141V#00201F#6P為什麼……？{wait}
+	}
+	TextWait
+	BgmWait
+	Sleep 10ms
+	BgmPlay bgm[575] 0
+	VisSet vis[0] 3 0xFFFFFFFF 500ms 0 0
+	VisSet vis[0] 0 -10000 0 500ms 0
+	VisWait vis[0] 3
+	VisWait vis[0] 0
+	TextSetPos -1 280 35 3
+	Sleep 500ms
+	TextMessage char[0] {
+		#1510050002V……關於各位的動向，
+		國防軍早已掌握到
+		某個程度了。{wait}
+	} {
+		#1510050003V在瑪因茲方面跟反抗軍
+		建立互助體制之後……{wait}
+	} {
+		#1510050004V如果有下一步的行動，
+		我猜應該就是來這裡吧，
+		所以早就開始警戒了。{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	TextSetPos -1 280 60 3
+	VisSet vis[0] 3 0x00FFFFFF 500ms 0 0
+	VisSet vis[0] 0 0 0 500ms 0
+	VisWait vis[0] 3
+	VisWait vis[0] 0
+	TextTalk name[4] {
+		#1510040175V#10406F#6P哎呀……真傷腦筋。{wait}
+	}
+	TextWait
+	TextTalk name[3] {
+		#1510030054V#00301F#6P該說妳真厲害吧……
+		判斷很精確呢，諾艾兒。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#1510050005V#10206F#11P雖然我並不想
+		猜中就是了……{wait}
+	} {
+		#1510050006V#10201F──你們是來找索妮亞司令
+		談話的，對吧？{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#1510000326V#00003F#6P嗯……沒錯。{wait}
+	} {
+		#1510000327V#00001F我們從米蕾優三尉那邊聽說，
+		對國防軍抱持著疑問的人
+		數量並不少。{wait}
+	} {
+		#1510000328V我想知道司令真正的想法，
+		這也是為了突破現狀。{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#1510050007V#10208F#11P…………{wait}
+	}
+	TextWait
+	TextTalk name[2] {
+		#1510020142V#00206F#6P諾艾兒小姐……
+		芙蘭小姐目前跟我們
+		一起行動。{wait}
+	} {
+		#1510020143V#00201F她已經恢復精神了……
+		也很想跟諾艾兒小姐見面。{wait}
+	}
+	TextWait
+	TextTalk name[3] {
+		#1510030055V#00306F#6P我不會要求妳變節，但是……{wait}
+	} {
+		#1510030056V#00300F至少留下一點商量的空間，
+		這樣比較好吧？{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#1510050008V#10203F#11P即使如此……{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	CrossFade 250ms
+	SoundPlay sound[531] 0 100 0
+	CamZoom 15000 0ms
+	CharSetChipBase char[0] chip[33]
+	CharSetChipPattern char[0] 0
+	ED7CharAnimation char[0] 1500ms 0 1 2 3 4
+	FadeWait
+	Emote name[0] 0mm 2000mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Emote name[5] 0mm 2000mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Sleep 50ms
+	Emote name[2] 0mm 2000mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Emote name[3] 0mm 2000mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Sleep 50ms
+	Emote name[4] 0mm 2000mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Sleep 1000ms
+	TextTalk char[0] {
+		#1510050009V#10201F#11P即使如此，我也不能
+		讓各位再往前一步。{wait}
+	} {
+		#1510050010V身為國防軍的士兵……{wait}
+	} {
+		#1510050011V我不能放任反抗
+		國家的勢力潛入。{wait}
+	}
+	TextWait
+	TextTalk name[5] {
+		#1510180092V#10708F#6P諾艾兒……{wait}
+	}
+	TextWait
+	TextTalk name[4] {
+		#1510040176V#10406F#6P……傷腦筋。
+		妳真的很死腦筋呢。{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#1510000329V#00001F#6P…………{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#1510050012V#10206F#11P請各位回去吧。{wait}
+	} {
+		#1510050013V趁現在的話……
+		我還可以當作沒這回事。{wait}
+	} {
+		#1510050014V#10208F就算總有一天
+		不得不敵對……{wait}
+	} {
+		#1510050015V#10213F……至少現在……{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#1510000330V#00004F#6P──妳太天真了，諾艾兒。{wait}
+	}
+	TextWait
+	Emote char[0] 0mm 2000mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Sleep 1000ms
+	Shake 50 0 2000 200ms
+	TextTalk char[0] {
+		#1510050016V#10205F#11P……！？{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	CamSetDistance -10390 1000 -3670 1000ms
+	_94 0 name[0] 0deg 800 1000mm/s 0
+	CamWait 121
+	TextTalk name[0] {
+		#1510000331V#00001F#6P如果妳真想貫徹軍人的立場，
+		大可不必說這種話。{wait}
+	} {
+		#1510000332V只要下令把我們包圍起來，
+		然後解除我們的武裝就行了。{wait}
+	} {
+		#1510000333V#00006F但是，妳卻說出這種感傷的話，
+		還打算讓我們自行離去……{wait}
+	} {
+		#1510000334V#00013F就憑妳這種天真的想法，還以為
+		自己真的#4R・　・#是在為國犧牲嗎？{wait}
+	}
+	TextWait
+	TextTalk char[0] {
+		#1510050017V#10210F#11P……嗚……{wait}
+	}
+	TextWait
+	TextTalk name[5] {
+		#1510180093V#10708F#6P羅伊德……{wait}
+	}
+	TextWait
+	TextTalk name[4] {
+		#1510040177V#10404F#6P#N哈哈……
+		從沒聽你說過這麼狠的話。{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	TextTalk name[0] {
+		#1510000335V#00003F#6P我就直說了──
+		諾艾兒，妳變軟弱了。{wait}
+	} {
+		#1510000336V因為妳無法再維持
+		沒有任何欺騙、全力以赴的狀態。{wait}
+	} {
+		#1510000337V#00000F如果是現在的妳……
+		就算不是軍人的我也能戰勝妳。{wait}
+	}
+	TextWait
+	Sleep 100ms
+	CrossFade 250ms
+	CamZoom 14750 500ms
+	SoundPlay sound[805] 0 100 0
+	CharSetChipBase name[0] chip[34]
+	CharSetChipPattern name[0] 0
+	FadeWait
+	Emote char[0] 0mm 2000mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Sleep 50ms
+	Emote name[2] 0mm 2000mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Emote name[5] 0mm 2000mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Sleep 50ms
+	Emote name[3] 0mm 2000mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Emote name[4] 0mm 2000mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Sleep 1000ms
+	TextTalk char[0] {
+		#1510050018V#10211F#11P！？{wait}
+	}
+	TextWait
+	TextTalk name[2] {
+		#1510020144V#00205F#6P#N羅、羅伊德前輩？{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	TextTalk name[3] {
+		#1510030057V#00307F#6P喂喂喂，你在做什麼……{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#1510000338V#00004F#6P──妳可以自由攜帶武裝。
+		由我一個人來對付妳。{wait}
+	} {
+		#1510000339V如果妳贏了，把我們全部都
+		抓起來也無所謂。{wait}
+	} {
+		#1510000340V#00013F相對地──
+		如果我贏了，妳就是我的人了#14R・　・　・　・　・　・　・#。{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	CrossFade 150ms
+	CharSetChipBase char[0] chip[31]
+	CharSetChipPattern char[0] 0
+	FadeWait
+	Sc_C4Set 2147483648
+	Shake 50 0 2000 200ms
+	TextTalk char[0] {
+		#1510050019V#10205F#11P#10A#30W#4S咦？{wait}
+	}
+	TextWait
+	Emote char[0] 0mm 2000mm 24 27 250ms 0
+	Sleep 1300ms
+	EmoteStop name[65278]
+	Sleep 300ms
+	Emote char[0] 0mm 2000mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Sleep 1000ms
+	Emote char[0] 0mm 2000mm 40 43 100ms 3
+	CrossFade 150ms
+	CharSetChipBase char[0] chip[33]
+	CharSetChipPattern char[0] 1
+	Fork char[0] fork[2]:
+		CharShake self 0 30 500 3000ms
+	CharFlagsSet char[0] 0x0020
+	_94 1 char[0] 0deg -300 1000mm/s 0
+	CharFlagsUnset char[0] 0x0020
+	ForkWait char[0] fork[2]
+	FadeWait
+	Shake 100 0 3000 800ms
+	TextTalk char[0] {
+		#1510050020V#10214F#11P#20A#100W你、你到底在說什麼……！？{wait}
+	}
+	TextWait
+	Sc_C4Unset 2147483648
+	Sleep 300ms
+	TextTalk name[0] {
+		#1510000341V#00006F#6P我實在看不下去了。{wait}
+	} {
+		#1510000342V#00008F妳一直待在一個
+		無法做自己的地方……{wait}
+	} {
+		#1510000343V#00013F身為妳的夥伴，
+		我無法再繼續放著妳不管。{wait}
+	} {
+		#1510000344V#00007F我們來一決勝負吧──
+		諾艾兒・希卡少尉！{wait}
+	}
+	TextWait
+	CrossFade 150ms
+	CharSetChipBase char[0] chip[31]
+	CharSetChipPattern char[0] 0
+	FadeWait
+	TextTalk char[0] {
+		#1510050021V#10210F#11P#6A唔……！{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	SoundPlay sound[809] 0 70 0
+	CamSetDistance -9600 1000 -3670 1000ms
+	CharJump char[0] 1000 0 0 300 4000mm/s
+	CrossFade 250ms
+	SoundPlay sound[531] 0 100 0
+	CharSetChipBase char[0] chip[33]
+	CharSetChipPattern char[0] 0
+	ED7CharAnimation char[0] 1500ms 0 1 2 3 4
+	FadeWait
+	Sleep 500ms
+	CrossFade 500ms
+	CamSetDistance -12500 1000 -4000 0ms
+	ED7CamRotate 48deg 18deg 0deg 0ms
+	CamPers 600 0ms
+	CamZoom 16000 0ms
+	FadeWait
+	Emote name[5] 0mm 2000mm 16 19 250ms 1
+	SoundPlay sound[23] 0 100 0
+	Emote name[2] 0mm 2000mm 16 19 250ms 1
+	SoundPlay sound[23] 0 100 0
+	Emote name[3] 0mm 2000mm 16 19 250ms 1
+	SoundPlay sound[23] 0 100 0
+	Emote name[6] 400mm 1900mm 16 19 250ms 1
+	Emote name[4] 0mm 2000mm 16 19 250ms 1
+	SoundPlay sound[23] 0 100 0
+	Sleep 1000ms
+	BgmStop 4000ms
+	TextTalk name[3] {
+		#1510030058V#00306F#6P（喂喂喂……！
+		　還可以這樣的嗎！？）{wait}
+	}
+	TextWait
+	TextTalk name[2] {
+		#1510020145V#00211F#6P（……實在太誇張了。）{wait}
+	}
+	TextWait
+	TextTalk name[5] {
+		#1510180094V#10709F#6P（……呃……）{wait}
+	}
+	TextWait
+	TextTalk name[4] {
+		#1510040178V#10402F#6P（嗯，他該不會有什麼
+		　特異功能吧……？）{wait}
+	}
+	TextWait
+	TextTalk name[6] {
+		#1510120085V#01203F#3C#6P（呵呵，的確。）{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	BgmWait
+	Sleep 10ms
+	CrossFade 500ms
+	BgmPlay bgm[452] 0
+	CamSetDistance -9630 1000 -3450 0ms
+	ED7CamRotate 325deg 23deg 0deg 0ms
+	CamPers 600 0ms
+	CamZoom 15000 0ms
+	CamSetDistance -9630 1000 -3450 13000ms
+	ED7CamRotate 49deg 18deg 0deg 13000ms
+	CamPers 600 13000ms
+	CamZoom 15000 13000ms
+	Sleep 500ms
+	Sc_C4Set 2147483648
+	TextTalk char[0] {
+		#1510050022V#10210F#11P#30A#30W──好啊！
+		我也不能輸！{wait}
+	}
+	TextWait
+	Sleep 300ms
+	Shake 100 0 3000 300ms
+	TextTalk char[0] {
+		#1510050023V#10207F#4S#11P#25A一決高下吧！
+		羅伊德・班寧斯搜查官！{wait}
+	}
+	TextWait
+	SoundStop sound[3530]
+	Sleep 300ms
+	Shake 100 0 3000 300ms
+	SoundPlay sound[1510000345] 255 100 0
+	TextTalk name[0] {
+		#00007F#4S#6P#20A好！放馬過來！{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	Sleep 500ms
+	Sc_C4Unset 2147483648
+	CamZoom 5000 1000ms
+	BlurOn 0ms 0xBBFFFFFF 0 0 0
+	CharSetChipBase name[0] chip[35]
+	CharSetChipPattern name[0] 0
+	CharSetChipBase char[0] chip[32]
+	CharSetChipPattern char[0] 0
+	CharFlagsSet name[0] 0x1000
+	Fork name[0] fork[1]:
+		_94 0 self 0deg 2000 4000mm/s 0
+	Fork char[0] fork[1]:
+		_94 0 self 0deg 2000 4000mm/s 0
+	Sleep 300ms
+	ForkQuit name[0] fork[1]
+	ForkQuit char[0] fork[1]
+	CharFlagsUnset name[0] 0x1000
+	CharFlags2Set name[5] 0x0008
+	CharFlags2Set name[2] 0x0008
+	CharFlags2Set name[3] 0x0008
+	CharFlags2Set name[4] 0x0008
+	CharFlags2Set name[6] 0x0008
+	ED7Battle battle[0] null 0 0 34 null
+	FadeOut 0ms 0x00000000 255
+	CharFlags2Unset name[5] 0x0008
+	CharFlags2Unset name[2] 0x0008
+	CharFlags2Unset name[3] 0x0008
+	CharFlags2Unset name[4] 0x0008
+	CharFlags2Unset name[6] 0x0008
+	VisHide vis[255] 0
+	Call fn[0,5]
+	Return
+
+fn[5]:
+	EventBegin 0
+	FadeOut 0ms 0x00000000 255
+	ED7LoadChip "chr/ch03900.itc" chip[30]
+	ED7LoadChip "chr/ch12200.itc" chip[31]
+	ED7LoadChip "chr/ch03953.itc" chip[32]
+	ED7LoadChip "chr/ch00050.itc" chip[33]
+	VisShow vis[0] 234 0 490 256 0 0 512 512 0 0 512 512 0x00FFFFFF 0 "bu10600.itp"
+	CharFlagsUnset field_party[4] 0x0080
+	CharFlags2Unset field_party[4] 0x8000
+	CharFlagsUnset field_party[5] 0x0080
+	CharFlags2Unset field_party[5] 0x8000
+	CharSetPos name[0] (-11000, 0, -4000) 90deg
+	CharSetPos name[5] (-13810, 0, -3210) 90deg
+	CharSetPos name[2] (-14390, 0, -4720) 90deg
+	CharSetPos name[3] (-14930, 0, -3660) 90deg
+	CharSetPos name[6] (-15460, 0, -2370) 90deg
+	CharSetPos name[4] (-15650, 0, -4890) 90deg
+	CharSetChipBase name[0] chip[33]
+	CharSetChipPattern name[0] 0
+	ForkFunc name[0] fork[0] fn[0,6]
+	CharFlagsUnset char[0] 0x0080
+	CharSetChipBase char[0] chip[32]
+	CharSetChipPattern char[0] 3
+	CharFlagsSet char[0] 0x8000
+	CharSetPos char[0] (-8000, 0, -4000) 270deg
+	CharFlagsUnset char[1] 0x0080
+	CharSetChipBase char[1] chip[31]
+	CharSetChipPattern char[1] 0
+	CharFlagsSet char[1] 0x8000
+	CharSetPos char[1] (0, 0, 5000) 180deg
+	CharFlagsSet char[1] 0x0008
+	CamSetDistance -9500 1000 -4000 0ms
+	ED7CamRotate 48deg 23deg 0deg 0ms
+	CamPers 600 0ms
+	CamZoom 13000 0ms
+	FadeIn 1000ms 0x00000000
+	CamZoom 14000 2500ms
+	CamWait 121
+	FadeWait
+	TextTalk name[0] {
+		#1510000346V#00015F#40W#6P呼……呼……！{wait}
+	} {
+		#1510000347V#00000F#30W……我……我贏了。{wait}
+	}
+	TextWait
+	Fork char[0] fork[2]:
+		CharShake self 0 30 400 2000ms
+	ForkWait char[0] fork[2]
+	Sleep 500ms
+	TextTalk char[0] {
+		#1510050024V#10206F#40W#11P……唔……
+		嗚嗚……{wait}
+	} {
+		#1510050025V#10208F……抱歉……
+		……索妮亞司令……{wait}
+	}
+	TextWait
+	CharFlagsUnset char[1] 0x0008
+	TextTalkNamed char[1] "女子的聲音" {
+		#1510200001V#12P──妳無須道歉。{wait}
+	}
+	TextWait
+	Emote char[0] 0mm 1700mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Sleep 50ms
+	Emote name[0] 0mm 2000mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Emote name[2] 0mm 2000mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Sleep 50ms
+	Emote name[5] 0mm 2000mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Emote name[3] 0mm 2000mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Sleep 50ms
+	Emote name[4] 0mm 2000mm 2 7 80ms 1
+	SoundPlay sound[28] 0 100 0
+	Sleep 1000ms
+	CrossFade 500ms
+	CamSetDistance 0 1000 1500 0ms
+	ED7CamRotate 48deg 23deg 0deg 0ms
+	CamPers 600 0ms
+	CamZoom 15000 0ms
+	CamZoom 14000 2500ms
+	_94 0 char[1] 0deg 3500 2000mm/s 0
+	CharTurnToChar char[1] char[0] 500deg/s
+	CamWait 121
+	FadeWait
+	TextTalk name[0] {
+		#1510000348V#00005F#6P#N啊……{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	TextTalk char[0] {
+		#1510050026V#10213F#30W#6P#N司、司令……{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	TextTalk name[3] {
+		#1510030059V#00307F#6P#N咦咦……！？{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	TextTalk name[6] {
+		#1510120086V#01200F#3C#6P#N嗯，原來妳早就發現了啊。{wait}
+	}
+	TextWait
+	CamSetDistance -500 1000 1300 3000ms
+	Fork char[1] fork[1]:
+		_94 0 self 8deg 8800 2000mm/s 0
+	Sleep 1500ms
+	CrossFade 500ms
+	CamSetDistance -9550 1000 -3150 0ms
+	ED7CamRotate 48deg 20deg 0deg 0ms
+	CamPers 600 0ms
+	CamZoom 15000 0ms
+	CamZoom 13500 3000ms
+	ForkQuit name[0] fork[0]
+	CharTurnTo name[0] 45deg 0deg/s
+	Sleep 800ms
+	CrossFade 150ms
+	CharSetChipBase name[0] chip[255]
+	CharSetChipPattern name[0] 0
+	FadeWait
+	CharTurnTo name[0] 45deg 500deg/s
+	CamWait 121
+	FadeWait
+	ForkWait char[1] fork[1]
+	VisSet vis[0] 3 0xFFFFFFFF 500ms 0 0
+	VisSet vis[0] 0 -10000 0 500ms 0
+	VisWait vis[0] 3
+	VisWait vis[0] 0
+	TextSetPos -1 280 35 3
+	Sleep 500ms
+	TextMessage char[1] {
+		#1510200002V你們戰鬥的聲音，
+		連樓上都聽得到喔！{wait}
+	} {
+		#1510200003V我姑且把其他人都支開了。{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	TextSetPos -1 280 60 3
+	VisSet vis[0] 3 0x00FFFFFF 500ms 0 0
+	VisSet vis[0] 0 0 0 500ms 0
+	VisWait vis[0] 3
+	VisWait vis[0] 0
+	TextTalk name[0] {
+		#1510000349V#00006F#6P不、不好意思……{wait}
+	}
+	TextWait
+	TextTalk name[2] {
+		#1510020146V#00202F#6P#N……好久不見。
+		索妮亞司令。{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	TextTalk char[1] {
+		#1510200004V#10602F#11P是啊，真的很久不見。{wait}
+	} {
+		#1510200005V#10606F雖然我知道你們是
+		為了什麼而來，不過……{wait}
+	} {
+		#1510200006V#10600F總之，先到我的房間來，
+		我再聽你們說明吧。{wait}
+	}
+	TextWait
+	FadeOut 1000ms 0x00000000 255
+	CamZoom 13300 1000ms
+	CamWait 121
+	FadeWait
+	BgmStop 4000ms
+	BgmWait
+	VisHide vis[255] 0
+	FlagSet flag[272]
+	NewScene "scena/t2020.bin" 0 0 0
+	Hcf
+	Return
+
+fn[6]:
+	while 1:
+		ED7CharAnimation self 800ms 0 1 2 1 0 3 4 3
+	Return
+
+fn[7]:
+	EventBegin 0
+	CrossFade 500ms
+	CamSetDistance 21050 720 -4390 0ms
+	ED7CamRotate 323deg 33deg 0deg 0ms
+	CamPers 600 0ms
+	CamZoom 15640 0ms
+	CharSetPos name[0] (20740, 0, -3990) 90deg
+	CharSetPos name[1] (20620, -890, -4950) 90deg
+	CharSetPos name[2] (19290, 0, -3680) 90deg
+	CharSetPos name[3] (20630, -1840, -5960) 90deg
+	CharSetPos name[8] (19070, -750, -4810) 90deg
+	CharSetPos name[4] (19080, -1810, -5930) 90deg
+	CharFlagsUnset field_party[4] 0x0080
+	CharFlags2Unset field_party[4] 0x8000
+	CharFlagsUnset field_party[5] 0x0080
+	CharFlags2Unset field_party[5] 0x8000
+	FadeWait
+	TextTalk name[0] {
+		#5P#00005F居、居然在這種地方……！{wait}
+	}
+	TextWait
+	TextTalk name[8] {
+		#5P#10103F卡片上寫的『從西方衛士們腳下
+		通過的鋼鐵之道』……{wait}
+	} {
+		#10100F指的原來是鎮守西側國界的
+		貝爾加德門地下的貨物路線月台啊。{wait}
+	}
+	TextWait
+	TextTalk name[4] {
+		#6P#10304F總之，在這裡似乎也
+		沒辦法開啟行李箱。{wait}
+	} {
+		#10302F先把它搬到那邊的月台上吧？{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#11P#00000F嗯，我們小心搬運吧。{wait}
+	}
+	TextWait
+	FadeOut 1000ms 0x00000000 255
+	FadeWait
+	CamSetDistance -28050 1300 -26470 0ms
+	ED7CamRotate 303deg 35deg 0deg 0ms
+	CamPers 600 0ms
+	CamZoom 13840 0ms
+	ED7_78 object[1] char[3]
+	CharSetPos char[3] (-29850, 0, -26100) 0deg
+	Sc_D1 char[3] 0 -90000 0 0ms
+	CharSetPos name[0] (-28270, 0, -26080) 270deg
+	CharSetPos name[1] (-28200, 0, -27310) 270deg
+	CharSetPos name[2] (-28200, 0, -24750) 270deg
+	CharSetPos name[3] (-27050, 0, -26080) 270deg
+	CharSetPos name[8] (-27050, 0, -27310) 270deg
+	CharSetPos name[4] (-27050, 0, -24750) 270deg
+	ED7LoadChip "apl/ch51099.itc" chip[30]
+	CharSetChipBase char[2] chip[30]
+	CharSetChipPattern char[2] 8
+	CharSetPos char[2] (-29850, 150, -26100) 0deg
+	char[2].45 = 450
+	char[2].46 = 450
+	char[2].47 = 450
+	CharFlagsUnset char[2] 0x0080
+	CharFlagsSet char[2] 0x0002
+	CharFlagsSet char[2] 0x0010
+	CharFlagsSet char[2] 0x0020
+	CharColor char[2] 0x00FFFFFF 0ms
+	VisShow vis[0] 112 8 368 264 0 0 256 256 0 0 256 256 0x00FFFFFF 0 "c_vis348.itp"
+	Sleep 1000ms
+	FadeIn 1000ms 0x00000000
+	FadeWait
+	SoundPlay sound[1024] 0 100 0
+	ED7_74 object[1] 0 30
+	ED7ObjPlay object[1] 1 20 1 8
+	CharColor char[2] 0xFFFFFFFF 500ms
+	ObjWait object[1]
+	Sleep 1000ms
+	TextSetName ""
+	TextMessage null {
+		{color 5}行李箱內側
+		貼了一張卡片。{color 0}{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	SoundPlay sound[18] 0 100 0
+	VisSet vis[0] 3 0xFFFFFFFF 500ms 0 0
+	VisSet vis[0] 0 0 -10000 500ms 0
+	VisWait vis[0] 3
+	VisWait vis[0] 0
+	Sleep 500ms
+	TextSetPos -1 140 -1 -1
+	TextSetName ""
+	TextMessage null {
+		{color 5}最後的牢籠在市內。
+		巍然聳立的摩天大樓，
+		從最高層十六樓往下二十層，
+		尋找眾多窺探異界之窗。{color 0}{wait}
+	}
+	TextWait
+	TextClose 0
+	_59
+	TextSetPos -1 280 60 3
+	VisSet vis[0] 3 0x00FFFFFF 500ms 0 0
+	VisSet vis[0] 0 0 0 500ms 0
+	VisWait vis[0] 3
+	VisWait vis[0] 0
+	TextTalk name[1] {
+		#6P#00100F絕對沒錯，這應該就是
+		貝爾曾經稱之為
+		『雪倫』的人偶。{wait}
+	}
+	TextWait
+	TextTalk name[3] {
+		#12P#00303F這是第四個……
+		還剩下一個啊。{wait}
+	}
+	TextWait
+	TextTalk name[2] {
+		#12P#00200F問題是卡片上所寫的
+		最後一個人偶的位置呢。{wait}
+	}
+	TextWait
+	TextTalk name[8] {
+		#6P#10103F在『市內』的『巍然聳立的摩天大樓』……
+		是指非常高的建築物對吧。{wait}
+	} {
+		#10101F該不會是那座蘭花塔……？{wait}
+	}
+	TextWait
+	TextTalk name[1] {
+		#6P#00103F嗯，可是我聽說蘭花塔
+		地面上有四十層……{wait}
+	} {
+		#00100F和卡片上寫的
+		『最高層十六樓』不符合，
+		應該不會是那裡吧。{wait}
+	} {
+		#00106F『從最高層十六樓往下二十層』，
+		這句話也很矛盾呢……{wait}
+	}
+	TextWait
+	TextTalk name[4] {
+		#12P#10300F那裡可能就是
+		謎題的重點呢。{wait}
+	} {
+		#10304F還有，『眾多窺探異界之窗』……
+		似乎也有必要思考
+		這個指的是什麼。{wait}
+	}
+	TextWait
+	TextTalk name[0] {
+		#12P#00003F和之前一樣，
+		我想是某個東西的比喻。{wait}
+	} {
+		#00000F我們一邊思考謎題的含意，
+		一邊在市內尋找吧。{wait}
+	}
+	TextWait
+	FadeOut 1000ms 0x00000000 255
+	FadeWait
+	SoundPlay sound[17] 0 100 0
+	TextSetPos -1 -1 -1 -1
+	TextSetName ""
+	TextMessage null {
+		已取得『{color 2}#16I羅贊貝爾克人偶・Ｓ{color 0}』。{wait}
+	}
+	TextWait
+	TextClose 0
+	TextSetPos -1 280 60 3
+	_59
+	ItemAdd item[824] 1
+	ObjFlagsSet object[1] 0x0004
+	CharFlagsSet char[2] 0x0080
+	UnloadChip chip[30]
+	CharSetPos field_party[0] (-27660, 0, -26170) 270deg
+	CharFlagsSet field_party[4] 0x0080
+	CharFlags2Set field_party[4] 0x8000
+	CharFlagsSet field_party[5] 0x0080
+	CharFlags2Set field_party[5] 0x8000
+	FlagSet flag[2748]
+	QuestTaskSet quest[122] 5
+	LookPointFlagsSet look_point[0] 0x0001
+	EventEnd 5
+	Return
+
+fn[8]:
+	EventBegin 1
+	if !flag[3328]:
+		TextTalk name[0] {
+			#00000F繼續走在鐵軌上會有危險。
+			還是先回頭吧。{wait}
+		}
+		TextWait
+	else:
+		TextTalk name[0] {
+			#00001F……再過去是加雷利亞要塞。
+			無法再繼續前進了。{wait}
+		}
+		TextWait
+	_59
+	if field_party[0].3 < -14500:
+		CharSetPos field_party[0] (-34000, -2220, -18820) 90deg
+	else:
+		CharSetPos field_party[0] (-34000, -2220, -10970) 90deg
+	EventEnd 4
+	Return
+
+fn[9]:
+	EventBegin 1
+	TextTalk name[0] {
+		#00000F繼續走在鐵軌上會有危險。
+		還是先回頭吧。{wait}
+	}
+	TextWait
+	_59
+	if field_party[0].3 < -14500:
+		CharSetPos field_party[0] (27940, -2220, -18600) 270deg
+	else:
+		CharSetPos field_party[0] (28100, -2220, -10060) 270deg
+	EventEnd 4
+	Return
