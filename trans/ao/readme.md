@@ -1,8 +1,8 @@
-# 《The Legend of Heroes: Trails from Zero》NISA版汉化补丁
+# 《The Legend of Heroes: Trails to Azure》NISA版汉化补丁
 
 ## 【简介】
-本补丁为PC平台上NISA版《英雄传说 零之轨迹》通过HOOK技术提供了中文支持。  
-补丁中的绝大部分文本与图片资源移植自云豹版《零之轨迹：改》官方中文，并使用OpenCC对文本转简处理。  
+本补丁为PC平台上NISA版《英雄传说 碧之轨迹》通过HOOK技术提供了中文支持。  
+补丁中的绝大部分文本与图片资源移植自云豹版《碧之轨迹：改》官方中文，并使用OpenCC对文本转简处理。  
 
 > 如在游戏中遇到任何BUG、文本错误或有相关建议，欢迎反馈。  
 
@@ -12,9 +12,9 @@
 **Q：为什么不移植欢乐百世文本？**  
 A：现官方轨迹发行商是云豹，云豹版的图片、影片资源更加高清。如果有朋友想要移植欢乐百世版本的文本，我可以提供部分帮助。
 
-**Q：「更多头像Zero」MOD是什么？**  
-A：这是外网 shinkiseki 制作的MOD，在游戏中添加了晓之轨迹、碧之轨迹和原创的头像、立绘。
-汉化版本为 v1.5.1（2025-12-10发布），详情请参阅：[MorePortraitsInZero](https://github.com/shinkiseki/MorePortraitsInZero)
+**Q：「更多头像Azure」MOD是什么？**  
+A：这是外网 shinkiseki 制作的MOD，在游戏中添加了晓之轨迹和原创的头像、立绘。
+汉化版本为 v1.4.5（2026-1-8发布），详情请参阅：[MorePortraitsInAzure](https://github.com/shinkiseki/MorePortraitsInAzure)
 
 **Q：没有添加EVO的独占任务吗？**  
 A：没有，不过如果有朋友愿意制作MOD的话，我可以提供部分帮助。
@@ -43,19 +43,19 @@ A：使用兼容补丁，详情见【下载安装】的【兼容补丁】。
 度盘：https://pan.baidu.com/s/1PlC0dYKd6b6EbBuUY5HRQw?pwd=6666 
 
 **安装方法：**  
-1. 将下载的 `零轨汉化补丁.zip` 解压至游戏目录（即 `zero.exe` 所在目录）。  
-2. 将下载的 `零轨汉化补丁资源包.zip` 解压至游戏目录下。  
+1. 将下载的 `碧轨汉化补丁.zip` 解压至游戏目录（即 `ao.exe` 所在目录）。  
+2. 将下载的 `碧轨汉化补丁资源包.zip` 解压至游戏目录下。  
 
 **兼容补丁**：
-修改游戏主程序后的高兼容模式，汉化失败或steamdeck玩家可使用，主程序修改版本为`v1.4.13`。  
+修改游戏主程序后的高兼容模式，汉化失败或steamdeck玩家可使用，主程序修改版本为`v1.1.19`。  
 1. 正常安装汉化补丁。
-2. 备份`zero.exe`原文件。
+2. 备份`ao.exe`原文件。
 3. 将`兼容补丁`目录中的文件复制并覆盖到游戏目录。
 4. 删除游戏目录下的`dxgi.dll`文件。
 
 **可选安装：**
 - **更换字体**：完成上述步骤后，将对应字体的压缩包中的`font.itf`文件替换掉`游戏\data_cn\system\fontdat`目录中的`font.itf`。
-- **安装「更多头像Zero」MOD**：完成上述步骤后，将下载的MOD压缩包解压并覆盖游戏目录。
+- **安装「更多头像Azure」MOD**：完成上述步骤后，将下载的MOD压缩包解压并覆盖游戏目录。
 
 **卸载方法：**  
 仅需删除游戏目录下的 `data_cn` 文件夹和 `dxgi.dll` 文件。
@@ -64,8 +64,6 @@ A：使用兼容补丁，详情见【下载安装】的【兼容补丁】。
 
 ## 【制作人员】
 - Jelly
-- 黄昏浅蓝
-- KloseRinz
 
 ---
 
@@ -89,30 +87,18 @@ GitHub：[https://github.com/J31why/zeroTool](https://github.com/J31why/zeroTool
 
 ## 【免责声明】
 
-* 本补丁为《The Legend of Heroes: Trails from Zero》的中文支持插件，由爱好者制作，**免费发布**。
-* 本补丁使用的文本与图片资源绝大部分移植自官方发行的云豹版《零之轨迹：改》，其**版权归原权利人所有**（Falcom/NISA/云豹）。
+* 本补丁为《The Legend of Heroes: Trails to Azure》的中文支持插件，由爱好者制作，**免费发布**。
+* 本补丁使用的文本与图片资源绝大部分移植自官方发行的云豹版《碧之轨迹：改》，其**版权归原权利人所有**（Falcom/NISA/云豹）。
 * 本补丁仅为学习与研究目的发布，**不提供任何保证和担保**，使用者需自行承担风险。
 * **严禁任何商业用途**。若权利方认为存在侵权，请联系处理。请支持官方正版游戏。
 
 ---
 
 ## 【官方链接】
-* [Steam](https://store.steampowered.com/app/1668510/The_Legend_of_Heroes_Trails_from_Zero/)
-* [GOG](http://www.gog.com/game/the_legend_of_heroes_trails_from_zero)
+* [Steam](https://store.steampowered.com/app/1668520/The_Legend_of_Heroes_Trails_to_Azure/)
+* [GOG](https://www.gog.com/game/the_legend_of_heroes_trails_to_azure)
 
 ---
-
 ## 【发布日志】
-**V1.2（2026/2/11）**  
-修复：补全了一条遗漏的对话框高度控制地址。
-修复文本：`Record`中空羁绊点数显示不正常、钓鱼文本显示日文，（`mess_strings`）。
-修复文本：重新对异体字进行了一遍校对，但太零散了，可能还有遗漏，之后不会再主动校对了。
-
-**V1.1（2026/2/4）**  
-新增：增加对话框高度，避免`AUTO`与对话文本重叠。  
-新增：兼容补丁。  
-优化：重定向文件代码优化。  
-修复原版BUG：第一章医院调查狼形魔兽踪迹，两处调查地点对话后人物会卡住，原版中按下加速后可恢复正常，现已修复（`t1600.bin`）。  
-
-**V1.0（2026/1/28）：**  
+**V1.0（2026/2/11）**  
 首次发布。
