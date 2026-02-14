@@ -100,5 +100,8 @@ GitHub：[https://github.com/J31why/zeroTool](https://github.com/J31why/zeroTool
 
 ---
 ## 【发布日志】
+**V1.1**
+修复文本：以`《第一批异形词整理表》`和`《第二批异形词整理表》`为基础校对异体词，之后不会再主动修正了。
+
 **V1.0（2026/2/11）**  
 首次发布。
