@@ -91,6 +91,12 @@ public partial class CalmareCodec
         using var br = new BinaryReader(new MemoryStream(binData));
         ReplaceFns(ref binData, br, holderCodec, encoding);
         ReplaceNames(ref binData, br, holderCodec, encoding);
+
+        if(Path.GetFileNameWithoutExtension(outPath) == "t4030")
+        {
+            binData[0xb8] = 0xe5;
+        }
+        
         File.WriteAllBytes(binFile, binData);
         File.Delete(outPath);
         return true;
