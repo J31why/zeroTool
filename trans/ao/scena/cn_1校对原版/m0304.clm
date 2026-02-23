@@ -1,4 +1,4 @@
-calmare zero_k scena
+calmare ao_k scena
 scena:
 	name "m0304" "m0304" "m0304"
 	town town[0]
@@ -114,14 +114,14 @@ fn[4]:
 	CharSetPos name[1] (1100, 0, -10650) 0deg
 	CharSetPos name[2] (-1100, 0, -10650) 0deg
 	CharSetPos name[3] (0, 0, -10650) 0deg
-	CharSetPos party[6] (-1100, 0, -10650) 0deg
-	CharSetPos party[7] (1100, 0, -10650) 0deg
+	CharSetPos custom[0] (-1100, 0, -10650) 0deg
+	CharSetPos custom[1] (1100, 0, -10650) 0deg
 	CharColor name[0] 0x00FFFFFF 0ms
 	CharColor name[1] 0x00FFFFFF 0ms
 	CharColor name[2] 0x00FFFFFF 0ms
 	CharColor name[3] 0x00FFFFFF 0ms
-	CharColor party[6] 0x00FFFFFF 0ms
-	CharColor party[7] 0x00FFFFFF 0ms
+	CharColor custom[0] 0x00FFFFFF 0ms
+	CharColor custom[1] 0x00FFFFFF 0ms
 	CharFlagsUnset field_party[4] 0x0080
 	CharFlags2Unset field_party[4] 0x8000
 	CharFlagsUnset field_party[5] 0x0080
@@ -303,16 +303,16 @@ fn[4]:
 	Fork name[3] fork[2]:
 		CharColor self 0xFFFFFFFF 800ms
 	Sleep 100ms
-	Fork party[6] fork[1]:
+	Fork custom[0] fork[1]:
 		_Char90 self 0 0 2500 2000 0
-	Fork party[6] fork[2]:
+	Fork custom[0] fork[2]:
 		CharColor self 0xFFFFFFFF 800ms
 	Sleep 100ms
-	Fork party[7] fork[1]:
+	Fork custom[1] fork[1]:
 		_Char90 self 0 0 2500 2000 0
-	Fork party[7] fork[2]:
+	Fork custom[1] fork[2]:
 		CharColor self 0xFFFFFFFF 800ms
-	ForkWait party[7] fork[1]
+	ForkWait custom[1] fork[1]
 	TextTalk char[0] {
 		#5P哈哈，果然是你們。{wait}
 	}
@@ -339,12 +339,12 @@ fn[4]:
 	Fork name[3] fork[1]:
 		_Char90 self 0 0 5500 2000 0
 	Sleep 50ms
-	Fork party[6] fork[1]:
+	Fork custom[0] fork[1]:
 		_Char90 self 0 0 5500 2000 0
 	Sleep 50ms
-	Fork party[7] fork[1]:
+	Fork custom[1] fork[1]:
 		_Char90 self 0 0 5500 2000 0
-	ForkWait party[7] fork[1]
+	ForkWait custom[1] fork[1]
 	CamWait 121
 	TextTalk name[0] {
 		#12P#00001F嗯，我們也是。{wait}
