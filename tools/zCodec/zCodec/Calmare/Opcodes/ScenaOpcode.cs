@@ -114,6 +114,9 @@ public abstract partial class ScenaOpcode
             case nameof(CharSetName):
                 scenaOpcode = new CharSetName(text);
                 return true;
+            case nameof(ED7_76_2):
+                scenaOpcode = new ED7_76_2(text);
+                return true;
         }
 
         scenaOpcode = null;

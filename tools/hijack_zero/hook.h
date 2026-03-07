@@ -20,6 +20,7 @@ namespace hook {
 	typedef int64_t(__fastcall* sjis2utf8_t)(char* output, uint8_t* input, int64_t max_output, int32_t* _pTable);
 	typedef int64_t(__fastcall* utf82sjis_t)(char* output, uint8_t* input, int64_t max_output);
 	typedef int32_t(__fastcall* loadNoteHelpKey_posMap_t)();
+	typedef int64_t(__fastcall* SwitchFrameLimit_t)(int64_t a1, uint32_t a2);
 	typedef bool(__fastcall* WebMPlayerOpen_t)(int64_t h, char* file);
 	typedef HANDLE(WINAPI* CreateFileA_t)(LPCSTR, DWORD, DWORD, LPSECURITY_ATTRIBUTES, DWORD, DWORD, HANDLE);
 	typedef HANDLE(WINAPI* CreateWindowExA_t)(DWORD, LPCSTR, LPCSTR, DWORD, int, int, int, int, HWND, HMENU, HINSTANCE, LPVOID);

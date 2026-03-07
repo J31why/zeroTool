@@ -32,7 +32,8 @@ aobscanregion(INJECT,0000000,ffff0000000,0D 02 08 01 ?? ?? 00 00 19 01 5C 01 01 
 registersymbol(INJECT)
 
 INJECT+a:
-  db 06 00 00 10 21 00 00 00 07
+  db A9 E0 02 06 B0 10 31 21 00 00 00 07 //秘书逃跑
+  //db 06 00 00 10 21 00 00 00 07  //debug map
 
 
 alloc(result,4)
@@ -595,20 +596,26 @@ label(return)
 newmem:
 
 code:
-  movzx eax,word ptr [rax]
-  sub rcx,r9
+  nop 4
 
   push rbx
   push rcx
   push rdx
-  movd xmm0,eax
+  movzx ecx,word ptr [rax]
+  movd xmm0,ecx
   cvtdq2ps xmm0,xmm0
   movss xmm1,[MyConst]
   divss xmm0,xmm1
-  cvtss2si eax,xmm0
+  cvtss2si ecx,xmm0
+  mov [rax],cx
   pop rdx
   pop rcx
   pop rbx
+
+
+  movzx eax,word ptr [rax]
+  sub rcx,r9
+
   jmp return
 
 MyConst:
@@ -750,6 +757,35 @@ dealloc(newmem)
 14020EB9D: 0F B7 4A 1C           - movzx ecx,word ptr [rdx+1C]
 }
 </AssemblerScript>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>77</ID>
+      <Description>"无描述"</Description>
+      <ShowAsHex>1</ShowAsHex>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Array of byte</VariableType>
+      <ByteLength>16</ByteLength>
+      <Address>zero.exe+31B2F0+2e</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>78</ID>
+      <Description>"无描述"</Description>
+      <VariableType>4 Bytes</VariableType>
+      <Address>zero.exe+4DC5D4</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>79</ID>
+      <Description>"framelitmit"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>8 Bytes</VariableType>
+      <Address>14000B1E0</Address>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>80</ID>
+      <Description>"无描述"</Description>
+      <ShowAsSigned>0</ShowAsSigned>
+      <VariableType>Double</VariableType>
+      <Address>14041ECE8</Address>
     </CheatEntry>
   </CheatEntries>
   <UserdefinedSymbols/>

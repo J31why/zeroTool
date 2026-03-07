@@ -15,6 +15,24 @@ void LockProtect(uintptr_t ptr) {
     old_protect = 0;
 }
 
+void* AllocExcuteableMem() {
+    void* mem = malloc(0x200);
+    memset(mem, 0x0, 0x200);
+    DWORD old;
+	VirtualProtect(mem, 0x200, PAGE_EXECUTE_READWRITE, &old);
+    return mem;
+}
+
+void JmpAddress(uintptr_t src, uintptr_t dst) {
+    UnLockProtect(src);
+    uint8_t* p = (uint8_t*)src;
+    p[0] = 0xFF;
+    p[1] = 0x25;
+    *(uint32_t*)(p + 2) = 0;
+    *(uintptr_t*)(p + 6) = dst;
+    LockProtect(src);
+}
+
 void* BeginPatch(const uintptr_t ptr, size_t patchLength, size_t removeLength) {
     UnLockProtect(ptr);
     info.ori_addr = ptr;

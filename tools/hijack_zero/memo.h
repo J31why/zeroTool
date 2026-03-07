@@ -19,6 +19,8 @@ std::vector<PatternByte> ParsePattern(const std::string& patternStr);
 bool IsPageReadable(const MEMORY_BASIC_INFORMATION& mbi);
 
 bool SearchModuleMemory(const std::string& patternStr, std::vector<uintptr_t>& results, bool outInfo = false);
+void JmpAddress(uintptr_t src, uintptr_t dst);
+void* AllocExcuteableMem();
 void UnLockProtect(uintptr_t ptr);
 void LockProtect(uintptr_t ptr);
 void* BeginPatch(const uintptr_t ptr, size_t patchLength, size_t removeLength);

@@ -340,7 +340,7 @@ internal static class Program
         {
             var codec = new CalmareCodec();
             codec.ParseFromFile(file);
-            var success =codec.CompileToFile(outfile, _calmare, _encoding);
+            var success =codec.CompileToFile(outfile, _calmare, _encoding,_isAo);
             if(!success)
                 Console.WriteLine("文件编译错误: {0}\n", file);
         }
@@ -404,7 +404,7 @@ internal static class Program
     {
         var files = GetFiles(path,"*.bin");
         foreach (var file in files) 
-            Utils.RunExe(calmare, $"\"{file}\"", 1);
+            Utils.RunExe(calmare, $"{(_isAo ? "--game ao_k " : "")}\"{file}\"", 1);
     }
 
     private static void DecryptStr(string path, string outPath)

@@ -58,7 +58,7 @@ public partial class CalmareCodec
         }
     }
 
-    public bool CompileToFile(string outPath, string calmareFile, Encoding encoding)
+    public bool CompileToFile(string outPath, string calmareFile, Encoding encoding, bool isAo)
     {
         var holderText = ExtraEncoding.DoubleByteCharRegex().Replace(UsingText ?? throw new InvalidOperationException(), x =>
         {
@@ -79,7 +79,7 @@ public partial class CalmareCodec
             holderCodec.BattleCount != BattleCount || holderCodec.LabelNameStrings.Count != LabelNameStrings.Count)
             return false;
         File.WriteAllText(outPath, holderText.Replace("\r",""));
-        var success = Utils.RunExe(calmareFile, $"\"{outPath}\"", 2);
+        var success = Utils.RunExe(calmareFile, $"{(isAo ? "--game ao_k " : "")}\"{outPath}\"",2);
         if (!success)
             return false;
         var binFile = Path.Combine(
@@ -268,7 +268,7 @@ public partial class CalmareCodec
 
     //menu: c133b
     [GeneratedRegex("""
-                    \t+TextSetName ".+?"$|\t+(?:TextMessage|TextTalk |TextTalkNamed).*?{$[\s\S]*?\n\t+}$|\t+Menu .*?$[\s\S]*?(?=\n(?!\t+"))|\t+ED7MenuAdd.*?$|\t+ScMenuSetTitle.*?$|\t+CharSetName.*?$
+                    \t+TextSetName ".+?"$|\t+(?:TextMessage|TextTalk |TextTalkNamed).*?{$[\s\S]*?\n\t+}$|\t+Menu .*?$[\s\S]*?(?=\n(?!\t+"))|\t+ED7MenuAdd.*?$|\t+ScMenuSetTitle.*?$|\t+CharSetName.*?$|\t+ED7_76_2.*?$
                     """, RegexOptions.Compiled | RegexOptions.Multiline)]
     public static partial Regex FnTextRegex();
 }

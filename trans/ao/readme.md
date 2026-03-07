@@ -100,6 +100,10 @@ GitHub：[https://github.com/J31why/zeroTool](https://github.com/J31why/zeroTool
 
 ---
 ## 【发布日志】
+**V1.3**  
+修复文本：`借这`文本被替换成了空文本，共4条文本，部分翻译修正。  
+修复脚本：脚本转换出错，导致游戏在第四章战鬼未能劈开曹办公室的门。  
+
 **V1.2**  
 修复文本：核心回路问号文本乱码（`mess_strings`）。  
 修复文本：异体词修正。  

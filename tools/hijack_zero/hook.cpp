@@ -1,4 +1,5 @@
 ﻿#include "hook.h"
+#include "IniParser.h"
 
 using namespace std;
 
@@ -12,16 +13,20 @@ namespace hook {
     string sjis2utf8_addr_pattern = "40 56 48 83 EC 10";
     string utf82sjis_addr_pattern = "48 89 5C 24 10 56 49 8B D9";
     string language_option_addr_pattern = "8B 0D ?? ?? ?? 00 85 c9 74";
-    string noteHelpKey_posMap_addr_pattern = "F3 0F 10 05 ?? ?? ?? 00 F3 0F 11 05 ?? ?? ?? 00 4c 8b c0 41";
-    string loadNoteHelpKey_posMap_addr_pattern = "48 89 5C 24 ?? 48 89 4C 24 ?? 55 56 57 41 54 41 55 41 56 41 57 48 8D AC 24 ?? ?? FF FF 48 81 EC ?? ?? 00 00 48 8d 05 ?? ?? ?? 00";
+    string noteHelpKey_posMap_addr_pattern = "F3 0F 10 05 ?? ?? ?? 00 F3 0F 11 05 ?? ?? ?? 00 4C 8B C0 41";
+    string loadNoteHelpKey_posMap_addr_pattern = "48 89 5C 24 ?? 48 89 4C 24 ?? 55 56 57 41 54 41 55 41 56 41 57 48 8D AC 24 ?? ?? FF FF 48 81 EC ?? ?? 00 00 48 8D 05 ?? ?? ?? 00";
     string WebMPlayerOpen_addr_pattern = "72 03 48 8B 16 48 8B CB FF 15";
     string TextWidthScalefactor_addr_pattern = "F3 0F 59 D1 F3 41 0F 59 D0 F3 0F 58 C2 F3 41 0F 59 C0";
     string DialogBoxHeight_addr_pattern = "66 0F 6E C8 0F 5B C9 F3 0F 58 C8 F3 0F 2C C1 89 83 8C";
+    string SwitchFrameLimit_addr_pattern = "4C 8B C1 48 8B 49 10 49 8B 40 18";
+	string FrameLimit_addr_pattern = "EB ?? 66 0F 6E 0D";
+	string ScenaSleep_addr_pattern = "48 89 5C 24 10 44 8B 5A 08 4C 8B D1";
+	string DialogSleep_addr_pattern = "6B C7 64 BF 00 02 00 00";
 
     string main_sjis_byte_valid_addr_pattern = "80 ?? 7F 76";
     string ui_sjis_byte_valid_addr_pattern = "3C 3F 77";
     string memo_sjis_byte_valid_addr_pattern = "80 F9 7F 0F ?? ?? ?? 00 00 8D";
-    string add_al_60_r15_sjis_byte_valid_addr_pattern = "04 60 3c 3f 0f";
+    string add_al_60_r15_sjis_byte_valid_addr_pattern = "04 60 3C 3F 0F";
     string menu_sjis_byte_valid_addr_pattern = "8D 41 60 3C 3F 76 ?? 44";
     string talk_sjis_byte_valid_addr_pattern = "3C 1F 76";
     string is_hanzi_addr_pattern = "3C A0 73";
@@ -39,6 +44,10 @@ namespace hook {
     uintptr_t loadNoteHelpKey_posMap_addr = 0x1400BF990;
     uintptr_t WebMPlayerOpen_addr = 0x1403D2EB0;  //[1403D2EB0]
     uintptr_t TextWidthScalefactor_addr = 0x14041E994;
+    uintptr_t ScenaSleep_addr = 0x14031B31E;
+    uintptr_t DialogSleep_addr = 0x14020EB70;
+    uintptr_t FrameLimit_addr = 0x1404DC5D4;
+    uintptr_t SwitchFrameLimit_addr = 0x14000B1E0;
     uintptr_t DialogBoxHeight_addr[] = 
     {
         0x140216A28,    //dialog1
@@ -85,10 +94,18 @@ namespace hook {
     WebMPlayerOpen_t ori_WebMPlayerOpen = nullptr;
     loadNoteHelpKey_posMap_t ori_loadNoteHelpKey_posMap = nullptr;
     get_mess_string_key_t get_mess_string_key = nullptr;
+    SwitchFrameLimit_t ori_SwitchFrameLimit = nullptr;
+    LPVOID* ori_ScenaSleep_addr = nullptr;
+    LPVOID* ori_DialogSleep_addr = nullptr;
 
     int matchedAddrCount = 0;
-    int totalAddrCount = 30;
+    int totalAddrCount = 31;
     bool isMatchSuccessful = false;
+    float* ScenaSleepFixFactor = nullptr;
+    float* DialogSleepFixFactor = nullptr;
+    unordered_map<int, float> ScenaSleepFactors = {};
+    unordered_map<int, float> DialogSleepFactors = {};
+    bool fixedSleep = false;
 
     void search_all_addresses() {
         vector<uintptr_t> matchResults;
@@ -179,8 +196,34 @@ namespace hook {
             DialogBoxHeight_addr[0] = matchResults[0];
             DialogBoxHeight_addr[1] = matchResults[1];
             cout << "DialogBoxHeight_addr : 0x" << hex << DialogBoxHeight_addr << endl;
+            matchedAddrCount+= matchResults.size();
+        }
+        /*  
+        if (SearchModuleMemory(SwitchFrameLimit_addr_pattern, matchResults) && matchResults.size() == 1) {
+            SwitchFrameLimit_addr = matchResults[0];
+            cout << "SwitchFrameLimit_addr : 0x" << hex << SwitchFrameLimit_addr << endl;
+            matchedAddrCount ++;
+        }
+
+        if (SearchModuleMemory(FrameLimit_addr_pattern, matchResults) && matchResults.size() == 1) {
+            FrameLimit_addr = matchResults[0] + 0x6;
+            uint32_t* offset_ptr = reinterpret_cast<uint32_t*>(FrameLimit_addr);
+            FrameLimit_addr += (uint64_t)*offset_ptr + 0x4;
+            cout << "FrameLimit_addr : 0x" << hex << FrameLimit_addr << endl;
             matchedAddrCount++;
         }
+
+        if (SearchModuleMemory(ScenaSleep_addr_pattern, matchResults) && matchResults.size() == 1) {
+            ScenaSleep_addr= matchResults[0]+0x2e;
+            cout << "ScenaSleep_addr : 0x" << hex << ScenaSleep_addr << endl;
+            matchedAddrCount++;
+        }
+
+        if (SearchModuleMemory(DialogSleep_addr_pattern, matchResults) && matchResults.size() == 1) {
+            DialogSleep_addr = matchResults[0] ;
+            cout << "DialogSleep_addr : 0x" << hex << DialogSleep_addr << endl;
+            matchedAddrCount++;
+        }*/
 
         cout << "==============================" << endl;
 
@@ -279,7 +322,7 @@ namespace hook {
         fix_noteHelpKey_pos(noteHelpKey_posMap_addr);
         return result;
     }
-
+    
 
     void fix_main_sjis_byte_valid(uintptr_t ptr) {
         UnLockProtect(ptr);
@@ -368,10 +411,83 @@ namespace hook {
 		EndPatch(jmpAddr);
     }
 
+
+
+    void FrameLimitSwitched() {
+        int currentLimit = *(uint32_t*)FrameLimit_addr;
+        if (ScenaSleepFactors.count(currentLimit) > 0) {
+            *ScenaSleepFixFactor = ScenaSleepFactors[currentLimit];
+            *DialogSleepFixFactor = DialogSleepFactors[currentLimit];
+        }
+        else {
+            *ScenaSleepFixFactor = 1.0f;
+            *DialogSleepFixFactor = 1.0f;
+        }
+        cout << "当前Sleep修正倍率: " <<dec << currentLimit << "|" << *ScenaSleepFixFactor << "|" << *DialogSleepFixFactor <<hex <<  endl;
+    }
+
+    int64_t __fastcall hooked_SwitchFrameLimit(int64_t a1, uint32_t a2) {
+        auto result = ori_SwitchFrameLimit(a1, a2);
+        FrameLimitSwitched();
+        return result;
+    }
+
+    void fix_Sleep() {
+        ScenaSleepFixFactor = reinterpret_cast<float*>(AllocExcuteableMem());
+        *ScenaSleepFixFactor = 1.0f;
+        //scena sleep
+        uintptr_t pAsm = (uintptr_t)ScenaSleepFixFactor + 4;
+        std::vector<unsigned char> code = { 0x53, 0x51, 0x52, 0x0F, 0xB7, 0x08, 0x66, 0x0F, 0x6E, 0xC1, 0x0F, 0x5B, 0xC0, 0xF3, 0x0F, 0x10, 0x0D, 0xE7, 0xFF, 0xFF, 0xFF, 0xF3, 0x0F, 0x5E, 0xC1, 0xF3, 0x0F, 0x2D, 0xC8, 0x66, 0x89, 0x08, 0x5A, 0x59, 0x5B };
+        memcpy((LPVOID)pAsm, code.data(), code.size());
+        MH_STATUS status = MH_CreateHook((LPVOID)ScenaSleep_addr, (LPVOID)pAsm, reinterpret_cast<LPVOID*>(&ori_ScenaSleep_addr));
+        if (status != MH_OK) {
+            throw runtime_error("MinHook create ScenaSleep hook failed!");
+        }
+        pAsm = pAsm + code.size();
+        JmpAddress(pAsm, (uintptr_t)ori_ScenaSleep_addr);
+        //dialog sleep
+		DialogSleepFixFactor = reinterpret_cast<float*>(pAsm+0x20);
+        *DialogSleepFixFactor = 1.0f;
+		pAsm = (uintptr_t)DialogSleepFixFactor + 4;
+        code.clear();
+        code = { 0x6B, 0xC7, 0x64, 0x53, 0x51, 0x52, 0x66, 0x0F, 0x6E, 0xC0, 0x0F, 0x5B, 0xC0, 0xF3, 0x0F, 0x10, 0x0D, 0xE7, 0xFF, 0xFF, 0xFF, 0xF3, 0x0F, 0x59, 0xC1, 0xF3, 0x0F, 0x2D, 0xC0, 0x5A, 0x59, 0x5B };
+        memcpy((LPVOID)pAsm, code.data(), code.size());
+        status = MH_CreateHook((LPVOID)DialogSleep_addr, (LPVOID)pAsm, reinterpret_cast<LPVOID*>(&ori_DialogSleep_addr));
+        if (status != MH_OK) {
+            throw runtime_error("MinHook create DialogSleep hook failed!");
+        }
+        pAsm = (uintptr_t)(pAsm + code.size());
+        JmpAddress(pAsm, (uintptr_t)ori_DialogSleep_addr + 3);
+	}
+
+    void GameLoaded() {
+        //if (fixedSleep)
+        //    FrameLimitSwitched();
+    }
+
     void hook_install() {
         try
         {
             cout << endl;
+            /*
+            IniParser parser;
+            parser.load("zero.ini");
+            bool fixSleep = parser.getBool("Setting", "FixSleep", false);
+            vector<string> keys = parser.getKeys("ScenaSleepFactor");
+            cout << "fix sleep setting:" << endl;
+            for (size_t i = 0; i < keys.size(); i++)
+            {
+                ScenaSleepFactors[std::stoi(keys[i])] = parser.getFloat("ScenaSleepFactor", keys[i], 1);
+                cout << dec << keys[i] << " : " << ScenaSleepFactors[std::stoi(keys[i])] << hex << endl;
+            }
+            keys.clear();
+            keys = parser.getKeys("DialogSleepFactor");
+            for (size_t i = 0; i < keys.size(); i++)
+            {
+                DialogSleepFactors[std::stoi(keys[i])] = parser.getFloat("DialogSleepFactor", keys[i], 1);
+                cout << dec << keys[i] << " : " << DialogSleepFactors[std::stoi(keys[i])] << hex << endl;
+            }*/
+          
 #if HIJACK
             search_all_addresses();
             cout << "匹配到地址数量：" << dec << matchedAddrCount << "/" << totalAddrCount << hex << endl;
@@ -443,6 +559,17 @@ namespace hook {
             if (status != MH_OK) {
                 throw runtime_error("MinHook create WebMPlayerOpen hook failed!");
             }
+
+            //if (fixSleep)
+            //{
+            //    cout << "[INFO]fix Sleep" << endl;
+            //    fix_Sleep();
+            //    fixedSleep = true;
+            //    status = MH_CreateHook((LPVOID)SwitchFrameLimit_addr, &hooked_SwitchFrameLimit, reinterpret_cast<LPVOID*>(&ori_SwitchFrameLimit));
+            //    if (status != MH_OK) {
+            //        throw runtime_error("MinHook create SwitchFrameLimit hook failed!");
+            //    }
+            //}
 
             cout << "[INFO]fix text width scale factor" << endl;
             fix_TextWidthScalefactor(TextWidthScalefactor_addr);
@@ -616,6 +743,7 @@ namespace hook {
         }
         memset(pbuffer, 0, buffer.size());
         cout << "[INFO]已载入mess_strings_cn" << endl;
+
         return true;
     }
 
@@ -699,6 +827,7 @@ namespace hook {
     int32_t __fastcall hooked_load_mess_string() {
         int32_t result = ori_load_mess_string();
         load_mess_string_cn();
+        GameLoaded();
         return result;
     }
 
