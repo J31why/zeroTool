@@ -153,20 +153,6 @@ namespace encoding {
                 ptr++;
                 continue;
             }
-            // utf8
-            size_t utf8_len = check_utf8_sequence(ptr, std::distance(ptr, std::find(ptr, ptr + 4, 0)));
-            if (utf8_len > 0) {
-                count_utf8++;
-                // 统计特定 UTF-8 序列（0xE3 开头的 3 字节序列，日文平假名范围）
-                if (utf8_len == 3 && current == 0xE3) {
-                    uint8_t second = ptr[1];
-                    if (second >= 0x80 && second <= 0x82) {
-                        count_utf8_special++;
-                    }
-                }
-                ptr += utf8_len;
-                continue;
-            }
             // gbk
             size_t gbk_len = check_gbk_sequence(ptr, std::distance(ptr, std::find(ptr, ptr + 2, 0)));
             if (gbk_len > 0) {
@@ -181,7 +167,20 @@ namespace encoding {
                 ptr += sjis_len;
                 continue;
             }
-
+            // utf8
+            size_t utf8_len = check_utf8_sequence(ptr, std::distance(ptr, std::find(ptr, ptr + 4, 0)));
+            if (utf8_len > 0) {
+                count_utf8++;
+                // 统计特定 UTF-8 序列（0xE3 开头的 3 字节序列，日文平假名范围）
+                if (utf8_len == 3 && current == 0xE3) {
+                    uint8_t second = ptr[1];
+                    if (second >= 0x80 && second <= 0x82) {
+                        count_utf8_special++;
+                    }
+                }
+                ptr += utf8_len;
+                continue;
+            }
             ptr++;
         }
 

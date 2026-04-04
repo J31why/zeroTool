@@ -80,19 +80,19 @@ namespace encoding {
         if (ptr == nullptr || remaining_len == 0) return 0;
 
         uint8_t first = *ptr;
-        // UTF-8 2×Ö½ÚÐòÁÐ£º110xxxxx 10xxxxxx
+        // UTF-8 2ï¿½Ö½ï¿½ï¿½ï¿½ï¿½Ð£ï¿½110xxxxx 10xxxxxx
         //if ((first & 0xE0) == 0xC0) {
         //    if (remaining_len < 2) return 0;
         //    uint8_t second = ptr[1];
         //    return (second & 0xC0) == 0x80 ? 2 : 0;
         //}
-        // UTF-8 3×Ö½ÚÐòÁÐ£º1110xxxx 10xxxxxx 10xxxxxx
+        // UTF-8 3ï¿½Ö½ï¿½ï¿½ï¿½ï¿½Ð£ï¿½1110xxxx 10xxxxxx 10xxxxxx
         if ((first & 0xF0) == 0xE0) {
             if (remaining_len < 3) return 0;
             uint8_t second = ptr[1], third = ptr[2];
             return ((second & 0xC0) == 0x80 && (third & 0xC0) == 0x80) ? 3 : 0;
         }
-        // UTF-8 4×Ö½ÚÐòÁÐ£º11110xxx 10xxxxxx 10xxxxxx 10xxxxxx
+        // UTF-8 4ï¿½Ö½ï¿½ï¿½ï¿½ï¿½Ð£ï¿½11110xxx 10xxxxxx 10xxxxxx 10xxxxxx
         else if ((first & 0xF8) == 0xF0) {
             if (remaining_len < 4) return 0;
             uint8_t second = ptr[1], third = ptr[2], fourth = ptr[3];
@@ -102,30 +102,30 @@ namespace encoding {
     }
 
     /**
-     * ¸¨Öúº¯Êý£ºÐ£Ñé SJIS ¶à×Ö½ÚÐòÁÐ£¨´Ó ptr ¿ªÊ¼£©
-     * ·µ»ØÖµ£ººÏ·¨ÐòÁÐ³¤¶È£¨0=·Ç·¨£¬2=2×Ö½Ú£©
+     * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð£ï¿½ï¿½ SJIS ï¿½ï¿½ï¿½Ö½ï¿½ï¿½ï¿½ï¿½Ð£ï¿½ï¿½ï¿½ ptr ï¿½ï¿½Ê¼ï¿½ï¿½
+     * ï¿½ï¿½ï¿½ï¿½Öµï¿½ï¿½ï¿½Ï·ï¿½ï¿½ï¿½ï¿½Ð³ï¿½ï¿½È£ï¿½0=ï¿½Ç·ï¿½ï¿½ï¿½2=2ï¿½Ö½Ú£ï¿½
      */
     size_t check_sjis_sequence(const char* ptr, size_t remaining_len) {
         if (ptr == nullptr || remaining_len < 2) return 0;
 
         uint8_t first = *ptr, second = ptr[1];
-        // SJIS ¹æÔò£ºÊ××Ö½Ú 0x81~0x9F »ò 0xE0~0xFC£»µÚ¶þ×Ö½Ú 0x40~0xFC£¨ÅÅ³ý0x7F£©
+        // SJIS ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö½ï¿½ 0x81~0x9F ï¿½ï¿½ 0xE0~0xFCï¿½ï¿½ï¿½Ú¶ï¿½ï¿½Ö½ï¿½ 0x40~0xFCï¿½ï¿½ï¿½Å³ï¿½0x7Fï¿½ï¿½
         bool valid_first = (first >= 0x81 && first <= 0x9F) || (first >= 0xE0 && first <= 0xFC);
         bool valid_second = (second >= 0x40 && second <= 0xFC) && (second != 0x7F);
         return (valid_first && valid_second) ? 2 : 0;
     }
 
     /**
-     * ¸¨Öúº¯Êý£ºÐ£Ñé GBK ¶à×Ö½ÚÐòÁÐ£¨´Ó ptr ¿ªÊ¼£©
-     * ·µ»ØÖµ£ººÏ·¨ÐòÁÐ³¤¶È£¨0=·Ç·¨£¬2=2×Ö½Ú£©
+     * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð£ï¿½ï¿½ GBK ï¿½ï¿½ï¿½Ö½ï¿½ï¿½ï¿½ï¿½Ð£ï¿½ï¿½ï¿½ ptr ï¿½ï¿½Ê¼ï¿½ï¿½
+     * ï¿½ï¿½ï¿½ï¿½Öµï¿½ï¿½ï¿½Ï·ï¿½ï¿½ï¿½ï¿½Ð³ï¿½ï¿½È£ï¿½0=ï¿½Ç·ï¿½ï¿½ï¿½2=2ï¿½Ö½Ú£ï¿½
      */
     size_t check_gbk_sequence(const char* ptr, size_t remaining_len) {
         if (ptr == nullptr || remaining_len < 2) return 0;
 
         uint8_t first = *ptr, second = ptr[1];
-        // GBK ¹æÔò£º
-        // Ê××Ö½Ú£º0x81~0xFE£¨¼æÈÝ GB2312 µÄ 0xA1~0xF7£¬À©Õ¹µ½ 0x81~0xFE£©
-        // µÚ¶þ×Ö½Ú£º0x40~0x7E »ò 0x80~0xFE£¨Á½¶Î·¶Î§£¬ÎÞ 0x7F ÏÞÖÆ£©
+        // GBK ï¿½ï¿½ï¿½ï¿½
+        // ï¿½ï¿½ï¿½Ö½Ú£ï¿½0x81~0xFEï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ GB2312 ï¿½ï¿½ 0xA1~0xF7ï¿½ï¿½ï¿½ï¿½Õ¹ï¿½ï¿½ 0x81~0xFEï¿½ï¿½
+        // ï¿½Ú¶ï¿½ï¿½Ö½Ú£ï¿½0x40~0x7E ï¿½ï¿½ 0x80~0xFEï¿½ï¿½ï¿½ï¿½ï¿½Î·ï¿½Î§ï¿½ï¿½ï¿½ï¿½ 0x7F ï¿½ï¿½ï¿½Æ£ï¿½
         bool valid_first = first >= 0x81 && first <= 0xFE;
         bool valid_second = (second >= 0x40 && second <= 0x7E) || (second >= 0x80 && second <= 0xFE);
         return (valid_first && valid_second) ? 2 : 0;
@@ -138,11 +138,11 @@ namespace encoding {
         if (data[0] == 0xEF && data[1] == 0xBB && data[2] == 0xBF) {
             return static_cast<int64_t>(EncodingType::EMPTY);
         }
-        size_t count_ascii = 0;       // ¿É´òÓ¡ ASCII ×Ö·ûÊý
-        size_t count_utf8 = 0;        // ºÏ·¨ UTF-8 ¶à×Ö½ÚÐòÁÐÊý
-        size_t count_sjis = 0;        // ºÏ·¨ SJIS ¶à×Ö½ÚÐòÁÐÊý
-        size_t count_gbk = 0;         // ºÏ·¨ GBK ¶à×Ö½ÚÐòÁÐÊý
-        size_t count_utf8_special = 0;// ÌØ¶¨ UTF-8 ÐòÁÐ£¨0xE3 ¿ªÍ·£¬ÈÕÎÄÏà¹Ø£©
+        size_t count_ascii = 0;       // ï¿½É´ï¿½Ó¡ ASCII ï¿½Ö·ï¿½ï¿½ï¿½
+        size_t count_utf8 = 0;        // ï¿½Ï·ï¿½ UTF-8 ï¿½ï¿½ï¿½Ö½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+        size_t count_sjis = 0;        // ï¿½Ï·ï¿½ SJIS ï¿½ï¿½ï¿½Ö½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+        size_t count_gbk = 0;         // ï¿½Ï·ï¿½ GBK ï¿½ï¿½ï¿½Ö½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+        size_t count_utf8_special = 0;// ï¿½Ø¶ï¿½ UTF-8 ï¿½ï¿½ï¿½Ð£ï¿½0xE3 ï¿½ï¿½Í·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ø£ï¿½
         const char* ptr = data;
 
         while (*ptr != 0) {
@@ -150,20 +150,6 @@ namespace encoding {
             if (is_printable_ascii(current)) {
                 count_ascii++;
                 ptr++;
-                continue;
-            }
-            // utf8
-            size_t utf8_len = check_utf8_sequence(ptr, std::distance(ptr, std::find(ptr, ptr + 4, 0)));
-            if (utf8_len > 0) {
-                count_utf8++;
-                // Í³¼ÆÌØ¶¨ UTF-8 ÐòÁÐ£¨0xE3 ¿ªÍ·µÄ 3 ×Ö½ÚÐòÁÐ£¬ÈÕÎÄÆ½¼ÙÃû·¶Î§£©
-                if (utf8_len == 3 && current == 0xE3) {
-                    uint8_t second = ptr[1];
-                    if (second >= 0x80 && second <= 0x82) {
-                        count_utf8_special++;
-                    }
-                }
-                ptr += utf8_len;
                 continue;
             }
             // gbk
@@ -180,7 +166,20 @@ namespace encoding {
                 ptr += sjis_len;
                 continue;
             }
-
+            // utf8
+            size_t utf8_len = check_utf8_sequence(ptr, std::distance(ptr, std::find(ptr, ptr + 4, 0)));
+            if (utf8_len > 0) {
+                count_utf8++;
+                // Í³ï¿½ï¿½ï¿½Ø¶ï¿½ UTF-8 ï¿½ï¿½ï¿½Ð£ï¿½0xE3 ï¿½ï¿½Í·ï¿½ï¿½ 3 ï¿½Ö½ï¿½ï¿½ï¿½ï¿½Ð£ï¿½ï¿½ï¿½ï¿½ï¿½Æ½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î§ï¿½ï¿½
+                if (utf8_len == 3 && current == 0xE3) {
+                    uint8_t second = ptr[1];
+                    if (second >= 0x80 && second <= 0x82) {
+                        count_utf8_special++;
+                    }
+                }
+                ptr += utf8_len;
+                continue;
+            }
             ptr++;
         }
 
