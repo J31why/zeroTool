@@ -100,6 +100,10 @@ GitHub：[https://github.com/J31why/zeroTool](https://github.com/J31why/zeroTool
 
 ---
 ## 【发布日志】
+
+**V1.5**  
+修复: 文本编码识别。  
+
 **V1.4**  
 修复文本: 错字、闽南词和显示问题文本。  
 修复: 某些情况下文本编码识别为utf8导致乱码。  
