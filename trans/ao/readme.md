@@ -101,6 +101,9 @@ GitHub：[https://github.com/J31why/zeroTool](https://github.com/J31why/zeroTool
 ---
 ## 【发布日志】
 
+**V1.6**  
+修复: 去掉了单字节双字节的UTF8编码判断。  
+
 **V1.5**  
 修复: 文本编码识别。  
 
