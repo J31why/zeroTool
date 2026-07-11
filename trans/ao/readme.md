@@ -100,6 +100,9 @@ GitHub：[https://github.com/J31why/zeroTool](https://github.com/J31why/zeroTool
 
 ---
 ## 【发布日志】
+**V1.7**  
+修复: 更多头像MOD缺失凯特头像（`c0400`）。  
+修复文本: 对第四章独立宣言后洋槐庄园内克拉莉丝对话修改以避免歧义（`c1040`）。  
 
 **V1.6**  
 修复: 去掉了单字节双字节的UTF8编码判断。  
