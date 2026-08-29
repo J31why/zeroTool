@@ -29,8 +29,8 @@ typedef Result* (__fastcall* cp932_encode_t)(
     );
 
 
-uintptr_t cp932_decode_addr = 0x1fcdd0;
-uintptr_t cp932_encode_addr = 0x1fd170;
+uintptr_t cp932_decode_addr = 0x1F2950; //0x1F2950(calmare v0.1.4); 0x1fcdd0(calmare v0.1.3);
+uintptr_t cp932_encode_addr = 0x1F2BA0; //0x1F2BA0(calmare v0.1.4); 0x1fd170(calmare v0.1.3);
 
 cp932_decode_t ori_cp932_decode = nullptr;
 cp932_encode_t ori_cp932_encode = nullptr;
