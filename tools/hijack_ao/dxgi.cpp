@@ -1,4 +1,4 @@
-#include <windows.h>
+ï»¿#include <windows.h>
 #include "NsHiJack.h"
 #include <iostream>
 #include "hook.h"
@@ -16,7 +16,7 @@ void OpenConsole() {
     hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
     SetConsoleTitleA("DLL Debug Console");
     SetConsoleOutputCP(936);
-    std::cout << "[INFO]±ÌÖ®¹ì¼£NISA°æ±¾GBK¶ÁÈ¡DLLÒÑÔØÈë" << std::endl;
+    std::cout << "[INFO]ç¢§ä¹‹è½¨è¿¹NISAç‰ˆæœ¬GBKè¯»å–DLLå·²è½½å…¥" << std::endl;
 }
 
 void CloseConsole() {
@@ -38,7 +38,7 @@ BOOL APIENTRY DllMain(HMODULE hModule,
     {
 #if HIJACK
         if (!NsInitDll()) {
-            MessageBoxA(NULL, "NsInitDllÊ§°Ü", "´íÎó", 0);
+            MessageBoxA(NULL, "NsInitDllå¤±è´¥", "é”™è¯¯", 0);
             return false;
         }
 #endif // HIJACK
@@ -46,13 +46,14 @@ BOOL APIENTRY DllMain(HMODULE hModule,
         if (cmdLine.find("-debug") != std::string::npos) {
             OpenConsole();
             consoleOpened = true;
+			hook::is_debug = true;
         }
         if (cmdLine.find("-nohook") == std::string::npos) {
             encoding::iconv_initialize();
             hook::hook_install();
             isHook = true;
             if (!hook::isMatchSuccessful) {
-                MessageBoxA(NULL, "µØÖ·Æ¥ÅäÊ§°Ü£¬HookÊ§°Ü¡£", "´íÎó", 0);
+                MessageBoxA(NULL, "åœ°å€åŒ¹é…å¤±è´¥ï¼ŒHookå¤±è´¥ã€‚", "é”™è¯¯", 0);
             }
         }
     }

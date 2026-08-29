@@ -45,5 +45,6 @@ namespace hook {
 	std::unordered_map<std::string, std::string> build_mess_string_map(const char* data, const size_t len);
 	void search_all_addresses();
 	extern bool isMatchSuccessful;
+	extern bool is_debug;
 }
 

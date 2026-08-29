@@ -106,6 +106,7 @@ namespace hook {
     unordered_map<int, float> ScenaSleepFactors = {};
     unordered_map<int, float> DialogSleepFactors = {};
     bool fixedSleep = false;
+    bool is_debug = false;
 
     void search_all_addresses() {
         vector<uintptr_t> matchResults;
@@ -915,28 +916,34 @@ namespace hook {
     }
 
     static const vector<pair<string, string>> patterns = {
-      {"data_pc/", "data_cn/pc/"},
-      {"data/", "data_cn/"},
+      {"data_pc\\", "data_cn\\pc\\"},
+      {"data\\", "data_cn\\"},
     };
 
     string redirect_dir(string file) {
-        for (size_t i = 0; i < patterns.size(); i++)
-        {
-            size_t pos = file.find(patterns[i].first);
-            if (pos < 5) {
-                string cnFile = file;
-                cnFile.replace(pos, patterns[i].first.length(), patterns[i].second);
-                if (std::filesystem::exists(cnFile))
-                {
-                    cout << "[INFO]重定向：" << cnFile << endl;
-                    return cnFile;
+        string searchFile = file;
+        std::replace(searchFile.begin(), searchFile.end(), '/', '\\');
+        if (is_debug) {
+            cout << "[DEBUG][CreateFileA]：" << file;
+        }
+        for (const auto& pattern : patterns) {
+            size_t pos = searchFile.find(pattern.first);
+            if (pos != string::npos) {
+                string redirected = searchFile;
+                redirected.replace(pos, pattern.first.length(), pattern.second);
+                if (std::filesystem::exists(redirected)) {
+                    if (is_debug) {
+                        cout << "  重定向=>  " << redirected << endl;
+                    }
+                    return redirected;
                 }
-                break;
             }
+        }
+        if (is_debug) {
+            cout << endl;
         }
         return file;
     }
-
 
     bool __fastcall hooked_WebMPlayerOpen(int64_t h, char* file) {
         string fileName = redirect_dir(string(file));
