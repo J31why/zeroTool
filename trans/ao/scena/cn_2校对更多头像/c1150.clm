@@ -418,7 +418,6 @@ look_point[3]:
 anim[0] 1536ms
 
 sepith[0] 0 0 0 0 0 0 0 0
-sepith[1] 0 0 0 0 0 0 0 0
 
 fn[0]:
 	var[2] = random % 8
@@ -4146,18 +4145,14 @@ fn[24]:
 	elif flag[2861]:
 		if !flag[9]:
 			TextTalk self {
-				真是的，事情變得
+				#15306F真是的，事情變得
 				非常麻煩了啊。{wait}
-			}
-			TextWait
-			TextTalk self {
-				總之二課目前
+			} {
+				#15300F總之二課目前
 				完全不管其他所有案件，
 				正在努力支援一課。{wait}
-			}
-			TextWait
-			TextTalk self {
-				我們正在一一清查
+			} {
+				#15301F我們正在一一清查
 				進入克洛斯貝爾的間諜……
 				尤其是帝國間諜的情報。{wait}
 			}
@@ -4165,13 +4160,11 @@ fn[24]:
 			FlagSet flag[9]
 		else:
 			TextTalk self {
-				總之二課目前
+				#15300F總之二課目前
 				完全不管其他所有案件，
 				正在努力支援一課。{wait}
-			}
-			TextWait
-			TextTalk self {
-				我們正在一一清查
+			} {
+				#15301F我們正在一一清查
 				進入克洛斯貝爾的間諜……
 				尤其是帝國間諜的情報。{wait}
 			}
@@ -4179,39 +4172,29 @@ fn[24]:
 	elif flag[2848]:
 		if !flag[9]:
 			TextTalk self {
-				真知啊……{wait}
-			}
-			TextWait
-			TextTalk self {
-				首先按照常規，
+				#15303F真知啊……{wait}
+			} {
+				#15301F首先按照常規，
 				我們計畫從魯巴徹那邊的管道
 				再次查起……{wait}
-			}
-			TextWait
-			TextTalk self {
-				但是我覺得從這方面流入的
+			} {
+				#15303F但是我覺得從這方面流入的
 				可能性很低。{wait}
-			}
-			TextWait
-			TextTalk self {
-				不過以目前的階段而言，
+			} {
+				#15300F不過以目前的階段而言，
 				胡亂猜測也沒用。{wait}
-			}
-			TextWait
-			TextTalk self {
-				無論如何，現在大概只能
+			} {
+				#15301F無論如何，現在大概只能
 				腳踏實地各個擊破了。{wait}
 			}
 			TextWait
 			FlagSet flag[9]
 		else:
 			TextTalk self {
-				不過以目前的階段而言，
+				#15300F不過以目前的階段而言，
 				胡亂猜測也沒用。{wait}
-			}
-			TextWait
-			TextTalk self {
-				無論如何，現在大概只能
+			} {
+				#15301F無論如何，現在大概只能
 				腳踏實地各個擊破了。{wait}
 			}
 			TextWait
@@ -4219,26 +4202,22 @@ fn[24]:
 	elif flag[2832]:
 		if QuestFlagsGet quest[129] 0x10:
 			TextTalk self {
-				雖然說有支援課的協助，
+				#15304F雖然說有支援課的協助，
 				不過雷蒙德那傢伙
 				昨天好像相當勤奮啊。{wait}
-			}
-			TextWait
-			TextTalk self {
-				但是追查假貨商
+			} {
+				#15302F但是追查假貨商
 				竟然會遇上恐怖分子的餘孽，
 				真是太不可思議了。{wait}
 			}
 			TextWait
 		else:
 			TextTalk self {
-				雖然說有黑月在暗中操作，
+				#15304F雖然說有黑月在暗中操作，
 				不過雷蒙德那傢伙
 				昨天好像一個人相當勤奮啊。{wait}
-			}
-			TextWait
-			TextTalk self {
-				但是追查假貨商
+			} {
+				#15302F但是追查假貨商
 				竟然會遇上恐怖分子的餘孽，
 				真是太不可思議了。{wait}
 			}
@@ -4248,13 +4227,11 @@ fn[24]:
 			Call fn[0,25]
 		else:
 			TextTalk self {
-				本來屬於一課分內的工作，
+				#15300F本來屬於一課分內的工作，
 				也有一部分
 				由二課接手了。{wait}
-			}
-			TextWait
-			TextTalk self {
-				畢竟情況不一樣。
+			} {
+				#15303F畢竟情況不一樣。
 				現在可以說是全體總動員啊。{wait}
 			}
 			TextWait
@@ -4266,7 +4243,7 @@ fn[24]:
 			Call fn[0,26]
 		else:
 			TextTalk char[2] {
-				誤入歧途的年輕人啊……
+				#15306F誤入歧途的年輕人啊……
 				真是的，給別人添麻煩
 				到底有什麼樂趣啊？{wait}
 			}
@@ -4276,13 +4253,11 @@ fn[24]:
 			Call fn[0,27]
 		elif !flag[9]:
 			TextTalk self {
-				嗯，總之。
+				#15302F嗯，總之。
 				今後如果又發生事情，
 				還請多多指教啦。{wait}
-			}
-			TextWait
-			TextTalk self {
-				你們也很受我們
+			} {
+				#15309F你們也很受我們
 				搜查二課的期待喔。{wait}
 			}
 			TextWait
@@ -4301,12 +4276,10 @@ fn[24]:
 			FlagSet flag[9]
 		else:
 			TextTalk self {
-				那麼，今後如果又發生事情，
+				#15302F那麼，今後如果又發生事情，
 				還請多多指教啦。{wait}
-			}
-			TextWait
-			TextTalk self {
-				你們也很受我們
+			} {
+				#15309F你們也很受我們
 				搜查二課的期待喔。{wait}
 			}
 			TextWait
@@ -4318,7 +4291,7 @@ fn[25]:
 	_Char4A char[2] 255
 	CharTurnToChar char[2] field_party[0] 0deg/s
 	TextTalk char[2] {
-		嗨，這不是特務支援課嗎？{wait}
+		#15302F嗨，這不是特務支援課嗎？{wait}
 	}
 	TextWait
 	CharTurnToChar char[4] field_party[0] 500deg/s
@@ -4361,18 +4334,14 @@ fn[25]:
 	TextWait
 	CharTurnToChar char[2] name[0] 500deg/s
 	TextTalk char[2] {
-		是啊，因為提倡獨立的勢力
+		#15306F是啊，因為提倡獨立的勢力
 		聲量越來越高啊。{wait}
-	}
-	TextWait
-	TextTalk char[2] {
-		為了刺探克洛斯貝爾的動向，
+	} {
+		#15301F為了刺探克洛斯貝爾的動向，
 		目前大陸各國陸陸續續
 		派遣間諜進來。{wait}
-	}
-	TextWait
-	TextTalk char[2] {
-		間諜數量多到
+	} {
+		#15303F間諜數量多到
 		光是要掌握他們的存在
 		就忙不過來了。{wait}
 	}
@@ -4395,13 +4364,11 @@ fn[25]:
 	}
 	TextWait
 	TextTalk char[2] {
-		也因為這個緣故，
+		#15300F也因為這個緣故，
 		本來屬於一課分內的工作，
 		有一部分由二課接手了。{wait}
-	}
-	TextWait
-	TextTalk char[2] {
-		我們剛才正在
+	} {
+		#15304F我們剛才正在
 		針對此事稍作商量。{wait}
 	}
 	TextWait
@@ -4443,7 +4410,7 @@ fn[26]:
 	_Char4A char[2] 255
 	_Char4A char[12] 255
 	TextTalk char[2] {
-		對了，
+		#15300F對了，
 		關於那些狂飆車輛的年輕人……
 		聽說昨天有人檢舉啊。{wait}
 	}
@@ -4464,17 +4431,13 @@ fn[26]:
 	}
 	TextWait
 	TextTalk char[2] {
-		呼，我也希望是這樣。{wait}
-	}
-	TextWait
-	TextTalk char[2] {
-		真是的，如果他們不是外國人，
+		#15306F呼，我也希望是這樣。{wait}
+	} {
+		#15301F真是的，如果他們不是外國人，
 		就能把他們拘留起來
 		好好教訓一番了。{wait}
-	}
-	TextWait
-	TextTalk char[2] {
-		這方面就只能期待日後
+	} {
+		#15303F這方面就只能期待日後
 		法律完善了啊。{wait}
 	}
 	TextWait
@@ -4515,12 +4478,10 @@ fn[27]:
 	Sleep 1000ms
 	CharTurnToChar char[2] field_party[0] 500deg/s
 	TextTalk char[2] {
-		喔，好像有個新面孔
+		#15302F喔，好像有個新面孔
 		混在裡面呢……{wait}
-	}
-	TextWait
-	TextTalk char[2] {
-		莫非他們就是傳說中的
+	} {
+		#15302F莫非他們就是傳說中的
 		特務支援課新成員？{wait}
 	}
 	TextWait
@@ -4532,12 +4493,10 @@ fn[27]:
 	Sleep 1000ms
 	CharTurnToChar char[3] name[8] 500deg/s
 	TextTalk char[3] {
-		那麼，
+		#15402F那麼，
 		妳就是警備隊的諾艾兒？{wait}
-	}
-	TextWait
-	TextTalk char[3] {
-		哦呵呵，如果方便的話，
+	} {
+		#15411F哦呵呵，如果方便的話，
 		下次要不要一起喝茶呢？{wait}
 	}
 	TextWait
@@ -4550,23 +4509,19 @@ fn[27]:
 	}
 	TextWait
 	TextTalk char[3] {
-		咦……？{wait}
+		#15405F咦……？{wait}
 	}
 	TextWait
 	Emote char[3] 0mm 2000mm 38 38 250ms 1
 	Sleep 1000ms
 	CharTurnToChar char[3] name[4] 500deg/s
 	TextTalk char[3] {
-		而你就是聖約幫的
+		#15400F而你就是聖約幫的
 		瓦奇・赫密士菲亞。{wait}
-	}
-	TextWait
-	TextTalk char[3] {
-		…………{wait}
-	}
-	TextWait
-	TextTalk char[3] {
-		……該怎麼說呢，近距離一看才發現，
+	} {
+		#15405F…………{wait}
+	} {
+		#15402F……該怎麼說呢，近距離一看才發現，
 		你長得相當俊美啊～{wait}
 	}
 	TextWait
@@ -4578,11 +4533,9 @@ fn[27]:
 	}
 	TextWait
 	TextTalk char[3] {
-		這、這樣啊……{wait}
-	}
-	TextWait
-	TextTalk char[3] {
-		──不對，我為什麼要因為
+		#15406F這、這樣啊……{wait}
+	} {
+		#15412F──不對，我為什麼要因為
 		不受男人歡迎而沮喪啊！{wait}
 	}
 	TextWait
@@ -4591,23 +4544,19 @@ fn[27]:
 	Sleep 500ms
 	CharTurnToChar char[2] char[3] 500deg/s
 	TextTalk char[2] {
-		……真是的，只要我不開口，
+		#15306F……真是的，只要我不開口，
 		你就老是亂講話。{wait}
-	}
-	TextWait
-	TextTalk char[2] {
-		你也應該學學支援課他們，
+	} {
+		#15307F你也應該學學支援課他們，
 		稍微有點成長啊。{wait}
-	}
-	TextWait
-	TextTalk char[2] {
-		不然要不要我安排你
+	} {
+		#15310F不然要不要我安排你
 		回去警察學校重新學習？{wait}
 	}
 	TextWait
 	CharTurnToChar char[3] char[2] 500deg/s
 	TextTalk char[3] {
-		警部～請您
+		#15412F警部～請您
 		千萬別這麼做啊～{wait}
 	}
 	TextWait
@@ -4632,13 +4581,11 @@ fn[28]:
 	if flag[3385]:
 		if !flag[10]:
 			TextTalk self {
-				嗨，你們聽我說～
+				#15409F嗨，你們聽我說～
 				聽說多諾邦警部很快
 				就要回到警察的工作崗位了。{wait}
-			}
-			TextWait
-			TextTalk self {
-				我之前填補警部的空缺
+			} {
+				#15402F我之前填補警部的空缺
 				而吃了很多苦頭，
 				現在終於可以解脫了～{wait}
 			}
@@ -4656,32 +4603,28 @@ fn[28]:
 			SoundPlay sound[23] 0 100 0
 			Sleep 1000ms
 			TextTalk self {
-				哎、哎呀，這麼說也是。
+				#15411F哎、哎呀，這麼說也是。
 				……你們要幫我保密喔～！{wait}
 			}
 			TextWait
 			FlagSet flag[10]
 		else:
 			TextTalk self {
-				警部回來的話，
+				#15404F警部回來的話，
 				搜查二課也就放心了～{wait}
-			}
-			TextWait
-			TextTalk self {
-				好～在那之前，
+			} {
+				#15402F好～在那之前，
 				我們也得好好努力才行～！{wait}
 			}
 			TextWait
 	elif flag[3371]:
 	elif flag[3089]:
 		TextTalk self {
-			連事前聯絡都沒有
+			#15401F連事前聯絡都沒有
 			就突然跑來
 			編入國防軍……{wait}
-		}
-		TextWait
-		TextTalk self {
-			這種話不能講得太大聲，
+		} {
+			#15408F這種話不能講得太大聲，
 			不過實在太粗暴了吧～
 			……唉，這到底是怎麼回事？{wait}
 		}
@@ -4689,28 +4632,22 @@ fn[28]:
 	elif flag[3074]:
 	elif flag[2861]:
 		TextTalk self {
-			帝國好像已經否認
+			#15401F帝國好像已經否認
 			與此罪行有關了……{wait}
-		}
-		TextWait
-		TextTalk self {
-			但好像還是在進行摸索，
+		} {
+			#15403F但好像還是在進行摸索，
 			看能不能暗中進行交涉。{wait}
-		}
-		TextWait
-		TextTalk self {
-			既然做得出這種事，
+		} {
+			#15401F既然做得出這種事，
 			表示他們肯定有什麼企圖。{wait}
 		}
 		TextWait
 	elif flag[2848]:
 		TextTalk self {
-			瓦魯多・瓦雷斯是
+			#15408F瓦魯多・瓦雷斯是
 			從哪裡得到真知的……{wait}
-		}
-		TextWait
-		TextTalk self {
-			假設不是透過魯巴徹，
+		} {
+			#15401F假設不是透過魯巴徹，
 			那究竟會是從哪個管道呢？{wait}
 		}
 		TextWait
@@ -4719,18 +4656,14 @@ fn[28]:
 		if QuestFlagsGet quest[129] 0x10:
 			if !flag[10]:
 				TextTalk self {
-					啊，是你們啊～
+					#15402F啊，是你們啊～
 					昨天真是謝謝你們。{wait}
-				}
-				TextWait
-				TextTalk self {
-					對了對了，昨天晚上那個老婆婆
+				} {
+					#15400F對了對了，昨天晚上那個老婆婆
 					在我的夢裡出現～
 					不知為何，我反過來被她追趕呢。{wait}
-				}
-				TextWait
-				TextTalk self {
-					呼，害我睡得
+				} {
+					#15406F呼，害我睡得
 					不是很好啊。{wait}
 				}
 				TextWait
@@ -4755,24 +4688,20 @@ fn[28]:
 				FlagSet flag[10]
 			else:
 				TextTalk self {
-					總之，
+					#15402F總之，
 					昨天真的很感謝你們。
 					多虧了你們的幫忙。{wait}
 				}
 				TextWait
 		else:
 			TextTalk self {
-				呼，昨天我做了一個
+				#15406F呼，昨天我做了一個
 				很討厭的夢～{wait}
-			}
-			TextWait
-			TextTalk self {
-				我夢到自己被昨天帶走的
+			} {
+				#15408F我夢到自己被昨天帶走的
 				老婆婆追趕……{wait}
-			}
-			TextWait
-			TextTalk self {
-				我起雞皮疙瘩了，
+			} {
+				#15406F我起雞皮疙瘩了，
 				一回想起來就冒冷汗啊～{wait}
 			}
 			TextWait
@@ -4783,32 +4712,26 @@ fn[28]:
 	elif flag[2369]:
 		if !flag[10]:
 			TextTalk self {
-				呼，這陣子總部內的
+				#15406F呼，這陣子總部內的
 				氣氛也非常緊繃。
 				真是受不了啊～{wait}
-			}
-			TextWait
-			TextTalk self {
-				來自議員和高層的壓力
+			} {
+				#15401F來自議員和高層的壓力
 				雖然有所減輕，
 				但是自治州的問題堆積如山……{wait}
-			}
-			TextWait
-			TextTalk self {
-				唉，究竟要到什麼時候
+			} {
+				#15408F唉，究竟要到什麼時候
 				才能輕鬆一點呢～{wait}
 			}
 			TextWait
 			FlagSet flag[10]
 		else:
 			TextTalk self {
-				不過總而言之，現在也只能
+				#15404F不過總而言之，現在也只能
 				以迪塔市長的政治改革做為心靈支柱，
 				繼續努力了啊～{wait}
-			}
-			TextWait
-			TextTalk self {
-				還有，要是議會那邊可以幫我加薪
+			} {
+				#15400F還有，要是議會那邊可以幫我加薪
 				就好了～開玩笑的啦。{wait}
 			}
 			TextWait
@@ -4817,12 +4740,10 @@ fn[28]:
 			Call fn[0,27]
 		else:
 			TextTalk self {
-				唉，又被警部
+				#15406F唉，又被警部
 				踩到痛處了啦～{wait}
-			}
-			TextWait
-			TextTalk self {
-				我也想要
+			} {
+				#15401F我也想要
 				變得可靠一點……
 				但是個性改不過來啊。{wait}
 			}
@@ -6245,12 +6166,10 @@ fn[45]:
 	CharSetChipPattern char[2] 0
 	Sleep 300ms
 	TextTalk char[2] {
-		#1212180001V#5P二課正以車站、機場、商業區
+		#15300F#1212180001V#5P二課正以車站、機場、商業區
 		為重點進行戒備。{wait}
-	}
-	TextWait
-	TextTalk char[2] {
-		#1212180002V#5P我們應該也會全員值勤
+	} {
+		#15302F#1212180002V#5P我們應該也會全員值勤
 		到會議結束為止。{wait}
 	}
 	TextWait
@@ -6287,12 +6206,10 @@ fn[45]:
 	}
 	TextWait
 	TextTalk char[2] {
-		#1212180003V#5P哈哈，誰叫你老是喜歡
+		#15309F#1212180003V#5P哈哈，誰叫你老是喜歡
 		到處去湊熱鬧嘛。{wait}
-	}
-	TextWait
-	TextTalk char[2] {
-		#1212180004V#5P然後以攻擊敵人死角的方式，
+	} {
+		#15302F#1212180004V#5P然後以攻擊敵人死角的方式，
 		確立對我方有利的搜查體制……{wait}
 	}
 	TextWait
@@ -6410,7 +6327,7 @@ fn[45]:
 	}
 	TextWait
 	TextTalk char[2] {
-		#1212180005V#5P也就是說，他們打算在這座城市
+		#15301F#1212180005V#5P也就是說，他們打算在這座城市
 		與黑月繼續抗爭？{wait}
 	}
 	TextWait
@@ -6500,7 +6417,7 @@ fn[45]:
 	}
 	TextWait
 	TextTalk char[2] {
-		#1212180006V#5P好，靠你們了。{wait}
+		#15302F#1212180006V#5P好，靠你們了。{wait}
 	}
 	TextWait
 	TextTalk char[12] {

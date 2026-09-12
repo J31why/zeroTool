@@ -384,6 +384,8 @@ label[29]:
 	unk1 0
 	unk2 86
 
+sepith[0] 0 0 0 0 0 0 0 0
+
 fn[0]:
 	var[2] = random % 8
 	switch var[2]:
@@ -2094,12 +2096,10 @@ fn[15]:
 	TextStart self
 	if flag[1055]:
 		TextTalk self {
-			今天要處理暴力事件和肇事逃逸犯，
+			#15301F今天要處理暴力事件和肇事逃逸犯，
 			然後就是交易詐騙那邊的調查了。{wait}
-		}
-		TextWait
-		TextTalk self {
-			要是不趕快搞定，
+		} {
+			#15306F要是不趕快搞定，
 			太陽都該下山了。{wait}
 		}
 		TextWait
@@ -2110,15 +2110,12 @@ fn[15]:
 	elif flag[1040]:
 		if !flag[6]:
 			TextTalk self {
-				……（啪啪）…………
+				#15303F……（啪啪）…………
 				你們的案子好像被一課給強行接管了呢。{wait}
-			}
-			TextWait
-			TextTalk self {
-				……算了，這也沒辦法啊。{wait}
-			}
-			TextTalk self {
-				能在一課的管理範圍內
+			} {
+				#15300F……算了，這也沒辦法啊。{wait}
+			} {
+				#15302F能在一課的管理範圍內
 				摻上一腳，就已經
 				很不錯了，不是嗎？{wait}
 			}
@@ -2129,16 +2126,12 @@ fn[15]:
 			}
 			TextWait
 			TextTalk self {
-				嗯，該說真不愧是
+				#15303F嗯，該說真不愧是
 				賽爾蓋的部下嗎……{wait}
-			}
-			TextWait
-			TextTalk self {
-				算了，總之，儘量不要被人盯上啊。{wait}
-			}
-			TextWait
-			TextTalk self {
-				如果你們的行為太過惹眼，
+			} {
+				#15302F算了，總之，儘量不要被人盯上啊。{wait}
+			} {
+				#15304F如果你們的行為太過惹眼，
 				可就要做好心理準備，隨時遭受
 				副局長那類人的刁難了。{wait}
 			}
@@ -2163,12 +2156,10 @@ fn[15]:
 			FlagSet flag[6]
 		elif !flag[7]:
 			TextTalk self {
-				竟然能在一課的地盤中
+				#15300F竟然能在一課的地盤中
 				摻上一腳……{wait}
-			}
-			TextWait
-			TextTalk self {
-				賽爾蓋的部下嗎……
+			} {
+				#15303F賽爾蓋的部下嗎……
 				呵呵，說不定你們也算是
 				繼承了那傢伙的某些特點呢。{wait}
 			}
@@ -2178,20 +2169,18 @@ fn[15]:
 			}
 			TextWait
 			TextTalk self {
-				算了，總之，一定注意不要
+				#15302F算了，總之，一定注意不要
 				顯眼到被副局長盯上了。{wait}
 			}
 			TextWait
 			FlagSet flag[7]
 		else:
 			TextTalk self {
-				……（啪啪）…………
+				#15303F……（啪啪）…………
 				話說回來，雷蒙德那傢伙
 				怎麼磨磨蹭蹭的？{wait}
-			}
-			TextWait
-			TextTalk self {
-				再這麼磨蹭下去，去詢問案情之前，
+			} {
+				#15310F再這麼磨蹭下去，去詢問案情之前，
 				我都已經要把香煙抽完了。{wait}
 			}
 			TextWait
@@ -2202,23 +2191,19 @@ fn[16]:
 	TextStart self
 	if !flag[8]:
 		TextTalk self {
-			真想在紀念慶典的時候
+			#15400F真想在紀念慶典的時候
 			和戀人一起出去玩啊～{wait}
-		}
-		TextWait
-		TextTalk self {
-			比如說，到米修拉姆
+		} {
+			#15404F比如說，到米修拉姆
 			度過一個愉快的假期～{wait}
-		}
-		TextWait
-		TextTalk self {
-			……算了，根本就不可能的。{wait}
+		} {
+			#15408F……算了，根本就不可能的。{wait}
 		}
 		TextWait
 		FlagSet flag[8]
 	else:
 		TextTalk self {
-			呵呵……
+			#15406F呵呵……
 			我們搜查官，在紀念慶典時期
 			是不可能放假的～{wait}
 		}

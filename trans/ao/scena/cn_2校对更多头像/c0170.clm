@@ -462,6 +462,7 @@ look_point[9]:
 anim[0] 1616ms
 
 sepith[0] 0 0 0 0 0 0 0 0
+sepith[1] 0 0 0 0 0 0 0 0
 
 fn[0]:
 	switch random % 8:
@@ -5403,12 +5404,10 @@ fn[44]:
 	TextStart self
 	if flag[2573]:
 		TextTalk self {
-			聽說恐怖分子很有可能
+			#15401F聽說恐怖分子很有可能
 			在會議正式開始的時候發動攻擊耶～{wait}
-		}
-		TextWait
-		TextTalk self {
-			唉，傷腦筋……
+		} {
+			#15406F唉，傷腦筋……
 			萬一遇上攻擊，不知道
 			有沒有辦法控制局面呢～？{wait}
 		}
@@ -5416,12 +5415,10 @@ fn[44]:
 	elif flag[2564]:
 		if !flag[18]:
 			TextTalk self {
-				呼，今天的人潮
+				#15406F呼，今天的人潮
 				還真是多啊～{wait}
-			}
-			TextWait
-			TextTalk self {
-				工作太忙，沒時間
+			} {
+				#15408F工作太忙，沒時間
 				計算有多少美女呢～{wait}
 			}
 			TextWait
@@ -5433,19 +5430,17 @@ fn[44]:
 			FlagSet flag[18]
 		else:
 			TextTalk self {
-				呼，今天的人潮
+				#15406F呼，今天的人潮
 				還真是多啊～{wait}
-			}
-			TextWait
-			TextTalk self {
-				工作太忙，沒時間
+			} {
+				#15408F工作太忙，沒時間
 				計算有多少美女呢～{wait}
 			}
 			TextWait
 	elif QuestFlagsGet quest[115] 0x02 && !QuestFlagsGet quest[115] 0x10 && !QuestFlagsGet quest[115] 0x40 && flag[2723]:
 		if !flag[18]:
 			TextTalk self {
-				哎呀，那個小朋友是……
+				#15402F哎呀，那個小朋友是……
 				該不會是迷路了
 				要找爸媽吧？{wait}
 			}
@@ -5464,12 +5459,12 @@ fn[44]:
 			TextWait
 			CharTurnToChar self name[161] 500deg/s
 			TextTalk self {
-				哦，參觀克洛斯貝爾啊～？{wait}
+				#15400F哦，參觀克洛斯貝爾啊～？{wait}
 			}
 			TextWait
 			CharTurnToChar self field_party[0] 500deg/s
 			TextTalk self {
-				這也是支援請求嗎？
+				#15409F這也是支援請求嗎？
 				支援課的工作真辛苦啊。{wait}
 			}
 			TextWait
@@ -5480,19 +5475,17 @@ fn[44]:
 			FlagSet flag[18]
 		else:
 			TextTalk self {
-				嗯，總之，
+				#15400F嗯，總之，
 				警戒狀態才剛實施第一天。{wait}
-			}
-			TextWait
-			TextTalk self {
-				不用太拚命，
+			} {
+				#15402F不用太拚命，
 				只要隨便努力一下
 				就好了吧～{wait}
 			}
 			TextWait
 	elif !flag[18]:
 		TextTalk self {
-			啊，是你們幾個啊～
+			#15406F啊，是你們幾個啊～
 			彼此都很辛苦呢～{wait}
 		}
 		TextWait
@@ -5507,12 +5500,10 @@ fn[44]:
 		}
 		TextWait
 		TextTalk self {
-			嗯，嚴格來說是負責中央廣場的
+			#15400F嗯，嚴格來說是負責中央廣場的
 			全部的商業設施啦～{wait}
-		}
-		TextWait
-		TextTalk self {
-			這裡也能看到不少美女，
+		} {
+			#15409F這裡也能看到不少美女，
 			所以巡邏起來也很有幹勁喔～{wait}
 		}
 		TextWait
@@ -5534,12 +5525,10 @@ fn[44]:
 		FlagSet flag[18]
 	else:
 		TextTalk self {
-			巡邏行動雖然很辛苦啦～
+			#15402F巡邏行動雖然很辛苦啦～
 			但只要看到美女，疲勞就一掃而空囉～{wait}
-		}
-		TextWait
-		TextTalk self {
-			目前看到的美女共三十一位……
+		} {
+			#15404F目前看到的美女共三十一位……
 			唔呵呵～看樣子還能看到更多呢。{wait}
 		}
 		TextWait

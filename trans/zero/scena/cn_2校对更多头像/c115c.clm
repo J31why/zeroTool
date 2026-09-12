@@ -1039,12 +1039,10 @@ fn[10]:
 	elif flag[1362]:
 		TextStart self
 		TextTalk self {
-			閉幕式上的人員配置，
+			#15301F閉幕式上的人員配置，
 			還是強化一下比較好吧？{wait}
-		}
-		TextWait
-		TextTalk self {
-			今年的人數比往年都要多，
+		} {
+			#15303F今年的人數比往年都要多，
 			如果不拿出些幹勁，後果恐怕不堪設想。{wait}
 		}
 		TextWait
@@ -1054,12 +1052,10 @@ fn[10]:
 		if QuestFlagsGet quest[27] 0x10:
 			TextStart self
 			TextTalk self {
-				唉，老婆婆……
+				#15306F唉，老婆婆……
 				您有沒有在好好反省啊？{wait}
-			}
-			TextWait
-			TextTalk self {
-				……算了，反正看上去也不像在反省啊。{wait}
+			} {
+				#15301F……算了，反正看上去也不像在反省啊。{wait}
 			}
 			TextWait
 			TextEnd self
@@ -1073,23 +1069,19 @@ fn[11]:
 		TextStart self
 		if !flag[5]:
 			TextTalk self {
-				哎呀，是你們啊～{wait}
-			}
-			TextWait
-			TextTalk self {
-				警部他們正在參加
+				#15402F哎呀，是你們啊～{wait}
+			} {
+				#15400F警部他們正在參加
 				閉幕式警備工作的安排會議哦～{wait}
-			}
-			TextWait
-			TextTalk self {
-				真是的，真希望他們能分出一點人手來
+			} {
+				#15406F真是的，真希望他們能分出一點人手來
 				幫幫我這邊啊～{wait}
 			}
 			TextWait
 			FlagSet flag[5]
 		else:
 			TextTalk self {
-				呼，反正像這種混亂的狀態，
+				#15409F呼，反正像這種混亂的狀態，
 				應該也就到今天為止了吧～
 				一起加油吧～{wait}
 			}
@@ -1119,12 +1111,10 @@ fn[11]:
 			self.5 = 0
 			CharFlagsSet self 0x0010
 			TextTalk self {
-				嗯……筆錄這種事情，
+				#15403F嗯……筆錄這種事情，
 				不管做多少次都無法習慣呢。{wait}
-			}
-			TextWait
-			TextTalk self {
-				如果只是失足少年，
+			} {
+				#15402F如果只是失足少年，
 				我倒是可以自己應付～{wait}
 			}
 			TextWait
@@ -1310,12 +1300,10 @@ fn[16]:
 		}
 		TextWait
 		TextTalk char[4] {
-			好～要是真的不夠用了，
+			#15401F好～要是真的不夠用了，
 			就把會議室也用上吧～！{wait}
-		}
-		TextWait
-		TextTalk char[4] {
-			不過，比起那個，重點還是巡邏啊～
+		} {
+			#15407F不過，比起那個，重點還是巡邏啊～
 			向站前大道出發～！{wait}
 		}
 		TextWait
@@ -1379,7 +1367,7 @@ fn[17]:
 		}
 		TextWait
 		TextTalk char[3] {
-			……喂，老婆婆，面向這邊啦。
+			#15301F……喂，老婆婆，面向這邊啦。
 			我們還在做筆錄啊。{wait}
 		}
 		TextWait
@@ -2400,12 +2388,12 @@ fn[26]:
 	}
 	TextWait
 	TextTalk char[3] {
-		#5P嗯，辛苦了。
+		#15302F#5P嗯，辛苦了。
 		你們來得正好。{wait}
 	}
 	TextWait
 	TextTalk char[4] {
-		#11P辛苦啦～{wait}
+		#15409F#11P辛苦啦～{wait}
 	}
 	TextWait
 	TextTalk name[1] {
@@ -2419,7 +2407,7 @@ fn[26]:
 	}
 	TextWait
 	TextTalk char[3] {
-		#5P嗯，那現在就來開個
+		#15300F#5P嗯，那現在就來開個
 		簡單的臨時會議吧。
 		請各自就坐。{wait}
 	}
@@ -2466,12 +2454,10 @@ fn[26]:
 	FadeWait
 	CamWait 121
 	TextTalk char[3] {
-		#11P那麼……言歸正傳，今天
+		#15303F#11P那麼……言歸正傳，今天
 		把你們叫來不為其它。{wait}
-	}
-	TextWait
-	TextTalk char[3] {
-		#11P就是想請你們協助我們找出
+	} {
+		#15300F#11P就是想請你們協助我們找出
 		在克洛斯貝爾地區從事違法活動的
 		『假貨販子』，並將其捕獲。{wait}
 	}
@@ -2491,24 +2477,18 @@ fn[26]:
 	}
 	TextWait
 	TextTalk char[4] {
-		#11P了、了解得真詳細呢，
+		#15405F#11P了、了解得真詳細呢，
 		大概就是這麼一回事。{wait}
-	}
-	TextWait
-	TextTalk char[4] {
-		#11P每年紀念慶典期間，
+	} {
+		#15401F#11P每年紀念慶典期間，
 		都會有很多這樣的假貨販子，偽裝成
 		普通的遊客，潛入克洛斯貝爾。{wait}
-	}
-	TextWait
-	TextTalk char[4] {
-		#11P像烏爾努公司製造的高級手錶，
+	} {
+		#15403F#11P像烏爾努公司製造的高級手錶，
 		斯托雷加公司的絕版經典產品，
 		還有各種七耀石製的小物件……{wait}
-	}
-	TextWait
-	TextTalk char[4] {
-		#11P他們將這些東西販賣給
+	} {
+		#15401F#11P他們將這些東西販賣給
 		缺乏鑒別知識的顧客，
 		從而謀取不正當的利益。{wait}
 	}
@@ -2522,22 +2502,16 @@ fn[26]:
 	}
 	TextWait
 	TextTalk char[3] {
-		#11P嗯，就是這樣。{wait}
-	}
-	TextWait
-	TextTalk char[3] {
-		#11P說起來，我們也真是沒用……
+		#15301F#11P嗯，就是這樣。{wait}
+	} {
+		#15308F#11P說起來，我們也真是沒用……
 		每年都會接到好幾件這樣的報案。{wait}
-	}
-	TextWait
-	TextTalk char[3] {
-		#11P而且，這種假貨商人的存在也
+	} {
+		#15303F#11P而且，這種假貨商人的存在也
 		關係到製造商與經銷商的信用，
 		是個很大的問題。{wait}
-	}
-	TextWait
-	TextTalk char[3] {
-		#11P身為警察，我們今年一定要
+	} {
+		#15301F#11P身為警察，我們今年一定要
 		阻止那些傢伙潛入克洛斯貝爾，
 		並讓市民們恢復對我們的信賴。{wait}
 	}
@@ -2551,7 +2525,7 @@ fn[26]:
 	}
 	TextWait
 	TextTalk char[3] {
-		#11P嗯，非常感謝。{wait}
+		#15302F#11P嗯，非常感謝。{wait}
 	}
 	TextWait
 	TextTalk name[1] {
@@ -2560,31 +2534,25 @@ fn[26]:
 	}
 	TextWait
 	TextTalk char[3] {
-		#11P他們的潛入路線，
+		#15300F#11P他們的潛入路線，
 		我想共有克洛斯貝爾車站、機場，
 		以及唐古拉姆門這三條。{wait}
-	}
-	TextWait
-	TextTalk char[3] {
-		#11P車站和機場就交給我們來控制，
+	} {
+		#15300F#11P車站和機場就交給我們來控制，
 		希望你們能負責唐古拉姆門
 		那邊的警戒工作。{wait}
 	}
 	TextWait
 	TextTalk char[4] {
-		#11P二課也是人手不足啊……
+		#15403F#11P二課也是人手不足啊……
 		沒辦法顧及到克洛斯貝爾的
 		郊外地區。{wait}
-	}
-	TextWait
-	TextTalk char[4] {
-		#11P而你們好像和警備隊的
+	} {
+		#15400F#11P而你們好像和警備隊的
 		索妮亞副司令
 		也認識吧？{wait}
-	}
-	TextWait
-	TextTalk char[4] {
-		#11P既然是堵截作戰，
+	} {
+		#15402F#11P既然是堵截作戰，
 		那麼就需要請求現場人員的合作，
 		所以，我想你們應該很適合擔任此次任務。{wait}
 	}
@@ -2601,16 +2569,12 @@ fn[26]:
 	}
 	TextWait
 	TextTalk char[3] {
-		#11P……好，該交代的都說完了。{wait}
-	}
-	TextWait
-	TextTalk char[3] {
-		#11P我們現在就打算
+		#15303F#11P……好，該交代的都說完了。{wait}
+	} {
+		#15300F#11P我們現在就打算
 		前往車站和機場埋伏了。{wait}
-	}
-	TextWait
-	TextTalk char[3] {
-		#11P你們也趕快去唐古拉姆門，
+	} {
+		#15300F#11P你們也趕快去唐古拉姆門，
 		與那邊會合，進行警備吧。{wait}
 	}
 	TextWait
@@ -2621,11 +2585,11 @@ fn[26]:
 	}
 	TextWait
 	TextTalk char[3] {
-		#11P拜託你們了。{wait}
+		#15302F#11P拜託你們了。{wait}
 	}
 	TextWait
 	TextTalk char[4] {
-		#11P那麼，再見啦。{wait}
+		#15402F#11P那麼，再見啦。{wait}
 	}
 	TextWait
 	ForkFunc char[3] fork[3] fn[0,27]
@@ -2762,7 +2726,7 @@ fn[29]:
 	FadeWait
 	CamWait 1
 	TextTalk char[14] {
-		#6P那個……
+		#15402F#6P那個……
 		能不能請您把名字告訴我？{wait}
 	}
 	TextWait
@@ -2772,22 +2736,16 @@ fn[29]:
 	}
 	TextWait
 	TextTalk char[14] {
-		#6P乳、乳臭未乾的小鬼……{wait}
-	}
-	TextWait
-	TextTalk char[14] {
-		#6P我說啊……
+		#15412F#6P乳、乳臭未乾的小鬼……{wait}
+	} {
+		#15403F#6P我說啊……
 		老婆婆，您難道還不明白
 		自己都幹了些什麼嗎？{wait}
-	}
-	TextWait
-	TextTalk char[14] {
-		#6P您的同夥們已經
+	} {
+		#15401F#6P您的同夥們已經
 		全都被逮捕了哦。{wait}
-	}
-	TextWait
-	TextTalk char[14] {
-		#6P請放棄抵抗，老老實實地配合我們吧～{wait}
+	} {
+		#15401F#6P請放棄抵抗，老老實實地配合我們吧～{wait}
 	}
 	TextWait
 	Shake 0 100 3000 200ms
@@ -2803,7 +2761,7 @@ fn[29]:
 	}
 	TextWait
 	TextTalk char[14] {
-		#6P唔、唔唔……
+		#15406F#6P唔、唔唔……
 		稍後就會拿來的……{wait}
 	}
 	TextWait
@@ -2823,12 +2781,10 @@ fn[29]:
 	}
 	TextWait
 	TextTalk char[3] {
-		#5P雖然對方確實很難對付……
+		#15303F#5P雖然對方確實很難對付……
 		但不要緊，用不著擔心。{wait}
-	}
-	TextWait
-	TextTalk char[3] {
-		#5P這裡畢竟是警察局總部，
+	} {
+		#15300F#5P這裡畢竟是警察局總部，
 		她是絕對逃不出去的。{wait}
 	}
 	TextWait
@@ -2842,7 +2798,7 @@ fn[29]:
 	}
 	TextWait
 	TextTalk char[3] {
-		#5P話說回來……
+		#15305F#5P話說回來……
 		那位美人是什麼人啊？{wait}
 	}
 	TextWait
@@ -2905,16 +2861,12 @@ fn[29]:
 	}
 	TextWait
 	TextTalk char[3] {
-		#5P嗯……原來如此啊。{wait}
-	}
-	TextWait
-	TextTalk char[3] {
-		#5P……之前的態度真是失禮了。
+		#15304F#5P嗯……原來如此啊。{wait}
+	} {
+		#15302F#5P……之前的態度真是失禮了。
 		很抱歉，感謝您的協助。{wait}
-	}
-	TextWait
-	TextTalk char[3] {
-		#5P如果不嫌棄，希望您能收下我的謝禮。
+	} {
+		#15302F#5P如果不嫌棄，希望您能收下我的謝禮。
 		……雖然不是很貴重。{wait}
 	}
 	TextWait
@@ -2927,7 +2879,7 @@ fn[29]:
 	}
 	TextWait
 	TextTalk char[3] {
-		#5P哈哈，聽您這麼一說，
+		#15309F#5P哈哈，聽您這麼一說，
 		我的心情也輕鬆多了。{wait}
 	}
 	TextWait
@@ -2957,17 +2909,13 @@ fn[29]:
 	}
 	TextWait
 	TextTalk char[3] {
-		#5P那個啊……
+		#15300F#5P那個啊……
 		老婆婆的其他同夥也都被我們順利逮捕了。{wait}
-	}
-	TextWait
-	TextTalk char[3] {
-		#5P他們準備搬運的那些假貨
+	} {
+		#15303F#5P他們準備搬運的那些假貨
 		也都被我們扣押了。{wait}
-	}
-	TextWait
-	TextTalk char[3] {
-		#5P他們今年恐怕是
+	} {
+		#15300F#5P他們今年恐怕是
 		不可能再次行動了吧。{wait}
 	}
 	TextWait
@@ -2978,7 +2926,7 @@ fn[29]:
 	}
 	TextWait
 	TextTalk char[3] {
-		#5P嚴重警告，
+		#15303F#5P嚴重警告，
 		以及為期一個月的自治州驅逐令……
 		大概也就是這樣了吧。{wait}
 	}
@@ -2993,13 +2941,11 @@ fn[29]:
 	}
 	TextWait
 	TextTalk char[3] {
-		#5P沒辦法，根據自治州法律，這畢竟也只是輕微犯罪。
+		#15301F#5P沒辦法，根據自治州法律，這畢竟也只是輕微犯罪。
 		而且對方是外國人，
 		也不能太過強硬。{wait}
-	}
-	TextWait
-	TextTalk char[3] {
-		#5P雖然這確實很令人鬱悶……
+	} {
+		#15308F#5P雖然這確實很令人鬱悶……
 		但也是無可奈何的啊。{wait}
 	}
 	TextWait
@@ -3008,12 +2954,10 @@ fn[29]:
 	}
 	TextWait
 	TextTalk char[3] {
-		#5P好啦，不用那麼沮喪，
+		#15304F#5P好啦，不用那麼沮喪，
 		你們做得已經很好了。{wait}
-	}
-	TextWait
-	TextTalk char[3] {
-		#5P至少在今年的紀念慶典中，不會再有
+	} {
+		#15302F#5P至少在今年的紀念慶典中，不會再有
 		假貨出現了，這就已經很好啦。{wait}
 	}
 	TextWait
@@ -3028,17 +2972,13 @@ fn[29]:
 	Emote char[3] 0mm 2000mm 38 38 250ms 1
 	Sleep 1000ms
 	TextTalk char[3] {
-		#5P噢……
+		#15305F#5P噢……
 		我必須趕快去幫幫
 		那傢伙啦。{wait}
-	}
-	TextWait
-	TextTalk char[3] {
-		#5P特務支援課的各位，這次辛苦你們了。{wait}
-	}
-	TextWait
-	TextTalk char[3] {
-		#5P以後可能還會有需要你們幫忙的地方，到時就拜託了哦。{wait}
+	} {
+		#15300F#5P特務支援課的各位，這次辛苦你們了。{wait}
+	} {
+		#15302F#5P以後可能還會有需要你們幫忙的地方，到時就拜託了哦。{wait}
 	}
 	TextWait
 	TextTalk name[0] {
@@ -3048,22 +2988,16 @@ fn[29]:
 	TextWait
 	if !QuestTaskGet quest[27] 15 && !QuestTaskGet quest[27] 16:
 		TextTalk char[3] {
-			#5P……啊……
+			#15305F#5P……啊……
 			對了，有件事忘了說。{wait}
-		}
-		TextWait
-		TextTalk char[3] {
-			#5P你們曾經把一名遊客
+		} {
+			#15300F#5P你們曾經把一名遊客
 			誤認為嫌疑人了……{wait}
-		}
-		TextWait
-		TextTalk char[3] {
-			#5P警察局剛才已經送去了
+		} {
+			#15303F#5P警察局剛才已經送去了
 			當作謝罪的禮品。{wait}
-		}
-		TextWait
-		TextTalk char[3] {
-			#5P……今後可要更加慎重，
+		} {
+			#15301F#5P……今後可要更加慎重，
 			不要再做出這麼輕率的判斷了。{wait}
 		}
 		TextWait

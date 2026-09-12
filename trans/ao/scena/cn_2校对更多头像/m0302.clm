@@ -485,8 +485,7 @@ anim[5] 2000ms 0 1 2 3 4
 anim[6] 1000ms 0 1 2 3 4 3 2 1
 anim[7] 1000ms 0 1 2 3
 
-sepith[0] 0 0 0 0 0 0 0 0
-sepith[1] 5 5 5 5 10 0 0 0
+sepith[0] 5 5 5 5 10 0 0 0
 
 at_roll[0]: none 100; hp10 5; hp50 1; ep10 5; ep50 1; cp10 5; cp50 1; unk1 5; unk2 5; unk6 1
 at_roll[1]: none 100; hp10 5; ep10 5; cp10 5; unk1 2; unk2 5; unk6 2
@@ -541,7 +540,7 @@ battle[0]:
 	move_speed 30
 	unk2 0
 	battlefield "bm0300"
-	sepith sepith[1]
+	sepith sepith[0]
 	setup 35:
 		enemies "ms84100.dat" "ms81800.dat" "ms81800.dat" "ms81800.dat" null null null null
 		placement placement[0] placement[1]
@@ -568,7 +567,7 @@ battle[1]:
 	move_speed 30
 	unk2 0
 	battlefield "bm0300"
-	sepith sepith[1]
+	sepith sepith[0]
 	setup 35:
 		enemies "ms84200.dat" "ms81800.dat" "ms81800.dat" "ms81800.dat" null null null null
 		placement placement[0] placement[1]
@@ -595,7 +594,7 @@ battle[2]:
 	move_speed 30
 	unk2 0
 	battlefield "bm0300"
-	sepith sepith[1]
+	sepith sepith[0]
 	setup 35:
 		enemies "ms84300.dat" "ms81800.dat" "ms81800.dat" "ms81800.dat" null null null null
 		placement placement[0] placement[1]
@@ -1408,18 +1407,14 @@ fn[13]:
 	TextStart self
 	if !flag[6]:
 		TextTalk char[2] {
-			那麼，在作戰開始之前，
+			#15404F那麼，在作戰開始之前，
 			得先檢查武裝才行～{wait}
-		}
-		TextWait
-		TextTalk char[2] {
-			……對了，聽說你們
+		} {
+			#15400F……對了，聽說你們
 			在醫院見到了
 			多諾邦警部啊～{wait}
-		}
-		TextWait
-		TextTalk char[2] {
-			怎麼樣？
+		} {
+			#15400F怎麼樣？
 			他的狀況還好嗎？{wait}
 		}
 		TextWait
@@ -1429,23 +1424,19 @@ fn[13]:
 		}
 		TextWait
 		TextTalk char[2] {
-			哈哈，那太好了。{wait}
-		}
-		TextWait
-		TextTalk char[2] {
-			警部不在的時候，
+			#15404F哈哈，那太好了。{wait}
+		} {
+			#15400F警部不在的時候，
 			我們得自己想辦法撐下去才行啊～{wait}
 		}
 		TextWait
 		FlagSet flag[6]
 	else:
 		TextTalk char[2] {
-			那麼，在作戰開始之前，
+			#15404F那麼，在作戰開始之前，
 			得先檢查武裝才行～{wait}
-		}
-		TextWait
-		TextTalk char[2] {
-			警部不在的時候，
+		} {
+			#15400F警部不在的時候，
 			我們得自己想辦法撐下去才行啊～{wait}
 		}
 		TextWait
@@ -2500,7 +2491,7 @@ fn[34]:
 	ED7CamRotate 39deg 21deg 0deg 1000ms
 	CamWait 121
 	TextTalk char[2] {
-		#1512510001V#11P喔喔！竟然說出來了！？{wait}
+		#15405F#1512510001V#11P喔喔！竟然說出來了！？{wait}
 	}
 	TextWait
 	TextTalk char[3] {
@@ -2790,10 +2781,10 @@ fn[35]:
 	}
 	TextWait
 	TextTalk char[2] {
-		#1532510001V#11P不過因為實在太突然，
+		#15401F#1532510001V#11P不過因為實在太突然，
 		似乎也有許多市民來不及準備。{wait}
 	} {
-		#1532510002V#11P好像也有人躲在
+		#15403F#1532510002V#11P好像也有人躲在
 		市民會館和飯店裡避難，
 		我想他們應該很困擾吧～？{wait}
 	}
