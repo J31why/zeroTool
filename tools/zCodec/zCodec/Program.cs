@@ -342,7 +342,11 @@ internal static class Program
             codec.ParseFromFile(file);
             var success =codec.CompileToFile(outfile, _calmare, _encoding,_isAo);
             if(!success)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("文件编译错误: {0}\n", file);
+                Console.ForegroundColor = ConsoleColor.Gray;
+            }
         }
         var files = GetFiles(path,"*.clm");
         foreach (var file in files)
@@ -379,7 +383,9 @@ internal static class Program
                     var gbkcount = ExtraEncoding.GBK.GetByteCount(x);
                     if (unicount != gbkcount)
                     {
-                        Console.WriteLine("错误 "+x);
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("错误 " + x);
+                        Console.ForegroundColor = ConsoleColor.Gray;
                     }
                 });
                 content = CLEDecrypter.Tw2s(content).Replace("\r","");
