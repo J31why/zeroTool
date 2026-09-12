@@ -644,7 +644,6 @@ namespace hook {
         string searchFile = file;
         std::replace(searchFile.begin(), searchFile.end(), '/', '\\');
         bool showInfo = is_debug;
-        showInfo = false;
         if (showInfo) {
             cout << "[DEBUG][CreateFileA]：" << file;
         }
