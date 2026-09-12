@@ -13,8 +13,8 @@
 A：现官方轨迹发行商是云豹，云豹版的图片、影片资源更加高清。如果有朋友想要移植欢乐百世版本的文本，我可以提供部分帮助。
 
 **Q：「更多头像Zero」MOD是什么？**  
-A：这是外网 shinkiseki 制作的MOD，在游戏中添加了晓之轨迹、碧之轨迹和原创的头像、立绘。
-汉化版本为 v1.5.1（2025-12-10发布），详情请参阅：[MorePortraitsInZero](https://github.com/shinkiseki/MorePortraitsInZero)
+A：这是外网 shinkiseki 制作的MOD，在游戏中添加了晓之轨迹、碧之轨迹和原创的头像、立绘。  
+详情请参阅：[MorePortraitsInZero](https://github.com/shinkiseki/MorePortraitsInZero)
 
 **Q：没有添加EVO的独占任务吗？**  
 A：没有，不过如果有朋友愿意制作MOD的话，我可以提供部分帮助。
@@ -48,7 +48,7 @@ A：使用兼容补丁，详情见【下载安装】的【兼容补丁】。
 3. 打开游戏在设置切换语言。  
 
 **兼容补丁**：
-修改游戏主程序后的高兼容模式，汉化失败或steamdeck玩家可使用，主程序修改版本为`v1.4.13`。  
+修改游戏主程序后的高兼容模式，汉化失败或steamdeck玩家可使用，主程序修改版本为`v1.5.5`。  
 1. 正常安装汉化补丁。
 2. 备份`zero.exe`原文件。
 3. 将`兼容补丁`目录中的文件复制并覆盖到游戏目录。
@@ -104,6 +104,9 @@ GitHub：[https://github.com/J31why/zeroTool](https://github.com/J31why/zeroTool
 ---
 
 ## 【发布日志】
+
+**V1.9（2026/9/12）**  
+修复: 适配新版本1.5.5。  
 
 **V1.8（2026/9/5）**  
 修复: 道具属性描述与实际效果不符(88长青之绿/531三色果干面包)。  

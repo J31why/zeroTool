@@ -53,7 +53,7 @@ BOOL APIENTRY DllMain(HMODULE hModule,
             hook::hook_install();
             isHook = true;
             if (!hook::isMatchSuccessful) {
-                MessageBoxA(NULL, "地址匹配失败，Hook失败。", "错误", 0);
+                MessageBoxA(NULL, "地址匹配失败，Hook 未能成功加载。\n本补丁基于《碧之轨迹》v1.2.5 制作，请确认您的游戏版本是否匹配。", "汉化补丁 错误", 0);
             }
         }
     }

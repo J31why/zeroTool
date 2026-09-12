@@ -3,81 +3,53 @@
 using namespace std;
 
 namespace hook {
-    string sjis2uni_addr_pattern = "48 89 54 24 10 55 41 54 41 57 48";
-    string check_encoding_addr_pattern = "5F 5B 5D C3 CC CC CC CC CC CC CC CC CC 48 89 5C 24 08"; // result+0xd
-    string load_mess_string_addr_pattern = "FF C3 CC CC CC CC CC 48 89 5C 24 18 48 89 4C 24 08"; //result+0x7
-    string get_mess_string_key_addr_pattern = "40 53 48 83 EC 20 48 8B D9 81 FA ?? ?? 00 00 0f";
-    string mess_string_jp_struct_addr_pattern = "89 5d ?? 48 8d 15 ?? ?? ?? 00"; //result+0x10+0x38af17
-    string sjis2utf8_addr_pattern = "40 56 48 83 EC 10";
-    string utf82sjis_addr_pattern = "48 89 5C 24 10 56 49 8B D9";
+    string sjis2uni_addr_pattern = "41 54 41 55 41 57 48 81 EC 80 00 00 00";
+    string check_encoding_addr_pattern = "48 89 5C 24 08 48 89 6C 24 10 48 89 74 24 18 48 89 7C 24 20 41 54 41 56 41 57 0F B6 11";
+    string load_mess_string_addr_pattern = "48 8B C4 48 89 58 10 48 89 70 18 48 89 78 20 55 41 54 41 55 41 56 41 57 48 8D 68 ?? 48 81 EC ?? ?? 00 00 0F 29 70 ?? 0F 29 78 ?? 48 8b 05 ?? ?? ?? 00 48 33 C4 48 ?? ?? ?? 48 8B F9 48";
+    string get_mess_string_key_addr_pattern = "40 53 48 83 EC 30 45 33 c0 48 8b d9 81";
+    string mess_string_jp_struct_offset_pattern = "90 33 d2 41 b8";
+    string sjis2utf8_addr_pattern = "40 53 56 48 8B F2 48";
+    string utf82sjis_addr_pattern = "48 89 74 24 18 41 56 49";
     string language_option_addr_pattern = "8B 0D ?? ?? ?? 00 85 c9 74";
-    string noteHelpKey_posMap_addr_pattern = "F3 0F 10 05 ?? ?? ?? 00 F3 0F 11 05 ?? ?? ?? 00 4c 8b c0 41";
-    string loadNoteHelpKey_posMap_addr_pattern = "48 89 5C 24 ?? 48 89 4C 24 ?? 55 56 57 41 54 41 55 41 56 41 57 48 8D AC 24 ?? ?? FF FF 48 81 EC ?? ?? 00 00 48 8d 05 ?? ?? ?? 00";
-    string WebMPlayerOpen_addr_pattern = "72 03 48 8B 16 48 8B CB FF 15";
-    string TextWidthScalefactor_addr_pattern = "F3 0F 59 D1 F3 41 0F 59 D0 F3 0F 58 C2 F3 41 0F 59 C0";
-    string DialogBoxHeight_addr_pattern = "66 0F 6E C8 0F 5B C9 F3 0F 58 C8 F3 0F 2C C1 89 83 8C";
+    string loadNoteHelpKey_posMap_addr_pattern = "48 89 5C 24 10 48 89 74 24 18 48 89 7C 24 20 55 41 56 41 57 48 8D AC 24 ?? ?? FF FF 48 81 ec ?? ?? 00 00 48 8b 05 ?? ?? ?? ?? 48 33 C4 48 89 85 ?? ?? ?? ?? 48 8B F1 48";
+    string WebMPlayerOpen_addr_pattern = "48 8b 16 48 8b cb ff 15";
+    string TextWidthScalefactor_addr_pattern = "F3 44 0F 10 0D ?? ?? ?? ?? 41 0F 28 FB";
+    string DialogBoxHeight_addr_pattern = "66 0F 6E 89 ?? ?? ?? ?? 0F 5B C9 F3 0F 58 C8 F3 0F 2C C1";
+    // ==============
+    //string SwitchFrameLimit_addr_pattern = "4C 8B C1 48 8B 49 10 49 8B 40 18";
+    //string FrameLimit_addr_pattern = "EB ?? 66 0F 6E 0D";
+    //string ScenaSleep_addr_pattern = "48 89 5C 24 10 44 8B 5A 08 4C 8B D1";
+    //string DialogSleep_addr_pattern = "6B C7 64 BF 00 02 00 00";
 
-    string main_sjis_byte_valid_addr_pattern = "80 ?? 7F 76";
-    string ui_sjis_byte_valid_addr_pattern = "3C 3F 77";
-    string talk_sjis_byte_valid_addr_pattern = "3C 1F 76 ?? 80";
-    string menu_sjis_byte_valid_addr_pattern = "8D 41 60 3C 3F 76 ?? 44";
-	string escape_sjis_byte_valid_addr_pattern = "41 8D 48 60 80 F9 3F 77";
-	string story_sjis_byte_valid_addr_pattern = "80 F9 7F 0F ?? ?? ?? 00 00 ?? ?? 60";
-	string add_al_60_r15_sjis_byte_valid_addr_pattern = "04 60 3c 3f 0f";
+    string main_sjis_byte_valid_addr_pattern = "80 F9 A0 72 ?? 33 C0";
 
-    uintptr_t sjis2uni_addr = 0x140075A60;
-    uintptr_t check_encoding_addr = 0x140075300;
-    uintptr_t load_mess_string_addr = 0x140110950;
-    uintptr_t get_mess_string_key_addr = 0x1400C6EF0;
-    uintptr_t mess_string_jp_struct_addr = 0x14051FFF8;
-    uintptr_t sjis2utf8_addr = 0x1400755D0;
-    uintptr_t utf82sjis_addr = 0x1400757B0;
-    int32_t* language_option_addr = reinterpret_cast<int32_t*>(0x140538B74);
-    uintptr_t noteHelpKey_posMap_addr = 0x14053a160;
-    uintptr_t loadNoteHelpKey_posMap_addr = 0x1400beb80;
-    uintptr_t WebMPlayerOpen_addr = 0x14041AEC0;
-    uintptr_t TextWidthScalefactor_addr = 0x14046b260;
+    uintptr_t sjis2uni_addr = 0x1401369e0;
+    uintptr_t check_encoding_addr = 0x1401360b0;
+    uintptr_t load_mess_string_addr = 0x1401d3ff0;
+    uintptr_t get_mess_string_key_addr = 0x140217cb0;
+    uintptr_t mess_string_jp_offset_offset = 0x183e0;
+    uintptr_t sjis2utf8_addr = 0x140136f00;
+    uintptr_t utf82sjis_addr = 0x140137ba0;
+    int32_t* language_option_addr = reinterpret_cast<int32_t*>(0x140807A24);
+    uintptr_t loadNoteHelpKey_posMap_addr = 0x1401c5310;
+    uintptr_t WebMPlayerOpen_addr = 0x1408a7c08;
+    uintptr_t TextWidthScalefactor_addr = 0x1406ebfb8;
     uintptr_t DialogBoxHeight_addr[] =
     {
-        0x140232A58,
-        0x1402332D2
+        0x1403bf071,    //dialog1
+        0x1403bfa45     //dialog2
     };
 
-    uintptr_t main_sjis_byte_valid_addr[] = 
-    { 
-        0x14022C3C7,
-        0x140231AC0,
-        0x140231B0D,
-        0x1402AEE7E,
-        0x1402AFF20
-    };
-    uintptr_t talk_sjis_byte_valid_addr[] =
+    uintptr_t main_sjis_byte_valid_addr[] =
     {
-        0x14011400F,
-        0x14022B692,
-        0x14023125E,
-        0x14036D88E
+        0x1402a7135,
+        0x1402acf25,
     };
-    uintptr_t ui_sjis_byte_valid_addr[] =
-    {
-        0x140200669,
-        0x14023161D,
-        0x1402F9138
-    };
-    uintptr_t story_sjis_byte_valid_addr[] = 
-    {
-        0x1402309E8,
-        0x1402B0734
-    };
-    uintptr_t menu_sjis_byte_valid_addr = 0x14037A60B;
-	uintptr_t escape_sjis_byte_valid_addr = 0x1402AC70D;
-
-	uintptr_t add_al_60_r15_sjis_byte_valid_addr = 0x14022DC7F;
 
     CreateFileA_t ori_CreateFileA = nullptr;
     CreateWindowExA_t ori_CreateWindowExA = nullptr;
     sjis2uni_t ori_sjis2uni = nullptr;
-    sjis2uni_t ori_check_encoding = nullptr;
+    checkEncoding_t ori_check_encoding = nullptr;
     load_mess_string_t ori_load_mess_string = nullptr;
     get_mess_string_key_t get_mess_string_key = nullptr;
     sjis2utf8_t ori_sjis2utf8 = nullptr;
@@ -87,7 +59,7 @@ namespace hook {
 
     bool isMatchSuccessful = false;
     int matchedAddrCount = 0;
-    int totalAddrCount = 30;
+    int totalAddrCount = 15;
     bool is_debug = false;
 
     void search_all_addresses() {
@@ -99,13 +71,13 @@ namespace hook {
         }
 
         if (SearchModuleMemory(check_encoding_addr_pattern, matchResults) && matchResults.size() == 1) {
-            check_encoding_addr = matchResults[0] + 0xd;
+            check_encoding_addr = matchResults[0];
             cout << "check_encoding_addr : 0x" << hex << check_encoding_addr << endl;
             matchedAddrCount++;
         }
 
         if (SearchModuleMemory(load_mess_string_addr_pattern, matchResults) && matchResults.size() == 1) {
-            load_mess_string_addr = matchResults[0] + 0x7;
+            load_mess_string_addr = matchResults[0];
             cout << "load_mess_string_addr : 0x" << hex << load_mess_string_addr << endl;
             matchedAddrCount++;
         }
@@ -116,11 +88,11 @@ namespace hook {
             matchedAddrCount++;
         }
 
-        if (SearchModuleMemory(mess_string_jp_struct_addr_pattern, matchResults) && matchResults.size() == 1) {
-            mess_string_jp_struct_addr = matchResults[0] + 0x6;
-            uint32_t* offset_ptr = reinterpret_cast<uint32_t*>(mess_string_jp_struct_addr);
-            mess_string_jp_struct_addr += (uint64_t)*offset_ptr + 0x4;
-            cout << "mess_string_jp_struct_addr : 0x" << hex << mess_string_jp_struct_addr << endl;
+        if (SearchModuleMemory(mess_string_jp_struct_offset_pattern, matchResults) && matchResults.size() == 1) {
+            mess_string_jp_offset_offset = matchResults[0] + 0x5;
+            uint32_t* offset_ptr = reinterpret_cast<uint32_t*>(mess_string_jp_offset_offset);
+            mess_string_jp_offset_offset = (uint64_t)*offset_ptr;
+            cout << "mess_string_jp_struct_offset : 0x" << hex << mess_string_jp_offset_offset << endl;
             matchedAddrCount++;
         }
 
@@ -144,14 +116,6 @@ namespace hook {
             matchedAddrCount++;
         }
 
-        if (SearchModuleMemory(noteHelpKey_posMap_addr_pattern, matchResults) && matchResults.size() == 1) {
-            noteHelpKey_posMap_addr = matchResults[0] + 0xc;
-            uint32_t* offset_ptr = reinterpret_cast<uint32_t*>(noteHelpKey_posMap_addr);
-            noteHelpKey_posMap_addr += (uint64_t)*offset_ptr + 0x4;
-            cout << "noteHelpKey_posMap_addr : 0x" << hex << noteHelpKey_posMap_addr << endl;
-            matchedAddrCount++;
-        }
-
         if (SearchModuleMemory(loadNoteHelpKey_posMap_addr_pattern, matchResults) && matchResults.size() == 1) {
             loadNoteHelpKey_posMap_addr = matchResults[0];
             cout << "loadNoteHelpKey_posMap_addr : 0x" << hex << loadNoteHelpKey_posMap_addr << endl;
@@ -159,16 +123,15 @@ namespace hook {
         }
 
         if (SearchModuleMemory(WebMPlayerOpen_addr_pattern, matchResults) && matchResults.size() == 1) {
-            WebMPlayerOpen_addr = matchResults[0] + 0xa;
+            WebMPlayerOpen_addr = matchResults[0] + 0x8;
             uint32_t* offset_ptr = reinterpret_cast<uint32_t*>(WebMPlayerOpen_addr);
             WebMPlayerOpen_addr += (uint64_t)*offset_ptr + 0x4;
-      
             cout << "WebMPlayerOpen_addr : 0x" << hex << WebMPlayerOpen_addr << endl;
             matchedAddrCount++;
         }
 
         if (SearchModuleMemory(TextWidthScalefactor_addr_pattern, matchResults) && matchResults.size() == 1) {
-            TextWidthScalefactor_addr = matchResults[0] + 0x16;
+            TextWidthScalefactor_addr = matchResults[0] + 0x5;
             uint32_t* offset_ptr = reinterpret_cast<uint32_t*>(TextWidthScalefactor_addr);
             TextWidthScalefactor_addr += (uint64_t)*offset_ptr + 0x4;
             cout << "TextWidthScalefactor_addr : 0x" << hex << TextWidthScalefactor_addr << endl;
@@ -176,157 +139,45 @@ namespace hook {
         }
 
         if (SearchModuleMemory(DialogBoxHeight_addr_pattern, matchResults) && matchResults.size() == 2) {
-            DialogBoxHeight_addr[0] = matchResults[0];
-            DialogBoxHeight_addr[1] = matchResults[1];
-            cout << "DialogBoxHeight_addr : 0x" << hex << DialogBoxHeight_addr << endl;
-            matchedAddrCount++;
+            for (int i = 0; i < matchResults.size(); i++) {
+                DialogBoxHeight_addr[i] = matchResults[i];
+                cout << "DialogBoxHeight_addr " << i << ": 0x" << hex << DialogBoxHeight_addr[i] << endl;
+            }
+            matchedAddrCount += matchResults.size();
         }
 
         cout << "==============================" << endl;
 
-        if (SearchModuleMemory(main_sjis_byte_valid_addr_pattern, matchResults) && matchResults.size() == 5) {
-            for (size_t i = 0; i < matchResults.size(); i++)
-            {
+        if (SearchModuleMemory(main_sjis_byte_valid_addr_pattern, matchResults) && matchResults.size() == 2) {
+            for (int i = 0; i < matchResults.size(); i++) {
                 main_sjis_byte_valid_addr[i] = matchResults[i];
-                cout << "main_sjis_byte_valid_addr " << i << " : 0x" << hex << main_sjis_byte_valid_addr[i] << endl;
+                cout << "main_sjis_byte_valid_addr " << i << ": 0x" << hex << main_sjis_byte_valid_addr[i] << endl;
             }
             matchedAddrCount += matchResults.size();
-        }
-
-        if (SearchModuleMemory(talk_sjis_byte_valid_addr_pattern, matchResults) && matchResults.size() == 4) {
-            for (size_t i = 0; i < matchResults.size(); i++)
-            {
-                talk_sjis_byte_valid_addr[i] = matchResults[i];
-                cout << "talk_sjis_byte_valid_addr " << i << " : 0x" << hex << talk_sjis_byte_valid_addr[i] << endl;
-            }
-            matchedAddrCount += matchResults.size();
-        }
-
-        if (SearchModuleMemory(ui_sjis_byte_valid_addr_pattern, matchResults) && matchResults.size() == 3) {
-            for (size_t i = 0; i < matchResults.size(); i++)
-            {
-                ui_sjis_byte_valid_addr[i] = matchResults[i];
-                cout << "ui_sjis_byte_valid_addr " << i << " : 0x" << hex << ui_sjis_byte_valid_addr[i] << endl;
-            }
-            matchedAddrCount += matchResults.size();
-        }
-
-        if (SearchModuleMemory(story_sjis_byte_valid_addr_pattern, matchResults) && matchResults.size() == 2) {
-            for (size_t i = 0; i < matchResults.size(); i++)
-            {
-                story_sjis_byte_valid_addr[i] = matchResults[i];
-                cout << "story_sjis_byte_valid_addr " << i << " : 0x" << hex << story_sjis_byte_valid_addr[i] << endl;
-            }
-            matchedAddrCount += matchResults.size();
-        }
-
-        if (SearchModuleMemory(menu_sjis_byte_valid_addr_pattern, matchResults) && matchResults.size() == 1) {
-            menu_sjis_byte_valid_addr = matchResults[0];
-            cout << "menu_sjis_byte_valid_addr : 0x" << hex << menu_sjis_byte_valid_addr << endl;
-            matchedAddrCount++;
-        }
-
-        if (SearchModuleMemory(escape_sjis_byte_valid_addr_pattern, matchResults) && matchResults.size() == 1) {
-            escape_sjis_byte_valid_addr = matchResults[0];
-            cout << "escape_sjis_byte_valid_addr : 0x" << hex << escape_sjis_byte_valid_addr << endl;
-            matchedAddrCount++;
-        }
-
-        if (SearchModuleMemory(add_al_60_r15_sjis_byte_valid_addr_pattern, matchResults) && matchResults.size() == 1) {
-            add_al_60_r15_sjis_byte_valid_addr = matchResults[0];
-            cout << "add_al_60_r15_sjis_byte_valid_addr : 0x" << hex << add_al_60_r15_sjis_byte_valid_addr << endl;
-            matchedAddrCount++;
         }
     }
 
     void fix_main_sjis_byte_valid(uintptr_t ptr) {
         UnLockProtect(ptr);
-        uint8_t* p = reinterpret_cast<uint8_t*>(ptr + 5);
-        for (size_t i = 1; i < 0x10; i++)
-        {
-            if (*(p) == 0x76)
-                break;
-            p++;
-        }
-        memset((PVOID)p, 0x90, 2);
-        LockProtect(ptr);
-    }
-
-    void fix_talk_sjis_byte_valid(uintptr_t ptr) {
-        UnLockProtect(ptr);
-        uint8_t* p = reinterpret_cast<uint8_t*>(ptr);
-        for (size_t i = 1; i < 0x10; i++)
-        {
-            if (*(p - i) == 0x80)
-            {
-                *(p - i) = 0;
-                break;
-            }
-        }
-        *(p + 1) = 0x80;
-        *(p + 2) = 0x73;
-        *(p + 7) = 0xEB;
-        LockProtect(ptr);
-    }
-
-    void fix_menu_sjis_byte_valid(uintptr_t ptr) {
-        UnLockProtect(ptr);
-        memset((PVOID)(ptr+5), 0x90,2);
-        LockProtect(ptr);
-    }
-
-    void fix_escape_sjis_byte_valid(uintptr_t ptr) {
-        UnLockProtect(ptr);
-        uint8_t* p = reinterpret_cast<uint8_t*>(ptr);
-        *(p + 7) = 0xeb;
-        LockProtect(ptr);
-    }
-
-    void fix_story_sjis_byte_valid(uintptr_t ptr) {
-        UnLockProtect(ptr);
-        int count = 0;
-        uint8_t* p = reinterpret_cast<uint8_t*>(ptr);
-        for (size_t i = 1; i < 0x20; i++)
-        {
-            if (*(p + i) == 0xF) {
-                count++;
-            }
-            if (count == 2) {
-                memset((PVOID)(p + i), 0x90, 6);
-                break;
-            }
-        }
-        LockProtect(ptr);
-    }
-
-    void fix_ui_sjis_byte_valid(uintptr_t ptr) {
-        UnLockProtect(ptr);
-        uint8_t* p = reinterpret_cast<uint8_t*>(ptr);
-        *(p - 1) = 0;
-        *(p + 1) = 0x7f;
-        LockProtect(ptr);
-    }
-
-    void fix_add_al_60_r15_sjis_byte_valid(uintptr_t ptr) {
-        UnLockProtect(ptr);
-        memset((PVOID)(ptr + 4), 0x90, 6);
+        uint8_t* p = reinterpret_cast<uint8_t*>(ptr + 2);
+        *p = 0xff;
         LockProtect(ptr);
     }
 
     void fix_TextWidthScalefactor(uintptr_t ptr) {
         UnLockProtect(ptr);
         float* pScaleFactor = reinterpret_cast<float*>(ptr);
-        *pScaleFactor = 0.86f;
+        *pScaleFactor = 0.88f;
         LockProtect(ptr);
     }
 
     void fix_DialogBoxHeight(uintptr_t ptr) {
-        uint8_t* jmpAddr = static_cast<uint8_t*>(BeginPatch(ptr, 0xf, 0));
+        uint8_t* jmpAddr = static_cast<uint8_t*>(BeginPatch(ptr, 19, 0));
         WritePatchOriginalData(jmpAddr);
+        //add eax, 03
         *(jmpAddr++) = 0x83;
         *(jmpAddr++) = 0xc0;
         *(jmpAddr++) = 0x03;
-        //add eax, 03
         EndPatch(jmpAddr);
     }
 
@@ -343,7 +194,7 @@ namespace hook {
                 isMatchSuccessful = true;
             }
             else {
-                throw runtime_error("部分地址未匹配成功，停止hook以防止崩溃");
+                //throw runtime_error("部分地址未匹配成功，停止hook以防止崩溃");
             }
 #else
             cout << "[INFO]跳过地址匹配" << endl;
@@ -418,27 +269,6 @@ namespace hook {
             for (size_t i = 0; i < size(main_sjis_byte_valid_addr); i++)
                 fix_main_sjis_byte_valid(main_sjis_byte_valid_addr[i]);
 
-            cout << "[INFO]fix talk_sjis_byte_valid" << endl;
-            for (size_t i = 0; i < size(talk_sjis_byte_valid_addr); i++)
-                fix_talk_sjis_byte_valid(talk_sjis_byte_valid_addr[i]);
-
-            cout << "[INFO]fix story_sjis_byte_valid" << endl;
-            for (size_t i = 0; i < size(story_sjis_byte_valid_addr); i++)
-                fix_story_sjis_byte_valid(story_sjis_byte_valid_addr[i]);
-
-            cout << "[INFO]fix ui_sjis_byte_valid" << endl;
-            for (size_t i = 0; i < size(ui_sjis_byte_valid_addr); i++)
-                fix_ui_sjis_byte_valid(ui_sjis_byte_valid_addr[i]);
-
-            cout << "[INFO]fix menu_sjis_byte_valid" << endl;
-			fix_menu_sjis_byte_valid(menu_sjis_byte_valid_addr);
-
-			cout << "[INFO]fix escape_sjis_byte_valid" << endl;
-			fix_escape_sjis_byte_valid(escape_sjis_byte_valid_addr);
-
-			cout << "[INFO]fix add_al_60_r15_sjis_byte_valid" << endl;
-			fix_add_al_60_r15_sjis_byte_valid(add_al_60_r15_sjis_byte_valid_addr);
- 
             status = MH_EnableHook(MH_ALL_HOOKS);
             if (status != MH_OK) {
                 throw runtime_error("MinHook enable hook failed!");
@@ -506,18 +336,18 @@ namespace hook {
         cout << "[INFO]Fixed note help key position" << endl;
     }
 
-    int32_t __fastcall hooked_loadNoteHelpKey_posMap() {
-        int32_t result = ori_loadNoteHelpKey_posMap();
-        fix_noteHelpKey_pos(noteHelpKey_posMap_addr);
+    int64_t __fastcall hooked_loadNoteHelpKey_posMap(uintptr_t ctx) {
+        int64_t result = ori_loadNoteHelpKey_posMap(ctx);
+        printf("[INFO]hooked_loadNoteHelpKey_posMap ctx: 0x%llx\n", ctx);
+        fix_noteHelpKey_pos(ctx);
         return result;
     }
 
-    int64_t __fastcall hooked_sjis2utf8(char* output, uint8_t* input, int64_t max_output, int32_t* _pTable) {
-    
+    int64_t __fastcall hooked_sjis2utf8(char* output, uint8_t* input, int64_t max_output, int32_t* _pTable, int64_t* usedLen) {
+        if (*language_option_addr == 0) {
+            return ori_sjis2utf8(output, input, max_output, _pTable, usedLen);
+        }
         try {
-            if (*language_option_addr == 0) {
-                return ori_sjis2utf8(output, input, max_output, _pTable);
-            }
             if (max_output == 0)
                 return 0;
             iconv_t _hiconv = iconv_open("UTF-8", "CP936");
@@ -549,12 +379,12 @@ namespace hook {
         }
     }
 
-    int64_t __fastcall hooked_utf82sjis(char* output, uint8_t* input, int64_t max_output) {
-   
+    int64_t __fastcall hooked_utf82sjis(char* output, uint8_t* input, int64_t max_output, int64_t* usedLen) {
+        if (*language_option_addr == 0) {
+            return ori_utf82sjis(output, input, max_output, usedLen);
+        }
         try {
-            if (*language_option_addr == 0) {
-                return ori_utf82sjis(output, input, max_output);
-            }
+
             if (max_output == 0)
                 return 0;
             iconv_t _hiconv = iconv_open("CP936", "UTF-8");
@@ -654,12 +484,11 @@ namespace hook {
         ptr_as_int[3] = static_cast<intptr_t>(capacity); // mutable_ptr + 0x18
     }
 
-    bool load_mess_string_cn() {
+    bool load_mess_string_cn(int64_t jpStructAddr) {
         char path[] = "data_cn\\localization\\mess_strings_cn.txt";
         FILE* file = nullptr;
 
         if (fopen_s(&file, path, "rb") != 0) {
-            cout<< "[ERROR]无法载入mess_strings_cn" << endl;
             return false;
         }
         fseek(file, 0, SEEK_END);
@@ -675,15 +504,15 @@ namespace hook {
         unordered_map<string, string> mess_map = build_mess_string_map(pbuffer, fileSize);
         string FileName[2];
         get_mess_string_key = reinterpret_cast<get_mess_string_key_t>(get_mess_string_key_addr);
-        for (int32_t i = 1; i < 0xC08; i++)
+        for (int32_t i = 1; i < 0xC1E; i++)
         {
             auto key = get_mess_string_key(reinterpret_cast<__int64>(FileName), i);
 
             if (!FileName[0].empty() && mess_map.count(FileName[0])) {
-                write_mess_string((char*)(mess_string_jp_struct_addr + (int64_t)i * 0x20), mess_map[FileName[0]]);
+                write_mess_string((char*)(jpStructAddr + (int64_t)i * 0x20), mess_map[FileName[0]]);
             }
             else {
-                //cerr << "[INFO]未找到 mess string : " << FileName[0] << endl;
+                cerr << "[INFO]未找到 mess string : " << FileName[0] << endl;
             }
         }
         memset(pbuffer, 0, buffer.size());
@@ -695,9 +524,10 @@ namespace hook {
         return encoding::check_encoding(input_str);
     }
 
-    int32_t __fastcall hooked_load_mess_string() {
-        int32_t result = ori_load_mess_string();
-        load_mess_string_cn();
+    int64_t __fastcall hooked_load_mess_string(int64_t pStruct) {
+        int64_t result = ori_load_mess_string(pStruct);
+        printf("[INFO]hooked_load_mess_string pStruct: 0x%llx\n", pStruct + mess_string_jp_offset_offset);
+        load_mess_string_cn(pStruct + mess_string_jp_offset_offset + 0x8);
         return result;
     }
 
@@ -733,10 +563,12 @@ namespace hook {
         return -1;
     }
 
-    int64_t __fastcall hooked_sjis2uni(int64_t ctx, int32_t* output_addr, char* input_str, int64_t max_output)
+
+    int64_t __fastcall hooked_sjis2uni(int64_t ctx, int32_t* output_addr, char* input_str, int64_t max_output, int64_t* usedLen)
     {
+
         if (*language_option_addr == 0) {
-            return ori_sjis2uni(ctx, output_addr, input_str, max_output);
+            return ori_sjis2uni(ctx, output_addr, input_str, max_output, usedLen);
         }
         try
         {
@@ -757,7 +589,9 @@ namespace hook {
             }
             int32_t totalCharCount = *(int32_t*)(*fontEntryAddr + 0x8);
             int32_t unfound_symbol_index = -1;
-            vector<int32_t> unicodes = encoding::chars_to_unicode(input_str, max_output);
+            // search
+            vector<int32_t> unicodes = encoding::chars_to_unicode(input_str, max_output, usedLen);
+
             size_t uni_len = unicodes.size();
 
             for (uint32_t i = 0; i < uni_len; i++)
@@ -797,7 +631,7 @@ namespace hook {
             cerr << ss.str() << endl;
         }
 
-        int64_t original_count = ori_sjis2uni(ctx, output_addr, input_str, max_output);
+        int64_t original_count = ori_sjis2uni(ctx, output_addr, input_str, max_output, usedLen);
         return original_count;
     }
 
@@ -809,7 +643,9 @@ namespace hook {
     string redirect_dir(string file) {
         string searchFile = file;
         std::replace(searchFile.begin(), searchFile.end(), '/', '\\');
-        if (is_debug) {
+        bool showInfo = is_debug;
+        showInfo = false;
+        if (showInfo) {
             cout << "[DEBUG][CreateFileA]：" << file;
         }
         for (const auto& pattern : patterns) {
@@ -818,14 +654,14 @@ namespace hook {
                 string redirected = searchFile;
                 redirected.replace(pos, pattern.first.length(), pattern.second);
                 if (std::filesystem::exists(redirected)) {
-                    if (is_debug) {
-                        cout << "  =>  " << redirected << endl;
+                    if (showInfo) {
+                        cout << "  重定向=>  " << redirected << endl;
                     }
                     return redirected;
                 }
             }
         }
-        if (is_debug) {
+        if (showInfo) {
             cout << endl;
         }
         return file;
