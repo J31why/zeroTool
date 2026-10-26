@@ -10,8 +10,7 @@
 ---
 
 #### 工具  
-* **hijack_ao**：碧轨汉化主DLL。  
-* **hijack_zero**：零轨汉化主DLL。  
+* **ED7GBK**：零碧轨汉化主DLL。  
 * **zCodec**：云豹文件及字符串解密、scena/dt/as/ms/mess_string编译·反编译器，仅用于汉化字符串。  
 * **ED7FontCreator**：控制台型字体创建器。  
 * **calmareHook**：calmare的编码hook dll，似乎转换没问题，不过是我项目完工后写出来的，没有实际运用。  
