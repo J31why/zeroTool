@@ -1,5 +1,7 @@
 ﻿#pragma once
+#pragma warning(push, 0)
 #include "iconv.h"
+#pragma warning(pop)
 #include <iostream>
 #include <vector>
 #include <string>

@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #include <windows.h>
 #include <psapi.h> 
 #include <vector>
@@ -6,13 +6,13 @@
 #include <iostream>
 
 struct PatchInfo {
-    uintptr_t ori_addr=0;
-    std::vector<uint8_t> ori_data;
-    uintptr_t ret_addr=0;
+	uintptr_t ori_addr=0;
+	std::vector<uint8_t> ori_data;
+	uintptr_t ret_addr=0;
 };
 
 struct PatternByte {
-    int value;  // -1 = Í¨Åä·û ??£¬ÆäËûÎª 0x00-0xFF
+	int value;  // -1 = é€šé…ç¬¦ ??ï¼Œå…¶ä»–ä¸º 0x00-0xFF
 };
 std::vector<PatternByte> ParsePattern(const std::string& patternStr);
 
